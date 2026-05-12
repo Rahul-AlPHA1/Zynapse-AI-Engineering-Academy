@@ -1,0 +1,17 @@
+{
+  "name": "Zynapse",
+  "short_name": "Zynapse",
+  "description": "AI-powered engineering academy with roadmaps, compiler, study plans, flashcards, analytics, and practice tools.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050508",
+  "theme_color": "#6366f1",
+  "icons": [
+    {
+      "src": "/pwa-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

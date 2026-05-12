@@ -1,0 +1,15 @@
+node_modules
+node_modules/
+build/
+dist/
+coverage/
+release/
+test-results/
+.cache/
+.vite/
+.claude/
+.DS_Store
+*.log
+*.local
+.env*
+!.env.example
