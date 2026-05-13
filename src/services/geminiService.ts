@@ -25,6 +25,9 @@ export type AIProvider =
   | "nvidia"
   | "ollama";
 
+export const LOCAL_OLLAMA_MODEL = "gemma2:2b";
+export const LOCAL_OLLAMA_MODEL_NAME = "Gemma 2 2B";
+
 export interface ProviderConfig {
   id: AIProvider;
   name: string;
@@ -62,6 +65,9 @@ export const PROVIDER_CONFIGS: Record<AIProvider, ProviderConfig> = {
     models: [
       { id: "llama-3.3-70b-versatile", name: "Llama 3.3 70B", description: "Best quality on Groq" },
       { id: "llama-3.1-8b-instant", name: "Llama 3.1 8B Instant", description: "Ultra fast" },
+      { id: "qwen/qwen3-32b", name: "Qwen3 32B", description: "Strong multilingual reasoning" },
+      { id: "openai/gpt-oss-20b", name: "GPT OSS 20B", description: "Fast open-weight model" },
+      { id: "openai/gpt-oss-120b", name: "GPT OSS 120B", description: "Large open-weight model" },
       { id: "deepseek-r1-distill-llama-70b", name: "DeepSeek R1 (Groq)", description: "Reasoning model" },
       { id: "qwen-qwq-32b", name: "QwQ 32B", description: "Strong reasoning" },
       { id: "mixtral-8x7b-32768", name: "Mixtral 8x7B", description: "MoE architecture" },
@@ -159,30 +165,17 @@ export const PROVIDER_CONFIGS: Record<AIProvider, ProviderConfig> = {
     name: "Ollama (Local)",
     baseUrl: "http://localhost:11434",
     keyStorageKey: "",
-    defaultModel: "llama3.2:3b",
+    defaultModel: LOCAL_OLLAMA_MODEL,
     requiresKey: false,
     isLocal: true,
     models: [
-      { id: "phi3:mini", name: "Phi 3 Mini (2.2GB)", description: "Best for 4GB RAM PCs" },
-      { id: "gemma2:2b", name: "Gemma 2 2B (1.6GB)", description: "Google's tiny model" },
-      { id: "llama3.2:3b", name: "Llama 3.2 3B (2GB)", description: "Good balance for 8GB RAM" },
-      { id: "qwen2.5:3b", name: "Qwen 2.5 3B (1.9GB)", description: "Smart small model" },
-      { id: "llama3.1:8b", name: "Llama 3.1 8B (4.7GB)", description: "Best for 16GB RAM" },
-      { id: "phi4:14b", name: "Phi 4 14B (8.5GB)", description: "Microsoft's best small model" },
-      { id: "qwen2.5:7b", name: "Qwen 2.5 7B (4.4GB)", description: "Excellent reasoning" },
-      { id: "codellama:7b", name: "CodeLlama 7B (3.8GB)", description: "Code specialist" },
-      { id: "mistral:7b", name: "Mistral 7B (4.1GB)", description: "Great for instruction" },
-      { id: "deepseek-r1:8b", name: "DeepSeek R1 8B (5.5GB)", description: "Reasoning model" },
-      { id: "deepseek-coder:6.7b", name: "DeepSeek Coder 6.7B", description: "Best local code model" },
-      { id: "qwen2.5:32b", name: "Qwen 2.5 32B (19GB)", description: "For 32GB+ RAM" },
-      { id: "deepseek-r1:32b", name: "DeepSeek R1 32B (19GB)", description: "Best local reasoning" },
-      { id: "llama3.1:70b", name: "Llama 3.1 70B (40GB)", description: "Workstation only" },
+      { id: LOCAL_OLLAMA_MODEL, name: "Gemma 2 2B (1.6GB)", description: "Single low-end CPU default" },
     ],
   },
 };
 
 const ls = (key: string) =>
-  typeof window !== "undefined" ? localStorage.getItem(key) || "" : "";
+  typeof window !== "undefined" ? localStorage.getItem(key)?.trim() || "" : "";
 
 export const getAIConfig = () => ({
   gemini: ls("GEMINI_API_KEY") || (typeof process !== "undefined" ? process.env?.GEMINI_API_KEY || "" : ""),
@@ -212,6 +205,120 @@ export const getAIConfig = () => ({
     : (["gemini", "groq", "deepseek", "claude", "openai", "mistral", "together", "nvidia", "ollama"] as AIProvider[]),
 });
 
+type AIConfig = ReturnType<typeof getAIConfig>;
+
+function languageOutputPolicy(language: string) {
+  const lower = language.toLowerCase();
+  const roman = lower.includes("roman") || lower.includes("hinglish");
+
+  if (roman) {
+    return "Use English alphabet / Latin letters only. Do not use Urdu, Hindi, Arabic, Chinese, Japanese, or Korean script.";
+  }
+
+  return "Use the selected language naturally. Do not fall back to English except for technical terms that are clearer in English.";
+}
+
+function getMissingProviderReason(provider: AIProvider, cfg: AIConfig) {
+  switch (provider) {
+    case "gemini":
+      return cfg.gemini ? null : "Gemini API key not set";
+    case "groq":
+      return cfg.groq ? null : "Groq API key not set";
+    case "claude":
+      return cfg.claude ? null : "Claude API key not set";
+    case "openai":
+      return cfg.openai ? null : "OpenAI API key not set";
+    case "mistral":
+      return cfg.mistral ? null : "Mistral API key not set";
+    case "together":
+      return cfg.together ? null : "Together AI key not set";
+    case "deepseek":
+      return cfg.deepseek ? null : "DeepSeek API key not set";
+    case "nvidia":
+      return cfg.nvidia ? null : "NVIDIA API key not set";
+    case "ollama":
+      return null;
+  }
+}
+
+type OllamaModelTag = {
+  name?: string;
+  model?: string;
+  details?: {
+    family?: string;
+    families?: string[];
+  };
+};
+
+function isUsableOllamaChatModel(model: OllamaModelTag) {
+  const name = (model.name || model.model || "").toLowerCase();
+  const families = [model.details?.family, ...(model.details?.families || [])]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+
+  return Boolean(name) &&
+    !name.includes("embed") &&
+    !name.includes("nomic-embed") &&
+    !families.includes("bert");
+}
+
+function shouldUseOllamaProxy(ollamaUrl: string) {
+  try {
+    const url = new URL(ollamaUrl);
+    return ["localhost", "127.0.0.1", "::1"].includes(url.hostname);
+  } catch {
+    return true;
+  }
+}
+
+function ollamaApiUrl(ollamaUrl: string, path: "status" | "chat" | "generate" | "ensure-model") {
+  if (shouldUseOllamaProxy(ollamaUrl)) {
+    return path === "status" ? "/api/ollama/status" : `/api/ollama/${path}`;
+  }
+
+  return `${ollamaUrl}/api/${path === "status" ? "tags" : path}`;
+}
+
+async function resolveOllamaModel(ollamaUrl: string, configuredModel: string) {
+  const requiredModel = LOCAL_OLLAMA_MODEL;
+  try {
+    const res = await fetch(ollamaApiUrl(ollamaUrl, "status"));
+    if (!res.ok) return requiredModel;
+
+    const data = await res.json();
+    const installed = ((data.models || []) as OllamaModelTag[])
+      .filter(isUsableOllamaChatModel)
+      .map((model) => model.name || model.model || "")
+      .filter(Boolean);
+
+    if (installed.includes(requiredModel)) return requiredModel;
+
+    const configuredBase = requiredModel.split(":")[0];
+    const closeMatch = installed.find((model) => model.split(":")[0] === configuredBase);
+    const selected = closeMatch || requiredModel;
+
+    if (selected !== configuredModel && typeof window !== "undefined") {
+      localStorage.setItem("OLLAMA_MODEL", selected);
+      console.info(`[AI] Ollama is locked to "${requiredModel}". Using "${selected}".`);
+    }
+
+    return selected;
+  } catch {
+    return requiredModel;
+  }
+}
+
+async function ensureLocalOllamaModel(ollamaUrl: string) {
+  if (!shouldUseOllamaProxy(ollamaUrl)) return;
+
+  const res = await fetch(ollamaApiUrl(ollamaUrl, "ensure-model"), { method: "POST" });
+  if (!res.ok) {
+    const data = await res.json().catch(() => null);
+    throw new Error(data?.error || `Install ${LOCAL_OLLAMA_MODEL} with: ollama pull ${LOCAL_OLLAMA_MODEL}`);
+  }
+}
+
 function extractJson(text: string): string {
   const fence = text.match(/```json\n?([\s\S]*?)\n?```/);
   if (fence) return fence[1].trim();
@@ -226,6 +333,29 @@ function extractJson(text: string): string {
 }
 
 // ─── OpenAI-compatible fetch (Groq, OpenAI, Mistral, Together, DeepSeek, NVIDIA) ───
+function buildOpenAICompatBody(
+  baseUrl: string,
+  model: string,
+  messages: { role: string; content: string }[],
+  options: { stream?: boolean; jsonMode?: boolean } = {},
+) {
+  const isGroq = baseUrl.includes("api.groq.com");
+  const body: Record<string, unknown> = {
+    model,
+    messages,
+    temperature: 0.25,
+    top_p: 0.9,
+  };
+
+  if (options.stream) body.stream = true;
+  if (options.jsonMode) body.response_format = { type: "json_object" };
+
+  if (isGroq) body.max_completion_tokens = 16384;
+  else body.max_tokens = 8192;
+
+  return body;
+}
+
 async function fetchOpenAICompat(
   baseUrl: string,
   apiKey: string,
@@ -234,9 +364,6 @@ async function fetchOpenAICompat(
   jsonMode = false,
   extraHeaders: Record<string, string> = {}
 ): Promise<string> {
-  const body: Record<string, unknown> = { model, messages };
-  if (jsonMode) body.response_format = { type: "json_object" };
-
   const res = await fetch(`${baseUrl}/chat/completions`, {
     method: "POST",
     headers: {
@@ -244,7 +371,7 @@ async function fetchOpenAICompat(
       Authorization: `Bearer ${apiKey}`,
       ...extraHeaders,
     },
-    body: JSON.stringify(body),
+    body: JSON.stringify(buildOpenAICompatBody(baseUrl, model, messages, { jsonMode })),
   });
   if (!res.ok) {
     const errText = await res.text().catch(() => res.statusText);
@@ -269,9 +396,12 @@ async function* streamOpenAICompat(
       Authorization: `Bearer ${apiKey}`,
       ...extraHeaders,
     },
-    body: JSON.stringify({ model, messages, stream: true }),
+    body: JSON.stringify(buildOpenAICompatBody(baseUrl, model, messages, { stream: true })),
   });
-  if (!res.ok) throw new Error(`Stream error ${res.status}`);
+  if (!res.ok) {
+    const errText = await res.text().catch(() => res.statusText);
+    throw new Error(`${baseUrl} stream error ${res.status}: ${errText || res.statusText}`);
+  }
   const reader = res.body!.getReader();
   const decoder = new TextDecoder();
   let buffer = "";
@@ -389,17 +519,23 @@ async function executeAIProvider(
       ).then(extractJson);
 
     case "ollama": {
-      const res = await fetch(`${cfg.ollamaUrl}/api/generate`, {
+      await ensureLocalOllamaModel(cfg.ollamaUrl);
+      const model = await resolveOllamaModel(cfg.ollamaUrl, cfg.ollamaModel);
+      const res = await fetch(ollamaApiUrl(cfg.ollamaUrl, "generate"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          model: cfg.ollamaModel,
+          model,
           prompt: prompt + jsonInstruction,
           stream: false,
           format: "json",
+          options: { temperature: 0.2, num_ctx: 4096, num_predict: 1024, num_thread: 4 },
         }),
       });
-      if (!res.ok) throw new Error(`Ollama error ${res.status}`);
+      if (!res.ok) {
+        const errorBody = await res.text().catch(() => "");
+        throw new Error(`Ollama error ${res.status}${errorBody ? `: ${errorBody}` : ""}`);
+      }
       const data = await res.json();
       return data.response || "";
     }
@@ -410,14 +546,13 @@ async function executeAIProvider(
 }
 
 // ─── Streaming: yields text chunks ───
-export async function* streamContent(
+async function* streamProviderContent(
   messages: { role: string; content: string }[],
-  provider?: AIProvider
+  provider: AIProvider
 ): AsyncGenerator<string> {
   const cfg = getAIConfig();
-  const p = provider || cfg.primaryProvider;
 
-  switch (p) {
+  switch (provider) {
     case "gemini": {
       const ai = new GoogleGenAI({ apiKey: cfg.gemini });
       const lastMsg = messages[messages.length - 1].content;
@@ -507,12 +642,22 @@ export async function* streamContent(
       break;
 
     case "ollama": {
-      const res = await fetch(`${cfg.ollamaUrl}/api/chat`, {
+      await ensureLocalOllamaModel(cfg.ollamaUrl);
+      const model = await resolveOllamaModel(cfg.ollamaUrl, cfg.ollamaModel);
+      const res = await fetch(ollamaApiUrl(cfg.ollamaUrl, "chat"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ model: cfg.ollamaModel, messages, stream: true }),
+        body: JSON.stringify({
+          model,
+          messages,
+          stream: true,
+          options: { temperature: 0.2, num_ctx: 4096, num_predict: 768, num_thread: 4 },
+        }),
       });
-      if (!res.ok) throw new Error(`Ollama stream error ${res.status}`);
+      if (!res.ok) {
+        const errorBody = await res.text().catch(() => "");
+        throw new Error(`Ollama stream error ${res.status}${errorBody ? `: ${errorBody}` : ""}`);
+      }
       const reader = res.body!.getReader();
       const decoder = new TextDecoder();
       let buf = "";
@@ -536,6 +681,48 @@ export async function* streamContent(
 }
 
 // ─── Fallback chain executor ───
+export async function* streamContent(
+  messages: { role: string; content: string }[],
+  provider?: AIProvider
+): AsyncGenerator<string> {
+  const cfg = getAIConfig();
+
+  if (provider) {
+    yield* streamProviderContent(messages, provider);
+    return;
+  }
+
+  const chain = cfg.fallbackEnabled
+    ? [cfg.primaryProvider, ...cfg.fallbackChain.filter((p) => p !== cfg.primaryProvider)]
+    : [cfg.primaryProvider];
+
+  let lastError: Error | null = null;
+  for (const currentProvider of chain) {
+    try {
+      const missingReason = getMissingProviderReason(currentProvider, cfg);
+      if (missingReason) {
+        lastError = new Error(missingReason);
+        if (!cfg.fallbackEnabled) break;
+        continue;
+      }
+
+      let receivedAnyChunk = false;
+      for await (const chunk of streamProviderContent(messages, currentProvider)) {
+        receivedAnyChunk = true;
+        yield chunk;
+      }
+      if (receivedAnyChunk) return;
+      throw new Error(`${PROVIDER_CONFIGS[currentProvider].name} returned an empty response`);
+    } catch (err: unknown) {
+      lastError = err as Error;
+      console.warn(`[AI] ${currentProvider} stream failed:`, lastError.message);
+      if (!cfg.fallbackEnabled) break;
+    }
+  }
+
+  throw new Error(`All providers failed: ${lastError?.message || "No provider returned content"}`);
+}
+
 async function executeWithFallback(
   prompt: string,
   schema: unknown,
@@ -549,6 +736,13 @@ async function executeWithFallback(
   let lastError: Error | null = null;
   for (const provider of chain) {
     try {
+      const missingReason = getMissingProviderReason(provider, cfg);
+      if (missingReason) {
+        lastError = new Error(missingReason);
+        if (!cfg.fallbackEnabled) break;
+        continue;
+      }
+
       return await executeAIProvider(provider, prompt, schema, type);
     } catch (err: unknown) {
       lastError = err as Error;
@@ -578,10 +772,12 @@ export async function testProviderConnection(provider: AIProvider): Promise<{ ok
 export async function fetchOllamaModels(): Promise<string[]> {
   const cfg = getAIConfig();
   try {
-    const res = await fetch(`${cfg.ollamaUrl}/api/tags`);
+    const res = await fetch(ollamaApiUrl(cfg.ollamaUrl, "status"));
     if (!res.ok) return [];
     const data = await res.json();
-    return (data.models || []).map((m: { name: string }) => m.name);
+    return (data.models || [])
+      .map((m: { name: string }) => m.name)
+      .filter((name: string) => name === LOCAL_OLLAMA_MODEL || name.split(":")[0] === LOCAL_OLLAMA_MODEL.split(":")[0]);
   } catch {
     return [];
   }
@@ -610,6 +806,7 @@ RULES:
 - Key points array (4-6 items)
 - Real-life scenario (universal: Stripe, Uber, Netflix, not generic examples)
 - Full output in ${language}
+- ${languageOutputPolicy(language)}
 
 Return JSON only.`;
 
@@ -666,6 +863,7 @@ JD: ${jd}
 Resume: ${resume || "Based on JD only"}
 
 RULES: Advanced only, no repetition, universal real-life scenarios (Stripe/Uber/Netflix scale), output in ${language}.
+${languageOutputPolicy(language)}
 Return JSON array only.`;
 
   const schema = {
@@ -699,7 +897,8 @@ export class ChatSessionAdapter {
       role: "system",
       content: `You are Zynapse, a Staff+ level Software Engineering Mentor and practical curriculum guide.
 
-Respond in ${language}. Keep technical keywords in English in parentheses when translation may confuse the learner.
+Respond in ${language}. ${languageOutputPolicy(language)}
+Keep technical keywords in English in parentheses when translation may confuse the learner.
 
 Your job is to teach deeply enough that the learner can move forward without opening another tutorial. For every explanation:
 - Start from the learner's likely gap and define key terms.
@@ -740,9 +939,8 @@ Your job is to teach deeply enough that the learner can move forward without ope
 
   async *sendMessageStream(message: string): AsyncGenerator<string> {
     this.history.push({ role: "user", content: message });
-    const cfg = getAIConfig();
     let fullText = "";
-    for await (const chunk of streamContent(this.history, cfg.primaryProvider)) {
+    for await (const chunk of streamContent(this.history)) {
       fullText += chunk;
       yield chunk;
     }

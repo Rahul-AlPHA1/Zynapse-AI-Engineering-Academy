@@ -1,0 +1,29 @@
+<svg width="1200" height="640" viewBox="0 0 1200 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="640" rx="36" fill="#080A14"/>
+  <rect x="44" y="44" width="1112" height="552" rx="28" fill="#0F1224" stroke="#27304D" stroke-width="2"/>
+  <circle cx="94" cy="92" r="10" fill="#EF4444"/>
+  <circle cx="124" cy="92" r="10" fill="#F59E0B"/>
+  <circle cx="154" cy="92" r="10" fill="#10B981"/>
+  <rect x="80" y="134" width="248" height="408" rx="18" fill="#151A2F" stroke="#27304D"/>
+  <rect x="104" y="166" width="120" height="16" rx="8" fill="#6366F1"/>
+  <rect x="104" y="210" width="176" height="12" rx="6" fill="#475569"/>
+  <rect x="104" y="244" width="152" height="12" rx="6" fill="#475569"/>
+  <rect x="104" y="278" width="198" height="12" rx="6" fill="#22D3EE"/>
+  <rect x="104" y="336" width="176" height="46" rx="12" fill="#111827" stroke="#334155"/>
+  <rect x="104" y="398" width="176" height="46" rx="12" fill="#111827" stroke="#334155"/>
+  <rect x="104" y="460" width="176" height="46" rx="12" fill="#111827" stroke="#334155"/>
+  <rect x="368" y="134" width="752" height="408" rx="18" fill="#0B1020" stroke="#27304D"/>
+  <text x="408" y="202" fill="#F8FAFC" font-family="Inter,Segoe UI,Arial" font-size="54" font-weight="800">Zynapse</text>
+  <text x="408" y="252" fill="#A5B4FC" font-family="Inter,Segoe UI,Arial" font-size="24" font-weight="700">AI Engineering Academy</text>
+  <rect x="408" y="300" width="300" height="68" rx="16" fill="#111827" stroke="#334155"/>
+  <circle cx="446" cy="334" r="18" fill="#10B981"/>
+  <text x="480" y="342" fill="#E2E8F0" font-family="Inter,Segoe UI,Arial" font-size="20" font-weight="700">Local Ollama: Gemma 2 2B</text>
+  <rect x="736" y="300" width="300" height="68" rx="16" fill="#111827" stroke="#334155"/>
+  <circle cx="774" cy="334" r="18" fill="#F97316"/>
+  <text x="808" y="342" fill="#E2E8F0" font-family="Inter,Segoe UI,Arial" font-size="20" font-weight="700">Groq + API Providers</text>
+  <rect x="408" y="402" width="628" height="28" rx="14" fill="#1E293B"/>
+  <rect x="408" y="448" width="530" height="28" rx="14" fill="#1E293B"/>
+  <rect x="408" y="494" width="456" height="28" rx="14" fill="#1E293B"/>
+  <path d="M1008 168c34 24 54 65 54 108 0 74-60 134-134 134-40 0-76-17-100-45 15 6 31 9 48 9 74 0 134-60 134-134 0-26-7-51-20-72h18Z" fill="#6366F1" opacity=".85"/>
+  <path d="M916 172c-18 10-31 31-31 54 0 35 28 63 63 63 23 0 44-13 54-31 1 6 2 12 2 18 0 45-37 82-82 82s-82-37-82-82 37-82 82-82c6 0 12 1 18 2Z" fill="#22D3EE" opacity=".9"/>
+</svg>

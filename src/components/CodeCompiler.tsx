@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import MonacoEditor, { Monaco } from '@monaco-editor/react';
 import { Play, Loader2, Code2, Terminal as TerminalIcon, Copy, RotateCcw, Sparkles, CheckCheck, Download, Server } from 'lucide-react';
-import { streamContent, getAIConfig } from '../services/geminiService';
+import { streamContent } from '../services/geminiService';
 
 interface Runtime { language: string; version: string; aliases: string[] }
 interface SandboxStatus {
@@ -342,13 +342,12 @@ Then set Custom Piston URL: http://localhost:2000`
   const handleAIExplain = async () => {
     setIsAILoading(true);
     setAiExplain('');
-    const cfg = getAIConfig();
     const messages = [
       { role: 'system', content: 'You are Zynapse, a senior software engineer. Explain code clearly and concisely.' },
       { role: 'user',   content: `Explain this ${LANG_DISPLAY[language] || language} code step by step:\n\`\`\`${language}\n${code}\n\`\`\`` },
     ];
     try {
-      for await (const chunk of streamContent(messages, cfg.primaryProvider)) {
+      for await (const chunk of streamContent(messages)) {
         setAiExplain(prev => prev + chunk);
       }
     } catch {

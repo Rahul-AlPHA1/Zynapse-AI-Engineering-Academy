@@ -6,7 +6,7 @@ import {
 } from 'lucide-react';
 import {
   PROVIDER_CONFIGS, AIProvider, getAIConfig,
-  testProviderConnection, fetchOllamaModels,
+  testProviderConnection, fetchOllamaModels, LOCAL_OLLAMA_MODEL, LOCAL_OLLAMA_MODEL_NAME,
 } from '../services/geminiService';
 
 interface AIProviderSettingsProps {
@@ -18,6 +18,7 @@ const PROVIDER_ORDER: AIProvider[] = [
   'gemini', 'groq', 'claude', 'openai',
   'mistral', 'deepseek', 'together', 'nvidia', 'ollama',
 ];
+const CLOUD_PROVIDER_ORDER = PROVIDER_ORDER.filter((p) => p !== 'ollama');
 
 const PROVIDER_LINKS: Record<AIProvider, string> = {
   gemini:   'https://aistudio.google.com/app/apikey',
@@ -55,6 +56,29 @@ const PROVIDER_BADGES: Record<AIProvider, string> = {
   ollama:   '100% local',
 };
 
+const KEY_STORAGE_MAP: Partial<Record<AIProvider, string>> = {
+  gemini: 'GEMINI_API_KEY',
+  groq: 'GROQ_API_KEY',
+  claude: 'CLAUDE_API_KEY',
+  openai: 'OPENAI_API_KEY',
+  mistral: 'MISTRAL_API_KEY',
+  together: 'TOGETHER_API_KEY',
+  deepseek: 'DEEPSEEK_API_KEY',
+  nvidia: 'NVIDIA_API_KEY',
+};
+
+const MODEL_STORAGE_MAP: Record<AIProvider, string> = {
+  gemini: 'GEMINI_MODEL',
+  groq: 'GROQ_MODEL',
+  claude: 'CLAUDE_MODEL',
+  openai: 'OPENAI_MODEL',
+  mistral: 'MISTRAL_MODEL',
+  together: 'TOGETHER_MODEL',
+  deepseek: 'DEEPSEEK_MODEL',
+  nvidia: 'NVIDIA_MODEL',
+  ollama: 'OLLAMA_MODEL',
+};
+
 type TestStatus = { loading: boolean; ok: boolean | null; message: string };
 
 export function AIProviderSettings({ isOpen, onClose }: AIProviderSettingsProps) {
@@ -68,7 +92,7 @@ export function AIProviderSettings({ isOpen, onClose }: AIProviderSettingsProps)
   const [testStatus, setTestStatus] = useState<Record<string, TestStatus>>({});
   const [ollamaModels, setOllamaModels] = useState<string[]>([]);
   const [saved, setSaved] = useState(false);
-  const [activeTab, setActiveTab] = useState<'providers' | 'fallback' | 'executor'>('providers');
+  const [activeTab, setActiveTab] = useState<'providers' | 'local' | 'fallback' | 'executor'>('providers');
   const [jdoodleId, setJdoodleId] = useState('');
   const [jdoodleSecret, setJdoodleSecret] = useState('');
   const [pistonUrl, setPistonUrl] = useState('');
@@ -114,34 +138,29 @@ export function AIProviderSettings({ isOpen, onClose }: AIProviderSettingsProps)
   }, []);
 
   useEffect(() => {
-    if (expanded === 'ollama') loadOllamaModels();
-  }, [expanded, loadOllamaModels]);
+    if (expanded === 'ollama' || activeTab === 'local') loadOllamaModels();
+  }, [activeTab, expanded, loadOllamaModels]);
 
-  const handleSave = () => {
-    const keyMap: Record<string, string> = {
-      gemini: 'GEMINI_API_KEY', groq: 'GROQ_API_KEY', claude: 'CLAUDE_API_KEY',
-      openai: 'OPENAI_API_KEY', mistral: 'MISTRAL_API_KEY', together: 'TOGETHER_API_KEY',
-      deepseek: 'DEEPSEEK_API_KEY', nvidia: 'NVIDIA_API_KEY',
-    };
-    const modelMap: Record<string, string> = {
-      gemini: 'GEMINI_MODEL', groq: 'GROQ_MODEL', claude: 'CLAUDE_MODEL',
-      openai: 'OPENAI_MODEL', mistral: 'MISTRAL_MODEL', together: 'TOGETHER_MODEL',
-      deepseek: 'DEEPSEEK_MODEL', nvidia: 'NVIDIA_MODEL', ollama: 'OLLAMA_MODEL',
-    };
-    Object.entries(keyMap).forEach(([p, k]) => localStorage.setItem(k, keys[p] || ''));
-    Object.entries(modelMap).forEach(([p, k]) => localStorage.setItem(k, models[p] || ''));
-    localStorage.setItem('OLLAMA_URL', ollamaUrl);
+  const persistSettings = useCallback(() => {
+    Object.entries(KEY_STORAGE_MAP).forEach(([p, k]) => localStorage.setItem(k, (keys[p] || '').trim()));
+    Object.entries(MODEL_STORAGE_MAP).forEach(([p, k]) => localStorage.setItem(k, (models[p] || '').trim()));
+    localStorage.setItem('OLLAMA_URL', ollamaUrl.trim());
     localStorage.setItem('AI_PROVIDER', primaryProvider);
     localStorage.setItem('AI_FALLBACK', String(fallbackEnabled));
     localStorage.setItem('AI_FALLBACK_CHAIN', JSON.stringify(fallbackChain));
     localStorage.setItem('JDOODLE_CLIENT_ID', jdoodleId.trim());
     localStorage.setItem('JDOODLE_CLIENT_SECRET', jdoodleSecret.trim());
     localStorage.setItem('PISTON_CUSTOM_URL', pistonUrl.trim());
+  }, [fallbackChain, fallbackEnabled, jdoodleId, jdoodleSecret, keys, models, ollamaUrl, pistonUrl, primaryProvider]);
+
+  const handleSave = () => {
+    persistSettings();
     setSaved(true);
     setTimeout(() => { setSaved(false); onClose(); }, 1200);
   };
 
   const handleTest = async (provider: AIProvider) => {
+    persistSettings();
     setTestStatus(s => ({ ...s, [provider]: { loading: true, ok: null, message: 'Testing...' } }));
     const result = await testProviderConnection(provider);
     setTestStatus(s => ({ ...s, [provider]: { loading: false, ok: result.ok, message: result.message } }));
@@ -153,6 +172,20 @@ export function AIProviderSettings({ isOpen, onClose }: AIProviderSettingsProps)
     if (swap < 0 || swap >= next.length) return;
     [next[idx], next[swap]] = [next[swap], next[idx]];
     setFallbackChain(next);
+  };
+
+  const useOllamaOnly = async () => {
+    await loadOllamaModels();
+    const selectedModel = LOCAL_OLLAMA_MODEL;
+    setModels(m => ({ ...m, ollama: selectedModel }));
+    localStorage.setItem('AI_PROVIDER', 'ollama');
+    localStorage.setItem('AI_FALLBACK', 'false');
+    localStorage.setItem('OLLAMA_URL', ollamaUrl.trim());
+    localStorage.setItem('OLLAMA_MODEL', selectedModel.trim());
+    setPrimaryProvider('ollama');
+    setFallbackEnabled(false);
+    setSaved(true);
+    setTimeout(() => setSaved(false), 1200);
   };
 
   if (!isOpen) return null;
@@ -179,7 +212,7 @@ export function AIProviderSettings({ isOpen, onClose }: AIProviderSettingsProps)
 
         {/* Tabs */}
         <div className="flex border-b border-white/10 shrink-0">
-          {(['providers', 'fallback', 'executor'] as const).map(tab => (
+          {(['providers', 'local', 'fallback', 'executor'] as const).map(tab => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
@@ -189,7 +222,7 @@ export function AIProviderSettings({ isOpen, onClose }: AIProviderSettingsProps)
                   : 'text-zinc-500 hover:text-zinc-300'
               }`}
             >
-              {tab === 'providers' ? 'Providers & Keys' : tab === 'fallback' ? 'Fallback Chain' : 'Code Executor'}
+              {tab === 'providers' ? 'Cloud Providers' : tab === 'local' ? 'Local Ollama' : tab === 'fallback' ? 'Fallback Chain' : 'Code Executor'}
             </button>
           ))}
         </div>
@@ -206,7 +239,7 @@ export function AIProviderSettings({ isOpen, onClose }: AIProviderSettingsProps)
                   <Zap className="w-3.5 h-3.5 text-yellow-400" /> Primary Provider
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {PROVIDER_ORDER.map(p => (
+                  {CLOUD_PROVIDER_ORDER.map(p => (
                     <button
                       key={p}
                       onClick={() => setPrimaryProvider(p)}
@@ -223,7 +256,7 @@ export function AIProviderSettings({ isOpen, onClose }: AIProviderSettingsProps)
               </div>
 
               {/* Provider cards */}
-              {PROVIDER_ORDER.map(provider => {
+              {CLOUD_PROVIDER_ORDER.map(provider => {
                 const cfg = PROVIDER_CONFIGS[provider];
                 const isExpanded = expanded === provider;
                 const status = testStatus[provider];
@@ -340,14 +373,9 @@ export function AIProviderSettings({ isOpen, onClose }: AIProviderSettingsProps)
 
                         {cfg.isLocal && (
                           <div>
-                            <label className="text-xs text-zinc-400 block mb-1.5">Custom model name</label>
-                            <input
-                              type="text"
-                              value={models[provider] || ''}
-                              onChange={e => setModels(m => ({ ...m, [provider]: e.target.value }))}
-                              placeholder="e.g. llama3.1:8b, qwen2.5:7b ..."
-                              className="w-full px-3 py-2 rounded-lg bg-black/40 border border-white/10 text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-indigo-500/60 transition-colors font-mono"
-                            />
+                            <p className="text-xs text-zinc-500 leading-relaxed">
+                              Local Ollama is locked to {LOCAL_OLLAMA_MODEL} for low-end CPU stability.
+                            </p>
                           </div>
                         )}
 
@@ -386,6 +414,79 @@ export function AIProviderSettings({ isOpen, onClose }: AIProviderSettingsProps)
           )}
 
           {/* ── FALLBACK TAB ── */}
+          {activeTab === 'local' && (
+            <div className="space-y-4">
+              <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20">
+                <div className="flex items-start gap-3">
+                  <HardDrive className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+                  <div>
+                    <p className="text-white font-bold">Local Ollama Mode</p>
+                    <p className="text-xs text-zinc-400 mt-1">
+                      Use Zynapse without API keys. This mode disables hosted fallback and sends AI requests only to your local Ollama server.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-4 rounded-xl border border-white/10 bg-white/[0.03] space-y-4">
+                <div>
+                  <label className="text-xs text-zinc-400 block mb-1.5">Ollama Server URL</label>
+                  <input
+                    type="text"
+                    value={ollamaUrl}
+                    onChange={e => setOllamaUrl(e.target.value)}
+                    placeholder="http://localhost:11434"
+                    className="w-full px-3 py-2 rounded-lg bg-black/40 border border-white/10 text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-emerald-500/60 transition-colors font-mono"
+                  />
+                </div>
+
+                <div>
+                  <label className="text-xs text-zinc-400 block mb-1.5">Local Model</label>
+                  <div className="px-3 py-2 rounded-lg bg-black/40 border border-emerald-500/25 text-white text-sm">
+                    <span className="font-mono">{LOCAL_OLLAMA_MODEL}</span>
+                    <span className="ml-2 text-zinc-500">({LOCAL_OLLAMA_MODEL_NAME}, locked low-end CPU model)</span>
+                  </div>
+                </div>
+
+                <div>
+                  <p className="text-xs text-zinc-500 leading-relaxed">
+                    Zynapse local mode now uses only {LOCAL_OLLAMA_MODEL}. If it is missing, setup and tests will pull it automatically through Ollama.
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-2">
+                  <button
+                    onClick={() => handleTest('ollama')}
+                    disabled={testStatus.ollama?.loading}
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-zinc-300 text-xs font-medium transition-colors disabled:opacity-50"
+                  >
+                    {testStatus.ollama?.loading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Globe className="w-3.5 h-3.5" />}
+                    Test Ollama
+                  </button>
+                  <button
+                    onClick={loadOllamaModels}
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-zinc-300 text-xs font-medium transition-colors"
+                  >
+                    <RotateCcw className="w-3.5 h-3.5" /> Refresh Models
+                  </button>
+                  <button
+                    onClick={useOllamaOnly}
+                    className="ml-auto flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-colors"
+                  >
+                    <HardDrive className="w-3.5 h-3.5" /> Use Ollama Only
+                  </button>
+                </div>
+
+                {testStatus.ollama && !testStatus.ollama.loading && (
+                  <div className={`flex items-center gap-2 text-xs ${testStatus.ollama.ok ? 'text-emerald-400' : 'text-red-400'}`}>
+                    {testStatus.ollama.ok ? <CheckCircle2 className="w-3.5 h-3.5" /> : <AlertCircle className="w-3.5 h-3.5" />}
+                    {testStatus.ollama.message}
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
           {activeTab === 'fallback' && (
             <div className="space-y-3">
               <div className="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/10">

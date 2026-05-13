@@ -2,7 +2,7 @@ import { useState, useRef, useCallback } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Code2, Loader2, Sparkles, Copy, Check, Trash2, ChevronDown } from 'lucide-react';
-import { streamContent, getAIConfig } from '../services/geminiService';
+import { streamContent } from '../services/geminiService';
 
 // ── Language config ─────────────────────────────────────────────────────────
 const LANGUAGES = [
@@ -125,13 +125,11 @@ Keep feedback constructive and specific.`;
     abortRef.current = false;
 
     const prompt = buildPrompt(language, context, code);
-    const cfg = getAIConfig();
 
     try {
       let review = '';
       for await (const chunk of streamContent(
-        [{ role: 'user', content: prompt }],
-        cfg.primaryProvider
+        [{ role: 'user', content: prompt }]
       )) {
         if (abortRef.current) break;
         review += chunk;

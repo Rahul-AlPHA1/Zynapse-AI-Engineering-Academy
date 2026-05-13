@@ -1,7 +1,12 @@
 node_modules
 node_modules/
-build/
+build/*
+!build/icon.ico
+!build/icon.png
+!build/icon.svg
+!build/installer.nsh
 dist/
+dist-electron/
 coverage/
 release/
 test-results/

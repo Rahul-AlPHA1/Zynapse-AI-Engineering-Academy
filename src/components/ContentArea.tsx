@@ -3,7 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { motion } from 'motion/react';
 import { BookOpen, Loader2, PlusCircle, Sparkles, Send, BrainCircuit, CheckCircle2, AlertCircle, Terminal, Download, FileCheck2, FileText, CalendarDays, Upload, Square, Trophy, ChevronLeft, ChevronRight, Bookmark, BookmarkCheck, StickyNote, X } from 'lucide-react';
-import { createChatSession, streamContent, getAIConfig } from '../services/geminiService';
+import { createChatSession, streamContent, LOCAL_OLLAMA_MODEL } from '../services/geminiService';
 import { generateInterviewPlan, AIPlanResponse, loadMorePlanQuestions } from '../services/geminiService';
 import { curriculum } from '../data/curriculum';
 import { QuizUI, QuizData } from './QuizUI';
@@ -29,8 +29,396 @@ interface ContentAreaProps {
 
 type Difficulty = 'beginner' | 'standard' | 'expert';
 
+type PdfExportOptions = {
+  title: string;
+  subtitle: string;
+  bodyHtml: string;
+};
+
+function escapeHtml(value: unknown) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function buildPdfDocument({ title, subtitle, bodyHtml }: PdfExportOptions) {
+  return `<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>${escapeHtml(title)}</title>
+    <style>
+      @page {
+        size: A4;
+        margin: 14mm 12mm;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: #ffffff;
+        color: #111827;
+        font-family: Inter, Arial, Helvetica, sans-serif;
+        font-size: 11.5pt;
+        line-height: 1.65;
+      }
+
+      body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .pdf-page {
+        width: 100%;
+      }
+
+      .pdf-header {
+        border-bottom: 2px solid #4f46e5;
+        margin-bottom: 22px;
+        padding-bottom: 14px;
+      }
+
+      .pdf-kicker {
+        color: #4f46e5;
+        font-size: 8.5pt;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        margin: 0 0 6px;
+        text-transform: uppercase;
+      }
+
+      .pdf-title {
+        color: #0f172a;
+        font-size: 24pt;
+        line-height: 1.15;
+        margin: 0;
+      }
+
+      .pdf-subtitle {
+        color: #475569;
+        font-size: 10pt;
+        margin: 8px 0 0;
+      }
+
+      .pdf-content h1,
+      .pdf-content h2,
+      .pdf-content h3,
+      .pdf-content h4 {
+        color: #111827;
+        line-height: 1.25;
+        break-after: avoid;
+        page-break-after: avoid;
+      }
+
+      .pdf-content h1 {
+        font-size: 22pt;
+        margin: 26px 0 12px;
+      }
+
+      .pdf-content h2 {
+        border-bottom: 1px solid #c7d2fe;
+        color: #312e81;
+        font-size: 17pt;
+        margin: 24px 0 10px;
+        padding-bottom: 5px;
+      }
+
+      .pdf-content h3 {
+        color: #4338ca;
+        font-size: 13.5pt;
+        margin: 18px 0 8px;
+      }
+
+      .pdf-content h4 {
+        color: #374151;
+        font-size: 11pt;
+        margin: 14px 0 6px;
+        text-transform: uppercase;
+      }
+
+      .pdf-content p,
+      .pdf-content li {
+        color: #1f2937;
+        margin-top: 0;
+        orphans: 3;
+        widows: 3;
+      }
+
+      .pdf-content ul,
+      .pdf-content ol {
+        margin: 0 0 14px 22px;
+        padding: 0;
+      }
+
+      .pdf-content table {
+        border-collapse: collapse;
+        margin: 16px 0;
+        width: 100%;
+      }
+
+      .pdf-content th,
+      .pdf-content td {
+        border: 1px solid #cbd5e1;
+        padding: 8px 9px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      .pdf-content th {
+        background: #eef2ff;
+        color: #312e81;
+        font-weight: 800;
+      }
+
+      .pdf-content blockquote,
+      .pdf-card {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-left: 4px solid #6366f1;
+        border-radius: 8px;
+        margin: 16px 0;
+        padding: 13px 15px;
+      }
+
+      .pdf-content pre {
+        background: #0f172a;
+        border-radius: 8px;
+        color: #e5e7eb;
+        font-family: "JetBrains Mono", Consolas, monospace;
+        font-size: 9pt;
+        line-height: 1.55;
+        margin: 16px 0;
+        overflow: visible;
+        padding: 14px;
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+
+      .pdf-content code {
+        background: #eef2ff;
+        border-radius: 4px;
+        color: #3730a3;
+        font-family: "JetBrains Mono", Consolas, monospace;
+        font-size: 0.92em;
+        padding: 1px 4px;
+      }
+
+      .pdf-content pre code {
+        background: transparent;
+        color: inherit;
+        padding: 0;
+      }
+
+      .pdf-card,
+      .question-card,
+      .timeline-item,
+      pre,
+      table,
+      blockquote {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .question-card {
+        border: 1px solid #dbe2f0;
+        border-radius: 10px;
+        margin: 16px 0;
+        padding: 15px;
+      }
+
+      .question-heading {
+        align-items: flex-start;
+        display: flex;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+
+      .question-number {
+        background: #4f46e5;
+        border-radius: 8px;
+        color: white;
+        flex: 0 0 auto;
+        font-weight: 900;
+        height: 28px;
+        line-height: 28px;
+        text-align: center;
+        width: 28px;
+      }
+
+      .question-title {
+        color: #0f172a;
+        font-size: 13pt;
+        font-weight: 900;
+        line-height: 1.35;
+        margin: 2px 0 0;
+      }
+
+      .section-label {
+        color: #4f46e5;
+        font-size: 8pt;
+        font-weight: 900;
+        letter-spacing: 0.12em;
+        margin: 12px 0 4px;
+        text-transform: uppercase;
+      }
+
+      .timeline-item {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        margin: 9px 0;
+        padding: 11px 13px;
+      }
+
+      .pdf-footer {
+        border-top: 1px solid #e2e8f0;
+        color: #64748b;
+        font-size: 8.5pt;
+        margin-top: 26px;
+        padding-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="pdf-page">
+      <header class="pdf-header">
+        <p class="pdf-kicker">Zynapse AI Engineering Academy</p>
+        <h1 class="pdf-title">${escapeHtml(title)}</h1>
+        <p class="pdf-subtitle">${escapeHtml(subtitle)}</p>
+      </header>
+      <article class="pdf-content">
+        ${bodyHtml}
+      </article>
+      <footer class="pdf-footer">Generated from Zynapse for offline study.</footer>
+    </main>
+  </body>
+</html>`;
+}
+
+function buildAiPlanPdfBody(aiPlan: AIPlanResponse, days: number) {
+  const scheduleHtml = aiPlan.schedule?.length
+    ? `<h2>${days}-Day Preparation Timeline</h2>
+      ${aiPlan.schedule.map(dayPlan => `
+        <div class="timeline-item">
+          <strong>${escapeHtml(dayPlan.day)}</strong>
+          <p>${escapeHtml(dayPlan.description)}</p>
+        </div>
+      `).join('')}`
+    : '';
+
+  const questionsHtml = aiPlan.detailedQuestions?.length
+    ? `<h2>Advanced Questions (${aiPlan.detailedQuestions.length})</h2>
+      ${aiPlan.detailedQuestions.map((q, index) => `
+        <section class="question-card">
+          <div class="question-heading">
+            <div class="question-number">${index + 1}</div>
+            <h3 class="question-title">${escapeHtml(q.question)}</h3>
+          </div>
+
+          <p class="section-label">Definition</p>
+          <p>${escapeHtml(q.definition)}</p>
+
+          <p class="section-label">Key Points</p>
+          <ul>
+            ${q.keyPoints.map(point => `<li>${escapeHtml(point)}</li>`).join('')}
+          </ul>
+
+          <div class="pdf-card">
+            <p class="section-label">Universal Real-Life Scenario</p>
+            <p>${escapeHtml(q.scenario)}</p>
+          </div>
+        </section>
+      `).join('')}`
+    : '';
+
+  return `
+    <div class="pdf-card">
+      <h2>Strategic Overview</h2>
+      <p>${escapeHtml(aiPlan.overview)}</p>
+    </div>
+    ${scheduleHtml}
+    ${questionsHtml}
+  `;
+}
+
+async function openPdfPrintDocument(options: PdfExportOptions) {
+  if (typeof document === 'undefined') return;
+
+  const iframe = document.createElement('iframe');
+  iframe.style.position = 'fixed';
+  iframe.style.right = '0';
+  iframe.style.bottom = '0';
+  iframe.style.width = '0';
+  iframe.style.height = '0';
+  iframe.style.border = '0';
+  iframe.style.opacity = '0';
+  iframe.title = 'Zynapse PDF export';
+
+  document.body.appendChild(iframe);
+
+  const frameDocument = iframe.contentDocument;
+  const frameWindow = iframe.contentWindow;
+  if (!frameDocument || !frameWindow) {
+    iframe.remove();
+    throw new Error('Unable to prepare PDF document.');
+  }
+
+  const cleanup = () => {
+    if (iframe.parentNode) iframe.remove();
+  };
+
+  frameWindow.addEventListener('afterprint', cleanup, { once: true });
+  window.setTimeout(cleanup, 60000);
+
+  frameDocument.open();
+  frameDocument.write(buildPdfDocument(options));
+  frameDocument.close();
+
+  try {
+    await frameDocument.fonts?.ready;
+  } catch {
+    // Printing can continue even if font loading is blocked.
+  }
+
+  await new Promise(resolve => window.setTimeout(resolve, 150));
+  frameWindow.focus();
+  frameWindow.print();
+}
+
 function contentCacheKey(topicId: string, language: string, difficulty: Difficulty) {
   return `zynapse_offline_v2_${topicId}_${language}_${difficulty}`;
+}
+
+function getLastInterviewQuestionNumber(markdown: string | null) {
+  if (!markdown) return 0;
+
+  const matches = markdown.matchAll(/(?:^|\n)\s*(?:#{1,6}\s*)?(?:\*\*)?\s*(?:Q(?:uestion)?\s*)?(\d{1,4})[\).:-]\s+/gi);
+  let last = 0;
+  for (const match of matches) {
+    const value = Number(match[1]);
+    if (Number.isFinite(value) && value > last) last = value;
+  }
+
+  return last;
+}
+
+function languageOutputPolicy(language: string) {
+  const lower = language.toLowerCase();
+  const roman = lower.includes('roman') || lower.includes('hinglish');
+
+  if (roman) {
+    return 'Use English alphabet / Latin letters only. Do not use Urdu, Hindi, Arabic, Chinese, Japanese, or Korean script.';
+  }
+
+  return 'Use the selected language naturally. Do not fall back to English except for technical keywords.';
 }
 
 function buildMentorContract(language: string, difficultyNote: string) {
@@ -43,6 +431,7 @@ Treat this as a self-contained textbook chapter plus senior mentor walkthrough, 
 
 LANGUAGE POLICY:
 - Write the full lesson in: ${language}.
+- ${languageOutputPolicy(language)}
 - Keep important technical keywords in English too, in parentheses, when translation may reduce clarity.
 - If the selected language is Hinglish/Urdu/Hindi, use natural mentor-style explanations with simple wording.
 - Do not switch language randomly. Keep the whole answer consistent.
@@ -95,6 +484,8 @@ export function ContentArea({ topic, language, isComplete = false, isBookmarked 
   const [isUploadingResume, setIsUploadingResume] = useState(false);
   const [isNotesOpen, setIsNotesOpen] = useState(false);
   const [noteText, setNoteText] = useState(note);
+  const [isExportingPdf, setIsExportingPdf] = useState(false);
+  const lessonContentRef = useRef<HTMLDivElement>(null);
 
   // Store the chat session to continue the conversation
   const sessionRef = useRef<any>(null);
@@ -392,12 +783,11 @@ Make the lesson comprehensive enough to replace a normal tutorial page.`;
           setIsLoading(false);
           setIsStreaming(true);
           let accumulated = '';
-          const cfg = getAIConfig();
           const messages = [
             { role: 'system', content: mentorContract },
             { role: 'user', content: prompt },
           ];
-          for await (const chunk of streamContent(messages, cfg.primaryProvider)) {
+          for await (const chunk of streamContent(messages)) {
             if (!isMounted || abortRef.current) break;
             accumulated += chunk;
             setContent(accumulated);
@@ -410,6 +800,8 @@ Make the lesson comprehensive enough to replace a normal tutorial page.`;
         console.error("Failed to generate content:", error);
         if (isMounted) {
           setContent("# ⚠️ Error\nFailed to load content. Please check your API key in settings or try again.");
+          const detail = error instanceof Error ? error.message : "Unknown provider error";
+          setContent(`# Error\nFailed to load content.\n\n**Reason:** ${detail}\n\nOpen AI Provider Settings, select Ollama, and make sure the local model \`${LOCAL_OLLAMA_MODEL}\` is installed or keep fallback enabled.`);
           setIsStreaming(false);
         }
       } finally {
@@ -438,8 +830,34 @@ Make the lesson comprehensive enough to replace a normal tutorial page.`;
     }
   };
 
-  const handleDownloadPDF = () => {
-    window.print();
+  const handleDownloadPDF = async () => {
+    if (!topic || isExportingPdf) return;
+
+    const title = isAIPlanGenerator && aiPlan ? aiPlan.planTitle : topic.title;
+    const subtitle = isAIPlanGenerator
+      ? `AI generated interview plan - ${days}-day timeline`
+      : `${topic.moduleTitle || 'Zynapse'} / ${topic.sectionTitle || 'Generated lesson'} - ${language} - ${difficulty}`;
+
+    let bodyHtml = '';
+    if (isAIPlanGenerator && aiPlan) {
+      bodyHtml = buildAiPlanPdfBody(aiPlan, days);
+    } else if (lessonContentRef.current) {
+      bodyHtml = lessonContentRef.current.innerHTML;
+    } else if (content) {
+      bodyHtml = `<pre>${escapeHtml(content)}</pre>`;
+    }
+
+    if (!bodyHtml.trim()) return;
+
+    setIsExportingPdf(true);
+    try {
+      await openPdfPrintDocument({ title, subtitle, bodyHtml });
+    } catch (error) {
+      console.error('Failed to prepare PDF export:', error);
+      window.print();
+    } finally {
+      setIsExportingPdf(false);
+    }
   };
 
   const parseFileToText = async (file: File): Promise<string> => {
@@ -526,18 +944,27 @@ Make the lesson comprehensive enough to replace a normal tutorial page.`;
     
     setIsLoadingMore(true);
     try {
-      const prompt = `Great job! Now, generate the NEXT BATCH of high-quality interview questions. 
+      const lastQuestionNumber = getLastInterviewQuestionNumber(content);
+      const nextStart = lastQuestionNumber + 1;
+      const batchSize = 50;
+      const nextEnd = nextStart + batchSize - 1;
+      const prompt = `Great job! Now generate exactly ${batchSize} more high-quality interview questions.
       
-Continue numbering sequentially from where you left off. 
+NUMBERING RULES:
+- The first new question MUST start with ${nextStart}.
+- The last new question MUST be ${nextEnd}.
+- Do not jump numbers. Do not restart from 1. Do not skip any number.
+- Use top-level numbered question headings like: ${nextStart}. Question text
+
 Maintain the same high quality: direct answer, why it matters, practical example, common trap, and code snippet where relevant.
-Do not repeat previous questions. Explain in ${language}.`;
+Do not repeat previous questions. Explain in ${language}.
+${languageOutputPolicy(language)}`;
       
       const result = await sessionRef.current.sendMessage({ message: prompt });
-      const newContent = (prev: any) => prev ? prev + '\n\n' + result.text : result.text;
+      const newContent = content ? `${content}\n\n${result.text}` : result.text;
       setContent(newContent);
       if (isSaved) {
-        // Update local storage if already saved
-        localStorage.setItem(`zynapse_offline_${topic.id}`, newContent(content));
+        localStorage.setItem(contentCacheKey(topic.id, language, difficulty), newContent);
       }
     } catch (error) {
       console.error("Failed to load more questions:", error);
@@ -741,10 +1168,11 @@ Format the output clearly in Markdown.`;
               )}
               <button
                 onClick={handleDownloadPDF}
-                className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20 active:scale-95 transition-all outline-none"
+                disabled={isExportingPdf}
+                className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20 active:scale-95 transition-all outline-none disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                <Download className="w-4 h-4" />
-                Download PDF
+                {isExportingPdf ? <Loader2 className="w-4 h-4 animate-spin" /> : <Download className="w-4 h-4" />}
+                {isExportingPdf ? 'Preparing PDF...' : 'Download PDF'}
               </button>
               <button
                 onClick={saveOffline}
@@ -977,10 +1405,11 @@ Format the output clearly in Markdown.`;
                       
                       <button
                         onClick={handleDownloadPDF}
-                        className="no-print flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20 active:scale-95 transition-all"
+                        disabled={isExportingPdf}
+                        className="no-print flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20 active:scale-95 transition-all disabled:opacity-60 disabled:cursor-not-allowed"
                       >
-                        <Download className="w-4 h-4" />
-                        Download PDF
+                        {isExportingPdf ? <Loader2 className="w-4 h-4 animate-spin" /> : <Download className="w-4 h-4" />}
+                        {isExportingPdf ? 'Preparing PDF...' : 'Download PDF'}
                       </button>
                     </div>
 
@@ -1067,7 +1496,7 @@ Format the output clearly in Markdown.`;
               />
             ) : (
               !isQuizTopic && (
-                <div className={`markdown-body ${isStreaming ? 'stream-cursor' : ''}`}>
+                <div ref={lessonContentRef} className={`markdown-body ${isStreaming ? 'stream-cursor' : ''}`}>
                   <ReactMarkdown remarkPlugins={[remarkGfm]}>
                     {content || ''}
                   </ReactMarkdown>

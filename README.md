@@ -1,342 +1,452 @@
-# Zynapse
+# Zynapse AI Engineering Academy
 
-AI-powered engineering academy for learning, practice, code execution, interviews, analytics, and local AI workflows.
+Zynapse AI Engineering Academy is a learning and interview-preparation application for software engineers. It combines structured roadmaps, AI-generated lessons, interview practice, coding tools, revision workflows, and desktop/local AI support in one workspace.
 
-Zynapse is built as a full-stack learning workspace: a large engineering curriculum, AI mentor explanations, visual roadmaps, compiler execution, quiz and interview practice, flashcards, analytics, project generation, theme customization, provider health checks, and an Electron-ready desktop shell.
+The app was built for learners who want more than short notes. Each section is designed to help users understand a topic, practice it, revise it, and turn it into interview-ready knowledge.
 
-![React](https://img.shields.io/badge/React-19-61dafb?style=for-the-badge)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178c6?style=for-the-badge)
-![Vite](https://img.shields.io/badge/Vite-6-646cff?style=for-the-badge)
-![Tailwind](https://img.shields.io/badge/Tailwind-4-38bdf8?style=for-the-badge)
-![Electron](https://img.shields.io/badge/Electron-Ready-47848f?style=for-the-badge)
+![Zynapse dashboard](./docs/screenshots/dashboard.png)
 
-## What It Does
+## Why This App Exists
 
-Zynapse turns a browser or desktop app into a complete AI engineering academy.
+Many learners use separate tools for tutorials, notes, interview questions, coding practice, AI chat, PDFs, and study planning. That creates friction. Zynapse brings those workflows into one app so a learner can move from “I do not understand this topic” to “I can explain it, practice it, and prepare for interviews.”
 
-- Learn topics through senior-mentor AI explanations.
-- Switch explanation language across a large global language list.
-- Run code through cloud, local, and fallback compiler paths.
-- Practice with quizzes, interviews, mock interviews, challenges, and flashcards.
-- Track progress through XP, streaks, achievements, analytics, notes, and bookmarks.
-- Generate projects, portfolios, recommendations, study plans, and guided tutor sessions.
-- Use local Ollama models when available, or connect to hosted AI providers.
-- Verify routes with automated light/dark screenshot smoke tests.
+The main goals are:
 
-## Developed By
+- Provide structured engineering roadmaps instead of random content.
+- Generate detailed explanations for selected topics.
+- Help users prepare for interviews with question batches, quizzes, and mock practice.
+- Support both cloud AI providers and local AI through Ollama.
+- Allow offline-style desktop use through an Electron Windows build.
+- Export generated content as clean PDFs for later revision.
+- Make deployment simple for web hosting on Vercel.
 
-**Rahool Gir**  
-Senior Software Engineer focused on AI-powered learning products, Java microservices, full-stack engineering, fintech systems, and polished product experiences.
+## Application Screens
 
-| Link | URL |
+| Screen | Purpose |
 | --- | --- |
-| Email | `rahool.goswami16@gmail.com` |
-| GitHub | `https://github.com/rahul-alpha1` |
-| Portfolio | `https://rahul-alpha1.github.io/RahoolPortfolio.com/` |
-| LinkedIn | `https://www.linkedin.com/in/rahool-goswami-4b055a126` |
+| Setup wizard | Lets the user choose cloud providers or local Ollama on first launch. |
+| Dashboard | Shows the learning modules, tools, and available practice sections. |
+| Local Ollama | Keeps local AI simple by using one low-end CPU-safe model. |
+| AI Providers | Lets users configure hosted AI providers and fallback settings. |
+| Course view | Shows the learning workspace for selected syllabus topics. |
 
-## Feature Map
+![Setup wizard](./docs/screenshots/setup-wizard.png)
 
-| Area | Features |
-| --- | --- |
-| AI Learning | Senior mentor prompt engine, detailed topic explanations, difficulty modes, language output selector, local content cache |
-| Curriculum | Multi-track software engineering curriculum, module/section/topic hierarchy, progress tracking |
-| Roadmap | React Flow learning roadmap, stack-based diagram view, curriculum navigation |
-| Practice | Quiz Hub, Interview Hub, Mock Interview, Daily Challenge, Challenge Arena |
-| Memory | Flashcards with spaced repetition, bookmarks, per-topic notes |
-| Coding | Compiler, AI Code Review, local runtime diagnostics, Piston/JDoodle/local execution chain |
-| Analytics | Completion ring, module progress charts, activity heatmap, XP and streak stats |
-| Planning | Study Planner, Smart Recommendations, Guided Tutor |
-| Projects | Project Ideas Generator, Portfolio Builder |
-| System | Provider Health, Data Manager, Cloud Sync, Classroom Mode, Share Center, Plugin Marketplace, QA Checks |
-| Theming | Dark mode, light mode, Theme Studio, CSS variable design system |
-| Desktop | Electron shell, preload bridge, development and production preview scripts |
-| Local AI | Ollama status check, system specs endpoint, recommended model download flow |
+![Local Ollama setup](./docs/screenshots/local-ollama.png)
 
-## Route Ledger
+![AI provider settings](./docs/screenshots/ai-providers.png)
 
-These are the main app routes and the component that powers each one.
+![Course view](./docs/screenshots/course-view.png)
 
-| Route ID | Screen | Component |
-| --- | --- | --- |
-| `HOME` | Welcome / empty state | `ContentArea.tsx` |
-| `ROADMAP` | Learning roadmap | `LearningPathFlow.tsx` |
-| `COMPILER` | Code compiler | `CodeCompiler.tsx` |
-| `INTERVIEW_HUB` | Interview questions | `InterviewHub.tsx` |
-| `QUIZ_HUB` | Quiz practice | `QuizHub.tsx` |
-| `MOCK_INTERVIEW` | AI mock interview | `MockInterview.tsx` |
-| `FLASHCARDS` | Spaced repetition cards | `Flashcards.tsx` |
-| `CODE_REVIEW` | AI code review | `CodeReview.tsx` |
-| `ANALYTICS` | Learning analytics | `AnalyticsDashboard.tsx` |
-| `PROJECT_IDEAS` | Project generator | `ProjectIdeas.tsx` |
-| `STUDY_PLANNER` | Study planning | `StudyPlanner.tsx` |
-| `GUIDED_TUTOR` | Guided tutor session | `GuidedTutor.tsx` |
-| `CHALLENGE_ARENA` | Coding challenges | `CodeChallengeArena.tsx` |
-| `PORTFOLIO_BUILDER` | Portfolio builder | `PortfolioBuilder.tsx` |
-| `RECOMMENDATIONS` | Smart recommendations | `SmartRecommendations.tsx` |
-| `DATA_MANAGER` | Data import/export | `DataManager.tsx` |
-| `CLOUD_SYNC` | Sync interface | `CloudSync.tsx` |
-| `CLASSROOM_MODE` | Classroom workflow | `ClassroomMode.tsx` |
-| `SHARE_CENTER` | Sharing hub | `ShareCenter.tsx` |
-| `PLUGIN_MARKETPLACE` | Plugin catalog | `PluginMarketplace.tsx` |
-| `QA_CHECKS` | QA smoke checks | `QAChecks.tsx` |
-| `PROVIDER_HEALTH` | Provider diagnostics | `ProviderHealth.tsx` |
-| `THEME_STUDIO` | Theme customization | `ThemeStudio.tsx` |
-| `CONTACT` | Developer contact links | `ContactPage.tsx` |
-| `DAILY_CHALLENGE` | Daily AI challenge | `DailyChallenge.tsx` |
+## Main Features
 
-## Architecture
+### Structured Engineering Roadmaps
+
+The sidebar contains complete learning areas such as Java, Spring Boot, Microservices, React, JavaScript, Node.js, SQL, Docker, AWS, System Design, DSA, Python, Go, TypeScript, Linux, Rust, C++, AI, DevOps, Cybersecurity, and more.
+
+This section exists so users do not have to decide what to study next from scratch. The app groups topics into a guided syllabus and lets the user open a topic directly inside the learning workspace.
+
+Benefit:
+
+- Reduces confusion for beginners.
+- Helps intermediate learners revise systematically.
+- Gives interview candidates a topic checklist.
+- Supports long-term self-study instead of one-off prompting.
+
+### AI Lesson Generation
+
+When a user opens a topic, Zynapse can generate a detailed lesson using the selected AI provider. The lesson is designed to be more complete than a short AI answer. It can include definitions, examples, code snippets, common mistakes, tables, debugging notes, and interview angles.
+
+This section is used when a learner wants to understand a topic deeply before practicing it.
+
+Benefit:
+
+- Converts syllabus topics into readable study chapters.
+- Explains why a concept matters, not only what it means.
+- Helps users prepare for practical work and interviews together.
+- Supports multiple output languages for learners who prefer non-English explanations.
+
+### Interview Questions
+
+The interview section generates detailed Q&A content for selected topics and modules. It supports follow-up batches and keeps numbering sequential, so if the first batch ends at question 18 or 30, the next batch continues from the correct next number.
+
+This section exists because interview preparation needs repeated question exposure, not just theory.
+
+Benefit:
+
+- Helps users practice direct answers.
+- Adds explanation depth around each question.
+- Supports large question sets without manually searching online.
+- Keeps generated batches organized for revision.
+
+### AI Interview Plan Generator
+
+The AI plan generator accepts a job description and optional resume content. It then produces a preparation plan with targeted questions and a study schedule.
+
+This section is useful when a user is preparing for a specific job role instead of studying a general syllabus.
+
+Benefit:
+
+- Connects preparation to a real job description.
+- Helps users focus on the skills that matter for a role.
+- Produces structured question batches for ongoing practice.
+- Can be used for 3-day, 7-day, 15-day, or 30-day preparation plans.
+
+### Quiz Practice
+
+Quiz practice generates multiple-choice and coding-style questions for selected areas. It is meant for active recall after reading a lesson.
+
+This section exists because reading alone is not enough. Users need quick tests to find weak areas.
+
+Benefit:
+
+- Helps users check understanding.
+- Supports practical and conceptual questions.
+- Makes revision more active.
+- Gives learners a simple way to repeat practice.
+
+### Mock Interview
+
+The mock interview workflow is intended for conversational interview-style preparation. Users can practice explaining concepts and get AI feedback.
+
+This section is useful when a learner knows the material but needs practice saying answers clearly.
+
+Benefit:
+
+- Builds confidence before real interviews.
+- Encourages structured answers.
+- Helps users identify vague or incomplete explanations.
+- Works as a lightweight mentor simulation.
+
+### Code Compiler
+
+The online compiler section lets users run code snippets through supported execution providers. It is useful when lessons include code and the learner wants to test small examples quickly.
+
+This section exists so users do not need to leave the app for every small code test.
+
+Benefit:
+
+- Supports hands-on learning.
+- Helps verify examples from generated lessons.
+- Makes debugging and experimentation faster.
+- Connects theory with execution.
+
+### AI Code Review
+
+The AI code review section allows users to paste code and receive feedback. It can explain issues, suggest improvements, and help users understand better patterns.
+
+This section is useful for learners who are writing code but need guidance on quality, readability, and correctness.
+
+Benefit:
+
+- Helps users learn from their own code.
+- Supports debugging and refactoring practice.
+- Gives feedback in a mentor-like format.
+- Useful for portfolio preparation and interview code review.
+
+### Daily Challenge
+
+Daily Challenge gives the learner a small task to complete regularly. It is designed for consistency and habit building.
+
+This section exists because engineering improvement comes from repeated small practice sessions.
+
+Benefit:
+
+- Encourages daily learning.
+- Gives short focused practice.
+- Helps users avoid long gaps.
+- Supports streak-style motivation.
+
+### Study Planner
+
+The planner section helps users organize study sessions and preparation work. It is useful when a learner has many topics to cover and needs structure.
+
+Benefit:
+
+- Turns a large syllabus into manageable work.
+- Helps users prepare for deadlines.
+- Supports planned revision.
+- Reduces random study behavior.
+
+### Flashcards
+
+Flashcards are for quick review of important facts, definitions, and interview points. They support repeated recall.
+
+Benefit:
+
+- Helps memorize key concepts.
+- Works well after reading lessons.
+- Supports revision before interviews.
+- Keeps important points easy to revisit.
+
+### Analytics
+
+The analytics section tracks learning progress and gives users a sense of how much they have completed.
+
+Benefit:
+
+- Shows progress across modules.
+- Helps users stay aware of weak areas.
+- Gives motivation through visible completion.
+- Supports long-term preparation.
+
+### Provider Health
+
+Provider Health helps test configured AI providers. It is useful when a key is missing, a provider is failing, or the user wants to confirm the selected provider works.
+
+Benefit:
+
+- Reduces confusion around API key issues.
+- Helps debug provider setup.
+- Makes fallback behavior easier to understand.
+- Separates connection problems from content problems.
+
+### AI Provider Settings
+
+This section manages cloud providers and local AI configuration. Supported providers include Gemini, Groq, Claude, OpenAI, Mistral, Together, DeepSeek, NVIDIA, and Ollama.
+
+Cloud providers are useful for faster and higher-quality generation. Local Ollama is useful for users who do not have API keys or prefer local generation.
+
+Benefit:
+
+- Lets users choose the AI setup that fits them.
+- Supports fallback chains for cloud providers.
+- Lets users test provider connections.
+- Keeps local Ollama separate from hosted providers.
+
+### Local Ollama Mode
+
+Local Ollama mode is now intentionally simple. It uses only one model:
 
 ```text
-Browser / Electron Shell
-        |
-        v
-React 19 + TypeScript + Vite
-        |
-        +-- UI Components
-        |   +-- Learning, practice, compiler, analytics, system tools
-        |
-        +-- Hooks
-        |   +-- progress, streak, achievements, bookmarks, notes, flashcards
-        |
-        +-- AI Service Layer
-        |   +-- Gemini, Groq, Claude, OpenAI, Mistral, Together, DeepSeek, NVIDIA, Ollama
-        |
-        +-- Express Backend
-            +-- compiler endpoints
-            +-- local runtime diagnostics
-            +-- Ollama/system endpoints
-            +-- static production serving
+gemma2:2b
 ```
 
-## Tech Stack
+The app recommends and prepares this model automatically because it is small enough for CPU-based laptops and low-end PCs. Larger models can be slow or appear stuck on weaker systems, so the local path is locked to a predictable low-end model.
 
-| Layer | Technology |
-| --- | --- |
-| Frontend | React 19, TypeScript, Vite |
-| Styling | Tailwind CSS 4, CSS variables, custom dark/light theme system |
-| Animation | Motion |
-| Diagrams | React Flow |
-| Charts | Recharts |
-| Markdown | React Markdown, Remark GFM |
-| Compiler UI | Monaco Editor |
-| Backend | Express, TSX |
-| Desktop | Electron |
-| QA | TypeScript, Vite build, Playwright smoke routes |
+Benefit:
 
-## AI Providers
+- No confusing model selection.
+- Lower chance of slow or stuck generation.
+- No API key required.
+- Works well for users who want local AI support.
 
-Zynapse supports multiple AI providers through `src/services/geminiService.ts`.
+### PDF Export
 
-| Provider | Env Variable |
-| --- | --- |
-| Gemini | `GEMINI_API_KEY` |
-| Groq | `GROQ_API_KEY` |
-| Claude | `CLAUDE_API_KEY` |
-| OpenAI | `OPENAI_API_KEY` |
-| Mistral | `MISTRAL_API_KEY` |
-| Together | `TOGETHER_API_KEY` |
-| DeepSeek | `DEEPSEEK_API_KEY` |
-| NVIDIA | `NVIDIA_API_KEY` |
-| Ollama | `OLLAMA_URL`, `OLLAMA_MODEL` |
+Generated lessons and AI content can be exported as a clean PDF. The export uses a dedicated print layout instead of only capturing the visible screen.
 
-The app includes a Provider Health screen so keys and providers can be checked from the UI.
+Benefit:
 
-## Compiler Execution Chain
+- Saves long AI-generated lessons for offline revision.
+- Keeps formatting cleaner for study material.
+- Makes generated content easier to share or print.
+- Avoids the earlier issue where only top-page content appeared.
 
-The compiler is designed with fallbacks instead of one fragile path.
+### Data Manager and Sync-Oriented Tools
 
-1. Piston-compatible API through `/api/code/execute`.
-2. Local runtime execution through `/api/code/local`.
-3. JDoodle fallback through `/api/code/jdoodle`.
-4. Runtime diagnostics through `/api/code/sandbox/status`.
+The app includes data management and sync-oriented sections for handling user learning data and future workflow expansion.
 
-For Java local execution, install a JDK:
+Benefit:
 
-```bash
-sudo apt install default-jdk
-java -version
-javac -version
-```
+- Helps users manage local study state.
+- Prepares the app for more durable learning workflows.
+- Keeps study data concerns visible instead of hidden.
 
-If `javac` is missing, the app reports a clear runtime diagnostic instead of silently failing.
+### Theme Studio
 
-## Local AI With Ollama
+Theme Studio exists for UI customization and visual comfort. Users may study for long sessions, so presentation matters.
 
-Zynapse can work with local models when Ollama is installed.
+Benefit:
 
-Backend endpoints:
+- Improves comfort during long study sessions.
+- Lets users adjust the visual feel of the app.
+- Makes the learning workspace feel more personal.
 
-| Endpoint | Purpose |
-| --- | --- |
-| `/api/system/specs` | Detect CPU, RAM, architecture, and OS |
-| `/api/ollama/status` | Check if Ollama is running |
-| `/api/ollama/pull` | Pull a recommended model |
+### Plugin Marketplace and QA Checks
 
-Recommended workflow:
+The plugin and QA areas are included for extensibility and quality workflows. They make the app more than a static curriculum viewer.
 
-1. Install Ollama from `https://ollama.com`.
-2. Start Ollama.
-3. Open Zynapse.
-4. Go to Local AI Models.
-5. Download the recommended model for your machine.
+Benefit:
 
-## Environment Setup
+- Gives space for future learning extensions.
+- Supports smoke checks and quality validation.
+- Keeps the app architecture ready for more modules.
 
-Copy `.env.example` to `.env` and add keys as needed.
+## Local Setup
 
-```bash
-cp .env.example .env
-```
-
-Most features work with one AI key. Local compiler features need either cloud executor access, local runtimes, or fallback credentials.
-
-## Install
+Install dependencies:
 
 ```bash
 npm install
 ```
 
-## Run Web App
+Start the app locally:
 
 ```bash
 npm run dev
 ```
 
-Default URL:
+Open:
 
 ```text
 http://localhost:3000
 ```
 
-## Build
+Run checks:
 
 ```bash
+npm run lint
 npm run build
 ```
 
-## Preview
+## Environment Variables
+
+Copy the template:
 
 ```bash
-npm run preview
+copy .env.example .env
 ```
 
-## Electron
+Provider keys are optional. Add only the providers you want to use:
 
-Development shell:
-
-```bash
-npm run electron:dev
+```env
+GROQ_API_KEY=
+GEMINI_API_KEY=
+OPENAI_API_KEY=
+CLAUDE_API_KEY=
 ```
 
-Production preview shell:
+Local Ollama defaults:
 
-```bash
-npm run electron:preview
+```env
+OLLAMA_URL=http://localhost:11434
+OLLAMA_MODEL=gemma2:2b
+OLLAMA_TIMEOUT_MS=180000
 ```
 
-Windows installer packaging is intentionally not included yet. The app shell is ready, but distribution packaging should be added after final QA and signing decisions.
+## Ollama Setup
 
-## QA
-
-TypeScript:
-
-```bash
-npx tsc --noEmit
-```
-
-Production build:
-
-```bash
-npm run build
-```
-
-Route smoke screenshots:
-
-```bash
-npm run qa:smoke
-```
-
-Smoke outputs are written to:
+Install Ollama from:
 
 ```text
-test-results/smoke
+https://ollama.com
 ```
+
+Install the local model:
+
+```bash
+ollama pull gemma2:2b
+```
+
+Start Ollama if it is not already running:
+
+```bash
+ollama serve
+```
+
+Then open the app and choose Local Ollama from the setup wizard or AI Provider Settings.
+
+## Vercel Deployment
+
+This repository includes `vercel.json` for Vite deployment.
+
+Recommended Vercel settings:
+
+| Setting | Value |
+| --- | --- |
+| Framework Preset | Vite |
+| Build Command | `npm run build` |
+| Output Directory | `dist` |
+| Install Command | `npm install` |
+
+Deploy flow:
+
+```bash
+npm install -g vercel
+vercel login
+vercel
+```
+
+Important note:
+
+Vercel is best for the web version with cloud AI providers. Local Ollama depends on the user’s own computer and cannot be accessed from Vercel as `localhost:11434`.
+
+References:
+
+- [Vercel Vite documentation](https://vercel.com/docs/frameworks/frontend/vite)
+- [Vercel project configuration](https://vercel.com/docs/project-configuration/vercel-json)
+
+## Windows Desktop Build
+
+Build the Windows installer:
+
+```bash
+npm run dist:win
+```
+
+Installer output:
+
+```text
+release/Zynapse-Setup-0.0.0.exe
+```
+
+The installer includes:
+
+- The Zynapse app icon.
+- Desktop and Start Menu shortcuts.
+- A setup choice between cloud providers and local Ollama.
+- The production frontend.
+- The bundled local Express server for desktop mode.
 
 ## Project Structure
 
 ```text
 .
-+-- electron/               Electron main and preload scripts
-+-- public/                 PWA manifest, service worker, icons
-+-- scripts/                smoke tests and Electron dev launcher
-+-- src/
-|   +-- components/         route screens and UI modules
-|   +-- data/               curriculum, languages, interview plan
-|   +-- hooks/              progress, streak, notes, flashcards, achievements
-|   +-- lib/                small utilities
-|   +-- services/           AI provider and streaming service layer
-|   +-- App.tsx             main routing and layout
-|   +-- index.css           theme system and global UI polish
-|   +-- main.tsx            React entry
-+-- server.ts               Express backend and compiler/Ollama endpoints
-+-- vite.config.ts          Vite build and chunk strategy
+├─ src/
+│  ├─ components/          App UI, learning tools, settings, local model manager
+│  ├─ services/            AI provider and Ollama integration
+│  └─ data/                Curriculum and supported learning languages
+├─ server.ts               Local Express server for development and desktop
+├─ electron/               Electron main and preload files
+├─ build/                  App icons and NSIS installer script
+├─ docs/                   README screenshots and visual assets
+├─ public/                 Web/PWA assets
+├─ vercel.json             Vercel deployment configuration
+└─ release/                Generated Windows installer output
 ```
 
-## Data Storage
+## Troubleshooting
 
-Zynapse stores user learning data locally in browser storage unless a sync feature is explicitly configured.
+### Ollama does not respond
 
-Common local keys:
-
-| Key | Purpose |
-| --- | --- |
-| `AURA_COMPLETED_TOPICS` | completed topics |
-| `AURA_GAMIFICATION` | XP, level, streak |
-| `AURA_BOOKMARKS` | bookmarked topics |
-| `AURA_ACHIEVEMENTS` | unlocked achievements |
-| `ZYNAPSE_FLASHCARDS` | spaced repetition cards |
-| `ZYNAPSE_THEME` | theme preference |
-| `ZYNAPSE_XP_HISTORY` | analytics history |
-
-Some older `AURA_*` storage keys remain for backward compatibility with existing users.
-
-## Theme System
-
-The UI is controlled by CSS variables in `src/index.css`.
-
-Core tokens:
-
-- `--bg-void`
-- `--bg-surface`
-- `--bg-card`
-- `--border`
-- `--text`
-- `--text-muted`
-- `--primary`
-- `--accent`
-- `--card-shadow`
-
-Dark and light modes are both first-class. Theme Studio lets the user tune the experience from inside the app.
-
-## Security Notes
-
-- Never commit `.env`.
-- API keys stay in local environment/browser settings.
-- Local code execution should only be used on trusted machines.
-- For public hosted deployments, prefer sandboxed cloud execution over unrestricted local execution.
-- Electron production distribution should include signing, update strategy, and a packaged backend plan.
-
-## GitHub Push
-
-After creating a GitHub repository, connect it like this:
+Check that Ollama is running:
 
 ```bash
-git remote add origin https://github.com/<your-username>/zynapse.git
-git branch -M main
-git push -u origin main
+ollama list
+ollama pull gemma2:2b
+ollama serve
+```
+
+Then choose Local Ollama again inside the app.
+
+### Groq or another provider says the key is missing
+
+Open AI Provider Settings, paste the provider key, save settings, and test the provider.
+
+### Vercel route refresh shows a blank page or 404
+
+Confirm `vercel.json` is present and includes the rewrite to `index.html`.
+
+### Windows installer icon is missing
+
+Confirm these files exist before building:
+
+```text
+build/icon.ico
+build/icon.png
+build/installer.nsh
 ```
 
 ## License
 
-MIT License. See `LICENSE`.
+This project is licensed under the included `LICENSE` file.

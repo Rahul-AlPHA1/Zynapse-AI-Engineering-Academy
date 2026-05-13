@@ -1,0 +1,10 @@
+release
+win-unpacked
+dist-electron
+electron
+build/*.ico
+build/*.png
+*.log
+dev-server*.log
+electron-dev*.log
+prod-server*.log

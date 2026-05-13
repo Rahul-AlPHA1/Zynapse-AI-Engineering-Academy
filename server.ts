@@ -1,14 +1,25 @@
 import express from "express";
-import { createServer as createViteServer } from "vite";
 import path from "path";
 import "dotenv/config";
 import os from "os";
-import { mkdtemp, rm, writeFile } from "fs/promises";
+import { mkdtemp, readFile, rm, writeFile } from "fs/promises";
 import { spawn } from "child_process";
 
-async function startServer() {
+const LOCAL_OLLAMA_MODEL = "gemma2:2b";
+const LOCAL_OLLAMA_MODEL_NAME = "Gemma 2 2B";
+const LOCAL_OLLAMA_MODEL_REASON = "Single low-end default: small enough for CPU laptops, better quality than sub-1B models.";
+
+function getFastOllamaRecommendation(totalRamGb: number, cpuCores: number) {
+  return {
+    id: LOCAL_OLLAMA_MODEL,
+    name: LOCAL_OLLAMA_MODEL_NAME,
+    reason: `${LOCAL_OLLAMA_MODEL_REASON} Detected ${totalRamGb} GB RAM and ${cpuCores} CPU cores.`,
+  };
+}
+
+export async function startServer(port = Number(process.env.PORT || 3000)) {
   const app = express();
-  const PORT = Number(process.env.PORT || 3000);
+  const PORT = port;
 
   app.use(express.json());
 
@@ -173,6 +184,17 @@ async function startServer() {
   // Runs server-side to avoid CORS + browser rate-limiting on emkc.org
   const PISTON_BASE = process.env.PISTON_URL || 'https://emkc.org/api/v2/piston';
   const OLLAMA_URL = process.env.OLLAMA_URL || 'http://localhost:11434';
+  const OLLAMA_TIMEOUT_MS = Number(process.env.OLLAMA_TIMEOUT_MS || 180_000);
+
+  async function fetchOllama(pathname: string, init?: RequestInit) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), OLLAMA_TIMEOUT_MS);
+    try {
+      return await fetch(`${OLLAMA_URL}${pathname}`, { ...init, signal: controller.signal });
+    } finally {
+      clearTimeout(timer);
+    }
+  }
 
   app.get('/api/system/specs', (_req, res) => {
     res.json({
@@ -185,14 +207,111 @@ async function startServer() {
     });
   });
 
+  app.get('/api/ollama/recommend', (_req, res) => {
+    const totalRamGb = Math.round((os.totalmem() / 1024 / 1024 / 1024) * 10) / 10;
+    const cpuCores = os.cpus().length;
+    const cpuModel = os.cpus()[0]?.model || 'Unknown CPU';
+    const recommended = getFastOllamaRecommendation(totalRamGb, cpuCores);
+
+    res.json({
+      platform: os.platform(),
+      arch: os.arch(),
+      totalRamGb,
+      cpuCores,
+      cpuModel,
+      recommended,
+    });
+  });
+
+  app.get('/api/setup/install-choice', async (_req, res) => {
+    const appData = process.env.APPDATA || path.join(os.homedir(), 'AppData', 'Roaming');
+    const choicePath = path.join(appData, 'Zynapse', 'install-choice.json');
+
+    try {
+      const raw = await readFile(choicePath, 'utf8');
+      const parsed = JSON.parse(raw.replace(/^\uFEFF/, '').trim());
+      const mode = parsed.mode === 'local-ollama' ? 'local-ollama' : 'ai-providers';
+      res.json({ ok: true, mode, path: choicePath });
+    } catch {
+      res.json({ ok: true, mode: null, path: choicePath });
+    }
+  });
+
   app.get('/api/ollama/status', async (_req, res) => {
     try {
-      const r = await fetch(`${OLLAMA_URL}/api/tags`);
+      const r = await fetchOllama('/api/tags');
       if (!r.ok) return res.status(r.status).json({ ok: false, error: r.statusText });
       const data = await r.json() as any;
       res.json({ ok: true, url: OLLAMA_URL, models: data.models || [] });
     } catch (err: any) {
       res.status(503).json({ ok: false, url: OLLAMA_URL, error: err.message || 'Ollama is not reachable' });
+    }
+  });
+
+  app.post('/api/ollama/chat', async (req, res) => {
+    const { model, messages, stream = true, options } = req.body as {
+      model?: string;
+      messages?: { role: string; content: string }[];
+      stream?: boolean;
+      options?: Record<string, unknown>;
+    };
+
+    if (!model || !Array.isArray(messages)) {
+      return res.status(400).json({ error: 'model and messages are required' });
+    }
+
+    try {
+      const upstream = await fetchOllama('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ model, messages, stream, options }),
+      });
+
+      if (!upstream.ok || !upstream.body) {
+        return res.status(upstream.status).send(await upstream.text() || upstream.statusText);
+      }
+
+      if (!stream) return res.json(await upstream.json());
+
+      res.writeHead(200, {
+        'Content-Type': 'application/x-ndjson; charset=utf-8',
+        'Cache-Control': 'no-cache',
+        Connection: 'keep-alive',
+      });
+
+      const reader = upstream.body.getReader();
+      const decoder = new TextDecoder();
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        res.write(decoder.decode(value));
+      }
+      res.end();
+    } catch (err: any) {
+      res.status(503).json({ error: err.message || 'Ollama chat failed. Is Ollama running?' });
+    }
+  });
+
+  app.post('/api/ollama/generate', async (req, res) => {
+    const { model, prompt, format, options } = req.body as {
+      model?: string;
+      prompt?: string;
+      format?: string;
+      options?: Record<string, unknown>;
+    };
+    if (!model || !prompt) return res.status(400).json({ error: 'model and prompt are required' });
+
+    try {
+      const upstream = await fetchOllama('/api/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ model, prompt, stream: false, format, options }),
+      });
+
+      if (!upstream.ok) return res.status(upstream.status).send(await upstream.text() || upstream.statusText);
+      res.json(await upstream.json());
+    } catch (err: any) {
+      res.status(503).json({ error: err.message || 'Ollama generate failed. Is Ollama running?' });
     }
   });
 
@@ -203,7 +322,7 @@ async function startServer() {
     }
 
     try {
-      const upstream = await fetch(`${OLLAMA_URL}/api/pull`, {
+      const upstream = await fetchOllama('/api/pull', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: model, stream: true }),
@@ -229,6 +348,35 @@ async function startServer() {
       res.end();
     } catch (err: any) {
       res.status(503).json({ error: err.message || 'Ollama pull failed. Is Ollama running?' });
+    }
+  });
+
+  app.post('/api/ollama/ensure-model', async (_req, res) => {
+    try {
+      const tags = await fetchOllama('/api/tags');
+      if (!tags.ok) return res.status(tags.status).json({ ok: false, error: tags.statusText });
+
+      const data = await tags.json() as any;
+      const installed = (data.models || []).some((model: { name?: string; model?: string }) => {
+        const name = model.name || model.model || '';
+        return name === LOCAL_OLLAMA_MODEL || name.split(':')[0] === LOCAL_OLLAMA_MODEL.split(':')[0];
+      });
+
+      if (!installed) {
+        const pull = await fetchOllama('/api/pull', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: LOCAL_OLLAMA_MODEL, stream: false }),
+        });
+        if (!pull.ok) return res.status(pull.status).json({ ok: false, error: await pull.text() || pull.statusText });
+      }
+
+      res.json({ ok: true, model: LOCAL_OLLAMA_MODEL });
+    } catch (err: any) {
+      const message = err?.name === 'AbortError'
+        ? `Timed out while preparing ${LOCAL_OLLAMA_MODEL}. Open Ollama and run: ollama pull ${LOCAL_OLLAMA_MODEL}`
+        : err.message || 'Could not prepare Ollama model.';
+      res.status(503).json({ ok: false, model: LOCAL_OLLAMA_MODEL, error: message });
     }
   });
 
@@ -540,22 +688,25 @@ async function startServer() {
 
   // Vite middleware for development
   if (process.env.NODE_ENV !== "production") {
+    const { createServer: createViteServer } = await import("vite");
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: "spa",
     });
     app.use(vite.middlewares);
   } else {
-    const distPath = path.join(process.cwd(), 'dist');
+    const distPath = process.env.ZYNAPSE_DIST_DIR || path.join(process.cwd(), 'dist');
     app.use(express.static(distPath));
     app.get('*', (req, res) => {
       res.sendFile(path.join(distPath, 'index.html'));
     });
   }
 
-  app.listen(PORT, "0.0.0.0", () => {
+  return app.listen(PORT, "0.0.0.0", () => {
     console.log(`Server running on http://localhost:${PORT}`);
   });
 }
 
-startServer();
+if (process.env.ZYNAPSE_AUTOSTART !== "false") {
+  startServer();
+}
