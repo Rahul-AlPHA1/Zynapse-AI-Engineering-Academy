@@ -3,7 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { motion } from 'motion/react';
 import { BookOpen, Loader2, PlusCircle, Sparkles, Send, BrainCircuit, CheckCircle2, AlertCircle, Terminal, Download, FileCheck2, FileText, CalendarDays, Upload, Square, Trophy, ChevronLeft, ChevronRight, Bookmark, BookmarkCheck, StickyNote, X } from 'lucide-react';
-import { createChatSession, streamContent, LOCAL_OLLAMA_MODEL } from '../services/geminiService';
+import { createChatSession, streamContent } from '../services/geminiService';
 import { generateInterviewPlan, AIPlanResponse, loadMorePlanQuestions } from '../services/geminiService';
 import { curriculum } from '../data/curriculum';
 import { QuizUI, QuizData } from './QuizUI';
@@ -799,9 +799,8 @@ Make the lesson comprehensive enough to replace a normal tutorial page.`;
       } catch (error) {
         console.error("Failed to generate content:", error);
         if (isMounted) {
-          setContent("# ⚠️ Error\nFailed to load content. Please check your API key in settings or try again.");
           const detail = error instanceof Error ? error.message : "Unknown provider error";
-          setContent(`# Error\nFailed to load content.\n\n**Reason:** ${detail}\n\nOpen AI Provider Settings, select Ollama, and make sure the local model \`${LOCAL_OLLAMA_MODEL}\` is installed or keep fallback enabled.`);
+          setContent(`# Error\nFailed to load content.\n\n**Reason:** ${detail}\n\nOpen AI Provider Settings and add your own Gemini or Groq API key for more content. Hosted keys are used first when available, then your saved keys are used as fallback.`);
           setIsStreaming(false);
         }
       } finally {

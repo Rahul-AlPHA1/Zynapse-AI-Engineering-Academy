@@ -177,8 +177,21 @@ export const PROVIDER_CONFIGS: Record<AIProvider, ProviderConfig> = {
 const ls = (key: string) =>
   typeof window !== "undefined" ? localStorage.getItem(key)?.trim() || "" : "";
 
+const HOSTED_PROXY_PROVIDERS: AIProvider[] = ["gemini", "groq"];
+
+function isHostedBrowser() {
+  if (typeof window === "undefined") return false;
+  const { hostname, protocol } = window.location;
+  return protocol.startsWith("http") &&
+    !["localhost", "127.0.0.1", "::1"].includes(hostname);
+}
+
+function canUseHostedProxy(provider: AIProvider) {
+  return isHostedBrowser() && HOSTED_PROXY_PROVIDERS.includes(provider);
+}
+
 export const getAIConfig = () => ({
-  gemini: ls("GEMINI_API_KEY") || (typeof process !== "undefined" ? process.env?.GEMINI_API_KEY || "" : ""),
+  gemini: ls("GEMINI_API_KEY"),
   groq: ls("GROQ_API_KEY"),
   claude: ls("CLAUDE_API_KEY"),
   openai: ls("OPENAI_API_KEY"),
@@ -207,6 +220,128 @@ export const getAIConfig = () => ({
 
 type AIConfig = ReturnType<typeof getAIConfig>;
 
+function getProviderModel(provider: AIProvider, cfg: AIConfig) {
+  switch (provider) {
+    case "gemini":
+      return cfg.geminiModel;
+    case "groq":
+      return cfg.groqModel;
+    case "claude":
+      return cfg.claudeModel;
+    case "openai":
+      return cfg.openaiModel;
+    case "mistral":
+      return cfg.mistralModel;
+    case "together":
+      return cfg.togetherModel;
+    case "deepseek":
+      return cfg.deepseekModel;
+    case "nvidia":
+      return cfg.nvidiaModel;
+    case "ollama":
+      return cfg.ollamaModel;
+  }
+}
+
+function getProviderKey(provider: AIProvider, cfg: AIConfig) {
+  switch (provider) {
+    case "gemini":
+      return cfg.gemini;
+    case "groq":
+      return cfg.groq;
+    case "claude":
+      return cfg.claude;
+    case "openai":
+      return cfg.openai;
+    case "mistral":
+      return cfg.mistral;
+    case "together":
+      return cfg.together;
+    case "deepseek":
+      return cfg.deepseek;
+    case "nvidia":
+      return cfg.nvidia;
+    case "ollama":
+      return "";
+  }
+}
+
+function uniqueProviders(providers: AIProvider[]) {
+  return providers.filter((provider, index) => providers.indexOf(provider) === index);
+}
+
+function getProviderChain(cfg: AIConfig) {
+  const configuredChain = cfg.fallbackEnabled
+    ? [cfg.primaryProvider, ...cfg.fallbackChain.filter((p) => p !== cfg.primaryProvider)]
+    : [cfg.primaryProvider];
+
+  if (!isHostedBrowser()) return uniqueProviders(configuredChain);
+
+  const cloudConfiguredChain = configuredChain.filter((provider) => provider !== "ollama");
+  return uniqueProviders([
+    "gemini",
+    "groq",
+    ...cloudConfiguredChain,
+  ]);
+}
+
+function providerFailureMessage(prefix: string, lastError?: Error | null) {
+  const detail = lastError?.message || "No provider returned content";
+  if (isHostedBrowser()) {
+    return `${prefix}: ${detail}. Hosted API credits may be unavailable, rate-limited, or missing. Add your own Gemini/Groq API key in AI Provider Settings for more content.`;
+  }
+  return `${prefix}: ${detail}`;
+}
+
+async function callHostedProxy(
+  path: "/api/ai/chat" | "/api/ai/generate",
+  body: Record<string, unknown>,
+) {
+  const res = await fetch(path, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+  const data = await res.json().catch(() => null);
+  if (!res.ok || data?.ok === false) {
+    throw new Error(data?.error || `Hosted AI proxy failed with ${res.status}`);
+  }
+  return String(data?.text || "");
+}
+
+async function executeHostedProvider(
+  provider: AIProvider,
+  prompt: string,
+  schema: unknown,
+  type: "object" | "array",
+  cfg: AIConfig,
+  useUserKey = false,
+) {
+  return callHostedProxy("/api/ai/generate", {
+    provider,
+    prompt,
+    schema,
+    type,
+    model: getProviderModel(provider, cfg),
+    key: useUserKey ? getProviderKey(provider, cfg) : undefined,
+  });
+}
+
+async function* streamHostedProvider(
+  messages: { role: string; content: string }[],
+  provider: AIProvider,
+  cfg: AIConfig,
+  useUserKey = false,
+) {
+  const text = await callHostedProxy("/api/ai/chat", {
+    provider,
+    messages,
+    model: getProviderModel(provider, cfg),
+    key: useUserKey ? getProviderKey(provider, cfg) : undefined,
+  });
+  if (text) yield text;
+}
+
 function languageOutputPolicy(language: string) {
   const lower = language.toLowerCase();
   const roman = lower.includes("roman") || lower.includes("hinglish");
@@ -221,9 +356,9 @@ function languageOutputPolicy(language: string) {
 function getMissingProviderReason(provider: AIProvider, cfg: AIConfig) {
   switch (provider) {
     case "gemini":
-      return cfg.gemini ? null : "Gemini API key not set";
+      return cfg.gemini || canUseHostedProxy(provider) ? null : "Gemini API key not set";
     case "groq":
-      return cfg.groq ? null : "Groq API key not set";
+      return cfg.groq || canUseHostedProxy(provider) ? null : "Groq API key not set";
     case "claude":
       return cfg.claude ? null : "Claude API key not set";
     case "openai":
@@ -435,6 +570,20 @@ async function executeAIProvider(
 
   switch (provider) {
     case "gemini": {
+      if (canUseHostedProxy(provider)) {
+        try {
+          return await executeHostedProvider(provider, prompt, schema, type, cfg);
+        } catch (error) {
+          if (!cfg.gemini) throw error;
+          console.warn("[AI] hosted gemini failed, trying saved user Gemini key:", (error as Error).message);
+          try {
+            return await executeHostedProvider(provider, prompt, schema, type, cfg, true);
+          } catch (userKeyError) {
+            console.warn("[AI] user Gemini key through hosted proxy failed, trying direct client call:", (userKeyError as Error).message);
+          }
+        }
+      }
+      if (!cfg.gemini) throw new Error("Gemini API key not set");
       const ai = new GoogleGenAI({ apiKey: cfg.gemini });
       const res = await ai.models.generateContent({
         model: cfg.geminiModel,
@@ -445,6 +594,19 @@ async function executeAIProvider(
     }
 
     case "groq":
+      if (canUseHostedProxy(provider)) {
+        try {
+          return await executeHostedProvider(provider, prompt, schema, type, cfg);
+        } catch (error) {
+          if (!cfg.groq) throw error;
+          console.warn("[AI] hosted groq failed, trying saved user Groq key:", (error as Error).message);
+          try {
+            return await executeHostedProvider(provider, prompt, schema, type, cfg, true);
+          } catch (userKeyError) {
+            console.warn("[AI] user Groq key through hosted proxy failed, trying direct client call:", (userKeyError as Error).message);
+          }
+        }
+      }
       if (!cfg.groq) throw new Error("Groq API key not set");
       return fetchOpenAICompat(
         "https://api.groq.com/openai/v1",
@@ -554,6 +716,22 @@ async function* streamProviderContent(
 
   switch (provider) {
     case "gemini": {
+      if (canUseHostedProxy(provider)) {
+        try {
+          yield* streamHostedProvider(messages, provider, cfg);
+          return;
+        } catch (error) {
+          if (!cfg.gemini) throw error;
+          console.warn("[AI] hosted gemini stream failed, trying saved user Gemini key:", (error as Error).message);
+          try {
+            yield* streamHostedProvider(messages, provider, cfg, true);
+            return;
+          } catch (userKeyError) {
+            console.warn("[AI] user Gemini key through hosted proxy failed, trying direct client stream:", (userKeyError as Error).message);
+          }
+        }
+      }
+      if (!cfg.gemini) throw new Error("Gemini API key not set");
       const ai = new GoogleGenAI({ apiKey: cfg.gemini });
       const lastMsg = messages[messages.length - 1].content;
       const systemMsg = messages.find((m) => m.role === "system")?.content || "";
@@ -570,6 +748,21 @@ async function* streamProviderContent(
     }
 
     case "groq":
+      if (canUseHostedProxy(provider)) {
+        try {
+          yield* streamHostedProvider(messages, provider, cfg);
+          return;
+        } catch (error) {
+          if (!cfg.groq) throw error;
+          console.warn("[AI] hosted groq stream failed, trying saved user Groq key:", (error as Error).message);
+          try {
+            yield* streamHostedProvider(messages, provider, cfg, true);
+            return;
+          } catch (userKeyError) {
+            console.warn("[AI] user Groq key through hosted proxy failed, trying direct client stream:", (userKeyError as Error).message);
+          }
+        }
+      }
       if (!cfg.groq) throw new Error("Groq API key not set");
       yield* streamOpenAICompat("https://api.groq.com/openai/v1", cfg.groq, cfg.groqModel, messages);
       break;
@@ -692,9 +885,8 @@ export async function* streamContent(
     return;
   }
 
-  const chain = cfg.fallbackEnabled
-    ? [cfg.primaryProvider, ...cfg.fallbackChain.filter((p) => p !== cfg.primaryProvider)]
-    : [cfg.primaryProvider];
+  const chain = getProviderChain(cfg);
+  const allowFallback = cfg.fallbackEnabled || isHostedBrowser();
 
   let lastError: Error | null = null;
   for (const currentProvider of chain) {
@@ -702,7 +894,7 @@ export async function* streamContent(
       const missingReason = getMissingProviderReason(currentProvider, cfg);
       if (missingReason) {
         lastError = new Error(missingReason);
-        if (!cfg.fallbackEnabled) break;
+        if (!allowFallback) break;
         continue;
       }
 
@@ -716,11 +908,11 @@ export async function* streamContent(
     } catch (err: unknown) {
       lastError = err as Error;
       console.warn(`[AI] ${currentProvider} stream failed:`, lastError.message);
-      if (!cfg.fallbackEnabled) break;
+      if (!allowFallback) break;
     }
   }
 
-  throw new Error(`All providers failed: ${lastError?.message || "No provider returned content"}`);
+  throw new Error(providerFailureMessage("All providers failed", lastError));
 }
 
 async function executeWithFallback(
@@ -729,9 +921,8 @@ async function executeWithFallback(
   type: "object" | "array"
 ): Promise<string> {
   const cfg = getAIConfig();
-  const chain = cfg.fallbackEnabled
-    ? [cfg.primaryProvider, ...cfg.fallbackChain.filter((p) => p !== cfg.primaryProvider)]
-    : [cfg.primaryProvider];
+  const chain = getProviderChain(cfg);
+  const allowFallback = cfg.fallbackEnabled || isHostedBrowser();
 
   let lastError: Error | null = null;
   for (const provider of chain) {
@@ -739,7 +930,7 @@ async function executeWithFallback(
       const missingReason = getMissingProviderReason(provider, cfg);
       if (missingReason) {
         lastError = new Error(missingReason);
-        if (!cfg.fallbackEnabled) break;
+        if (!allowFallback) break;
         continue;
       }
 
@@ -747,10 +938,10 @@ async function executeWithFallback(
     } catch (err: unknown) {
       lastError = err as Error;
       console.warn(`[AI] ${provider} failed:`, lastError.message);
-      if (!cfg.fallbackEnabled) break;
+      if (!allowFallback) break;
     }
   }
-  throw new Error(`All AI providers failed. Last: ${lastError?.message}`);
+  throw new Error(providerFailureMessage("All AI providers failed", lastError));
 }
 
 // ─── Test connection for a provider ───
@@ -915,9 +1106,8 @@ Your job is to teach deeply enough that the learner can move forward without ope
   async sendMessage(params: { message: string }): Promise<{ text: string }> {
     this.history.push({ role: "user", content: params.message });
     const cfg = getAIConfig();
-    const chain = cfg.fallbackEnabled
-      ? [cfg.primaryProvider, ...cfg.fallbackChain.filter((p) => p !== cfg.primaryProvider)]
-      : [cfg.primaryProvider];
+    const chain = getProviderChain(cfg);
+    const allowFallback = cfg.fallbackEnabled || isHostedBrowser();
 
     let lastError: Error | null = null;
     for (const provider of chain) {
@@ -931,10 +1121,10 @@ Your job is to teach deeply enough that the learner can move forward without ope
         return { text };
       } catch (err: unknown) {
         lastError = err as Error;
-        if (!cfg.fallbackEnabled) break;
+        if (!allowFallback) break;
       }
     }
-    throw new Error(`All providers failed: ${lastError?.message}`);
+    throw new Error(providerFailureMessage("All providers failed", lastError));
   }
 
   async *sendMessageStream(message: string): AsyncGenerator<string> {
