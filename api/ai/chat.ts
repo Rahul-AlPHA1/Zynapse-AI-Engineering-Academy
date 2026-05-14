@@ -1,4 +1,4 @@
-import { isHostedProvider, runHostedProvider } from "./_shared";
+import { isHostedProvider, runHostedProvider } from "./_shared.js";
 
 export default async function handler(req: any, res: any) {
   if (req.method !== "POST") {
