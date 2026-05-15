@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { motion } from 'motion/react';
-import { BookOpen, Loader2, PlusCircle, Sparkles, Send, BrainCircuit, CheckCircle2, AlertCircle, Terminal, Download, FileCheck2, FileText, CalendarDays, Upload, Square, Trophy, ChevronLeft, ChevronRight, Bookmark, BookmarkCheck, StickyNote, X } from 'lucide-react';
+import { BookOpen, Loader2, PlusCircle, Sparkles, Send, BrainCircuit, CheckCircle2, AlertCircle, Terminal, Download, FileCheck2, FileText, CalendarDays, Upload, Square, Trophy, ChevronLeft, ChevronRight, Bookmark, BookmarkCheck, StickyNote, X, Wifi, WifiOff, MonitorSpeaker, RefreshCw } from 'lucide-react';
 import { createChatSession, streamContent } from '../services/geminiService';
 import { generateInterviewPlan, AIPlanResponse, loadMorePlanQuestions } from '../services/geminiService';
 import { curriculum } from '../data/curriculum';
@@ -578,6 +578,9 @@ export function ContentArea({ topic, language, isComplete = false, isBookmarked 
   const [noteText, setNoteText] = useState(note);
   const [isExportingPdf, setIsExportingPdf] = useState(false);
   const lessonContentRef = useRef<HTMLDivElement>(null);
+  // Content generation mode
+  const [contentMode, setContentMode] = useState<'api' | 'offline' | 'ollama'>('api');
+  const [refreshKey, setRefreshKey] = useState(0);
 
   // Store the chat session to continue the conversation
   const sessionRef = useRef<any>(null);
@@ -661,6 +664,16 @@ export function ContentArea({ topic, language, isComplete = false, isBookmarked 
     const fetchContent = async () => {
       setIsLoading(true);
       setContent(null);
+
+      // Offline mode: load scraped/template content immediately, no API call
+      if (contentMode === 'offline') {
+        await preloadJavaScrapedContent();
+        setContent(buildOfflineLesson(topic, language, difficulty, 'Offline mode selected'));
+        setIsSaved(false);
+        setIsLoading(false);
+        return;
+      }
+
       try {
         const session = createChatSession(language);
         sessionRef.current = session;
@@ -878,7 +891,9 @@ Make the lesson comprehensive enough to replace a normal tutorial page.`;
           const messages = [
             { role: 'user', content: prompt },
           ];
-          for await (const chunk of streamContent(messages)) {
+          // Ollama mode: force ollama provider; api mode: use full chain
+          const streamProvider = contentMode === 'ollama' ? 'ollama' as const : undefined;
+          for await (const chunk of streamContent(messages, streamProvider)) {
             if (!isMounted || abortRef.current) break;
             accumulated += chunk;
             setContent(accumulated);
@@ -909,7 +924,7 @@ Make the lesson comprehensive enough to replace a normal tutorial page.`;
     return () => {
       isMounted = false;
     };
-  }, [topic, language, difficulty]);
+  }, [topic, language, difficulty, contentMode, refreshKey]);
 
   const saveOffline = () => {
     if (!topic) return;
@@ -1199,6 +1214,69 @@ Format the output clearly in Markdown.`;
               </div>
             )}
           </div>
+
+          {/* Content mode selector — API / Offline / Ollama */}
+          {!isAIPlanGenerator && !isQuizTopic && (
+            <div className="flex items-center gap-2 flex-wrap">
+              {/* API button */}
+              <button
+                onClick={() => setContentMode('api')}
+                disabled={isLoading || isStreaming}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all disabled:opacity-50 ${
+                  contentMode === 'api'
+                    ? 'bg-indigo-500/20 border-indigo-500/40 text-indigo-400'
+                    : 'bg-white/5 border-white/10 text-zinc-400 hover:text-indigo-400 hover:border-indigo-500/30 hover:bg-indigo-500/10'
+                }`}
+              >
+                <Wifi className="w-3 h-3" />
+                Generate Online (API)
+              </button>
+
+              {/* Offline content button */}
+              <button
+                onClick={() => setContentMode('offline')}
+                disabled={isLoading || isStreaming}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all disabled:opacity-50 ${
+                  contentMode === 'offline'
+                    ? 'bg-emerald-500/20 border-emerald-500/40 text-emerald-400'
+                    : 'bg-white/5 border-white/10 text-zinc-400 hover:text-emerald-400 hover:border-emerald-500/30 hover:bg-emerald-500/10'
+                }`}
+              >
+                <WifiOff className="w-3 h-3" />
+                Offline Content
+              </button>
+
+              {/* Ollama local button */}
+              <button
+                onClick={() => setContentMode('ollama')}
+                disabled={isLoading || isStreaming}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all disabled:opacity-50 ${
+                  contentMode === 'ollama'
+                    ? 'bg-orange-500/20 border-orange-500/40 text-orange-400'
+                    : 'bg-white/5 border-white/10 text-zinc-400 hover:text-orange-400 hover:border-orange-500/30 hover:bg-orange-500/10'
+                }`}
+              >
+                <MonitorSpeaker className="w-3 h-3" />
+                Ollama Local
+              </button>
+
+              {/* Regenerate button */}
+              {content && !isLoading && !isStreaming && (
+                <button
+                  onClick={() => {
+                    if (topic) localStorage.removeItem(contentCacheKey(topic.id, language, difficulty));
+                    setContent(null);
+                    setIsSaved(false);
+                    setRefreshKey(k => k + 1);
+                  }}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border bg-white/5 border-white/10 text-zinc-400 hover:text-white hover:border-white/20 hover:bg-white/10 transition-all"
+                >
+                  <RefreshCw className="w-3 h-3" />
+                  Regenerate
+                </button>
+              )}
+            </div>
+          )}
 
           {/* Streaming stop button + actions */}
           <div className="flex items-center justify-between gap-3">
