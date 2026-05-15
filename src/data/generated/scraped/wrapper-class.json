@@ -1,0 +1,88 @@
+{
+  "topicId": "wrapper-class",
+  "title": "Java - Wrapper Classes",
+  "sectionId": "java-core-advanced",
+  "source": "tutorialspoint",
+  "url": "https://www.tutorialspoint.com/java/java_wrapper_classes.htm",
+  "allSources": [
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_wrapper_classes.htm",
+      "score": 46,
+      "sectionCount": 8
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Why Java Wrapper Classes Required?",
+      "paragraphs": [
+        "Normally, when we work with Numbers, we use primitive data types such as byte, int, long, double, etc."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "However, in development, we come across situations where we need to use objects instead of primitive data types. In order to achieve this, Java provides wrapper classes."
+      ],
+      "code": [
+        "int i = 5000;\nfloat gpa = 13.65f;\ndouble mask = 125;"
+      ]
+    },
+    {
+      "heading": "Java Wrapper Classes",
+      "paragraphs": [
+        "• Wrapper classes are those whose objects wraps a primitive data type within them.\n• In the java.lang package java provides a separate class for each of the primitive data types namely Byte, Character, Double, Integer, Float, Long, Short.\n• At the time of instantiation, these classes accept a primitive datatype directly, or in the form of String.\n• Wrapper classes provide methods to, convert primitive datatypes within them to String objects and, to compare them with other objects etc.\n• Using wrapper classes, you can also add primitive datatypes to various Collection objects such as ArrayList, HashMap etc. You can also pass primitive values over a network using wrapper classes.",
+        "All the wrapper classes (Integer, Long, Byte, Double, Float, Short) are subclasses of the abstract class Number."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Object of Java Wrapper Class",
+      "paragraphs": [
+        "The object of the wrapper class contains or wraps its respective primitive data type. Converting primitive data types into object is called boxing, and this is taken care by the compiler. Therefore, while using a wrapper class you just need to pass the value of the primitive data type to the constructor of the Wrapper class.",
+        "And the Wrapper object will be converted back to a primitive data type, and this process is called unboxing. The Number class is part of the java.lang package."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Creating Java Wrapper Class Objects",
+      "paragraphs": [
+        "In Java, to create a wrapper object, you have to use the wrapper class instead of the primitive data type.",
+        "If you want to print the values of these objects, just print the object.",
+        "Consider the below syntax:"
+      ],
+      "code": [
+        "wrapper_class object_name = value;"
+      ]
+    },
+    {
+      "heading": "Example of Java Wrapper Class",
+      "paragraphs": [
+        "Following is an example of boxing and unboxing −",
+        "In this example, we've showcase use of primitives and their operations using a wrapper class. In first statement we've assigned an int to an Integer object x which is termed as boxing. In second statment, we're adding 10 to x which requires x to be unboxed as int and addition is performed and result is assigned back to the variable x and printed."
+      ],
+      "code": [
+        "public class Test {\n\n   public static void main(String args[]) {\n      Integer x = 5; // boxes int to an Integer object\n      x =  x + 10;   // unboxes the Integer to a int\n      System.out.println(x); \n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [
+        "When x is assigned an integer value, the compiler boxes the integer because x is integer object. Later, x is unboxed so that they can be added as an integer."
+      ],
+      "code": [
+        "15"
+      ]
+    },
+    {
+      "heading": "List of Java Wrapper Classes",
+      "paragraphs": [
+        "Following is the list of the wrapper classes that all the subclasses of the Number class −",
+        "Sr.No.\nClass & Description\n\n\n1\nBoolean\nThe Java Boolean class wraps a value of the primitive type boolean in an object.\n\n\n2\nByte\nThe Java Byte class wraps a value of the primitive type byte in an object.\n\n\n3\nCharacter\nThe Java Character class wraps a value of the primitive type char in an object.\n\n\n4\nDouble\nThe Java Double class wraps a value of the primitive type double in an object.\n\n\n5\nFloat\nThe Java Float class wraps a value of the primitive type float in an object.\n\n\n6\nInteger\nThe Java Float class wraps a value of the primitive type float in an object.\n\n\n7\nLong\nThe Java Long class wraps a value of the primitive type long in an object.\n\n\n8\nShort\nThe Java Short class wraps a value of the primitive type short in an object."
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:35:22.149Z"
+}

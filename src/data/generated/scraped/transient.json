@@ -1,0 +1,79 @@
+{
+  "topicId": "transient",
+  "title": "transient Keyword in Java",
+  "sectionId": "java-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/transient-keyword-in-java",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/transient-keyword-in-java",
+      "score": 45,
+      "sectionCount": 6
+    }
+  ],
+  "sections": [
+    {
+      "heading": "transient Keyword in Java",
+      "paragraphs": [
+        "The transient keyword in Java is used to control the serialization process by preventing certain variables from being saved when an object is converted into a byte stream. It is mainly used for handling sensitive or non-essential data that should not be stored or transmitted.",
+        "In this chapter, we will understand what the transient keyword is, why it is used, its syntax, and how it works with serialization and deserialization using examples."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is transient Keyword in Java?",
+      "paragraphs": [
+        "The transient keyword is a modifier used during serialization, which is the process of converting an object into a byte stream for storage or transmission.",
+        "When a variable is declared as transient, it is excluded from serialization. This means its value is not saved when the object is serialized. Later, when the object is deserialized, the transient variable is assigned its default value (such as 0 for integers or null for objects)."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Why use the transient keyword?",
+      "paragraphs": [
+        "The transient keyword is used with data members of a class to prevent them from being serialized. It is especially useful when we do not want to store certain values, such as sensitive information or unnecessary data.",
+        "For example, if a program handles a user's login details, we may not want to store the password in a file. In such cases, the password variable can be declared as transient. When the JVM encounters a transient variable during serialization, it ignores its original value and does not save it.",
+        "As a result, during deserialization, the transient variable is assigned its default value instead of the original one.",
+        "• It helps protect sensitive or confidential data.\n• It avoids storing non-essential data.\n• Transient variables are assigned default values during deserialization."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax of transient Keyword",
+      "paragraphs": [
+        "The transient keyword is used as a modifier with class variables (data members). It can be declared in different ways depending on the order of modifiers and datatype.",
+        "Here are the common syntax forms:",
+        "Or",
+        "Or",
+        "In all the above cases, the variable marked as transient will not be included in the serialization process."
+      ],
+      "code": [
+        "private transient variableName;",
+        "transient private variableName;",
+        "transient datatype variableName;"
+      ]
+    },
+    {
+      "heading": "When to use the transient keyword?",
+      "paragraphs": [
+        "The transient keyword is used in the following situations:",
+        "• When a data member is derived from other data members within the same object.\n• When a variable does not represent the actual state of the object.\n• When you want to exclude non-essential data from serialization.\n• When dealing with sensitive information such as passwords or confidential data."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example of transient Keyword",
+      "paragraphs": [
+        "In the following example, we have defined a class Student that has two data members: name and age. If we serialize the object, all the values will be serialized, but we do not want to serialize the age. So, we have declared the age data. When we deserialize the object, we get the default value for the transient variable. Note that the age field is excluded from serialization, so its value is reset during deserialization.",
+        "As we can see, the age of the student returns 0 because the value of age was not serialized.",
+        "Exampleimport java.io.*;\nclass Student implements Serializable {\n    String name;\n    transient int age; // This field won't be serialized\n    Student(String name, int age) {\n        this.name = name;\n        this.age = age;\n    }\n}\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Student student= new Student(\"Peter\", 25);\n        // Serialize the object\n        FileOutputStream fileOut = new FileOutputStream(\"student.ser\");\n        ObjectOutputStream out = new ObjectOutputStream(fileOut);\n        out.writeObject(student);\n        out.close();\n        fileOut.close();\n        // Deserialize the object\n        FileInputStream fileIn = new FileInputStream(\"student.ser\");\n        ObjectInputStream in = new ObjectInputStream(fileIn);\n        Student deserializedStudent = (Student) in.readObject();\n        in.close();\n        fileIn.close();\n        // prints name and age to the console\n        System.out.println(\"Name: \" + deserializedStudent.name); // Prints Peter\n        System.out.println(\"Age: \" + deserializedStudent.age);   // Prints 0 (default value)\n    }\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Name: Peter\nAge: 0"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:42:16.041Z"
+}

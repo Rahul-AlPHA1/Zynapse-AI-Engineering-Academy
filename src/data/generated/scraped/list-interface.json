@@ -1,0 +1,263 @@
+{
+  "topicId": "list-interface",
+  "title": "Java List Interface",
+  "sectionId": "java-collections-jdbc",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-list",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-list",
+      "score": 161,
+      "sectionCount": 26
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_list_interface.htm",
+      "score": 66,
+      "sectionCount": 12
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java List Interface",
+      "paragraphs": [
+        "In Java, the List interface is a part of the Java Collections Framework that represents an ordered collection of elements. It allows duplicate values and null elements, and provides index-based operations to store, access, update, and manipulate data efficiently.",
+        "In this chapter, we will learn about the Java List interface, its features, methods, implementations such as ArrayList and LinkedList, and how it is used to manage collections of elements effectively."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is Java List Interface?",
+      "paragraphs": [
+        "The List interface is available in the java.util package and extends the Collection interface. It is designed to store elements in a sequential (ordered) manner and provides methods to perform operations like insertion, deletion, updating, and searching using indexes.",
+        "A List allows duplicate elements and also supports storing null values. It maintains the insertion order, meaning elements are retrieved in the same order as they were added.",
+        "Additionally, the List interface provides a ListIterator that allows traversal of elements in both forward and backward directions. Some commonly used implementation classes of the List interface include ArrayList, LinkedList, Stack, and Vector (although Vector is considered legacy and less commonly used today)."
+      ],
+      "code": []
+    },
+    {
+      "heading": "List Interface Declaration",
+      "paragraphs": [
+        "The List interface is declared in the java.util package and extends the Collection interface.",
+        "Here is the syntax:"
+      ],
+      "code": [
+        "public interface List<E> extends Collection<E>"
+      ]
+    },
+    {
+      "heading": "Constructors of List Interface",
+      "paragraphs": [
+        "The List interface does not have constructors because it is an interface. However, objects of List can be created using its implementation classes like ArrayList and LinkedList.",
+        "Here are the syntaxes:"
+      ],
+      "code": [
+        "List<E> list = new ArrayList<E>();\nList<E> list = new LinkedList<E>();"
+      ]
+    },
+    {
+      "heading": "Java List Class Methods",
+      "paragraphs": [
+        "The List interface provides various methods to perform operations such as adding, removing, updating, and accessing elements in an ordered collection.",
+        "Method | Description\nvoid add(int index, E element) | It is used to insert the specified element at the specified position in a list.\nboolean add(E e) | It is used to append the specified element at the end of a list.\nboolean addAll(Collection<? extends E> c) | It is used to append all of the elements in the specified collection to the end of a list.\nboolean addAll(int index, Collection<? extends E> c) | It is used to append all the elements in the specified collection, starting at the specified position of the list.\nvoid clear() | It is used to remove all of the elements from this list.\nboolean equals(Object o) | It is used to compare the specified object with the elements of a list.\nint hashcode() | It is used to return the hash code value for a list.\nE get(int index) | It is used to fetch the element from the particular position of the list.\nboolean isEmpty() | It returns true if the list is empty, otherwise false.\nint lastIndexOf(Object o) | It is used to return the index in this list of the last occurrence of the specified element, or -1 if the list does not contain this element.\nObject[] toArray() | It is used to return an array containing all of the elements in this list in the correct order.\n<T> T[] toArray(T[] a) | It is used to return an array containing all of the elements in this list in the correct order.\nboolean contains(Object o) | It returns true if the list contains the specified element\nboolean containsAll(Collection<?> c) | It returns true if the list contains all the specified element\nint indexOf(Object o) | It is used to return the index in this list of the first occurrence of the specified element, or -1 if the List does not contain this element.\nE remove(int index) | It is used to remove the element present at the specified position in the list.\nboolean remove(Object o) | It is used to remove the first occurrence of the specified element.\nboolean removeAll(Collection<?> c) | It is used to remove all the elements from the list.\nvoid replaceAll(UnaryOperator<E> operator) | It is used to replace all the elements from the list with the specified element.\nvoid retainAll(Collection<?> c) | It is used to retain all the elements in the list that are present in the specified collection.\nE set(int index, E element) | It is used to replace the specified element in the list, present at the specified position.\nvoid sort(Comparator<? super E> c) | It is used to sort the elements of the list on the basis of specified comparator.\nSpliterator<E> spliterator() | It is used to create spliterator over the elements in a list.\nList<E> subList(int fromIndex, int toIndex) | It is used to fetch all the elements lies within the given range.\nint size() | It is used to return the number of elements present in the list."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Creating a List",
+      "paragraphs": [
+        "The ArrayList and LinkedList classes provide the implementation of the List interface, allowing us to create lists of different data types."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates how to create List objects using ArrayList and LinkedList with different data types.",
+        "In short, we can create a List of any data type. The ArrayListand LinkedListclasses are used to specify the type, where T denotes the type of elements."
+      ],
+      "code": [
+        "//Creating a List of type String using ArrayList  \nList<String> list = new ArrayList<String>();  \n\n//Creating a List of type Integer using ArrayList  \nList<Integer> list = new ArrayList<Integer>();  \n\n//Creating a List of type Book using ArrayList  \nList<Book> list = new ArrayList<Book>();  \n\n//Creating a List of type String using LinkedList  \nList<String> list = new LinkedList<String>();"
+      ]
+    },
+    {
+      "heading": "Common List Operations",
+      "paragraphs": [
+        "Here are some essential operations that can be performed on Java Lists."
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. Adding Elements",
+      "paragraphs": [
+        "We can add elements to a List using the add() method. It allows adding elements at the end or at a specific index.",
+        "Example:"
+      ],
+      "code": [
+        "list.add(\"Java\");\nlist.add(1, \"JavaScript\");"
+      ]
+    },
+    {
+      "heading": "2. Removing Elements",
+      "paragraphs": [
+        "Elements can be removed from a List either by specifying the object or by providing the index position.",
+        "Example:"
+      ],
+      "code": [
+        "list.remove(\"Java\");\nlist.remove(0);"
+      ]
+    },
+    {
+      "heading": "3. Accessing Elements",
+      "paragraphs": [
+        "We can access elements using index-based methods like get() and also find positions using indexOf().",
+        "Example:"
+      ],
+      "code": [
+        "String firstElement = list.get(0);\nint index = list.indexOf(\"JavaScript\");"
+      ]
+    },
+    {
+      "heading": "4. Iterate Over List",
+      "paragraphs": [
+        "We can iterate through the elements of a List using loops such as the enhanced for loop.",
+        "Example:"
+      ],
+      "code": [
+        "for (String element : list) \n{\n    System.out.println(element);\n}"
+      ]
+    },
+    {
+      "heading": "Java List Example",
+      "paragraphs": [
+        "Let's see a simple example of List where we are using the ArrayList class as the implementation.",
+        "Exampleimport java.util.*;\npublic class Main{\npublic static void main(String args[]){\n //Creating a List\n List<String> list=new ArrayList<String>();\n //Adding elements in the List\n list.add(\"Mango\");\n list.add(\"Apple\");\n list.add(\"Banana\");\n list.add(\"Grapes\");\n //Iterating the List element using for-each loop\n for(String fruit:list)\n  System.out.println(fruit);\n\n}\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Mango\nApple\nBanana\nGrapes"
+      ]
+    },
+    {
+      "heading": "Converting Array to List",
+      "paragraphs": [
+        "We can convert an array to a List by adding elements one by one using the add() method or by using built-in methods like Arrays.asList() and the ArrayList constructor."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates how to convert an array into a List by traversing each element.",
+        "import java.util.*;\npublic class Main{\npublic static void main(String args[]){\n//Creating Array\nString[] array={\"Java\",\"Python\",\"PHP\",\"C++\"};\nSystem.out.println(\"Printing Array: \"+Arrays.toString(array));\n//Converting Array to List\nList<String> list=new ArrayList<String>();\nfor(String lang:array){\nlist.add(lang);\n}\nSystem.out.println(\"Printing List: \"+list);\n\n}\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Printing Array: [Java, Python, PHP, C++]\nPrinting List: [Java, Python, PHP, C++]"
+      ]
+    },
+    {
+      "heading": "Converting List to Array",
+      "paragraphs": [
+        "We can convert a List to an array using the toArray() method provided by the List interface."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates how to convert a List into an array.",
+        "import java.util.*;  \npublic class Main{  \n public static void main(String args[]){  \n  List<String> fruitList = new ArrayList<>();    \n  fruitList.add(\"Mango\");    \n  fruitList.add(\"Banana\");    \n  fruitList.add(\"Apple\");    \n  fruitList.add(\"Strawberry\");    \n\n  //Converting List to Array  \n  String[] array = fruitList.toArray(new String[fruitList.size()]);    \n\n  System.out.println(\"Printing Array: \"+Arrays.toString(array));  \n  System.out.println(\"Printing List: \"+fruitList);  \n }  \n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Printing Array: [Mango, Banana, Apple, Strawberry]\nPrinting List: [Mango, Banana, Apple, Strawberry]"
+      ]
+    },
+    {
+      "heading": "Getting and Setting Elements in List",
+      "paragraphs": [
+        "The get() method is used to retrieve an element at a specific index, whereas the set() method is used to replace an element at a given index."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates how to access and update elements in a List.",
+        "import java.util.*;  \npublic class Main{  \n public static void main(String args[]){  \n  //Creating a List  \n  List<String> list=new ArrayList<String>();  \n\n  //Adding elements  \n  list.add(\"Mango\");  \n  list.add(\"Apple\");  \n  list.add(\"Banana\");  \n  list.add(\"Grapes\");  \n\n  //Accessing element  \n  System.out.println(\"Returning element: \"+list.get(1));  \n\n  //Updating element  \n  list.set(1,\"Dates\");  \n\n  //Iterating List  \n  for(String fruit:list)  \n    System.out.println(fruit);  \n }  \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Returning element: Apple\nMango\nDates\nBanana\nGrapes"
+      ]
+    },
+    {
+      "heading": "Sorting a List",
+      "paragraphs": [
+        "We can sort a List using the Collections.sort() method or the List.sort() method introduced in Java 8."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates how to sort a List of strings and numbers.",
+        "import java.util.*;  \nclass Main{  \n public static void main(String args[]){  \n  //Creating a list of fruits  \n  List<String> list1=new ArrayList<String>();  \n  list1.add(\"Mango\");  \n  list1.add(\"Apple\");  \n  list1.add(\"Banana\");  \n  list1.add(\"Grapes\");  \n\n  //Sorting the list  \n  Collections.sort(list1);  \n\n  for(String fruit:list1)  \n    System.out.println(fruit);  \n\n  System.out.println(\"Sorting numbers...\");  \n\n  //Creating a list of numbers  \n  List<Integer> list2=new ArrayList<Integer>();  \n  list2.add(21);  \n  list2.add(11);  \n  list2.add(51);  \n  list2.add(1);  \n\n  //Sorting the list  \n  Collections.sort(list2);  \n\n  for(Integer number:list2)  \n    System.out.println(number);  \n }  \n} \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Apple\nBanana\nGrapes\nMango\nSorting numbers...\n1\n11\n21\n51"
+      ]
+    },
+    {
+      "heading": "Java ListIterator Interface",
+      "paragraphs": [
+        "The ListIterator interface is used to traverse the elements of a List in both forward and backward directions.",
+        "It provides additional methods to modify the elements during iteration, such as adding, removing, and updating elements."
+      ],
+      "code": []
+    },
+    {
+      "heading": "ListIterator Interface declaration",
+      "paragraphs": [
+        "Syntax to declare ListIterator Interface is as follows:"
+      ],
+      "code": [
+        "public interface ListIterator<E> extends Iterator<E>"
+      ]
+    },
+    {
+      "heading": "Methods of Java ListIterator Interface",
+      "paragraphs": [
+        "The following table contains the commonly used methods of the ListIterator interface along with their descriptions.",
+        "Method | Description\nvoid add(E e) | The method inserts the specified element into the list.\nboolean hasNext() | The method returns true if the list iterator has more elements while traversing the list in the forward direction.\nE next() | The method returns the next element in the list and advances the cursor position.\nint nextIndex() | The method returns the index of the element that would be returned by a subsequent call to next()\nboolean hasPrevious() | The method returns true if this list iterator has more elements while traversing the list in the reverse direction.\nE previous() | The method returns the previous element in the list and moves the cursor position backward.\nE previousIndex() | The method returns the index of the element that would be returned by a subsequent call to previous().\nvoid remove() | The method removes the last element from the list that was returned by next() or previous() methods\nvoid set(E e) | The method replaces the last element returned by next() or previous() methods with the specified element."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example of ListIterator Interface",
+      "paragraphs": [
+        "The following example demonstrates how to use the ListIterator interface to traverse elements in both forward and backward directions.",
+        "import java.util.*;\npublic class Main{\npublic static void main(String args[]){\nList<String> al=new ArrayList<String>();  \n\t\tal.add(\"Amit\");  \n\t\tal.add(\"Vijay\");  \n\t\tal.add(\"Kumar\");  \n\t\tal.add(1,\"Sachin\");  \n\t\tListIterator<String> itr=al.listIterator();  \n\t\tSystem.out.println(\"Traversing elements in forward direction\");  \n\t\twhile(itr.hasNext()){  \n\t\t\t\n\t\tSystem.out.println(\"index:\"+itr.nextIndex()+\" value:\"+itr.next());  \n\t\t}  \n\t\tSystem.out.println(\"Traversing elements in backward direction\");  \n\t\twhile(itr.hasPrevious()){  \n\t\t\n\t\tSystem.out.println(\"index:\"+itr.previousIndex()+\" value:\"+itr.previous());  \n\t\t}  \n}\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Traversing elements in forward direction\nindex:0 value:Amit\nindex:1 value:Sachin\nindex:2 value:Vijay\nindex:3 value:Kumar\nTraversing elements in backward direction\nindex:3 value:Kumar\nindex:2 value:Vijay\nindex:1 value:Sachin\nindex:0 value:Amit"
+      ]
+    },
+    {
+      "heading": "Complete Example of List Interface",
+      "paragraphs": [
+        "The following example demonstrates how to use the List interface to store and manage custom objects (Book) in Java.",
+        "import java.util.*;\nclass Book {\nint id;\nString name,author,publisher;\nint quantity;\npublic Book(int id, String name, String author, String publisher, int quantity) {\n\tthis.id = id;\n\tthis.name = name;\n\tthis.author = author;\n\tthis.publisher = publisher;\n\tthis.quantity = quantity;\n}\n}\npublic class Main {\npublic static void main(String[] args) {\n\t//Creating list of Books\n\tList<Book> list=new ArrayList<Book>();\n\t//Creating Books\n\tBook b1=new Book(101,\"Let us C\",\"Yashwant Kanetkar\",\"BPB\",8);\n\tBook b2=new Book(102,\"Data Communications and Networking\",\"Forouzan\",\"Mc Graw Hill\",4);\n\tBook b3=new Book(103,\"Operating System\",\"Galvin\",\"Wiley\",6);\n\t//Adding Books to list\n\tlist.add(b1);\n\tlist.add(b2);\n\tlist.add(b3);\n\t//Traversing list\n\tfor(Book b:list){\n\tSystem.out.println(b.id+\" \"+b.name+\" \"+b.author+\" \"+b.publisher+\" \"+b.quantity);\n\t}\n}\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "101 Let us C Yashwant Kanetkar BPB 8\n102 Data Communications and Networking Forouzan Mc Graw Hill 4\n103 Operating System Galvin Wiley 6"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:43:55.130Z"
+}

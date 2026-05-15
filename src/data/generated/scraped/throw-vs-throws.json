@@ -1,0 +1,91 @@
+{
+  "topicId": "throw-vs-throws",
+  "title": "Difference Between throw and throws in Java",
+  "sectionId": "java-core-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/difference-between-throw-and-throws-in-java",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/difference-between-throw-and-throws-in-java",
+      "score": 52,
+      "sectionCount": 7
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Difference Between throw and throws in Java",
+      "paragraphs": [
+        "In Java, there are two keywords i.e. throw and throws are used in exception handling to declare exceptions."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java throw Keyword",
+      "paragraphs": [
+        "The \"throw\" keyword in Java is used to explicitly throw an exception. It disrupts the normal flow of the program by transferring control to the nearest catch block that can handle the thrown exception. When an exception occurs within a method, the method creates an exception object and throws it using the \"throw\" keyword."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates the use of the throw keyword to explicitly raise an exception when a method receives an invalid input.",
+        "public class Main {\n\t// defining a method\n\tpublic static void checkNum(int n) {\n\t\tif (n < 1) {\n\t\t\tthrow new ArithmeticException(\"\\nNumber is negative, cannot calculate square\");\n\t\t} else {\n\t\t\tSystem.out.println(\"Square of \" + n + \" is \" + (n * n));\n\t\t}\n\t}\n\t// main method\n\tpublic static void main(String[] args) {\n\t\tMain obj = new Main();\n\t\tobj.checkNum(-3);\n\t\tSystem.out.println(\"Rest of the code..\");\n\t}\n}",
+        "Output:",
+        "Explanation",
+        "The Main class defines a method named \"checkNum()\" that takes an integer parameter. Within this method, it checks if the input number is less than 1. If so, it throws an ArithmeticException with a message indicating that the number is negative and its square cannot be calculated. Otherwise, if the number is positive or zero, it calculates and prints the square of the number.",
+        "In the main() method, an instance of Main is created, and the \"checkNum()\" method is called with a negative integer (-3) as an argument. Since the input number is negative, the method throws an ArithmeticException, which is not caught within the main method. Consequently, the program terminates prematurely after printing the exception message.",
+        "Therefore, the statement \"Rest of the code.\" is not executed. The code illustrates how to use the \"throw\" keyword to explicitly throw an exception in Java when certain conditions are met, thereby controlling program flow based on runtime conditions."
+      ],
+      "code": [
+        "Exception in thread \"main\" java.lang.ArithmeticException: \nNumber is negative, cannot calculate square\n\tat Main.checkNum(Main.java:5)\n\tat Main.main(Main.java:13)"
+      ]
+    },
+    {
+      "heading": "Java throws Keyword",
+      "paragraphs": [
+        "On the other hand, the \"throws\" clause is used in method signatures to indicate that the method may throw certain types of exceptions during its execution. It does not actually throw the exception; instead, it declares that the method may throw exceptions of specified types, thereby alerting the caller to handle them appropriately."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates the use of the throws keyword to declare an exception and handle it in the calling method using a try-catch block.",
+        "public class Main {\n\t// defining a method\n\tpublic static int divideNum(int m, int n) throws ArithmeticException {\n\t\tint div = m / n;\n\t\treturn div;\n\t}\n\t// main method\n\tpublic static void main(String[] args) {\n\t\tMain obj = new Main();\n\t\ttry {\n\t\t\tSystem.out.println(obj.divideNum(45, 0));\n\t\t} catch (ArithmeticException e) {\n\t\t\tSystem.out.println(\"Number cannot be divided by 0\");\n\t\t}\n\t\tSystem.out.println(\"Rest of the code..\");\n\t}\n}\nCompile and Run",
+        "Output:",
+        "Explanation",
+        "The Main class defines a method named \"divideNum()\" that takes two integer parameters and returns the result of dividing the first parameter by the second. The method is declared with a \"throws ArithmeticException\" clause, indicating that it may throw an ArithmeticException if the second parameter is zero, resulting in a division by zero error.",
+        "In the main() method, an instance of the Main class is created, and the \"divideNum()\" method is called within a try block. If an ArithmeticException is thrown during the method invocation, it is caught by the catch block, which prints a message indicating that division by zero is not allowed.",
+        "Regardless of whether an exception occurs, the program continues to execute the remaining code, printing \"Rest of the code.\" to the console. The code demonstrates how to use the \"throws\" keyword to specify potential exceptions in a method signature and how to handle these exceptions using a try-catch block in Java."
+      ],
+      "code": [
+        "Exception caught: Number is negative, cannot calculate square\nProgram continues..."
+      ]
+    },
+    {
+      "heading": "Difference Between throw and throws Keywords",
+      "paragraphs": [
+        "The following table shows the key differences between difference between throw and throws keywords:",
+        "Characteristics | throw | throws\nDefinition | Java throw keyword is used throw an exception explicitly in the code, inside the function or the block of code. | Java throws keyword is used in the method signature to declare an exception which might be thrown by the function while the execution of the code.\nDeclaration | It is used inside a method or block. | It is used with method signature.\nUsage | Type of exception using throw keyword, we can only propagate unchecked exception i.e., the checked exception cannot be propagated using throw only. | Using throws keyword, we can declare both checked and unchecked exceptions. However, the throws keyword can be used to propagate checked exceptions only.\nPurpose | It triggers the creation and throwing of an exception. | It informs the caller of the method about possible exceptions may occur.\nSyntax | throw new ExceptionType(\"message\"); | public void myMethod() throws IOException\nNumber of Exceptions | It can throw only one exception at a time. | It can declare multiple exceptions separated by commas.\nFollowed By | An instance of Throwable (or subclass). | One or more exception classes (checked exception only).\nInternal Implementation | We are allowed to throw only one exception at a time i.e. we cannot throw multiple exceptions. | We can declare multiple exceptions using throws keyword that can be thrown by the method. For example, main() throws IOException, SQLException."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Understanding throw vs throws Using Example",
+      "paragraphs": [
+        "The following example demonstrates how the throws keyword is used to declare a potential exception and how the throw keyword is used to explicitly raise an exception inside a method. The exception is then handled in the calling method using a try-catch block.",
+        "Examplepublic class Main {  \n    // creating a user-defined method that raises an ArithmeticException  \n    static void method() throws ArithmeticException {  \n        System.out.println(\"Inside the method()\");  \n        throw new ArithmeticException(\"Throwing ArithmeticException\");  \n    }  \n\n    // main method  \n    public static void main(String args[]) {  \n        try {  \n            method();  \n        } catch (ArithmeticException err) {  \n            System.out.println(\"Caught in main() method\");  \n        }  \n    }  \n}\nCompile and Run",
+        "Output:",
+        "Explanation",
+        "In this program, the method() is declared with throws ArithmeticException, indicating it may throw an exception. Inside method(), an ArithmeticException is explicitly thrown after printing a message. In main(), the method is called within a try block, and the exception is caught in the catch block. The output first shows \"Inside the method()\" and then \"Caught in main() method\". This demonstrates how throws declares potential exceptions and throw raises them, while try-catch handles them.",
+        "Next TopicDifference between Final, Finally and Finalize"
+      ],
+      "code": [
+        "Inside the method()\nCaught in main() method"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:37:36.096Z"
+}

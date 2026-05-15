@@ -1,0 +1,97 @@
+{
+  "topicId": "string-vs-stringbuffer",
+  "title": "String vs StringBuffer in Java",
+  "sectionId": "java-core-advanced",
+  "source": "geeksforgeeks",
+  "url": "https://www.geeksforgeeks.org/java/java-string-methods/",
+  "allSources": [
+    {
+      "sourceId": "geeksforgeeks",
+      "url": "https://www.geeksforgeeks.org/java/java-string-methods/",
+      "score": 84,
+      "sectionCount": 2
+    },
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/difference-between-string-and-stringbuffer",
+      "score": 4,
+      "sectionCount": 1
+    }
+  ],
+  "sections": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "In Java, a String represents a sequence of characters used for storing and manipulating text. It is immutable and provides many built-in methods for operations like concatenation, comparison, and manipulation."
+      ],
+      "code": [
+        "Length: 13\nUppercase: GEEKSFORGEEKS\nSubstring: eksf"
+      ]
+    },
+    {
+      "heading": "Commonly Used Java String Methods.",
+      "paragraphs": [
+        "Java provides a rich set of String methods that help perform various operations like comparison, searching, modification of string. Let's Understand one by one.",
+        "1. int length() Method",
+        "This method provides the total count of characters in the string.",
+        "2. charAt(int i) Method",
+        "This method returns the character at ith index.",
+        "3. String substring(int i) Method",
+        "This method return the substring from the ith  index character to end.",
+        "4. String substring(int i, int j) Method",
+        "This method returns the substring from i to j-1 index.",
+        "5. String concat( String str) Method",
+        "This method appends the given string to the end of the current string.",
+        "6. int indexOf(String s) Method",
+        "This method returns the index within the string of the first occurrence of the specified string. If the specified string s is not found in the input string, the method returns -1 by default.",
+        "7. int indexOf(String s, int i) Method",
+        "This method returns the index within the string of the first occurrence of the specified string, starting at the specified index.",
+        "8. int lastIndexOf(String s) Method",
+        "This method returns the index within the string of the last occurrence of the specified string. If the specified string s is not found in the input string, the method returns -1 by default.",
+        "9. boolean equals(Object otherObj) Method",
+        "This method compares this string to the specified object.",
+        "10. boolean equalsIgnoreCase(String anotherString) Method",
+        "This method checks if two strings are equal, without considering letter case.",
+        "11. int compareTo(String anotherString) Method",
+        "This method compares two string lexicographically.",
+        "12. int compareToIgnoreCase(String anotherString) Method",
+        "This method compares two string lexicographically, ignoring case considerations.",
+        "13. String toLowerCase() Method",
+        "This method converts all the characters in the String to lower case.",
+        "14. String toUpperCase() Method",
+        "This method converts all the characters in the String to upper case.",
+        "15. String trim() Method",
+        "This method returns the copy of the String, by removing whitespaces at both ends. It does not modify the whitespace characters present between the text.",
+        "16. String replace(char oldChar, char newChar) Method",
+        "This method returns a new string where all instances of oldChar are replaced by newChar.",
+        "17. boolean contains(CharSequence sequence) Method",
+        "This method returns true if string contains the given string.",
+        "18. char[] toCharArray() Method",
+        "This method converts the string into a new character array.",
+        "19. boolean startsWith(String prefix) Method",
+        "This method returns true if string starts with this prefix."
+      ],
+      "code": [
+        "13",
+        "W",
+        "World!",
+        "World",
+        "Hello, World!!!!",
+        "7",
+        "10",
+        "10",
+        "true",
+        "true",
+        "13",
+        "13",
+        "hello, world!",
+        "HELLO, WORLD!",
+        "'Hello, Trim!'",
+        "Hexxo, Worxd!",
+        "true",
+        "H e l l o"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:46:31.121Z"
+}

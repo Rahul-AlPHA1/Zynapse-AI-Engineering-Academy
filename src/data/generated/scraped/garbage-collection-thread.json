@@ -1,0 +1,168 @@
+{
+  "topicId": "garbage-collection-thread",
+  "title": "Garbage Collection in Java",
+  "sectionId": "java-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/garbage-collection-in-java",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/garbage-collection-in-java",
+      "score": 97,
+      "sectionCount": 16
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_garbage_collection.htm",
+      "score": 80,
+      "sectionCount": 11
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Garbage Collection in Java",
+      "paragraphs": [
+        "Garbage collection in Java is an automatic process that removes unused objects from memory to free heap space. In this chapter, you will learn how garbage collection works and why it is important for efficient memory management."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is Garbage Collection in Java?",
+      "paragraphs": [
+        "First understand, what is Garbage in Java?",
+        "In Java, garbage means unreferenced objects.",
+        "Garbage collection is an automatic memory management process in which the Java Virtual Machine (JVM) identifies and removes objects that are no longer in use. This helps free heap memory and prevents memory leaks that allows programs to run efficiently without manual memory management."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Advantages of Using Garbage Collection",
+      "paragraphs": [
+        "The following are some of the important advantages of using Garbage collection:",
+        "• Garbage collection automatically frees memory by removing unused objects that reduces the risk of memory leaks in applications and it eliminates the need for manual memory management.\n• Garbage collection allows developers to focus more on program logic rather than memory handling."
+      ],
+      "code": []
+    },
+    {
+      "heading": "How Can an Object Be Unreferenced in Java?",
+      "paragraphs": [
+        "An object becomes eligible for garbage collection when it is no longer referenced by any variable. There are several ways an object can be unreferenced."
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. By Nulling a Reference",
+      "paragraphs": [
+        "When a reference variable is assigned null, the object it was pointing to becomes unreferenced.",
+        "Syntax:",
+        "Here is the syntax:"
+      ],
+      "code": [
+        "Employee e = new Employee();\ne = null;"
+      ]
+    },
+    {
+      "heading": "2. By Assigning a Reference to Another Object",
+      "paragraphs": [
+        "When a reference is reassigned to another object, the previously referenced object becomes eligible for garbage collection.",
+        "Syntax:",
+        "Here is the syntax:"
+      ],
+      "code": [
+        "Employee e1=new Employee();\nEmployee e2=new Employee();\ne1=e2;//now the first object referred by e1 is available for garbage collection"
+      ]
+    },
+    {
+      "heading": "3. By Using an Anonymous Object",
+      "paragraphs": [
+        "An object created without assigning it to any reference is called an anonymous object and is immediately eligible for garbage collection.",
+        "Syntax:",
+        "Here is the syntax:"
+      ],
+      "code": [
+        "new Employee();"
+      ]
+    },
+    {
+      "heading": "Important Methods Used in Garbage Collection",
+      "paragraphs": [
+        "The following methods are commonly used to interact with the garbage collection process:"
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. System.gc() Method",
+      "paragraphs": [
+        "This method is used to request the JVM to perform garbage collection. The request may or may not be honored by the JVM. It requests garbage collection to free unused memory.",
+        "Syntax:",
+        "Here is the syntax:"
+      ],
+      "code": [
+        "System.gc();"
+      ]
+    },
+    {
+      "heading": "2. Runtime.getRuntime().gc() Method",
+      "paragraphs": [
+        "This method requests garbage collection through the Runtime class. It requests the JVM to run the garbage collector programmatically.",
+        "Syntax:",
+        "Here is the syntax:"
+      ],
+      "code": [
+        "Runtime.getRuntime().gc();"
+      ]
+    },
+    {
+      "heading": "3. finalize() method",
+      "paragraphs": [
+        "This method is invoked by the garbage collector before an object is removed from memory. It is used to perform cleanup operations before object destruction.",
+        "Syntax:",
+        "Here is the syntax:"
+      ],
+      "code": [
+        "protected void finalize() throws Throwable"
+      ]
+    },
+    {
+      "heading": "Student Record Example Using Garbage Collection",
+      "paragraphs": [
+        "Suppose you are developing a Student Record System. Student objects are created while the program is running. Once some student records are no longer needed, their memory should be released automatically using garbage collection."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example Code",
+      "paragraphs": [
+        "Here is the example code that demonstrates garbage collection using a student-based real-world scenario.",
+        "Output:",
+        "In this example, when student objects s1 and s2 are set to null, they become unreachable. The JVM garbage collector automatically removes these unused objects from memory, demonstrating the concept of garbage collection."
+      ],
+      "code": [
+        "class Student {\n\n    int rollNo;\n    String name;\n\n    Student(int rollNo, String name) {\n        this.rollNo = rollNo;\n        this.name = name;\n    }\n\n    protected void finalize() {\n        System.out.println(\"Student object is garbage collected\");\n    }\n}\n\npublic class StudentGCDemo {\n\n    public static void main(String[] args) {\n\n        Student s1 = new Student(1, \"Rahul\");\n        Student s2 = new Student(2, \"Anita\");\n\n        // Student objects are no longer needed\n        s1 = null;\n        s2 = null;\n\n        // Requesting garbage collection\n        System.gc();\n    }\n}",
+        "Student object is garbage collected\nStudent object is garbage collected"
+      ]
+    },
+    {
+      "heading": "JVM Role in Garbage Collection",
+      "paragraphs": [
+        "Garbage collection is completely managed by the Java Virtual Machine (JVM). The JVM automatically tracks object usage and removes objects that are no longer reachable, without any direct intervention from the programmer."
+      ],
+      "code": []
+    },
+    {
+      "heading": "When Garbage Collection Runs",
+      "paragraphs": [
+        "Garbage collection runs automatically when the JVM decides that memory needs to be freed. It usually occurs when heap memory is low or when the JVM requires more space for new objects. The exact time of execution depends on the JVM and system conditions."
+      ],
+      "code": []
+    },
+    {
+      "heading": "The gc() vs Garbage Collection",
+      "paragraphs": [
+        "Calling System.gc() or Runtime.getRuntime().gc() only requests garbage collection. The actual garbage collection process is controlled by the JVM, and there is no guarantee that it will run immediately."
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:40:05.992Z"
+}

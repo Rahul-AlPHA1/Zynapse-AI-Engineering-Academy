@@ -1,0 +1,68 @@
+{
+  "topicId": "deadlock",
+  "title": "Java - Thread Deadlock",
+  "sectionId": "java-advanced",
+  "source": "tutorialspoint",
+  "url": "https://www.tutorialspoint.com/java/java_thread_deadlock.htm",
+  "allSources": [
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_thread_deadlock.htm",
+      "score": 32,
+      "sectionCount": 6
+    }
+  ],
+  "sections": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Deadlock describes a situation where two or more threads are blocked forever, waiting for each other. Deadlock occurs when multiple threads need the same locks but obtain them in different order. A Java multithreaded program may suffer from the deadlock condition because the synchronized keyword causes the executing thread to block while waiting for the lock, or monitor, associated with the specified object. Here is an example."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: Demonstrating Deadlock Situation",
+      "paragraphs": [
+        "When you compile and execute the above program, you find a deadlock situation and following is the output produced by the program −"
+      ],
+      "code": [
+        "public class TestThread {\n   public static Object Lock1 = new Object();\n   public static Object Lock2 = new Object();\n   \n   public static void main(String args[]) {\n      ThreadDemo1 T1 = new ThreadDemo1();\n      ThreadDemo2 T2 = new ThreadDemo2();\n      T1.start();\n      T2.start();\n   }\n   \n   private static class ThreadDemo1 extends Thread {\n      public void run() {\n         synchronized (Lock1) {\n            System.out.println(\"Thread 1: Holding lock 1...\");\n            \n            try { Thread.sleep(10); }\n            catch (InterruptedException e) {}\n            System.out.println(\"Thread 1: Waiting for lock 2...\");\n            \n            synchronized (Lock2) {\n               System.out.println(\"Thread 1: Holding lock 1 & 2...\");\n            }\n         }\n      }\n   }\n   private static class ThreadDemo2 extends Thread {\n      public void run() {\n         synchronized (Lock2) {\n            System.out.println(\"Thread 2: Holding lock 2...\");\n            \n            try { Thread.sleep(10); }\n            catch (InterruptedException e) {}\n            System.out.println(\"Thread 2: Waiting for lock 1...\");\n            \n            synchronized (Lock1) {\n               System.out.println(\"Thread 2: Holding lock 1 & 2...\");\n            }\n         }\n      }\n   } \n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [
+        "The above program will hang forever because neither of the threads in position to proceed and waiting for each other to release the lock, so you can come out of the program by pressing CTRL&plus;C."
+      ],
+      "code": [
+        "Thread 1: Holding lock 1...\nThread 2: Holding lock 2...\nThread 1: Waiting for lock 2...\nThread 2: Waiting for lock 1..."
+      ]
+    },
+    {
+      "heading": "Deadlock Solution Example",
+      "paragraphs": [
+        "Let's change the order of the lock and run of the same program to see if both the threads still wait for each other −"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "So just changing the order of the locks prevent the program in going into a deadlock situation and completes with the following result −"
+      ],
+      "code": [
+        "public class TestThread {\n   public static Object Lock1 = new Object();\n   public static Object Lock2 = new Object();\n   \n   public static void main(String args[]) {\n      ThreadDemo1 T1 = new ThreadDemo1();\n      ThreadDemo2 T2 = new ThreadDemo2();\n      T1.start();\n      T2.start();\n   }\n   \n   private static class ThreadDemo1 extends Thread {\n      public void run() {\n         synchronized (Lock1) {\n            System.out.println(\"Thread 1: Holding lock 1...\");\n            \n            try {\n               Thread.sleep(10);\n            } catch (InterruptedException e) {}\n            System.out.println(\"Thread 1: Waiting for lock 2...\");\n            \n            synchronized (Lock2) {\n               System.out.println(\"Thread 1: Holding lock 1 & 2...\");\n            }\n         }\n      }\n   }\n   private static class ThreadDemo2 extends Thread {\n      public void run() {\n         synchronized (Lock1) {\n            System.out.println(\"Thread 2: Holding lock 1...\");\n           \n            try {\n               Thread.sleep(10);\n            } catch (InterruptedException e) {}\n            System.out.println(\"Thread 2: Waiting for lock 2...\");\n            \n            synchronized (Lock2) {\n               System.out.println(\"Thread 2: Holding lock 1 & 2...\");\n            }\n         }\n      }\n   } \n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [
+        "The above example is to just make the concept clear, however, it is a complex concept and you should deep dive into it before you develop your applications to deal with deadlock situations."
+      ],
+      "code": [
+        "Thread 1: Holding lock 1...\nThread 1: Waiting for lock 2...\nThread 1: Holding lock 1 & 2...\nThread 2: Holding lock 1...\nThread 2: Waiting for lock 2...\nThread 2: Holding lock 1 & 2..."
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:40:41.106Z"
+}

@@ -1,0 +1,139 @@
+{
+  "topicId": "create-file",
+  "title": "Java - Creating Files",
+  "sectionId": "java-advanced",
+  "source": "tutorialspoint",
+  "url": "https://www.tutorialspoint.com/java/java_create_file.htm",
+  "allSources": [
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_create_file.htm",
+      "score": 77,
+      "sectionCount": 14
+    },
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/how-to-create-a-file-in-java",
+      "score": 71,
+      "sectionCount": 10
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Create File in Java",
+      "paragraphs": [
+        "We can create a file in Java using multiple ways. Following are three most popular ways to create a file in Java −",
+        "• Using FileOutputStream() constructor\n• Using File.createNewFile() method\n• Using Files.write() method",
+        "Let's take a look at each of the way to create file in Java."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Create File Using FileOutputStream Constructor",
+      "paragraphs": [
+        "FileOutputStream is used to create a file and write data into it. The stream would create a file, if it doesn't already exist, before opening it for output.",
+        "Here are two constructors which can be used to create a FileOutputStream object.",
+        "Following constructor takes a file name as a string to create an input stream object to write the file −"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [],
+      "code": [
+        "OutputStream f = new FileOutputStream(\"C:/java/hello.txt\")"
+      ]
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [
+        "Following constructor takes a file object to create an output stream object to write the file. First, we create a file object using File() method as follows −"
+      ],
+      "code": [
+        "File f = new File(\"C:/java/hello.txt\");\nOutputStream f = new FileOutputStream(f);"
+      ]
+    },
+    {
+      "heading": "Example: Create File Using FileOutputStream Constructor",
+      "paragraphs": [
+        "Following is the example to demonstrate FileOutputStream to create a file in current directory−",
+        "The above code would create file test.txt and would write given numbers in binary format. Same would be the output on the stdout screen."
+      ],
+      "code": [
+        "package com.tutorialspoint;\n\nimport java.io.FileInputStream;\nimport java.io.FileOutputStream;\nimport java.io.IOException;\nimport java.io.InputStream;\nimport java.io.OutputStream;\n\npublic class FileTest {\n\n   public static void main(String args[]) {\n   \n      try {\n         byte bWrite [] = {65, 66, 67, 68, 69};\n         OutputStream os = new FileOutputStream(\"test.txt\");\n         for(int x = 0; x < bWrite.length ; x++) {\n            os.write( bWrite[x] );   // writes the bytes\n         }\n         os.close();\n     \n         InputStream is = new FileInputStream(\"test.txt\");\n         int size = is.available();\n\n         for(int i = 0; i < size; i++) {\n            System.out.print((char)is.read() + \"  \");\n         }\n         is.close();\n      } catch (IOException e) {\n         System.out.print(\"Exception\");\n      }\t\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "A  B  C  D  E"
+      ]
+    },
+    {
+      "heading": "Create File Using File.createNewFile() Method",
+      "paragraphs": [
+        "File.createNewFile() method allows to create a file in given location or in current directory as follows −"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [],
+      "code": [
+        "File file = new File(\"d://test//testFile1.txt\");\n\n//Create the file\nif (file.createNewFile()) { \n   System.out.println(\"File is created!\");\n} else {\n   System.out.println(\"File already exists.\");\n}"
+      ]
+    },
+    {
+      "heading": "Example: Create File Using File.createNewFile() Method",
+      "paragraphs": [
+        "Following is the example to demonstrate File to create a file in given directory using createNewFile() method −"
+      ],
+      "code": [
+        "package com.tutorialspoint;\n\nimport java.io.File;\nimport java.io.FileReader;\nimport java.io.FileWriter;\nimport java.io.IOException;\n\npublic class FileTest {\n\n   public static void main(String args[]) {\n   \n      try {\n          File file = new File(\"d://test//testFile1.txt\");\n          \n          //Create the file\n          if (file.createNewFile()) { \n             System.out.println(\"File is created!\");\n          } else {\n             System.out.println(\"File already exists.\");\n          } \n          \n          // Write Content\n          FileWriter writer = new FileWriter(file);\n          writer.write(\"Test data\");\n          writer.close();\n          \n          \n          // read content\n          FileReader reader = new FileReader(file);\n          \n          int c;\n          while ((c = reader.read()) != -1) {\n        \t  char ch = (char) c;\n              System.out.print(ch);\n          }\n      } catch (IOException e) {\n         System.out.print(\"Exception\");\n      }\t\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [
+        "The above code would create file test.txt and would write given string in text format. Same would be the output on the stdout screen."
+      ],
+      "code": [
+        "File is created!\nTest data"
+      ]
+    },
+    {
+      "heading": "Create File Using Files.write() Method",
+      "paragraphs": [
+        "Files.write() is a newer and more flexible method create a file and write content to a file in same command as shown below −"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [],
+      "code": [
+        "String data = \"Test data\";\nFiles.write(Paths.get(\"d://test/testFile3.txt\"), data.getBytes());\n\nList<String> lines = Arrays.asList(\"1st line\", \"2nd line\");\nFiles.write(Paths.get(\"file6.txt\"), lines, StandardCharsets.UTF_8, \n   StandardOpenOption.CREATE, StandardOpenOption.APPEND);"
+      ]
+    },
+    {
+      "heading": "Example: Create File Using Files.write() Method",
+      "paragraphs": [
+        "Following is the example to demonstrate File to create a file in given directory using Files.write() method −"
+      ],
+      "code": [
+        "package com.tutorialspoint;\n\nimport java.io.IOException;\nimport java.nio.charset.StandardCharsets;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\nimport java.nio.file.StandardOpenOption;\nimport java.util.Arrays;\nimport java.util.List;\n\npublic class FileTest {\n\n   public static void main(String args[]) {\n   \n      try {\n    \t  String data = \"Test data\";\n          Files.write(Paths.get(\"d://test/testFile3.txt\"), data.getBytes());\n          List<String> lines = Arrays.asList(\"1st line\", \"2nd line\");\n          Files.write(Paths.get(\n             \"file6.txt\"), lines, StandardCharsets.UTF_8, \n             StandardOpenOption.CREATE, StandardOpenOption.APPEND);\n          \n          List<String> content = Files.readAllLines(Paths.get(\"d://test/testFile3.txt\"));\n\n          System.out.println(content);\n          \n          content = Files.readAllLines(Paths.get(\"file6.txt\"));\n\n          System.out.println(content);\n      } catch (IOException e) {\n         System.out.print(\"Exception\");\n      }\t\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [
+        "The above code would create file test.txt and would write given strings in text format. Same would be the output on the stdout screen."
+      ],
+      "code": [
+        "[Test data]\n[1st line, 2nd line]"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:41:47.236Z"
+}

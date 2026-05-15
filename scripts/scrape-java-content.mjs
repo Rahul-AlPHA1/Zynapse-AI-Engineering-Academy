@@ -155,9 +155,10 @@ function extractTpointTech(html) {
 function extractGeeksForGeeks(html) {
   const $ = cheerioLoad(html);
 
-  // Check for 404/gone pages
-  const bodyText = $("body").text();
-  if (bodyText.includes("Whoops, that page is gone") || bodyText.includes("404")) {
+  // Check for 404/gone pages - check title or h1, not body text (body has "404" in scripts)
+  const pageTitle = $("title").text();
+  const h1Text = $("h1").first().text();
+  if (pageTitle.includes("Page not found") || h1Text.includes("Whoops") || h1Text.includes("Page Not Found")) {
     return null;
   }
 
@@ -223,7 +224,7 @@ function extractGeeksForGeeks(html) {
 function extractTutorialspoint(html) {
   const $ = cheerioLoad(html);
 
-  $("script, style, noscript, [class*='adp'], [data-aaad], nav, header, footer, .library-page-top-nav, .library-page-bottom-nav, .pre-btn, .nxt-btn, .page-cta, .tp-cta").remove();
+  $("script, style, noscript, [class*='adp'], [data-aaad], [data-aa-adunit], nav, header, footer, .library-page-top-nav, .library-page-bottom-nav, .pre-btn, .nxt-btn, .page-cta, .tp-cta, hr, .explore-categories, .tp-similar-articles, .tutorial-qa").remove();
 
   const title = $("h1").first().text().trim();
 

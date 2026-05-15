@@ -1,0 +1,187 @@
+{
+  "topicId": "object-vs-class",
+  "title": "Java - Classes and Objects",
+  "sectionId": "java-core-advanced",
+  "source": "tutorialspoint",
+  "url": "https://www.tutorialspoint.com/java/java_object_classes.htm",
+  "allSources": [
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_object_classes.htm",
+      "score": 113,
+      "sectionCount": 19
+    }
+  ],
+  "sections": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Java is an Object-Oriented programming language. In Java, the classes and objects are the basic and important features of object-oriented programming system, Java supports the following fundamental OOPs concepts",
+        "• Classes\n• Objects\n• Inheritance\n• Polymorphism\n• Encapsulation\n• Abstraction\n• Instance\n• Method\n• Message Passing",
+        "In this tutorial, we will learn about Java Classes and Objects, the creation of the classes and objects, accessing class methods, etc."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What are Java Classes?",
+      "paragraphs": [
+        "A class is a blueprint from which individual objects are created (or, we can say a class is a data type of an object type). In Java, everything is related to classes and objects. Each class has its methods and attributes that can be accessed and manipulated through the objects.",
+        "For example, if you want to create a class for students. In that case, \"Student\" will be a class, and student records (like student1, student2, etc) will be objects.",
+        "We can also consider that class is a factory (user-defined blueprint) to produce objects."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Properties of Java Classes",
+      "paragraphs": [
+        "• A class does not take any byte of memory.\n• A class is just like a real-world entity, but it is not a real-world entity. It's a blueprint where we specify the functionalities.\n• A class contains mainly two things: Methods and Data Members.\n• A class can also be a nested class.\n• Classes follow all of the rules of OOPs such as inheritance, encapsulation, abstraction, etc."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Types of Class Variables",
+      "paragraphs": [
+        "A class can contain any of the following variable types.",
+        "• Local variables − Variables defined inside methods, constructors or blocks are called local variables. The variable will be declared and initialized within the method and the variable will be destroyed when the method has completed.\n• Instance variables − Instance variables are variables within a class but outside any method. These variables are initialized when the class is instantiated. Instance variables can be accessed from inside any method, constructor or blocks of that particular class.\n• Class variables − Class variables are variables declared within a class, outside any method, with the static keyword."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Creating (Declaring) a Java Class",
+      "paragraphs": [
+        "To create (declare) a class, you need to use access modifiers followed by class keyword and class_name."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax to create a Java class",
+      "paragraphs": [
+        "Use the below syntax to create (declare) class in Java:"
+      ],
+      "code": [
+        "access_modifier class class_name{\n  data members;\n  constructors;\n  methods;\n  ...;\n}"
+      ]
+    },
+    {
+      "heading": "Example of a Java Class",
+      "paragraphs": [
+        "In this example, we are creating a class \"Dog\". Where, the class attributes are breed, age, and color. The class methods are setBreed(), setAge(), setColor(), and printDetails()."
+      ],
+      "code": [
+        "// Creating a Java class\nclass Dog {\n  // Declaring and initializing the attributes\n  String breed;\n  int age;\n  String color;\n\n  // methods to set breed, age, and color of the dog\n  public void setBreed(String breed) {\n    this.breed = breed;\n  }\n  public void setAge(int age) {\n    this.age = age;\n  }\n  public void setColor(String color) {\n    this.color = color;\n  }\n\n  // method to print all three values\n  public void printDetails() {\n    System.out.println(\"Dog detials:\");\n    System.out.println(this.breed);\n    System.out.println(this.age);\n    System.out.println(this.color);\n  }\n}"
+      ]
+    },
+    {
+      "heading": "What are Java Objects?",
+      "paragraphs": [
+        "An object is a variable of the type class, it is a basic component of an object-oriented programming system. A class has the methods and data members (attributes), these methods and data members are accessed through an object. Thus, an object is an instance of a class.",
+        "If we consider the real world, we can find many objects around us, cars, dogs, humans, etc. All these objects have a state and a behavior.",
+        "If we consider a dog, then its state is - name, breed, and color, and the behavior is - barking, wagging the tail, and running.",
+        "If you compare the software object with a real-world object, they have very similar characteristics. Software objects also have a state and a behavior. A software object's state is stored in fields and behavior is shown via methods. So, in software development, methods operate on the internal state of an object, and the object-to-object communication is done via methods."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Creating (Declaring) a Java Object",
+      "paragraphs": [
+        "As mentioned previously, a class provides the blueprints for objects. So basically, an object is created from a class. In Java, the new keyword is used to create new objects.",
+        "There are three steps when creating an object from a class −",
+        "• Declaration − A variable declaration with a variable name with an object type.\n• Instantiation − The 'new' keyword is used to create the object.\n• Initialization − The 'new' keyword is followed by a call to a constructor. This call initializes the new object."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax to Create a Java Object",
+      "paragraphs": [
+        "Consider the below syntax to create an object of the class in Java:",
+        "Note: parameters are optional and can be used while you're using constructors in the class."
+      ],
+      "code": [
+        "Class_name object_name = new Class_name([parameters]);"
+      ]
+    },
+    {
+      "heading": "Example to Create a Java Object",
+      "paragraphs": [
+        "In this example, we are creating an object named obj of Dog class and accessing its methods."
+      ],
+      "code": [
+        "// Creating a Java class\nclass Dog {\n  // Declaring and initializing the attributes\n  String breed;\n  int age;\n  String color;\n\n  // methods to set breed, age, and color of the dog\n  public void setBreed(String breed) {\n    this.breed = breed;\n  }\n  public void setAge(int age) {\n    this.age = age;\n  }\n  public void setColor(String color) {\n    this.color = color;\n  }\n\n  // method to print all three values\n  public void printDetails() {\n    System.out.println(\"Dog detials:\");\n    System.out.println(this.breed);\n    System.out.println(this.age);\n    System.out.println(this.color);\n  }\n}\n\npublic class Main {\n  public static void main(String[] args) {\n    // Creating an object of the class Dog\n    Dog obj = new Dog();\n\n    // setting the attributes\n    obj.setBreed(\"Golden Retriever\");\n    obj.setAge(2);\n    obj.setColor(\"Golden\");\n\n    // Printing values\n    obj.printDetails();\n  }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Dog detials:\nGolden Retriever\n2\nGolden"
+      ]
+    },
+    {
+      "heading": "Accessing Instance Variables and Methods",
+      "paragraphs": [
+        "Instance variables and methods are accessed via created objects. To access an instance variable, following is the fully qualified path −"
+      ],
+      "code": [
+        "/* First create an object */\nObjectReference = new Constructor();\n\n/* Now call a variable as follows */\nObjectReference.variableName;\n\n/* Now you can call a class method as follows */\nObjectReference.MethodName();"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "In this example, We've created a class named Puppy. In Puppy class constructor, puppy name is printed so that when the object is created, its name is printed. An instance variable puppyAge is added and using getter/setter method, we can manipulate the age. In main method, an object is created using new operator. Age is updated using setAge() method and using getAge(), the age is printed."
+      ],
+      "code": [
+        "public class Puppy {\n   int puppyAge;\n\n   public Puppy(String name) {\n      // This constructor has one parameter, <i>name</i>.\n      System.out.println(\"Name chosen is :\" + name );\n   }\n\n   public void setAge( int age ) {\n      puppyAge = age;\n   }\n\n   public int getAge( ) {\n      System.out.println(\"Puppy's age is :\" + puppyAge );\n      return puppyAge;\n   }\n\n   public static void main(String []args) {\n      /* Object creation */\n      Puppy myPuppy = new Puppy( \"tommy\" );\n\n      /* Call class method to set puppy's age */\n      myPuppy.setAge( 2 );\n\n      /* Call another class method to get puppy's age */\n      myPuppy.getAge( );\n\n      /* You can access instance variable as follows as well */\n      System.out.println(\"Variable Value :\" + myPuppy.puppyAge );\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [
+        "If we compile and run the above program, then it will produce the following result −"
+      ],
+      "code": [
+        "Name chosen is :tommy\nPuppy's age is :2\nVariable Value :2"
+      ]
+    },
+    {
+      "heading": "Rules for using the Classes and Objects Concepts",
+      "paragraphs": [
+        "Let's now look into the source file declaration rules (to use the Java classes & objects approach). These rules are essential when declaring classes, import statements, and package statements in a source file.",
+        "• There can be only one public class per source file.\n• A source file can have multiple non-public classes.\n• The public class name should be the name of the source file as well which should be appended by .java at the end. For example − the class name is public class Employee{} then the source file should be as Employee.java.\n• If the class is defined inside a package, then the package statement should be the first statement in the source file.\n• If import statements are present, then they must be written between the package statement and the class declaration. If there are no package statements, then the import statement should be the first line in the source file.\n• Import and package statements will imply to all the classes present in the source file. It is not possible to declare different import and/or package statements to different classes in the source file.",
+        "Classes have several access levels and there are different types of classes; abstract classes, final classes, etc. We will be explaining about all these in the access modifiers chapter.",
+        "Apart from the above mentioned types of classes, Java also has some special classes called Inner classes and Anonymous classes."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example 1",
+      "paragraphs": [
+        "The Employee class has four instance variables - name, age, designation and salary. The class has one explicitly defined constructor, which takes a parameter.",
+        "As mentioned previously in this tutorial, processing starts from the main method. Therefore, in order for us to run this Employee class there should be a main method and objects should be created. We will be creating a separate class for these tasks."
+      ],
+      "code": [
+        "import java.io.*;\npublic class Employee {\n\n   String name;\n   int age;\n   String designation;\n   double salary;\n\n   // This is the constructor of the class Employee\n   public Employee(String name) {\n      this.name = name;\n   }\n\n   // Assign the age of the Employee  to the variable age.\n   public void empAge(int empAge) {\n      age = empAge;\n   }\n\n   /* Assign the designation to the variable designation.*/\n   public void empDesignation(String empDesig) {\n      designation = empDesig;\n   }\n\n   /* Assign the salary to the variable\tsalary.*/\n   public void empSalary(double empSalary) {\n      salary = empSalary;\n   }\n\n   /* Print the Employee details */\n   public void printEmployee() {\n      System.out.println(\"Name:\"+ name );\n      System.out.println(\"Age:\" + age );\n      System.out.println(\"Designation:\" + designation );\n      System.out.println(\"Salary:\" + salary);\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Example 2",
+      "paragraphs": [
+        "Following is the EmployeeTest class, which creates two instances of the class Employee and invokes the methods for each object to assign values for each variable.",
+        "Save the following code in EmployeeTest.java file."
+      ],
+      "code": [
+        "import java.io.*;\npublic class EmployeeTest {\n\n   public static void main(String args[]) {\n      /* Create two objects using constructor */\n      Employee empOne = new Employee(\"James Smith\");\n      Employee empTwo = new Employee(\"Mary Anne\");\n\n      // Invoking methods for each object created\n      empOne.empAge(26);\n      empOne.empDesignation(\"Senior Software Engineer\");\n      empOne.empSalary(1000);\n      empOne.printEmployee();\n\n      empTwo.empAge(21);\n      empTwo.empDesignation(\"Software Engineer\");\n      empTwo.empSalary(500);\n      empTwo.printEmployee();\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [
+        "Now, compile both the classes and then run EmployeeTest to see the result as follows −"
+      ],
+      "code": [
+        "C:\\> javac Employee.java\nC:\\> javac EmployeeTest.java\nC:\\> java EmployeeTest\nName:James Smith\nAge:26\nDesignation:Senior Software Engineer\nSalary:1000.0\nName:Mary Anne\nAge:21\nDesignation:Software Engineer\nSalary:500.0"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:35:34.355Z"
+}

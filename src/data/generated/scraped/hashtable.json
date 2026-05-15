@@ -1,0 +1,185 @@
+{
+  "topicId": "hashtable",
+  "title": "Java Hashtable Class",
+  "sectionId": "java-collections-jdbc",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-hashtable",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-hashtable",
+      "score": 115,
+      "sectionCount": 17
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/util/java_util_hashtable.htm",
+      "score": 33,
+      "sectionCount": 6
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java Hashtable Class",
+      "paragraphs": [
+        "Java Hashtable is used for storing key-value pairs where each key is unique, and it provides fast data retrieval and insertion operations. It is commonly used in applications where thread-safe data storage is required.",
+        "In this chapter, you will learn about the Java Hashtable class, its working, features, and how it stores and retrieves data using a hash table mechanism."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is Java Hashtable?",
+      "paragraphs": [
+        "Java Hashtable is a class in the java.util package that implements the Map interface and is used to store key-value pairs with unique keys. It uses a hash table data structure internally, where a hash function determines the index of elements stored in buckets.",
+        "When a key-value pair is inserted, the hash code of the key is calculated to identify the appropriate bucket. If multiple elements map to the same bucket, a collision resolution technique is applied to store them properly.",
+        "Hashtable is similar to HashMap but is synchronized which makes it thread-safe. This allows multiple threads to access it without data inconsistency. However, due to synchronization, its performance may be slower compared to HashMap when thread safety is not required."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Hashtable Class Declaration",
+      "paragraphs": [
+        "The following is the declaration of the java.util.Hashtable class:"
+      ],
+      "code": [
+        "public class Hashtable<K,V> extends Dictionary<K,V> implements Map<K,V>, Cloneable, Serializable"
+      ]
+    },
+    {
+      "heading": "Hashtable Class Parameters",
+      "paragraphs": [
+        "The following are the parameters used in the java.util.Hashtable class.",
+        "• K: It represents the type of keys maintained by the map.\n• V: It represents the type of values mapped to the keys."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Features of Hashtable",
+      "paragraphs": [
+        "Several features of Hashtable are as follows:",
+        "• Key-Value Mapping: Hashtable stores data in key-value pairs that allows direct access to values using their corresponding keys.\n• Synchronization: Hashtable is synchronized, which makes it thread-safe. Multiple threads can access and modify it without causing data inconsistency, although this may impact performance.\n• No Null Keys or Values: Hashtable does not allow null keys or null values. Attempting to insert them results in a NullPointerException.\n• Hashtable Iteration: Elements of a Hashtable can be traversed using methods like keySet(), values(), and entrySet(), which provide collections for iteration.\n• Performance: Hashtable generally provides constant-time performance for operations like get() and put(), but it may be slower compared to non-synchronized collections like HashMap in highly concurrent scenarios.\n• Resizing: Hashtable automatically resizes itself when the number of elements exceeds a certain threshold, increasing capacity and rehashing existing entries.\n• Enumeration: Hashtable supports the Enumeration interface for iterating over elements, mainly for compatibility with older Java code."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Constructors of Hashtable Class",
+      "paragraphs": [
+        "Java Hashtable provides several constructors to create and initialize a hashtable in different ways."
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. Hashtable()",
+      "paragraphs": [
+        "It creates an empty hashtable with the default initial capacity and load factor.",
+        "Here is syntax:"
+      ],
+      "code": [
+        "Hashtable<K, V> table = new Hashtable<>();"
+      ]
+    },
+    {
+      "heading": "2. Hashtable(int capacity)",
+      "paragraphs": [
+        "It creates a hashtable with the specified initial capacity.",
+        "Here is syntax:"
+      ],
+      "code": [
+        "Hashtable<K, V> table = new Hashtable<>(capacity);"
+      ]
+    },
+    {
+      "heading": "3. Hashtable(int capacity, float loadFactor)",
+      "paragraphs": [
+        "It creates a hashtable with the specified initial capacity and load factor.",
+        "Here is syntax:"
+      ],
+      "code": [
+        "Hashtable<K, V> table = new Hashtable<>(capacity, loadFactor);"
+      ]
+    },
+    {
+      "heading": "4. Hashtable(Map t)",
+      "paragraphs": [
+        "It creates a new hashtable containing the same mappings as the given map.",
+        "Here is syntax:"
+      ],
+      "code": [
+        "Hashtable<K, V> table = new Hashtable<>(t);"
+      ]
+    },
+    {
+      "heading": "Methods of Hashtable Class",
+      "paragraphs": [
+        "The Hashtable class provides various methods to perform operations such as inserting, deleting, searching, and iterating over key-value pairs in a thread-safe manner.",
+        "The following table lists the commonly used methods of the Java Hashtable class along with their descriptions:",
+        "Method | Description\nvoid clear() | It is used to reset the hash table.\nObject clone() | It returns a shallow copy of the Hashtable.\nV compute(K key, BiFunction<? super K,? super V,? extends V> remappingFunction) | It is used to compute a mapping for the specified key and its current mapped value (or null if there is no current mapping).\nV computeIfAbsent(K key, Function<? super K,? extends V> mappingFunction) | It is used to compute its value using the given mapping function, if the specified key is not already associated with a value (or is mapped to null), and enters it into this map unless null.\nV computeIfPresent(K key, BiFunction<? super K,? super V,? extends V> remappingFunction) | It is used to compute a new mapping given the key and its current mapped value if the value for the specified key is present and non-null.\nEnumerationelements() | It returns an enumeration of the values in the hash table.\nSet<Map.Entry<K,V>> entrySet() | It returns a set view of the mappings contained in the map.\nboolean equals(Object o) | It is used to compare the specified Object with the Map.\nvoid forEach(BiConsumer<? super K,? super V> action) | It performs the given action for each entry in the map until all entries have been processed or the action throws an exception.\nV getOrDefault(Object key, V defaultValue) | It returns the value to which the specified key is mapped, or defaultValue if the map contains no mapping for the key.\nint hashCode() | It returns the hash code value for the Map\nEnumeration<K> keys() | It returns an enumeration of the keys in the hashtable.\nSet<K> keySet() | It returns a Set view of the keys contained in the map.\nV merge(K key, V value, BiFunction<? super V,? super V,? extends V> remappingFunction) | If the specified key is not already associated with a value or is associated with null, associates it with the given non-null value.\nV put(K key, V value) | It inserts the specified value with the specified key in the hash table.\nvoid putAll(Map<? extends K,? extends V> t)) | It is used to copy all the key-value pair from map to hashtable.\nV putIfAbsent(K key, V value) | If the specified key is not already associated with a value (or is mapped to null) associates it with the given value and returns null, else returns the current value.\nboolean remove(Object key, Object value) | It removes the specified values with the associated specified keys from the hashtable.\nV replace(K key, V value) | It replaces the specified value for a specified key.\nboolean replace(K key, V oldValue, V newValue) | It replaces the old value with the new value for a specified key.\nvoid replaceAll(BiFunction<? super K,? super V,? extends V> function) | It replaces each entry's value with the result of invoking the given function on that entry until all entries have been processed or the function throws an exception.\nString toString() | It returns a string representation of the Hashtable object.\nCollectionvalues() | It returns a collection view of the values contained in the map.\nboolean contains(Object value) | This method returns true if some value equal to the value exists within the hash table, else return false.\nboolean containsValue(Object value) | This method returns true if some value equal to the value exists within the hash table, else return false.\nboolean containsKey(Object key) | This method return true if some key equal to the key exists within the hash table, else return false.\nboolean isEmpty() | This method returns true if the hash table is empty; returns false if it contains at least one key.\nprotected void rehash() | It is used to increase the size of the hash table and rehashes all of its keys.\nV get(Object key) | This method returns the object that contains the value associated with the key.\nV remove(Object key) | It is used to remove the key and its value. This method returns the value associated with the key.\nint size() | This method returns the number of entries in the hash table."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Examples of Java Hashtable Class",
+      "paragraphs": [
+        "The following examples demonstrate how to use Java Hashtable for storing, removing, and performing operations on key-value pairs."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example 1: Storing and Iterating Hashtable Elements",
+      "paragraphs": [
+        "This example demonstrates how to store key-value pairs in a Hashtable and iterate through them.",
+        "Output:"
+      ],
+      "code": [
+        "import java.util.*;\nclass Hashtable1{\n public static void main(String args[]){\n  Hashtable<Integer,String> hm=new Hashtable<Integer,String>();\n\n  hm.put(100,\"Amit\");\n  hm.put(102,\"Ravi\");\n  hm.put(101,\"Vijay\");\n  hm.put(103,\"Rahul\");\n\n  for(Map.Entry m:hm.entrySet()){\n   System.out.println(m.getKey()+\" \"+m.getValue());\n  }\n }\n}",
+        "103 Rahul\n102 Ravi\n101 Vijay\n100 Amit"
+      ]
+    },
+    {
+      "heading": "Example 2: Removing Elements using remove()",
+      "paragraphs": [
+        "This example demonstrates how to remove an element from a Hashtable.",
+        "Output:"
+      ],
+      "code": [
+        "import java.util.*;\npublic class Hashtable2 {\n   public static void main(String args[]) {\n  Hashtable<Integer,String> map=new Hashtable<Integer,String>();  \t  \n\t map.put(100,\"Amit\");  \n\t map.put(102,\"Ravi\"); \n\t map.put(101,\"Vijay\");  \n\t map.put(103,\"Rahul\");  \n\t System.out.println(\"Before remove: \"+ map);  \n\t   // Remove value for key 102\n\t   map.remove(102);\n\t   System.out.println(\"After remove: \"+ map);\n   }    \n}",
+        "Before remove: {103=Rahul, 102=Ravi, 101=Vijay, 100=Amit}\nAfter remove: {103=Rahul, 101=Vijay, 100=Amit}"
+      ]
+    },
+    {
+      "heading": "Example 3: Using getOrDefault() Method",
+      "paragraphs": [
+        "This example demonstrates how to use the getOrDefault() method.",
+        "Output:"
+      ],
+      "code": [
+        "import java.util.*;\nclass Hashtable3{\n public static void main(String args[]){\n \tHashtable<Integer,String> map=new Hashtable<Integer,String>();  \t  \n\t map.put(100,\"Amit\");  \n\t map.put(102,\"Ravi\"); \n\t map.put(101,\"Vijay\");  \n\t map.put(103,\"Rahul\");  \n\t //Here, we specify the if and else statement as arguments of the method\n\t System.out.println(map.getOrDefault(101, \"Not Found\"));\n\t System.out.println(map.getOrDefault(105, \"Not Found\"));\n }\n}",
+        "Vijay\nNot Found"
+      ]
+    },
+    {
+      "heading": "Example 4: Using putIfAbsent() Method",
+      "paragraphs": [
+        "This example demonstrates how to use the putIfAbsent() method.",
+        "Output:"
+      ],
+      "code": [
+        "import java.util.*;\nclass Hashtable4{\n public static void main(String args[]){\n \tHashtable<Integer,String> map=new Hashtable<Integer,String>();  \t  \n\t map.put(100,\"Amit\");  \n\t map.put(102,\"Ravi\"); \n\t map.put(101,\"Vijay\");  \n\t map.put(103,\"Rahul\");  \n\t System.out.println(\"Initial Map: \"+map);\n\t //Inserts, as the specified pair is unique\n\t map.putIfAbsent(104,\"Gaurav\");\n\t System.out.println(\"Updated Map: \"+map);\n\t //Returns the current value, as the specified pair already exist\n\t map.putIfAbsent(101,\"Vijay\");\n\t System.out.println(\"Updated Map: \"+map);\n }\n}",
+        "Initial Map: {103=Rahul, 102=Ravi, 101=Vijay, 100=Amit}\nUpdated Map: {104=Gaurav, 103=Rahul, 102=Ravi, 101=Vijay, 100=Amit}\nUpdated Map: {104=Gaurav, 103=Rahul, 102=Ravi, 101=Vijay, 100=Amit}"
+      ]
+    },
+    {
+      "heading": "Example 5: Storing Custom Objects in Hashtable",
+      "paragraphs": [
+        "This example demonstrates how to store custom objects in a Hashtable.",
+        "Output:",
+        "Next TopicDifference between HashMap and Hashtable"
+      ],
+      "code": [
+        "import java.util.*;  \nclass Book {  \nint id;  \nString name,author,publisher;  \nint quantity;  \npublic Book(int id, String name, String author, String publisher, int quantity) {  \n    this.id = id;  \n    this.name = name;  \n    this.author = author;  \n    this.publisher = publisher;  \n    this.quantity = quantity;  \n}  \n}  \npublic class HashtableExample {  \npublic static void main(String[] args) {  \n    //Creating map of Books  \n    Map<Integer,Book> map=new Hashtable<Integer,Book>();  \n    //Creating Books  \n    Book b1=new Book(101,\"Let us C\",\"Yashwant Kanetkar\",\"BPB\",8);  \n    Book b2=new Book(102,\"Data Communications & Networking\",\"Forouzan\",\"Mc Graw Hill\",4);  \n    Book b3=new Book(103,\"Operating System\",\"Galvin\",\"Wiley\",6);  \n    //Adding Books to map \n    map.put(1,b1);\n    map.put(2,b2);\n    map.put(3,b3);    \n    //Traversing map\n    for(Map.Entry<Integer, Book> entry:map.entrySet()){  \n    \tint key=entry.getKey();\n    \tBook b=entry.getValue();\n        System.out.println(key+\" Details:\");\n        System.out.println(b.id+\" \"+b.name+\" \"+b.author+\" \"+b.publisher+\" \"+b.quantity); \n    }  \n}  \n}",
+        "3 Details:\n103 Operating System Galvin Wiley 6\n2 Details:\n102 Data Communications & Networking Forouzan Mc Graw Hill 4\n1 Details:\n101 Let us C Yashwant Kanetkar BPB 8"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:45:16.589Z"
+}

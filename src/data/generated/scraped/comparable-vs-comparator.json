@@ -1,0 +1,126 @@
+{
+  "topicId": "comparable-vs-comparator",
+  "title": "Java - How to Use Comparable?",
+  "sectionId": "java-collections-jdbc",
+  "source": "tutorialspoint",
+  "url": "https://www.tutorialspoint.com/java/java-using-comparable.htm",
+  "allSources": [
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java-using-comparable.htm",
+      "score": 64,
+      "sectionCount": 11
+    },
+    {
+      "sourceId": "geeksforgeeks",
+      "url": "https://www.geeksforgeeks.org/java/java-comparator-interface/",
+      "score": 37,
+      "sectionCount": 7
+    },
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/difference-between-comparable-and-comparator",
+      "score": 35,
+      "sectionCount": 6
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java Comparable Interface",
+      "paragraphs": [
+        "Comparable interface is a very important interface which can be used by Java Collections to compare custom objects and sort them. Using comparable interface, we can sort our custom objects in the same way how wrapper classes, string objects get sorted using Collections sorting methods.",
+        "Using comparable, we can make the elements as sortable."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Comparable Interface Methods",
+      "paragraphs": [
+        "The Comparable interface defines a methods: compareTo(). The compareTo() method, shown here, compares the passed object for order −"
+      ],
+      "code": []
+    },
+    {
+      "heading": "The compare() Method",
+      "paragraphs": [
+        "obj is the object to be compared. This method returns zero if the objects are equal. It returns a positive value if current object is greater than obj. Otherwise, a negative value is returned.",
+        "By overriding compareTo(), you can alter the way that objects are ordered. For example, to sort in a reverse order, you can implement a comparison method that reverses the outcome of a comparison."
+      ],
+      "code": [
+        "int compareTo(Object obj)"
+      ]
+    },
+    {
+      "heading": "The equals() Method",
+      "paragraphs": [
+        "The equals() method, shown here, tests whether an object equals the invoking comparator −",
+        "obj is the object to be tested for equality. The method returns true if obj and the invoking object are both Comparator objects and use the same ordering. Otherwise, it returns false.",
+        "Overriding equals() is unnecessary, and most simple comparators will not do so."
+      ],
+      "code": [
+        "boolean equals(Object obj)"
+      ]
+    },
+    {
+      "heading": "Comparable Interface to Sort Custom Object",
+      "paragraphs": [
+        "In this example, we're using Comparable interface to sort a custom object Dog based on comparison criterias."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [],
+      "code": [
+        "import java.util.ArrayList;\nimport java.util.Collections;\nimport java.util.List;\n\nclass Dog implements Comparable<Dog> {\n   private String name;\n   private int age;\n   Dog() {\n   }\n\n   Dog(String n, int a) {\n      name = n;\n      age = a;\n   }\n\n   public String getDogName() {\n      return name;\n   }\n\n   public int getDogAge() {\n      return age;\n   }\n\n   // Overriding the compareTo method\n   public int compareTo(Dog d) {\n      // compare the name using alphabetical order   \n      return (this.name).compareTo(d.name);\n   }\n\n   @Override\n   public String toString() {\n      return this.name + \",\" + this.age;\n   }\n}\n\npublic class ComparableDemo {\n\n   public static void main(String args[]) {\n      // Takes a list o Dog objects\n      List<Dog> list = new ArrayList<>();\n\n      list.add(new Dog(\"Shaggy\", 3));\n      list.add(new Dog(\"Lacy\", 2));\n      list.add(new Dog(\"Roger\", 10));\n      list.add(new Dog(\"Tommy\", 4));\n      list.add(new Dog(\"Tammy\", 1));\n\n      Collections.sort(list);   // Sorts the array list\n      System.out.println(\"Sorted by name:\");\n      // printing the sorted list of names\n      System.out.print(list);\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [
+        "This will produce the following result −",
+        "Note − Sorting of the Arrays class is as the same as the Collections."
+      ],
+      "code": [
+        "Sorted by name:\n[Lacy,2, Roger,10, Shaggy,3, Tammy,1, Tommy,4]"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "In this example, we're using Collections.reverseOrder() method to reverse sort the Dog objects."
+      ],
+      "code": [
+        "import java.util.ArrayList;\nimport java.util.Collections;\nimport java.util.List;\n\nclass Dog implements Comparable<Dog> {\n   private String name;\n   private int age;\n   Dog() {\n   }\n\n   Dog(String n, int a) {\n      name = n;\n      age = a;\n   }\n\n   public String getDogName() {\n      return name;\n   }\n\n   public int getDogAge() {\n      return age;\n   }\n\n   // Overriding the compareTo method\n   public int compareTo(Dog d) {\n      return (this.name).compareTo(d.name);\n   }\n\n   @Override\n   public String toString() {\n      return this.name + \",\" + this.age;\n   }\n}\n\npublic class ComparableDemo {\n\n   public static void main(String args[]) {\n      // Takes a list o Dog objects\n      List<Dog> list = new ArrayList<>();\n\n      list.add(new Dog(\"Shaggy\", 3));\n      list.add(new Dog(\"Lacy\", 2));\n      list.add(new Dog(\"Roger\", 10));\n      list.add(new Dog(\"Tommy\", 4));\n      list.add(new Dog(\"Tammy\", 1));\n\n      Collections.sort(list, Collections.reverseOrder());   // Sorts the array list\n      System.out.println(\"Sorted by name in reverse order:\");\n      // printing the sorted list of names\n      System.out.print(list);\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [
+        "This will produce the following result −"
+      ],
+      "code": [
+        "Sorted by name in reverse order:\n[Tommy,4, Tammy,1, Shaggy,3, Roger,10, Lacy,2]"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "In this example, we're using Comparable interface to sort Dog objects based on their ages."
+      ],
+      "code": [
+        "import java.util.ArrayList;\nimport java.util.Collections;\nimport java.util.List;\n\nclass Dog implements Comparable<Dog> {\n   private String name;\n   private int age;\n   Dog() {\n   }\n\n   Dog(String n, int a) {\n      name = n;\n      age = a;\n   }\n\n   public String getDogName() {\n      return name;\n   }\n\n   public int getDogAge() {\n      return age;\n   }\n\n   // Overriding the compareTo method\n   public int compareTo(Dog d) {\n      return this.age - d.age;\n   }\n\n   @Override\n   public String toString() {\n      return this.name + \",\" + this.age;\n   }\n}\n\npublic class ComparableDemo {\n\n   public static void main(String args[]) {\n      // Takes a list o Dog objects\n      List<Dog> list = new ArrayList<>();\n\n      list.add(new Dog(\"Shaggy\", 3));\n      list.add(new Dog(\"Lacy\", 2));\n      list.add(new Dog(\"Roger\", 10));\n      list.add(new Dog(\"Tommy\", 4));\n      list.add(new Dog(\"Tammy\", 1));\n\n      Collections.sort(list);   // Sorts the array list\n      System.out.println(\"Sorted by age:\");\n      // printing the sorted list by age\n      System.out.print(list);\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [
+        "This will produce the following result −"
+      ],
+      "code": [
+        "Sorted by age:\n[Tammy,1, Lacy,2, Shaggy,3, Tommy,4, Roger,10]"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:47:20.753Z"
+}

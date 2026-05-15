@@ -1,0 +1,112 @@
+{
+  "topicId": "delete-file",
+  "title": "Java - Delete File",
+  "sectionId": "java-advanced",
+  "source": "tutorialspoint",
+  "url": "https://www.tutorialspoint.com/java/java_delete_file.htm",
+  "allSources": [
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_delete_file.htm",
+      "score": 58,
+      "sectionCount": 11
+    },
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/how-to-delete-a-file-in-java",
+      "score": 4,
+      "sectionCount": 1
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Deleting Files in Java",
+      "paragraphs": [
+        "To delete a file in Java, you can use the File.delete() method. This method deletes the files or directory from the given path."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [
+        "Following is the syntax of deleting a file using File.delete() method −"
+      ],
+      "code": [
+        "File file = new File(\"C:/java/hello.txt\");\n\nif(file.exists()){\n   file.delete();\n}"
+      ]
+    },
+    {
+      "heading": "Deleting File from Current Directory",
+      "paragraphs": [
+        "Following is the example to demonstrate File.delete() method usage to delete an existing file in current directory−"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [],
+      "code": [
+        "package com.tutorialspoint;\n\nimport java.io.BufferedWriter;\nimport java.io.File;\nimport java.io.FileWriter;\nimport java.io.IOException;\n\npublic class FileTest {\n  \n   public static void main(String args[]) throws IOException {\n      BufferedWriter out = new BufferedWriter (new FileWriter(\"test.txt\"));\n      out.write(\"test data\");\n      out.close();\n\n      File file = new File(\"test.txt\");\n      if(file.exists()) {\n         boolean success = file.delete();\n\n         if (success) {\n            System.out.println(\"The file has been successfully deleted.\"); \n         }else {\n            System.out.println(\"The file deletion failed.\");\n         }        \n      }else {\n         System.out.println(\"The file is not present.\"); \n      }\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [
+        "The above code would create file test.txt write a text to it and then delete the same using File.delete() method.",
+        "This will produce the following result −"
+      ],
+      "code": [
+        "The file has been successfully deleted."
+      ]
+    },
+    {
+      "heading": "Deleting File That Does Not Exist",
+      "paragraphs": [
+        "Following is the example to demonstrate File.delete() method call to delete an non-existing file in current directory. As file is not present, it returns false as result."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [],
+      "code": [
+        "package com.tutorialspoint;\n\nimport java.io.File;\nimport java.io.IOException;\n\npublic class FileTest {\n  \n   public static void main(String args[]) throws IOException {\n      File file = new File(\"test1.txt\");\n      boolean success = file.delete();\n\n      if (success) {\n         System.out.println(\"The file has been successfully deleted.\"); \n      }else {\n         System.out.println(\"The file deletion failed.\");\n      }    \n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [
+        "The above code would try to delete test1.txt which is not present in current directory. As file is not present, file.delete() method returns false.",
+        "This will produce the following result −"
+      ],
+      "code": [
+        "The file deletion failed."
+      ]
+    },
+    {
+      "heading": "Deleting All Files From Given Directory",
+      "paragraphs": [
+        "Following is the example to demonstrate File.delete() method usage to delete all files in given directory recursively."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [],
+      "code": [
+        "package com.tutorialspoint;\n\nimport java.io.File;\nimport java.io.IOException;\n\npublic class FileTest {\n  \n   public static void deleteFiles(File dirPath) {\n      File filesList[] = dirPath.listFiles();\n      for(File file : filesList) {\n         if(file.isFile()) {\n            file.delete();\n         } else {\n            deleteFiles(file);\n         }\n      }\n   }\n   public static void main(String args[]) throws IOException {\n      \n      //Creating a File object for directory\n      File file = new File(\"D:\\\\test\");\n      \n      //List of all files and directories\n      deleteFiles(file);\n      System.out.println(\"Files deleted.\");\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [
+        "The above code first create a file object for a directory and then delete all files lying in the folder.",
+        "This will produce the following result −"
+      ],
+      "code": [
+        "Files deleted."
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:42:04.056Z"
+}

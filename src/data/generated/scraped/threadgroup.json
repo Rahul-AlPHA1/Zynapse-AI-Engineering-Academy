@@ -1,0 +1,74 @@
+{
+  "topicId": "threadgroup",
+  "title": "Java - ThreadGroup Class",
+  "sectionId": "java-advanced",
+  "source": "tutorialspoint",
+  "url": "https://www.tutorialspoint.com/java/java_lang_threadgroup.htm",
+  "allSources": [
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_lang_threadgroup.htm",
+      "score": 35,
+      "sectionCount": 7
+    }
+  ],
+  "sections": [
+    {
+      "heading": "ThreadGroup Class",
+      "paragraphs": [
+        "The Java ThreadGroup class represents a set of threads. It can also include other thread groups. The thread groups form a tree in which every thread group except the initial thread group has a parent."
+      ],
+      "code": []
+    },
+    {
+      "heading": "ThreadGroup Class Declaration",
+      "paragraphs": [
+        "Following is the declaration for java.lang.ThreadGroup class −"
+      ],
+      "code": [
+        "public class ThreadGroup\n   extends Object\n      implements Thread.UncaughtExceptionHandler"
+      ]
+    },
+    {
+      "heading": "ThreadGroup Class Constructors",
+      "paragraphs": [
+        "Sr.No.\nConstructor & Description\n\n\n1\n\nThreadGroup(String name)\nThis constructs a new thread group.\n\n\n\n2\n\nThreadGroup(ThreadGroup parent, String name)\nThis creates a new thread group."
+      ],
+      "code": []
+    },
+    {
+      "heading": "ThreadGroup Class Methods",
+      "paragraphs": [
+        "Sr.No.\nMethod & Description\n\n\n1\nint activeCount()\nThis method returns an estimate of the number of active threads in this thread group.\n\n\n\n2\nint activeGroupCount()\nThis method returns an estimate of the number of active groups in this thread group.\n\n\n\n3\nvoid checkAccess()\nThis method determines if the currently running thread has permission to modify this thread group.\n\n\n\n4\nvoid destroy()\nThis method Destroys this thread group and all of its subgroups.\n\n\n\n5\nint enumerate(Thread[] list)\nThis method copies into the specified array every active thread in this thread group and its subgroups.\n\n\n\n6\nint enumerate(Thread[] list, boolean recurse)\nThis method copies into the specified array every active thread in this thread group.\n\n\n\n7\nint enumerate(ThreadGroup[] list)\nThis method copies into the specified array references to every active subgroup in this thread group.\n\n\n\n8\nint enumerate(ThreadGroup[] list, boolean recurse)\nThis method copies into the specified array references to every active subgroup in this thread group.\n\n\n\n9\nint getMaxPriority()\nThis method returns the maximum priority of this thread group.\n\n\n\n10\nString getName()\nThis method returns the name of this thread group.\n\n\n\n11\nThreadGroup getParent()\nThis method returns the parent of this thread group.\n\n\n\n12\nvoid interrupt()\nThis method interrupts all threads in this thread group.\n\n\n\n13\nboolean isDaemon()\nThis method Tests if this thread group is a daemon thread group.\n\n\n\n14\nboolean isDestroyed()\nThis method tests if this thread group has been destroyed.\n\n\n\n15\nvoid list()\nThis method prints information about this thread group to the standard output.\n\n\n\n16\nboolean parentOf(ThreadGroup g)\nThis method tests if this thread group is either the thread group argument or one of its ancestor thread groups.\n\n\n\n17\nvoid setDaemon(boolean daemon)\nThis method changes the daemon status of this thread group.\n\n\n\n18\nvoid setMaxPriority(int pri)\nThis method sets the maximum priority of the group.\n\n\n\n19\nString toString()\nThis method returns a string representation of this Thread group.\n\n\n\n20\nvoid uncaughtException(Thread t, Throwable e)\nThis method called by the Java Virtual Machine when a thread in this thread group stops because of an uncaught exception, and the thread does not have a specific Thread.UncaughtExceptionHandler installed."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Methods Inherited",
+      "paragraphs": [
+        "This class inherits methods from the following classes −",
+        "• java.lang.Object"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example of ThreadGroup Class in Java",
+      "paragraphs": [
+        "Following example showcases the usage of ThreadGroup in a multithreaded program."
+      ],
+      "code": [
+        "package com.tutorialspoint;\n\npublic class ThreadGroupDemo implements Runnable {\n   public static void main(String[] args) {\n      ThreadGroupDemo tg = new ThreadGroupDemo();\n      tg.func();\n   }\n\n   public void func() {\n      try {     \n         // create a parent ThreadGroup\n         ThreadGroup pGroup = new ThreadGroup(\"Parent ThreadGroup\");\n    \n         // create a child ThreadGroup for parent ThreadGroup\n         ThreadGroup cGroup = new ThreadGroup(pGroup, \"Child ThreadGroup\");\n\n         // create a thread\n         Thread t1 = new Thread(pGroup, this);\n         System.out.println(\"Starting \" + t1.getName() + \"...\");\n         t1.start();\n            \n         // create another thread\n         Thread t2 = new Thread(cGroup, this);\n         System.out.println(\"Starting \" + t2.getName() + \"...\");\n         t2.start();\n            \n         // display the number of active threads \n         System.out.println(\"Active threads in \\\"\" + pGroup.getName() \n            + \"\\\" = \" + pGroup.activeCount());\n\n         // block until the other threads finish\n         t1.join();\n         t2.join();\n      } catch (InterruptedException ex) {\n         System.out.println(ex.toString());\n      }\n   }\n\n   // implements run()\n   public void run() {\n\n      for(int i = 0;i < 1000;i++) {\n         i++;\n      }\n      System.out.println(Thread.currentThread().getName() + \" finished executing.\");\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [
+        "Let us compile and run the above program, this will produce the following result −"
+      ],
+      "code": [
+        "Starting Thread-0...\nStarting Thread-1...\nThread-0 finished executing.\nActive threads in \"Parent ThreadGroup\" = 1\nThread-1 finished executing."
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:39:40.590Z"
+}

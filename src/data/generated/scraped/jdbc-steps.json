@@ -1,0 +1,157 @@
+{
+  "topicId": "jdbc-steps",
+  "title": "Java - Steps for Establishing JDBC Connection",
+  "sectionId": "java-collections-jdbc",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/steps-to-connect-to-the-database-in-java",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/steps-to-connect-to-the-database-in-java",
+      "score": 91,
+      "sectionCount": 16
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java - Steps for Establishing JDBC Connection",
+      "paragraphs": [
+        "Connecting a Java application to a database is an important step for working with data. JDBC provides a simple way to establish this connection and perform operations like inserting, updating, and retrieving data.",
+        "In this chapter, you will learn the step-by-step process to connect a Java application with a database using JDBC.",
+        "There are 5 simple steps to connect a Java application with a database:",
+        "• Register the driver class\n• Create the connection object\n• Create the statement object\n• Execute the query\n• Close the connection object"
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. Register the driver class",
+      "paragraphs": [
+        "The forName() method of Class class is used to register the driver class. This method is used to dynamically load the driver class."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax of forName() method",
+      "paragraphs": [
+        "The below syntax is used to load the driver class at runtime.",
+        "Note: Since JDBC 4.0, explicitly registering the driver is optional. We just need to put vendor's JAR in the classpath, and then the JDBC driver manager can detect and load the driver automatically."
+      ],
+      "code": [
+        "public static void forName(String className)throws ClassNotFoundException"
+      ]
+    },
+    {
+      "heading": "Example to register the OracleDriver class",
+      "paragraphs": [
+        "Here, Java program is loading Oracle driver to establish database connection.",
+        "The below code statement shows how to load the Oracle JDBC driver."
+      ],
+      "code": [
+        "Class.forName(\"oracle.jdbc.driver.OracleDriver\");"
+      ]
+    },
+    {
+      "heading": "2. Create the Connection Object",
+      "paragraphs": [
+        "The getConnection() method of DriverManager class is used to establish connection with the database."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax of getConnection() method",
+      "paragraphs": [
+        "The below syntax is used to create a connection between Java application and database."
+      ],
+      "code": [
+        "1) public static Connection getConnection(String url)throws SQLException\n2) public static Connection getConnection(String url,String name,String password)\nthrows SQLException"
+      ]
+    },
+    {
+      "heading": "Example to establish connection with the Oracle database",
+      "paragraphs": [
+        "The below code statement shows how to connect a Java program with an Oracle database."
+      ],
+      "code": [
+        "Connection con=DriverManager.getConnection(\n\"jdbc:oracle:thin:@localhost:1521:xe\",\"system\",\"password\");"
+      ]
+    },
+    {
+      "heading": "3. Create the Statement Object",
+      "paragraphs": [
+        "The createStatement() method of Connection interface is used to create statement. The object of statement is responsible to execute queries with the database."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax of createStatement() method",
+      "paragraphs": [
+        "The below syntax is used to create a Statement object:"
+      ],
+      "code": [
+        "public Statement createStatement()throws SQLException"
+      ]
+    },
+    {
+      "heading": "Example to create the statement object",
+      "paragraphs": [
+        "The below code statement shows how to create a statement for executing queries."
+      ],
+      "code": [
+        "Statement stmt=con.createStatement();"
+      ]
+    },
+    {
+      "heading": "4. Execute the Query",
+      "paragraphs": [
+        "The executeQuery() method of Statement interface is used to execute queries to the database. This method returns the object of ResultSet that can be used to get all the records of a table."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax of executeQuery() method",
+      "paragraphs": [
+        "The below syntax is used to execute SQL queries:"
+      ],
+      "code": [
+        "public ResultSet executeQuery(String sql)throws SQLException"
+      ]
+    },
+    {
+      "heading": "Example to execute query",
+      "paragraphs": [
+        "The below code statements show how to execute a query and read data from the database."
+      ],
+      "code": [
+        "ResultSet rs=stmt.executeQuery(\"select * from emp\");\n\nwhile(rs.next()){\nSystem.out.println(rs.getInt(1)+\" \"+rs.getString(2));\n}"
+      ]
+    },
+    {
+      "heading": "5. Close the Connection Object",
+      "paragraphs": [
+        "By closing connection object, statement and ResultSet will be closed automatically. The close() method of Connection interface is used to close the connection."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax of close() method",
+      "paragraphs": [
+        "The below syntax is used to close the database connection:"
+      ],
+      "code": [
+        "public void close()throws SQLException"
+      ]
+    },
+    {
+      "heading": "Example to close connection",
+      "paragraphs": [
+        "The below code statement shows how to close the connection:",
+        "Note: Since Java 7, JDBC has ability to use try-with-resources statement to automatically close resources of type Connection, ResultSet, and Statement. It avoids explicit connection closing step.",
+        "Next TopicExample To Connect To The Oracle Database"
+      ],
+      "code": [
+        "con.close();"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:48:10.214Z"
+}

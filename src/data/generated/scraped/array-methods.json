@@ -1,0 +1,353 @@
+{
+  "topicId": "array-methods",
+  "title": "Java Arrays",
+  "sectionId": "java-core-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-arrays",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-arrays",
+      "score": 237,
+      "sectionCount": 33
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_arrays.htm",
+      "score": 107,
+      "sectionCount": 19
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java Arrays",
+      "paragraphs": [
+        "Java arrays are objects that store multiple elements of the same data type in a single, contiguous memory block. In this chapter, we will learn about Java arrays, their types, features, and how to use them in programs."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is an Array?",
+      "paragraphs": [
+        "An array is a collection of elements of the same type stored in a single, contiguous block of memory. Arrays allow us to group similar data together and access them using an index."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Array in Java",
+      "paragraphs": [
+        "In Java, an array is an object that stores elements of a similar data type in contiguous memory locations. It is a data structure used to store a fixed number of elements.",
+        "Arrays in Java are index-based, meaning the first element is at index 0, the second at index 1, and so on.",
+        "In Java, an array is considered an object of a dynamically created class. All arrays in Java:",
+        "• Implement the Serializable and Cloneable interfaces\n• Derive from the Object class",
+        "Arrays can store primitive values or objects, and Java supports both single-dimensional and multi-dimensional arrays.",
+        "Java also supports anonymous arrays, which are not available in C/C++. This feature allows us to create and pass arrays without explicitly declaring a variable.",
+        "Arrays are of two types, single dimensional and multi-dimensional."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Single-Dimensional Array in Java",
+      "paragraphs": [
+        "A single-dimensional array in Java is a linear collection of elements of the same data type. It can be declared and instantiated using the following syntax."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax of Declaring an Array",
+      "paragraphs": [
+        "Below is the syntax to declare a single dimensional array in Java:"
+      ],
+      "code": [
+        "dataType[] arr; (or)\ndataType []arr; (or)\ndataType arr[];"
+      ]
+    },
+    {
+      "heading": "Syntax of Instantiation of an Array",
+      "paragraphs": [
+        "Below is the syntax to Instantiate a single dimensional array in Java:"
+      ],
+      "code": [
+        "arrayRefVar=new datatype[size];"
+      ]
+    },
+    {
+      "heading": "Example of Single Dimensional Array",
+      "paragraphs": [
+        "Let's see the simple example of java array, where we are going to declare, instantiate, initialize and traverse an array.",
+        "Source Codepublic class Main{  \n public static void main(String args[]){  \n    //declaration and instantiation of an array\n    int a[]=new int[5];\n    a[0]=10;//initialization  \n    a[1]=20;  \n    a[2]=70;  \n    a[3]=40;  \n    a[4]=50;  \n    //traversing array  \n    for(int i=0;i<a.length;i++){//length is the property of array  \n        System.out.println(a[i]);  \n    }\n }\n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "10\n20\n70\n40\n50"
+      ]
+    },
+    {
+      "heading": "Multidimensional Array (Two-Dimensional Array)",
+      "paragraphs": [
+        "A multidimensional array (two-dimensional array) in Java is an array of arrays, where each element of the main array is itself an array. It is used to store data in a table-like structure with rows and columns."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax of Declaring a Two-Dimensional Array",
+      "paragraphs": [
+        "Below is the syntax to declare a two-dimensional array in Java:"
+      ],
+      "code": [
+        "dataType[][] arrayName;"
+      ]
+    },
+    {
+      "heading": "Syntax of Instantiation of a Two-Dimensional Array",
+      "paragraphs": [
+        "Below is the syntax to instantiate a two-dimensional array in Java:",
+        "or you can combine declaration and instantiation:"
+      ],
+      "code": [
+        "arrayName = new dataType[rows][columns];",
+        "dataType[][] arrayName = new dataType[rows][columns];"
+      ]
+    },
+    {
+      "heading": "Example of Two-Dimensional Array",
+      "paragraphs": [
+        "Let's see a simple example of a two-dimensional array in Java, where we declare, instantiate, initialize, and traverse the array:",
+        "Output:"
+      ],
+      "code": [
+        "public class Main {\n    public static void main(String[] args) {\n        // Declare and instantiate a 2D array\n        int[][] numbers = new int[2][3];\n\n        // Initialize the array\n        numbers[0][0] = 10;\n        numbers[0][1] = 20;\n        numbers[0][2] = 30;\n        numbers[1][0] = 40;\n        numbers[1][1] = 50;\n        numbers[1][2] = 60;\n\n        // Traverse and print the array\n        for (int i = 0; i < numbers.length; i++) {\n            for (int j = 0; j < numbers[i].length; j++) {\n                System.out.print(numbers[i][j] + \" \");\n            }\n            System.out.println();\n        }\n    }\n}",
+        "10 20 30\n40 50 60"
+      ]
+    },
+    {
+      "heading": "Accessing Array Elements Using For Each Loop",
+      "paragraphs": [
+        "We can access the array elements using for-each loop. The Java for-each loop accesses the array elements one by one. It holds an array element in a variable, then executes the body of the loop."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [
+        "The syntax of the for-each loop is given below:",
+        "Let's see the example of printing the elements of the Java array using the for-each loop.",
+        "Example//Java Program to print the array elements using for-each loop  \npublic class Main{  \n public static void main(String args[]){  \n    //declaration and initialization of an array\n    int arr[]={33,3,4,5};  \n    //traversal of an array using for-each loop  \n    for(int i:arr)  \n        System.out.println(i);  \n }\n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "for(data_type variable:array){\n//body of the loop\n}",
+        "33\n3\n4\n5"
+      ]
+    },
+    {
+      "heading": "Passing Array to a Method",
+      "paragraphs": [
+        "We can pass the Java array to the method so that we can reuse the same logic on any array. When we pass an array to a method in Java, we are essentially passing a reference to the array. It means that the method will have access to the same array data as the calling code, and any modifications made to the array within the method will affect the original array.",
+        "Let's see the simple example to get the minimum number of an array using a method.",
+        "Example//Java Program to demonstrate the way of passing an array to method.  \npublic class Main{  \n//creating a method which receives an array as a parameter  \n    static void min(int arr[]){  \n        int min=arr[0];  \n        for(int i=1;i<arr.length;i++)  \n            if(min>arr[i])  \n                min=arr[i];  \n  \n        System.out.println(min);  \n    }  \n  \n public static void main(String args[]){  \n    int a[]={33,3,4,5};//declaring and initializing an array  \n    min(a);//passing array to method  \n }\n}  \nCompile and Run",
+        "Output:",
+        "Explanation",
+        "This Java program demonstrates the concept of passing an array to a method. The min method takes an integer array arr as a parameter and finds the minimum element in the array using a simple iterative loop. In the main method, an integer array a is declared and initialized with values {33, 3, 4, 5}, and then the min method is called with this array as an argument. The min method iterates through the array to find the minimum element and prints it to the console."
+      ],
+      "code": [
+        "3"
+      ]
+    },
+    {
+      "heading": "Anonymous Array",
+      "paragraphs": [
+        "Java's anonymous arrays eliminate the requirement for separate declarations of array variables by enabling developers to build and initialize arrays directly within method calls or other expressions. When working with temporary arrays that are just needed for a single job and don't need a persistent reference within the program, this is quite helpful.",
+        "Java supports the feature of an anonymous array, so we do not need to declare the array while passing an array to the method.",
+        "Example//Java Program to demonstrate the way of passing an anonymous array to method  \npublic class Main{  \n    //creating a method which receives an array as a parameter  \n    static void printArray(int arr[]){  \n        for(int i=0;i<arr.length;i++)  \n            System.out.println(arr[i]);  \n    }  \n public static void main(String args[]){  \n    printArray(new int[]{10,22,44,66});//passing anonymous array to method  \n }\n}  \nCompile and Run",
+        "Output:",
+        "Explanation",
+        "In this example, the printArray method takes an integer array as a parameter and prints each element of the array. In the main method, an anonymous array {10, 20, 30} is directly passed as an argument to the printArray method. This concise syntax demonstrates the usage of anonymous arrays in Java, allowing for more streamlined code without the need for intermediate variable declarations."
+      ],
+      "code": [
+        "10\n22\n44\n66"
+      ]
+    },
+    {
+      "heading": "Returning Array from the Method",
+      "paragraphs": [
+        "In Java, methods are not limited to returning simple data types or objects; they can also return arrays. This feature allows for more flexibility in method design and enables developers to encapsulate complex logic for generating arrays within methods.",
+        "Example//Java Program to return an array from the method  \npublic class Main{  \n    //creating method which returns an array  \n    static int[] get(){  \n        return new int[]{10,30,50,90,60};  \n    }  \n public static void main(String args[]){  \n    //calling method which returns an array  \n    int arr[]=get();  \n    //printing the values of an array  \n    for(int i=0;i<arr.length;i++)  \n        System.out.println(arr[i]);  \n }\n}\nCompile and Run",
+        "Output:",
+        "Explanation",
+        "The example demonstrates how to return an array from a method in Java and subsequently use the returned array in the calling code. By encapsulating array creation and initialization logic within the get method, the code becomes more modular and reusable."
+      ],
+      "code": [
+        "10\n30\n50\n90\n60"
+      ]
+    },
+    {
+      "heading": "ArrayIndexOutOfBoundsException",
+      "paragraphs": [
+        "In Java, the ArrayIndexOutOfBoundsException is a runtime exception thrown by the Java Virtual Machine (JVM) when attempting to access an invalid index of an array. This exception occurs if the index is negative, equal to the size of the array, or greater than the size of the array while traversing the array."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates ArrayIndexOutOfBoundsException in Java array:",
+        "Output:"
+      ],
+      "code": [
+        "//Java Program to demonstrate the case of \n//ArrayIndexOutOfBoundsException in a Java Array.\npublic class TestArrayException{\npublic static void main(String args[]){\nint arr[]={50,60,70,80};\nfor(int i=0;i<=arr.length;i++){\nSystem.out.println(arr[i]);\n}\n}}",
+        "Exception in thread \"main\" java.lang.ArrayIndexOutOfBoundsException: 4\n\tat TestArrayException.main(TestArrayException.java:5)\n50\n60\n70\n80"
+      ]
+    },
+    {
+      "heading": "Jagged Arrays",
+      "paragraphs": [
+        "In Java, a jagged array is an array of arrays where each row of the array can have a different number of columns. This contrasts with a regular two-dimensional array, where each row has the same number of columns."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Declaring and Initializing a Jagged Array",
+      "paragraphs": [
+        "To declare a jagged array in Java, you first declare the array of arrays, and then you initialize each row separately with its own array of columns."
+      ],
+      "code": [
+        "int arr[][] = new int[3][];  \narr[0] = new int[3];  \narr[1] = new int[4];  \narr[2] = new int[2];"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates the use of jagged array in Java:",
+        "Example//Java Program to illustrate the jagged array  \npublic class Main{  \n    public static void main(String[] args){  \n        //declaring a 2D array with odd columns  \n        int arr[][] = new int[3][];  \n        arr[0] = new int[3];  \n        arr[1] = new int[4];  \n        arr[2] = new int[2];  \n        //initializing a jagged array  \n        int count = 0;  \n        for (int i=0; i<arr.length; i++)  \n            for(int j=0; j<arr[i].length; j++)  \n                arr[i][j] = count++;  \n   \n        //printing the data of a jagged array   \n        for (int i=0; i<arr.length; i++){  \n            for (int j=0; j<arr[i].length; j++){  \n                System.out.print(arr[i][j]+\" \");  \n            }  \n            System.out.println();//new line  \n        }  \n    }  \n}  \nCompile and Run",
+        "Output:",
+        "Explanation",
+        "This Java program demonstrates the concept of a jagged array, where an array of arrays is created, with each inner array having a different number of columns. Initially, a 2D array named arr is declared with 3 rows, but with each row having a different number of columns: the first row has 3 columns, the second row has 4 columns, and the third row has 2 columns. The program then initializes the jagged array by filling it with sequential values starting from 0. Finally, it iterates through the array and prints out each element, row by row, separated by a space, with a newline character indicating the end of each row."
+      ],
+      "code": [
+        "0 1 2 \n3 4 5 6 \n7 8"
+      ]
+    },
+    {
+      "heading": "Arrays as Objects",
+      "paragraphs": [
+        "In Java, an array is an object. However, arrays have a special feature in Java where the JVM generates a proxy class for each array object. This proxy class represents the runtime type of the array. To obtain the class name of a Java array, you can use the getClass().getName() method, which is available on all Java objects. This method returns a String representing the fully qualified name of the class of the object, including any package information."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example shows how to get the runtime class name of an array in Java using the getClass().getName() method.",
+        "Example//Java Program to get the class name of array in Java  \npublic class Main{  \n public static void main(String args[]){  \n    //declaration and initialization of array  \n    int arr[]={4,4,5};  \n    //getting the class name of Java array  \n    Class c=arr.getClass();  \n    String name=c.getName();  \n    //printing the class name of Java array   \n    System.out.println(name);  \n }\n}  \nCompile and Run",
+        "Output:",
+        "Explanation",
+        "This Java program demonstrates how to retrieve the class name of an array in Java using the getClass().getName() method. It initializes an array arr with integer values, obtains the runtime class of the array using getClass(), and retrieves the class name using getName(). The obtained class name, typically represented by a single character followed by square brackets, reflects the dimensionality and type of elements in the array."
+      ],
+      "code": [
+        "[I"
+      ]
+    },
+    {
+      "heading": "Copying Arrays",
+      "paragraphs": [
+        "Copying an array in Java can be achieved using the arraycopy() method of the System class. This method allows you to copy elements from a source array to a destination array with a specified starting position and length."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax of arraycopy() method",
+      "paragraphs": [
+        "Below is the syntax of arraycopy() method:",
+        "Here, src is the source array, srcPos is the starting position in the source array, dest is the destination array, destPos is the starting position in the destination array, and length is the number of elements to be copied."
+      ],
+      "code": [
+        "public static void arraycopy(\nObject src, int srcPos,Object dest, int destPos, int length\n)"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates how to copy elements from one array to another in Java using the System.arraycopy() method.",
+        "Example//Java Program to copy a source array into a destination array in Java  \npublic class Main {  \n    public static void main(String[] args) {  \n        //declaring a source array  \n        char[] copyFrom = { 'd', 'e', 'c', 'a', 'f', 'f', 'e',  \n                'i', 'n', 'a', 't', 'e', 'd' };  \n        //declaring a destination array  \n        char[] copyTo = new char[7];  \n        //copying array using System.arraycopy() method  \n        System.arraycopy(copyFrom, 2, copyTo, 0, 7);  \n        //printing the destination array  \n        System.out.println(String.valueOf(copyTo));  \n    }  \n}  \nCompile and Run",
+        "Output:",
+        "Explanation",
+        "The Java program initializes two character arrays, copyFrom and copyTo, with predefined values. It then utilizes the System.arraycopy() method to copy a portion of the copyFrom array into the copyTo array, starting from index 2 and copying 7 elements. Finally, it prints the contents of the copyTo array, resulting in the output \"caffein\"."
+      ],
+      "code": [
+        "caffein"
+      ]
+    },
+    {
+      "heading": "Cloning an Array",
+      "paragraphs": [
+        "In Java, arrays implement the Cloneable interface, allowing us to create clones of arrays. If we create a clone of a single-dimensional array, it creates a deep copy of the Java array. It means it will copy the actual value. But, if we create the clone of a multidimensional array, it creates a shallow copy of the Java array, which means it copies the references.",
+        "This distinction is important because modifying elements in a shallow copied multidimensional array will affect both the original and cloned arrays, while in a deep copied single-dimensional array, modifications will not impact the original."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates the closing of an array in Java:",
+        "Output:",
+        "Explanation",
+        "An integer array called arr is initialised with the numbers {33, 3, 4, 5} in this Java programme, and its elements are printed. Then, it uses the clone() method to duplicate arr, assigns the result to carr, and prints the items of the duplicated array. The last line of the programme compares arr and carr using the == operator; the result evaluates to false, meaning that arr and carr are distinct array objects. The elements in both arrays, though, are the same."
+      ],
+      "code": [
+        "//Java Program to clone the array  \nclass TestarrayClone{  \npublic static void main(String args[]){  \nint arr[]={33,3,4,5};  \nSystem.out.println(\"Printing original array:\");  \nfor(int i:arr)  \nSystem.out.println(i);  \nSystem.out.println(\"Printing clone of the array:\");  \nint carr[]=arr.clone();  \nfor(int i:carr)  \nSystem.out.println(i);  \nSystem.out.println(\"Are both equal?\");  \nSystem.out.println(arr==carr);  \n}\n}",
+        "Printing original array:\n33\n3\n4\n5\nPrinting clone of the array:\n33\n3\n4\n5\nAre both equal?\nFalse"
+      ]
+    },
+    {
+      "heading": "Addition Two Multidimensional Arrays (Two Matrices)",
+      "paragraphs": [
+        "A fundamental operation in linear algebra and computer science, matrix addition is frequently utilised in a variety of applications, including scientific computing, computer graphics, and image processing. To create a new matrix with the same dimensions as the original, matching elements from each matrix must be added when adding two matrices in Java. This Java program shows how to add matrices effectively by using stacked loops to do a basic example of the process."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Let's see a simple example that adds two matrices.",
+        "Output:",
+        "Explanation",
+        "This Java program demonstrates matrix addition by adding two predefined matrices, a and b, element-wise and storing the result in matrix c. The matrices a and b are initialized with values, and matrix c is created to store the sum. It iterates through each element of the matrices using nested loops, adding corresponding elements from a and b and storing the result in the corresponding position in c. Finally, it prints the resulting matrix c. The output displays the element-wise addition of the two matrices, with each element in the resulting matrix c being the sum of the corresponding elements in a and b."
+      ],
+      "code": [
+        "//Java Program to demonstrate the addition of two matrices in Java\nclass ArrayAddition{\npublic static void main(String args[]){\n//creating two matrices\nint a[][]={{1,3,4},{3,4,5}};\nint b[][]={{1,3,4},{3,4,5}};\n\n//creating another matrix to store the sum of two matrices\nint c[][]=new int[2][3];\n\n//adding and printing addition of 2 matrices\nfor(int i=0;i<2;i++){\nfor(int j=0;j<3;j++){\nc[i][j]=a[i][j]+b[i][j];\nSystem.out.print(c[i][j]+\" \");\n}\nSystem.out.println();//new line\n}\n\n}}",
+        "2 6 8\n6 8 10"
+      ]
+    },
+    {
+      "heading": "Multiplication Two Multidimensional Arrays (Two Matrices)",
+      "paragraphs": [
+        "Matrix multiplication is a crucial operation in mathematics and computer science, often utilized in various applications such as graphics rendering, optimization algorithms, and scientific computing. In Java, multiplying two matrices involves a systematic process where each element in the resulting matrix is computed by taking the dot product of a row from the first matrix and a column from the second matrix."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates multiplication of two matrices:",
+        "Output:",
+        "Explanation",
+        "This Java program computes the multiplication of two 3x3 matrices, 'a' and 'b', storing the result in matrix 'c'. It initializes matrices 'a' and 'b' with predefined values and creates matrix 'c' to store the result. Using nested loops, it iterates through each element of the resulting matrix 'c', calculating the dot product of corresponding row and column elements from matrices 'a' and 'b'. The computed result for each element is accumulated in the corresponding position of 'c'."
+      ],
+      "code": [
+        "//Java Program to multiply two matrices\npublic class MatrixMultiplicationExample{\npublic static void main(String args[]){\n//creating two matrices  \nint a[][]={{1,1,1},{2,2,2},{3,3,3}};  \nint b[][]={{1,1,1},{2,2,2},{3,3,3}};  \n  \n//creating another matrix to store the multiplication of two matrices  \nint c[][]=new int[3][3];  //3 rows and 3 columns\n  \n//multiplying and printing multiplication of 2 matrices  \nfor(int i=0;i<3;i++){  \nfor(int j=0;j<3;j++){  \nc[i][j]=0;    \nfor(int k=0;k<3;k++)    \n{    \nc[i][j]+=a[i][k]*b[k][j];    \n}//end of k loop\nSystem.out.print(c[i][j]+\" \");  //printing matrix element\n}//end of j loop\nSystem.out.println();//new line  \n}  \n}}",
+        "6 6 6 \n12 12 12 \n18 18 18"
+      ]
+    },
+    {
+      "heading": "Arrays Programs",
+      "paragraphs": [
+        "The following are the important arrays programs in Java:",
+        "• Java Program to copy all elements of one array into another array\n• Java Program to find the frequency of each element in the array\n• Java Program to left rotate the elements of an array\n• Java Program to print the duplicate elements of an array\n• Java Program to print the elements of an array\n• Java Program to print the elements of an array in reverse order\n• Java Program to print the elements of an array present on even position\n• 8) Java Program to print the elements of an array present on odd position\n• Java Program to print the largest element in an array\n• Java Program to print the smallest element in an array\n• Java Program to print the number of elements present in an array\n• Java Program to print the sum of all the items of the array\n• Java Program to right rotate the elements of an array\n• Java Program to sort the elements of an array in ascending order\n• Java Program to sort the elements of an array in descending order\n• Find 3rd Largest Number in an Array\n• Find 2nd Largest Number in an Array\n• Find Largest Number in an Array\n• Find 2nd Smallest Number in an Array\n• Find Smallest Number in an Array\n• Remove Duplicate Element in an Array\n• Add Two Matrices\n• Multiply Two Matrices\n• Print Odd and Even Number from an Array\n• Transpose matrix\n• Java Program to subtract the two matrices\n• Java Program to determine whether a given matrix is an identity matrix\n• Java Program to determine whether a given matrix is a sparse matrix\n• Java Program to determine whether two matrices are equal\n• Java Program to display the lower triangular matrix\n• Java Program to display the upper triangular matrix\n• Java Program to find the frequency of odd & even numbers in the given matrix\n• Java Program to find the product of two matrices\n• Java Program to find the sum of each row and each column of a matrix\n• Java Program to find the transpose of a given matrix",
+        "Next TopicMulti-Dimensional Arrays in Java"
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:34:54.506Z"
+}

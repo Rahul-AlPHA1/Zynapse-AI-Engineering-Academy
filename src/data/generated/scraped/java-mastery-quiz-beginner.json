@@ -1,0 +1,103 @@
+{
+  "topicId": "java-mastery-quiz-beginner",
+  "title": "Inner Classes (Nested Classes) in Java",
+  "sectionId": "java-mastery-quizzes",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-inner-class",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-inner-class",
+      "score": 50,
+      "sectionCount": 10
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_questions_answers.htm",
+      "score": 5,
+      "sectionCount": 1
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Inner Classes (Nested Classes) in Java",
+      "paragraphs": [
+        "Java inner classes are classes defined within another class that are used to improve encapsulation and code organization. In this chapter, we will learn creating and using inner classes with the help of examples."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is Inner Class (Nested Classes) in Java?",
+      "paragraphs": [
+        "An inner class (or nested class) is a class declared inside another class or interface. Inner classes help logically group related classes in one place to make the code more readable and maintainable. They can also access all members of the outer class, including private fields and methods."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Creating Inner Class",
+      "paragraphs": [
+        "An inner class is created by defining a class inside another class. Here are the steps to create an inner class:",
+        "• Define the outer class as usual.\n• Inside the outer class, define the inner class.\n• Access the inner class using an object of the outer class."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [
+        "Here is the syntax to create an inner class:"
+      ],
+      "code": [
+        "class OuterClass {\n    // Outer class members\n\n    class InnerClass {\n        // Inner class members\n    }\n}"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "In this example, we have an outer class Student with an inner class Address. The inner class stores the student's address and displays it along with the student's name.",
+        "Output:"
+      ],
+      "code": [
+        "class Student {\n    String name;\n\n    Student(String name) {\n        this.name = name;\n    }\n\n    // Inner class\n    class Address {\n        String city, state;\n\n        Address(String city, String state) {\n            this.city = city;\n            this.state = state;\n        }\n\n        void display() {\n            System.out.println(\"Student Name: \" + name);\n            System.out.println(\"City: \" + city);\n            System.out.println(\"State: \" + state);\n        }\n    }\n}\n\npublic class TestStudent {\n    public static void main(String[] args) {\n        // Create outer class object\n        Student student = new Student(\"Rahul\");\n\n        // Create inner class object\n        Student.Address address = student.new Address(\"Delhi\", \"Delhi\");\n        address.display();\n    }\n}",
+        "Student Name: Rahul\nCity: Delhi\nState: Delhi"
+      ]
+    },
+    {
+      "heading": "Advantages of Using Inner Classes",
+      "paragraphs": [
+        "The following are the main two advantages of using inner classes:",
+        "• Inner classes can access all members (fields and methods) of the outer class, including private members that allows tight integration between the inner and outer class.\n• Inner classes help logically group related classes in one place that makes the code easier to read and maintain."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Types of Nested Classes",
+      "paragraphs": [
+        "Nested classes are classified into two main types: non-static nested classes and static nested classes. The non-static nested classes are commonly referred to as inner classes."
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. Non-Static Nested Class (Inner Class)",
+      "paragraphs": [
+        "Inner classes are non-static classes defined within another class. They are further categorized into:",
+        "• Member Inner Class: A class defined inside a class but outside any method.\n• Anonymous Inner Class: A class without a name, typically used to implement an interface or extend a class. The compiler automatically assigns a name.\n• Local Inner Class: A class defined inside a method, available only within that method."
+      ],
+      "code": []
+    },
+    {
+      "heading": "2. Static Nested Class",
+      "paragraphs": [
+        "A static nested class is a static class defined within another class. It can access only static members of the outer class directly."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Nested Interface",
+      "paragraphs": [
+        "An interface defined inside a class or another interface. Nested interfaces are often used to logically group related interfaces."
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:49:14.418Z"
+}

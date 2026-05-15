@@ -1,0 +1,185 @@
+{
+  "topicId": "linkedhashset",
+  "title": "Java LinkedHashSet Class",
+  "sectionId": "java-collections-jdbc",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-linkedhashset",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-linkedhashset",
+      "score": 108,
+      "sectionCount": 18
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/util/java_util_linkedhashset.htm",
+      "score": 35,
+      "sectionCount": 6
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java LinkedHashSet Class",
+      "paragraphs": [
+        "Java LinkedHashSet is used to store unique elements while maintaining the insertion order in Java.",
+        "In this chapter, you will learn about the Java LinkedHashSet class, its features, and why it is used in collections along with the examples."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is LinkedHashSet in Java?",
+      "paragraphs": [
+        "Java LinkedHashSet class is a Hashtable and Linked List implementation of the Set interface. It inherits the HashSet class and implements the Set interface."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Key Features of Java LinkedHashSet",
+      "paragraphs": [
+        "The important points about the Java LinkedHashSet class are:",
+        "• Java LinkedHashSet class contains unique elements only, just like HashSet.\n• Java LinkedHashSet class provides all optional set operations and permits null elements.\n• Java LinkedHashSet class is non-synchronized.\n• Java LinkedHashSet class maintains insertion order.",
+        "Note: Keeping the insertion order in LinkedHashSet has some additional costs, both in terms of extra memory and extra CPU cycles.",
+        "Therefore, if maintaining insertion order is not required, it is better to use HashSet or HashMap instead."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Hierarchy of LinkedHashSet class",
+      "paragraphs": [
+        "The LinkedHashSet class extends the HashSet class, which implements the Set interface. The Set interface inherits Collection and Iterable interfaces in hierarchical order.",
+        "The below image shows the hierarchy of the LinkedHashSet class:"
+      ],
+      "code": []
+    },
+    {
+      "heading": "LinkedHashSet Class Declaration",
+      "paragraphs": [
+        "Let's see the declaration for java.util.LinkedHashSet class."
+      ],
+      "code": [
+        "public class LinkedHashSet<E> extends HashSet<E> implements Set<E>, Cloneable, Serializable"
+      ]
+    },
+    {
+      "heading": "Constructors of LinkedHashSet Class",
+      "paragraphs": [
+        "Java LinkedHashSet class provides different constructors to create and initialize a LinkedHashSet."
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. LinkedHashSet()",
+      "paragraphs": [
+        "It is used to construct a default LinkedHashSet.",
+        "Here is the syntax:"
+      ],
+      "code": [
+        "LinkedHashSet<E> set = new LinkedHashSet<E>();"
+      ]
+    },
+    {
+      "heading": "2. LinkedHashSet(Collection c)",
+      "paragraphs": [
+        "It is used to construct a LinkedHashSet containing the elements of the specified collection.",
+        "Here is the syntax:"
+      ],
+      "code": [
+        "LinkedHashSet<E> set = new LinkedHashSet<E>(Collection c);"
+      ]
+    },
+    {
+      "heading": "3. LinkedHashSet(int capacity)",
+      "paragraphs": [
+        "It is used to construct a LinkedHashSet with the specified initial capacity and default load factor.",
+        "Here is the syntax:"
+      ],
+      "code": [
+        "LinkedHashSet<E> set = new LinkedHashSet<E>(int capacity);"
+      ]
+    },
+    {
+      "heading": "4. LinkedHashSet(int capacity, float loadFactor)",
+      "paragraphs": [
+        "It is used to construct a LinkedHashSet with the specified capacity and load factor.",
+        "Here is the syntax:"
+      ],
+      "code": [
+        "LinkedHashSet<E> set = new LinkedHashSet<E>(int capacity, float loadFactor);"
+      ]
+    },
+    {
+      "heading": "Iterating Elements in LinkedHashSet",
+      "paragraphs": [
+        "LinkedHashSet is used to store elements in insertion order, and we can traverse the elements using Iterator."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "In this example, we are creating a LinkedHashSet, adding elements, and traversing them using an Iterator.",
+        "Output:"
+      ],
+      "code": [
+        "import java.util.*;  \n\nclass Main {  \n    public static void main(String args[]) {  \n        LinkedHashSet<String> set = new LinkedHashSet<String>();  \n\n        set.add(\"One\");    \n        set.add(\"Two\");    \n        set.add(\"Three\");   \n        set.add(\"Four\");  \n        set.add(\"Five\");  \n\n        Iterator<String> i = set.iterator();  \n        while(i.hasNext()) {  \n            System.out.println(i.next());  \n        }  \n    }  \n}",
+        "One\nTwo\nThree\nFour\nFive"
+      ]
+    },
+    {
+      "heading": "Ignoring Duplicate Elements in LinkedHashSet",
+      "paragraphs": [
+        "LinkedHashSet does not allow duplicate elements. If duplicate values are added, they are ignored automatically."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "In this example, we are adding duplicate elements to LinkedHashSet, but it stores only unique values.",
+        "import java.util.*;  \n\nclass Main {  \n    public static void main(String args[]) {  \n        LinkedHashSet<String> set = new LinkedHashSet<String>();  \n\n        set.add(\"Ravi\");  \n        set.add(\"Vijay\");  \n        set.add(\"Ravi\");  \n        set.add(\"Ajay\");  \n\n        Iterator<String> itr = set.iterator();  \n        while(itr.hasNext()) {  \n            System.out.println(itr.next());  \n        }  \n    }  \n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Ravi\nVijay\nAjay"
+      ]
+    },
+    {
+      "heading": "Removing Elements from LinkedHashSet",
+      "paragraphs": [
+        "The LinkedHashSet elements can be removed by using the remove() method."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "In this example, we are removing elements from LinkedHashSet using the remove() method.",
+        "import java.util.*;  \n\npublic class Main {  \n    public static void main(String args[]) {  \n\n        LinkedHashSet<String> set = new LinkedHashSet<String>();  \n\n        set.add(\"Java\");  \n        set.add(\"T\");  \n        set.add(\"Point\");  \n        set.add(\"Good\");  \n        set.add(\"Website\");  \n\n        System.out.println(\"The hash set is: \" + set);  \n\n        System.out.println(set.remove(\"Good\"));  \n\n        System.out.println(\"After removing the element, the hash set is: \" + set);  \n\n        System.out.println(set.remove(\"For\"));  \n    }  \n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "The hash set is: [Java, T, Point, Good, Website]\ntrue\nAfter removing the element, the hash set is: [Java, T, Point, Website]\nfalse"
+      ]
+    },
+    {
+      "heading": "Storing Objects in LinkedHashSet",
+      "paragraphs": [
+        "LinkedHashSet can also store user-defined objects."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "In this example, we are storing user-defined Book objects in a LinkedHashSet and traversing them.",
+        "import java.util.*;  \n\nclass Book {  \n    int id;  \n    String name, author, publisher;  \n    int quantity;  \n\n    public Book(int id, String name, String author, String publisher, int quantity) {  \n        this.id = id;  \n        this.name = name;  \n        this.author = author;  \n        this.publisher = publisher;  \n        this.quantity = quantity;  \n    }  \n}  \n\npublic class Main {  \n    public static void main(String[] args) {  \n\n        LinkedHashSet<Book> set = new LinkedHashSet<Book>();  \n\n        Book b1 = new Book(101, \"Let us C\", \"Yashwant Kanetkar\", \"BPB\", 8);  \n        Book b2 = new Book(102, \"Data Communications & Networking\", \"Forouzan\", \"Mc Graw Hill\", 4);  \n        Book b3 = new Book(103, \"Operating System\", \"Galvin\", \"Wiley\", 6);  \n\n        set.add(b1);  \n        set.add(b2);  \n        set.add(b3);  \n\n        for(Book b : set) {  \n            System.out.println(b.id + \" \" + b.name + \" \" + b.author + \" \" + b.publisher + \" \" + b.quantity);  \n        }  \n    }  \n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "101 Let us C Yashwant Kanetkar BPB 8\n102 Data Communications & Networking Forouzan Mc Graw Hill 4\n103 Operating System Galvin Wiley 6"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:44:03.368Z"
+}

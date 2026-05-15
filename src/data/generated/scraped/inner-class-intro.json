@@ -1,0 +1,233 @@
+{
+  "topicId": "inner-class-intro",
+  "title": "Java - Inner classes",
+  "sectionId": "java-core-advanced",
+  "source": "tutorialspoint",
+  "url": "https://www.tutorialspoint.com/java/java_innerclasses.htm",
+  "allSources": [
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_innerclasses.htm",
+      "score": 139,
+      "sectionCount": 25
+    },
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-inner-class",
+      "score": 50,
+      "sectionCount": 10
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java Inner Class",
+      "paragraphs": [
+        "A Java inner class is a class that is defined inside another class. The concept of inner class works with nested Java classes where outer and inner classes are used. The main class in which inner classes are defined is known as the outer class and all other classes which are inside the outer class are known as Java inner classes."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Nested Classes",
+      "paragraphs": [
+        "In Java, just like methods, variables of a class too can have another class as its member. Writing a class within another is allowed in Java. The class written within is called the nested class, and the class that holds the inner class is called the outer class."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [
+        "Following is the syntax to write a nested class. Here, the class Outer_Demo is the outer class and the class Inner_Demo is the nested class.",
+        "Nested classes are divided into two types −",
+        "• Non-static nested classes − These are the non-static members of a class.\n• Static nested classes − These are the static members of a class."
+      ],
+      "code": [
+        "class Outer_Demo {\n   class Inner_Demo {\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Inner Classes (Non-static Nested Classes)",
+      "paragraphs": [
+        "Inner classes are a security mechanism in Java. We know a class cannot be associated with the access modifier private, but if we have the class as a member of other class, then the inner class can be made private. And this is also used to access the private members of a class."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Types of Java Inner Classes",
+      "paragraphs": [
+        "Inner classes are of three types depending on how and where you define them. They are −",
+        "• Inner Class\n• Method-local Inner Class\n• Anonymous Inner Class"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Creating an Inner Class",
+      "paragraphs": [
+        "Creating an inner class is quite simple. You just need to write a class within a class. Unlike a class, an inner class can be private and once you declare an inner class private, it cannot be accessed from an object outside the class.",
+        "Following is the program to create an inner class and access it. In the given example, we make the inner class private and access the class through a method."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: Creating an inner class in Java",
+      "paragraphs": [
+        "Here you can observe that Outer_Demo is the outer class, Inner_Demo is the inner class, display_Inner() is the method inside which we are instantiating the inner class, and this method is invoked from the main method.",
+        "If you compile and execute the above program, you will get the following result −"
+      ],
+      "code": [
+        "class Outer_Demo {\n   int num;\n   \n   // inner class\n   private class Inner_Demo {\n      public void print() {\n         System.out.println(\"This is an inner class\");\n      }\n   }\n   \n   // Accessing he inner class from the method within\n   void display_Inner() {\n      Inner_Demo inner = new Inner_Demo();\n      inner.print();\n   }\n}\n   \npublic class My_class {\n\n   public static void main(String args[]) {\n      // Instantiating the outer class \n      Outer_Demo outer = new Outer_Demo();\n      \n      // Accessing the display_Inner() method.\n      outer.display_Inner();\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "This is an inner class."
+      ]
+    },
+    {
+      "heading": "Accessing the Private Members",
+      "paragraphs": [
+        "As mentioned earlier, inner classes are also used to access the private members of a class. Suppose, a class is having private members to access them. Write an inner class in it, return the private members from a method within the inner class, say, getValue(), and finally from another class (from which you want to access the private members) call the getValue() method of the inner class.",
+        "To instantiate the inner class, initially you have to instantiate the outer class. Thereafter, using the object of the outer class, following is the way in which you can instantiate the inner class.",
+        "The following program shows how to access the private members of a class using inner class."
+      ],
+      "code": [
+        "Outer_Demo outer = new Outer_Demo();\nOuter_Demo.Inner_Demo inner = outer.new Inner_Demo();"
+      ]
+    },
+    {
+      "heading": "Example: Accessing the Private Members Using Inner Class",
+      "paragraphs": [
+        "If you compile and execute the above program, you will get the following result −"
+      ],
+      "code": [
+        "class Outer_Demo {\n   // private variable of the outer class\n   private int num = 175;  \n   \n   // inner class\n   public class Inner_Demo {\n      public int getNum() {\n         System.out.println(\"This is the getnum method of the inner class\");\n         return num;\n      }\n   }\n}\n\npublic class My_class2 {\n\n   public static void main(String args[]) {\n      // Instantiating the outer class\n      Outer_Demo outer = new Outer_Demo();\n      \n      // Instantiating the inner class\n      Outer_Demo.Inner_Demo inner = outer.new Inner_Demo();\n      System.out.println(inner.getNum());\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "This is the getnum method of the inner class: 175"
+      ]
+    },
+    {
+      "heading": "Method-local Inner Class",
+      "paragraphs": [
+        "In Java, we can write a class within a method and this will be a local type. Like local variables, the scope of the inner class is restricted within the method.",
+        "A method-local inner class can be instantiated only within the method where the inner class is defined. The following program shows how to use a method-local inner class."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: Method-local Inner Class",
+      "paragraphs": [
+        "If you compile and execute the above program, you will get the following result −"
+      ],
+      "code": [
+        "public class Outerclass {\n   // instance method of the outer class \n   void my_Method() {\n      int num = 23;\n\n      // method-local inner class\n      class MethodInner_Demo {\n         public void print() {\n            System.out.println(\"This is method inner class \"+num);\t   \n         }   \n      } // end of inner class\n\t   \n      // Accessing the inner class\n      MethodInner_Demo inner = new MethodInner_Demo();\n      inner.print();\n   }\n   \n   public static void main(String args[]) {\n      Outerclass outer = new Outerclass();\n      outer.my_Method();\t   \t   \n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "This is method inner class 23"
+      ]
+    },
+    {
+      "heading": "Anonymous Inner Class",
+      "paragraphs": [
+        "An inner class declared without a class name is known as an anonymous inner class. In case of anonymous inner classes, we declare and instantiate them at the same time. Generally, they are used whenever you need to override the method of a class or an interface. The syntax of an anonymous inner class is as follows −"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax: Anonymous Inner Class",
+      "paragraphs": [
+        "The following program shows how to override the method of a class using anonymous inner class."
+      ],
+      "code": [
+        "AnonymousInner an_inner = new AnonymousInner() {\n   public void my_method() {\n      ........\n      ........\n   }   \n};"
+      ]
+    },
+    {
+      "heading": "Example: Anonymous Inner Class",
+      "paragraphs": [
+        "If you compile and execute the above program, you will get the following result −"
+      ],
+      "code": [
+        "abstract class AnonymousInner {\n   public abstract void mymethod();\n}\n\npublic class Outer_class {\n\n   public static void main(String args[]) {\n      AnonymousInner inner = new AnonymousInner() {\n         public void mymethod() {\n            System.out.println(\"This is an example of anonymous inner class\");\n         }\n      };\n      inner.mymethod();\t\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [
+        "In the same way, you can override the methods of the concrete class as well as the interface using an anonymous inner class."
+      ],
+      "code": [
+        "This is an example of anonymous inner class"
+      ]
+    },
+    {
+      "heading": "Anonymous Inner Class as Argument",
+      "paragraphs": [
+        "Generally, if a method accepts an object of an interface, an abstract class, or a concrete class, then we can implement the interface, extend the abstract class, and pass the object to the method. If it is a class, then we can directly pass it to the method.",
+        "But in all the three cases, you can pass an anonymous inner class to the method. Here is the syntax of passing an anonymous inner class as a method argument −",
+        "The following program shows how to pass an anonymous inner class as a method argument."
+      ],
+      "code": [
+        "obj.my_Method(new My_Class() {\n   public void Do() {\n      .....\n      .....\n   }\n});"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "If you compile and execute the above program, it gives you the following result −"
+      ],
+      "code": [
+        "// interface\ninterface Message {\n   String greet();\n}\n\npublic class My_class {\n   // method which accepts the object of interface Message\n   public void displayMessage(Message m) {\n      System.out.println(m.greet() +\n         \", This is an example of anonymous inner class as an argument\");  \n   }\n\n   public static void main(String args[]) {\n      // Instantiating the class\n      My_class obj = new My_class();\n\n      // Passing an anonymous inner class as an argument\n      obj.displayMessage(new Message() {\n         public String greet() {\n            return \"Hello\";\n         }\n      });\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Hello, This is an example of anonymous inner class as an argument"
+      ]
+    },
+    {
+      "heading": "Static Nested Class",
+      "paragraphs": [
+        "A static inner class is a nested class which is a static member of the outer class. It can be accessed without instantiating the outer class, using other static members. Just like static members, a static nested class does not have access to the instance variables and methods of the outer class. The syntax of static nested class is as follows −"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [
+        "Instantiating a static nested class is a bit different from instantiating an inner class. The following program shows how to use a static nested class."
+      ],
+      "code": [
+        "class MyOuter {\n   static class Nested_Demo {\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "If you compile and execute the above program, you will get the following result −"
+      ],
+      "code": [
+        "public class Outer {\n   static class Nested_Demo {\n      public void my_method() {\n         System.out.println(\"This is my nested class\");\n      }\n   }\n   \n   public static void main(String args[]) {\n      Outer.Nested_Demo nested = new Outer.Nested_Demo();\t \n      nested.my_method();\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "This is my nested class"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:38:03.007Z"
+}

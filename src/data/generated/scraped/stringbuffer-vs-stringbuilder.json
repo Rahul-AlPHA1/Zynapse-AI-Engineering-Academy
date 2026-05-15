@@ -1,0 +1,91 @@
+{
+  "topicId": "stringbuffer-vs-stringbuilder",
+  "title": "StringBuffer vs StringBuilder in Java",
+  "sectionId": "java-core-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/difference-between-stringbuffer-and-stringbuilder",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/difference-between-stringbuffer-and-stringbuilder",
+      "score": 52,
+      "sectionCount": 8
+    }
+  ],
+  "sections": [
+    {
+      "heading": "StringBuffer vs StringBuilder in Java",
+      "paragraphs": [
+        "Java provides three classes to represent a sequence of characters: String, StringBuffer, and StringBuilder. The String class is an immutable class whereas StringBuffer and StringBuilder classes are mutable. There are many differences between StringBuffer and StringBuilder. The StringBuilder class is introduced since JDK 1.5."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is StringBuffer in Java?",
+      "paragraphs": [
+        "StringBuffer is a mutable class that is used to create and modify strings without creating new objects. It is thread-safe that means, it is safe to use in multi-threaded environments."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates the use of StringBuffer:",
+        "Output:",
+        "The append() method modifies the same StringBuffer object that proves it is mutable."
+      ],
+      "code": [
+        "//Java Program to demonstrate the use of StringBuffer class.\npublic class BufferTest{\n    public static void main(String[] args){\n        StringBuffer buffer=new StringBuffer(\"hello\");\n        buffer.append(\"java\");\n        System.out.println(buffer);\n    }\n}",
+        "hellojava"
+      ]
+    },
+    {
+      "heading": "What is StringBuilder in Java?",
+      "paragraphs": [
+        "StringBuilder is a mutable class in Java similar to StringBuffer, but it is not thread-safe. It is faster than StringBuffer and it is commonly used in single-threaded applications."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates the use of StringBuilder:",
+        "Output:",
+        "Here, the same StringBuilder object is updated using append() that shows the efficient and fast string modification."
+      ],
+      "code": [
+        "//Java Program to demonstrate the use of StringBuilder class.\npublic class BuilderTest{\n    public static void main(String[] args){\n        StringBuilder builder=new StringBuilder(\"hello\");\n        builder.append(\"java\");\n        System.out.println(builder);\n    }\n}",
+        "hellojava"
+      ]
+    },
+    {
+      "heading": "Difference Between StringBuffer and StringBuilder Classes",
+      "paragraphs": [
+        "A list of differences between StringBuffer and StringBuilder classes are given below:",
+        "StringBuffer | StringBuilder\nStringBuffer is synchronized i.e. thread safe. It means two threads can't call the methods of StringBuffer simultaneously. | StringBuilder is non-synchronized i.e. not thread safe. It means two threads can call the methods of StringBuilder simultaneously.\nStringBuffer is less efficient than StringBuilder. | StringBuilder is more efficient than StringBuffer.\nStringBuffer was introduced in Java 1.0 | StringBuilder was introduced in Java 1.5"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Performance Test of StringBuffer and StringBuilder",
+      "paragraphs": [
+        "Let’s look at a program that compares the performance of the StringBuffer and StringBuilder classes."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrate how to test the performance of StringBuffer and StringBuilder.",
+        "Output:",
+        "In the above example, both StringBuffer and StringBuilder append a string multiple times, but StringBuilder executes faster because it is not synchronized, whereas StringBuffer is thread-safe and has extra overhead.",
+        "Next TopicHow-to-create-immutable-class-in-java"
+      ],
+      "code": [
+        "//Java Program to demonstrate the performance of StringBuffer and StringBuilder classes.\npublic class ConcatTest{\n    public static void main(String[] args){\n        long startTime = System.currentTimeMillis();\n        StringBuffer sb = new StringBuffer(\"Java\");\n        for (int i=0; i<10000; i++){\n            sb.append(\"Tpoint\");\n        }\n        System.out.println(\"Time taken by StringBuffer: \" + (System.currentTimeMillis() - startTime) + \"ms\");\n        startTime = System.currentTimeMillis();\n        StringBuilder sb2 = new StringBuilder(\"Java\");\n        for (int i=0; i<10000; i++){\n            sb2.append(\"Tpoint\");\n        }\n        System.out.println(\"Time taken by StringBuilder: \" + (System.currentTimeMillis() - startTime) + \"ms\");\n    }\n}",
+        "Time taken by StringBuffer: 16ms\nTime taken by StringBuilder: 0ms"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:36:25.381Z"
+}

@@ -1,0 +1,120 @@
+{
+  "topicId": "throws-keyword",
+  "title": "Java throws Keyword",
+  "sectionId": "java-core-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-throws",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-throws",
+      "score": 75,
+      "sectionCount": 10
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java throws Keyword",
+      "paragraphs": [
+        "The throws keyword in Java is used in a method declaration to specify that the method may pass one or more exceptions to the calling method. In this chapter, we will learn how the throws keyword works, when it should be used, how it differs from the throw keyword, and how it helps in handling checked exceptions effectively in Java programs."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is throws Keyword in Java?",
+      "paragraphs": [
+        "The throws keyword is a keyword that is used to declare possible exceptions that a method can generate and allow those exceptions to be handled by the method that invokes it rather than within the method itself."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [
+        "The syntax of throws keyword for single exception is as follows:",
+        "The syntax of throws keyword for multiple exceptions is as follows:"
+      ],
+      "code": [
+        "return_type method_name() throws exception_class_name {\n    // method code\n}",
+        "return_type method_name() throws exception_class_name1, exception_class_name2, ... {\n    // method code\n}"
+      ]
+    },
+    {
+      "heading": "Examples of throws Keyword",
+      "paragraphs": [
+        "Here are examples of the throws keyword for single and multiple exceptions."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example 1: Throws with Single Exception",
+      "paragraphs": [
+        "The following example demonstrates the throws keyword with a single exception:",
+        "static void checkAge(int age) throws ArithmeticException {\n        if (age < 18) {\n            throw new ArithmeticException(\"Not eligible to vote\");\n        }\n        System.out.println(\"Eligible to vote\");\n    }\n\n    public static void main(String[] args) {\n        try {\n            checkAge(15);\n        } catch (ArithmeticException e) {\n            System.out.println(\"Exception caught: \" + e.getMessage());\n        }\n    }\n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Exception caught: Not eligible to vote"
+      ]
+    },
+    {
+      "heading": "Example 2: Throws with Multiple Exceptions",
+      "paragraphs": [
+        "The following example demonstrates the throws keyword with multiple exceptions:",
+        "Output:",
+        "Rule: If we are calling a method that declares an exception, we must either catch or declare the exception."
+      ],
+      "code": [
+        "import java.io.*;\n\nclass Main {\n    static void readFile(String fileName) throws IOException, FileNotFoundException {\n        FileReader file = new FileReader(fileName);\n        BufferedReader fileInput = new BufferedReader(file);\n        System.out.println(fileInput.readLine());\n        fileInput.close();\n    }\n\n    public static void main(String[] args) {\n        try {\n            readFile(\"test.txt\");\n        } catch (FileNotFoundException e) {\n            System.out.println(\"File not found: \" + e.getMessage());\n        } catch (IOException e) {\n            System.out.println(\"IO Exception: \" + e.getMessage());\n        }\n    }\n}",
+        "File not found: test.txt (No such file or directory)"
+      ]
+    },
+    {
+      "heading": "When to Use the throws Keyword?",
+      "paragraphs": [
+        "The throws keyword is used when a method might cause a checked exception but does not handle it itself. It tells the caller that the method can throw an exception, so the caller can decide how to handle it.",
+        "It is commonly used in methods that work with files, databases, or network operations that helps to keep the code clean by passing the responsibility of handling exceptions to higher-level methods."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Handling or Declaring Exceptions",
+      "paragraphs": [
+        "If we are calling a method that declares an exception, we must either catch the exception or declare it using the throws keyword.",
+        "There are two cases:",
+        "• Handle the exception using a try-catch block\n• Declare the exception using the throws keyword"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Case 1: Handle Exception Using try-catch",
+      "paragraphs": [
+        "When we handle the exception, the program executes normally whether the exception occurs or not.",
+        "The following example demonstrates handling an exception using a try-catch block:",
+        "import java.io.*;  \nclass M{  \n void method()throws IOException{  \n  throw new IOException(\"device error\");  \n }  \n}  \npublic class Main{  \n   public static void main(String args[]){  \n    try{  \n     M m=new M();  \n     m.method();  \n    }catch(Exception e){System.out.println(\"exception handled\");}     \n    System.out.println(\"normal flow...\");  \n  }  \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "exception handled\nnormal flow..."
+      ]
+    },
+    {
+      "heading": "Case 2: Declare Exception Using throws",
+      "paragraphs": [
+        "If we declare the exception and it does not occur, the program runs normally. If the exception occurs, it is thrown at runtime, because throws only declare the exception - it does not handle it.",
+        "A) Exception Does Not Occur",
+        "The following example demonstrates declaring an exception using the throws keyword when no exception occurs:",
+        "import java.io.*;  \nclass M{  \n void method()throws IOException {  \n  System.out.println(\"Device operation performed\");  \n }  \n}  \nclass Main {  \n   public static void main(String args[])throws IOException{//declare exception  \n     M m=new M();  \n     m.method();  \n    System.out.println(\"normal flow...\");  \n  }  \n}  \nCompile and Run",
+        "Output:",
+        "B) Exception Occurs",
+        "The following example demonstrates declaring an exception using the throws keyword when the exception occurs at runtime:",
+        "import java.io.*;  \nclass M{  \n void method()throws IOException{  \n  throw new IOException(\"device error\");  \n }  \n}  \nclass Main{  \n   public static void main(String args[])throws IOException{//declare exception  \n     M m=new M();  \n     m.method();  \n    System.out.println(\"normal flow...\");  \n  }  \n}",
+        "When we run the above code, we get the following exception"
+      ],
+      "code": [
+        "Device operation performed\nnormal flow...",
+        "Exception in thread \"main\" java.io.IOException: device error\n\tat M.method(Main.java:4)\n\tat Main.main(Main.java:10)"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:37:33.269Z"
+}

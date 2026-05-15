@@ -1,0 +1,451 @@
+{
+  "topicId": "collections-intro",
+  "title": "Collections in Java",
+  "sectionId": "java-collections-jdbc",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/collections-in-java",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/collections-in-java",
+      "score": 297,
+      "sectionCount": 46
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_collections.htm",
+      "score": 66,
+      "sectionCount": 11
+    }
+  ],
+  "sections": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Tutorial  Compiler  Programs  OOPs Collections  Interview Questions"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Collections in Java",
+      "paragraphs": [
+        "Collections are used to store and manage a group of objects. They make it easy to perform common tasks like adding, removing, searching, and sorting data.",
+        "In this chapter, you will learn what collections are, how the collection framework works, and why it is important in Java."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is Collection?",
+      "paragraphs": [
+        "A Collection represents a group of objects. It is used to store multiple values in a single unit so that they can be managed easily."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is a framework?",
+      "paragraphs": [
+        "A framework provides a ready-made structure of classes and interfaces for building software applications efficiently. It simplifies adding new features by offering reusable components that perform similar tasks, eliminating the need to create a framework from scratch for each new project. This approach enhances object-oriented design that makes development quicker, more consistent, and reliable.",
+        "• It provides a ready-made structure\n• It contains classes and interfaces\n• It helps in faster and easier development"
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is Collection Framework?",
+      "paragraphs": [
+        "The Collection Framework is a set of classes and interfaces used to store and manage data. It provides different data structures like lists, sets, and queues.",
+        "It includes:",
+        "• Interfaces and their implementations (classes)\n• Algorithms for operations like sorting and searching"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Types of Collections in Java",
+      "paragraphs": [
+        "Java Collection Framework provides different types of interfaces and classes:",
+        "Interfaces:",
+        "• List\n• Set\n• Queue\n• Deque",
+        "Classes:",
+        "• ArrayList\n• Vector\n• LinkedList\n• PriorityQueue\n• HashSet\n• LinkedHashSet\n• TreeSet"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Why Collection Framework?",
+      "paragraphs": [
+        "Before the Collection Framework, Java used arrays, vectors, and hash tables. These did not follow a common structure, so they were hard to use and manage.",
+        "The Collection Framework solves this problem by providing a standard way to work with data. It makes code easier to write, understand, and reuse."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Hierarchy of Collection Framework",
+      "paragraphs": [
+        "Let's see the hierarchy of Collection framework. The java.util package contains all the classes and interfaces for the Collection framework.",
+        "The Java Collections Framework is structured around key interfaces-Collection, List, Set, Queue, and Map. Each tailored for specific data management tasks. Implementations like ArrayList, HashSet, and HashMap offer practical solutions for working with these collections, giving Java developers a versatile set of tools for efficient data handling.",
+        "• Class: A class is a blueprint from which individual objects are created. It encapsulates data for objects through fields (attributes) and defines behavior via methods. Classes support inheritance, allowing one class to inherit the properties and methods of another, facilitating code reuse and polymorphism.\n• Interface: An interface is a reference type in Java that can contain constants and abstract methods (methods without a body). Interfaces specify what a class must do but not how it does it, enforcing a set of methods that the class must implement. Interfaces are used to achieve abstraction and multiple inheritance in Java."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Collection Interface",
+      "paragraphs": [
+        "The Collection interface is the interface which is implemented by all the classes in the collection framework. It declares the methods that every collection will have. In other words, we can say that the Collection interface builds the foundation on which the collection framework depends.",
+        "Some of the methods of Collection interface are Boolean add (Object obj), Boolean addAll (Collection c), void clear(), etc. that are implemented by all the subclasses of Collection interface."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following code snippet demonstrates how to use the Collection interface to store and display elements.",
+        "Output:"
+      ],
+      "code": [
+        "import java.util.*;\n\npublic class CollectionExample {\n    public static void main(String[] args) {\n        Collection<String> list = new ArrayList<>();\n\n        list.add(\"Rahul\");\n        list.add(\"Priya\");\n        list.add(\"Amit\");\n\n        for (String name : list) {\n            System.out.println(name);\n        }\n    }\n}",
+        "Rahul\nPriya\nAmit"
+      ]
+    },
+    {
+      "heading": "Iterator Interface",
+      "paragraphs": [
+        "The Iterator interface is used to traverse elements of a collection one by one. It allows only forward direction traversal. It also provides methods to remove elements while iterating."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following code snippet demonstrates how to use the Iterator interface to traverse elements one by one.",
+        "Output:"
+      ],
+      "code": [
+        "import java.util.*;\n\npublic class IteratorExample {\n    public static void main(String[] args) {\n        Collection<String> list = new ArrayList<>();\n\n        list.add(\"Rahul\");\n        list.add(\"Priya\");\n        list.add(\"Amit\");\n\n        Iterator<String> itr = list.iterator();\n\n        while (itr.hasNext()) {\n            System.out.println(itr.next());\n        }\n    }\n}",
+        "Rahul\nPriya\nAmit"
+      ]
+    },
+    {
+      "heading": "Iterable Interface",
+      "paragraphs": [
+        "The Iterable interface is the root interface for all the collection classes. The Collection interface extends the Iterable interface, and therefore, all the subclasses of the Collection interface also implement the Iterable interface.",
+        "It contains only one abstract method. i.e.,",
+        "It returns the iterator over the elements of type T."
+      ],
+      "code": [
+        "Iterator<T> iterator()"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following code snippet shows how Iterable is used to iterate over elements.",
+        "Output:"
+      ],
+      "code": [
+        "import java.util.*;\n\npublic class IterableExample {\n    public static void main(String[] args) {\n        Iterable<String> list = new ArrayList<>();\n\n        list.add(\"Rahul\");\n        list.add(\"Priya\");\n        list.add(\"Amit\");\n\n        for (String name : list) {\n            System.out.println(name);\n        }\n    }\n}",
+        "Rahul\nPriya\nAmit"
+      ]
+    },
+    {
+      "heading": "List Interface",
+      "paragraphs": [
+        "The list interface is the child interface of the Collection interface. It inhibits a list-type data structure in which we can store the ordered collection of objects. It can have duplicate values. The list interface is implemented by the classes ArrayList, LinkedList, Vector, and Stack. To instantiate the List interface, we must use:",
+        "Various methods in List interface can be used to insert, delete, and access the elements from the list. The classes that implement the List interface are given below:",
+        "• ArrayList\n• LinkedList\n• Vector\n• Stack"
+      ],
+      "code": [
+        "List <data-type> list1= new ArrayList();\nList <data-type> list2 = new LinkedList();\nList <data-type> list3 = new Vector();\nList <data-type> list4 = new Stack();"
+      ]
+    },
+    {
+      "heading": "List Interface Example",
+      "paragraphs": [
+        "The following example demonstrates how to use the List interface to store ordered elements.",
+        "import java.util.*;\n\npublic class ListExample {\n    public static void main(String[] args) {\n        List<String> list = new ArrayList<>();\n\n        list.add(\"Rahul\");\n        list.add(\"Priya\");\n        list.add(\"Amit\");\n\n        System.out.println(list);\n    }\n}",
+        "Output:"
+      ],
+      "code": [
+        "[Rahul, Priya, Amit]"
+      ]
+    },
+    {
+      "heading": "ArrayList",
+      "paragraphs": [
+        "The ArrayList class implements the List interface. It uses a dynamic array to store the duplicate elements of different data types. The ArrayList class maintains the insertion order and is non-synchronized. The elements stored in the ArrayList class can be randomly accessed. Consider the following example."
+      ],
+      "code": []
+    },
+    {
+      "heading": "ArrayList Example",
+      "paragraphs": [
+        "The following example shows how to use ArrayList to store and access elements.",
+        "import java.util.*;\n\npublic class ArrayListExample {\n    public static void main(String[] args) {\n        ArrayList<String> list = new ArrayList<>();\n\n        list.add(\"Rahul\");\n        list.add(\"Priya\");\n        list.add(\"Amit\");\n\n        System.out.println(list.get(1));\n    }\n}\n\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Priya"
+      ]
+    },
+    {
+      "heading": "LinkedList",
+      "paragraphs": [
+        "LinkedList implements the Collection interface. It uses a doubly linked list internally to store the elements. It can store the duplicate elements. It maintains the insertion order and is not synchronized. In LinkedList, the manipulation is fast because no shifting is required. Consider the following example."
+      ],
+      "code": []
+    },
+    {
+      "heading": "LinkedList Example",
+      "paragraphs": [
+        "In this example, a LinkedList is created and traversed using an Iterator to print each element, including duplicate values.",
+        "import java.util.*;  \npublic class Main {  \n    public static void main(String args[]) {  \n        LinkedList<String> al=new LinkedList<String>();  \n        al.add(\"Lucy\");  \n        al.add(\"Peter\");  \n        al.add(\"Lucy\");  \n        al.add(\"John\");  \n        Iterator<String> itr=al.iterator();  \n        while(itr.hasNext()) {  \n            System.out.println(itr.next());  \n        }  \n    }  \n}  Compile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Lucy\nPeter\nLucy\nJohn"
+      ]
+    },
+    {
+      "heading": "Vector",
+      "paragraphs": [
+        "Vector uses a dynamic array to store the data elements. It is similar to ArrayList. However, it is synchronized and contains many methods that are not the part of Collection framework. Consider the following example."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Vector Example",
+      "paragraphs": [
+        "In this example, a Vector is created and traversed using an Iterator to print each element in the collection.",
+        "import java.util.*;  \n    public class Main {  \n        public static void main(String args[]) {  \n        Vector<String> v=new Vector<String>();  \n        v.add(\"Apple\");  \n        v.add(\"Banana\");  \n        v.add(\"Orange\");  \n        v.add(\"Plum\");  \n        Iterator<String> itr=v.iterator();  \n        while(itr.hasNext()){  \n            System.out.println(itr.next());  \n        }  \n    }  \n} Compile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Apple\nBanana\nOrange\nPlum"
+      ]
+    },
+    {
+      "heading": "Stack",
+      "paragraphs": [
+        "The stack is the subclass of Vector. It implements the last-in-first-out data structure, i.e., Stack. The stack contains all of the methods of Vector class and also provides its methods like boolean push(), boolean peek(), boolean push(object o), which defines its properties. Consider the following example."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Stack Example",
+      "paragraphs": [
+        "In this example, a Stack is used to store elements, one element is removed using pop(), and the remaining elements are traversed using an Iterator to display them.",
+        "import java.util.*;  \n    public class Main {  \n        public static void main(String args[]) {  \n        Stack<String> stack = new Stack<String>();  \n        stack.push(\"CPU\");  \n        stack.push(\"Monitor\");  \n        stack.push(\"Mouse\");  \n        stack.push(\"Keyboard\");  \n        stack.push(\"Printer\");\n        stack.pop();  \n        Iterator<String> itr=stack.iterator();  \n        while(itr.hasNext()) {  \n            System.out.println(itr.next());  \n        }  \n    }  \n}Compile and Run",
+        "Output:"
+      ],
+      "code": [
+        "CPU\nMonitor\nMouse\nKeyboard"
+      ]
+    },
+    {
+      "heading": "Queue Interface",
+      "paragraphs": [
+        "The queue interface maintains the first-in-first-out order. It can be defined as an ordered list that is used to hold the elements that are about to be processed. There are various classes, like PriorityQueue, Deque, and ArrayDeque, which implement the Queue interface.",
+        "Queue interface can be instantiated as:",
+        "Various classes implement the Queue interface; some of them are given below:",
+        "• PriorityQueue\n• Deque\n• ArrayDeque"
+      ],
+      "code": [
+        "Queue<String> q1 = new PriorityQueue();\nQueue<String> q2 = new ArrayDeque();"
+      ]
+    },
+    {
+      "heading": "Queue Interface Example",
+      "paragraphs": [
+        "The following example demonstrates how Queue follows FIFO order.",
+        "Output:"
+      ],
+      "code": [
+        "import java.util.*;\n\npublic class QueueExample {\n    public static void main(String[] args) {\n        Queue<String> queue = new LinkedList<>();\n\n        queue.add(\"Rahul\");\n        queue.add(\"Priya\");\n        queue.add(\"Amit\");\n\n        System.out.println(queue.poll());\n    }\n}",
+        "Rahul"
+      ]
+    },
+    {
+      "heading": "PriorityQueue",
+      "paragraphs": [
+        "The PriorityQueue class implements the Queue interface. It holds the elements or objects which are to be processed by their priorities. PriorityQueue does not allow null values to be stored in the queue. Consider the following example."
+      ],
+      "code": []
+    },
+    {
+      "heading": "PriorityQueue Example",
+      "paragraphs": [
+        "In this example, a PriorityQueue is used to store elements, access the head using element() and peek(), iterate through elements, and demonstrate removal using remove() and poll().",
+        "import java.util.*;  \npublic class Main {  \n    public static void main(String args[]) {  \n        PriorityQueue<String> queue=new PriorityQueue<String>();  \n        queue.add(\"Alice\");  \n        queue.add(\"Daniel\");  \n        queue.add(\"Jones\");  \n        queue.add(\"Smith\");  \n        System.out.println(\"head:\"+queue.element());  \n        System.out.println(\"head:\"+queue.peek());  \n        System.out.println(\"iterating the queue elements:\");  \n        Iterator itr=queue.iterator();  \n        while(itr.hasNext()) {  \n            System.out.println(itr.next());  \n        }  \n        queue.remove();  \n        queue.poll();  \n        System.out.println(\"after removing two elements:\");  \n        Iterator<String> itr2=queue.iterator();  \n        while(itr2.hasNext()) {  \n            System.out.println(itr2.next());  \n        }  \n    }  \n} Compile and Run",
+        "Output:"
+      ],
+      "code": [
+        "head:Alice\nhead:Alice\niterating the queue elements:\nAlice\nDaniel\nJones\nSmith\nafter removing two elements:\nJones\nSmith"
+      ]
+    },
+    {
+      "heading": "Deque Interface",
+      "paragraphs": [
+        "The Deque interface extends the Queue interface. In Deque, we can remove and add the elements from both sides. Deque stands for a double-ended queue, which enables us to perform the operations at both ends."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Deque Interface Example",
+      "paragraphs": [
+        "The following example demonstrates adding elements from both ends.",
+        "Output:"
+      ],
+      "code": [
+        "import java.util.*;\n\npublic class DequeExample {\n    public static void main(String[] args) {\n        Deque<String> deque = new ArrayDeque<>();\n\n        deque.addFirst(\"Rahul\");\n        deque.addLast(\"Priya\");\n\n        System.out.println(deque);\n    }\n}",
+        "[Rahul, Priya]"
+      ]
+    },
+    {
+      "heading": "ArrayDeque",
+      "paragraphs": [
+        "ArrayDeque class implements the Deque interface. It facilitates us to use the Deque. Unlike queue, we can add or delete the elements from both ends. ArrayDeque is faster than ArrayList and Stack and has no capacity restrictions. Consider the following example."
+      ],
+      "code": []
+    },
+    {
+      "heading": "ArrayDeque Example",
+      "paragraphs": [
+        "In this example, a Deque is created using ArrayDeque, elements are added, and then traversed using a for-each loop to display each element.",
+        "import java.util.*;  \npublic class Main{  \n    public static void main(String[] args) {  \n        //Creating Deque and adding elements  \n        Deque<String> deque = new ArrayDeque<String>();  \n        deque.add(\"Lucy\");  \n        deque.add(\"Andrew\");  \n        deque.add(\"Henery\"); \n        //Traversing elements  \n        for (String str : deque) {  \n            System.out.println(str);  \n        }  \n    }  \n}  Compile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Lucy\nAndrew\nHenery"
+      ]
+    },
+    {
+      "heading": "Set Interface",
+      "paragraphs": [
+        "Set Interface in Java is present in java.util package. It extends the Collection interface. It represents the unordered set of elements which does not allow us to store the duplicate items. We can store at most one null value in Set. HashSet, LinkedHashSet, and TreeSet implement set. The set can be instantiated as:"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Set Interface Example",
+      "paragraphs": [
+        "The following example shows how Set stores unique elements.",
+        "Output:"
+      ],
+      "code": [
+        "import java.util.*;\n\npublic class SetExample {\n    public static void main(String[] args) {\n        Set<String> set = new HashSet<>();\n\n        set.add(\"Rahul\");\n        set.add(\"Priya\");\n        set.add(\"Rahul\");\n\n        System.out.println(set);\n    }\n}",
+        "[Rahul, Priya]"
+      ]
+    },
+    {
+      "heading": "HashSet",
+      "paragraphs": [
+        "The HashSet class implements Set Interface. It represents the collection that uses a hash table for storage. Hashing is used to store the elements in the HashSet. It contains unique items. Consider the following example."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Hashset Example",
+      "paragraphs": [
+        "In this example, a HashSet is created to store unique elements, and an Iterator is used to traverse and print each element.",
+        "import java.util.*;  \npublic class Main  {  \n    public static void main(String args[]) {  \n        //Creating HashSet and adding elements  \n        HashSet<String> set=new HashSet<String>();  \n        set.add(\"Andrew\");  \n        set.add(\"Mark\");  \n        set.add(\"Peter\");  \n        set.add(\"Johnson\");\n        //Traversing elements  \n        Iterator<String> itr=set.iterator();  \n        while(itr.hasNext()) {  \n            System.out.println(itr.next());  \n        }  \n    }  \n}  Compile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Johnson\nAndrew\nMark\nPeter"
+      ]
+    },
+    {
+      "heading": "LinkedHashSet",
+      "paragraphs": [
+        "The LinkedHashSet class represents the LinkedList implementation of the Set Interface. It extends the HashSet class and implements the Set interface. Like HashSet, it also contains unique elements. It maintains the insertion order and permits null elements. Consider the following example."
+      ],
+      "code": []
+    },
+    {
+      "heading": "LinkedHashSet Example",
+      "paragraphs": [
+        "In this example, a LinkedHashSet is used to store unique elements while maintaining insertion order, and an Iterator is used to traverse and print the elements.",
+        "import java.util.*;  \npublic class Main{  \n    public static void main(String args[]){  \n        LinkedHashSet<String> set=new LinkedHashSet<String>();  \n        set.add(\"Peter\");  \n        set.add(\"Jack\");  \n       set.add(\"Peter\");  \n      set.add(\"Johnson\"); \n        Iterator<String> itr=set.iterator();  \n        while(itr.hasNext()){  \n            System.out.println(itr.next());  \n        }  \n    }  \n}  Compile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Peter\nJack\nJohnson"
+      ]
+    },
+    {
+      "heading": "SortedSet Interface",
+      "paragraphs": [
+        "SortedSet is the alternative to the Set interface that provides a total ordering of its elements. The elements of the SortedSet are arranged in the increasing (ascending) order. The SortedSet provides additional methods that inhibit the natural ordering of the components."
+      ],
+      "code": []
+    },
+    {
+      "heading": "SortedSet Interface Example",
+      "paragraphs": [
+        "The following example demonstrates sorted elements in ascending order.",
+        "Output:"
+      ],
+      "code": [
+        "import java.util.*;\n\npublic class SortedSetExample {\n    public static void main(String[] args) {\n        SortedSet<String> set = new TreeSet<>();\n\n        set.add(\"Rahul\");\n        set.add(\"Priya\");\n        set.add(\"Amit\");\n\n        System.out.println(set);\n    }\n}",
+        "[Amit, Priya, Rahul]"
+      ]
+    },
+    {
+      "heading": "TreeSet",
+      "paragraphs": [
+        "Java TreeSet class implements the Set interface that uses a tree for storage. Like HashSet, TreeSet also contains unique elements. However, the access and retrieval time of TreeSet is quite fast. The aspects in TreeSet are stored in ascending order. Consider the following example."
+      ],
+      "code": []
+    },
+    {
+      "heading": "TreeSet Example",
+      "paragraphs": [
+        "In this example, a TreeSet is used to store unique elements in sorted order, and an Iterator is used to traverse and print the elements.",
+        "import java.util.*;  \npublic class Main{  \n    public static void main(String args[]){  \n        //Creating and adding elements  \n        TreeSet<String> set=new TreeSet<String>();  \n       set.add(\"Thomas\");  \n        set.add(\"Davis\");  \n        set.add(\"Thomas\");  \n        set.add(\"Donald\"); \n        //traversing elements  \n        Iterator<String> itr=set.iterator();  \n        while(itr.hasNext()){  \n            System.out.println(itr.next());  \n        }  \n    }  \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Davis\nDonald\nThomas"
+      ]
+    },
+    {
+      "heading": "Map Interface",
+      "paragraphs": [
+        "The Map interface in Java is part of the Java Collections Framework. It represents a mapping between a set of keys and their corresponding values. A Map cannot contain duplicate keys; each key can map to at most one value. The Map interface is used to store key-value pairs, where each key is unique, and it provides an efficient way to retrieve, update, and manipulate data based on keys.",
+        "Syntax:",
+        "It has the following syntax:"
+      ],
+      "code": [
+        "Map<T, T> hm = new HashMap<>(); \nMap<T, T> tm = new TreeMap<>();"
+      ]
+    },
+    {
+      "heading": "Map Interface Example",
+      "paragraphs": [
+        "The following example demonstrates storing key-value pairs.",
+        "Output:"
+      ],
+      "code": [
+        "import java.util.*;\n\npublic class MapExample {\n    public static void main(String[] args) {\n        Map<Integer, String> map = new HashMap<>();\n\n        map.put(1, \"Rahul\");\n        map.put(2, \"Priya\");\n        map.put(3, \"Amit\");\n\n        System.out.println(map);\n    }\n}",
+        "{1=Rahul, 2=Priya, 3=Amit}"
+      ]
+    },
+    {
+      "heading": "HashMap",
+      "paragraphs": [
+        "HashMap in Java is a key-value data structure offering efficient data access via keys using hashing. Hashing converts large strings or other objects into smaller, consistent values for quick indexing and searching. HashMap implements the Map interface and is used for managing large datasets efficiently. Additionally, HashSet uses HashMap internally to store elements uniquely, demonstrating the utility of hashing in Java's collections framework for fast data retrieval and management."
+      ],
+      "code": []
+    },
+    {
+      "heading": "HashMap Example",
+      "paragraphs": [
+        "In this example, a HashMap is used to store key-value pairs, retrieve values, iterate through entries, remove elements, and check for the presence of a key.",
+        "import java.util.HashMap;\nimport java.util.Map;\npublic class Main {\n    public static void main(String[] args) {\n        // Creating a HashMap\n        Map<String, Integer> map = new HashMap<>();\n        // Adding key-value pairs to the HashMap\n        map.put(\"Alice\", 10);\n        map.put(\"Bob\", 20);\n        map.put(\"Charlie\", 30);\n        // Retrieving a value\n        System.out.println(\"Value for 'Alice': \" + map.get(\"Alice\"));\n        // Iterating over key-value pairs\n        for (Map.Entry<String, Integer> entry : map.entrySet()) {\n            String key = entry.getKey();\n            Integer value = entry.getValue();\n            System.out.println(key + \": \" + value);\n        }\n        // Removing a key-value pair\n        map.remove(\"Charlie\");\n        // Checking the presence of a key\n        if (map.containsKey(\"Bob\")) {\n            System.out.println(\"Map contains key 'Bob'.\");\n        }\n    }\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Value for 'Alice': 10Bob: 20\nAlice: 10\nCharlie: 30\nMap contains key 'Bob'."
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:43:23.294Z"
+}

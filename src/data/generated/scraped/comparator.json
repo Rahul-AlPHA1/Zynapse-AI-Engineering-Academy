@@ -1,0 +1,162 @@
+{
+  "topicId": "comparator",
+  "title": "Java Comparator Interface",
+  "sectionId": "java-collections-jdbc",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-comparator",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-comparator",
+      "score": 111,
+      "sectionCount": 11
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_using_comparator.htm",
+      "score": 67,
+      "sectionCount": 13
+    },
+    {
+      "sourceId": "geeksforgeeks",
+      "url": "https://www.geeksforgeeks.org/java/java-comparator-interface/",
+      "score": 37,
+      "sectionCount": 7
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java Comparator Interface",
+      "paragraphs": [
+        "Java Comparator is used to sort objects in different ways by defining custom comparison logic.",
+        "In this chapter, you will learn about the Java Comparator interface, its methods, and how to use it to sort objects based on different attributes."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is Java Comparator Interface?",
+      "paragraphs": [
+        "The Comparator is an interface in the java.util package that is used to compare and sort objects of a user-defined class. It provides methods like compare() and equals() to define custom sorting logic.",
+        "Unlike Comparable, Comparator allows multiple sorting sequences that means you can sort objects based on different data members such as name, age, or roll number."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Comparator Interface Declaration",
+      "paragraphs": [
+        "The following is the declaration of the java.util.Comparator interface."
+      ],
+      "code": [
+        "public interface Comparator<T>"
+      ]
+    },
+    {
+      "heading": "Methods of Comparator Interface",
+      "paragraphs": [
+        "The Comparator interface provides methods to compare two objects and define custom sorting logic for collections. The following table lists commonly used methods:",
+        "Method | Description\npublic int compare(Object obj1, Object obj2) | It compares the first object with the second object.\npublic boolean equals(Object obj) | It is used to compare the current object with the specified object.\npublic boolean equals(Object obj) | It is used to compare the current object with the specified object."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Using Comparator with Collections.sort()",
+      "paragraphs": [
+        "The Collections class provides static methods to sort elements of a collection. For Set and Map types, sorting is maintained automatically using TreeSet and TreeMap. For List elements, sorting can be done using the Collections.sort() method.",
+        "Method of Collections Class for Sorting List Elements:",
+        "This method is used to sort the elements of a List based on the custom sorting logic defined by the Comparator."
+      ],
+      "code": [
+        "public static <T> void sort(List<T> list, Comparator<? super T> c)"
+      ]
+    },
+    {
+      "heading": "Java Comparator Example (Non-generic Old Style)",
+      "paragraphs": [
+        "Let's see the example of sorting the elements of List on the basis of age and name. In this example, we have created 4 java classes:",
+        "• Student.java\n• AgeComparator.java\n• NameComparator.java\n• Simple.java",
+        "Student.java",
+        "This class contains three fields rollno, name and age and a parameterized constructor.",
+        "AgeComparator.java",
+        "This class defines comparison logic based on the age. If the age of the first object is greater than the second, we are returning a positive value. It can be anyone such as 1, 2, 10. If the age of the first object is less than the second object, we are returning a negative value, it can be any negative value, and if the age of both objects is equal, we are returning 0.",
+        "NameComparator.java",
+        "This class provides comparison logic based on the name. In such case, we are using the compareTo() method of String class, which internally provides the comparison logic.",
+        "Simple.java",
+        "In this class, we are printing the values of the object by sorting on the basis of name and age.",
+        "Output:"
+      ],
+      "code": [
+        "class Student{\nint rollno;\nString name;\nint age;\nStudent(int rollno,String name,int age){\nthis.rollno=rollno;\nthis.name=name;\nthis.age=age;\n}\n}",
+        "import java.util.*;\nclass AgeComparator implements Comparator{\npublic int compare(Object o1,Object o2){\nStudent s1=(Student)o1;\nStudent s2=(Student)o2;\n\nif(s1.age==s2.age)\nreturn 0;\nelse if(s1.age>s2.age)\nreturn 1;\nelse\nreturn -1;\n}\n}",
+        "import java.util.*;\nclass NameComparator implements Comparator{\npublic int compare(Object o1,Object o2){\nStudent s1=(Student)o1;\nStudent s2=(Student)o2;\n\nreturn s1.name.compareTo(s2.name);\n}\n}",
+        "import java.util.*;\nimport java.io.*;\n\nclass Simple{\npublic static void main(String args[]){\n\nArrayList al=new ArrayList();\nal.add(new Student(101,\"Vijay\",23));\nal.add(new Student(106,\"Ajay\",27));\nal.add(new Student(105,\"Jai\",21));\n\nSystem.out.println(\"Sorting by Name\");\n\nCollections.sort(al,new NameComparator());\nIterator itr=al.iterator();\nwhile(itr.hasNext()){\nStudent st=(Student)itr.next();\nSystem.out.println(st.rollno+\" \"+st.name+\" \"+st.age);\n}\n\nSystem.out.println(\"Sorting by age\");\n\nCollections.sort(al,new AgeComparator());\nIterator itr2=al.iterator();\nwhile(itr2.hasNext()){\nStudent st=(Student)itr2.next();\nSystem.out.println(st.rollno+\" \"+st.name+\" \"+st.age);\n}\n\n\n}\n}",
+        "Sorting by Name\n       106 Ajay 27\n       105 Jai 21\n       101 Vijay 23\n       \n       Sorting by age       \n       105 Jai 21\n       101 Vijay 23\n       106 Ajay 27"
+      ]
+    },
+    {
+      "heading": "Java Comparator Example (Generic)",
+      "paragraphs": [
+        "Let's see the example of sorting the elements of a List using the Comparator interface with generics. In this example, we have created 4 Java classes:",
+        "• Student.java\n• AgeComparator.java\n• NameComparator.java\n• Simple.java",
+        "Student.java",
+        "AgeComparator.java",
+        "NameComparator.java",
+        "This class provides comparison logic based on the name. In such case, we are using the compareTo() method of String class, which internally provides the comparison logic.",
+        "Simple.java",
+        "In this class, we are printing the values of the object by sorting on the basis of name and age.",
+        "Output:"
+      ],
+      "code": [
+        "class Student{\nint rollno;\nString name;\nint age;\nStudent(int rollno,String name,int age){\nthis.rollno=rollno;\nthis.name=name;\nthis.age=age;\n}\n}",
+        "import java.util.*;\nclass AgeComparator implements Comparator<Student>{\npublic int compare(Student s1,Student s2){\nif(s1.age==s2.age)\nreturn 0;\nelse if(s1.age>s2.age)\nreturn 1;\nelse\nreturn -1;\n}\n}",
+        "import java.util.*;\nclass NameComparator implements Comparator<Student>{\npublic int compare(Student s1,Student s2){\nreturn s1.name.compareTo(s2.name);\n}\n}",
+        "import java.util.*;\nimport java.io.*;\nclass Simple{\npublic static void main(String args[]){\n\nArrayList<Student> al=new ArrayList<Student>();\nal.add(new Student(101,\"Vijay\",23));\nal.add(new Student(106,\"Ajay\",27));\nal.add(new Student(105,\"Jai\",21));\n\nSystem.out.println(\"Sorting by Name\");\n\nCollections.sort(al,new NameComparator());\nfor(Student st: al){\nSystem.out.println(st.rollno+\" \"+st.name+\" \"+st.age);\n}\n\nSystem.out.println(\"Sorting by age\");\n\nCollections.sort(al,new AgeComparator());\nfor(Student st: al){\nSystem.out.println(st.rollno+\" \"+st.name+\" \"+st.age);\n}\n}\n}",
+        "Sorting by Name\n       106 Ajay 27\n       105 Jai 21\n       101 Vijay 23\n\n       Sorting by age     \n       105 Jai 21\n       101 Vijay 23\n       106 Ajay 27"
+      ]
+    },
+    {
+      "heading": "Java 8 Comparator interface",
+      "paragraphs": [
+        "Java 8 Comparator interface is a functional interface that contains only one abstract method. It can be used as a target for lambda expressions or method references."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Methods of Java 8 Comparator Interface",
+      "paragraphs": [
+        "The following table lists the commonly used methods of the Java 8 Comparator interface along with their descriptions:",
+        "Method | Description\nint compare(T o1, T o2) | It compares the first object with second object.\nstatic <T,U extends Comparable<? super U>> Comparator<T> comparing(Function<? super T,? extends U> keyExtractor) | It accepts a function that extracts a Comparable sort key from a type T, and returns a Comparatorthat compares by that sort key.\nstatic <T,U> Comparator<T> comparing(Function<? super T,? extends U> keyExtractor, Comparator<? super U> keyComparator) | It accepts a function that extracts a sort key from a type T, and returns a Comparatorthat compares by that sort key using the specified Comparator.\nstatic <T> Comparator<T> comparingDouble(ToDoubleFunction<? super T> keyExtractor) | It accepts a function that extracts a double sort key from a type T, and returns a Comparatorthat compares by that sort key.\nstatic <T> Comparator<T> comparingInt(ToIntFunction<? super T> keyExtractor) | It accepts a function that extracts an int sort key from a type T, and returns a Comparatorthat compares by that sort key.\nstatic <T> Comparator<T> comparingLong(ToLongFunction<? super T> keyExtractor) | It accepts a function that extracts a long sort key from a type T, and returns a Comparatorthat compares by that sort key.\nboolean equals(Object obj) | It is used to compare the current object with the specified object.\nstatic <T extends Comparable<? super T>> Comparator<T> naturalOrder() | It returns a comparator that compares Comparable objects in natural order.\nstatic <T> Comparator<T> nullsFirst(Comparator<? super T> comparator) | It returns a comparator that treats null to be less than non-null elements.\nstatic <T> Comparator<T> nullsLast(Comparator<? super T> comparator) | It returns a comparator that treats null to be greater than non-null elements.\ndefault Comparator<T> reversed() | It returns comparator that contains reverse ordering of the provided comparator.\nstatic <T extends Comparable<? super T>> Comparator<T> reverseOrder() | It returns comparator that contains reverse of natural ordering.\ndefault Comparator<T> thenComparing(Comparator<? super T> other) | It returns a lexicographic-order comparator with another comparator.\ndefault <U extends Comparable<? super U>> Comparator<T> thenComparing(Function<? super T,? extends U> keyExtractor) | It returns a lexicographic-order comparator with a function that extracts a Comparable sort key.\ndefault <U> Comparator<T> thenComparing(Function<? super T,? extends U> keyExtractor, Comparator<? super U> keyComparator) | It returns a lexicographic-order comparator with a function that extracts a key to be compared with the given Comparator.\ndefault Comparator<T> thenComparingDouble(ToDoubleFunction<? super T> keyExtractor) | It returns a lexicographic-order comparator with a function that extracts a double sort key.\ndefault Comparator<T> thenComparingInt(ToIntFunction<? super T> keyExtractor) | It returns a lexicographic-order comparator with a function that extracts a int sort key.\ndefault Comparator<T> thenComparingLong(ToLongFunction<? super T> keyExtractor) | It returns a lexicographic-order comparator with a function that extracts a long sort key."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java 8 Comparator Example",
+      "paragraphs": [
+        "Let's see the example of sorting the elements of List on the basis of age and name.",
+        "File: Student.java",
+        "File: TestSort1.java",
+        "Output:"
+      ],
+      "code": [
+        "class Student {  \n   int rollno;  \n   String name;  \n  int age;  \n    Student(int rollno,String name,int age){  \n    this.rollno=rollno;  \n    this.name=name;  \n    this.age=age;  \n    }\n\n\tpublic int getRollno() {\n\t\treturn rollno;\n\t}\n\n\tpublic void setRollno(int rollno) {\n\t\tthis.rollno = rollno;\n\t}\n\n\tpublic String getName() {\n\t\treturn name;\n\t}\n\n\tpublic void setName(String name) {\n\t\tthis.name = name;\n\t}\n\n\tpublic int getAge() {\n\t\treturn age;\n\t}\n\n\tpublic void setAge(int age) {\n\t\tthis.age = age;\n\t}\n\n    }",
+        "import java.util.*;  \n    public class TestSort1{  \n    public static void main(String args[]){  \n    ArrayList<Student> al=new ArrayList<Student>();  \n    al.add(new Student(101,\"Vijay\",23));  \n    al.add(new Student(106,\"Ajay\",27));  \n    al.add(new Student(105,\"Jai\",21)); \n\t//Sorting elements on the basis of name\n    Comparator<Student> cm1=Comparator.comparing(Student::getName);\n     Collections.sort(al,cm1);\n     System.out.println(\"Sorting by Name\");\n     for(Student st: al){\n    \t System.out.println(st.rollno+\" \"+st.name+\" \"+st.age);\n    \t }\n     //Sorting elements on the basis of age\n      Comparator<Student> cm2=Comparator.comparing(Student::getAge);\n\t Collections.sort(al,cm2);\n     System.out.println(\"Sorting by Age\");\n     for(Student st: al){\n    \t System.out.println(st.rollno+\" \"+st.name+\" \"+st.age);\n    \t }  \n    }  \n    }",
+        "Sorting by Name\n106 Ajay 27\n105 Jai 21\n101 Vijay 23\nSorting by Age\n105 Jai 21\n101 Vijay 23\n106 Ajay 27"
+      ]
+    },
+    {
+      "heading": "Another Example: Java 8 Comparator nullsFirst() and nullsLast() Methods",
+      "paragraphs": [
+        "Here, we sort the list of elements that also contains null.",
+        "File: Student.java",
+        "File: TestSort2.java",
+        "Output:",
+        "Next TopicProperties Class In Java"
+      ],
+      "code": [
+        "class Student {  \n   int rollno;  \n   String name;  \n  int age;  \n    Student(int rollno,String name,int age){  \n    this.rollno=rollno;  \n    this.name=name;  \n    this.age=age;  \n    }\n\tpublic int getRollno() {\n\t\treturn rollno;\n\t}\n\tpublic void setRollno(int rollno) {\n\t\tthis.rollno = rollno;\n\t}\n\tpublic String getName() {\n\t\treturn name;\n\t}\n\n\tpublic void setName(String name) {\n\t\tthis.name = name;\n\t}\n\n\tpublic int getAge() {\n\t\treturn age;\n\t}\n\tpublic void setAge(int age) {\n\t\tthis.age = age;\n\t}\n    }",
+        "import java.util.*;  \n    public class TestSort2{  \n    public static void main(String args[]){  \n    ArrayList<Student> al=new ArrayList<Student>();  \n    al.add(new Student(101,\"Vijay\",23));  \n    al.add(new Student(106,\"Ajay\",27));  \n    al.add(new Student(105,null,21));  \n    Comparator<Student> cm1=Comparator.comparing(Student::getName,Comparator.nullsFirst(String::compareTo));\n     Collections.sort(al,cm1);\n     System.out.println(\"Considers null to be less than non-null\");\n     for(Student st: al){\n    \t System.out.println(st.rollno+\" \"+st.name+\" \"+st.age);\n    \t }\n     Comparator<Student> cm2=Comparator.comparing(Student::getName,Comparator.nullsLast(String::compareTo));\n     Collections.sort(al,cm2);\n     System.out.println(\"Considers null to be greater than non-null\");\n     for(Student st: al){\n    \t System.out.println(st.rollno+\" \"+st.name+\" \"+st.age);\n    \t }\n    }  \n    }",
+        "Considers null to be less than non-null\n105 null 21\n106 Ajay 27\n101 Vijay 23\nConsiders null to be greater than non-null\n106 Ajay 27\n101 Vijay 23\n105 null 21"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:47:12.052Z"
+}

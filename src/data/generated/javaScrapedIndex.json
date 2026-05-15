@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-05-15T11:33:45.148Z",
-  "topicCount": 45,
+  "generatedAt": "2026-05-15T11:49:48.079Z",
+  "topicCount": 180,
   "topics": [
     {
       "id": "abstract-class",
@@ -10,6 +10,20 @@
       "sectionCount": 17
     },
     {
+      "id": "abstract-vs-interface",
+      "title": "Java - Abstraction",
+      "sectionId": "java-oops",
+      "source": "tutorialspoint",
+      "sectionCount": 11
+    },
+    {
+      "id": "access-modifiers",
+      "title": "Access Modifiers in Java",
+      "sectionId": "java-oops",
+      "source": "tpointtech",
+      "sectionCount": 19
+    },
+    {
       "id": "aggregation",
       "title": "Java - Aggregation",
       "sectionId": "java-oops",
@@ -17,11 +31,81 @@
       "sectionCount": 8
     },
     {
+      "id": "anonymous-inner",
+      "title": "Java - Anonymous Classes",
+      "sectionId": "java-core-advanced",
+      "source": "tutorialspoint",
+      "sectionCount": 11
+    },
+    {
+      "id": "array-methods",
+      "title": "Java Arrays",
+      "sectionId": "java-core-advanced",
+      "source": "tpointtech",
+      "sectionCount": 33
+    },
+    {
+      "id": "array-programs",
+      "title": "Array Programs in Java",
+      "sectionId": "java-core-advanced",
+      "source": "tpointtech",
+      "sectionCount": 33
+    },
+    {
+      "id": "array",
+      "title": "Java - Arrays",
+      "sectionId": "java-core-advanced",
+      "source": "tutorialspoint",
+      "sectionCount": 19
+    },
+    {
+      "id": "arraylist-vs-linkedlist",
+      "title": "Java - List Interface",
+      "sectionId": "java-collections-jdbc",
+      "source": "tutorialspoint",
+      "sectionCount": 12
+    },
+    {
+      "id": "arraylist",
+      "title": "Java ArrayList",
+      "sectionId": "java-collections-jdbc",
+      "source": "tpointtech",
+      "sectionCount": 33
+    },
+    {
+      "id": "binary-search",
+      "title": "Binary Search Java",
+      "sectionId": "java-collections-jdbc",
+      "source": "tpointtech",
+      "sectionCount": 1
+    },
+    {
       "id": "break",
       "title": "Java Break Statement",
       "sectionId": "java-basics",
       "source": "tpointtech",
       "sectionCount": 21
+    },
+    {
+      "id": "bubble-sort",
+      "title": "Bubble Sort in Java",
+      "sectionId": "java-collections-jdbc",
+      "source": "tpointtech",
+      "sectionCount": 1
+    },
+    {
+      "id": "bufferedinputstream",
+      "title": "Java BufferedInputStream Class",
+      "sectionId": "java-advanced",
+      "source": "tpointtech",
+      "sectionCount": 9
+    },
+    {
+      "id": "bufferedoutputstream",
+      "title": "Java BufferedOutputStream Class",
+      "sectionId": "java-advanced",
+      "source": "tpointtech",
+      "sectionCount": 10
     },
     {
       "id": "call-by-value",
@@ -38,11 +122,67 @@
       "sectionCount": 16
     },
     {
+      "id": "call-run",
+      "title": "What if We Call run() Method Directly Instead of start() in Java?",
+      "sectionId": "java-advanced",
+      "source": "tpointtech",
+      "sectionCount": 1
+    },
+    {
+      "id": "collections-class",
+      "title": "Collections in Java",
+      "sectionId": "java-collections-jdbc",
+      "source": "tpointtech",
+      "sectionCount": 46
+    },
+    {
+      "id": "collections-intro",
+      "title": "Collections in Java",
+      "sectionId": "java-collections-jdbc",
+      "source": "tpointtech",
+      "sectionCount": 46
+    },
+    {
+      "id": "command-line",
+      "title": "Java - Command Line Arguments",
+      "sectionId": "java-core-advanced",
+      "source": "tutorialspoint",
+      "sectionCount": 8
+    },
+    {
       "id": "comments",
       "title": "Java Comments",
       "sectionId": "java-basics",
       "source": "tpointtech",
       "sectionCount": 15
+    },
+    {
+      "id": "comparable-vs-comparator",
+      "title": "Java - How to Use Comparable?",
+      "sectionId": "java-collections-jdbc",
+      "source": "tutorialspoint",
+      "sectionCount": 11
+    },
+    {
+      "id": "comparable",
+      "title": "Java - How to Use Comparable?",
+      "sectionId": "java-collections-jdbc",
+      "source": "tutorialspoint",
+      "sectionCount": 11
+    },
+    {
+      "id": "comparator",
+      "title": "Java Comparator Interface",
+      "sectionId": "java-collections-jdbc",
+      "source": "tpointtech",
+      "sectionCount": 11
+    },
+    {
+      "id": "connection",
+      "title": "Connection",
+      "sectionId": "java-collections-jdbc",
+      "source": "geeksforgeeks",
+      "sectionCount": 12
     },
     {
       "id": "constructor",
@@ -59,9 +199,44 @@
       "sectionCount": 23
     },
     {
+      "id": "covariant",
+      "title": "Covariant Return Type in Java",
+      "sectionId": "java-oops",
+      "source": "tpointtech",
+      "sectionCount": 6
+    },
+    {
       "id": "cpp-vs-java",
       "title": "Java vs C++",
       "sectionId": "java-basics",
+      "source": "tutorialspoint",
+      "sectionCount": 9
+    },
+    {
+      "id": "create-file",
+      "title": "Java - Creating Files",
+      "sectionId": "java-advanced",
+      "source": "tutorialspoint",
+      "sectionCount": 14
+    },
+    {
+      "id": "create-thread",
+      "title": "Java - Creating a Thread",
+      "sectionId": "java-advanced",
+      "source": "tutorialspoint",
+      "sectionCount": 14
+    },
+    {
+      "id": "custom-exceptions",
+      "title": "Java - Custom Exception",
+      "sectionId": "java-core-advanced",
+      "source": "tutorialspoint",
+      "sectionCount": 9
+    },
+    {
+      "id": "daemon-thread",
+      "title": "Java - Daemon Thread",
+      "sectionId": "java-advanced",
       "source": "tutorialspoint",
       "sectionCount": 9
     },
@@ -73,11 +248,67 @@
       "sectionCount": 19
     },
     {
+      "id": "deadlock",
+      "title": "Java - Thread Deadlock",
+      "sectionId": "java-advanced",
+      "source": "tutorialspoint",
+      "sectionCount": 6
+    },
+    {
+      "id": "delete-file",
+      "title": "Java - Delete File",
+      "sectionId": "java-advanced",
+      "source": "tutorialspoint",
+      "sectionCount": 11
+    },
+    {
+      "id": "deque-arraydeque",
+      "title": "Java Deque Interface and ArrayDeque",
+      "sectionId": "java-collections-jdbc",
+      "source": "tpointtech",
+      "sectionCount": 12
+    },
+    {
       "id": "do-while",
       "title": "Java do-while Loop",
       "sectionId": "java-basics",
       "source": "tpointtech",
       "sectionCount": 11
+    },
+    {
+      "id": "ds-intro",
+      "title": "Java - Data Structures",
+      "sectionId": "java-collections-jdbc",
+      "source": "tutorialspoint",
+      "sectionCount": 22
+    },
+    {
+      "id": "encapsulation",
+      "title": "Java - Encapsulation",
+      "sectionId": "java-oops",
+      "source": "tutorialspoint",
+      "sectionCount": 14
+    },
+    {
+      "id": "exception-overriding",
+      "title": "Java - Overriding",
+      "sectionId": "java-core-advanced",
+      "source": "tutorialspoint",
+      "sectionCount": 13
+    },
+    {
+      "id": "exception-propagation",
+      "title": "Java - Exception Propagation",
+      "sectionId": "java-core-advanced",
+      "source": "tutorialspoint",
+      "sectionCount": 10
+    },
+    {
+      "id": "exceptions",
+      "title": "Java - Exceptions",
+      "sectionId": "java-core-advanced",
+      "source": "tutorialspoint",
+      "sectionCount": 31
     },
     {
       "id": "features-of-java",
@@ -87,6 +318,41 @@
       "sectionCount": 14
     },
     {
+      "id": "file-class",
+      "title": "Java File Class",
+      "sectionId": "java-advanced",
+      "source": "tpointtech",
+      "sectionCount": 18
+    },
+    {
+      "id": "file-handling",
+      "title": "File Handling in Java",
+      "sectionId": "java-advanced",
+      "source": "tpointtech",
+      "sectionCount": 30
+    },
+    {
+      "id": "fileinputstream",
+      "title": "Java FileInputStream Class",
+      "sectionId": "java-advanced",
+      "source": "tpointtech",
+      "sectionCount": 1
+    },
+    {
+      "id": "fileoutputstream",
+      "title": "Java FileOutputStream Class",
+      "sectionId": "java-advanced",
+      "source": "tpointtech",
+      "sectionCount": 12
+    },
+    {
+      "id": "final-finally-finalize",
+      "title": "final keyword in Java",
+      "sectionId": "java-core-advanced",
+      "source": "tpointtech",
+      "sectionCount": 23
+    },
+    {
       "id": "final-keyword",
       "title": "final keyword in Java",
       "sectionId": "java-oops",
@@ -94,11 +360,53 @@
       "sectionCount": 23
     },
     {
+      "id": "finally-block",
+      "title": "finally Block in Java",
+      "sectionId": "java-core-advanced",
+      "source": "tpointtech",
+      "sectionCount": 9
+    },
+    {
       "id": "for-loop",
       "title": "Java for Loop",
       "sectionId": "java-basics",
       "source": "tpointtech",
       "sectionCount": 22
+    },
+    {
+      "id": "garbage-collection-thread",
+      "title": "Garbage Collection in Java",
+      "sectionId": "java-advanced",
+      "source": "tpointtech",
+      "sectionCount": 16
+    },
+    {
+      "id": "garbage-collection",
+      "title": "Garbage Collection in Java",
+      "sectionId": "java-advanced",
+      "source": "tpointtech",
+      "sectionCount": 16
+    },
+    {
+      "id": "hashmap-vs-hashtable",
+      "title": "Java - Map Interface",
+      "sectionId": "java-collections-jdbc",
+      "source": "tutorialspoint",
+      "sectionCount": 10
+    },
+    {
+      "id": "hashmap",
+      "title": "Java HashMap",
+      "sectionId": "java-collections-jdbc",
+      "source": "tpointtech",
+      "sectionCount": 22
+    },
+    {
+      "id": "hashtable",
+      "title": "Java Hashtable Class",
+      "sectionId": "java-collections-jdbc",
+      "source": "tpointtech",
+      "sectionCount": 17
     },
     {
       "id": "hello-world",
@@ -115,6 +423,13 @@
       "sectionCount": 5
     },
     {
+      "id": "how-gc-works",
+      "title": "How Garbage Collection Works in Java?",
+      "sectionId": "java-advanced",
+      "source": "tpointtech",
+      "sectionCount": 10
+    },
+    {
       "id": "identifiers",
       "title": "Identifiers in Java",
       "sectionId": "java-basics",
@@ -129,11 +444,39 @@
       "sectionCount": 17
     },
     {
+      "id": "immutable-class",
+      "title": "How to create Immutable Class in Java?",
+      "sectionId": "java-core-advanced",
+      "source": "tpointtech",
+      "sectionCount": 9
+    },
+    {
+      "id": "immutable-string",
+      "title": "Why String is Immutable in Java?",
+      "sectionId": "java-core-advanced",
+      "source": "geeksforgeeks",
+      "sectionCount": 2
+    },
+    {
       "id": "inheritance",
       "title": "Java - Inheritance",
       "sectionId": "java-oops",
       "source": "tutorialspoint",
       "sectionCount": 25
+    },
+    {
+      "id": "inner-class-intro",
+      "title": "Java - Inner classes",
+      "sectionId": "java-core-advanced",
+      "source": "tutorialspoint",
+      "sectionCount": 25
+    },
+    {
+      "id": "insertion-sort",
+      "title": "Insertion Sort in Java",
+      "sectionId": "java-collections-jdbc",
+      "source": "tpointtech",
+      "sectionCount": 1
     },
     {
       "id": "instance-initializer",
@@ -150,11 +493,116 @@
       "sectionCount": 15
     },
     {
+      "id": "inter-thread",
+      "title": "Inter-thread Communication in Java",
+      "sectionId": "java-advanced",
+      "source": "tpointtech",
+      "sectionCount": 11
+    },
+    {
+      "id": "interface",
+      "title": "Java - Interfaces",
+      "sectionId": "java-oops",
+      "source": "tutorialspoint",
+      "sectionCount": 21
+    },
+    {
       "id": "internal-details",
       "title": "Java - Basic Syntax",
       "sectionId": "java-basics",
       "source": "tutorialspoint",
       "sectionCount": 20
+    },
+    {
+      "id": "interrupting-thread",
+      "title": "Interrupting a Thread",
+      "sectionId": "java-advanced",
+      "source": "tpointtech",
+      "sectionCount": 14
+    },
+    {
+      "id": "interview-questions",
+      "title": "300 Core Java Interview Questions and Answers",
+      "sectionId": "java-collections-jdbc",
+      "source": "tpointtech",
+      "sectionCount": 104
+    },
+    {
+      "id": "io-intro",
+      "title": "Java - Files and I/O",
+      "sectionId": "java-advanced",
+      "source": "tutorialspoint",
+      "sectionCount": 12
+    },
+    {
+      "id": "jagged-array",
+      "title": "Java - Arrays",
+      "sectionId": "java-core-advanced",
+      "source": "tutorialspoint",
+      "sectionCount": 19
+    },
+    {
+      "id": "java-8-features",
+      "title": "Java - Features",
+      "sectionId": "java-collections-jdbc",
+      "source": "tutorialspoint",
+      "sectionCount": 13
+    },
+    {
+      "id": "java-mastery-quiz-advanced",
+      "title": "Advanced Quiz (50 Questions)",
+      "sectionId": "java-mastery-quizzes",
+      "source": "geeksforgeeks",
+      "sectionCount": 19
+    },
+    {
+      "id": "java-mastery-quiz-beginner",
+      "title": "Inner Classes (Nested Classes) in Java",
+      "sectionId": "java-mastery-quizzes",
+      "source": "tpointtech",
+      "sectionCount": 10
+    },
+    {
+      "id": "java-mastery-quiz-intermediate",
+      "title": "JAVA Questions and Answers",
+      "sectionId": "java-mastery-quizzes",
+      "source": "tutorialspoint",
+      "sectionCount": 1
+    },
+    {
+      "id": "jdbc-driver",
+      "title": "JDBC Driver",
+      "sectionId": "java-collections-jdbc",
+      "source": "tpointtech",
+      "sectionCount": 19
+    },
+    {
+      "id": "jdbc-intro",
+      "title": "JDBC Introduction",
+      "sectionId": "java-collections-jdbc",
+      "source": "geeksforgeeks",
+      "sectionCount": 12
+    },
+    {
+      "id": "jdbc-mysql",
+      "title": "Java Database Connectivity with MySQL",
+      "sectionId": "java-collections-jdbc",
+      "source": "tpointtech",
+      "sectionCount": 14
+    },
+    {
+      "id": "jdbc-oracle",
+      "title": "Java Database Connectivity with Oracle",
+      "sectionId": "java-collections-jdbc",
+      "source": "tpointtech",
+      "sectionCount": 14
+    },
+    {
+      "id": "jdbc-steps",
+      "title": "Java - Steps for Establishing JDBC Connection",
+      "sectionId": "java-collections-jdbc",
+      "source": "tpointtech",
+      "sectionCount": 16
     },
     {
       "id": "jdk-jre-jvm",
@@ -178,6 +626,90 @@
       "sectionCount": 12
     },
     {
+      "id": "linear-search",
+      "title": "Linear Search in Java",
+      "sectionId": "java-collections-jdbc",
+      "source": "tpointtech",
+      "sectionCount": 1
+    },
+    {
+      "id": "linkedhashmap",
+      "title": "Java LinkedHashMap class",
+      "sectionId": "java-collections-jdbc",
+      "source": "tpointtech",
+      "sectionCount": 17
+    },
+    {
+      "id": "linkedhashset",
+      "title": "Java LinkedHashSet Class",
+      "sectionId": "java-collections-jdbc",
+      "source": "tpointtech",
+      "sectionCount": 18
+    },
+    {
+      "id": "linkedlist",
+      "title": "Java LinkedList Class",
+      "sectionId": "java-collections-jdbc",
+      "source": "tpointtech",
+      "sectionCount": 16
+    },
+    {
+      "id": "list-interface",
+      "title": "Java List Interface",
+      "sectionId": "java-collections-jdbc",
+      "source": "tpointtech",
+      "sectionCount": 26
+    },
+    {
+      "id": "local-inner",
+      "title": "Java Local inner class",
+      "sectionId": "java-core-advanced",
+      "source": "tpointtech",
+      "sectionCount": 9
+    },
+    {
+      "id": "map-interface",
+      "title": "Java Map Interface",
+      "sectionId": "java-collections-jdbc",
+      "source": "tpointtech",
+      "sectionCount": 21
+    },
+    {
+      "id": "math-class",
+      "title": "Java Math Class",
+      "sectionId": "java-core-advanced",
+      "source": "tpointtech",
+      "sectionCount": 14
+    },
+    {
+      "id": "member-inner",
+      "title": "Java Member Inner class",
+      "sectionId": "java-core-advanced",
+      "source": "tpointtech",
+      "sectionCount": 8
+    },
+    {
+      "id": "memory-leaks",
+      "title": "Memory Leak in Java",
+      "sectionId": "java-advanced",
+      "source": "tpointtech",
+      "sectionCount": 1
+    },
+    {
+      "id": "memory-management-intro",
+      "title": "Memory Management in Java",
+      "sectionId": "java-advanced",
+      "source": "tpointtech",
+      "sectionCount": 22
+    },
+    {
+      "id": "merge-sort",
+      "title": "Merge Sort in Java",
+      "sectionId": "java-collections-jdbc",
+      "source": "tpointtech",
+      "sectionCount": 1
+    },
+    {
       "id": "method-overloading",
       "title": "Method Overloading in Java",
       "sectionId": "java-oops",
@@ -192,6 +724,27 @@
       "sectionCount": 12
     },
     {
+      "id": "multiple-catch",
+      "title": "Multiple Catch Block in Java",
+      "sectionId": "java-core-advanced",
+      "source": "tpointtech",
+      "sectionCount": 12
+    },
+    {
+      "id": "multitasking",
+      "title": "Java - Multithreading",
+      "sectionId": "java-advanced",
+      "source": "tutorialspoint",
+      "sectionCount": 19
+    },
+    {
+      "id": "multithreading-intro",
+      "title": "Java - Multithreading",
+      "sectionId": "java-advanced",
+      "source": "tutorialspoint",
+      "sectionCount": 19
+    },
+    {
       "id": "naming-conventions",
       "title": "Java Naming Convention",
       "sectionId": "java-oops",
@@ -199,11 +752,60 @@
       "sectionCount": 6
     },
     {
+      "id": "naming-thread",
+      "title": "Java Naming Thread and Current Thread",
+      "sectionId": "java-advanced",
+      "source": "tpointtech",
+      "sectionCount": 8
+    },
+    {
+      "id": "nested-interface",
+      "title": "Java Nested Interface",
+      "sectionId": "java-core-advanced",
+      "source": "tpointtech",
+      "sectionCount": 10
+    },
+    {
+      "id": "nested-try",
+      "title": "Java - Nested Try Block",
+      "sectionId": "java-core-advanced",
+      "source": "tutorialspoint",
+      "sectionCount": 9
+    },
+    {
+      "id": "networking-concepts",
+      "title": "Java - Networking",
+      "sectionId": "java-advanced",
+      "source": "tutorialspoint",
+      "sectionCount": 13
+    },
+    {
+      "id": "object-class-misc",
+      "title": "Java - Classes and Objects",
+      "sectionId": "java-core-advanced",
+      "source": "tutorialspoint",
+      "sectionCount": 19
+    },
+    {
       "id": "object-class",
       "title": "Java Classes and Objects",
       "sectionId": "java-oops",
       "source": "tpointtech",
       "sectionCount": 26
+    },
+    {
+      "id": "object-cloning",
+      "title": "Object Cloning in Java | Object.clone() Method",
+      "sectionId": "java-core-advanced",
+      "source": "tpointtech",
+      "sectionCount": 8
+    },
+    {
+      "id": "object-vs-class",
+      "title": "Java - Classes and Objects",
+      "sectionId": "java-core-advanced",
+      "source": "tutorialspoint",
+      "sectionCount": 19
     },
     {
       "id": "oops-concepts-intro",
@@ -220,6 +822,20 @@
       "sectionCount": 19
     },
     {
+      "id": "overloading-vs-overriding",
+      "title": "Java - Overriding",
+      "sectionId": "java-core-advanced",
+      "source": "tutorialspoint",
+      "sectionCount": 13
+    },
+    {
+      "id": "package",
+      "title": "Packages in Java",
+      "sectionId": "java-oops",
+      "source": "tpointtech",
+      "sectionCount": 19
+    },
+    {
       "id": "polymorphism",
       "title": "Polymorphism in Java",
       "sectionId": "java-oops",
@@ -227,10 +843,31 @@
       "sectionCount": 16
     },
     {
+      "id": "preparedstatement",
+      "title": "Java PreparedStatement Interface",
+      "sectionId": "java-collections-jdbc",
+      "source": "tpointtech",
+      "sectionCount": 12
+    },
+    {
       "id": "programs",
       "title": "Java Programs | Java Programming Examples",
       "sectionId": "java-basics",
       "source": "tpointtech",
+      "sectionCount": 14
+    },
+    {
+      "id": "queue-priorityqueue",
+      "title": "Java Queue Interface and PriorityQueue",
+      "sectionId": "java-collections-jdbc",
+      "source": "tpointtech",
+      "sectionCount": 10
+    },
+    {
+      "id": "read-file",
+      "title": "Java - Reading File",
+      "sectionId": "java-advanced",
+      "source": "tutorialspoint",
       "sectionCount": 14
     },
     {
@@ -241,11 +878,109 @@
       "sectionCount": 17
     },
     {
+      "id": "reentrant-monitor",
+      "title": "Reentrant Monitor in Java",
+      "sectionId": "java-advanced",
+      "source": "tpointtech",
+      "sectionCount": 28
+    },
+    {
+      "id": "reflection-api",
+      "title": "Java Reflection API",
+      "sectionId": "java-advanced",
+      "source": "tpointtech",
+      "sectionCount": 14
+    },
+    {
+      "id": "regex",
+      "title": "Java Regular Expressions (Regex)",
+      "sectionId": "java-core-advanced",
+      "source": "tpointtech",
+      "sectionCount": 20
+    },
+    {
+      "id": "resultset",
+      "title": "ResultSet",
+      "sectionId": "java-collections-jdbc",
+      "source": "geeksforgeeks",
+      "sectionCount": 10
+    },
+    {
+      "id": "runtime-class",
+      "title": "Java Runtime class",
+      "sectionId": "java-advanced",
+      "source": "tpointtech",
+      "sectionCount": 11
+    },
+    {
+      "id": "selection-sort",
+      "title": "Selection Sort in Java",
+      "sectionId": "java-collections-jdbc",
+      "source": "tpointtech",
+      "sectionCount": 1
+    },
+    {
+      "id": "serialization",
+      "title": "Serialization and Deserialization in Java",
+      "sectionId": "java-advanced",
+      "source": "tpointtech",
+      "sectionCount": 19
+    },
+    {
       "id": "set-path",
       "title": "How to set path in Java?",
       "sectionId": "java-basics",
       "source": "geeksforgeeks",
       "sectionCount": 4
+    },
+    {
+      "id": "shutdownhook",
+      "title": "Java - JVM Shutdown Hook",
+      "sectionId": "java-advanced",
+      "source": "tutorialspoint",
+      "sectionCount": 13
+    },
+    {
+      "id": "sleeping-thread",
+      "title": "Java Thread.sleep() Method",
+      "sectionId": "java-advanced",
+      "source": "tpointtech",
+      "sectionCount": 11
+    },
+    {
+      "id": "socket-programming",
+      "title": "Java Socket Programming",
+      "sectionId": "java-advanced",
+      "source": "tpointtech",
+      "sectionCount": 10
+    },
+    {
+      "id": "sorting-collections",
+      "title": "Java - Collections Framework",
+      "sectionId": "java-collections-jdbc",
+      "source": "tutorialspoint",
+      "sectionCount": 11
+    },
+    {
+      "id": "stack-vs-heap",
+      "title": "Java Stack Class",
+      "sectionId": "java-advanced",
+      "source": "tutorialspoint",
+      "sectionCount": 7
+    },
+    {
+      "id": "start-twice",
+      "title": "Can we start a thread twice",
+      "sectionId": "java-advanced",
+      "source": "tpointtech",
+      "sectionCount": 5
+    },
+    {
+      "id": "statement",
+      "title": "JDBC in Java (Java Database Connectivity)",
+      "sectionId": "java-collections-jdbc",
+      "source": "tpointtech",
+      "sectionCount": 10
     },
     {
       "id": "static-dynamic-binding",
@@ -262,6 +997,97 @@
       "sectionCount": 19
     },
     {
+      "id": "static-nested",
+      "title": "Java static keyword",
+      "sectionId": "java-core-advanced",
+      "source": "tpointtech",
+      "sectionCount": 19
+    },
+    {
+      "id": "static-sync",
+      "title": "Static Synchronization in Java",
+      "sectionId": "java-advanced",
+      "source": "tpointtech",
+      "sectionCount": 11
+    },
+    {
+      "id": "string-comparison",
+      "title": "Java String Comparison",
+      "sectionId": "java-core-advanced",
+      "source": "tpointtech",
+      "sectionCount": 10
+    },
+    {
+      "id": "string-concatenation",
+      "title": "String Concatenation in Java",
+      "sectionId": "java-core-advanced",
+      "source": "tpointtech",
+      "sectionCount": 15
+    },
+    {
+      "id": "string-faqs",
+      "title": "Java String Interview Questions and FAQs",
+      "sectionId": "java-core-advanced",
+      "source": "tpointtech",
+      "sectionCount": 25
+    },
+    {
+      "id": "string-methods",
+      "title": "Java String Methods | String Class Methods in Java",
+      "sectionId": "java-core-advanced",
+      "source": "tpointtech",
+      "sectionCount": 10
+    },
+    {
+      "id": "string-vs-stringbuffer",
+      "title": "String vs StringBuffer in Java",
+      "sectionId": "java-core-advanced",
+      "source": "geeksforgeeks",
+      "sectionCount": 2
+    },
+    {
+      "id": "string",
+      "title": "Java - String Class",
+      "sectionId": "java-core-advanced",
+      "source": "tutorialspoint",
+      "sectionCount": 13
+    },
+    {
+      "id": "stringbuffer-vs-stringbuilder",
+      "title": "StringBuffer vs StringBuilder in Java",
+      "sectionId": "java-core-advanced",
+      "source": "tpointtech",
+      "sectionCount": 8
+    },
+    {
+      "id": "stringbuffer",
+      "title": "StringBuffer in Java",
+      "sectionId": "java-core-advanced",
+      "source": "geeksforgeeks",
+      "sectionCount": 9
+    },
+    {
+      "id": "stringbuilder",
+      "title": "StringBuilder in Java",
+      "sectionId": "java-core-advanced",
+      "source": "geeksforgeeks",
+      "sectionCount": 4
+    },
+    {
+      "id": "stringtokenizer",
+      "title": "StringTokenizer Class in Java",
+      "sectionId": "java-core-advanced",
+      "source": "tpointtech",
+      "sectionCount": 14
+    },
+    {
+      "id": "substring",
+      "title": "Substring in Java",
+      "sectionId": "java-core-advanced",
+      "source": "tpointtech",
+      "sectionCount": 1
+    },
+    {
       "id": "super-keyword",
       "title": "Super Keyword in Java",
       "sectionId": "java-oops",
@@ -276,11 +1102,116 @@
       "sectionCount": 14
     },
     {
+      "id": "sync-block",
+      "title": "Java Synchronized Block",
+      "sectionId": "java-advanced",
+      "source": "tpointtech",
+      "sectionCount": 9
+    },
+    {
+      "id": "sync-intro",
+      "title": "Synchronization in Java",
+      "sectionId": "java-advanced",
+      "source": "tpointtech",
+      "sectionCount": 17
+    },
+    {
       "id": "this-keyword",
       "title": "this Keyword in Java",
       "sectionId": "java-oops",
       "source": "tpointtech",
       "sectionCount": 22
+    },
+    {
+      "id": "thread-lifecycle",
+      "title": "Thread Life Cycle in Java",
+      "sectionId": "java-advanced",
+      "source": "tpointtech",
+      "sectionCount": 10
+    },
+    {
+      "id": "thread-pool",
+      "title": "Thread Pool in Java",
+      "sectionId": "java-advanced",
+      "source": "tpointtech",
+      "sectionCount": 20
+    },
+    {
+      "id": "thread-priority",
+      "title": "Java - Thread Priority",
+      "sectionId": "java-advanced",
+      "source": "tutorialspoint",
+      "sectionCount": 9
+    },
+    {
+      "id": "thread-scheduler",
+      "title": "Thread Scheduler in Java",
+      "sectionId": "java-advanced",
+      "source": "tpointtech",
+      "sectionCount": 10
+    },
+    {
+      "id": "threadgroup",
+      "title": "Java - ThreadGroup Class",
+      "sectionId": "java-advanced",
+      "source": "tutorialspoint",
+      "sectionCount": 7
+    },
+    {
+      "id": "throw-keyword",
+      "title": "Java Throw Exception",
+      "sectionId": "java-core-advanced",
+      "source": "tpointtech",
+      "sectionCount": 13
+    },
+    {
+      "id": "throw-vs-throws",
+      "title": "Difference Between throw and throws in Java",
+      "sectionId": "java-core-advanced",
+      "source": "tpointtech",
+      "sectionCount": 7
+    },
+    {
+      "id": "throws-keyword",
+      "title": "Java throws Keyword",
+      "sectionId": "java-core-advanced",
+      "source": "tpointtech",
+      "sectionCount": 10
+    },
+    {
+      "id": "tostring",
+      "title": "Java toString() Method: Overriding and Usage",
+      "sectionId": "java-core-advanced",
+      "source": "tpointtech",
+      "sectionCount": 1
+    },
+    {
+      "id": "transient",
+      "title": "transient Keyword in Java",
+      "sectionId": "java-advanced",
+      "source": "tpointtech",
+      "sectionCount": 6
+    },
+    {
+      "id": "treemap",
+      "title": "Java TreeMap Class",
+      "sectionId": "java-collections-jdbc",
+      "source": "tpointtech",
+      "sectionCount": 20
+    },
+    {
+      "id": "treeset",
+      "title": "Java TreeSet Class",
+      "sectionId": "java-collections-jdbc",
+      "source": "tpointtech",
+      "sectionCount": 24
+    },
+    {
+      "id": "try-catch",
+      "title": "Java try-catch Block",
+      "sectionId": "java-core-advanced",
+      "source": "tpointtech",
+      "sectionCount": 12
     },
     {
       "id": "type-casting",
@@ -316,6 +1247,20 @@
       "sectionId": "java-basics",
       "source": "tpointtech",
       "sectionCount": 18
+    },
+    {
+      "id": "working-hashmap",
+      "title": "Working of HashMap in Java",
+      "sectionId": "java-collections-jdbc",
+      "source": "tpointtech",
+      "sectionCount": 1
+    },
+    {
+      "id": "wrapper-class",
+      "title": "Java - Wrapper Classes",
+      "sectionId": "java-core-advanced",
+      "source": "tutorialspoint",
+      "sectionCount": 8
     }
   ]
 }

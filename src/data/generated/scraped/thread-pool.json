@@ -1,0 +1,215 @@
+{
+  "topicId": "thread-pool",
+  "title": "Thread Pool in Java",
+  "sectionId": "java-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-thread-pool",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-thread-pool",
+      "score": 127,
+      "sectionCount": 20
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_thread_pool.htm",
+      "score": 82,
+      "sectionCount": 16
+    },
+    {
+      "sourceId": "geeksforgeeks",
+      "url": "https://www.geeksforgeeks.org/java/thread-pools-java/",
+      "score": 44,
+      "sectionCount": 10
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Thread Pool in Java",
+      "paragraphs": [
+        "Thread pools are used to manage and reuse multiple threads while executing concurrent tasks. In this chapter, we will learn how thread pools work and how they improve performance in Java applications."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is Thread Pool in Java?",
+      "paragraphs": [
+        "Thread pool is a group of already created threads that are reused to perform multiple tasks. The thread pool is managed by the JVM. Instead of creating a new thread for every task, tasks are given to the thread pool, and available threads execute them. Thread pool improves performance, reduces the cost of creating threads, and manages system resource.",
+        "There are the following three conditions when a task is submitted:",
+        "• If a thread is free, it executes the task immediately.\n• If all the threads are busy, the task waits in a queue until a thread becomes available.\n• After completing a task, the thread returns to the pool, not terminated."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Simple Real-Life Example",
+      "paragraphs": [
+        "A thread pool can be understood by thinking about a restaurant kitchen. The kitchen has a fixed number of chefs who are always available to work. Each food order is treated as a task, and any free chef prepares the order. If all chefs are busy, new orders wait until a chef becomes available. The chefs do not leave after completing one order; instead, they continue working on the next orders. In the same way, a thread pool reuses threads to handle multiple tasks efficiently."
+      ],
+      "code": []
+    },
+    {
+      "heading": "How a Thread Pool Works?",
+      "paragraphs": [
+        "The following are the three main steps involved in the working of a thread pool:"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Step 1: Waiting State",
+      "paragraphs": [
+        "When tasks are submitted, they are placed in a task queue. The thread pool is created with a fixed number of worker threads, which remain idle and wait for tasks to arrive."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Step 2: Task Execution",
+      "paragraphs": [
+        "Each available thread picks one task from the queue and starts executing it. If all threads are busy, the remaining tasks stay in the queue until a thread becomes free."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Step 3: Thread Reuse",
+      "paragraphs": [
+        "After a thread completes its task, it does not terminate. Instead, it becomes available again and immediately takes the next task from the queue. If no tasks are left, the thread stays idle and waits for new tasks."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Advantages of Thread Pool",
+      "paragraphs": [
+        "The following are some of the main advantages of thread pool:",
+        "• Thread pools manage threads efficiently by reusing them instead of creating new threads repeatedly.\n• They improve application performance by reducing the overhead of thread creation and destruction.\n• Thread pools execute tasks faster because threads are already available and ready to work.\n• They limit the number of active threads, which helps prevent high CPU usage and memory problems.\n• Thread pools keep applications stable under heavy load by controlling concurrency and queuing tasks when needed."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Examples of Thread Pool",
+      "paragraphs": [
+        "The following examples demonstrate how thread pools manage and execute multiple tasks efficiently."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example 1: Fixed Thread Pool Using ExecutorService",
+      "paragraphs": [
+        "The following example demonstrates how a fixed-size thread pool executes multiple tasks by reusing a limited number of threads.",
+        "File Name: Main.java",
+        "Output:"
+      ],
+      "code": [
+        "class WorkerThread implements Runnable {  \n    private String message;  \n    public WorkerThread(String s){  \n        this.message=s;  \n    }  \n     public void run() {  \n        System.out.println(Thread.currentThread().getName()+\" (Start) message = \"+message);  \n        processmessage();//call processmessage method that sleeps the thread for 2 seconds  \n        System.out.println(Thread.currentThread().getName()+\" (End)\");//prints thread name  \n    }  \n    private void processmessage() {  \n        try {  Thread.sleep(2000);  } catch (InterruptedException e) { e.printStackTrace(); }    }  \n}",
+        "import java.util.concurrent.ExecutorService;\nimport java.util.concurrent.Executors;\npublic class Main {\n\tpublic static void main(String[] args) {\n\t\tExecutorService executor = Executors.newFixedThreadPool(5);// creating a pool of 5 threads\n\t\tfor (int i = 0; i < 10; i++) {\n\t\t\tRunnable worker = new WorkerThread(\"\" + i);\n\t\t\texecutor.execute(worker);// calling execute method of ExecutorService\n\t\t}\n\t\texecutor.shutdown();\n\t\twhile (!executor.isTerminated()) {\n\t\t}\n\t\tSystem.out.println(\"Finished all threads\");\n\t}\n}",
+        "pool-1-thread-1 (Start) message = 0\npool-1-thread-2 (Start) message = 1\npool-1-thread-3 (Start) message = 2\npool-1-thread-5 (Start) message = 4\npool-1-thread-4 (Start) message = 3\npool-1-thread-2 (End)\npool-1-thread-2 (Start) message = 5\npool-1-thread-1 (End)\npool-1-thread-1 (Start) message = 6\npool-1-thread-3 (End)\npool-1-thread-3 (Start) message = 7\npool-1-thread-4 (End)\npool-1-thread-4 (Start) message = 8\npool-1-thread-5 (End)\npool-1-thread-5 (Start) message = 9\npool-1-thread-2 (End)\npool-1-thread-1 (End)\npool-1-thread-4 (End)\npool-1-thread-3 (End)\npool-1-thread-5 (End)\nFinished all threads"
+      ]
+    },
+    {
+      "heading": "Example 2: Executing Multiple Tasks with Thread Pool",
+      "paragraphs": [
+        "The following example demonstrates how a thread pool handles multiple tasks using a fixed number of threads and executes them in batches.",
+        "import java.util.Date;\nimport java.util.concurrent.ExecutorService;\nimport java.util.concurrent.Executors;\nimport java.text.SimpleDateFormat;\nclass Tasks implements Runnable {\n\tprivate String taskName;\n// constructor of the class Tasks  \n\tpublic Tasks(String str) {\n// initializing the field taskName   \n\t\ttaskName = str;\n\t}\n// Printing the task name and then sleeps for 1 sec  \n// The complete process is getting repeated five times  \n\tpublic void run() {\n\t\ttry {\n\t\t\tfor (int j = 0; j <= 5; j++) {\n\t\t\t\tif (j == 0) {\n\t\t\t\t\tDate dt = new Date();\n\t\t\t\t\tSimpleDateFormat sdf = new SimpleDateFormat(\"hh : mm : ss\");\n//prints the initialization time for every task  \n\t\t\t\t\tSystem.out.println(\"Initialization time for the task name: \" + taskName + \" = \" + sdf.format(dt));\n\t\t\t\t} else {\n\t\t\t\t\tDate dt = new Date();\n\t\t\t\t\tSimpleDateFormat sdf = new SimpleDateFormat(\"hh : mm : ss\");\n// prints the execution time for every task  \n\t\t\t\t\tSystem.out.println(\"Time of execution for the task name: \" + taskName + \" = \" + sdf.format(dt));\n\t\t\t\t}\n// 1000ms = 1 sec  \n\t\t\t\tThread.sleep(1000);\n\t\t\t}\n\t\t\tSystem.out.println(taskName + \" is complete.\");\n\t\t} catch (InterruptedException ie) {\n\t\t\tie.printStackTrace();\n\t\t}\n\t}\n}\npublic class Main {\n// Maximum number of threads in the thread pool  \n\tstatic final int MAX_TH = 3;\n// main method  \n\tpublic static void main(String argvs[]) {\n// Creating five new tasks  \n\t\tRunnable rb1 = new Tasks(\"task 1\");\n\t\tRunnable rb2 = new Tasks(\"task 2\");\n\t\tRunnable rb3 = new Tasks(\"task 3\");\n\t\tRunnable rb4 = new Tasks(\"task 4\");\n\t\tRunnable rb5 = new Tasks(\"task 5\");\n// creating a thread pool with MAX_TH number of  \n// threads size the pool size is fixed  \n\t\tExecutorService pl = Executors.newFixedThreadPool(MAX_TH);\n// passes the Task objects to the pool to execute (Step 3)  \n\t\tpl.execute(rb1);\n\t\tpl.execute(rb2);\n\t\tpl.execute(rb3);\n\t\tpl.execute(rb4);\n\t\tpl.execute(rb5);\n// pool is shutdown  \n\t\tpl.shutdown();\n\t}\n}\nCompile and Run",
+        "Output:",
+        "Explanation:",
+        "It is evident by looking at the output of the program that tasks 4 and 5 are executed only when the thread has an idle thread. Until then, the extra tasks are put in the queue.",
+        "The takeaway from the above example is when you wants to execute 50 tasks but is not willing to create 50 threads. In such a case, one can create a pool of 10 threads. Thus, 10 out of 50 tasks are assigned, and the rest are put in the queue. Whenever any thread out of 10 threads becomes idle, it picks up the 11th task. The other pending tasks are treated the same way."
+      ],
+      "code": [
+        "Initialization time for the task name: task 1 = 12 : 14 : 02\nInitialization time for the task name: task 3 = 12 : 14 : 02\nInitialization time for the task name: task 2 = 12 : 14 : 02\nTime of execution for the task name: task 1 = 12 : 14 : 04\nTime of execution for the task name: task 3 = 12 : 14 : 04\nTime of execution for the task name: task 2 = 12 : 14 : 04\nTime of execution for the task name: task 1 = 12 : 14 : 05\nTime of execution for the task name: task 3 = 12 : 14 : 05\nTime of execution for the task name: task 2 = 12 : 14 : 05\nTime of execution for the task name: task 1 = 12 : 14 : 06\nTime of execution for the task name: task 3 = 12 : 14 : 06\nTime of execution for the task name: task 2 = 12 : 14 : 06\nTime of execution for the task name: task 1 = 12 : 14 : 07\nTime of execution for the task name: task 3 = 12 : 14 : 07\nTime of execution for the task name: task 2 = 12 : 14 : 07\nTime of execution for the task name: task 1 = 12 : 14 : 08\nTime of execution for the task name: task 3 = 12 : 14 : 08\nTime of execution for the task name: task 2 = 12 : 14 : 08\ntask 1 is complete.\ntask 3 is complete.\nInitialization time for the task name: task 4 = 12 : 14 : 09\nInitialization time for the task name: task 5 = 12 : 14 : 09\ntask 2 is complete.\nTime of execution for the task name: task 4 = 12 : 14 : 10\nTime of execution for the task name: task 5 = 12 : 14 : 10\nTime of execution for the task name: task 4 = 12 : 14 : 11\nTime of execution for the task name: task 5 = 12 : 14 : 11\nTime of execution for the task name: task 4 = 12 : 14 : 12\nTime of execution for the task name: task 5 = 12 : 14 : 12\nTime of execution for the task name: task 4 = 12 : 14 : 13\nTime of execution for the task name: task 5 = 12 : 14 : 13\nTime of execution for the task name: task 4 = 12 : 14 : 14\nTime of execution for the task name: task 5 = 12 : 14 : 14\ntask 4 is complete.\ntask 5 is complete."
+      ]
+    },
+    {
+      "heading": "Tuning the Thread Pool",
+      "paragraphs": [
+        "Choosing the right size for a thread pool depends on the number of available processors and the type of tasks being executed.",
+        "• If tasks are CPU-bound (only calculations), the best thread pool size is usually equal to the number of processors (P) or P + 1.\n• If tasks involve I/O operations (such as file or network access), threads spend time waiting. In this case, a larger thread pool is useful.",
+        "For I/O-bound tasks, the thread pool size can be estimated using this formula:",
+        "Thread Pool Size = P × (1 + W / S)",
+        "Where:",
+        "• P = number of available processors\n• W = waiting time (I/O wait)",
+        "S = service time (CPU work)"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: Choosing Thread Pool Size",
+      "paragraphs": [
+        "The following example explains how thread pool size is selected based on task type.",
+        "If a system has 4 processors and tasks are mostly CPU-bound, a thread pool size of 4 or 5 works best.If tasks spend more time waiting for I/O than processing, a larger pool size helps keep the CPU busy and improves performance.",
+        "This approach helps achieve better efficiency and balanced resource usage."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Thread Pool Methods",
+      "paragraphs": [
+        "Java thread pools provide several methods to manage task execution and control the lifecycle of threads."
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. submit(Runnable task)",
+      "paragraphs": [
+        "This method adds a task to the thread pool for execution. The task is placed in the queue and is executed by an available worker thread.",
+        "Syntax:",
+        "It has the following syntax:"
+      ],
+      "code": [
+        "executorService.submit(task);"
+      ]
+    },
+    {
+      "heading": "2. shutdown()",
+      "paragraphs": [
+        "This method stops the thread pool gracefully. No new tasks are accepted, and all existing tasks are completed before the threads stop.",
+        "Syntax:",
+        "It has the following syntax:"
+      ],
+      "code": [
+        "executorService.shutdown();"
+      ]
+    },
+    {
+      "heading": "3. shutdownNow()",
+      "paragraphs": [
+        "This method stops the thread pool immediately. It interrupts all running threads and clears the tasks waiting in the queue.",
+        "Syntax:",
+        "It has the following syntax:"
+      ],
+      "code": [
+        "executorService.shutdownNow();"
+      ]
+    },
+    {
+      "heading": "4. getQueueSize()",
+      "paragraphs": [
+        "This method returns the number of tasks currently waiting in the task queue.",
+        "Syntax:",
+        "It has the following syntax:"
+      ],
+      "code": [
+        "executor.getQueue().size();"
+      ]
+    },
+    {
+      "heading": "5. getActiveCount()",
+      "paragraphs": [
+        "This method returns the number of threads that are actively executing tasks.",
+        "Syntax:",
+        "It has the following syntax:"
+      ],
+      "code": [
+        "executor.getActiveCount();"
+      ]
+    },
+    {
+      "heading": "Risks and Considerations in Thread Pools",
+      "paragraphs": [
+        "The following are some common risks involved in using thread pools:",
+        "• Deadlock: Deadlock can occur when all active threads are waiting for tasks that are still in the queue, and no thread is available to execute them.\n• Thread Leakage: Thread leakage happens when a thread does not return to the pool after completing a task, often due to an unhandled exception. Over time, this can reduce the pool size.\n• Resource Thrashing: Using too many threads can cause excessive context switching, which wastes CPU time and reduces application performance."
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:46:52.386Z"
+}

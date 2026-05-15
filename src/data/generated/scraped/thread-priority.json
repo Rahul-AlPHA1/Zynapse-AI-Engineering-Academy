@@ -1,0 +1,101 @@
+{
+  "topicId": "thread-priority",
+  "title": "Java - Thread Priority",
+  "sectionId": "java-advanced",
+  "source": "tutorialspoint",
+  "url": "https://www.tutorialspoint.com/java/java_thread_priority.htm",
+  "allSources": [
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_thread_priority.htm",
+      "score": 47,
+      "sectionCount": 9
+    },
+    {
+      "sourceId": "geeksforgeeks",
+      "url": "https://www.geeksforgeeks.org/java/java-thread-priority-multithreading/",
+      "score": 23,
+      "sectionCount": 3
+    },
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/thread-priority-in-java",
+      "score": 4,
+      "sectionCount": 1
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Priority of a Thread in Java",
+      "paragraphs": [
+        "Every Java thread has a priority that helps the operating system determine the order in which threads are scheduled. You can get and set the priority of a Thread. Thread class provides methods and constants for working with the priorities of a Thread.",
+        "Threads with higher priority are more important to a program and should be allocated processor time before lower-priority threads. However, thread priorities cannot guarantee the order in which threads execute and are very much platform dependent."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Built-in Property Constants of Thread Class",
+      "paragraphs": [
+        "Java thread priorities are in the range between MIN_PRIORITY (a constant of 1) and MAX_PRIORITY (a constant of 10). By default, every thread is given priority NORM_PRIORITY (a constant of 5).",
+        "• MIN_PRIORITY: Specifies the minimum priority that a thread can have.\n• NORM_PRIORITY: Specifies the default priority that a thread is assigned.\n• MAX_PRIORITY: Specifies the maximum priority that a thread can have."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Thread Priority Setter and Getter Methods",
+      "paragraphs": [
+        "• Thread.getPriority() Method: This method is used to get the priority of a thread.\n• Thread.setPriority() Method: This method is used to set the priority of a thread, it accepts the priority value and updates an existing priority with the given priority."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example of Thread Priority in Java",
+      "paragraphs": [
+        "In this example, we're showing a simple one thread program where we're not declaring any thread and checking the thread name and priority in the program execution."
+      ],
+      "code": [
+        "package com.tutorialspoint;\npublic class TestThread {\n   public void printName() {\n      System.out.println(\"Thread Name: \" + Thread.currentThread().getName());\n      System.out.println(\"Thread Priority: \" +Thread.currentThread().getPriority());\n   }\t\n   public static void main(String args[]) {\n      TestThread thread = new TestThread();\n      thread.printName();\t   \n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Thread Name: main\nThread Priority: 5"
+      ]
+    },
+    {
+      "heading": "Example 1",
+      "paragraphs": [
+        "In this example, we've created a ThreadDemo class which extends Thread class. We've created three threads. Each thread is assigned a priority. In run() method, we're printing the priorities and in output, it is reflecting in threads execution."
+      ],
+      "code": [
+        "package com.tutorialspoint;\nclass ThreadDemo extends Thread {\n   ThreadDemo( ) {\n   }\n   public void run() {\n      System.out.println(\"Thread Name: \" + Thread.currentThread().getName() \n         + \", Thread Priority: \" +Thread.currentThread().getPriority());\n      for(int i = 4; i > 0; i--) {\n         System.out.println(\"Thread: \" + Thread.currentThread().getName() + \", \" + i); \n      }\n      try {\n         Thread.sleep(50);\n      } catch (InterruptedException e) {\n         // TODO Auto-generated catch block\n         e.printStackTrace();\n      }\n   }\n   public void start () {\n      super.start();\n   }\n}\npublic class TestThread {\n   public static void main(String args[]) {\n      ThreadDemo thread1 = new ThreadDemo();\n      ThreadDemo thread2 = new ThreadDemo();\n      ThreadDemo thread3 = new ThreadDemo();\n      thread1.setPriority(Thread.MAX_PRIORITY);\n      thread2.setPriority(Thread.MIN_PRIORITY);\n      thread3.setPriority(Thread.NORM_PRIORITY);\n      thread1.start();\t  \n      thread2.start();\n      thread3.start();\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Thread Name: Thread-2, Thread Priority: 5\nThread Name: Thread-1, Thread Priority: 1\nThread Name: Thread-0, Thread Priority: 10\nThread: Thread-1, 4\nThread: Thread-2, 4\nThread: Thread-1, 3\nThread: Thread-0, 4\nThread: Thread-1, 2\nThread: Thread-2, 3\nThread: Thread-0, 3\nThread: Thread-0, 2\nThread: Thread-0, 1\nThread: Thread-2, 2\nThread: Thread-2, 1\nThread: Thread-1, 1"
+      ]
+    },
+    {
+      "heading": "Example 2",
+      "paragraphs": [
+        "In this example, we've created a ThreadDemo class which extends Thread class. We've created three threads. As we're not setting any priority, each thread has a normal priority. In run() method, we're printing the priorities and in output, threads are executing in any order."
+      ],
+      "code": [
+        "package com.tutorialspoint;\nclass ThreadDemo extends Thread {\n   ThreadDemo( ) {\n   }\n   public void run() {\n      System.out.println(\"Thread Name: \" + Thread.currentThread().getName() \n         + \", Thread Priority: \" +Thread.currentThread().getPriority());\n      for(int i = 4; i > 0; i--) {\n         System.out.println(\"Thread: \" + Thread.currentThread().getName() + \", \" + i); \n      }\n      try {\n         Thread.sleep(50);\n      } catch (InterruptedException e) {\n         \n         // TODO Auto-generated catch block\n         e.printStackTrace();\n      }\n   }\n   public void start () {\n      super.start();\n   }\n}\npublic class TestThread {\n   public static void main(String args[]) {\n      ThreadDemo thread1 = new ThreadDemo();\n      ThreadDemo thread2 = new ThreadDemo();\n      ThreadDemo thread3 = new ThreadDemo();\n      thread1.start();\t  \n      thread2.start();\n      thread3.start();\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Thread Name: Thread-1, Thread Priority: 5\nThread Name: Thread-2, Thread Priority: 5\nThread Name: Thread-0, Thread Priority: 5\nThread: Thread-2, 4\nThread: Thread-1, 4\nThread: Thread-1, 3\nThread: Thread-2, 3\nThread: Thread-0, 4\nThread: Thread-2, 2\nThread: Thread-1, 2\nThread: Thread-2, 1\nThread: Thread-0, 3\nThread: Thread-1, 1\nThread: Thread-0, 2\nThread: Thread-0, 1"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:46:42.998Z"
+}

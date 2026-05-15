@@ -1,0 +1,82 @@
+{
+  "topicId": "stack-vs-heap",
+  "title": "Java Stack Class",
+  "sectionId": "java-advanced",
+  "source": "tutorialspoint",
+  "url": "https://www.tutorialspoint.com/java/util/java_util_stack.htm",
+  "allSources": [
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/util/java_util_stack.htm",
+      "score": 38,
+      "sectionCount": 7
+    },
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/stack-vs-heap-java",
+      "score": 20,
+      "sectionCount": 4
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Introduction",
+      "paragraphs": [
+        "Stack is a subclass of Vector that implements a standard last-in, first-out stack.",
+        "Stack only defines the default constructor, which creates an empty stack. Stack includes all the methods defined by Vector, and adds several of its own.",
+        "The Java Stack class represents a last-in-first-out (LIFO) stack of objects.",
+        "• When a stack is first created, it contains no items.\n• In this class, the last element inserted is accessed first."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Class declaration",
+      "paragraphs": [
+        "Following is the declaration for java.util.Stack class −"
+      ],
+      "code": [
+        "public class Stack<E>\n   extends Vector<E>"
+      ]
+    },
+    {
+      "heading": "Class constructors",
+      "paragraphs": [
+        "Sr.No. | Constructor & Description\n1 | Stack()\nThis constructor creates an empty stack."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Class methods",
+      "paragraphs": [
+        "Sr.No. | Method & Description\n1 | boolean empty()\nThis method tests if this stack is empty.\n2 | E peek()\nThis method looks at the object at the top of this stack without removing it from the stack.\n3 | E pop()\nThis method removes the object at the top of this stack and returns that object as the value of this function.\n4 | E push(E item)\nThis method pushes an item onto the top of this stack.\n5 | int search(Object o)\nThis method returns the 1-based position where an object is on this stack."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Methods inherited",
+      "paragraphs": [
+        "This class inherits methods from the following classes −",
+        "• java.util.Vector\n• java.util.Collection\n• java.util.Object\n• java.util.List"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following program illustrates several of the methods supported by Stack collection −",
+        "This will produce the following result −"
+      ],
+      "code": [
+        "import java.util.*;\npublic class StackDemo {\n\n   static void showpush(Stack st, int a) {\n      st.push(new Integer(a));\n      System.out.println(\"push(\" + a + \")\");\n      System.out.println(\"stack: \" + st);\n   }\n\n   static void showpop(Stack st) {\n      System.out.print(\"pop -> \");\n      Integer a = (Integer) st.pop();\n      System.out.println(a);\n      System.out.println(\"stack: \" + st);\n   }\n\n   public static void main(String args[]) {\n      Stack st = new Stack();\n      System.out.println(\"stack: \" + st);\n      showpush(st, 42);\n      showpush(st, 66);\n      showpush(st, 99);\n      showpop(st);\n      showpop(st);\n      showpop(st);\n      try {\n         showpop(st);\n      } catch (EmptyStackException e) {\n         System.out.println(\"empty stack\");\n      }\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "stack: [ ]\npush(42)\nstack: [42]\npush(66)\nstack: [42, 66]\npush(99)\nstack: [42, 66, 99]\npop -> 99\nstack: [42, 66]\npop -> 66\nstack: [42]\npop -> 42\nstack: [ ]\npop -> empty stack"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:42:51.933Z"
+}

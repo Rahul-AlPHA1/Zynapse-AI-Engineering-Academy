@@ -1,0 +1,90 @@
+{
+  "topicId": "covariant",
+  "title": "Covariant Return Type in Java",
+  "sectionId": "java-oops",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/covariant-return-type-in-java",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/covariant-return-type-in-java",
+      "score": 56,
+      "sectionCount": 6
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Covariant Return Type in Java",
+      "paragraphs": [
+        "The covariant return type in Java allows the return type of an overridden metho to be a subtype of the return type defined in the superclass. In other words, we can say the covariant return type specifies that the return type may vary in the same direction as the subclass.",
+        "Before Java 5, it was not possible to override any method by changing the return type. Since Java 5 or later versions, it is possible to override a method by changing the return type if a subclass overrides any method whose return type is Non-Primitive, but it changes its return type to subclass type.",
+        "Note: If you are a beginner to Java, skip this topic and return to it after OOPs concepts."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example of Covariant Return Type",
+      "paragraphs": [
+        "In this example, class B1 overrides the get() method of class A using a covariant return type. The overridden method in B1 returns B1 instead of A, allowing us to call the message() method directly on the returned object. This demonstrates how covariant return types enable more specific return types in method overriding.",
+        "Output:"
+      ],
+      "code": [
+        "class A{    \nA get(){return this;}    \n}    \nclass B1 extends A{    \n@Override  \nB1 get(){return this;}    \nvoid message(){System.out.println(\"Welcome to the covariant return type\");}    \npublic static void main(String args[]){    \nnew B1().get().message();    \n}    \n}",
+        "Welcome to the covariant return type"
+      ]
+    },
+    {
+      "heading": "Advantages of Covariant Return Type",
+      "paragraphs": [
+        "There are following advantages of Covariant Return Type in Java.",
+        "• Covariant return type assists to stay away from the confusing type casts in the class hierarchy and makes the code more usable, readable, and maintainable.\n• In the method overriding, the covariant return type provides the liberty to have more to-the-point return types.\n• Covariant return type helps in preventing the run-time ClassCastExceptionson returns.",
+        "Let's take an example to understand the advantages of the covariant return type:",
+        "Exampleclass A1  \n{  \n    A1 foo()  \n    {  \n        return this;  \n    }  \n    void print()  \n    {  \n        System.out.println(\"Inside the class A1\");  \n    }  \n}  \n// A2 is the child class of A1  \nclass A2 extends A1  \n{  \n    @Override  \n    A1 foo()  \n    {  \n        return this;  \n    }  \n    void print()  \n    {  \n        System.out.println(\"Inside the class A2\");  \n    }  \n}  \n// A3 is the child class of A2  \nclass A3 extends A2  \n{  \n    @Override  \n    A1 foo()  \n    {  \n        return this;  \n    }  \n    @Override  \n    void print()  \n    {  \n        System.out.println(\"Inside the class A3\");  \n    }  \n}  \npublic class Main\n{  \n    // main method  \n    public static void main(String argvs[])  \n    {  \n       A1 a1 = new A1();  \n       // this is ok  \n       a1.foo().print();  \n       A2 a2 = new A2();  \n       // we need to do the type casting to make it   \n       // more clear to reader about the kind of object created   \n       ((A2)a2.foo()).print();  \n       A3 a3 = new A3();  \n       // doing the type casting  \n       ((A3)a3.foo()).print();  \n    }  \n}  \nCompile and Run",
+        "Output:",
+        "Explanation:",
+        "In the above program, class A3 inherits class A2, and class A2 inherits class A1. Thus, A1 is the parent of classes A2 and A3. Hence, any object of classes A2 and A3 is also of type A1. As the return type of the method foo() is the same in every class, we do not know the exact type of object the method is actually returning.",
+        "We can only deduce that the returned object will be of type A1, which is the most generic class. We cannot say for sure that the returned object will be of A2 or A3. It is where we need to do the typecasting to find out the specific type of object returned from the method foo().",
+        "It not only makes the code verbose. It also requires precision from the programmer to ensure that typecasting is done properly; otherwise, there are fair chances of getting the ClassCastException.",
+        "To exacerbate it, think of a situation where the hierarchical structure goes down to 10 - 15 classes or even more, and in each class, the method foo() has the same return type. That is enough to give a nightmare to the reader and writer of the code.",
+        "The better way to write the above is:",
+        "Exampleclass A1\n{\n    A1 foo()\n    {\n        return this;\n    }\n    \n    void print()\n    {\n        System.out.println(\"Inside the class A1\");\n    }\n}\n\n\n// A2 is the child class of A1\nclass A2 extends A1\n{\n    @Override\n    A2 foo()\n    {\n        return this;\n    }\n    \n    void print()\n    {\n        System.out.println(\"Inside the class A2\");\n    }\n}\n\n// A3 is the child class of A2\nclass A3 extends A2\n{\n    @Override\n    A3 foo()\n    {\n        return this;\n    }\n    \n    @Override\n    void print()\n    {\n        System.out.println(\"Inside the class A3\");\n    }\n}\n\npublic class CovariantExample\n{\n    // main method\n    public static void main(String argvs[])\n    {\n       A1 a1 = new A1();\n       \n       a1.foo().print();\n       \n       A2 a2 = new A2();\n       \n       a2.foo().print();\n       \n       A3 a3 = new A3();\n       \n       a3.foo().print();\n       \n    }\n}\nCompile and Run",
+        "Output:",
+        "Explanation: In the above program, no typecasting is needed as the return type is specific. Hence, there is no confusion about knowing the type of object getting returned from the method foo(). Also, even if we write the code for the 10 - 15 classes, there would be no confusion regarding the return types of the methods. All this is possible because of the covariant return type."
+      ],
+      "code": [
+        "Inside the class A1\nInside the class A2\nInside the class A3",
+        "Inside the class A1\nInside the class A2\nInside the class A3"
+      ]
+    },
+    {
+      "heading": "How JVM Supports Covariant Return Types?",
+      "paragraphs": [
+        "JVM always allows return type-based overloading. JVM uses the full signature of a method for lookup/resolution. Full signature means it includes return type in addition to argument types. i.e., a class can have two or more methods differing only by return type. javac uses this fact to implement covariant return types.",
+        "In other words, the covariant return type is implemented by allowing a subclass method to return a subtype of the superclass method's return type. The subclass method must have the same signature as the superclass method but can return a more specific type."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Method Overriding Using Covariant Return Type in Java",
+      "paragraphs": [
+        "If a method in a class returns a non-primitive type, then the same method in a subclass of that class can use the same nonprimitive type or a subclass of that nonprimitive type as the return type to override that method.",
+        "If class A has a method whose return type is an Object type, then the same method in a child class B (child of class A) can use a Number or Integer as a return type to override that method because Number and Integer classes are covariant of the Object class."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Let's take an example to demonstrate the method overriding using the covariant return type in Java.",
+        "Exampleclass A {\n    Object print() {    \n      System.out.println(\"print method of class A\");\n      return new Object();\n    } \n } \n class B extends A {   \n    Integer print() {\n      System.out.println(\"print method of class B\");\n      return new Integer(2);\n    }    \n    public static void main(String [] args) {\n      B b = new B();  \n      b.print();\n      A a = new B();  \n      a.print();    \n    }\n }",
+        "Output:",
+        "As we can see in the above program, the print() method in class B is overriding the print() method of parent class A, though the return type of the child class method is Integer type It's happening because Java allows to use of covariant return type while overriding the method.",
+        "Next TopicSuper-keyword-in-java"
+      ],
+      "code": [
+        "print method of class B\nprint method of class B"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:46:00.996Z"
+}

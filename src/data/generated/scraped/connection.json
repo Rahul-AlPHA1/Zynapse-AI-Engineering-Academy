@@ -1,0 +1,131 @@
+{
+  "topicId": "connection",
+  "title": "Connection",
+  "sectionId": "java-collections-jdbc",
+  "source": "geeksforgeeks",
+  "url": "https://www.geeksforgeeks.org/java/establishing-jdbc-connection-in-java/",
+  "allSources": [
+    {
+      "sourceId": "geeksforgeeks",
+      "url": "https://www.geeksforgeeks.org/java/establishing-jdbc-connection-in-java/",
+      "score": 65,
+      "sectionCount": 12
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_urlconnection.htm",
+      "score": 42,
+      "sectionCount": 8
+    },
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/Connection-interface",
+      "score": 41,
+      "sectionCount": 6
+    }
+  ],
+  "sections": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Before performing database operations in Java, a JDBC connection must be established. It acts as a communication link between the application and the database to send queries and receive results.",
+        "• Load the appropriate database driver\n• Specify the database URL\n• Provide username and password for authentication",
+        "The diagram below demonstrates the workings of JDBC by correlating its steps to real-world examples.",
+        "JDBC is a middleman that builds communication between a Java application and a database."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Steps to Establish a JDBC Connection",
+      "paragraphs": [
+        "The process of connecting to a database using JDBC can be broken into the following steps"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Step 1: Import the JDBC Package",
+      "paragraphs": [
+        "First, we need to import the packages."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Step 2: Load or Register the Driver",
+      "paragraphs": [
+        "In order to begin with, you first need to load the driver or register it before using it in the program. Registration is to be done once in your program. You can register a driver in one of two ways mentioned below as follows:"
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. Class.forName()",
+      "paragraphs": [
+        "Here, we load the driver’s class file into memory at the runtime. No need to create objects. The following example uses Class.forName() to load the Oracle driver as shown below as follows:"
+      ],
+      "code": []
+    },
+    {
+      "heading": "2. DriverManager.registerDriver()",
+      "paragraphs": [
+        "DriverManager is a Java inbuilt class with a static member register. Here we call the constructor of the driver class at runtime. The following example uses DriverManager.registerDriver() to register the Oracle driver as shown below:",
+        "Note:"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Step 3: Establish a Connection",
+      "paragraphs": [
+        "After loading the driver, establish connections as shown below as follows:",
+        "• user: Username from which your SQL command prompt can be accessed.\n• password: password from which the SQL command prompt can be accessed.\n• con: It is a reference to the Connection interface.\n• Url: Uniform Resource Locator which is created as shown below:"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Step 4: Create a Statement",
+      "paragraphs": [
+        "Once a connection is established, you can interact with the database. The Statement, PreparedStatement and CallableStatement interfaces define methods that enable you to send SQL commands and receive data from your database.",
+        "Use of Statement is as follows:",
+        "Note:"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Step 5: Execute SQL Query",
+      "paragraphs": [
+        "Now comes the most important part i.e. executing the query. The query here is an SQL Query. Now, we know we can have multiple types of queries. Some of them are as follows:",
+        "• The query for updating/inserting a table in a database.\n• The query for retrieving data.",
+        "1. executeQuery(): This method of the Statement interface is used to execute queries of retrieving values from the database. This method returns the object of ResultSet that can be used to get all the records of a table. 2. executeUpdate(sql query): This method of the Statement interface is used to execute queries of updating/inserting.",
+        "Pseudo Code:"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Step 6: Close the Connections",
+      "paragraphs": [
+        "So, finally we have sent the data to the specified location and now we are on the verge of completing our task. By closing the connection, objects of Statement and ResultSet will be closed automatically. The close() method of the Connection interface is used to close the connection. It is shown below as follows:",
+        "Note:"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Prerequisites",
+      "paragraphs": [
+        "Before writing JDBC code, make sure you have:",
+        "1. Database Installed and Running:",
+        "• Install a relational database (e.g., PostgreSQL, MySQL).\n• Create a database and a user.",
+        "2. JDBC Driver (Connector JAR):",
+        "• JDBC requires a driver to connect with the database.\n• Download the JAR or add Maven dependency.",
+        "Example: The below Java program demonstrates how to connect to a MYSQL database, execute a Query, retrieve data and display it.",
+        "Output:"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Program for Oracle Database Connection",
+      "paragraphs": [
+        "Example: The below Java program demonstrates how to establish a JDBC Connection with an Oracle database."
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:48:29.566Z"
+}

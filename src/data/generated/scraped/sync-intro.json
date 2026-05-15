@@ -1,0 +1,175 @@
+{
+  "topicId": "sync-intro",
+  "title": "Synchronization in Java",
+  "sectionId": "java-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/synchronization-in-java",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/synchronization-in-java",
+      "score": 100,
+      "sectionCount": 17
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_thread_synchronization.htm",
+      "score": 45,
+      "sectionCount": 9
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Synchronization in Java",
+      "paragraphs": [
+        "Synchronization in Java is a mechanism that controls access to shared resources to prevent data inconsistency in multithreaded programs.",
+        "In this chapter, you will learn how synchronization works in Java, why it is needed, and how to use synchronized methods and blocks to ensure thread-safe execution."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Understanding Threads and Shared Resources",
+      "paragraphs": [
+        "A thread represents an independent path of execution within a program. When multiple threads access shared resources concurrently, unpredictable interleaving of operations may lead to data inconsistency. Consider a scenario where two threads increment a shared variable at the same time:",
+        "If two threads execute the increment() method simultaneously, both may read the same value of count, increment it, and write it back. As a result, one update can overwrite the other, leading to incorrect final values. This situation is known as a race condition."
+      ],
+      "code": [
+        "class Counter {\n    private int count = 0;    \n    public void increment() {\n        count++;\n    }\n}"
+      ]
+    },
+    {
+      "heading": "Introducing Synchronization",
+      "paragraphs": [
+        "Synchronization addresses such issues by ensuring that only one thread at a time can access a critical section of code or a shared resource associated with an object. This exclusive access prevents race conditions and maintains data consistency.",
+        "Java provides two primary mechanisms for synchronization:",
+        "• Synchronized methods\n• Synchronized blocks",
+        "These mechanisms allow developers to control thread access and ensure safe execution in multithreaded environments."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Synchronized Methods",
+      "paragraphs": [
+        "In Java, you can declare entire methods as synchronized which prevent multiple threads from accessing the method simultaneously. With this, synchronization becomes a simpler process because the mechanism is applied to all invocations of the synchronized method automatically."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "In this example, the SynchronizedCounter class uses synchronized methods to ensure that only one thread at a time can modify or access the shared count variable, preventing race conditions and ensuring thread safety.",
+        "With this modification, concurrent calls to increment() or getCount() will be synchronized, preventing race conditions."
+      ],
+      "code": [
+        "class SynchronizedCounter {\n    private int count = 0;    \n    public synchronized void increment() {\n        count++;\n    }    \n    public synchronized int getCount() {\n        return count;\n    }\n}"
+      ]
+    },
+    {
+      "heading": "Synchronized Blocks",
+      "paragraphs": [
+        "Synchronized block provides exclusive access to shared resources, and only one thread is allowed to execute it in the same time frame. It's structured as follows:",
+        "This monitor object or lock is the subject. While only one thread can be holding a lock on a monitor object at one instance. Other threads that want to go into the synchronized blocks with this object must wait till the lock becomes available."
+      ],
+      "code": [
+        "synchronized (object) {\n    // Synchronized code block\n}"
+      ]
+    },
+    {
+      "heading": "Intrinsic Locks and Synchronization",
+      "paragraphs": [
+        "In Java, every object automatically has an intrinsic lock (or monitor lock) associated to it. The moment a thread enters the synchronized block or method, it gets the lock for the object, and then no other thread is allowed to enter the synchronized block or method for that object until the lock is released."
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. Deadlocks",
+      "paragraphs": [
+        "On the one hand, synchronization ensures that race condition is ruled out, but on the other hand, it may lead to deadlocks if not used critically. Stalemates could result as two or more threads are ceaseless when they are waiting for resources from each other. Avoid deadlocks by ordering the locks and releasing them in an opposite sequence of both."
+      ],
+      "code": []
+    },
+    {
+      "heading": "2. Locking Granularity",
+      "paragraphs": [
+        "The best locking granularity has to be selected and has to avoid contention and thus be good for performance. Leaning too broadly can reduce concurrency, while leaning too finely can lead to overhead increase. Identification of the only section of the code which needs to be the only one having an exclusive access to the shared resources and synchronization of that section alone."
+      ],
+      "code": []
+    },
+    {
+      "heading": "3. Concurrent Collections",
+      "paragraphs": [
+        "Java contains a thread-safe versions of the common collections classes that found in the java.util.concurrent package, including the ConcurrentHashMap and ConcurrentLinkedQueue. These classes provide internal synchronization mechanisms that guarantee the thread safety without giving up the synchronization control to the user."
+      ],
+      "code": []
+    },
+    {
+      "heading": "4. Volatile Keyword",
+      "paragraphs": [
+        "Furthermore, volatile keyword may be used to maintain the visibility of changes made to the variables among the threads. For variables declared as volatile, their value will always be read directly from memory and the writes to them will be visible to all the other threads immediately. However, volatile does not ensure as such for complex instructions such as incrementing."
+      ],
+      "code": []
+    },
+    {
+      "heading": "5. Atomic Classes",
+      "paragraphs": [
+        "Java gives atomic classes in the java.util.concurrent.atomic package including Atomic Integer and Atomic Long, which offer atomic operations of variables without using explicit synchronization. These kind of classes use hardware's low level atomic operations to make thread safety."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Types of Thread Synchronization",
+      "paragraphs": [
+        "There are two types of thread synchronization in Java: mutual exclusive and inter-thread communication.",
+        "• Mutual ExclusiveSynchronized method.Synchronized block.Static synchronization.\n• Synchronized method.\n• Synchronized block.\n• Static synchronization.\n• Cooperation (Inter-thread communication in Java)"
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. Mutual Exclusion",
+      "paragraphs": [
+        "Mutual exclusion prevents threads from interfering with one another while accessing shared data. It ensures that only one thread can execute a critical section at a time.",
+        "In Java, mutual exclusion can be achieved in the following ways:",
+        "• Using synchronized methods\n• Using synchronized blocks\n• Using static synchronization"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Concept of Lock",
+      "paragraphs": [
+        "Synchronization is built around an internal entity called a lock or monitor. Every object in Java has an associated lock. When a thread enters a synchronized method or block:",
+        "• It acquires the object's lock\n• Executes the critical section\n• Releases the lock when execution completes",
+        "Other threads must wait until the lock is released before accessing the synchronized code.",
+        "From Java 5 onward, the java.util.concurrent.locks package provides advanced lock implementations for more flexible synchronization."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Understanding the Problem without Synchronization",
+      "paragraphs": [
+        "When synchronization is not used, multiple threads can access shared resources simultaneously, leading to unpredictable output.",
+        "Consider the following example where the method is not synchronized:",
+        "class Table {    \n    void printTable(int n) {    \n        for (int i = 1; i <= 5; i++) {    \n            System.out.println(n * i);    \n            try {    \n                Thread.sleep(400);    \n            } catch (Exception e) {    \n                System.out.println(e);    \n            }    \n        }    \n    }    \n}    \n\nclass MyThread1 extends Thread {    \n    Table t;    \n    MyThread1(Table t) {    \n        this.t = t;    \n    }    \n    public void run() {    \n        t.printTable(5);    \n    }    \n}    \n\nclass MyThread2 extends Thread {    \n    Table t;    \n    MyThread2(Table t) {    \n        this.t = t;    \n    }    \n    public void run() {    \n        t.printTable(100);    \n    }    \n}    \n\npublic class Main {    \n    public static void main(String args[]) {    \n        Table obj = new Table();    \n        MyThread1 t1 = new MyThread1(obj);    \n        MyThread2 t2 = new MyThread2(obj);    \n        t1.start();    \n        t2.start();    \n    }    \n}      \nCompile and Run",
+        "Output:",
+        "The output is inconsistent because both threads execute the method simultaneously."
+      ],
+      "code": [
+        "5\n100\n10\n200\n15\n300\n20\n400\n25\n500"
+      ]
+    },
+    {
+      "heading": "2. Cooperation (Inter-thread Communication)",
+      "paragraphs": [
+        "Inter-thread communication allows multiple threads to coordinate their execution by communicating with each other instead of competing for a resource. This cooperation is achieved using the wait(), notify(), and notifyAll() methods of the Object class.",
+        "Consider a restaurant scenario, where the Cook thread prepares the food, the Customer thread waits until the food is ready, and once the food is prepared, the cook notifies the customer to proceed.",
+        "In the below example code, here one thread waits for a condition to be fulfilled while another thread performs an action and notifies the waiting thread to continue execution.",
+        "Exampleclass Restaurant {\n    boolean foodReady = false;\n\n    synchronized void prepareFood() {\n        System.out.println(\"Cook is preparing food...\");\n        foodReady = true;\n        notify(); // Notify waiting customer\n    }\n\n    synchronized void serveFood() {\n        while (!foodReady) {\n            try {\n                System.out.println(\"Customer is waiting for food...\");\n                wait(); // Customer waits\n            } catch (InterruptedException e) {\n                System.out.println(e);\n            }\n        }\n        System.out.println(\"Customer is served food.\");\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Restaurant restaurant = new Restaurant();\n\n        Thread customer = new Thread(() -> restaurant.serveFood());\n        Thread cook = new Thread(() -> restaurant.prepareFood());\n\n        customer.start();\n        cook.start();\n    }\n}",
+        "Output:",
+        "Next TopicJava-synchronized-block"
+      ],
+      "code": [
+        "Customer is waiting for food...\nCook is preparing food...\nCustomer is served food."
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:40:17.654Z"
+}

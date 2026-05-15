@@ -1,0 +1,25 @@
+{
+  "topicId": "tostring",
+  "title": "Java toString() Method: Overriding and Usage",
+  "sectionId": "java-core-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/understanding-tostring()-method",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/understanding-tostring()-method",
+      "score": 4,
+      "sectionCount": 1
+    }
+  ],
+  "sections": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Java toString() Method: Overriding and UsageLast Updated : 13 Jan 2026In this chapter, we will learn about the toString() method in Java, how it is used to represent objects as readable strings, and how overriding it helps in displaying meaningful object information.What is toString() MethodThe toString() method is used to represent an object as a string. It returns the string representation of an object.When you print an object using System.out.println(), the Java compiler internally calls the toString() method on that object. By overriding the toString() method, you can return a meaningful output, such as the current state or data of the object, instead of the default class name and hash code.Understanding the Problem Without toString() MethodBy default, if we print an object in Java, it prints the reference value of that object instead of its actual data. This happens because Java internally calls the toString() method of the Object class, which returns the class name followed by a hashcode.ExampleLet us understand this with a simple example:class Student {\n    int rollno;\n    String name;\n    String city;\n\n    Student(int rollno, String name, String city) {\n        this.rollno = rollno;\n        this.name = name;\n        this.city = city;\n    }\n\n    public static void main(String args[]) {\n        Student s1 = new Student(101, \"Raj\", \"Lucknow\");\n        Student s2 = new Student(102, \"Vijay\", \"Ghaziabad\");\n\n        System.out.println(s1); // internally calls s1.toString()\n        System.out.println(s2); // internally calls s2.toString()\n    }\n}\nOutput:Student@1fee6fc\nStudent@1eed786\nAs you can see, printing s1 and s2 displays only the class name and hashcode, not the actual values of the object fields. This output is not very useful when we want to see the object’s data.How toString() Method Improves Object Output?To print meaningful information, we can override the toString() method in our class and return the desired object details.Here is the correct code by overriding the toString() method in our class:class Student {\n    int rollno;\n    String name;\n    String city;\n\n    Student(int rollno, String name, String city) {\n        this.rollno = rollno;\n        this.name = name;\n        this.city = city;\n    }\n\n    // Overriding the toString() method\n    public String toString() {\n        return rollno + \" \" + name + \" \" + city;\n    }\n\n    public static void main(String args[]) {\n        Student s1 = new Student(101, \"Raj\", \"Lucknow\");\n        Student s2 = new Student(102, \"Vijay\", \"Ghaziabad\");\n\n        System.out.println(s1); // internally calls s1.toString()\n        System.out.println(s2); // internally calls s2.toString()\n    }\n}\nOutput:101 Raj lucknow\n102 Vijay ghaziabad\nExplanation:In this program, the toString() method is overridden to return the values of rollno, name, and city. When the object is printed, Java internally calls the overridden toString() method, which results in a clear and meaningful output instead of a reference value.Next TopicStringTokenizer in java ← prev next →"
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:36:32.912Z"
+}

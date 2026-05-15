@@ -1,0 +1,141 @@
+{
+  "topicId": "fileoutputstream",
+  "title": "Java FileOutputStream Class",
+  "sectionId": "java-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-fileoutputstream-class",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-fileoutputstream-class",
+      "score": 92,
+      "sectionCount": 12
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java FileOutputStream Class",
+      "paragraphs": [
+        "The FileOutputStream class in Java is used to write byte data to a file. In this chapter, we will learn what the FileOutputStream class is, when to use it, its methods, and how to write data to a file using simple examples."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is FileOutputStream in Java?",
+      "paragraphs": [
+        "The FileOutputStream class is an output stream used to write data into a file. It writes data in the form of bytes and is mainly used for byte-oriented file operations.",
+        "If you want to write primitive or binary data into a file, the FileOutputStream class is suitable. Although it can also write character data, it is recommended to use the FileWriter class for character-oriented operations."
+      ],
+      "code": []
+    },
+    {
+      "heading": "FileOutputStream class declaration",
+      "paragraphs": [
+        "The following declaration shows how the FileOutputStream class is defined:"
+      ],
+      "code": [
+        "public class FileOutputStream extends OutputStream"
+      ]
+    },
+    {
+      "heading": "Constructors of FileOutputStream Class",
+      "paragraphs": [
+        "The FileOutputStream class provides constructors to create an output stream and connect it to a file."
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. FileOutputStream(String name)",
+      "paragraphs": [
+        "This constructor creates a file output stream to write data to a file with the specified name. If the file already exists, its content is overwritten. If the file does not exist, a new file is created.",
+        "Syntax:",
+        "Here is the syntax of this constructor:"
+      ],
+      "code": [
+        "FileOutputStream(String name)"
+      ]
+    },
+    {
+      "heading": "2. FileOutputStream(String name, boolean append)",
+      "paragraphs": [
+        "This constructor creates a file output stream to write data to a file. If append is set to true, the data is added at the end of the file. If it is false, the existing file content is overwritten.",
+        "Syntax:",
+        "Here is the syntax of this constructor:"
+      ],
+      "code": [
+        "FileOutputStream(String name, boolean append)"
+      ]
+    },
+    {
+      "heading": "3. FileOutputStream(File file)",
+      "paragraphs": [
+        "This constructor creates a file output stream using a File object instead of a file name.",
+        "Syntax:",
+        "Here is the syntax of this constructor:"
+      ],
+      "code": [
+        "FileOutputStream(File file)"
+      ]
+    },
+    {
+      "heading": "4. FileOutputStream(File file, boolean append)",
+      "paragraphs": [
+        "This constructor creates a file output stream using a File object and allows appending data to the file if required.",
+        "Syntax:",
+        "Here is the syntax of this constructor:"
+      ],
+      "code": [
+        "FileOutputStream(File file, boolean append)"
+      ]
+    },
+    {
+      "heading": "Example: Using FileOutputStream Constructor with Append Mode",
+      "paragraphs": [
+        "The following example demonstrates how to append data to an existing file using the FileOutputStream constructor.",
+        "Output:"
+      ],
+      "code": [
+        "import java.io.FileOutputStream;\n\npublic class AppendExample {\n    public static void main(String args[]) {\n        try {\n            FileOutputStream fout =\n                new FileOutputStream(\"D:\\\\testout.txt\", true);\n            String s = \"\\nAppending new data\";\n            fout.write(s.getBytes());\n            fout.close();\n            System.out.println(\"data appended successfully\");\n        } catch (Exception e) {\n            System.out.println(e);\n        }\n    }\n}",
+        "data appended successfully"
+      ]
+    },
+    {
+      "heading": "Methods of FileOutputStream Class",
+      "paragraphs": [
+        "The FileOutputStream class provides several methods to write data to a file.",
+        "Method | Description\nprotected void finalize() | It is used to clean up the connection with the file output stream.\nvoid write(byte[] ary) | It is used to write ary.length bytes from the byte array to the file output stream.\nvoid write(byte[] ary, int off, int len) | It is used to write len bytes from the byte array starting at offset off to the file output stream.\nvoid write(int b) | It is used to write the specified byte to the file output stream.\nFileChannel getChannel() | It is used to return the file channel object associated with the file output stream.\nFileDescriptor getFD() | It is used to return the file descriptor associated with the stream.\nvoid close() | It is used to closes the file output stream."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example 1: Writing a Single Byte Using FileOutputStream",
+      "paragraphs": [
+        "In this example, a single byte value is written to a file. The byte value 65 represents the character A.",
+        "Output:",
+        "The content of a text file testout.txt is set with the data A.",
+        "testout.txt"
+      ],
+      "code": [
+        "import java.io.FileOutputStream;\npublic class FileOutputStreamExample {\n\tpublic static void main(String args[]){  \n\t\t   try{  \n\t\t     FileOutputStream fout=new FileOutputStream(\"D:\\\\testout.txt\");  \n\t\t     fout.write(65);  \n\t\t     fout.close();  \n\t\t     System.out.println(\"success...\");  \n\t\t    }catch(Exception e){System.out.println(e);}  \n\t  }  \n}",
+        "Success...",
+        "A"
+      ]
+    },
+    {
+      "heading": "Example 2: Writing a String Using FileOutputStream",
+      "paragraphs": [
+        "In this example, a string is converted into a byte array and then written to a file using the FileOutputStream class.",
+        "Output:",
+        "The content of a text file testout.txt is set with the data Welcome to javaTpoint.",
+        "testout.txt",
+        "Next TopicJava FileInputStream Class"
+      ],
+      "code": [
+        "import java.io.FileOutputStream;\npublic class FileOutputStreamExample {\n\tpublic static void main(String args[]){  \n\t\t   try{  \n\t\t     FileOutputStream fout=new FileOutputStream(\"D:\\\\testout.txt\");  \n\t\t     String s=\"Welcome to javaTpoint.\";  \n\t\t     byte b[]=s.getBytes();//converting string into byte array  \n\t\t     fout.write(b);  \n\t\t     fout.close();  \n\t\t     System.out.println(\"success...\");  \n\t\t    }catch(Exception e){System.out.println(e);}  \n\t  }  \n}",
+        "Success...",
+        "Welcome to javaTpoint."
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:41:15.583Z"
+}

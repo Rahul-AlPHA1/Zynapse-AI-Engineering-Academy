@@ -1,0 +1,1062 @@
+{
+  "topicId": "interview-questions",
+  "title": "300 Core Java Interview Questions and Answers",
+  "sectionId": "java-collections-jdbc",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/corejava-interview-questions",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/corejava-interview-questions",
+      "score": 744,
+      "sectionCount": 104
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_questions_answers.htm",
+      "score": 5,
+      "sectionCount": 1
+    }
+  ],
+  "sections": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Tutorial  Compiler  Programs  OOPs Collections  Interview Question"
+      ],
+      "code": []
+    },
+    {
+      "heading": "300 Core Java Interview Questions and Answers",
+      "paragraphs": [
+        "Prepare for your Core Java interview with commonly asked questions covering topics like OOP concepts, collections, multithreading, and exception handling. These questions will help you understand the basics and answer confidently."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Core Java Interview Questions and Answers",
+      "paragraphs": [
+        "There is a list of 300 core Java interview questions. If there is any core Java interview question that has been asked to you, kindly post it in the ask question section. We assure you that you will get the 90% frequently asked interview questions and answers here.",
+        "The answers to the Core Java interview questions are short and to the point. The core Java interview questions are categorized into Basics of Java interview questions, OOPs interview questions, String Handling interview questions, Multithreading interview questions, collection interview questions, JDBC interview questions, etc.",
+        "Core Java: Basics of Java Interview Questions"
+      ],
+      "code": []
+    },
+    {
+      "heading": "1) What is Java?",
+      "paragraphs": [
+        "Java is a high-level, object-oriented, robust, secure programming language, platform-independent, high-performance, Multithreaded, and portable programming language. It was developed by James Gosling and his team at Sun Microsystems in June 1991. It can also be known as the platform, as it provides its own JRE and API. Java is designed to be versatile, secure, and portable, allowing developers to write code that can run on various platforms without modification.",
+        "To read more: Java Tutorial"
+      ],
+      "code": []
+    },
+    {
+      "heading": "2) What are the differences between C++ and Java?",
+      "paragraphs": [
+        "The differences between C++ and Java are given in the following table.",
+        "Aspect | C++ | Java\nPlatform-independent | C++ is platform-dependent. | Java is platform-independent.\nUsed for | C++ is mainly used for system programming. | Java is mainly used for application programming. It is widely used in Windows, web-based, enterprise, and mobile applications.\nDesign Goal | C++ was designed for systems and applications programming. It was an extension of the C programming language. | Java was designed and created as an interpreter for printing systems, but later extended as a support network for computing. It was designed with a goal of being easy to use and accessible to a broader audience.\nGoto Statement | C++ supports the goto statement. | Java does not support the goto statement.\nMultiple inheritance | C++ supports multiple inheritance. | Java does not support multiple inheritance through a class. Interfaces in Java can achieve it.\nOperator Overloading | C++ supports operator overloading. | Java does not support operator overloading.\nPointers | C++ supports pointers. We can write a pointer program in C++. | Java supports pointers internally. However, we cannot write the pointer program in Java. It means Java has restricted pointer support in Java.\nCompiler and Interpreter | C++ uses a compiler only. C++ is compiled and run using the compiler, which converts source code into machine code, so C++ is platform-dependent. | Java uses a compiler and an interpreter. Java source code is converted into bytecode at compilation time. The interpreter executes this bytecode at runtime and produces output. Java is interpreted, which is why it is platform independent.\nCall by Value and Call by Reference | C++ supports both call by value and call by reference. | Java supports call by value only. There is no call by reference in Java.\nStructure and Union | C++ supports structures and unions. | Java does not support structures and unions.\nThread Support | C++ does not have built-in support for threads. It relies on third-party libraries for thread support. | Java has built-in thread support.\nDocumentation comment | C++ does not support documentation comments. | Java supports documentation comments (/** ... */) to create documentation for Java source code.\nvirtual Keyword | C++ supports the virtual keyword so that we can decide whether or not to override a function. | Java has no virtual keyword. We can override all non-static methods by default. In other words, non-static methods are virtual by default.\nUnsigned Right shift >>> | C++ does not support the >>> operator. | Java supports the unsigned right shift >>> operator that fills zero at the top for the negative numbers. For positive numbers, it works the same as the>> operator.\nInheritance Tree | C++ creates a new inheritance tree every time. | Java uses a single inheritance tree always because all classes are the child of the Object class in Java. The object class is the root of the inheritance tree in Java.\nHardware | C++ is nearer to hardware. | Java is not so interactive with hardware.\nObject-Oriented | C++ is an object-oriented language. However, in the C language, a single root hierarchy is not possible. | Java is also an object-oriented language. However, everything (except fundamental types) is an object in Java. It is a single root hierarchy as everything gets derived from java.lang.Object.\nMemory Management | Manual memory management using new and delete keywords. | Automatic memory management through garbage collection.\nException Handling | Supports try, throw, and catch for exception handling. | Exception handling using try, throw, and catch as well.\nStandard Library | Standard Template Library (STL) for data structures and algorithms. | Java Standard Edition (SE) library for various utilities and functionality.\nApp Development | Commonly used for desktop applications. | Widely used for web, enterprise, and mobile applications.\nRuntime Environment | Closer to the machine may have better performance. | Java Virtual Machine (JVM) provides a layer of abstraction, sacrificing some performance for portability.\nGarbage Collection | Manual memory management, no built-in garbage collection. | Automatic garbage collection to manage memory.",
+        "To read more: Difference between C++ and Java"
+      ],
+      "code": []
+    },
+    {
+      "heading": "3) List the features of Java Programming language.",
+      "paragraphs": [
+        "• There are the following features in the Java Programming Language.\n• Simple: Java is easy to learn. The syntax of Java is based on C++, which makes it easier to write programs in it.\n• Object-Oriented Programming (OOP): Java follows the object-oriented paradigm, which allows us to maintain our code as a combination of different types of objects that incorporate both data and behavior. Everything in Java is treated as an object, promoting modularity and code reusability.\n• Portable: Java supports a read-once-write-anywhere approach. We can execute the Java program on every machine. A Java program (.java) is converted to bytecode (.class), which can be easily run on every machine.\n• Platform Independent: Java is a platform-independent programming language. It is different from other programming languages like C and C++, which need a platform to be executed. Java comes with its own platform on which its code is executed. Java doesn't depend upon the operating system to be executed.\n• Secured: Java is secured because it does not use explicit pointers. Java also provides the concept of ByteCode and Exception handling, which makes it more secured. The Java Runtime Environment (JRE) includes a security manager and a set of APIs to control access to resources and prevent malicious activities.\n• Robust: Java is a strong programming language as it uses strong memory management. The concepts like Automatic garbage collection, Exception handling, etc., make it more robust.\n• Architecture Neutral: Java is architecture-neutral as it is not dependent on the architecture. In C, the size of data types may vary according to the architecture (32-bit or 64-bit), which does not exist in Java.\n• Interpreted: Java uses the Just-in-time (JIT) interpreter along with the compiler for the program execution.\n• High Performance: Java is faster than other traditional interpreted programming languages because Java bytecode is \"close\" to native code. It is still a little bit slower than a compiled language (for example, C++). While interpreted, Java's Just-In-Time (JIT) compilation translates bytecode into machine code for improved performance.\n• Multithreaded: We can write Java programs that deal with many tasks at once by defining multiple threads. The main advantage of multi-threading is that it does not occupy memory for each thread. It shares a common memory area. Threads are important for multi-media, Web applications, etc. Java's bytecode can be executed on any device with a JVM, ensuring portability across different platforms.\n• Distributed: Java is distributed because it facilitates users to create distributed applications in Java. RMI and EJB are used for creating distributed applications. This feature of Java makes us able to access files by calling the methods from any machine on the internet.\n• Dynamic: Java is a dynamic language. It supports dynamic loading of classes. It means classes are loaded on demand. It also supports functions from its native languages, i.e., C and C++.",
+        "To read more: Features of Java"
+      ],
+      "code": []
+    },
+    {
+      "heading": "4) What do you understand by Java Virtual Machine (JVM)?",
+      "paragraphs": [
+        "Java Virtual Machine is a virtual machine that enables a computer to run Java programs. It is a virtualized execution environment that allows Java programs to run on any device with a compatible JVM. JVM is the specification that must be implemented in the computer system. It interprets Java bytecode and translates it into machine code for the underlying hardware.",
+        "To read more: Java Virtual Machine (JVM)"
+      ],
+      "code": []
+    },
+    {
+      "heading": "5) What are the differences between JDK, JRE, and JVM?",
+      "paragraphs": [
+        "Feature | JDK | JRE | JVM\nDefinition | Java Development Kit (JDK) is a software development kit used to develop Java applications. | Java Runtime Environment (JRE) is a software package that provides Java Virtual Machine (JVM), class libraries and other components to run applications in Java. | Java Virtual Machine (JVM) is an abstract machine that provides an environment for the execution of Java ByteCodes.\nFunctions | Provides tools for developing Java applications. It includes compiler (javac), JRE, and debugging tools. | It provides an environment for executing Java applications. It includes JVM and libraries required to run Java programs, but does not include development tools. | The virtual machine that runs the bytecode generated by the compiler. It's a part of JRE and is platform-dependent but provides a platform-independent execution environment.\nUse Cases | Used by developers to write, compile, and debug Java programs. | Used by end-users to execute Java applications without needing development tools. | Converts bytecode into machine code and executes it on the underlying hardware.\nPlatform Dependency | It is platform dependent. | It is platform dependent. | It is platform dependent.\nImplementation | JDK = JRE + Development tools | JRE = JVM + Class libraries | JVM = provides a runtime environment.",
+        "To read more: Difference between JDK, JRE, and JVM"
+      ],
+      "code": []
+    },
+    {
+      "heading": "6) How many types of memory areas are allocated by the JVM?",
+      "paragraphs": [
+        "Class (Method) Area: Class Area stores per-class structures such as the runtime constant pool, field, method data, and the code for methods.",
+        "Heap: It is the runtime data area in which memory is allocated to the objects",
+        "Stack: Java Stack stores frames. Holds local variables and partial results, supporting method execution. Each thread has a private JVM stack, created at the same time as the thread. A new frame is created each time a method is invoked. A frame is destroyed when its method invocation completes.",
+        "PC Register (Non-Heap): Keeps track of the current execution position for each thread.",
+        "Native Method Stack (Non-Heap): It contains native method information and supports native code execution.",
+        "To read more: Memory Management in Java"
+      ],
+      "code": []
+    },
+    {
+      "heading": "7) What is JIT compiler?",
+      "paragraphs": [
+        "Just-In-Time (JIT) Compiler: It is used to improve the performance. The compiler is part of the Java Runtime Environment (JRE).",
+        "It translates Java bytecode into native machine code at runtime. Therefore, reduces the amount of time needed for compilation.",
+        "Here, the term \"compiler\" refers to a translator from the instruction set of a Java Virtual Machine (JVM) to the instruction set of a specific CPU.",
+        "To read more: JIT in Java"
+      ],
+      "code": []
+    },
+    {
+      "heading": "8) What is the platform?",
+      "paragraphs": [
+        "A platform refers to the combination of hardware and software on which programs run. In the context of Java, the platform includes the operating system and the Java Virtual Machine (JVM).",
+        "There are two types of platforms:",
+        "• Software-Based\n• Hardware-Based"
+      ],
+      "code": []
+    },
+    {
+      "heading": "9) What are the main differences between the Java platform and other platforms?",
+      "paragraphs": [
+        "There are the following differences between the Java platform and other platforms.",
+        "• Java is platform-independent due to its \"Write Once, Run Anywhere\" nature.\n• Other platforms may require platform-specific code and compilation for each target environment."
+      ],
+      "code": []
+    },
+    {
+      "heading": "10) What gives Java its 'write once and run anywhere' nature?",
+      "paragraphs": [
+        "Java compiler converts the Java programs into a class file (bytecode), which is the intermediate language between source code and machine code. Code is compiled to bytecode, which is platform-independent, and the JVM executes this bytecode on any device with a compatible JVM.",
+        "To read more: Java Compiler"
+      ],
+      "code": []
+    },
+    {
+      "heading": "11) What is a ClassLoader?",
+      "paragraphs": [
+        "Classloader is a subsystem of the JVM that is used to load class files. It loads Java classes into memory during runtime. Responsible for finding and loading class files needed by a Java program.",
+        "There are three built-in classloaders in Java.",
+        "• Bootstrap ClassLoader:This is the first classloader, which is the superclass of Extension classloader. It loads the jar file, which contains all class files of Java Standard Edition, like java.lang package classes, java.net package classes, java.util package classes, java.io package classes, java.sql package classes, etc.\n• Extension ClassLoader:This is the child classloader of Bootstrap and the parent classloader of the System classloader. It loads the jar files located inside $JAVA_HOME/jre/lib/ext\n• System/Application ClassLoader:This is the child classloader of the Extension classloader. It loads the class files from the classpath. By default, the classpath is set to the current directory. You can change the classpath using the \"-cp\" or \"-classpath\" switch. It is also known as the Application classloader.",
+        "To read more: ClassLoader in Java"
+      ],
+      "code": []
+    },
+    {
+      "heading": "12) Is an empty .java file name a valid source file name?",
+      "paragraphs": [
+        "Yes, in Java, the source file can be saved with the .java extension, and then it can be compiled using the javac command followed by the file name (including the .java extension). Finally, the program can be executed using the Java command followed by the name of the class that contains the main() method.",
+        "Let's take a simple example:",
+        "Compile the code using the javac command:javac Main.java",
+        "Run the program using the java command:java Main"
+      ],
+      "code": [
+        "//save by .java only  \nclass Main {  \npublic static void main(String args[]){  \nSystem.out.println(\"Hello Java\");  \n}  \n}"
+      ]
+    },
+    {
+      "heading": "13) Is delete, next, main, exit, or null keyword in Java?",
+      "paragraphs": [
+        "No, in Java, delete, next, main, exit, and null are not keywords."
+      ],
+      "code": []
+    },
+    {
+      "heading": "14) If I do not provide any arguments on the command line, then what will the value stored in the String array passed into the main() method, empty or NULL?",
+      "paragraphs": [
+        "It is empty, but not null. If we do not provide any command-line arguments when running a Java program, the String array passed into the main() method will be an empty array, not null. The args parameter of the main() method is an array of strings, and it is always initialized by Java, even if no command-line arguments are provided."
+      ],
+      "code": []
+    },
+    {
+      "heading": "15) What if we write static public void instead of public static void?",
+      "paragraphs": [
+        "The program compiles and runs correctly because the order of specifiers does not matter in Java.",
+        "In Java, the placement of access modifiers (public, private, protected) and other specifiers (static, final, etc.) before the return type (void in this case) is flexible. Both public static void and static public void are accepted and considered correct syntax.",
+        "Here are the two equivalent valid declarations for the main() method:",
+        "To read more Java main() Method"
+      ],
+      "code": [
+        "public static void main(String[] args) {\n    // Code goes here\n}\nstatic public void main(String[] args) {\n    // Code goes here\n}"
+      ]
+    },
+    {
+      "heading": "16) What is the default value of the local variables?",
+      "paragraphs": [
+        "In Java, local variables are not assigned default values by the compiler. They must be explicitly initialized before they are used, or a compilation error will occur.",
+        "To read more: Java Variables"
+      ],
+      "code": [
+        "public class Main {  \n    public static void main(String[] args) {  \n        int x;  \n        System.out.println(x); // Compilation error: The local variable x may not have been initialized  \n    }  \n}"
+      ]
+    },
+    {
+      "heading": "17) What are the various access specifiers in Java?",
+      "paragraphs": [
+        "In Java, access specifiers are the keywords that are used to define the access scope of a method, class, or variable. There are two types of modifiers in Java: access modifiers and non-access modifiers.",
+        "Access Specifiers",
+        "public: public classes, methods, or variables that are defined as public can be accessed by any class or method.",
+        "protected: The protected classes, methods, or variables can be accessed by the class of the same package, or by a subclass of this class, or within the same class.",
+        "private: The private class, methods, or variables defined as private can be accessed within the class only.",
+        "default (package-private): If no access specifier is used, it is considered package-private. Members with default access are accessible only within the same package.",
+        "Non-Access Specifier",
+        "It includes static, synchronized, abstract, native, volatile, transient.",
+        "To read more: Java Access Specifiers"
+      ],
+      "code": []
+    },
+    {
+      "heading": "18) What is the purpose of static methods and variables?",
+      "paragraphs": [
+        "The methods or variables defined as static are shared among all the objects of the class. Static is the part of the class and not of the object. Static methods and variables in Java are associated with the class rather than with an instance of the class. Therefore, static is used in the case where we need to define variables or methods that are common to all the objects of the class.",
+        "For example, in the class simulating the collection of the students in a college, the name of the college is a common attribute to all the students. Therefore, the college name will be defined as static.",
+        "Class-level Access: Static members belong to the class itself rather than to instances of the class. It means they can be accessed using the class name without creating an instance of the class.",
+        "Constants: Static variables are commonly used to define constants in a class. These values are shared among all instances of the class and can be accessed using the class name.",
+        "To read more: Static Method in Java"
+      ],
+      "code": []
+    },
+    {
+      "heading": "19) What are the advantages of packages in Java?",
+      "paragraphs": [
+        "Packages in Java provide a way to organize and structure classes and interfaces into a hierarchical structure. They offer several advantages:",
+        "• Packages avoid the name clashes.\n• The Package provides easier access control.\n• We can also have the hidden classes that are not visible outside and used by the package.\n• It is easier to locate the related classes.",
+        "To read more: Advantages of Packages in Java"
+      ],
+      "code": []
+    },
+    {
+      "heading": "20) What is the output of the following Java program?",
+      "paragraphs": [
+        "Exampleclass Test \n{\n\tpublic static void main (String args[]) \n\t{\n\t\tSystem.out.println(10 + 20 + \"Tpointtech\"); \n\t\tSystem.out.println(\"Tpointtech\" + 10 + 20);\n\t}\n}\nCompile and Run",
+        "Output:",
+        "Explanation",
+        "In the first case, 10 and 20 are treated as numbers and added to be 30. Now, their sum 30 is treated as a string and concatenated with the string Tpointtech. Therefore, the output will be 30Tpointtech.",
+        "In the second case, the string Tpointtech is concatenated with 10 to be the string Tpointtech10, which will then be concatenated with 20 to be Tpointtech1020.",
+        "To read more: Java Programs"
+      ],
+      "code": [
+        "30Tpointtech\nTpointtech1020"
+      ]
+    },
+    {
+      "heading": "21) What is the output of the following Java program?",
+      "paragraphs": [
+        "Exampleclass Test \n{\n\tpublic static void main (String args[]) \n\t{\n\t\tSystem.out.println(10 * 20 + \"Tpointtech\"); \n\t\tSystem.out.println(\"Tpointtech\" + 10 * 20);\n\t}\n}\nCompile and Run",
+        "Output:",
+        "Explanation",
+        "In the first case, the numbers 10 and 20 will be multiplied first, and then the result 200 is treated as a string and concatenated with the string Tpointtech to produce the output 200Tpointtech.",
+        "In the second case, the numbers 10 and 20 will be multiplied first to be 200 because the precedence of multiplication is higher than addition. The result 200 will be treated as a string and concatenated with the string Tpointtech to produce the output as Tpointtech200."
+      ],
+      "code": [
+        "200Tpointtech\nTpointtech200"
+      ]
+    },
+    {
+      "heading": "22) What is the output of the following Java program?",
+      "paragraphs": [
+        "The above code will result in a compilation error due to the non-boolean expression in the second part of the for loop, and given is an integer value, i.e., 0.",
+        "Core Java - OOP Concepts: Initial OOP Interview Questions",
+        "There is given more than 50 OOP (Object-Oriented Programming and System) interview questions. However, they have been categorized in many sections such as constructor interview questions, static interview questions, Inheritance Interview questions, Abstraction interview questions, Polymorphism interview questions, etc., for better understanding."
+      ],
+      "code": [
+        "class Test \n{\n\tpublic static void main (String args[]) \n\t{\n\t\tfor(int i=0; 0; i++) \n\t\t{\n\t\t\tSystem.out.println(\"Hello Tpointtech\");\n\t\t}\n\t}\n}"
+      ]
+    },
+    {
+      "heading": "23) What is an object-oriented paradigm?",
+      "paragraphs": [
+        "It is a programming paradigm based on objects having data and methods defined in the class to which it belongs. Key principles of the object-oriented paradigm include encapsulation, inheritance, and polymorphism, providing a framework for designing and structuring software in a way that models real-world entities and promotes code reusability and maintainability. Objects are the instances of classes that interact with one another to design applications and programs.",
+        "There are the following features of the object-oriented paradigm.",
+        "• OOPs follows the bottom-up approach in program design.\n• Focus on data with methods to operate upon the object's data\n• Includes concepts like Encapsulation and abstraction, which hide the complexities from the user and show only functionality.\n• Implements the real-time approach like inheritance, abstraction, etc.",
+        "The examples of the object-oriented paradigm are C++, Simula, Smalltalk, Python, C#, etc.",
+        "To read more: OOPs (Object-Oriented Programming) Concepts in Java"
+      ],
+      "code": []
+    },
+    {
+      "heading": "24) What is an object?",
+      "paragraphs": [
+        "The Object is a real-time entity having some state and behavior. In Java, an Object is an instance of a class that has instance variables as the state of the object and methods as the behavior of the object. The object of a class can be created by using the new keyword.",
+        "For example, if we have a class called Car, an object of that class could represent a specific car with attributes like color, model, year, and methods like startEngine() or drive(). Each instance of the Car class would be a distinct object with its own unique state.",
+        "To read more: Java Classes & Objects"
+      ],
+      "code": []
+    },
+    {
+      "heading": "25) What is the difference between an object-oriented programming language and an object-based programming language?",
+      "paragraphs": [
+        "There are the following basic differences between object-oriented languages and object-based languages.",
+        "Object-oriented languages follow all the concepts of OOP, whereas object-based languages do not follow all the concepts of OOP, like inheritance and polymorphism. It allows the creation of classes and objects, and it supports the defining and implementation of methods within those classes.",
+        "Object-oriented languages do not have the inbuilt objects, whereas Object-based languages have the inbuilt objects; for example, JavaScript has the window object. It allows the creation of objects and encapsulation of data, but it might not provide the complete set of features associated with full OOP.",
+        "Examples of object-oriented programming are Java, C#, Smalltalk, etc., whereas the examples of object-based languages are JavaScript, VBScript, etc."
+      ],
+      "code": []
+    },
+    {
+      "heading": "26) What will be the initial value of an object reference that is defined as an instance variable?",
+      "paragraphs": [
+        "In Java, when an object reference is declared as an instance variable (a member variable of a class). It is automatically initialized to null by default. It is true for all object references, regardless of the class type.",
+        "Core Java - OOPs Concepts: Constructor Interview Questions"
+      ],
+      "code": []
+    },
+    {
+      "heading": "27) What is the constructor?",
+      "paragraphs": [
+        "The constructor can be defined as a special type of method that is used to initialize the state of an object. It is invoked when the class is instantiated, and the memory is allocated for the object. Every time an object is created using the new keyword, the default constructor of the class is called. The name of the constructor must be similar to the class name. The constructor must not have an explicit return type.",
+        "To read more: Constructors in Java"
+      ],
+      "code": []
+    },
+    {
+      "heading": "28) How many types of constructors are used in Java?",
+      "paragraphs": [
+        "Based on the parameters passed in the constructors, there are two types of constructors in Java.",
+        "Default Constructor: The default constructor is the one that does not accept any value. The default constructor is mainly used to initialize the instance variable with the default values. The default constructor initializes instance variables to their default values (numeric types to 0, booleans to false, and object references to null). A default constructor is invoked implicitly by the compiler if there is no constructor defined in the class.",
+        "Parameterized Constructor: The parameterized constructor is the one that can initialize the instance variables with the given values. It allows us to initialize the object with specific values during the object creation process. In other words, we can say that the constructors that can accept the arguments are called parameterized constructors."
+      ],
+      "code": [
+        "public class Main {  \n    // Default constructor (automatically provided if not defined explicitly)  \n}",
+        "public class Main {  \n    // Parameterized constructor  \n    public Example(int value) {  \n        // Initialization logic here  \n    }  \n}"
+      ]
+    },
+    {
+      "heading": "29) What is the purpose of a default constructor?",
+      "paragraphs": [
+        "The default constructor in Java is a constructor with no parameters. The purpose of the default constructor is to assign the default value to the objects. The Java compiler automatically provides it if a class does not have any explicit constructor defined.",
+        "Exampleclass Main {  \nint id;  \nString name;  \nvoid display(){System.out.println(id+\" \"+name);}  \npublic static void main(String args[]){  \nMain m1=new Main ();  \nMain m2=new Main();  \nm1.display();  \nm2.display();  \n}  \n}  \nCompile and Run",
+        "Output:",
+        "Explanation: In the above class, you are not creating any constructor, so the compiler provides you a default constructor. Here, 0 and null values are provided by the default constructor."
+      ],
+      "code": [
+        "0 null\n0 null"
+      ]
+    },
+    {
+      "heading": "30) Does the constructor return any value?",
+      "paragraphs": [
+        "Yes, in Java, a constructor does not have a return type, not even void. The purpose of a constructor is to initialize the object's state and prepare it for use. The constructor implicitly returns the current instance of the class (we cannot use an explicit return type with the constructor)."
+      ],
+      "code": []
+    },
+    {
+      "heading": "31) Is the constructor inherited?",
+      "paragraphs": [
+        "No, Constructors are not inherited. The superclass constructor can be called from the first line of a subclass constructor by using the keyword super and passing appropriate parameters to set the private instance variables of the superclass."
+      ],
+      "code": []
+    },
+    {
+      "heading": "32) Can you make a constructor final?",
+      "paragraphs": [
+        "No, in Java, constructors cannot be declared as final. The final keyword is used to indicate that a class, method, or variable cannot be further subclassed, overridden, or modified. However, it does not apply to constructors."
+      ],
+      "code": []
+    },
+    {
+      "heading": "33) Can we overload the constructors?",
+      "paragraphs": [
+        "Yes, the constructors can be overloaded by changing the number of arguments accepted by the constructor or by changing the data type of the parameters.",
+        "Each constructor provides a different way to initialize an object of the class. The choice of which constructor to invoke is based on the arguments passed during object creation.",
+        "Consider the following example.",
+        "Exampleclass Test \n{\n\tint i; \n\tpublic Test(int k)\n\t{\n\t    i=k;\n\t}\n\tpublic Test(int k, int m)\n\t{\n\t    System.out.println(\"Hi I am assigning the value max(k, m) to i\");\n\t    if(k>m)\n\t    {\n\t        i=k; \n\t    }\n\t    else \n\t    {\n\t        i=m;\n\t    }\n\t}\n}\npublic class Main \n{\n\tpublic static void main (String args[]) \n\t{\n\t\tTest test1 = new Test(10);\n\t\tTest test2 = new Test(12, 15);\n\t\tSystem.out.println(test1.i);\n\t\tSystem.out.println(test2.i);\n\t}\n}\nCompile and Run",
+        "Output:",
+        "In the above program, the constructor Test is overloaded with another constructor. In the first call to the constructor, the constructor with one argument is called, and i will be initialized with the value 10. However, in the second call to the constructor, the constructor with the 2 arguments is called, and i will be initialized with the value 15."
+      ],
+      "code": [
+        "Hi I am assigning the value max(k, m) to i\n10\n15"
+      ]
+    },
+    {
+      "heading": "34) What do you understand by copy constructor in Java?",
+      "paragraphs": [
+        "There is no copy constructor in Java. However, we can copy the values from one object to another, like a copy constructor in C++.",
+        "There are many ways to copy the values of one object into another in Java. They are:",
+        "• By using a constructor\n• By assigning the values of one object to another\n• By using Object.clone() Method",
+        "In this example, we are going to copy the values of one object into another using a Java constructor.",
+        "Examplepublic class Main {  \n    int id;  \n    String name;  \n    // Constructor to initialize integer and string  \n    Main(int id, String name) {  \n        this.id = id;  \n        this.name = name;  \n    }  \n    // Copy constructor  \n    Main(Main s) {  \n        this.id = s.id;  \n        this.name = s.name;  \n    }  \n    void display() {  \n        System.out.println(id + \" \" + name);  \n    }  \n    public static void main(String[] args) {  \n        Main obj1 = new Main(111, \"Karan\");  \n        Main obj2 = new Main(obj1);  \n        obj1.display();  \n        obj2.display();  \n    }  \n}\nCompile and Run",
+        "Output:",
+        "Copy constructors can be useful in scenarios where you need to duplicate the state of an existing object without directly referencing the same data. They are not built into the Java language like some other languages, but we can define them in our classes as needed.",
+        "To read more: Copy Constructor in Java"
+      ],
+      "code": [
+        "111 Karan\n111 Karan"
+      ]
+    },
+    {
+      "heading": "35) What are the differences between the constructors and methods?",
+      "paragraphs": [
+        "There are many differences between constructors and methods.",
+        "Java Constructor | Java Method\nA constructor is used to initialize the state of an object. | A method is used to expose the behavior of an object.\nA constructor must not have a return type. | A method must have a return type.\nThe constructor is invoked implicitly. | The method is invoked explicitly.\nThe Java compiler provides a default constructor if we do not have any constructor in a class. | The compiler does not provide the method in any case.\nThe constructor's name must be the same as the class name. | The method name may or may not be the same as the class name.",
+        "To read more: Difference Between Constructor and Method in Java"
+      ],
+      "code": []
+    },
+    {
+      "heading": "36) What is the output of the following Java program?",
+      "paragraphs": [
+        "Examplepublic class Main  \n{  \n    Main(int a, int b)  \n    {  \n        System.out.println(\"a = \"+a+\" b = \"+b);  \n    }  \n    Main(int a, float b)  \n    {  \n        System.out.println(\"a = \"+a+\" b = \"+b);  \n    }  \n    public static void main (String args[])  \n    {  \n        byte a = 10;   \n        byte b = 15;  \n        Main obj = new Main(a,b);  \n    }  \n}  \nCompile and Run",
+        "Output:",
+        "Here, the data type of the variables a and b, i.e., byte, gets promoted to int, and the first parameterized constructor with the two integer parameters is called."
+      ],
+      "code": [
+        "a = 10 b = 15"
+      ]
+    },
+    {
+      "heading": "37) What is the output of the following Java program?",
+      "paragraphs": [
+        "Exampleclass Test \n{\n\tint i; \n}\npublic class Main \n{\n\tpublic static void main (String args[]) \n\t{\n\t\tTest test = new Test(); \n\t\tSystem.out.println(test.i);\n\t}\n}\nCompile and Run",
+        "Output:",
+        "The output of the program is 0 because the variable i is initialized to 0 internally. As we know that a default constructor is invoked implicitly if there is no constructor in the class, the variable i is initialized to 0 since there is no constructor in the class."
+      ],
+      "code": [
+        "0"
+      ]
+    },
+    {
+      "heading": "38) What is the output of the following Java program?",
+      "paragraphs": [
+        "Output:",
+        "There is a compiler error in the program because there is a call to the default constructor in the main method that is not present in the class. However, there is only one parameterized constructor in the class Test. Therefore, no default constructor is invoked by the constructor implicitly.",
+        "Core Java - OOPs Concepts: static Keyword Interview Questions"
+      ],
+      "code": [
+        "class Test \n{\n\tint test_a, test_b;\n\tTest(int a, int b) \n\t{\n\ttest_a = a; \n\ttest_b = b; \n\t}\n\tpublic static void main (String args[]) \n\t{\n\t\tTest test = new Test(); \n\t\tSystem.out.println(test.test_a+\" \"+test.test_b);\n\t}\n}",
+        "Exception in thread \"main\" java.lang.Error: Unresolved compilation problem:\n        The constructor Test() is undefined"
+      ]
+    },
+    {
+      "heading": "39) What is the static variable?",
+      "paragraphs": [
+        "The static variable is used to refer to the common property of all objects (that is not unique for each object), for example, the company name of employees, the college name of students, etc. Static variable gets memory only once in the class area at the time of class loading. Using a static variable makes your program more memory efficient (it saves memory). A static variable belongs to the class rather than the object. The following Java program depicts the use of a static variable.",
+        "Examplepublic class Main {  \n    int rollno;  \n    String name;  \n    static final String COLLEGE = \"ITS\";  \n    Main(int r, String n) {  \n        rollno = r;  \n        name = n;  \n    }  \n    void display() { \n        System.out.println(rollno + \" \" + name + \" \" + COLLEGE); \n    }  \n    public static void main(String[] args) {  \n        Main obj1 = new Main (111, \"Karan\");\n        Main obj2 = new Main(222, \"Aryan\");  \n        obj1.display();  \n        obj2.display();  \n    }  \n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "111 Karan ITS\n222 Aryan ITS"
+      ]
+    },
+    {
+      "heading": "40) What is the static method?",
+      "paragraphs": [
+        "In Java, a static variable is a class-level variable that belongs to the class rather than to instances of the class. It is shared among all instances of the class and is initialized only once when the class is loaded into memory.",
+        "• A static method belongs to the class rather than the object.\n• There is no need to create the object to call the static methods.\n• A static method can access and change the value of the static variable."
+      ],
+      "code": []
+    },
+    {
+      "heading": "41) What are the restrictions that are applied to the Java static methods?",
+      "paragraphs": [
+        "Java static methods have certain restrictions and characteristics that differentiate them from instance methods. Here are the key restrictions and considerations for Java static methods:",
+        "The two main restrictions applied to the static methods are as follows:",
+        "• The static method cannot use a non-static data member or call a non-static method directly.\n• This and super keyword cannot be used in a static context as they are non-static.\n• Static methods in Java cannot be overridden. Even if a subclass declares a static method with the same signature as a static method in its superclass, it is considered method hiding, not overriding.",
+        "To read more: Static Method in Java"
+      ],
+      "code": []
+    },
+    {
+      "heading": "42) Why the main() method is static?",
+      "paragraphs": [
+        "Because the object is not required to call the static method, if we make the main() method non-static, the JVM will have to create its object first and then call the main() method, which will lead to extra memory allocation.",
+        "Here are the main reasons:",
+        "The main() method is the entry point for the execution of a Java program. When we run a Java program, the Java Virtual Machine (JVM) looks for the main() method with the following signature:",
+        "When a Java program is executed, the JVM loads the class into memory and looks for the main() method to start the program.",
+        "To read more: Why main() method is always static in Java"
+      ],
+      "code": [
+        "public static void main(String[] args)"
+      ]
+    },
+    {
+      "heading": "43) Can we override the static methods?",
+      "paragraphs": [
+        "No, static methods cannot be overridden in Java. While a subclass can declare a static method with the same signature as a static method in its superclass, it is considered method hiding, not method overriding."
+      ],
+      "code": []
+    },
+    {
+      "heading": "44) What is the static block?",
+      "paragraphs": [
+        "A static block is used to initialize the static data member. It is executed before the execution of the main() method, at the time of class loading.",
+        "Exampleclass Main {  \nstatic { System.out.println(\"static block is invoked\"); }  \npublic static void main(String args[]) {  \nSystem.out.println(\"Hello main\");  \n}  \n}  \nCompile and Run",
+        "Output:",
+        "To read more: Static Block in Java"
+      ],
+      "code": [
+        "static block is invoked\n       Hello main"
+      ]
+    },
+    {
+      "heading": "45) Can we execute a program without a main() method?",
+      "paragraphs": [
+        "No, in Java, we cannot execute a program without the main() method. The main() method serves as the entry point for the execution of a Java program, and it must be defined in every Java class that serves as the starting point for an application. The JVM looks for the main() method with the following signature to begin program execution:",
+        "To read more: Java main() Method"
+      ],
+      "code": [
+        "public static void main(String[] args)"
+      ]
+    },
+    {
+      "heading": "46) What if the static modifier is removed from the signature of the main method?",
+      "paragraphs": [
+        "Program compiles. If the static keyword is removed from the signature of the main() method in Java, the program will compile successfully, but it will not run successfully. The main() method must be declared as static because it serves as the entry point for the Java program, and the Java Virtual Machine (JVM) needs to invoke it without creating an instance of the class. It throws an error \"NoSuchMethodError.\""
+      ],
+      "code": []
+    },
+    {
+      "heading": "47) What is the difference between a static (class) method and an instance method?",
+      "paragraphs": [
+        "A method that is declared as static is known as a static method. | A method that is not declared as static is known as an instance method.\nWe do not need to create the objects to call the static methods. | The object is required to call the instance methods.\nNon-static (instance) members cannot be accessed in the static context (static method, static block, and static nested class) directly. | Static and non-static variables can both be accessed in instance methods.\nFor example: public static int cube(int n){ return n*n*n;} | For example: public void msg(){...}.",
+        "To read more: Difference Between Static and Instance Methods in Java"
+      ],
+      "code": []
+    },
+    {
+      "heading": "48) Can we make constructors static?",
+      "paragraphs": [
+        "No, constructors cannot be declared as static in Java, as we know that the static context (method, block, or variable) belongs to the class, not the object. Since Constructors are invoked only when the object is created, there is no sense in making the constructors static. Making a constructor static would imply that it belongs to the class and not to instances, which contradicts the fundamental purpose of a constructor. However, if we try to do so, the compiler will show the compiler error.."
+      ],
+      "code": []
+    },
+    {
+      "heading": "49) Can we make the abstract methods static in Java?",
+      "paragraphs": [
+        "No, abstract methods cannot be declared as static in Java. In Java, if we make the abstract methods static, they will become part of the class, and we can directly call them, which is unnecessary. Since abstract methods are expected to be overridden by subclasses, making them static would be contradictory to their purpose. Calling an undefined method is completely useless; therefore, it is not allowed."
+      ],
+      "code": []
+    },
+    {
+      "heading": "50) Can we declare the static variables and methods in an abstract class?",
+      "paragraphs": [
+        "Yes, it is possible to declare static variables and methods in an abstract class in Java. As we know that there is no requirement to make the object access the static context; therefore, we can access the static context declared inside the abstract class by using the name of the abstract class.",
+        "Consider the following example.",
+        "Exampleabstract class Test\n{  \n    static int i = 102;  \n    static void display()  \n    {  \n        System.out.println(\"hi !! I am good !!\");  \n    }  \n}  \npublic class Main extends Test   \n{  \n    public static void main (String args[])  \n    {  \n        Test.display();  \n        System.out.println(\"i = \"+Test.i);  \n    }  \n}  \nCompile and Run",
+        "Output",
+        "Core Java - OOPs Concepts: Inheritance Interview Questions"
+      ],
+      "code": [
+        "hi !! I am good !!\ni = 102"
+      ]
+    },
+    {
+      "heading": "51) What is this keyword in Java?",
+      "paragraphs": [
+        "In Java, this keyword is a reference variable that refers to the current object. There are various uses of this keyword in Java. It is primarily used within the instance methods of a class to refer to the object on which the method is invoked. It can be used to refer to current class properties such as instance methods, variables, constructors, etc. It can also be passed as an argument to the methods or constructors. It can also be returned from the method as the current class instance.",
+        "To read more: this keyword in Java"
+      ],
+      "code": []
+    },
+    {
+      "heading": "52) What are the uses of this keyword?",
+      "paragraphs": [
+        "There are the following uses of this keyword:",
+        "• It can be used to refer to the current class instance variable.\n• It can be used to invoke the current class method (implicitly).\n• The constructor this() can be used to invoke the current class constructor.\n• It can be passed as an argument in the method call.\n• It can be passed as an argument in the constructor call.\n• It can be used to return the current class instance from the method.",
+        "Let's understand through a Java program.",
+        "To read more this Keyword in Java"
+      ],
+      "code": [
+        "public class Main {  \n    private int x;  \n    public void setX(int x) {  \n        this.x = x; // Using 'this' to refer to the instance variable  \n    }  \n}"
+      ]
+    },
+    {
+      "heading": "53) Can we assign the reference to this variable?",
+      "paragraphs": [
+        "No, it is not possible to assign a new value to this variable in Java. this keyword is an implicit reference to the current instance of the class and is automatically set by the Java runtime system when a method is invoked. However, if we try to do so, the compiler error will be shown. Consider the following example.",
+        "Examplepublic class Main \n{  \n    public Main()  \n    {  \n        this = null;   \n        System.out.println(\"Main class constructor called\");  \n    }  \n    public static void main (String args[])  \n    {  \n        Main obj = new Main();  \n    }  \n}  \nCompile and Run",
+        "Output"
+      ],
+      "code": [
+        "Main.java:5: error: cannot assign to 'this'\n        this = null;   \n        ^\n1 error"
+      ]
+    },
+    {
+      "heading": "54) Can this keyword be used to refer to static members?",
+      "paragraphs": [
+        "Yes, it is possible to use this keyword to refer to static members because it is just a reference variable that refers to the current class object. However, as we know, it is unnecessary to access static variables through objects. Therefore, it is not the best practice to use this to refer to static members. Consider the following example.",
+        "Output"
+      ],
+      "code": [
+        "public class Main\n{  \n    static int i = 10;   \n    public Main()  \n    {  \n        System.out.println(this.i);      \n    }  \n    public static void main (String args[])  \n    {  \n        Main obj = new Main();  \n    }  \n}",
+        "10"
+      ]
+    },
+    {
+      "heading": "55) How can constructor chaining be done using this keyword?",
+      "paragraphs": [
+        "Constructor chaining enables us to call one constructor from another constructor of the class with respect to the current class object. Constructor chaining in Java can be achieved using the this keyword. Consider the following example that illustrates how we can use this keyword to achieve constructor chaining.",
+        "Output",
+        "To read more: Constructor Chaining in Java"
+      ],
+      "code": [
+        "public class Employee  \n{  \n    int id,age;   \n    String name, address;  \n    public Employee (int age)  \n    {  \n        this.age = age;  \n    }  \n    public Employee(int id, int age)  \n    {  \n        this(age);  \n        this.id = id;  \n    }  \n    public Employee(int id, int age, String name, String address)  \n    {  \n        this(id, age);  \n        this.name = name;   \n        this.address = address;   \n    }  \n    public static void main (String args[])  \n    {  \n        Employee emp = new Employee(105, 22, \"Peter\", \"Delhi\");  \n        System.out.println(\"ID: \"+emp.id+\" Name: \"+emp.name+\" age: \"+emp.age+\" address: \"+emp.address);  \n    }  \n}",
+        "ID: 105 Name: Peter age: 22 address: Delhi"
+      ]
+    },
+    {
+      "heading": "56) What are the advantages of passing this into a method instead of the current class object itself?",
+      "paragraphs": [
+        "As we know, this refers to the current class object; therefore, it must be similar to the current class object. However, there can be two main advantages of passing this into a method instead of the current class object.",
+        "• this is a final variable. Therefore, this cannot be assigned to any new value, whereas the current class object might not be final and can be changed.\n• this keyword can be used in the synchronized block.",
+        "Passing this into a method instead of the current class object itself provides several advantages:",
+        "• Flexibility\n• Encapsulation\n• Consistency"
+      ],
+      "code": []
+    },
+    {
+      "heading": "57) What is the Inheritance?",
+      "paragraphs": [
+        "Inheritance is a mechanism by which one object acquires all the properties and behavior of another object of another class. It is used for Code Reusability and Method Overriding. Inheritance is a fundamental concept in object-oriented programming (OOP) that allows a class (subclass or derived class) to inherit attributes and behaviors from another class (superclass or base class). Moreover, we can add new methods and fields in your current class also. Inheritance represents the IS-A relationship that is also known as a parent-child relationship.",
+        "To read more Inheritance in Java",
+        "There are five types of inheritance in Java:",
+        "• Single-level inheritance\n• Multi-level inheritance\n• Multiple Inheritance\n• Hierarchical Inheritance\n• Hybrid Inheritance"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Note: Multiple inheritance is not supported in Java through a class.",
+      "paragraphs": [
+        "To read more: Types of Inheritance in Java"
+      ],
+      "code": []
+    },
+    {
+      "heading": "58) Why is inheritance used in Java?",
+      "paragraphs": [
+        "Various advantages of using inheritance in Java are given below.",
+        "• Inheritance provides code reusability. Inheritance allows subclasses to inherit attributes and behaviors from a superclass, promoting code reuse. Common functionality can be defined in a superclass, and subclasses can extend or specialize it.\n• Runtime polymorphism cannot be achieved without using inheritance.\n• We can simulate the inheritance of classes with real-time objects, which makes OOPs more realistic.\n• Inheritance provides data hiding. The base class can hide some data from the derived class by making it private.\n• Method overriding cannot be achieved without inheritance. Inheritance facilitates polymorphism, allowing objects of a subclass to be treated as objects of the superclass. By method overriding, we can give a specific implementation of some basic method contained by the base class.",
+        "To read more: Inheritance in Java"
+      ],
+      "code": []
+    },
+    {
+      "heading": "59) Which class is the superclass for all the classes?",
+      "paragraphs": [
+        "In Java, the Object class is the superclass of all other classes. Every class in Java directly or indirectly extends the Object class. The Object class provides fundamental methods that are inherited by all classes, such as toString(), equals().",
+        "To read more: Object Class in Java"
+      ],
+      "code": []
+    },
+    {
+      "heading": "60) Why is multiple inheritance not supported in Java?",
+      "paragraphs": [
+        "To reduce the complexity and simplify the language, multiple inheritance is not supported in Java. Consider a scenario where A, B, and C are three classes. The C class inherits A and B classes. If A and B classes have the same method and we call it from a child class object, there will be ambiguity in calling the method of A or B class.",
+        "The Diamond Problem occurs when a class inherits from two classes that have a common ancestor, leading to ambiguity in method resolution.",
+        "Since the compile-time errors are better than runtime errors, Java renders a compile-time error if we inherit 2 classes. So, whether we have the same method or a different one, there will be a compile-time error.",
+        "The above program gives a compile-time error.",
+        "To read more: Multiple Inheritance in Java"
+      ],
+      "code": [
+        "class A{  \nvoid msg(){System.out.println(\"Hello\");}  \n}  \nclass B{  \nvoid msg(){System.out.println(\"Welcome\");}  \n}  \nclass Main extends A,B{//suppose if it were  \n public Static void main(String args[]){  \n   Main obj=new Main();  \n   obj.msg();//Now which msg() method would be invoked?  \n}  \n}"
+      ]
+    },
+    {
+      "heading": "61) What is aggregation?",
+      "paragraphs": [
+        "Aggregation can be defined as the relationship between two classes where the aggregate class contains a reference to the class it owns.",
+        "Aggregation is a type of association in object-oriented programming where one class contains an object of another class, forming a relationship between them. It represents a \"has-a\" relationship, indicating that a class has an entity as a part of its structure.",
+        "For example, the aggregate class Employee, having various fields such as age, name, and salary, also contains an object of the Address class, having various fields such as Address-Line 1, City, State, and pin-code.",
+        "In other words, we can say that Employee (class) has an object of Address class. Consider the following example.",
+        "Address.java",
+        "Employee.java",
+        "Output",
+        "To read more: Aggregation in Java"
+      ],
+      "code": [
+        "public class Address {  \nString city, state, country;  \npublic Address(String city, String state, String country) {  \n    this.city = city;  \n    this.state = state;  \n    this.country = country;  \n}    \n}",
+        "public class Emp {  \nint id;  \nString name;  \nAddress address;  \npublic Emp(int id, String name,Address address) {  \n    this.id = id;  \n    this.name = name;  \n    this.address=address;  \n}  \nvoid display(){  \nSystem.out.println(id+\" \"+name);  \nSystem.out.println(address.city+\" \"+address.state+\" \"+address.country);  \n}  \npublic static void main(String[] args) {  \nAddress address1 = new Address(\"gzb\", \"UP\", \"India\");  \nAddress address2 = new Address(\"gno\", \"UP\", \"India\");  \nEmp e=new Emp(111,\"varun\",address1);  \nEmp e2=new Emp(112,\"arun\",address2);  \ne.display();  \ne2.display();  \n}  \n}",
+        "111 varun\ngzb UP India\n112 arun\ngno UP India"
+      ]
+    },
+    {
+      "heading": "62) What is composition?",
+      "paragraphs": [
+        "Composition is a stronger form of aggregation in object-oriented programming. Holding the reference of a class within another class is known as composition. When an object contains another object, if the contained object cannot exist without the existence of the container object, then it is called composition. In other words, we can say that composition is a particular case of aggregation, which represents a stronger relationship between two objects. Example: A class contains students. A student cannot exist without a class. There exists a composition between the class and the students.",
+        "Composition is a way to create more robust and tightly integrated structures by combining objects to form a larger, more complex system.",
+        "To read more: Composition in Java"
+      ],
+      "code": []
+    },
+    {
+      "heading": "63) What is the difference between aggregation and composition?",
+      "paragraphs": [
+        "Aggregation represents a weak relationship, whereas composition represents a strong relationship. Aggregation represents a \"has-a\" relationship, where one class has a reference to another class, but the referenced class can exist independently. Composition also represents a \"has-a\" relationship, but it is a stronger form of association. For example, the bike has an indicator (aggregation), but the bike has an engine (composition).",
+        "To read more: Difference Between Aggregation and Composition in Java"
+      ],
+      "code": []
+    },
+    {
+      "heading": "64) Why does Java not support pointers?",
+      "paragraphs": [
+        "Java does not support explicit pointers like those found in languages such as C or C++, as the pointer is a variable that refers to the memory address. They are not used in Java because they are unsafe(unsecured) and complex to understand."
+      ],
+      "code": []
+    },
+    {
+      "heading": "65) What is super in Java?",
+      "paragraphs": [
+        "In Java, super is a keyword that is used to refer to the immediate parent class object. Whenever you create an instance of the subclass, an instance of the parent class is created implicitly, which is referred to by the super reference variable. The super() is called in the class constructor implicitly by the compiler if there is no super or this.",
+        "The super keyword is commonly used in scenarios where a class extends another class, and there is a need to differentiate between the members of the subclass and the superclass.",
+        "Output:",
+        "To read more: super Keyword in Java"
+      ],
+      "code": [
+        "class Animal {  \nAnimal() { System.out.println(\"An animal is created\"); }  \n}  \nclass Dog extends Animal {  \nDog(){  \nSystem.out.println(\" A dog is created\");  \n}  \n}  \nclass Main {  \npublic static void main(String args[]) {  \nDog d=new Dog();  \n}  \n}",
+        "An animal is created\nA dog is created"
+      ]
+    },
+    {
+      "heading": "66) How can constructor chaining be done by using the super keyword?",
+      "paragraphs": [
+        "Constructor chaining in Java refers to the process of calling one constructor from another within the same class or in the parent class. The super keyword is used to invoke the constructor of the parent class.",
+        "Exampleclass Person  \n{  \n    String name, address;   \n    int age;  \n    public Person(int age, String name, String address)  \n    {  \n        this.age = age;  \n        this.name = name;  \n        this.address = address;  \n    }  \n}  \nclass Employee extends Person   \n{  \n    float salary;  \n    public Employee(int age, String name, String address, float salary)  \n    {  \n        super(age,name,address);  \n        this.salary = salary;  \n    }  \n}  \npublic class Main\n{  \n    public static void main (String args[])  \n    {  \n        Employee e = new Employee(22, \"Mukesh\", \"Delhi\", 90000);  \n        System.out.println(\"Name: \"+e.name+\" Salary: \"+e.salary+\" Age: \"+e.age+\" Address: \"+e.address);  \n    }  \n}  \nCompile and Run",
+        "Output"
+      ],
+      "code": [
+        "Name: Mukesh Salary: 90000.0 Age: 22 Address: Delhi"
+      ]
+    },
+    {
+      "heading": "67) What are the main uses of the super keyword?",
+      "paragraphs": [
+        "There are the following uses of the super keyword:",
+        "• It is used to refer to the immediate parent class instance variable.\n• It is used to invoke the immediate parent class method.\n• The constructor super() can be used to invoke the immediate parent class constructor.",
+        "To read more: super keyword in Java"
+      ],
+      "code": []
+    },
+    {
+      "heading": "68) What are the differences between this and super keyword?",
+      "paragraphs": [
+        "These are the following differences between this and super keyword:",
+        "The super keyword always points to the parent class contexts whereas this keyword always points to the current instance of the class.",
+        "The super keyword is primarily used for initializing the base class variables within the derived class constructor whereas this keyword primarily used to differentiate between local and instance variables when passed in the class constructor.",
+        "The super and this must be the first statement inside constructor otherwise the compiler will throw an error.",
+        "To read more: Difference between this and super in Java"
+      ],
+      "code": []
+    },
+    {
+      "heading": "69) What is the output of the following Java program?",
+      "paragraphs": [
+        "Output",
+        "Explanation",
+        "The super() is implicitly invoked by the compiler if no super() or this() is included explicitly within the derived class constructor. Therefore, in this case, The Person class constructor is called first and then the Employee class constructor is called."
+      ],
+      "code": [
+        "class Person \n{\n    public Person() \n    {\n        System.out.println(\"Person class constructor called\");\n    }\n}\npublic class Employee extends Person \n{\n    public Employee() \n    {\n        System.out.println(\"Employee class constructor called\");\n    }\n    public static void main (String args[])\n    {\n        Employee e = new Employee();\n    }\n}",
+        "Person class constructor called\nEmployee class constructor called"
+      ]
+    },
+    {
+      "heading": "70) Can we use this() and super() in a constructor?",
+      "paragraphs": [
+        "No, you cannot use both this() and super() in the same constructor because this() and super() must be the first statement in the class constructor. Using both in the same constructor would result in a compilation error.",
+        "Example:",
+        "Output:",
+        "To read more: Difference Between this and super in Java"
+      ],
+      "code": [
+        "public class Main {  \n    Main()  \n     {  \n         super();   \n         this();  \n         System.out.println(\"Main class object is created\");  \n     }  \n     public static void main(String []args){  \n     Main t = new Main();  \n     }  \n}",
+        "Main.java:5: error: call to this must be first statement in constructor"
+      ]
+    },
+    {
+      "heading": "71) What is object cloning?",
+      "paragraphs": [
+        "Object cloning in Java refers to the process of creating an exact copy of an object. The clone() method of the Object class is used to clone an object. The java.lang.Cloneable interface must be implemented by the class whose object clone we want to create. If we do not implement Cloneable interface, clone() method generates CloneNotSupportedException. The clone() method creates a new object with the same state as the original object.",
+        "To read more: Object Cloning in Java",
+        "Core Java - OOP Concepts: Method Overloading Interview Questions"
+      ],
+      "code": [
+        "protected Object clone() throws CloneNotSupportedException"
+      ]
+    },
+    {
+      "heading": "72) What is method overloading?",
+      "paragraphs": [
+        "Method overloading is the polymorphism technique that allows us to create multiple methods with the same name but different signatures. Method overloading in Java occurs when a class has multiple methods with the same name but different parameter lists (number, type, or order of parameters). We can achieve method overloading in the following two ways:",
+        "• Different number of arguments\n• Different data types of arguments",
+        "Method overloading increases the readability of the program. Method overloading is performed to figure out the program quickly.",
+        "To read more: Method Overloading in Java"
+      ],
+      "code": []
+    },
+    {
+      "heading": "73) Why is method overloading not possible by changing the return type in Java?",
+      "paragraphs": [
+        "In Java, method overloading is not possible by changing the return type of the program to avoid ambiguity. The method name and the parameter types determine the method signature. Changing only the return type does not provide enough information for the compiler to distinguish between overloaded methods.",
+        "Output:"
+      ],
+      "code": [
+        "class Adder{  \nstatic int add(int a,int b){return a+b;}  \nstatic double add(int a,int b){return a+b;}  \n}  \nclass Main {  \npublic static void main(String[] args){  \nSystem.out.println(Adder.add(11,11));//ambiguity  \n}}",
+        "Compile Time Error: method add(int, int) is already defined in class Adder"
+      ]
+    },
+    {
+      "heading": "74) Can we overload the methods by making them static?",
+      "paragraphs": [
+        "No, we cannot overload the methods by just applying the static keyword to them (number of parameters and types are the same). Consider the following example.",
+        "Output"
+      ],
+      "code": [
+        "public class Animal\n{\n    void consume(int a)\n    {\n        System.out.println(a+\" consumed!!\");\n    }\n    static void consume(int a)\n    {\n        System.out.println(\"consumed static \"+a);\n    }\n    public static void main (String args[])\n    {\n        Animal a = new Animal();\n        a.consume(10);\n        Animal.consume(20);\n    }\n}",
+        "Animal.java:7: error: method consume(int) is already defined in class Animal\n    static void consume(int a)\n                ^\nAnimal.java:15: error: non-static method consume(int) cannot be referenced from a static context\n        Animal.consume(20);\n              ^\n2 errors"
+      ]
+    },
+    {
+      "heading": "75) Can we overload the main() method?",
+      "paragraphs": [
+        "Yes, we can have any number of main() methods in a Java program by using method overloading. However, the JVM looks for the standard public static void main(String[] args) signature when starting a Java program. Overloaded main() methods can be called from within the standard main() method, but the program execution begins from the standard main() method.",
+        "To read more: Can we overload the main() method in Java"
+      ],
+      "code": []
+    },
+    {
+      "heading": "76) What is method overloading with type promotion?",
+      "paragraphs": [
+        "By type promotion is method overloading, we mean that one data type can be promoted to another implicitly if no exact matching is found.",
+        "Java Method Overloading with Type Promotion",
+        "As displayed in the above diagram, the byte can be promoted to short, int, long, float, or double. The short datatype can be promoted to int, long, float, or double. The char datatype can be promoted to int, long, float, or double, and so on. Consider the following example.",
+        "Output"
+      ],
+      "code": [
+        "class Main {  \n  void sum(int a,long b){System.out.println(a+b);}  \n  void sum(int a,int b,int c){System.out.println(a+b+c);}  \n  public static void main(String args[]){  \nMain obj=new Main();  \n  obj.sum(20,20);//now second int literal will be promoted to long  \n  obj.sum(20,20,20);  \n  }  \n}",
+        "40\n60"
+      ]
+    },
+    {
+      "heading": "77) What is the output of the following Java program?",
+      "paragraphs": [
+        "Output",
+        "Explanation",
+        "There are two methods defined with the same name, i.e., sum. The first method accepts the integer and long types, whereas the second method accepts long and the integer types. The parameters passed are a = 20, b = 20. We cannot tell which method will be called, as there is no clear differentiation mentioned between integer literal and long literal. This is the case of ambiguity. Therefore, the compiler will throw an error.",
+        "Core Java - OOP Concepts: Method Overriding Interview Questions"
+      ],
+      "code": [
+        "class Main {    \n  void sum(int a,long b){System.out.println(\"a method invoked\");}    \n  void sum(long a,int b){System.out.println(\"b method invoked\");}    \n  public static void main(String args[]){    \nMain obj = new Main();    \n  obj.sum(20,20);//now ambiguity    \n  }    \n}",
+        "Main.java:7: error: reference to sum is ambiguous\nobj.sum(20,20);//now ambiguity\n^\nboth method sum(int,long) in Main\nand method sum(long,int) in Main match\n1 error"
+      ]
+    },
+    {
+      "heading": "78) What is method overriding?",
+      "paragraphs": [
+        "If a subclass provides a specific implementation of a method that is already provided by its parent class, it is known as Method Overriding. Method overriding in Java occurs when a subclass provides a specific implementation for a method that is already defined in its superclass. It is used for runtime polymorphism and to implement the interface methods.",
+        "Rules for Method Overriding",
+        "• The method must have the same name as in the parent class.\n• The method must have the same signature as in the parent class.\n• Two classes must have an IS-A relationship between them.",
+        "To read more: Method Overriding in Java"
+      ],
+      "code": []
+    },
+    {
+      "heading": "79) Can we override the static method?",
+      "paragraphs": [
+        "No, we cannot override the static method because they are a part of the class, not the object.",
+        "To read more: Static method in Java"
+      ],
+      "code": []
+    },
+    {
+      "heading": "80) Why can we not override a static method?",
+      "paragraphs": [
+        "Static methods cannot be overridden in the traditional sense of dynamic method dispatch that is associated with polymorphism. It is because the static method is a part of the class, and it is bound with the class, whereas the instance method is bound with the object, and static gets memory in the class area, and instance gets memory in the heap."
+      ],
+      "code": []
+    },
+    {
+      "heading": "81) Can we override the overloaded method?",
+      "paragraphs": [
+        "Yes, we can override the overloaded method in Java. Overriding: Overriding is a feature of OOP languages like Java that is related to run-time polymorphism. A subclass (or derived class) provides a specific implementation of a method in a superclass (or base class)."
+      ],
+      "code": []
+    },
+    {
+      "heading": "82) What are the differences between method overloading and overriding?",
+      "paragraphs": [
+        "Method Overloading | Method Overriding\nMethod overloading increases the readability of the program. | Method overriding provides the specific implementation of the method that is already provided by its superclass.\nMethod overloading occurs within the class. | Method overriding occurs in two classes that have IS-A relationship between them.\nIn this case, the parameters must be different. | In this case, the parameters must be the same.",
+        "To read more: Difference Between Method Overloading and Method Overriding in Java"
+      ],
+      "code": []
+    },
+    {
+      "heading": "83) Can we override the private methods?",
+      "paragraphs": [
+        "No, we cannot override the private methods in Java because the scope of private methods is limited to the class, and we cannot access them outside of the class. But private methods are not accessible outside their class. Therefore, private methods cannot be overridden because subclasses do not inherit them."
+      ],
+      "code": []
+    },
+    {
+      "heading": "84) Can we change the scope of the overridden method in the subclass?",
+      "paragraphs": [
+        "Yes, we can change the scope of the overridden method in the subclass. However, we must notice that we cannot decrease the accessibility of the method. The following point must be taken care of while changing the accessibility of the method.",
+        "• The private access specifier can be changed to protected, public, or default.\n• The protected access specifier can be changed to public or default.\n• The default access specifier can be changed to public.\n• The public access specifier will always remain public."
+      ],
+      "code": []
+    },
+    {
+      "heading": "85) Can we modify the throws clause of the superclass method while overriding it in the subclass?",
+      "paragraphs": [
+        "Yes, we can modify the throws clause of the superclass method while overriding it in the subclass. However, there are some rules that are to be followed while overriding in case of exception handling.",
+        "• If the superclass method does not declare an exception, the subclass's overridden method cannot declare a checked exception, but it can declare an unchecked exception.\n• If the superclass method declares an exception, the subclass overridden method can declare the same, a subclass exception, or no exception, but cannot declare a parent exception."
+      ],
+      "code": []
+    },
+    {
+      "heading": "86) What is the output of the following Java program?",
+      "paragraphs": [
+        "Exampleclass Base  \n{  \n    void method(int a)  \n    {  \n        System.out.println(\"Base class method called with integer a = \"+a);  \n    }  \n    void method(double d)  \n    {  \n        System.out.println(\"Base class method called with double d =\"+d);  \n    }  \n}  \nclass Derived extends Base  \n{  \n    @Override  \n    void method(double d)  \n    {  \n        System.out.println(\"Derived class method called with double d =\"+d);  \n    }  \n}  \npublic class Main  \n{      \n    public static void main(String[] args)  \n    {  \n        new Derived().method(10);  \n    }  \n}  \n}\nCompile and Run",
+        "Output",
+        "Explanation",
+        "The method() is overloaded in class Base, whereas it is derived in class Derived with the double type as the parameter. In the method call, the integer is passed."
+      ],
+      "code": [
+        "Base class method called with integer a = 10"
+      ]
+    },
+    {
+      "heading": "87) Can you have virtual functions in Java?",
+      "paragraphs": [
+        "Yes, all functions in Java are virtual by default. It means that method invocation is determined at runtime based on the actual type of the object on which the method is called. So, while the term \"virtual\" is not explicitly used in Java, the concept is present through the mechanism of dynamic method dispatch and method overriding.",
+        "To read more: Virtual Function in Java"
+      ],
+      "code": []
+    },
+    {
+      "heading": "88) What is a covariant return type?",
+      "paragraphs": [
+        "Since Java 5, it is possible to override any method by changing the return type if the return type of the subclass overriding method is a subclass type. It is known as a covariant return type. The covariant return type specifies that the return type may vary in the same direction as the subclass.",
+        "Exampleclass A {  \nA get(){return this;}  \n}  \nclass Main extends A {  \nMain get() {\nreturn this; }  \nvoid message() { \nSystem.out.println(\"Welcome to the covariant return type\");}  \npublic static void main(String args[]){  \nnew Main().get().message();  \n}  \n}  \nCompile and Run",
+        "Output",
+        "To read more: Covariant Return Type in Java"
+      ],
+      "code": [
+        "Welcome to the covariant return type"
+      ]
+    },
+    {
+      "heading": "89) What is the output of the following Java program?",
+      "paragraphs": [
+        "Exampleclass Base   \n{  \n    public void baseMethod()  \n    {  \n        System.out.println(\"BaseMethod called ...\");  \n    }  \n}  \nclass Derived extends Base   \n{  \n    public void baseMethod()  \n    {  \n        System.out.println(\"Derived method called ...\");  \n    }  \n}  \npublic class Main\n{  \n    public static void main (String args[])  \n    {  \n        Base b = new Derived();  \n        b.baseMethod();  \n    }  \n}  \nCompile and Run",
+        "Output",
+        "Explanation",
+        "The method of a Base class, i.e., baseMethod(), is overridden in the derived class. In the Main class, the reference variable b (of type Base class) refers to the instance of the Derived class. Here, Runtime polymorphism is achieved between the class Base and Derived.",
+        "At compile time, the presence of method baseMethod() is checked in the Base class; if its presence is then the program is compiled, otherwise a compiler error will be shown. In this case, baseMethod() is present in the Base class; therefore, it is compiled successfully.",
+        "However, at runtime, it checks whether the baseMethod() has been overridden by the Derived class; if so, then the Derived class method is called, otherwise the Base class method is called. In this case, the Derived class overrides the baseMethod(); therefore, the Derived class method is called.",
+        "Core Java - OOPs Concepts: final keyword Interview Questions"
+      ],
+      "code": [
+        "Derived method called ..."
+      ]
+    },
+    {
+      "heading": "90) What is the final variable?",
+      "paragraphs": [
+        "In Java, the final variable is used to restrict the user from updating it. If we initialize the final variable, we cannot change its value. The final keyword is used to declare a final variable. In other words, we can say that the final variable, once assigned to a value, can never be changed after that. The final variable, which is not assigned to any value, can only be assigned through the class constructor.",
+        "Output:",
+        "To read more: final Variable in Java"
+      ],
+      "code": [
+        "class Main {  \n final int speedlimit=90;//final variable  \n void run(){  \n  speedlimit=400;  \n }  \n public static void main(String args[]){  \nMain obj=new Main();  \n obj.run();  \n }  \n}//end of class",
+        "Compile Time Error"
+      ]
+    },
+    {
+      "heading": "91) What is the final method?",
+      "paragraphs": [
+        "If we change any method to a final method, we cannot override it. In Java, a final method is a method that subclasses cannot override. When a method is declared as final in a superclass, it means that no subclass can provide a different implementation for that method.",
+        "Output:"
+      ],
+      "code": [
+        "class Bike{  \n  final void run(){System.out.println(\"running\");}  \n}  \nclass Main extends Bike{  \n   void run(){System.out.println(\"running safely with 100kmph\");}  \n   public static void main(String args[]){  \n   Main obj = new Main();  \n   obj.run();  \n   }  \n}",
+        "Compile Time Error"
+      ]
+    },
+    {
+      "heading": "92) What is the final class?",
+      "paragraphs": [
+        "If we make a class final, we cannot inherit it into any of the subclasses.",
+        "In Java, a final class is a class that cannot be subclassed. When a class is declared as final, it means that no other class can extend (inherit from) it.",
+        "Output:",
+        "To read more: Fina Keyword in Java"
+      ],
+      "code": [
+        "final class Bike{}    \nclass Main extends Bike{  \n  void run(){System.out.println(\"running safely with 100kmph\");}  \n  public static void main(String args[]){  \n  Main obj = new Main();  \n  Obj.run();  \n  }  \n}",
+        "Compile Time Error"
+      ]
+    },
+    {
+      "heading": "93) What is the final blank variable?",
+      "paragraphs": [
+        "In Java, a final blank variable refers to a blank final variable that has not been initialized at the time of declaration but must be initialized exactly once before it is used. The term \"blank\" implies that the variable is declared without an initial value. It is useful in the case when the user has some data that must not be changed by others, for example, the PAN Number. Consider the following example:",
+        "To read more: Blank final in Java"
+      ],
+      "code": [
+        "class Student{\nint id;\nString name;\nfinal String PAN_CARD_NUMBER;\n...\n}"
+      ]
+    },
+    {
+      "heading": "94) Can we initialize the final blank variable?",
+      "paragraphs": [
+        "Yes, if it is not static, we can initialize it in the constructor. If it is a static, blank final variable, it can be initialized only in the static block."
+      ],
+      "code": []
+    },
+    {
+      "heading": "95) Can we declare the main() method as final?",
+      "paragraphs": [
+        "Yes, we can declare the main() method as public static final void main(String[] args){}. it is technically allowed to declare the main method as final, but it would not have any impact or special significance. The final keyword, when applied to a method, indicates that subclasses cannot override the method."
+      ],
+      "code": []
+    },
+    {
+      "heading": "96) What is the output of the following Java program?",
+      "paragraphs": [
+        "Output",
+        "Explanation",
+        "Since i is the blank final variable, it can be initialized only once. We have initialized it to 20. Therefore, 20 will be printed."
+      ],
+      "code": [
+        "class Main {\n public static void main(String args[]){\n   final int i;\n   i = 20;\n   System.out.println(i);\n }\n}",
+        "20"
+      ]
+    },
+    {
+      "heading": "97) What is the output of the following Java program?",
+      "paragraphs": [
+        "Output",
+        "Explanation",
+        "The getDetails() method is final; therefore, it cannot be overridden in the subclass."
+      ],
+      "code": [
+        "class Base   \n{  \n    protected final void getInfo()  \n    {  \n        System.out.println(\"method of Base class\");  \n    }  \n}  \npublic class Derived extends Base  \n{  \n    protected final void getInfo()  \n    {  \n        System.out.println(\"method of Derived class\");  \n    }  \n    public static void main(String[] args)  \n    {  \n        Base obj = new Base();  \n        obj.getInfo();  \n    }  \n}",
+        "Main.java:10: error: getInfo() in Main cannot override getInfo() in Base\n    protected final void getInfo()  \n                         ^\n  overridden method is final\n1 error"
+      ]
+    },
+    {
+      "heading": "98) Can we declare a constructor as final?",
+      "paragraphs": [
+        "No, constructors cannot be declared as final in Java because it is never inherited. Constructors are not ordinary methods; therefore, there is no sense in declaring constructors as final. However, if we try to do so, the compiler will throw an error."
+      ],
+      "code": []
+    },
+    {
+      "heading": "99) Can we declare an interface as final?",
+      "paragraphs": [
+        "No, we cannot declare an interface as final because some class must implement the interface to provide its definition. The whole idea of an interface is to provide a contract that classes can implement. Making an interface final would defeat the purpose of allowing classes to implement it. However, if we try to do so, the compiler will show an error."
+      ],
+      "code": []
+    },
+    {
+      "heading": "100) What are the differences between the final method and the abstract method?",
+      "paragraphs": [
+        "Final method: A final method in a class cannot be overridden by subclasses. Once a method is declared final, it cannot be modified or overridden by any subclass.",
+        "Abstract method: An abstract method is a method declared in an abstract class or interface that has no implementation in the class/interface where it is declared. Subclasses or implementing classes must provide a concrete implementation for abstract methods.",
+        "The main difference between the final method and abstract method is that the abstract method cannot be final, as we need to override it in the subclass to give its definition.",
+        "To read more: Abstract Method in Java",
+        "Next TopicJava interview Questions part 2",
+        "Java Basics Interview QuestionsJava OOPs Interview QuestionsJava Multithreading Interview QuestionsJava String & Exception Interview QuestionsJava Collection Interview QuestionsJDBC Interview QuestionsServlet Interview QuestionsJSP Interview QuestionsSpring Interview QuestionsHibernate Interview QuestionsPL/SQL Interview QuestionsSQL Interview QuestionsOracle Interview QuestionsAndroid Interview QuestionsSQL Server Interview QuestionsMySQL Interview Questions"
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:49:09.804Z"
+}

@@ -1,0 +1,99 @@
+{
+  "topicId": "naming-thread",
+  "title": "Java Naming Thread and Current Thread",
+  "sectionId": "java-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-naming-thread-and-current-thread",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-naming-thread-and-current-thread",
+      "score": 54,
+      "sectionCount": 8
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_naming_thread.htm",
+      "score": 49,
+      "sectionCount": 8
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java Naming Thread and Current Thread",
+      "paragraphs": [
+        "In Java, each thread has a unique name that helps in identifying it during execution. Java also provides the currentThread() method to access the currently executing thread. In this chapter, we will learn how to name threads and work with the current thread in Java."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Naming Thread",
+      "paragraphs": [
+        "The Thread class provides methods to change and get the name of a thread. By default, each thread has a name, i.e. thread-0, thread-1 and so on. By we can change the name of the thread by using the setName() method."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [
+        "The syntax of setName() and getName() methods are given below:",
+        "We can also set the name of a thread directly when we create a new thread using the constructor of the class."
+      ],
+      "code": [
+        "public String getName(): is used to return the name of a thread.\npublic void setName(String name): is used to change the name of a thread."
+      ]
+    },
+    {
+      "heading": "Example of naming a thread : Using setName() Method",
+      "paragraphs": [
+        "The following example demonstrates how to assign a custom name to a thread using the setName() method.",
+        "Output:"
+      ],
+      "code": [
+        "class TestMultiNaming1 extends Thread{\n  public void run(){\n   System.out.println(\"running...\");\n  }\n public static void main(String args[]){\n  TestMultiNaming1 t1=new TestMultiNaming1();\n  TestMultiNaming1 t2=new TestMultiNaming1();\n  System.out.println(\"Name of t1:\"+t1.getName());\n  System.out.println(\"Name of t2:\"+t2.getName());\n \n  t1.start();\n  t2.start();\n\n  t1.setName(\"Sonoo Jaiswal\");\n  System.out.println(\"After changing name of t1:\"+t1.getName());\n }\n}",
+        "Name of t1:Thread-0\nName of t2:Thread-1\nAfter changing name of t1:Sonoo Jaiswal\nrunning...\nrunning..."
+      ]
+    },
+    {
+      "heading": "Example of naming a thread : Without Using setName() Method",
+      "paragraphs": [
+        "You can also set the name of a thread at the time of the creation of a thread, without using the setName() method.",
+        "The following example demonstrates how a thread is automatically assigned a default name when the setName() method is not used.",
+        "Output:"
+      ],
+      "code": [
+        "// A Java program that shows how one can \n// set the name of a thread at the time\n// of creation of the thread\n\n// import statement\nimport java.io.*;\n\n// The ThreadNameClass is the child class of the class Thread\nclass ThreadName extends Thread\n{\n\n// constructor of the class\nThreadName(String threadName)\n{\n// invoking the constructor of\n// the superclass, which is Thread class.\nsuper(threadName);\n}\n\n// overriding the method run()\npublic void run()\n{\nSystem.out.println(\" The thread is executing....\");\n}\n}\n\npublic class ThreadNamingExample\n{\n// main method\npublic static void main (String argvs[])\n{\n// creating two threads and settting their name\n// using the contructor of the class\nThreadName th1 = new ThreadName(\"JavaTpoint1\");\nThreadName th2 = new ThreadName(\"JavaTpoint2\");\n\n// invoking the getName() method to get the names\n// of the thread created above\nSystem.out.println(\"Thread - 1: \" + th1.getName());\nSystem.out.println(\"Thread - 2: \" + th2.getName());\n\n\n// invoking the start() method on both the threads\nth1.start();\nth2.start();\n}\n}",
+        "Thread - 1: JavaTpoint1\nThread - 2: JavaTpoint2\n The thread is executing....\n The thread is executing...."
+      ]
+    },
+    {
+      "heading": "Current Thread",
+      "paragraphs": [
+        "The currentThread() method returns a reference to the currently executing thread and it is commonly used to obtain the thread's name, priority, and state."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [
+        "The following is the syntax to get the current thread i.e., currentThread() method:"
+      ],
+      "code": [
+        "public static Thread currentThread()"
+      ]
+    },
+    {
+      "heading": "Example of currentThread() method",
+      "paragraphs": [
+        "The following example demonstrates how the currentThread() method is used to obtain information about the currently executing thread.",
+        "Output:",
+        "Next TopicThread-priority-in-java"
+      ],
+      "code": [
+        "class TestMultiNaming2 extends Thread{\n public void run(){\n  System.out.println(Thread.currentThread().getName());\n }\n public static void main(String args[]){\n  TestMultiNaming2 t1=new TestMultiNaming2();\n  TestMultiNaming2 t2=new TestMultiNaming2();\n\n  t1.start();\n  t2.start();\n }\n}",
+        "Thread-0\nThread-1"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:39:15.040Z"
+}

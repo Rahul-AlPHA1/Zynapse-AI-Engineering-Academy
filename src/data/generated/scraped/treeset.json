@@ -1,0 +1,247 @@
+{
+  "topicId": "treeset",
+  "title": "Java TreeSet Class",
+  "sectionId": "java-collections-jdbc",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-treeset",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-treeset",
+      "score": 158,
+      "sectionCount": 24
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/util/java_util_treeset.htm",
+      "score": 41,
+      "sectionCount": 8
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java TreeSet Class",
+      "paragraphs": [
+        "Java TreeSet is used to store unique elements in ascending order. It is a part of the Java Collection Framework and is useful when sorted data is required. It internally uses a tree structure to maintain the order of elements.",
+        "In this chapter, you will learn about the Java TreeSet class, its features, and how it works along with the examples."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is TreeSet in Java?",
+      "paragraphs": [
+        "Java TreeSet class implements the Set interface that uses a tree for storage. It inherits the AbstractSet class and implements the NavigableSet interface.",
+        "The objects of the TreeSet class are stored in ascending order."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Key Features of Java TreeSet",
+      "paragraphs": [
+        "The important points about the Java TreeSet class are:",
+        "• Java TreeSet class contains unique elements only, just like HashSet.\n• Java TreeSet class provides fast access and retrieval.\n• Java TreeSet class does not allow null elements.\n• Java TreeSet class is non-synchronized.\n• Java TreeSet class maintains ascending order.\n• TreeSet allows only those elements that are comparable (i.e., implement the Comparable interface)."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Internal Working of TreeSet Class",
+      "paragraphs": [
+        "TreeSet is implemented using a self-balancing binary search tree (like a Red-Black Tree). Because of this, operations like search, add, and remove take O(log N) time.",
+        "The tree automatically keeps itself balanced, so its height remains small. This makes TreeSet efficient for storing large amounts of sorted data and performing operations quickly."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Key Aspects of TreeSet Functionality",
+      "paragraphs": [
+        "• Red-Black Tree Structure:TreeSet uses a special tree where each node is marked as red or black. This helps the tree stay balanced and keeps operations fast.\n• Dynamic Rebalancing:When elements are added or removed, TreeSet automatically adjusts the tree. It always keeps the elements in sorted (ascending) order.\n• Handling Duplicates:TreeSet stores only unique elements. If you try to add a duplicate value, it will be ignored.\n• Order Determination:TreeSet sorts elements using their natural order or a custom comparator. This allows you to control how elements are arranged."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Synchronization of TreeSet Class",
+      "paragraphs": [
+        "TreeSet is not synchronized. This means it is not safe to use directly when multiple threads are working on it at the same time.",
+        "If one thread is modifying the TreeSet while others are accessing it, then you need to handle synchronization manually.",
+        "You can do this by using synchronization techniques or by wrapping the TreeSet using the Collections.synchronizedSet() method. It is better to do this at the time of creation to avoid any issues."
+      ],
+      "code": [
+        "TreeSet treeSet = new TreeSet(); \nSet syncrSet = Collections.synchronziedSet(treeSet);"
+      ]
+    },
+    {
+      "heading": "Hierarchy of theTreeSet Class",
+      "paragraphs": [
+        "As shown in the below diagram, the Java TreeSet class implements the NavigableSet interface.",
+        "The NavigableSet interface further extends the SortedSet, Set, Collection, and Iterable interfaces in hierarchical order."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Key Points about TreeSet Hierarchy",
+      "paragraphs": [
+        "• SortedSet Interface:TreeSet implements the SortedSet interface, which extends the Set interface. It provides methods to maintain elements in sorted order.\n• NavigableSet Interface:NavigableSet extends SortedSet and provides additional methods to navigate elements, such as finding elements before or after a given value.\n• Efficiency:TreeSet is backed by a TreeMap and uses a Red-Black Tree structure. Because of this, operations like add, remove, and search take O(log N) time."
+      ],
+      "code": []
+    },
+    {
+      "heading": "TreeSet Class Declaration",
+      "paragraphs": [
+        "Let's see the declaration for java.util.TreeSet class."
+      ],
+      "code": [
+        "public class TreeSet<E> extends AbstractSet<E> implements NavigableSet<E>, Cloneable, Serializable"
+      ]
+    },
+    {
+      "heading": "Components of the Declaration",
+      "paragraphs": [
+        "Here are the main components of the TreeSet class declaration:",
+        "• TreeSet<E> Class: The TreeSet class is declared as public, meaning it can be accessed from anywhere class within any package.The <E> denotes that TreeSet is a generic class, capable of storing objects of any type, as specified by the user.\n• AbstractSet<E>: TreeSet class extends the AbstractSet interface that provides a skeletal implementation of the Set interface. It means that the TreeSet class inherits all the abstract methods from the AbstractSet interface.\n• NavigableSet<E>: By implementing NavigableSet, TreeSet gains() methods to navigate the set in relation to a given target element, such as higher, lower, ceiling, and floor. The interface extends SortedSet, which in turn extends Set, ensuring that TreeSet has all functionalities of a sorted and navigable set.\n• Cloneable: It indicates that TreeSet supports cloning, allowing it to be copied safely without affecting the original set.\n• Serializable: It ensures that a TreeSet can be serialized, meaning its state can be converted into a byte stream that can be reverted back into a copy of the TreeSet. Serialization is essential for saving the state of an object for later retrieval or transmission to a different processing environment."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Constructors of Java TreeSet Class",
+      "paragraphs": [
+        "Java TreeSet class provides different constructors to create and initialize a TreeSet."
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. TreeSet()",
+      "paragraphs": [
+        "It is used to construct an empty TreeSet that is sorted in ascending order according to the natural ordering.",
+        "Here is the syntax:"
+      ],
+      "code": [
+        "TreeSet<E> set = new TreeSet<E>();"
+      ]
+    },
+    {
+      "heading": "2. TreeSet(Collection c)",
+      "paragraphs": [
+        "It is used to construct a TreeSet containing the elements of the specified collection.",
+        "Here is the syntax:"
+      ],
+      "code": [
+        "TreeSet<E> set = new TreeSet<E>(Collection<? extends E> c);"
+      ]
+    },
+    {
+      "heading": "3. TreeSet(Comparator comparator)",
+      "paragraphs": [
+        "It is used to construct an empty TreeSet that is sorted according to the given comparator.",
+        "Here is the syntax:"
+      ],
+      "code": [
+        "TreeSet<E> set = new TreeSet<E>(Comparator<? super E> comparator);"
+      ]
+    },
+    {
+      "heading": "4. TreeSet(SortedSets)",
+      "paragraphs": [
+        "It is used to construct a TreeSet containing the elements of the given SortedSet.",
+        "Here is the syntax:"
+      ],
+      "code": [
+        "TreeSet<E> set = new TreeSet<E>(SortedSet<E> s);"
+      ]
+    },
+    {
+      "heading": "Methods of Java TreeSet Class",
+      "paragraphs": [
+        "The following table shows the commonly used methods of the TreeSet class:",
+        "Method | Description\nboolean add(E e) | It is used to add the specified element to this set if it is not already present.\nboolean addAll(Collection<? extends E> c) | It is used to add all of the elements in the specified collection to this set.\nE ceiling(E e) | It returns the equal or closest greatest element of the specified element from the set, or null there is no such element.\nComparator<? super E> comparator() | It returns a comparator that arranges elements in order.\nIteratordescendingIterator() | It is used to iterate the elements in descending order.\nNavigableSetdescendingSet() | It returns the elements in reverse order.\nE floor(E e) | It returns the equal or closest least element of the specified element from the set, or null there is no such element.\nSortedSetheadSet(E toElement) | It returns the group of elements that are less than the specified element.\nNavigableSetheadSet(E toElement, boolean inclusive) | It returns the group of elements that are less than or equal to (if, inclusive is true) the specified element.\nE higher(E e) | It returns the closest greatest element of the specified element from the set, or null there is no such element.\nIteratoriterator() | It is used to iterate the elements in ascending order.\nE lower(E e) | It returns the closest least element of the specified element from the set, or null there is no such element.\nE pollFirst() | It is used to retrieve and remove the lowest(first) element.\nE pollLast() | It is used to retrieve and remove the highest(last) element.\nSpliteratorspliterator() | It is used to create a late-binding and fail-fast spliterator over the elements.\nNavigableSetsubSet(E fromElement, boolean fromInclusive, E toElement, boolean toInclusive) | It returns a set of elements that lie between the given range.\nSortedSetsubSet(E fromElement, E toElement)) | It returns a set of elements that lie between the given range which includes fromElement and excludes toElement.\nSortedSettailSet(E fromElement) | It returns a set of elements that are greater than or equal to the specified element.\nNavigableSettailSet(E fromElement, boolean inclusive) | It returns a set of elements that are greater than or equal to (if, inclusive is true) the specified element.\nboolean contains(Object o) | It returns true if this set contains the specified element.\nboolean isEmpty() | It returns true if this set contains no elements.\nboolean remove(Object o) | It is used to remove the specified element from this set if it is present.\nvoid clear() | It is used to remove all of the elements from this set.\nObject clone() | It returns a shallow copy of this TreeSet instance.\nE first() | It returns the first (lowest) element currently in this sorted set.\nE last() | It returns the last (highest) element currently in this sorted set.\nint size() | It returns the number of elements in this set."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java TreeSet Examples",
+      "paragraphs": [
+        "In this example, we are creating a TreeSet, adding elements, and displaying them in ascending order.",
+        "Output:"
+      ],
+      "code": [
+        "import java.util.*;  \nclass Main {  \n public static void main(String args[]){  \n  TreeSet<String> set = new TreeSet<String>();  \n  set.add(\"Ravi\");  \n  set.add(\"Vijay\");  \n  set.add(\"Ravi\");  \n  set.add(\"Ajay\");  \n\n  Iterator<String> itr = set.iterator();  \n  while(itr.hasNext()){  \n   System.out.println(itr.next());  \n  }  \n }  \n}",
+        "Ajay\nRavi\nVijay"
+      ]
+    },
+    {
+      "heading": "Example 2: Traversing in Descending Order",
+      "paragraphs": [
+        "In this example, we are traversing the TreeSet in descending order using descendingIterator().",
+        "Output:"
+      ],
+      "code": [
+        "import java.util.*;  \nclass Main {  \n public static void main(String args[]){  \n  TreeSet<String> set = new TreeSet<String>();  \n  set.add(\"Ravi\");  \n  set.add(\"Vijay\");  \n  set.add(\"Ajay\");  \n\n  Iterator<String> i = set.descendingIterator();  \n  while(i.hasNext()) {  \n   System.out.println(i.next());  \n  }  \n }  \n}",
+        "Vijay\nRavi\nAjay"
+      ]
+    },
+    {
+      "heading": "Example 3: Retrieving and Removing Elements",
+      "paragraphs": [
+        "In this example, we are retrieving and removing the lowest and highest elements.",
+        "Output:"
+      ],
+      "code": [
+        "import java.util.*;  \nclass Main {  \n public static void main(String args[]){  \n  TreeSet<Integer> set = new TreeSet<Integer>();  \n  set.add(24);  \n  set.add(66);  \n  set.add(12);  \n  set.add(15);  \n\n  System.out.println(\"Lowest Value: \" + set.pollFirst());  \n  System.out.println(\"Highest Value: \" + set.pollLast());  \n }  \n}",
+        "Lowest Value: 12\nHighest Value: 66"
+      ]
+    },
+    {
+      "heading": "Example 4: NavigableSet Operations",
+      "paragraphs": [
+        "In this example, we are performing different NavigableSet operations on TreeSet.",
+        "Output:"
+      ],
+      "code": [
+        "import java.util.*;  \nclass Main {  \n public static void main(String args[]){  \n  TreeSet<String> set = new TreeSet<String>();  \n  set.add(\"A\");  \n  set.add(\"B\");  \n  set.add(\"C\");  \n  set.add(\"D\");  \n  set.add(\"E\");  \n\n  System.out.println(\"Initial Set: \" + set);  \n  System.out.println(\"Reverse Set: \" + set.descendingSet());  \n  System.out.println(\"Head Set: \" + set.headSet(\"C\", true));  \n  System.out.println(\"SubSet: \" + set.subSet(\"A\", false, \"E\", true));  \n  System.out.println(\"TailSet: \" + set.tailSet(\"C\", false));  \n }  \n}",
+        "Initial Set: [A, B, C, D, E]\nReverse Set: [E, D, C, B, A]\nHead Set: [A, B, C]\nSubSet: [B, C, D, E]\nTailSet: [D, E]"
+      ]
+    },
+    {
+      "heading": "Example 5: SortedSet Operations",
+      "paragraphs": [
+        "In this example, we are performing SortedSet operations like headSet(), subSet(), and tailSet().",
+        "Output:"
+      ],
+      "code": [
+        "import java.util.*;  \nclass Main {  \n public static void main(String args[]){  \n  TreeSet<String> set = new TreeSet<String>();  \n  set.add(\"A\");  \n  set.add(\"B\");  \n  set.add(\"C\");  \n  set.add(\"D\");  \n  set.add(\"E\");  \n\n  System.out.println(\"Initial Set: \" + set);  \n  System.out.println(\"Head Set: \" + set.headSet(\"C\"));  \n  System.out.println(\"SubSet: \" + set.subSet(\"A\", \"E\"));  \n  System.out.println(\"TailSet: \" + set.tailSet(\"C\"));  \n }  \n}",
+        "Intial Set: [A, B, C, D, E]\nHead Set: [A, B]\nSubSet: [A, B, C, D]\nTailSet: [C, D, E]"
+      ]
+    },
+    {
+      "heading": "Example 6: Storing Objects in TreeSet",
+      "paragraphs": [
+        "In this example, we are storing user-defined objects in TreeSet using the Comparable interface.",
+        "Output:"
+      ],
+      "code": [
+        "import java.util.*;  \n\nclass Book implements Comparable<Book>{  \n int id;  \n String name, author, publisher;  \n int quantity;  \n\n public Book(int id, String name, String author, String publisher, int quantity){  \n  this.id = id;  \n  this.name = name;  \n  this.author = author;  \n  this.publisher = publisher;  \n  this.quantity = quantity;  \n }  \n\n public int compareTo(Book b){  \n  if(id > b.id) return 1;  \n  else if(id < b.id) return -1;  \n  else return 0;  \n }  \n}  \n\nclass Main {  \n public static void main(String[] args){  \n  TreeSet<Book> set = new TreeSet<Book>();  \n\n  set.add(new Book(121,\"Let us C\",\"Yashwant Kanetkar\",\"BPB\",8));  \n  set.add(new Book(233,\"Operating System\",\"Galvin\",\"Wiley\",6));  \n  set.add(new Book(101,\"Data Communications & Networking\",\"Forouzan\",\"Mc Graw Hill\",4));  \n\n  for(Book b : set){  \n   System.out.println(b.id+\" \"+b.name+\" \"+b.author+\" \"+b.publisher+\" \"+b.quantity);  \n  }  \n }  \n}",
+        "101 Data Communications & Networking Forouzan Mc Graw Hill 4\n121 Let us C Yashwant Kanetkar BPB 8\n233 Operating System Galvin Wiley 6"
+      ]
+    },
+    {
+      "heading": "Example 7: ClassCastException in TreeSet",
+      "paragraphs": [
+        "In this example, we are adding objects that do not implement Comparable, which causes an exception.",
+        "Output:"
+      ],
+      "code": [
+        "import java.util.*;  \n\nclass Employee {  \n int empId;  \n String name;  \n}  \n\nclass Main {  \n public static void main(String[] args){  \n  TreeSet<Employee> set = new TreeSet<Employee>();  \n\n  set.add(new Employee());  \n  set.add(new Employee());  \n }  \n}",
+        "ClassCastException"
+      ]
+    },
+    {
+      "heading": "TreeSet Vs. HashSet",
+      "paragraphs": [
+        "The following table shows the difference between TreeSet and HashSet:",
+        "Feature | TreeSet | HashSet\nUnderlying Data Structure | Red-Black Tree | Hash Table\nOrdering of Elements | Keeps elements sorted, which facilitates ordered traversal and quick-range searches. | Does not maintain any order; element arrangement is determined by the hash function.\nPerformance for Basic Operations | Somewhat increased temporal complexity; operations like add, delete, and contain are ?(log⁡?)O(logN). | Constant-time complexity ?(1)O(1) for basic operations like add, delete, and contain, making it highly efficient.\nBest Use Case | Better suited for applications requiring ordered data management, such as range queries or sequential access. | Ideal for scenarios where quick retrieval and manipulation are more important than element order.\nSorting | Automatically sorts elements according to their natural ordering or a specified comparator. | No sorting of elements; storage is hash-based.\nApplication Suitability | Preferred for applications where elements need to be maintained in a sorted manner. | More suitable for applications requiring fast access and where element order is not a concern.",
+        "Next TopicJava PriorityQueue class"
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:44:11.318Z"
+}

@@ -1,0 +1,25 @@
+{
+  "topicId": "call-run",
+  "title": "What if We Call run() Method Directly Instead of start() in Java?",
+  "sectionId": "java-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/what-if-we-call-java-run-method-directly",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/what-if-we-call-java-run-method-directly",
+      "score": 4,
+      "sectionCount": 1
+    }
+  ],
+  "sections": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "What if We Call run() Method Directly Instead of start() in Java?Last Updated : 15 Jan 2026In Java, each thread runs in its own call stack that allows concurrent execution. Normally, we start a thread using the start() method, which creates a new call stack for the thread and executes the run() method independently.However, if we call the run() method directly, it does not create a new call stack. Instead, the run() method executes in the current thread's call stack, just like a normal method call. This means the code runs sequentially, not concurrently.Example 1: Directly Calling run() MethodThe following example demonstrates calling run() directly on a thread object:class TestCallRun1 extends Thread{\n public void run(){\n   System.out.println(\"running...\");\n }\n public static void main(String args[]){\n  TestCallRun1 t1=new TestCallRun1();\n  t1.run();//works, but does not start a separate call stack\n }\n}\nOutput:running...\nNote:The run() method executes in the main thread's call stack, not a separate thread.Example 2: Problem with Direct run() Calls on Multiple ThreadsIf multiple thread objects call run() directly, there is no context-switching between threads - they are treated as normal objects, consider the following example:class TestCallRun2 extends Thread{\n public void run(){\n  for(int i=1;i<5;i++){\n    try{Thread.sleep(500);}catch(InterruptedException e){System.out.println(e);}\n    System.out.println(i);\n  }\n }\n public static void main(String args[]){\n  TestCallRun2 t1=new TestCallRun2();\n  TestCallRun2 t2=new TestCallRun2();\n \n  t1.run();\n  t2.run();\n }\n}\nOutput:1\n2\n3\n4\n1\n2\n3\n4\nAs we can see in the above program that there is no context-switching because here t1 and t2 will be treated as normal object not thread object.Observation: Both threads run one after another in the main thread, not concurrently. There is no context-switching, because calling run() directly does not start a thread object.SummaryUse start() to create a new thread and execute run() concurrently.Calling run() directly executes the method in the current thread, behaving like a normal method call.Directly calling run() on multiple threads does not provide multithreading, and threads execute sequentially.Next TopicJoin-thread-in-java ← prev next →"
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:39:09.450Z"
+}

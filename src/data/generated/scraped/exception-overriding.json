@@ -1,0 +1,126 @@
+{
+  "topicId": "exception-overriding",
+  "title": "Java - Overriding",
+  "sectionId": "java-core-advanced",
+  "source": "tutorialspoint",
+  "url": "https://www.tutorialspoint.com/java/java_overriding.htm",
+  "allSources": [
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_overriding.htm",
+      "score": 66,
+      "sectionCount": 13
+    },
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/exception-handling-with-method-overriding",
+      "score": 65,
+      "sectionCount": 11
+    }
+  ],
+  "sections": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "In the previous chapter, we talked about superclasses and subclasses. If a class inherits a method from its superclass, then there is a chance to override the method provided that it is not marked final."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Benefit of Overriding in Java",
+      "paragraphs": [
+        "The benefit of overriding is: ability to define a behavior that's specific to the subclass type, which means a subclass can implement a parent class method based on its requirement.",
+        "In object-oriented terms, overriding means to override the functionality of an existing method."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Method Overriding",
+      "paragraphs": [
+        "Method overriding allows us to achieve run-time polymorphism and is used for writing specific definitions of a subclass method that is already defined in the superclass.",
+        "The method is superclass and overridden method in the subclass should have the same declaration signature such as parameters list, type, and return type."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Usage of Java Method Overriding",
+      "paragraphs": [
+        "Following are the two important usages of method overriding in Java:",
+        "• Method overriding is used for achieving run-time polymorphism.\n• Method overriding is used for writing specific definition of a subclass method (this method is known as the overridden method)."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example of Method Overriding in Java",
+      "paragraphs": [
+        "Let us look at an example."
+      ],
+      "code": [
+        "class Animal {\n   public void move() {\n      System.out.println(\"Animals can move\");\n   }\n}\n\nclass Dog extends Animal {\n   public void move() {\n      System.out.println(\"Dogs can walk and run\");\n   }\n}\n\npublic class TestDog {\n\n   public static void main(String args[]) {\n      Animal a = new Animal();   // Animal reference and object\n      Animal b = new Dog();   // Animal reference but Dog object\n\n      a.move();   // runs the method in Animal class\n      b.move();   // runs the method in Dog class\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [
+        "In the above example, you can see that even though b is a type of Animal it runs the move method in the Dog class. The reason for this is: In compile time, the check is made on the reference type. However, in the runtime, JVM figures out the object type and would run the method that belongs to that particular object.",
+        "Therefore, in the above example, the program will compile properly since Animal class has the method move. Then, at the runtime, it runs the method specific for that object.",
+        "Consider the following example −"
+      ],
+      "code": [
+        "Animals can move\nDogs can walk and run"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [],
+      "code": [
+        "class Animal {\n   public void move() {\n      System.out.println(\"Animals can move\");\n   }\n}\n\nclass Dog extends Animal {\n   public void move() {\n      System.out.println(\"Dogs can walk and run\");\n   }\n   public void bark() {\n      System.out.println(\"Dogs can bark\");\n   }\n}\n\npublic class TestDog {\n\n   public static void main(String args[]) {\n      Animal a = new Animal();   // Animal reference and object\n      Animal b = new Dog();   // Animal reference but Dog object\n\n      a.move();   // runs the method in Animal class\n      b.move();   // runs the method in Dog class\n      b.bark();\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [
+        "This program will throw a compile time error since b's reference type Animal doesn't have a method by the name of bark."
+      ],
+      "code": [
+        "TestDog.java:26: error: cannot find symbol\n      b.bark();\n       ^\n  symbol:   method bark()\n  location: variable b of type Animal\n1 error"
+      ]
+    },
+    {
+      "heading": "Rules for Method Overriding",
+      "paragraphs": [
+        "• The argument list should be exactly the same as that of the overridden method.\n• The return type should be the same or a subtype of the return type declared in the original overridden method in the superclass.\n• The access level cannot be more restrictive than the overridden method's access level. For example: If the superclass method is declared public then the overridding method in the sub class cannot be either private or protected.\n• Instance methods can be overridden only if they are inherited by the subclass.\n• A method declared final cannot be overridden.\n• A method declared static cannot be overridden but can be re-declared.\n• If a method cannot be inherited, then it cannot be overridden.\n• A subclass within the same package as the instance's superclass can override any superclass method that is not declared private or final.\n• A subclass in a different package can only override the non-final methods declared public or protected.\n• An overriding method can throw any uncheck exceptions, regardless of whether the overridden method throws exceptions or not. However, the overriding method should not throw checked exceptions that are new or broader than the ones declared by the overridden method. The overriding method can throw narrower or fewer exceptions than the overridden method.\n• Constructors cannot be overridden."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Method and Constructor Overriding",
+      "paragraphs": [
+        "In Java, each class has a different name and the constructor's name is the same as the class name. Thus, we cannot override a constructor as they cannot have the same name."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Method Overriding: Using the super Keyword",
+      "paragraphs": [
+        "When invoking a superclass version of an overridden method the super keyword is used."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: Using the super Keyword",
+      "paragraphs": [],
+      "code": [
+        "class Animal {\n   public void move() {\n      System.out.println(\"Animals can move\");\n   }\n}\n\nclass Dog extends Animal {\n   public void move() {\n      super.move();   // invokes the super class method\n      System.out.println(\"Dogs can walk and run\");\n   }\n}\n\npublic class TestDog {\n\n   public static void main(String args[]) {\n      Animal b = new Dog();   // Animal reference but Dog object\n      b.move();   // runs the method in Dog class\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Animals can move\nDogs can walk and run"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:37:46.536Z"
+}

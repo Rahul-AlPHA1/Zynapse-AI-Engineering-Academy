@@ -1,0 +1,107 @@
+{
+  "topicId": "custom-exceptions",
+  "title": "Java - Custom Exception",
+  "sectionId": "java-core-advanced",
+  "source": "tutorialspoint",
+  "url": "https://www.tutorialspoint.com/java/java_custom_exception.htm",
+  "allSources": [
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_custom_exception.htm",
+      "score": 60,
+      "sectionCount": 9
+    },
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/custom-exception-in-java",
+      "score": 58,
+      "sectionCount": 9
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java Custom Exception",
+      "paragraphs": [
+        "The custom exception refers to the creation of your own exception to customize an exception according to the needs. The custom exceptions are derived from the Exception class."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Need of Java Custom Exceptions",
+      "paragraphs": [
+        "• To categorize the exceptions based on the different types of errors in your project.\n• To allow application-level exception handling."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Create a Custom Exception in Java",
+      "paragraphs": [
+        "To create a custom exception, you need to create a class that must be inherited from the Exception class."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [
+        "Here is the syntax to create a custom class in Java -",
+        "You just need to extend the predefined Exception class to create your own Exception. These are considered to be checked exceptions."
+      ],
+      "code": [
+        "class MyException extends Exception {\n}"
+      ]
+    },
+    {
+      "heading": "Rules to Create Custom Exception",
+      "paragraphs": [
+        "Keep the following points in mind when writing your own exception classes −",
+        "• All exceptions must be a child of Throwable.\n• If you want to write a checked exception that is automatically enforced by the Handle or Declare Rule, you need to extend the Exception class.\n• If you want to write a runtime exception, you need to extend the RuntimeException class."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Custom Exception Example",
+      "paragraphs": [
+        "The following InsufficientFundsException class is a user-defined exception that extends the Exception class, making it a checked exception. An exception class is like any other class, containing useful fields and methods.",
+        "To demonstrate using our user-defined exception, the following CheckingAccount class contains a withdraw() method that throws an InsufficientFundsException.",
+        "The following BankDemo program demonstrates invoking the deposit() and withdraw() methods of CheckingAccount."
+      ],
+      "code": [
+        "class InsufficientFundsException extends Exception {\n   private double amount;\n   \n   public InsufficientFundsException(double amount) {\n      this.amount = amount;\n   }\n   \n   public double getAmount() {\n      return amount;\n   }\n}",
+        "class CheckingAccount {\n   private double balance;\n   private int number;\n   \n   public CheckingAccount(int number) {\n      this.number = number;\n   }\n   \n   public void deposit(double amount) {\n      balance += amount;\n   }\n   \n   public void withdraw(double amount) throws InsufficientFundsException {\n      if(amount <= balance) {\n         balance -= amount;\n      }else {\n         double needs = amount - balance;\n         throw new InsufficientFundsException(needs);\n      }\n   }\n   \n   public double getBalance() {\n      return balance;\n   }\n   \n   public int getNumber() {\n      return number;\n   }\n}",
+        "package com.tutorialspoint;\n\npublic class BankDemo {\n\n   public static void main(String [] args) {\n      CheckingAccount c = new CheckingAccount(101);\n      System.out.println(\"Depositing $500...\");\n      c.deposit(500.00);\n      \n      try {\n         System.out.println(\"\\nWithdrawing $100...\");\n         c.withdraw(100.00);\n         System.out.println(\"\\nWithdrawing $600...\");\n         c.withdraw(600.00);\n      } catch (InsufficientFundsException e) {\n         System.out.println(\"Sorry, but you are short $\" + e.getAmount());\n         e.printStackTrace();\n      }\n   }\n}\n\nclass CheckingAccount {\n   private double balance;\n   private int number;\n   \n   public CheckingAccount(int number) {\n      this.number = number;\n   }\n   \n   public void deposit(double amount) {\n      balance += amount;\n   }\n   \n   public void withdraw(double amount) throws InsufficientFundsException {\n      if(amount <= balance) {\n         balance -= amount;\n      }else {\n         double needs = amount - balance;\n         throw new InsufficientFundsException(needs);\n      }\n   }\n   \n   public double getBalance() {\n      return balance;\n   }\n   \n   public int getNumber() {\n      return number;\n   }\n}\n\nclass InsufficientFundsException extends Exception {\n   private double amount;\n   \n   public InsufficientFundsException(double amount) {\n      this.amount = amount;\n   }\n   \n   public double getAmount() {\n      return amount;\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [
+        "Compile all the above three files and run BankDemo. This will produce the following result −",
+        "In next example, we're declaring our custom exception as RuntimeException to make it as unchecked exception class as below −"
+      ],
+      "code": [
+        "Depositing $500...\n\nWithdrawing $100...\n\nWithdrawing $600...\nSorry, but you are short $200.0\ncom.tutorialspoint.InsufficientFundsException\n\tat com.tutorialspoint.CheckingAccount.withdraw(BankDemo.java:39)\n\tat com.tutorialspoint.BankDemo.main(BankDemo.java:14)",
+        "class MyException extends RuntimeException {\n}"
+      ]
+    },
+    {
+      "heading": "Example to Create Custom Class by Extending Runtime Exception",
+      "paragraphs": [
+        "We are extending the predefined RuntimeException class to create your own Exception as an unchecked exception. The following InsufficientFundsException class is a user-defined exception that extends the RuntimeException class, making it a unchecked exception. An RuntimeException class is like any other class, containing useful fields and methods.",
+        "The following BankDemo program demonstrates invoking the deposit() and withdraw() methods of CheckingAccount using unchecked exception."
+      ],
+      "code": [
+        "class InsufficientFundsException extends RuntimeException {\n   private double amount;\n   \n   public InsufficientFundsException(double amount) {\n      this.amount = amount;\n   }\n   \n   public double getAmount() {\n      return amount;\n   }\n}",
+        "package com.tutorialspoint;\n\npublic class BankDemo {\n\n   public static void main(String [] args) {\n      CheckingAccount c = new CheckingAccount(101);\n      System.out.println(\"Depositing $500...\");\n      c.deposit(500.00);\n      \n      System.out.println(\"\\nWithdrawing $100...\");\n      c.withdraw(100.00);\n      System.out.println(\"\\nWithdrawing $600...\");\n      c.withdraw(600.00);\n\n   }\n}\n\nclass CheckingAccount {\n   private double balance;\n   private int number;\n   \n   public CheckingAccount(int number) {\n      this.number = number;\n   }\n   \n   public void deposit(double amount) {\n      balance += amount;\n   }\n   \n   public void withdraw(double amount) {\n      if(amount <= balance) {\n         balance -= amount;\n      }else {\n         double needs = amount - balance;\n         throw new InsufficientFundsException(needs);\n      }\n   }\n   \n   public double getBalance() {\n      return balance;\n   }\n   \n   public int getNumber() {\n      return number;\n   }\n}\n\nclass InsufficientFundsException extends RuntimeException {\n   private double amount;\n   \n   public InsufficientFundsException(double amount) {\n      this.amount = amount;\n   }\n   \n   public double getAmount() {\n      return amount;\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [
+        "Compile and run BankDemo. This will produce the following result −"
+      ],
+      "code": [
+        "Depositing $500...\n\nWithdrawing $100...\n\nWithdrawing $600...\nException in thread \"main\" \ncom.tutorialspoint.InsufficientFundsException\n\tat com.tutorialspoint.CheckingAccount.withdraw(BankDemo.java:35)\n\tat com.tutorialspoint.BankDemo.main(BankDemo.java:13)"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:37:54.919Z"
+}

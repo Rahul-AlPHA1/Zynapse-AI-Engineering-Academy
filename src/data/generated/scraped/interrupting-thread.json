@@ -1,0 +1,153 @@
+{
+  "topicId": "interrupting-thread",
+  "title": "Interrupting a Thread",
+  "sectionId": "java-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/interrupting-a-thread",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/interrupting-a-thread",
+      "score": 91,
+      "sectionCount": 14
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_interrupting_thread.htm",
+      "score": 42,
+      "sectionCount": 8
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Interrupting a Thread",
+      "paragraphs": [
+        "Thread interruption in Java is a mechanism used to signal a thread to stop its execution or break out of a waiting or sleeping state.",
+        "In this chapter, we will learn how thread interruption works, the methods used for interruption, and different behaviors of interrupted threads with examples."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is Thread Interruption in Java?",
+      "paragraphs": [
+        "If a thread is in a sleeping or waiting state (using sleep() or wait()), calling the interrupt() method causes it to exit that state by throwing an InterruptedException.",
+        "If the thread is not in a sleeping or waiting state, calling interrupt() does not stop the thread but sets the interrupted flag to true, which can be checked later by the programmer."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Methods Used for Thread Interruption",
+      "paragraphs": [
+        "Java provides built-in methods in the Thread class to interrupt a thread and check its interruption status."
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. interrupt() Method",
+      "paragraphs": [
+        "The interrupt() method is used to interrupt a thread. If the thread is in a sleeping or waiting state, it throws an InterruptedException. Otherwise, it sets the interrupted flag to true.",
+        "Syntax:",
+        "Here is the syntax of the interrupt() method:"
+      ],
+      "code": [
+        "public void interrupt()"
+      ]
+    },
+    {
+      "heading": "2. interrupted() Method",
+      "paragraphs": [
+        "The interrupted() method checks whether the current thread has been interrupted and then clears the interrupted status if it is set.",
+        "Syntax:",
+        "Here is the syntax of the interrupted() method:"
+      ],
+      "code": [
+        "public static boolean interrupted()"
+      ]
+    },
+    {
+      "heading": "3. isInterrupted() Method",
+      "paragraphs": [
+        "The isInterrupted() method checks whether a thread has been interrupted without changing the interrupted status.",
+        "Syntax:",
+        "Here is the syntax of the isInterrupted() method:"
+      ],
+      "code": [
+        "public boolean isInterrupted()"
+      ]
+    },
+    {
+      "heading": "Interrupting a Thread That Stops Working",
+      "paragraphs": [
+        "When a thread is in a sleeping or waiting state and the interrupt() method is called, an InterruptedException is thrown. If this exception is not handled properly and is propagated, the thread terminates immediately and stops its execution."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "In this example, the interrupted thread propagates the exception that causes it to stop execution completely.",
+        "Output:"
+      ],
+      "code": [
+        "class TestInterruptingThread1 extends Thread{\npublic void run(){\ntry{\nThread.sleep(1000);\nSystem.out.println(\"task\");\n}catch(InterruptedException e){\nthrow new RuntimeException(\"Thread interrupted...\"+e);\n}\n\n}\n\npublic static void main(String args[]){\nTestInterruptingThread1 t1=new TestInterruptingThread1();\nt1.start();\ntry{\nt1.interrupt();\n}catch(Exception e){System.out.println(\"Exception handled \"+e);}\n\n}\n}",
+        "Exception in thread-0  \n       java.lang.RuntimeException: Thread interrupted...\n       java.lang.InterruptedException: sleep interrupted\n       at A.run(A.java:7)"
+      ]
+    },
+    {
+      "heading": "Interrupting a Thread That Continues Working",
+      "paragraphs": [
+        "When a sleeping or waiting thread is interrupted, an InterruptedException is thrown. If the exception is caught and handled inside the thread, the thread exits the waiting state and continues executing the remaining code normally."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "In this example, the interruption is handled properly, so the thread resumes execution after handling the exception.",
+        "Output:"
+      ],
+      "code": [
+        "class TestInterruptingThread2 extends Thread{\npublic void run(){\ntry{\nThread.sleep(1000);\nSystem.out.println(\"task\");\n}catch(InterruptedException e){\nSystem.out.println(\"Exception handled \"+e);\n}\nSystem.out.println(\"thread is running...\");\n}\n\npublic static void main(String args[]){\nTestInterruptingThread2 t1=new TestInterruptingThread2();\nt1.start();\n\nt1.interrupt();\n\n}\n}",
+        "Exception handled  \n       java.lang.InterruptedException: sleep interrupted\n       thread is running..."
+      ]
+    },
+    {
+      "heading": "Interrupting a Thread in Normal Running State",
+      "paragraphs": [
+        "If a thread is running normally and not in a sleeping or waiting state, calling interrupt() does not stop the thread. Instead, it sets the interrupted flag to true that allows the programmer to check the status and decide how the thread should respond."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates that when a running thread is interrupted, it continues its execution normally, and only the interrupted flag is set to indicate the interruption.",
+        "Output:"
+      ],
+      "code": [
+        "class TestInterruptingThread3 extends Thread{\n\npublic void run(){\nfor(int i=1;i<=5;i++)\nSystem.out.println(i);\n}\n\npublic static void main(String args[]){\nTestInterruptingThread3 t1=new TestInterruptingThread3();\nt1.start();\n\nt1.interrupt();\n\n}\n}",
+        "1\n       2\n       3\n       4 \n       5"
+      ]
+    },
+    {
+      "heading": "Difference Between isInterrupted() and interrupted()",
+      "paragraphs": [
+        "The isInterrupted() method checks the interrupted status without changing it, whereas the static interrupted() method checks and clears the interrupted flag."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates the use of the interrupted() method to check and clear the interrupted status of a thread during execution.",
+        "Output:",
+        "Next TopicReentrant Monitor in Java"
+      ],
+      "code": [
+        "public class TestInterruptingThread4 extends Thread{\n\npublic void run(){\nfor(int i=1;i<=2;i++){\nif(Thread.interrupted()){\nSystem.out.println(\"code for interrupted thread\");\n}\nelse{\nSystem.out.println(\"code for normal thread\");\n}\n\n}//end of for loop\n}\n\npublic static void main(String args[]){\n\nTestInterruptingThread4 t1=new TestInterruptingThread4();\nTestInterruptingThread4 t2=new TestInterruptingThread4();\n\nt1.start();\nt1.interrupt();\n\nt2.start();\n\n}\n}",
+        "Code for interrupted thread\n       code for normal thread\n       code for normal thread\n       code for normal thread"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:40:55.650Z"
+}

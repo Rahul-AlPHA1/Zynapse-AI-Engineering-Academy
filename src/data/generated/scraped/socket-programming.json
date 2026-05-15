@@ -1,0 +1,127 @@
+{
+  "topicId": "socket-programming",
+  "title": "Java Socket Programming",
+  "sectionId": "java-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/socket-programming",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/socket-programming",
+      "score": 77,
+      "sectionCount": 10
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_socket_programming.htm",
+      "score": 45,
+      "sectionCount": 8
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java Socket Programming",
+      "paragraphs": [
+        "Java socket programming is used to establish communication between applications running on different systems or different Java Runtime Environments (JREs). It enables data exchange over a network using client-server architecture.",
+        "In this chapter, we will learn what socket programming is, how it works in Java, and the basic components used for communication between client and server."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is Java Socket Programming?",
+      "paragraphs": [
+        "Java Socket Programming is a technique that allows two applications to communicate with each other over a network. It can be implemented in two ways:",
+        "• Connection-oriented communication (TCP)\n• Connection-less communication (UDP)",
+        "For connection-oriented communication, Java provides the following classes:",
+        "• Socket: Used at the client side to establish a connection\n• ServerSocket: Used at the server side to listen for incoming connections",
+        "For connection-less communication, the following classes are used:",
+        "• DatagramSocket\n• DatagramPacket",
+        "Requirements for Client-Server Communication",
+        "In socket programming, the client must know the following details of the server:",
+        "• IP Address of the server\n• Port number on which the server is listening"
+      ],
+      "code": []
+    },
+    {
+      "heading": "How Socket Communication Works?",
+      "paragraphs": [
+        "In a basic socket communication:",
+        "• The server creates a ServerSocket and waits for client requests.\n• The client creates a Socket and connects to the server using IP address and port number.\n• The server uses the accept() method, which blocks execution until a client connects.\n• Once connected, the server gets a Socket object to communicate with the client.\n• Both client and server can send and receive data using input and output streams."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Simple Communication Example (Concept)",
+      "paragraphs": [
+        "In a simple one-way communication:",
+        "• The client sends a message to the server.\n• The server receives the message and displays it.",
+        "This communication is achieved using the Socket and ServerSocket classes.",
+        "Here, we are going to make one-way client and server communication. In this application, client sends a message to the server, server reads the message and prints it. Here, two classes are being used: Socket and ServerSocket. The Socket class is used to communicate client and server. Through this class, we can read and write message. The ServerSocket class is used at server-side. The accept() method of ServerSocket class blocks the console until the client is connected. After the successful connection of client, it returns the instance of Socket at server-side."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Socket class",
+      "paragraphs": [
+        "A socket is simply an endpoint for communications between the machines. The Socket class can be used to create a socket."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Important methods",
+      "paragraphs": [
+        "Several important methods of socket class are as follows:",
+        "Method | Description\n1) public InputStream getInputStream() | returns the InputStream attached with this socket.\n2) public OutputStream getOutputStream() | returns the OutputStream attached with this socket.\n3) public synchronized void close() | closes this socket"
+      ],
+      "code": []
+    },
+    {
+      "heading": "ServerSocket class",
+      "paragraphs": [
+        "The ServerSocket class can be used to create a server socket. This object is used to establish communication with the clients."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Important methods",
+      "paragraphs": [
+        "Several important methods of ServerSocket class are as follows:",
+        "Method | Description\n1) public Socket accept() | returns the socket and establish a connection between server and client.\n2) public synchronized void close() | closes the server socket."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example of Java Socket Programming",
+      "paragraphs": [
+        "Creating Server:",
+        "To create the server application, we need to create the instance of ServerSocket class. Here, we are using 6666 port number for the communication between the client and server. You may also choose any other port number. The accept() method waits for the client. If clients connects with the given port number, it returns an instance of Socket.",
+        "Creating Client:",
+        "To create the client application, we need to create the instance of Socket class. Here, we need to pass the IP address or hostname of the Server and a port number. Here, we are using \"localhost\" because our server is running on same system.",
+        "Let's see a simple of Java socket programming where client sends a text and server receives and prints it.",
+        "File: MyServer.java",
+        "File: MyClient.java",
+        "To execute this program open two command prompts and execute each program at each command prompt as displayed in the below figure.",
+        "After running the client application, a message will be displayed on the server console."
+      ],
+      "code": [
+        "ServerSocket ss=new ServerSocket(6666);\nSocket s=ss.accept();//establishes connection and waits for the client",
+        "Socket s=new Socket(\"localhost\",6666);",
+        "import java.io.*;\nimport java.net.*;\npublic class MyServer {\npublic static void main(String[] args){\ntry{\nServerSocket ss=new ServerSocket(6666);\nSocket s=ss.accept();//establishes connection \nDataInputStream dis=new DataInputStream(s.getInputStream());\nString\tstr=(String)dis.readUTF();\nSystem.out.println(\"message= \"+str);\nss.close();\n}catch(Exception e){System.out.println(e);}\n}\n}",
+        "import java.io.*;\nimport java.net.*;\npublic class MyClient {\npublic static void main(String[] args) {\ntry{\t\nSocket s=new Socket(\"localhost\",6666);\nDataOutputStream dout=new DataOutputStream(s.getOutputStream());\ndout.writeUTF(\"Hello Server\");\ndout.flush();\ndout.close();\ns.close();\n}catch(Exception e){System.out.println(e);}\n}\n}"
+      ]
+    },
+    {
+      "heading": "Example of Java Socket Programming (Read-Write both side)",
+      "paragraphs": [
+        "In this example, client will write first to the server then server will receive and print the text. Then server will write to the client and client will receive and print the text. The step goes on.",
+        "File: MyServer.java",
+        "File: MyClient.java"
+      ],
+      "code": [
+        "import java.net.*;\nimport java.io.*;\nclass MyServer{\npublic static void main(String args[])throws Exception{\nServerSocket ss=new ServerSocket(3333);\nSocket s=ss.accept();\nDataInputStream din=new DataInputStream(s.getInputStream());\nDataOutputStream dout=new DataOutputStream(s.getOutputStream());\nBufferedReader br=new BufferedReader(new InputStreamReader(System.in));\n\nString str=\"\",str2=\"\";\nwhile(!str.equals(\"stop\")){\nstr=din.readUTF();\nSystem.out.println(\"client says: \"+str);\nstr2=br.readLine();\ndout.writeUTF(str2);\ndout.flush();\n}\ndin.close();\ns.close();\nss.close();\n}}",
+        "import java.net.*;\nimport java.io.*;\nclass MyClient{\npublic static void main(String args[])throws Exception{\nSocket s=new Socket(\"localhost\",3333);\nDataInputStream din=new DataInputStream(s.getInputStream());\nDataOutputStream dout=new DataOutputStream(s.getOutputStream());\nBufferedReader br=new BufferedReader(new InputStreamReader(System.in));\n\nString str=\"\",str2=\"\";\nwhile(!str.equals(\"stop\")){\nstr=br.readLine();\ndout.writeUTF(str);\ndout.flush();\nstr2=din.readUTF();\nSystem.out.println(\"Server says: \"+str2);\n}\n\ndout.close();\ns.close();\n}}"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:42:35.230Z"
+}

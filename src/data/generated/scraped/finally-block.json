@@ -1,0 +1,110 @@
+{
+  "topicId": "finally-block",
+  "title": "finally Block in Java",
+  "sectionId": "java-core-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/finally-block-in-java",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/finally-block-in-java",
+      "score": 60,
+      "sectionCount": 9
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_finally_block.htm",
+      "score": 52,
+      "sectionCount": 10
+    }
+  ],
+  "sections": [
+    {
+      "heading": "finally Block in Java",
+      "paragraphs": [
+        "In Java, the finally block is used to execute important code such as closing files or releasing resources, regardless of whether an exception occurs or not. In this chapter, we will learn about the finally block along with the examples."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is the Finally Block in Java?",
+      "paragraphs": [
+        "The finally block is a block of code that always executes after a try block, whether an exception is thrown or not. The finally block is useful when you want to cleanup activities or free the resources, like closing files, streams, or database connections."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Key Points",
+      "paragraphs": [
+        "The following key points of the finally block are as follows:",
+        "• A finally block is optional, but when present, it always executes after the try and catch blocks.\n• It executes even if a return statement is encountered in the try or catch blocks."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Flow Diagram",
+      "paragraphs": [
+        "The following images shows the flow diagram (working) of the finally block:",
+        "Note: If we do not handle the exception before terminating the program, the JVM executes the finally block (if any)."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example of Using Finally Block",
+      "paragraphs": [
+        "The following example demonstrates how a finally block is executed whether an exception occurs or not:",
+        "Output:"
+      ],
+      "code": [
+        "// Java Program to demonstrate the use of finally block\npublic class Main {\n    public static void main(String[] args) {\n        try {\n            int data = 25 / 0; // This will cause ArithmeticException\n        } catch (ArithmeticException e) {\n            System.out.println(\"Exception caught: \" + e);\n        } finally {\n            System.out.println(\"Finally block executed: Cleanup code runs here.\");\n        }\n        System.out.println(\"Rest of the program continues...\");\n    }\n}",
+        "Exception caught: java.lang.ArithmeticException: / by zero\nFinally block executed: Cleanup code runs here.\nRest of the program continues..."
+      ]
+    },
+    {
+      "heading": "Usage of the finally Block",
+      "paragraphs": [
+        "Let's see different scenarios where a finally block can be used."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Case 1: When No Exception Occurs",
+      "paragraphs": [
+        "If the code in the try block executes normally without throwing an exception, the finally block is still executed.",
+        "The following example demonstrates the execution of the finally block when no exception occurs:",
+        "class Main \n{    \n  public static void main(String args[])\n  {    \n      try {    \n    //The below code does not throw any exception  \n       int data=25/5;    \n       System.out.println(data);    \n      }    \n    //catch won't be executed  \n      catch(NullPointerException e) {  \n    System.out.println(e);  \n    }    \n    //executed regardless of exception occurred or not  \n     finally {  \n    System.out.println(\"Finally block is always executed\");  \n    }    \n    System.out.println(\"rest of the code...\");    \n  }    \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "5\nFinally block is always executed\nrest of the code..."
+      ]
+    },
+    {
+      "heading": "Case 2: When an Exception Occurs but Is Not Handled",
+      "paragraphs": [
+        "If an exception occurs but the catch block cannot handle it, the finally block is still executed before the program terminates abnormally.",
+        "The following example demonstrates that the finally block is executed even if an exception occurs but is not handled by the catch block:",
+        "public class Main\n{    \n     public static void main(String args[])\n     {   \n      try {    \n        System.out.println(\"Inside the try block\");  \n        //The below code throws a divide by zero exception  \n       int data=25/0;    \n       System.out.println(data);    \n      }    \n      //cannot handle Arithmetic type exception can only accept a Null Pointer type exception  \n      catch(NullPointerException e){  \n        System.out.println(e);  \n      }   \n      //executes regardless of exception occurred or not   \n      finally {  \n        System.out.println(\"Finally block is always executed\");  \n      }    \n      System.out.println(\"rest of the code...\");    \n    }    \n}    \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Inside the try block\nFinally block is always executed\nRuntime Error:\nException in thread \"main\" java.lang.ArithmeticException: / by zero\n\tat Main.main(Main.java:8)"
+      ]
+    },
+    {
+      "heading": "Case 3: When an Exception Occurs and Is Handled",
+      "paragraphs": [
+        "If an exception occurs and the catch block handles it, the finally block is executed afterward, and the rest of the program continues normally.",
+        "The following example demonstrates the execution of the finally block when an exception occurs and is handled by the catch block:",
+        "public class Main\n{    \n    public static void main(String args[])\n    {   \n      try {    \n        System.out.println(\"Inside the try block\");  \n        //The below code throws a divide by zero exception  \n       int data=25/0;    \n       System.out.println(data);    \n      }   \n      //handles the Arithmetic Exception / Divide by zero exception  \n      catch(ArithmeticException e){  \n        System.out.println(\"Exception handled\");  \n        System.out.println(e);  \n      }   \n      //executes regardless of exception occurred or not   \n      finally {  \n        System.out.println(\"Finally block is always executed\");  \n      }    \n      System.out.println(\"rest of the code...\");    \n    }    \n}  \nCompile and Run",
+        "Output:",
+        "Rule: For each try block, there can be zero or more catch blocks, but the finally block will be one.",
+        "Note: The finally block will not execute if the program exits (either by calling System.exit() or by causing a fatal error that causes the process to abort)."
+      ],
+      "code": [
+        "Inside the try block\nException handled\njava.lang.ArithmeticException: / by zero\nFinally block is always executed\nrest of the code..."
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:37:20.294Z"
+}

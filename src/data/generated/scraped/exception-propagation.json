@@ -1,0 +1,105 @@
+{
+  "topicId": "exception-propagation",
+  "title": "Java - Exception Propagation",
+  "sectionId": "java-core-advanced",
+  "source": "tutorialspoint",
+  "url": "https://www.tutorialspoint.com/java/java_exception_propagation.htm",
+  "allSources": [
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_exception_propagation.htm",
+      "score": 54,
+      "sectionCount": 10
+    },
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/exception-propagation-in-java",
+      "score": 53,
+      "sectionCount": 9
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Exception Propagation",
+      "paragraphs": [
+        "Exception propagation refers to movement of exception event from nested try or nested methods calls. A try block can be nested within another try block. Similarly a method can call another method where each method can handle exception independently or can throw checked/unchecked exceptions. Whenever an exception is raised within a nested try block/method, its exception is pushed to Stack. The exception propagates from child to parent try block or from child method to parent method and so on."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax - Nested Try Block",
+      "paragraphs": [
+        "The syntax for nested catch blocks looks like the following −"
+      ],
+      "code": [
+        "try { // parent try block\n   try {  // child try block\n   \n   }\n   catch(ExceptionType1 e1){  // child catch block\n   \n   }\n} catch (ExceptionType2 e1) { // parent catch block\n\n}"
+      ]
+    },
+    {
+      "heading": "Syntax - Nested Method Calls",
+      "paragraphs": [
+        "The syntax for nested method calls looks like the following −",
+        "The previous statements demonstrate two try/catch blocks and methods, but you can have any number of them. If an exception occurs in the protected child code, the exception is thrown to the catch block of the child list. If the data type of the exception thrown matches ExceptionType1, it gets caught there. If not, the exception passes up to the parent catch statement. This continues until the exception either is caught or falls through all catches, in which case the current method stops execution and the exception is thrown down to the previous method on the call stack."
+      ],
+      "code": [
+        "method1(){ // parent method \n   try { // parent try block\n      method2();\n   } catch (ExceptionType2 e1) { // parent catch block\n} \nmethod2(){ // child method \n   // code to throw Exception\n   // this exception will be handled by parent method\n}"
+      ]
+    },
+    {
+      "heading": "Rules for Exception Propagation in Java",
+      "paragraphs": [
+        "• Child catch block should have specific exception for better code clarity. Parent catch block can have more generic exception handled so that if child catch block is not able to handle the exception then parent catch block can handle it.\n• There in no restriction on exception hiearchy to be used in child vs parent catch block.\n• If a exception is handled correctly in child catch block, then in parent, another exception can be raised and handled."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Exception Propagation Example",
+      "paragraphs": [
+        "Here is code segment showing exception event propagation from child to parent. In this example, we're creating an error by dividing a value by 0 in a child method. The child method throws the exception. Now in parent method, in try block, we're handling the exception and printing the error message."
+      ],
+      "code": [
+        "package com.tutorialspoint;\n\npublic class ExcepTest {\n\n   public static void main(String args[]) {\n      int a = 3;\n      int b = 0;\n      try {\n         System.out.println(\"result:\" + divide(a,b));\n      }catch(ArithmeticException e) {\n         System.out.println(e.getMessage());\n      }\n   }\n\n   private static int divide(int a, int b) {\n      return a / b;\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "/ by zero"
+      ]
+    },
+    {
+      "heading": "Example 1",
+      "paragraphs": [
+        "Here is code segment showing exception event propagation from child to parent. In this example, we're creating an error by dividing a value by 0 in a child method. The child method throws the exception. Now in parent method, we're not handling the exception. The JVM will intercept the exception and prints the error message."
+      ],
+      "code": [
+        "package com.tutorialspoint;\n\npublic class ExcepTest {\n\n   public static void main(String args[]) {\n      int a = 3;\n      int b = 0;\n      System.out.println(\"result:\" + divide(a,b));\n   }\n\n   private static int divide(int a, int b) {\n      return a / b;\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Exception in thread \"main\" java.lang.ArithmeticException: / by zero\n   at com.tutorialspoint.ExcepTest.divide(ExcepTest.java:12)\n   at com.tutorialspoint.ExcepTest.main(ExcepTest.java:8)"
+      ]
+    },
+    {
+      "heading": "Example 2",
+      "paragraphs": [
+        "Here is code segment showing exception event propagation to stop within child itself instead of flowing to parent. In this example, we're creating an error by dividing a value by 0 in a child method. The child method is handling the exception. Now in parent method, we're not getting any exception."
+      ],
+      "code": [
+        "package com.tutorialspoint;\n\npublic class ExcepTest {\n\n   public static void main(String args[]) {\n      int a = 3;\n      int b = 0;\n      System.out.println(\"result:\" + divide(a,b));\n   }\n\n   private static int divide(int a, int b) {\n      try {\n         return a / b;\n      }catch(ArithmeticException e) {\n         System.out.println(e.getMessage());\n      }\n   return 0;\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "/ by zero\nresult:0"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:37:30.461Z"
+}

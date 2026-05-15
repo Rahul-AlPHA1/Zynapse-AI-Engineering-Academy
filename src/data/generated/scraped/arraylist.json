@@ -1,0 +1,327 @@
+{
+  "topicId": "arraylist",
+  "title": "Java ArrayList",
+  "sectionId": "java-collections-jdbc",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-arraylist",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-arraylist",
+      "score": 204,
+      "sectionCount": 33
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/util/java_util_arraylist.htm",
+      "score": 42,
+      "sectionCount": 7
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java ArrayList",
+      "paragraphs": [
+        "Java ArrayList is used to store and manage a collection of data that can grow or shrink dynamically.",
+        "In Java, traditional arrays have a fixed size, which makes them less flexible. To solve this problem, ArrayList provides a dynamic way to store elements that allow you to add or remove items easily without worrying about size."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is Java ArrayList?",
+      "paragraphs": [
+        "ArrayList is a resizable (dynamic) array that is part of the Java Collections Framework. It allows you to store elements dynamically without worrying about the initial size.",
+        "Unlike standard arrays, an ArrayList automatically adjusts its capacity as elements are added or removed.",
+        "• It belongs to the java.util package\n• It provides flexibility and ease of use\n• It behaves similarly to dynamic arrays in other programming languages",
+        "The ArrayList in Java can also have duplicate elements. It implements the List interface so that we can use all the methods of the List interface here. The ArrayList maintains the insertion order internally.",
+        "It inherits the AbstractList class and implements List interface."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Key Features of Java ArrayList",
+      "paragraphs": [
+        "The ArrayList provides several useful features that make it flexible and easy to use for storing and managing data dynamically.",
+        "• Maintains Insertion Order: Java ArrayList guarantees the order in which elements are fed into it. When going through the ArrayList with the iterating process, elements are accessed in the same sequence they were added.\n• Non-Synchronized: Unlike some other Java collection classes (for instance, Vector), ArrayList is not synchronized. This fact implies that ArrayList is not thread-safe; therefore, concurrent modification issues might arise if multiple threads access ArrayList concurrently.\n• Supports Random Access: ArrayList allows the implementation of fast random access operations using the elements' index positions. This is because an array structure is used for internal implementation, which ensures constant-time access to elements via index.\n• Slower Manipulation compared to LinkedList: Manipulation operations, such as insertion and deletion, can be slower in ArrayList than in LinkedList. Thus, ArrayList has to perform the shifting of the elements when items are inserted or removed from anywhere except the end of the list. However, it is effortless to add or delete an element in a LinkedList, and no shifting will be needed.\n• Requires Wrapper Classes for Primitive Types: ArrayList does not have a direct support for primitive data types such as `int`, `float`, and `char`. Instead, it requires the wrapper classes like `Integer`, `Float`, `Character`, etc., to hold for these primitive types. For example:",
+        "• Dynamic Resizing: ArrayList expands or contracts when adding or removing elements to meet the required new size. Due to adaptive resizing, online collections can be managed without physical resizing.\n• Capacity: ArrayList has an initial capacity, which is the number of elements it can keep without reallocation. If the number of elements cannot fit into this capacity, the List automatically enlarges the size to accommodate the rest of the elements. Copying all the elements to the new, larger array may be involved.\n• Iterable: ArrayList implements the `Iterable` interface. Therefore, we can easily iterate the elements using enhanced for loops or iterators.\n• Dynamic Initialization: Java ArrayList is initialized without specifying its size. Unlike traditional arrays, where you must declare a fixed size, ArrayList dynamically adjusts its size based on the number of elements added or removed. This dynamic sizing eliminates the need to preallocate memory or worry about exceeding array bounds, providing more flexibility in managing collections."
+      ],
+      "code": [
+        "ArrayList<Integer> integerList = new ArrayList<>();\nintegerList.add(10); // Here, 10 is automatically boxed into an Integer object"
+      ]
+    },
+    {
+      "heading": "Hierarchy of ArrayList Class",
+      "paragraphs": [
+        "The Java ArrayList class is part of the Java Collections Framework and follows a hierarchical structure.",
+        "• ArrayList extends the AbstractList class\n• AbstractList implements the List interface\n• The List interface extends the Collection interface\n• The Collection interface further extends the Iterable interface",
+        "This hierarchy allows ArrayList to inherit useful methods and support features like iteration, dynamic storage, and collection operations.",
+        "The below image shows the hierarchy of the ArrayList class:"
+      ],
+      "code": []
+    },
+    {
+      "heading": "ArrayList Class Declaration",
+      "paragraphs": [
+        "Let's see the declaration of the java.util.ArrayList class:",
+        "Explanation:",
+        "• public class ArrayList<E>:This declares the ArrayList class as a generic class. The type parameter <E> represents the type of elements stored in the ArrayList, allowing it to store any object type.\n• extends AbstractList<E>:This means ArrayList is a subclass of AbstractList. The AbstractList class provides a basic implementation of the List interface.\n• implements List<E>:This indicates that ArrayList implements the List interface, which defines methods for ordered collections.\n• implements RandomAccess:This is a marker interface that indicates ArrayList supports fast (constant-time) random access using an index.\n• implements Cloneable:This means ArrayList objects can be cloned using the clone() method.\n• implements Serializable:This allows ArrayList objects to be converted into a byte stream, so they can be saved to a file or transferred over a network."
+      ],
+      "code": [
+        "public class ArrayList<E> extends AbstractList<E> implements List<E>, RandomAccess, Cloneable, Serializable"
+      ]
+    },
+    {
+      "heading": "Constructors of the ArrayList Class",
+      "paragraphs": [
+        "ArrayList provides multiple constructors that allow you to create a list with a default size, a specified initial capacity, or by copying elements from another collection.",
+        "Constructor | Description\nArrayList() | It is used to build an empty array list.\nArrayList(Collection<? extends E> c) | It is used to build an array list that is initialized with the elements of the collection c.\nArrayList(int capacity) | It is used to build an array list that has the specified initial capacity."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Methods of the ArrayList Class",
+      "paragraphs": [
+        "ArrayList provides various methods to add, remove, access, and manipulate elements within the list.",
+        "Method | Description\nvoid add(int index, E element) | It is used to insert the specified element at the specified position in a list.\nboolean add(E e) | It is used to append the specified element at the end of a list.\nboolean addAll(Collection<? extends E> c) | It is used to append all of the elements in the specified collection to the end of this list, in the order that they are returned by the specified collection's iterator.\nboolean addAll(int index, Collection<? extends E> c) | It is used to append all the elements in the specified collection, starting at the specified position of the list.\nvoid clear() | It is used to remove all of the elements from this list.\nvoid ensureCapacity(int requiredCapacity) | It is used to enhance the capacity of an ArrayList instance.\nE get(int index) | It is used to fetch the element from the particular position of the list.\nboolean isEmpty() | It returns true if the list is empty, otherwise false.\nIterator() | Returns an iterator over the elements in the ArrayList in proper sequence.Allows sequential access to the elements in the ArrayList.\nlistIterator() | Returns a list iterator over the elements in the ArrayList in proper sequence.Allows bidirectional access to the elements in the ArrayList, including adding, removing, and modifying elements during iteration.\nint lastIndexOf(Object o) | It is used to return the index in this list of the last occurrence of the specified element, or -1 if the list does not contain this element.\nObject[] toArray() | It is used to return an array containing all of the elements in this list in the correct order.\n<T> T[] toArray(T[] a) | It is used to return an array containing all of the elements in this list in the correct order.\nObject clone() | It is used to return a shallow copy of an ArrayList.\nboolean contains(Object o) | It returns true if the list contains the specified element.\nint indexOf(Object o) | It is used to return the index in this list of the first occurrence of the specified element, or -1 if the List does not contain this element.\nE remove(int index) | It is used to remove the element present at the specified position in the list.\nboolean remove(Object o) | It is used to remove the first occurrence of the specified element.\nboolean removeAll(Collection<?> c) | It is used to remove all the elements from the list.\nboolean removeIf(Predicate<? super E> filter) | It is used to remove all the elements from the list that satisfies the given predicate.\nprotected void removeRange(int fromIndex, int toIndex) | It is used to remove all the elements lies within the given range.\nvoid replaceAll(UnaryOperator<E> operator) | It is used to replace all the elements from the list with the specified element.\nvoid retainAll(Collection<?> c) | It is used to retain all the elements in the list that are present in the specified collection.\nE set(int index, E element) | It is used to replace the specified element in the list, present at the specified position.\nvoid sort(Comparator<? super E> c) | It is used to sort the elements of the list on the basis of the specified comparator.\nSpliterator<E> spliterator() | It is used to create a spliterator over the elements in a list.\nList<E> subList(int fromIndex, int toIndex) | It is used to fetch all the elements that lies within the given range.\nint size() | It is used to return the number of elements present in the list.\nvoid trimToSize() | It is used to trim the capacity of this ArrayList instance to be the list's current size."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Iterating ArrayList using Iterator",
+      "paragraphs": [
+        "You can traverse an ArrayList using an Iterator. It provides a safe way to loop through elements, especially when modifying the list during iteration."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "This example demonstrates how to iterate through an ArrayList using the Iterator interface in Java.",
+        "import java.util.*;\npublic class Main{\n public static void main(String args[]){\n  ArrayList<String> list=new ArrayList<String>();//Creating arraylist\n  list.add(\"Mango\");//Adding object in arraylist  \n  list.add(\"Apple\");  \n  list.add(\"Banana\");  \n  list.add(\"Grapes\");  \n  //Traversing list through Iterator\n  Iterator itr=list.iterator();//getting the Iterator\n  while(itr.hasNext()){//check if iterator has the elements\n   System.out.println(itr.next());//printing the element and move to next\n  }\n }\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Mango\nApple\nBanana\nGrapes"
+      ]
+    },
+    {
+      "heading": "Iterating ArrayList using For-each loop",
+      "paragraphs": [
+        "The for-each loop (enhanced for loop) provides a simple and readable way to iterate through elements of an ArrayList."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "This example shows how to traverse an ArrayList using the for-each loop in a simple and readable way.",
+        "import java.util.*;\npublic class Main{\n public static void main(String args[]){\n  ArrayList<String> list=new ArrayList<String>();//Creating arraylist\n  list.add(\"Mango\");//Adding object in arraylist  \n  list.add(\"Apple\");  \n  list.add(\"Banana\");  \n  list.add(\"Grapes\");  \n  //Traversing list through for-each loop\n  for(String fruit:list)  \n    System.out.println(fruit);  \n\n }\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Mango\nApple\nBanana\nGrapes"
+      ]
+    },
+    {
+      "heading": "Get and Set Elements in ArrayList",
+      "paragraphs": [
+        "You can access and modify elements in an ArrayList using the get() and set() methods.",
+        "• get(index): This method retrieves element at a specific index\n• set(index, value): This method replaces element at a specific index"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "This example explains how to access and modify elements in an ArrayList using the get() and set() methods.",
+        "import java.util.*;\n\npublic class Main {\n    public static void main(String args[]) {\n        ArrayList<String> list = new ArrayList<>();\n\n        list.add(\"Mango\");\n        list.add(\"Apple\");\n        list.add(\"Banana\");\n        list.add(\"Grapes\");\n\n        System.out.println(\"Returning element: \" + list.get(1));\n\n        list.set(1, \"Dates\");\n\n        for (String fruit : list) {\n            System.out.println(fruit);\n        }\n    }\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Returning element: Apple\nMango\nDates\nBanana\nGrapes"
+      ]
+    },
+    {
+      "heading": "How to Sort ArrayList",
+      "paragraphs": [
+        "You can sort an ArrayList using the Collections.sort() method from the java.util package."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "This example demonstrates how to sort elements of an ArrayList using the Collections.sort() method.",
+        "import java.util.*;\n\npublic class Main {\n    public static void main(String args[]) {\n\n        List<String> list1 = new ArrayList<>();\n        list1.add(\"Mango\");\n        list1.add(\"Apple\");\n        list1.add(\"Banana\");\n        list1.add(\"Grapes\");\n\n        Collections.sort(list1);\n\n        for (String fruit : list1) {\n            System.out.println(fruit);\n        }\n\n        System.out.println(\"Sorting numbers...\");\n\n        List<Integer> list2 = new ArrayList<>();\n        list2.add(21);\n        list2.add(11);\n        list2.add(51);\n        list2.add(1);\n\n        Collections.sort(list2);\n\n        for (Integer number : list2) {\n            System.out.println(number);\n        }\n    }\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Apple\nBanana\nGrapes\nMango\nSorting numbers...\n1\n11\n21\n51"
+      ]
+    },
+    {
+      "heading": "Iterating Collection through Other Ways",
+      "paragraphs": [
+        "You can traverse an ArrayList using multiple methods like ListIterator, for loop, forEach(), and forEachRemaining()."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "This example demonstrates different ways to iterate through an ArrayList.",
+        "import java.util.*;\n\nclass Main {\n    public static void main(String args[]) {\n        ArrayList<String> list = new ArrayList<>();\n\n        list.add(\"Ravi\");\n        list.add(\"Vijay\");\n        list.add(\"Ravi\");\n        list.add(\"Ajay\");\n\n        System.out.println(\"ListIterator (reverse):\");\n        ListIterator<String> it = list.listIterator(list.size());\n        while (it.hasPrevious()) {\n            System.out.println(it.previous());\n        }\n\n        System.out.println(\"For loop:\");\n        for (int i = 0; i < list.size(); i++) {\n            System.out.println(list.get(i));\n        }\n\n        System.out.println(\"forEach():\");\n        list.forEach(a -> System.out.println(a));\n\n        System.out.println(\"forEachRemaining():\");\n        Iterator<String> itr = list.iterator();\n        itr.forEachRemaining(a -> System.out.println(a));\n    }\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "ListIterator (reverse):\nAjay\nRavi\nVijay\nRavi\nFor loop:\nRavi\nVijay\nRavi\nAjay\nforEach():\nRavi\nVijay\nRavi\nAjay\nforEachRemaining():\nRavi\nVijay\nRavi\nAjay"
+      ]
+    },
+    {
+      "heading": "User-defined Class Objects in ArrayList",
+      "paragraphs": [
+        "ArrayList can store objects of user-defined classes, making it useful for managing custom data."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "This example demonstrates how to store and access user-defined class objects in an ArrayList.",
+        "import java.util.*;\n\nclass Student {\n    int rollno;\n    String name;\n    int age;\n\n    Student(int r, String n, int a) {\n        rollno = r;\n        name = n;\n        age = a;\n    }\n}\n\nclass Main {\n    public static void main(String args[]) {\n        ArrayList<Student> list = new ArrayList<>();\n\n        list.add(new Student(101, \"Sonoo\", 23));\n        list.add(new Student(102, \"Ravi\", 21));\n        list.add(new Student(103, \"Hanumat\", 25));\n\n        for (Student s : list) {\n            System.out.println(s.rollno + \" \" + s.name + \" \" + s.age);\n        }\n    }\n}",
+        "Output:"
+      ],
+      "code": [
+        "101 Sonoo 23\n102 Ravi 21\n103 Hanumat 25"
+      ]
+    },
+    {
+      "heading": "ArrayList Serialization and Deserialization",
+      "paragraphs": [
+        "Serialization converts an object into a byte stream, while deserialization restores it back."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "This example demonstrates how to serialize and deserialize an ArrayList.",
+        "import java.io.*;\nimport java.util.*;\n\nclass Main {\n    public static void main(String[] args) {\n        try {\n            ArrayList<String> list = new ArrayList<>();\n            list.add(\"Ravi\");\n            list.add(\"Vijay\");\n            list.add(\"Ajay\");\n\n            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(\"file\"));\n            oos.writeObject(list);\n            oos.close();\n\n            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(\"file\"));\n            ArrayList data = (ArrayList) ois.readObject();\n\n            System.out.println(data);\n            ois.close();\n        } catch (Exception e) {\n            System.out.println(e);\n        }\n    }\n}",
+        "Output:"
+      ],
+      "code": [
+        "[Ravi, Vijay, Ajay]"
+      ]
+    },
+    {
+      "heading": "Adding Elements in ArrayList",
+      "paragraphs": [
+        "You can add elements using methods like add() and addAll()."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "This example demonstrates different ways to add elements to an ArrayList.",
+        "import java.util.*;\n\nclass Main {\n    public static void main(String args[]) {\n        ArrayList<String> list = new ArrayList<>();\n\n        list.add(\"Ravi\");\n        list.add(\"Vijay\");\n        list.add(\"Ajay\");\n\n        list.add(1, \"Gaurav\");\n\n        ArrayList<String> list2 = new ArrayList<>();\n        list2.add(\"Sonoo\");\n        list2.add(\"Hanumat\");\n\n        list.addAll(list2);\n\n        System.out.println(list);\n    }\n}",
+        "Output:"
+      ],
+      "code": [
+        "[Ravi, Gaurav, Vijay, Ajay, Sonoo, Hanumat]"
+      ]
+    },
+    {
+      "heading": "Removing Elements from ArrayList",
+      "paragraphs": [
+        "ArrayList provides multiple methods to remove elements."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "This example demonstrates different ways to remove elements from an ArrayList.",
+        "import java.util.*;\n\nclass Main {\n    public static void main(String[] args) {\n        ArrayList<String> list = new ArrayList<>();\n\n        list.add(\"Ravi\");\n        list.add(\"Vijay\");\n        list.add(\"Ajay\");\n\n        list.remove(\"Vijay\");\n        list.remove(0);\n\n        System.out.println(list);\n    }\n}",
+        "Output:"
+      ],
+      "code": [
+        "[Ajay]"
+      ]
+    },
+    {
+      "heading": "ArrayList - retainAll() Method",
+      "paragraphs": [
+        "The retainAll() method keeps only common elements between two collections."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "This example demonstrates how to retain common elements in an ArrayList.",
+        "import java.util.*;\n\nclass Main {\n    public static void main(String args[]) {\n        ArrayList<String> list1 = new ArrayList<>();\n        list1.add(\"Ravi\");\n        list1.add(\"Vijay\");\n\n        ArrayList<String> list2 = new ArrayList<>();\n        list2.add(\"Ravi\");\n\n        list1.retainAll(list2);\n\n        System.out.println(list1);\n    }\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "[Ravi]"
+      ]
+    },
+    {
+      "heading": "ArrayList isEmpty() Method",
+      "paragraphs": [
+        "The isEmpty() method checks whether the ArrayList is empty."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "This example demonstrates how to check if an ArrayList is empty.",
+        "import java.util.*;\n\nclass Main {\n    public static void main(String[] args) {\n        ArrayList<String> list = new ArrayList<>();\n\n        System.out.println(list.isEmpty());\n\n        list.add(\"Ravi\");\n\n        System.out.println(list.isEmpty());\n    }\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "true\nfalse"
+      ]
+    },
+    {
+      "heading": "ArrayList Example with Book Class",
+      "paragraphs": [
+        "ArrayList can store complex objects like books."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "This example demonstrates how to store and display objects in an ArrayList.",
+        "import java.util.*;\n\nclass Book {\n    int id;\n    String name;\n\n    Book(int i, String n) {\n        id = i;\n        name = n;\n    }\n}\n\nclass Main {\n    public static void main(String[] args) {\n        ArrayList<Book> list = new ArrayList<>();\n\n        list.add(new Book(101, \"Java\"));\n        list.add(new Book(102, \"Python\"));\n\n        for (Book b : list) {\n            System.out.println(b.id + \" \" + b.name);\n        }\n    }\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "101 Java\n102 Python"
+      ]
+    },
+    {
+      "heading": "Size and Capacity of ArrayList",
+      "paragraphs": [
+        "Size is the number of elements in the list, while capacity is the internal storage size."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "This example demonstrates the difference between size and capacity of an ArrayList.",
+        "import java.util.*;\n\nclass Main {\n    public static void main(String[] args) {\n        ArrayList<Integer> list = new ArrayList<>(10);\n\n        System.out.println(\"Size: \" + list.size());\n    }\n}\nCompile and Run",
+        "Output:",
+        "Explanation: The output makes sense as we have not done anything with the array list. Now observe the following program."
+      ],
+      "code": [
+        "Size: 0"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:43:31.533Z"
+}

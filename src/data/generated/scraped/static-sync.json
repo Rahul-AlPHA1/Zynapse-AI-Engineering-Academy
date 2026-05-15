@@ -1,0 +1,125 @@
+{
+  "topicId": "static-sync",
+  "title": "Static Synchronization in Java",
+  "sectionId": "java-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/static-synchronization-in-java",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/static-synchronization-in-java",
+      "score": 69,
+      "sectionCount": 11
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_static_synchronization.htm",
+      "score": 52,
+      "sectionCount": 11
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Static Synchronization in Java",
+      "paragraphs": [
+        "Java static synchronization ensures thread safety for shared static resources by locking the class-level object instead of individual instances.",
+        "In this chapter, we will learn how static synchronization works and how it ensures safe access to shared static data in a multithreaded environment."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What Is Static Synchronization?",
+      "paragraphs": [
+        "Although a synchronized method ensures that only one thread can access it at a time, it applies an instance-level lock, which may not be sufficient when multiple objects or static members are involved. In such cases, the execution order of threads is not guaranteed across different instances.",
+        "Static synchronization solves this problem by applying a class-level lock instead of an object-level lock. When a static method is declared as synchronized, the lock is placed on the Class object, ensuring that only one thread can execute any static synchronized method of that class at a time.",
+        "For an example, if a class contains multiple static synchronized methods (such as demo1, demo2, demo3, and demo4), and one thread is executing demo1, no other thread can access any of the other static synchronized methods simultaneously. This guarantees consistent behavior for shared static resources."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Creating Static Synchronization Block",
+      "paragraphs": [
+        "Static synchronization is achieved by applying a lock at the class level instead of the object level. While static synchronized methods automatically lock the class, you can also explicitly create a static synchronized block by locking the Class object."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [
+        "Here is the syntax:"
+      ],
+      "code": [
+        "synchronized (ClassName.class) {\n    // code\n}"
+      ]
+    },
+    {
+      "heading": "Why Static Synchronization Is Needed?",
+      "paragraphs": [
+        "Suppose there are two objects of a shared class Table, named object1 and object2. When using synchronized methods or synchronized blocks, threads working on the same object (for example, t1 and t2) do not interfere with each other because they share a single object-level lock.",
+        "However, threads operating on different objects (such as t1 with object1 and t3 with object2) can still interfere with each other because each object has its own lock. This means synchronization at the instance level is not sufficient to protect shared static resources.",
+        "To avoid such interference across multiple objects, static synchronization is used. It applies a class-level lock, ensuring that only one thread can access the shared resource at a time, regardless of how many objects of the class are created.",
+        "Therefore, static synchronization is preferred when a shared resource must be accessed in a thread-safe and consistent manner across all instances of a class."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example of Static Synchronization",
+      "paragraphs": [
+        "The following example demonstrates how static synchronization applies a class-level lock to ensure that only one thread executes the method at a time, even when multiple objects are created.",
+        "Exampleclass Print\n{\n// static synchronized method declaration\n    public static synchronized void printMessage(String s)\n    {\n        for(int i = 0; i < 4; i++)\n        {\n            System.out.print(\"Good Night: \");\n            System.out.println(s);\n            try{\n                Thread.sleep(1000);  //sleep thread for 1 sec\n            }\n            catch(InterruptedException e)\n            {\n            }\n        }\n    }\n}\nclass MyThrd extends Thread {\n    Print p;\n    String s;\n    MyThrd(Print p, String s)\n    {\n        this.p = p;\n        this.s = s;\n    }\n    public void run()\n    {\n        p.printMessage(s);\n    }\n}\npublic class Main {\n    public static void main(String arg[])\n    {\n        Print p1 = new Print();\n        Print p2 = new Print();\n        MyThrd th1 = new MyThrd(p1,\"Mahi\");\n        MyThrd th2 = new MyThrd(p2,\"Sachin\");\n        th1.start(); // start thread th1\n        th2.start(); // start thread th2\n    } \n}\nCompile and Run",
+        "Output:",
+        "Explanation:",
+        "In this program, Print contains a static synchronized method, MyThrd creates and runs threads that call this method, and Main starts multiple threads. Since the method is static synchronized, the first thread acquires the class-level lock and executes the method, while the other thread waits until the lock is released, ensuring thread-safe and ordered execution."
+      ],
+      "code": [
+        "Good Night: Mahi\nGood Night: Mahi\nGood Night: Mahi\nGood Night: Mahi\nGood Night: Sachin\nGood Night: Sachin\nGood Night: Sachin\nGood Night: Sachin\n\nGood Night: Mahi\nGood Night: Mahi\nGood Night: Mahi\nGood Night: Mahi\nGood Night: Sachin\nGood Night: Sachin\nGood Night: Sachin\nGood Night: Sachin"
+      ]
+    },
+    {
+      "heading": "Static Synchronization by Using the Anonymous Class",
+      "paragraphs": [
+        "In static synchronization using an anonymous class, threads are created without defining separate thread classes, while synchronization is still maintained at the class level. Since the method is static synchronized, all threads share the same class-level lock, ensuring that only one thread executes the method at a time."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "//Creating a class that contains a static synchronized method \nclass Table{  \n synchronized static  void printTable(int n){  \n   for(int i=1;i<=10;i++){  \n     System.out.println(n*i);  \n     try{  \n       Thread.sleep(100);  \n     }catch(Exception e){}  \n   }  \n }  \n}  \n//Creating a Main class to call static synchronized method on threads run\npublic class Main {  \n public static void main(String[] args) {  \n    Thread t1=new Thread(){  \n        public void run(){  \n            Table.printTable(1);  \n        }  \n    };  \n    Thread t2=new Thread(){  \n        public void run(){  \n            Table.printTable(10);  \n        }  \n    };  \n    Thread t3=new Thread(){  \n        public void run(){  \n            Table.printTable(100);  \n        }  \n    };  \n    Thread t4=new Thread(){  \n        public void run(){  \n            Table.printTable(1000);  \n        }  \n    };  \n    t1.start();  \n    t2.start();  \n    t3.start();  \n    t4.start();  \n      \n }  \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "100\n200\n300\n400\n500\n600\n700\n800\n900\n1000\n10\n20\n30\n40\n50\n60\n70\n80\n90\n100\n1000\n2000\n3000\n4000\n5000\n6000\n7000\n8000\n9000\n10000\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10"
+      ]
+    },
+    {
+      "heading": "Synchronized Block on a Class Lock",
+      "paragraphs": [
+        "A synchronized block on a class lock is used to achieve static synchronization without declaring the entire method as static synchronized.",
+        "In this approach, the lock is acquired on the ClassName.class object, which represents the class-level monitor. This ensures that only one thread can execute the synchronized block across all instances of the class.",
+        "A static synchronized method is internally equivalent to a synchronized block that locks the class object."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "In the following example, a synchronized block locks the Table.class object to provide class-level synchronization for a shared static resource.",
+        "Output:"
+      ],
+      "code": [
+        "class Table {\n\n    static void printTable(int n) {\n        synchronized (Table.class) {   // class-level lock\n            for (int i = 1; i <= 5; i++) {\n                System.out.println(n * i);\n                try {\n                    Thread.sleep(400);\n                } catch (Exception e) {\n                    System.out.println(e);\n                }\n            }\n        }\n    }\n}\n\nclass MyThread extends Thread {\n    int n;\n\n    MyThread(int n) {\n        this.n = n;\n    }\n\n    public void run() {\n        Table.printTable(n);\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        MyThread t1 = new MyThread(5);\n        MyThread t2 = new MyThread(100);\n\n        t1.start();\n        t2.start();\n    }\n}",
+        "5\n10\n15\n20\n25\n100\n200\n300\n400\n500"
+      ]
+    },
+    {
+      "heading": "Difference Between Synchronization and Static Synchronization",
+      "paragraphs": [
+        "The following table shows the difference between synchronization and static synchronization.",
+        "Aspect | Synchronization | Static Synchronization\nScope of Lock | It locks the instance (object level). | It locks the class object (class level)\nUse | It applies to instance methods or blocks. | It applies to static methods or blocks.\nLock Context | Lock is associated with the current object instance. | The lock is related to the .class object of the class.\nThread Access | It ensures that only one thread accesses the synchronized instance code of the same object at a time. | It ensures only one thread accesses the synchronized static code of the entire class at a time.\nImpact | It affects thread safety at the instance level. | It affects thread safety for shared static resources.\nUses | To synchronize instance-specific data access. | To synchronize shared data across all instances.\nDeclaration | synchronized void instanceMethod() | static synchronized void staticMethod()\nUses | It is commonly used. | It is not widely used.\nInstances | In synchronization, for each object, a new instance is created. | In static synchronization, for the entire program, there is only one instance."
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:40:33.412Z"
+}

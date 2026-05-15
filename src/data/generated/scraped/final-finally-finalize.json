@@ -1,0 +1,219 @@
+{
+  "topicId": "final-finally-finalize",
+  "title": "final keyword in Java",
+  "sectionId": "java-core-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/final-keyword-in-java",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/final-keyword-in-java",
+      "score": 139,
+      "sectionCount": 23
+    }
+  ],
+  "sections": [
+    {
+      "heading": "final keyword in Java",
+      "paragraphs": [
+        "The final keyword in Java is used to restrict the user. It is also known as a non-access modifier. We can use the final keyword with:",
+        "• Variable\n• Method\n• Class\n• Parameter"
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. Java final variable",
+      "paragraphs": [
+        "When a variable is declared as final, it is known as a final variable. Its value cannot be changed once initialized. It behaves like a constant."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [
+        "Here is the syntax to declare a final variable:"
+      ],
+      "code": [
+        "final datatype VARIABLE_NAME=VALUE;"
+      ]
+    },
+    {
+      "heading": "Example of final Variable",
+      "paragraphs": [
+        "In the following code, the Main class has a final variable named SPEED_LIMIT. When we try to update the value of final variable SPEED_LIMIT to 400 by invoking the run() method, value does not change because final variable once initialized cannot be changed.",
+        "The following example demonstrates that a final variable cannot be modified once it is assigned a value.",
+        "When we compile the above code, it shows a compile-time error, as follows:"
+      ],
+      "code": [
+        "class Main {  \n  final int SPEED_LIMIT=90;    //final variable  \n  void run() {  \n   SPEED_LIMIT=400;   //we cannot change the final variable  \n  }  \n  public static void main(String args[]) {  \n  Main obj=new  Main();  \n  obj.run();  \n  }  \n }",
+        "error: cannot assign a value to final variable SPEED_LIMIT"
+      ]
+    },
+    {
+      "heading": "2. Java final Method",
+      "paragraphs": [
+        "A method declared as final is known as a final method. Subclasses cannot override the final method."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax:",
+      "paragraphs": [
+        "Here is the syntax to declare a final method:"
+      ],
+      "code": [
+        "final void paint() {\n}"
+      ]
+    },
+    {
+      "heading": "Example of final Method",
+      "paragraphs": [
+        "The following example demonstrates that a final method cannot be overridden in a subclass.",
+        "When we compile the above code, it shows a compile-time error, as follows:"
+      ],
+      "code": [
+        "class Bike {  \n  final void run() {   //final method\n   System.out.println(\"running\"); }  \n}  \npublic class Main extends Bike {  \n   //We cannot override the final method  \n   void run(){System.out.println(\"running safely with 100kmph\");\n}  \n    public static void main(String args[]) {  \n   Main obj= new Main();  \n   obj.run();  \n   }  \n}",
+        "Main.java:7: error: run() in Main cannot override run() in Bike\n   void run(){System.out.println(\"running safely with 100kmph\");\n        ^\n  overridden method is final\n1 error"
+      ]
+    },
+    {
+      "heading": "3. Java final Class",
+      "paragraphs": [
+        "A class declared with the final keyword is known as a final class. Note that the final class cannot be inherited."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax:",
+      "paragraphs": [
+        "Here is the syntax to declare a final class:"
+      ],
+      "code": [
+        "final class Square {\n//statement \n}"
+      ]
+    },
+    {
+      "heading": "Example of final Class",
+      "paragraphs": [
+        "The following example demonstrates that a final class cannot be inherited by another class.",
+        "When we compile the above code, it shows a compile-time error, as follows:"
+      ],
+      "code": [
+        "final class Bike {}  \n//We cannot inherit the final class  \npublic class Main extends Bike \n{  \n   void run()\n   {\n       System.out.println(\"running safely with 100kmph\");   \n   }  \n     public static void main(String args[]) \n     {  \n       Main obj = new Main();  \n       obj.run();  \n   }  \n}",
+        "Main.java:3: error: cannot inherit from final Bike\npublic class Main extends Bike \n                          ^\n1 error"
+      ]
+    },
+    {
+      "heading": "Inheriting a Final Method",
+      "paragraphs": [
+        "A final method can be inherited by a child class, but it cannot be overridden. This is useful when you want to keep method implementation remains unchanged in subclasses."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates inheriting a final method:",
+        "Output:"
+      ],
+      "code": [
+        "class Bike {    \n    final void run() { \n        System.out.println(\"running...\");   \n    }    \n}    \n\npublic class Main extends Bike {    \n    public static void main(String args[]) {    \n        new Main().run();    \n    }    \n}",
+        "running..."
+      ]
+    },
+    {
+      "heading": "Blank or Uninitialized Final Variable",
+      "paragraphs": [
+        "A blank final variable is a final variable that is not initialized at the time of declaration. Once initialized, its value cannot be changed. These variables are useful when the value must be set during object creation, such as an employee’s PAN card number."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following code snippet showing the use of blank or uninitialized final variable:"
+      ],
+      "code": [
+        "class Student {    \n    int id;    \n    String name;    \n    final String PAN_CARD_NUMBER;    \n    ...\n}"
+      ]
+    },
+    {
+      "heading": "Initialization of a Blank Final Variable",
+      "paragraphs": [
+        "A blank final variable can be initialized only inside a constructor."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates the initialization of a blank final variable:",
+        "Output:"
+      ],
+      "code": [
+        "public class Main {    \n    final int speedlimit;   // blank final variable    \n\n    Main() {    \n        speedlimit = 70;    \n        System.out.println(speedlimit);    \n    }    \n\n    public static void main(String args[]) {    \n        new Main();    \n    }    \n}",
+        "70"
+      ]
+    },
+    {
+      "heading": "Static Blank Final Variable",
+      "paragraphs": [
+        "A static blank final variable is a static final variable that is not initialized at the time of declaration. It can be initialized only inside a static block."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates the use of static blank final variable:",
+        "Output:"
+      ],
+      "code": [
+        "public class Main {    \n    static final int data;   // static blank final variable    \n\n    static {    \n        data = 50;    \n    }    \n\n    public static void main(String args[]) {    \n        System.out.println(Main.data);    \n    }    \n}",
+        "50"
+      ]
+    },
+    {
+      "heading": "Final Parameter",
+      "paragraphs": [
+        "A final parameter is a method parameter whose value cannot be changed inside the method."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates the use of final parameter:",
+        "Output:"
+      ],
+      "code": [
+        "public class Main {  \n    public void value(final int num) {  \n        System.out.println(num);  \n    }  \n\n    public static void main(String args[]) {  \n        Main obj = new Main();  \n        obj.value(500);  \n    }  \n}",
+        "500"
+      ]
+    },
+    {
+      "heading": "Advantages of the final Keyword",
+      "paragraphs": [
+        "Here are the key advantages of using the final Keyword in Java, which enhance the security, performance, and maintainability of our code:",
+        "• Improved Performance: The final keyword enables the compiler to optimise code execution because final variables have fixed values, which results in enhanced efficiency.\n• Security: Declaring classes and methods as final prevents unintended modifications, ensuring core functionality remains intact.\n• Clear Design Intent: It signals to developers that a class or method should remain unchanged, improving code readability and maintainability.\n• Immutability: Helps create immutable objects, which are essential for functional programming and multi-threaded applications.\n• Thread Safety: Final fields ensure consistency in concurrent environments, preventing unexpected modifications by different threads."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Final Constructor Limitation",
+      "paragraphs": [
+        "A constructor cannot be declared as final because constructors are never inherited, and the final keyword is mainly used to restrict inheritance and overriding."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Characteristics of the final Keyword",
+      "paragraphs": [
+        "There are several characteristics of the final keyword in Java. Some of them are as follows:",
+        "• Immutability: When applied to variables, classes, or methods, the final keyword ensures that values remain unchanged once assigned, preventing modifications.\n• Method Overriding Restrictions: A final method cannot be overridden in subclasses, helping maintain security and ensuring consistent behavior.\n• Thread Safety: The final keyword enhances clarity in multi-threaded applications by ensuring that values remain constant, reducing unintended modifications."
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:37:38.828Z"
+}

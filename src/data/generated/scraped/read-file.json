@@ -1,0 +1,137 @@
+{
+  "topicId": "read-file",
+  "title": "Java - Reading File",
+  "sectionId": "java-advanced",
+  "source": "tutorialspoint",
+  "url": "https://www.tutorialspoint.com/java/java_read_file.htm",
+  "allSources": [
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_read_file.htm",
+      "score": 76,
+      "sectionCount": 14
+    },
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/different-ways-of-reading-a-text-file-in-java",
+      "score": 4,
+      "sectionCount": 1
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Reading a File in Java",
+      "paragraphs": [
+        "We can read a file in Java using multiple ways. Following are three most popular ways to create a file in Java −",
+        "• Using FileInputStream() constructor\n• Using FileReader.read() method\n• Using Files.readAllLines() method",
+        "Let's take a look at each of the way to read file in Java."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Reading File Using FileInputStream() Constructor",
+      "paragraphs": [
+        "FileInputStream is used for reading data from the files. Objects can be created using the keyword new and there are several types of constructors available."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [
+        "Following constructor takes a file name as a string to create an input stream object to read the file −"
+      ],
+      "code": [
+        "InputStream f = new FileInputStream(\"C:/java/hello.txt\");"
+      ]
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [
+        "Following constructor takes a file object to create an input stream object to read the file. First we create a file object using File() method as follows −"
+      ],
+      "code": [
+        "File f = new File(\"C:/java/hello.txt\");\nInputStream f = new FileInputStream(f);"
+      ]
+    },
+    {
+      "heading": "Example: Reading File Using FileInputStream() Constructor",
+      "paragraphs": [
+        "Following is the example to demonstrate FileInputStream to read a file from current directory −",
+        "The above code would create file test.txt and would write given numbers in binary format. Same would be read using FileInputStream and the output is printed on the stdout screen."
+      ],
+      "code": [
+        "package com.tutorialspoint;\n\nimport java.io.FileInputStream;\nimport java.io.FileOutputStream;\nimport java.io.IOException;\nimport java.io.InputStream;\nimport java.io.OutputStream;\n\npublic class FileTest {\n   public static void main(String args[]) {\n      try {\n         byte bWrite [] = {65, 66, 67, 68, 69};\n         OutputStream os = new FileOutputStream(\"test.txt\");\n         for(int x = 0; x < bWrite.length ; x++) {\n            os.write( bWrite[x] );   // writes the bytes\n         }\n         os.close();\n     \n         InputStream is = new FileInputStream(\"test.txt\");\n         int size = is.available();\n\n         for(int i = 0; i < size; i++) {\n            System.out.print((char)is.read() + \"  \");\n         }\n         is.close();\n      } catch (IOException e) {\n         System.out.print(\"Exception\");\n      }\t\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "A  B  C  D  E"
+      ]
+    },
+    {
+      "heading": "Reading File Using FileReader.read() Method",
+      "paragraphs": [
+        "FileReader.read() method of FileReader class allows to read chars from a file as shown below −"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [],
+      "code": [
+        "// get an existing file\nFile file = new File(\"d://test//testFile1.txt\");\n\n// read content\nFileReader reader = new FileReader(file);\n\nint c;\nwhile ((c = reader.read()) != -1) {\n   char ch = (char) c;\n   System.out.print(ch);\n}"
+      ]
+    },
+    {
+      "heading": "Example: Reading File Using FileReader.read() Method",
+      "paragraphs": [
+        "Following is the example to demonstrate File to read a file in given directory using FileReader.read() method −",
+        "The above code would create file test.txt and would write given string in text format. Same would be the output on the stdout screen."
+      ],
+      "code": [
+        "package com.tutorialspoint;\n\nimport java.io.File;\nimport java.io.FileReader;\nimport java.io.FileWriter;\nimport java.io.IOException;\n\npublic class FileTest {\n   public static void main(String args[]) {\n      try {\n         File file = new File(\"d://test//testFile1.txt\");\n\n         //Create the file\n         if (file.createNewFile()) {\n            System.out.println(\"File is created!\");\n         } else {\n            System.out.println(\"File already exists.\");\n         } \n\n         // Write Content\n         FileWriter writer = new FileWriter(file);\n         writer.write(\"Test data\");\n         writer.close();\n\n\n         // read content\n         FileReader reader = new FileReader(file);\n\n         int c;\n         while ((c = reader.read()) != -1) {\n            char ch = (char) c;\n            System.out.print(ch);\n         }\n      } catch (IOException e) {\n         System.out.print(\"Exception\");\n      }\t\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "File is created!\nTest data"
+      ]
+    },
+    {
+      "heading": "Reading File Using Files.readAllLines() Method",
+      "paragraphs": [
+        "Files.readAllLines() is a newer method to read all content of a file as a List of String as shown below −"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [],
+      "code": [
+        "List<String> content = Files.readAllLines(Paths.get(\"d://test/testFile3.txt\"));"
+      ]
+    },
+    {
+      "heading": "Example: Reading File Using Files.readAllLines() Method",
+      "paragraphs": [
+        "Following is the example to demonstrate File to read a file from a given directory using readAllLines() method −",
+        "The above code would create file test.txt and would write given strings in text format. Same would be the output on the stdout screen."
+      ],
+      "code": [
+        "package com.tutorialspoint;\n\nimport java.io.IOException;\nimport java.nio.charset.StandardCharsets;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\nimport java.nio.file.StandardOpenOption;\nimport java.util.Arrays;\nimport java.util.List;\n\npublic class FileTest {\n   public static void main(String args[]) {\n      try {\n    \t  String data = \"Test data\";\n          Files.write(Paths.get(\"d://test/testFile3.txt\"), data.getBytes());\n          List<String> lines = Arrays.asList(\"1st line\", \"2nd line\");\n          Files.write(Paths.get(\n             \"file6.txt\"), lines, StandardCharsets.UTF_8, \n             StandardOpenOption.CREATE, StandardOpenOption.APPEND);\n          \n          List<String> content = Files.readAllLines(Paths.get(\"d://test/testFile3.txt\"));\n\n          System.out.println(content);\n          \n          content = Files.readAllLines(Paths.get(\"file6.txt\"));\n\n          System.out.println(content);\n      } catch (IOException e) {\n         System.out.print(\"Exception\");\n      }\t\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "[Test data]\n[1st line, 2nd line]"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:41:55.212Z"
+}

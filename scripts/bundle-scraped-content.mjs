@@ -52,8 +52,8 @@ function main() {
 
 export type ScrapedSection = {
   heading: string;
-  paragraphs: string[];
-  code: string[];
+  paragraphs: readonly string[];
+  code: readonly string[];
 };
 
 export type ScrapedTopic = {
@@ -61,7 +61,7 @@ export type ScrapedTopic = {
   source: string;
   url: string;
   sectionId: string;
-  sections: ScrapedSection[];
+  sections: readonly ScrapedSection[];
 };
 
 export const javaScrapedContent: Record<string, ScrapedTopic> = ${JSON.stringify(contentMap, null, 2)} as const;

@@ -1,0 +1,209 @@
+{
+  "topicId": "treemap",
+  "title": "Java TreeMap Class",
+  "sectionId": "java-collections-jdbc",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-treemap",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-treemap",
+      "score": 136,
+      "sectionCount": 20
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java TreeMap Class",
+      "paragraphs": [
+        "Java TreeMap is used for storing key-value pairs in a sorted order which is useful when data needs to be accessed in a structured and ordered way. It is commonly used in applications where quick search, insertion, and deletion operations are required along with sorting.",
+        "In this chapter, you will learn about the Java TreeMap class, its working, features, and how it maintains sorted key-value pairs using a red-black tree."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is Java TreeMap?",
+      "paragraphs": [
+        "Java TreeMap is a class in the java.util package that implements the NavigableMap interface and extends the AbstractMap class. It is based on a red-black tree data structure and stores key-value pairs in sorted (ascending) order.",
+        "TreeMap allows only unique keys, does not permit null keys, but can contain multiple null values. It is non-synchronized and is mainly used when sorted data is required."
+      ],
+      "code": []
+    },
+    {
+      "heading": "TreeMap Class Hierarchy",
+      "paragraphs": [
+        "The TreeMap is part of the Collections Framework and follows a hierarchical structure where it extends the AbstractMap class and implements the NavigableMap interface. NavigableMap further extends SortedMap, which is a part of the Map interface. This hierarchy enables TreeMap to store elements in a sorted manner and provide navigation methods such as finding higher, lower, or nearest keys efficiently.",
+        "Key Points about TreeMap",
+        "The important points about Java TreeMap class are:",
+        "• The TreeMap stores data in the form of key-value pairs, where each key is associated with a specific value.\n• It ensures that all keys are unique, which means duplicate keys are not allowed.\n• It maintains elements in ascending order automatically using a red-black tree data structure.\n• It provides efficient performance for operations such as search, insertion, and deletion.\n• It does not allow null keys, but it supports multiple null values.\n• It is non-synchronized, which makes it faster but not thread-safe by default."
+      ],
+      "code": []
+    },
+    {
+      "heading": "TreeMap Class Declaration",
+      "paragraphs": [
+        "Let's see the declaration for java.util.TreeMap class."
+      ],
+      "code": [
+        "public class TreeMap<K,V> extends AbstractMap<K,V> implements NavigableMap<K,V>, Cloneable, Serializable"
+      ]
+    },
+    {
+      "heading": "TreeMap Class Parameters",
+      "paragraphs": [
+        "Let's see the Parameters for java.util.TreeMap class.",
+        "• K: It is the type of keys maintained by this map.\n• V: It is the type of mapped values."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Constructors of TreeMap Class",
+      "paragraphs": [
+        "Java TreeMap provides multiple constructors to create and initialize a TreeMap in different ways."
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. TreeMap()",
+      "paragraphs": [
+        "This constructor constructs an empty TreeMap that is sorted according to the natural ordering of its keys.",
+        "Here is syntax:"
+      ],
+      "code": [
+        "TreeMap<K, V> map = new TreeMap<>();"
+      ]
+    },
+    {
+      "heading": "2. TreeMap(Comparator comparator)",
+      "paragraphs": [
+        "This constructor constructs an empty TreeMap that is sorted according to the specified comparator.",
+        "Here is syntax:"
+      ],
+      "code": [
+        "TreeMap<K, V> map = new TreeMap<>(comparator);"
+      ]
+    },
+    {
+      "heading": "3. TreeMap(Map m)",
+      "paragraphs": [
+        "This constructor constructs a TreeMap and initializes it with the entries from the specified map, sorted according to the natural ordering of the keys.",
+        "Here is syntax:"
+      ],
+      "code": [
+        "TreeMap<K, V> map = new TreeMap<>(m);"
+      ]
+    },
+    {
+      "heading": "4. TreeMap(SortedMapm)",
+      "paragraphs": [
+        "This constructor constructs a TreeMap and initializes it with the entries from the specified sorted map, maintaining the same ordering as the given map.",
+        "Here is syntax:"
+      ],
+      "code": [
+        "TreeMap<K, V> map = new TreeMap<>(m);"
+      ]
+    },
+    {
+      "heading": "5. TreeMap(Collection c)",
+      "paragraphs": [
+        "This constructor constructs a TreeMap containing the elements of the specified collection, sorted according to their natural ordering.",
+        "Here is syntax:"
+      ],
+      "code": [
+        "TreeMap<K, V> map = new TreeMap<>(c);"
+      ]
+    },
+    {
+      "heading": "6. TreeMap(SortedMapm, Comparator comparator)",
+      "paragraphs": [
+        "Constructs a TreeMap with the entries from the specified sorted map and sorts them using the provided comparator.",
+        "Here is syntax:"
+      ],
+      "code": [
+        "TreeMap<K, V> map = new TreeMap<>(m, comparator);"
+      ]
+    },
+    {
+      "heading": "Methods of TreeMap Class",
+      "paragraphs": [
+        "The TreeMap provides a variety of methods to perform operations such as insertion, deletion, searching, and navigation of elements in a sorted key-value structure.",
+        "The following table lists the commonly used methods of the TreeMap class along with their descriptions:",
+        "Method | Description\nMap.Entry<K,V> ceilingEntry(K key) | It returns the key-value pair having the least key, greater than or equal to the specified key, or null if there is no such key.\nK ceilingKey(K key) | It returns the least key, greater than the specified key or null if there is no such key.\nvoid clear() | It removes all the key-value pairs from a map.\nObject clone() | It returns a shallow copy of TreeMap instance.\nComparator<? super K> comparator() | It returns the comparator that arranges the key in order, or null if the map uses the natural ordering.\nNavigableSet<K> descendingKeySet() | It returns a reverse order NavigableSet view of the keys contained in the map.\nNavigableMap<K,V> descendingMap() | It returns the specified key-value pairs in descending order.\nMap.EntryfirstEntry() | It returns the key-value pair having the least key.\nMap.Entry<K,V> floorEntry(K key) | It returns the greatest key, less than or equal to the specified key, or null if there is no such key.\nvoid forEach(BiConsumer<? super K,? super V> action) | It performs the given action for each entry in the map until all entries have been processed or the action throws an exception.\nSortedMap<K,V> headMap(K toKey) | It returns the key-value pairs whose keys are strictly less than toKey.\nNavigableMap<K,V> headMap(K toKey, boolean inclusive) | It returns the key-value pairs whose keys are less than (or equal to if inclusive is true) toKey.\nMap.Entry<K,V> higherEntry(K key) | It returns the least key strictly greater than the given key, or null if there is no such key.\nK higherKey(K key) | It is used to return true if this map contains a mapping for the specified key.\nSetkeySet() | It returns the collection of keys exist in the map.\nMap.Entry<K,V> lastEntry() | It returns the key-value pair having the greatest key, or null if there is no such key.\nMap.Entry<K,V> lowerEntry(K key) | It returns a key-value mapping associated with the greatest key strictly less than the given key, or null if there is no such key.\nK lowerKey(K key) | It returns the greatest key strictly less than the given key, or null if there is no such key.\nNavigableSet<K> navigableKeySet() | It returns a NavigableSet view of the keys contained in this map.\nMap.Entry<K,V> pollFirstEntry() | It removes and returns a key-value mapping associated with the least key in this map, or null if the map is empty.\nMap.Entry<K,V> pollLastEntry() | It removes and returns a key-value mapping associated with the greatest key in this map, or null if the map is empty.\nV put(K key, V value) | It inserts the specified value with the specified key in the map.\nvoid putAll(Map<? extends K,? extends V> map) | It is used to copy all the key-value pair from one map to another map.\nV replace(K key, V value) | It replaces the specified value for a specified key.\nboolean replace(K key, V oldValue, V newValue) | It replaces the old value with the new value for a specified key.\nvoid replaceAll(BiFunction<? super K,? super V,? extends V> function) | It replaces each entry's value with the result of invoking the given function on that entry until all entries have been processed or the function throws an exception.\nNavigableMap<K,V> subMap(K fromKey, boolean fromInclusive, K toKey, boolean toInclusive) | It returns key-value pairs whose keys range from fromKey to toKey.\nSortedMap<K,V> subMap(K fromKey, K toKey) | It returns key-value pairs whose keys range from fromKey, inclusive, to toKey, exclusive.\nSortedMap<K,V> tailMap(K fromKey) | It returns key-value pairs whose keys are greater than or equal to fromKey.\nNavigableMap<K,V> tailMap(K fromKey, boolean inclusive) | It returns key-value pairs whose keys are greater than (or equal to, if inclusive is true) fromKey.\nboolean containsKey(Object key) | It returns true if the map contains a mapping for the specified key.\nboolean containsValue(Object value) | It returns true if the map maps one or more keys to the specified value.\nK firstKey() | It is used to return the first (lowest) key currently in this sorted map.\nV get(Object key) | It is used to return the value to which the map maps the specified key.\nK lastKey() | It is used to return the last (highest) key currently in the sorted map.\nV remove(Object key) | It removes the key-value pair of the specified key from the map.\nSet<Map.Entry<K,V>> entrySet() | It returns a set view of the mappings contained in the map.\nint size() | It returns the number of key-value pairs exists in the hashtable.\nCollectionvalues() | It returns a collection view of the values contained in the map."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Examples of Java TreeMap Class",
+      "paragraphs": [
+        "The following examples demonstrate how to use Java TreeMap for storing, removing, and navigating key-value pairs."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example 1: Storing and Iterating TreeMap Elements",
+      "paragraphs": [
+        "This example demonstrates how to store key-value pairs in a TreeMap and iterate through them.",
+        "Output:"
+      ],
+      "code": [
+        "import java.util.*;\nclass TreeMap1{\n public static void main(String args[]){\n   TreeMap<Integer,String> map=new TreeMap<Integer,String>();  \n\t  map.put(100,\"Amit\");  \n\t  map.put(102,\"Ravi\");  \n\t  map.put(101,\"Vijay\");  \n\t  map.put(103,\"Rahul\");  \n\t  \n\t  for(Map.Entry m:map.entrySet()){  \n\t   System.out.println(m.getKey()+\" \"+m.getValue());  \n\t  }  \n }\n}",
+        "100 Amit\n101 Vijay\n102 Ravi\n103 Rahul"
+      ]
+    },
+    {
+      "heading": "Example 2: Removing Elements from TreeMap",
+      "paragraphs": [
+        "This example demonstrates how to remove an element using the remove() method.",
+        "Output:"
+      ],
+      "code": [
+        "import java.util.*;\npublic class TreeMap2 {\n   public static void main(String args[]) {\n\tTreeMap<Integer,String> map=new TreeMap<Integer,String>();  \n\t  map.put(100,\"Amit\");  \n\t  map.put(102,\"Ravi\");  \n\t  map.put(101,\"Vijay\");  \n\t  map.put(103,\"Rahul\");  \n\t  System.out.println(\"Before invoking remove() method\");\n\t  for(Map.Entry m:map.entrySet())\n\t  {\n\t\t  System.out.println(m.getKey()+\" \"+m.getValue());\t  \n\t  }\n\t  map.remove(102);\t  \n\t  System.out.println(\"After invoking remove() method\");\n\t  for(Map.Entry m:map.entrySet())\n\t  {\n\t\t  System.out.println(m.getKey()+\" \"+m.getValue());\t  \n\t  }\n\t  }\n}",
+        "Before invoking remove() method\n100 Amit\n101 Vijay\n102 Ravi\n103 Rahul\nAfter invoking remove() method\n100 Amit\n101 Vijay\n103 Rahul"
+      ]
+    },
+    {
+      "heading": "Example 3: Using NavigableMap Methods",
+      "paragraphs": [
+        "This example demonstrates various navigation methods such as descendingMap(), headMap(), tailMap(), and subMap().",
+        "Output:"
+      ],
+      "code": [
+        "import java.util.*;\nclass TreeMap3{\n public static void main(String args[]){\n   NavigableMap<Integer,String> map=new TreeMap<Integer,String>();  \n\t  map.put(100,\"Amit\");  \n\t  map.put(102,\"Ravi\");  \n\t  map.put(101,\"Vijay\");  \n\t  map.put(103,\"Rahul\");  \n\t  //Maintains descending order\n\t  System.out.println(\"descendingMap: \"+map.descendingMap());\n\t  //Returns key-value pairs whose keys are less than or equal to the specified key.\n\t  System.out.println(\"headMap: \"+map.headMap(102,true));\n\t  //Returns key-value pairs whose keys are greater than or equal to the specified key.\n\t  System.out.println(\"tailMap: \"+map.tailMap(102,true));\n\t  //Returns key-value pairs exists in between the specified key.\n\t  System.out.println(\"subMap: \"+map.subMap(100, false, 102, true)); \n }\n}",
+        "descendingMap: {103=Rahul, 102=Ravi, 101=Vijay, 100=Amit}\nheadMap: {100=Amit, 101=Vijay, 102=Ravi}\ntailMap: {102=Ravi, 103=Rahul}\nsubMap: {101=Vijay, 102=Ravi}"
+      ]
+    },
+    {
+      "heading": "Example 4: Using SortedMap Methods",
+      "paragraphs": [
+        "This example demonstrates how to use SortedMap methods like headMap(), tailMap(), and subMap().",
+        "Output:"
+      ],
+      "code": [
+        "import java.util.*;\nclass TreeMap4{\n public static void main(String args[]){\n   SortedMap<Integer,String> map=new TreeMap<Integer,String>();  \n\t  map.put(100,\"Amit\");  \n\t  map.put(102,\"Ravi\");  \n\t  map.put(101,\"Vijay\");  \n\t  map.put(103,\"Rahul\");  \n\t  //Returns key-value pairs whose keys are less than the specified key.\n\t  System.out.println(\"headMap: \"+map.headMap(102));\n\t  //Returns key-value pairs whose keys are greater than or equal to the specified key.\n\t  System.out.println(\"tailMap: \"+map.tailMap(102));\n\t  //Returns key-value pairs exists in between the specified key.\n\t  System.out.println(\"subMap: \"+map.subMap(100, 102));  \n }\n}",
+        "headMap: {100=Amit, 101=Vijay}\ntailMap: {102=Ravi, 103=Rahul}\nsubMap: {100=Amit, 101=Vijay}"
+      ]
+    },
+    {
+      "heading": "Difference Between HashMap and TreeMap",
+      "paragraphs": [
+        "The following table highlights the key differences between HashMap and TreeMap:",
+        "HashMap | TreeMap\nHashMap does not guarantee a sorted order of elements. | TreeMap guarantees a sorted order of elements based on the natural ordering of keys or a custom comparator.\nHashMap is generally faster for insertion and retrieval operations, especially for large datasets. | TreeMap offers efficient range queries and operations like finding the closest key.\nHashMap uses hashing for storing key-value pairs, providing constant-time performance for basic operations (e.g., get, put, remove) on average. | TreeMap uses a red-black tree internally, resulting in logarithmic-time complexity for most operations, making it slightly slower than HashMap for basic operations.\nIterating over elements in a HashMap does not guarantee any specific order. | Iterating over elements in a TreeMap results in sorted order based on the keys.\nHashMap allows null values, and multiple null values can be associated with different keys. | TreeMap allows null values but not null keys.\nHashMap is not synchronized, making it not thread-safe. | TreeMap is not synchronized, making it not thread-safe.\nHashMap is part of the java.util package. | TreeMap is part of the java.util package and implements the NavigableMap interface."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Complete Example: Storing Custom Objects (Book) in TreeMap",
+      "paragraphs": [
+        "This example demonstrates how to store and retrieve objects of a custom class using a TreeMap.",
+        "Output:",
+        "Explanation",
+        "This example shows how a TreeMap can be used to store custom objects as values while maintaining the keys in sorted order. It also demonstrates how to traverse the map and access both keys and their corresponding object values."
+      ],
+      "code": [
+        "import java.util.*;  \nclass Book {  \nint id;  \nString name,author,publisher;  \nint quantity;  \npublic Book(int id, String name, String author, String publisher, int quantity) {  \n    this.id = id;  \n    this.name = name;  \n    this.author = author;  \n    this.publisher = publisher;  \n    this.quantity = quantity;  \n}  \n}  \npublic class MapExample {  \npublic static void main(String[] args) {  \n    //Creating map of Books  \n    Map<Integer,Book> map=new TreeMap<Integer,Book>();  \n    //Creating Books  \n    Book b1=new Book(101,\"Let us C\",\"Yashwant Kanetkar\",\"BPB\",8);  \n    Book b2=new Book(102,\"Data Communications & Networking\",\"Forouzan\",\"Mc Graw Hill\",4);  \n    Book b3=new Book(103,\"Operating System\",\"Galvin\",\"Wiley\",6);  \n    //Adding Books to map \n    map.put(2,b2);\n    map.put(1,b1);\n    map.put(3,b3);\n    \n    //Traversing map\n    for(Map.Entry<Integer, Book> entry:map.entrySet()){  \n    \tint key=entry.getKey();\n    \tBook b=entry.getValue();\n        System.out.println(key+\" Details:\");\n        System.out.println(b.id+\" \"+b.name+\" \"+b.author+\" \"+b.publisher+\" \"+b.quantity); \n    }  \n}  \n}",
+        "1 Details:\n101 Let us C Yashwant Kanetkar BPB 8\n2 Details:\n102 Data Communications & Networking Forouzan Mc Graw Hill 4\n3 Details:\n103 Operating System Galvin Wiley 6"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:45:10.530Z"
+}

@@ -1,0 +1,105 @@
+{
+  "topicId": "bufferedinputstream",
+  "title": "Java BufferedInputStream Class",
+  "sectionId": "java-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-bufferedinputstream-class",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-bufferedinputstream-class",
+      "score": 63,
+      "sectionCount": 9
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java BufferedInputStream Class",
+      "paragraphs": [
+        "The BufferedInputStream class in Java is used to read data from an input stream efficiently by using an internal buffer.",
+        "In this chapter, we will learn what the BufferedInputStream class is, why it is used, its constructors, important methods, and how to read data from a file using an example."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is BufferedInputStream in Java?",
+      "paragraphs": [
+        "The BufferedInputStream class is used to read data from an input stream with better performance. It uses an internal buffer to store data temporarily, which reduces the number of read operations from the underlying input stream.",
+        "When data is read or skipped, the buffer is automatically refilled with multiple bytes at once. This makes input operations faster compared to reading data byte by byte directly from the stream."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java BufferedInputStream class declaration",
+      "paragraphs": [
+        "Let's see the declaration for Java.io.BufferedInputStream class:"
+      ],
+      "code": [
+        "public class BufferedInputStream extends FilterInputStream"
+      ]
+    },
+    {
+      "heading": "Constructors of BufferedInputStream Class",
+      "paragraphs": [
+        "The BufferedInputStream class provides constructors to create a buffered input stream with or without a custom buffer size."
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. BufferedInputStream(InputStream in)",
+      "paragraphs": [
+        "This constructor creates a BufferedInputStream using the specified input stream and a default buffer size.",
+        "Syntax:",
+        "Here is the syntax of this constructor:"
+      ],
+      "code": [
+        "BufferedInputStream(InputStream in)"
+      ]
+    },
+    {
+      "heading": "2. BufferedInputStream(InputStream in, int size)",
+      "paragraphs": [
+        "This constructor creates a BufferedInputStream using the specified input stream and a custom buffer size.",
+        "Syntax:",
+        "Here is the syntax of this constructor:"
+      ],
+      "code": [
+        "BufferedInputStream(InputStream in, int size)"
+      ]
+    },
+    {
+      "heading": "Example of BufferedInputStream Constructors",
+      "paragraphs": [
+        "The following examples demonstrate how to create a BufferedInputStream using its constructors.",
+        "Output:"
+      ],
+      "code": [
+        "import java.io.*;\n\npublic class BufferedInputStreamConstructorExample1 {\n    public static void main(String args[]) {\n        try {\n            FileInputStream fin = new FileInputStream(\"D:\\\\testout.txt\");\n            BufferedInputStream bin = new BufferedInputStream(fin);\n\n            int i;\n            while ((i = bin.read()) != -1) {\n                System.out.print((char) i);\n            }\n\n            bin.close();\n            fin.close();\n        } catch (Exception e) {\n            System.out.println(e);\n        }\n    }\n}",
+        "TpointTech"
+      ]
+    },
+    {
+      "heading": "Java BufferedInputStream class methods",
+      "paragraphs": [
+        "The BufferedInputStream class provides several methods to read data.",
+        "Method | Description\nint available() | It returns an estimate number of bytes that can be read from the input stream without blocking by the next invocation method for the input stream.\nint read() | It read the next byte of data from the input stream.\nint read(byte[] b, int off, int ln) | It read the bytes from the specified byte-input stream into a specified byte array, starting with the given offset.\nvoid close() | It closes the input stream and releases any of the system resources associated with the stream.\nvoid reset() | It repositions the stream at a position the mark method was last called on this input stream.\nvoid mark(int readlimit) | It sees the general contract of the mark method for the input stream.\nlong skip(long x) | It skips over and discards x bytes of data from the input stream.\nboolean markSupported() | It tests for the input stream to support the mark and reset methods."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example of BufferedInputStream Class",
+      "paragraphs": [
+        "In this example, data is read from a file using BufferedInputStream, which improves performance by reading data through a buffer.",
+        "Here, we are assuming that you have following data in \"testout.txt\" file:",
+        "Output:",
+        "Next TopicJava SequenceInputStream Class"
+      ],
+      "code": [
+        "package com.javatpoint;\n \nimport java.io.*;\npublic class BufferedInputStreamExample{  \n public static void main(String args[]){  \n  try{  \n    FileInputStream fin=new FileInputStream(\"D:\\\\testout.txt\");  \n    BufferedInputStream bin=new BufferedInputStream(fin);  \n    int i;  \n    while((i=bin.read())!=-1){  \n     System.out.print((char)i);  \n    }  \n    bin.close();  \n    fin.close();  \n  }catch(Exception e){System.out.println(e);}  \n }  \n}",
+        "javaTpoint",
+        "javaTpoint"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:41:27.316Z"
+}

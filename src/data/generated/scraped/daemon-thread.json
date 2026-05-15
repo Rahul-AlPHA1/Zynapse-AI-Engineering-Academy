@@ -1,0 +1,88 @@
+{
+  "topicId": "daemon-thread",
+  "title": "Java - Daemon Thread",
+  "sectionId": "java-advanced",
+  "source": "tutorialspoint",
+  "url": "https://www.tutorialspoint.com/java/java_daemon_thread.htm",
+  "allSources": [
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_daemon_thread.htm",
+      "score": 46,
+      "sectionCount": 9
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Daemon Thread in Java",
+      "paragraphs": [
+        "A Daemon thread is created to support the user threads. It generallty works in background and terminated once all the other threads are closed. Garbage collector is one of the example of Daemon thread."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Characteristics of a Daemon Thread in Java",
+      "paragraphs": [
+        "• A Daemon thread is a low priority thread.\n• A Daemon thread is a service provider thread and should not be used as user thread.\n• JVM automatically closes the daemon thread(s) if no active thread is present and revives it if user threads are active again.\n• A daemon thread cannot prevent JVM to exit if all user threads are done."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Thread Class Methods for Java Daemon Thread",
+      "paragraphs": [
+        "The following are the methods provided by the Thread class for Daemon Thread in Java -",
+        "• Thread.setDaemon() Method: Marks this thread as either a daemon thread or a user thread.\n• Thread.isDaemon() Method: Checks if this thread is a daemon thread."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example of Java Daemon Thread",
+      "paragraphs": [
+        "In this example, we've created a ThreadDemo class which extends Thread class. In main method, we've created three threads. As we're not setting any thread as daemon thread, no thread is marked as daemon thread."
+      ],
+      "code": [
+        "package com.tutorialspoint;\nclass ThreadDemo extends Thread {\n   ThreadDemo( ) {\n   }\n   public void run() {\n      System.out.println(\"Thread  \" + Thread.currentThread().getName() \n         + \", is Daemon: \" + Thread.currentThread().isDaemon());\n   }\n   public void start () {     \n      super.start();\n   }\n}\npublic class TestThread {\n   public static void main(String args[]) {\n\t  ThreadDemo thread1 = new ThreadDemo();\n\t  ThreadDemo thread2 = new ThreadDemo();\n\t  ThreadDemo thread3 = new ThreadDemo();\n\t  thread1.start();\n\t  thread2.start();\n\t  thread3.start();\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Thread  Thread-1, is Daemon: false\nThread  Thread-0, is Daemon: false\nThread  Thread-2, is Daemon: false"
+      ]
+    },
+    {
+      "heading": "Example 1",
+      "paragraphs": [
+        "In this example, we've created a ThreadDemo class which extends Thread class. In main method, we've created three threads. As we're setting one thread as daemon thread, one thread will be printed as daemon thread."
+      ],
+      "code": [
+        "package com.tutorialspoint;\nclass ThreadDemo extends Thread {\n   ThreadDemo( ) {\n   }\n\n   public void run() {\n      System.out.println(\"Thread  \" + Thread.currentThread().getName() \n         + \", is Daemon: \" + Thread.currentThread().isDaemon());\n   }\n   public void start () {     \n      super.start();\n   }\n}\npublic class TestThread {\n   public static void main(String args[]) {\n\t  ThreadDemo thread1 = new ThreadDemo();\n\t  ThreadDemo thread2 = new ThreadDemo();\n\t  ThreadDemo thread3 = new ThreadDemo();\n      thread3.setDaemon(true);\n\t  thread1.start();\n\t  thread2.start();\n\t  thread3.start();\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Thread  Thread-1, is Daemon: false\nThread  Thread-2, is Daemon: true\nThread  Thread-0, is Daemon: false"
+      ]
+    },
+    {
+      "heading": "Example 2",
+      "paragraphs": [
+        "In this example, we've created a ThreadDemo class which extends Thread class. In main method, we've created three threads. Once a thread starts, it cannot be set as daemon thread. As we're setting one thread as daemon thread after it started, a runtime exception will be raised."
+      ],
+      "code": [
+        "package com.tutorialspoint;\nclass ThreadDemo extends Thread {\n   ThreadDemo( ) {\n   }\n   public void run() {\n      System.out.println(\"Thread  \" + Thread.currentThread().getName() \n         + \", is Daemon: \" + Thread.currentThread().isDaemon());\n   }\n   public void start () {     \n      super.start();\n   }\n}\npublic class TestThread {\n   public static void main(String args[]) {\n\t   ThreadDemo thread1 = new ThreadDemo();\n\t   ThreadDemo thread2 = new ThreadDemo();\n\t   ThreadDemo thread3 = new ThreadDemo();\n\t   thread1.start();\n\t   thread2.start();\n\t   thread3.start();\n      thread3.setDaemon(true);\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Exception in thread \"main\" Thread  Thread-1, is Daemon: false\nThread  Thread-2, is Daemon: false\nThread  Thread-0, is Daemon: false\njava.lang.IllegalThreadStateException\n\tat java.lang.Thread.setDaemon(Unknown Source)\n\tat com.tutorialspoint.TestThread.main(TestThread.java:27)"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:39:29.349Z"
+}

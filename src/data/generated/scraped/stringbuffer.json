@@ -1,0 +1,107 @@
+{
+  "topicId": "stringbuffer",
+  "title": "StringBuffer in Java",
+  "sectionId": "java-core-advanced",
+  "source": "geeksforgeeks",
+  "url": "https://www.geeksforgeeks.org/java/stringbuffer-class-in-java/",
+  "allSources": [
+    {
+      "sourceId": "geeksforgeeks",
+      "url": "https://www.geeksforgeeks.org/java/stringbuffer-class-in-java/",
+      "score": 56,
+      "sectionCount": 9
+    },
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/stringbuffer-in-java",
+      "score": 4,
+      "sectionCount": 1
+    }
+  ],
+  "sections": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "StringBuffer class in Java represents a sequence of characters that can be modified, which means we can change the content of the StringBuffer without creating a new object every time. It represents a mutable sequence of characters.",
+        "• Unlike String, we can modify the content of the StringBuffer without creating a new object.\n• All methods of StringBuffer are synchronized, making it safe to use in multithreaded environments.\n• Ideal for scenarios with frequent modifications like append, insert, delete or replace operations.",
+        "Example: Here is an example of using StringBuffer to concatenate strings."
+      ],
+      "code": [
+        "Hello world"
+      ]
+    },
+    {
+      "heading": "Constructors of StringBuffer Class",
+      "paragraphs": [
+        "• StringBuffer(): It reserves room for 16 characters without reallocation\n• StringBuffer(int size): It accepts an integer argument that explicitly sets the size of the buffer.\n• StringBuffer(String str): It accepts a string argument that sets the initial contents of the StringBuffer object and reserves room for 16 more characters without reallocation.",
+        "Example:"
+      ],
+      "code": [
+        "Default Constructor: Hello\nWith Capacity 50: Java Programming\nWith String: Welcome to Java"
+      ]
+    },
+    {
+      "heading": "1. append() Method",
+      "paragraphs": [
+        "append() method concatenates the given argument with this string."
+      ],
+      "code": [
+        "Hello Java"
+      ]
+    },
+    {
+      "heading": "2. insert() Method",
+      "paragraphs": [
+        "insert() method inserts the given string with this string at the given position."
+      ],
+      "code": [
+        "HJavaello"
+      ]
+    },
+    {
+      "heading": "3. replace() Method",
+      "paragraphs": [
+        "replace() method replaces the given string from the specified beginIndex and endIndex-1."
+      ],
+      "code": [
+        "HJavalo"
+      ]
+    },
+    {
+      "heading": "4. delete() Method",
+      "paragraphs": [
+        "delete() method is used to delete the string from the specified beginIndex to endIndex-1."
+      ],
+      "code": [
+        "Hlo"
+      ]
+    },
+    {
+      "heading": "5. reverse() Method",
+      "paragraphs": [
+        "reverse() method of the StringBuffer class reverses the current string."
+      ],
+      "code": [
+        "olleH"
+      ]
+    },
+    {
+      "heading": "6. capacity() Method",
+      "paragraphs": [
+        "capacity() method of the StringBuffer class returns the current capacity of the buffer. The default capacity of the buffer is 16. If the number of characters increases from its current capacity, it increases the capacity by (oldcapacity*2)+2.",
+        "For example, if the current capacity is 16, it will be (16*2)+2=34."
+      ],
+      "code": [
+        "16\n16\n34"
+      ]
+    },
+    {
+      "heading": "7.  length()",
+      "paragraphs": [
+        "This method return the number of character in given string."
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:46:17.910Z"
+}

@@ -1,0 +1,141 @@
+{
+  "topicId": "networking-concepts",
+  "title": "Java - Networking",
+  "sectionId": "java-advanced",
+  "source": "tutorialspoint",
+  "url": "https://www.tutorialspoint.com/java/java_networking.htm",
+  "allSources": [
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_networking.htm",
+      "score": 81,
+      "sectionCount": 13
+    },
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-networking",
+      "score": 4,
+      "sectionCount": 1
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java Networking",
+      "paragraphs": [
+        "Java networking (or, Java network programming) refers to writing programs that execute across multiple devices (computers), in which the devices are all connected to each other using a network."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Advantages of Java Networking",
+      "paragraphs": [
+        "• Creating server-client applications\n• Implementing networking protocols\n• Implement socket programming\n• Creating web services"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Package Used in Networking",
+      "paragraphs": [
+        "The java.net package of the J2SE APIs contains a collection of classes and interfaces that provide the low-level communication details, allowing you to write programs that focus on solving the problem at hand.",
+        "The java.net package provides support for the two common network protocols −",
+        "• TCP − TCP stands for Transmission Control Protocol, which allows for reliable communication between two applications. TCP is typically used over the Internet Protocol, which is referred to as TCP/IP.\n• UDP − UDP stands for User Datagram Protocol, a connection-less protocol that allows for packets of data to be transmitted between applications.",
+        "This chapter gives a good understanding on the following two subjects −",
+        "• Socket Programming − This is the most widely used concept in Networking and it has been explained in very detail.\n• URL Processing − This would be covered separately. Click here to learn about URL Processing in Java language."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Socket Programming in Java Networking",
+      "paragraphs": [
+        "Sockets provide the communication mechanism between two computers using TCP. A client program creates a socket on its end of the communication and attempts to connect that socket to a server.",
+        "When the connection is made, the server creates a socket object on its end of the communication. The client and the server can now communicate by writing to and reading from the socket.",
+        "The java.net.Socket class represents a socket, and the java.net.ServerSocket class provides a mechanism for the server program to listen for clients and establish connections with them.",
+        "The following steps occur when establishing a TCP connection between two computers using sockets −",
+        "• The server instantiates a ServerSocket object, denoting which port number communication is to occur on.\n• The server invokes the accept() method of the ServerSocket class. This method waits until a client connects to the server on the given port.\n• After the server is waiting, a client instantiates a Socket object, specifying the server name and the port number to connect to.\n• The constructor of the Socket class attempts to connect the client to the specified server and the port number. If communication is established, the client now has a Socket object capable of communicating with the server.\n• On the server side, the accept() method returns a reference to a new socket on the server that is connected to the client's socket.",
+        "After the connections are established, communication can occur using I/O streams. Each socket has both an OutputStream and an InputStream. The client's OutputStream is connected to the server's InputStream, and the client's InputStream is connected to the server's OutputStream.",
+        "TCP is a two-way communication protocol, hence data can be sent across both streams at the same time. Following are the useful classes providing complete set of methods to implement sockets."
+      ],
+      "code": []
+    },
+    {
+      "heading": "ServerSocket Class Constructors",
+      "paragraphs": [
+        "The java.net.ServerSocket class is used by server applications to obtain a port and listen for client requests.",
+        "The ServerSocket class has four constructors −",
+        "Sr.No.\nMethod & Description\n\n\n1\npublic ServerSocket(int port) throws IOException\nAttempts to create a server socket bound to the specified port. An exception occurs if the port is already bound by another application.\n\n\n\n2\npublic ServerSocket(int port, int backlog) throws IOException\nSimilar to the previous constructor, the backlog parameter specifies how many incoming clients to store in a wait queue.\n\n\n\n3\npublic ServerSocket(int port, int backlog, InetAddress address) throws IOException\nSimilar to the previous constructor, the InetAddress parameter specifies the local IP address to bind to. The InetAddress is used for servers that may have multiple IP addresses, allowing the server to specify which of its IP addresses to accept client requests on.\n\n\n\n4\npublic ServerSocket() throws IOException\nCreates an unbound server socket. When using this constructor, use the bind() method when you are ready to bind the server socket.",
+        "If the ServerSocket constructor does not throw an exception, it means that your application has successfully bound to the specified port and is ready for client requests."
+      ],
+      "code": []
+    },
+    {
+      "heading": "ServerSocket Class Methods",
+      "paragraphs": [
+        "Following are some of the common methods of the ServerSocket class −",
+        "Sr.No.\nMethod & Description\n\n\n1\npublic int getLocalPort()\nReturns the port that the server socket is listening on. This method is useful if you passed in 0 as the port number in a constructor and let the server find a port for you.\n\n\n\n2\npublic Socket accept() throws IOException\nWaits for an incoming client. This method blocks until either a client connects to the server on the specified port or the socket times out, assuming that the time-out value has been set using the setSoTimeout() method. Otherwise, this method blocks indefinitely.\n\n\n\n3\npublic void setSoTimeout(int timeout)\nSets the time-out value for how long the server socket waits for a client during the accept().\n\n\n\n4\npublic void bind(SocketAddress host, int backlog)\nBinds the socket to the specified server and port in the SocketAddress object. Use this method if you have instantiated the ServerSocket using the no-argument constructor.",
+        "When the ServerSocket invokes accept(), the method does not return until a client connects. After a client does connect, the ServerSocket creates a new Socket on an unspecified port and returns a reference to this new Socket. A TCP connection now exists between the client and the server, and communication can begin."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Socket Class Constructors",
+      "paragraphs": [
+        "The java.net.Socket class represents the socket that both the client and the server use to communicate with each other. The client obtains a Socket object by instantiating one, whereas the server obtains a Socket object from the return value of the accept() method.",
+        "The Socket class has five constructors that a client uses to connect to a server −",
+        "Sr.No.\nMethod & Description\n\n\n1\npublic Socket(String host, int port) throws UnknownHostException, IOException.\nThis method attempts to connect to the specified server at the specified port. If this constructor does not throw an exception, the connection is successful and the client is connected to the server.\n\n\n\n2\npublic Socket(InetAddress host, int port) throws IOException\nThis method is identical to the previous constructor, except that the host is denoted by an InetAddress object.\n\n\n\n3\npublic Socket(String host, int port, InetAddress localAddress, int localPort) throws IOException.\nConnects to the specified host and port, creating a socket on the local host at the specified address and port.\n\n\n\n4\npublic Socket(InetAddress host, int port, InetAddress localAddress, int localPort) throws IOException.\nThis method is identical to the previous constructor, except that the host is denoted by an InetAddress object instead of a String.\n\n\n\n5\npublic Socket()\nCreates an unconnected socket. Use the connect() method to connect this socket to a server.",
+        "When the Socket constructor returns, it does not simply instantiate a Socket object but it actually attempts to connect to the specified server and port."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Socket Class Methods",
+      "paragraphs": [
+        "Some methods of interest in the Socket class are listed here. Notice that both the client and the server have a Socket object, so these methods can be invoked by both the client and the server.",
+        "Sr.No.\nMethod & Description\n\n\n1\npublic void connect(SocketAddress host, int timeout) throws IOException\nThis method connects the socket to the specified host. This method is needed only when you instantiate the Socket using the no-argument constructor.\n\n\n\n2\npublic InetAddress getInetAddress()\nThis method returns the address of the other computer that this socket is connected to.\n\n\n\n3\npublic int getPort()\nReturns the port the socket is bound to on the remote machine.\n\n\n\n4\npublic int getLocalPort()\nReturns the port the socket is bound to on the local machine.\n\n\n\n5\npublic SocketAddress getRemoteSocketAddress()\nReturns the address of the remote socket.\n\n\n\n6\npublic InputStream getInputStream() throws IOException\nReturns the input stream of the socket. The input stream is connected to the output stream of the remote socket.\n\n\n\n7\npublic OutputStream getOutputStream() throws IOException\nReturns the output stream of the socket. The output stream is connected to the input stream of the remote socket.\n\n\n\n8\npublic void close() throws IOException\nCloses the socket, which makes this Socket object no longer capable of connecting again to any server."
+      ],
+      "code": []
+    },
+    {
+      "heading": "InetAddress Class Methods",
+      "paragraphs": [
+        "This class represents an Internet Protocol (IP) address. Here are following usefull methods which you would need while doing socket programming −",
+        "Sr.No.\nMethod & Description\n\n\n1\nstatic InetAddress getByAddress(byte[] addr)\nReturns an InetAddress object given the raw IP address.\n\n\n\n2\nstatic InetAddress getByAddress(String host, byte[] addr)\nCreates an InetAddress based on the provided host name and IP address.\n\n\n\n3\nstatic InetAddress getByName(String host)\nDetermines the IP address of a host, given the host's name.\n\n\n\n4\nString getHostAddress()\nReturns the IP address string in textual presentation.\n\n\n\n5\nString getHostName()\nGets the host name for this IP address.\n\n\n\n6\nstatic InetAddress InetAddress getLocalHost()\nReturns the local host.\n\n\n\n7\nString toString()\nConverts this IP address to a String."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Implementing Socket Client in Java",
+      "paragraphs": [
+        "The following GreetingClient is a client program that connects to a server by using a socket and sends a greeting, and then waits for a response."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: Socket Client",
+      "paragraphs": [],
+      "code": [
+        "// File Name GreetingClient.java\nimport java.net.*;\nimport java.io.*;\n\npublic class GreetingClient {\n\n   public static void main(String [] args) {\n      String serverName = args[0];\n      int port = Integer.parseInt(args[1]);\n      try {\n         System.out.println(\"Connecting to \" + serverName + \" on port \" + port);\n         Socket client = new Socket(serverName, port);\n         \n         System.out.println(\"Just connected to \" + client.getRemoteSocketAddress());\n         OutputStream outToServer = client.getOutputStream();\n         DataOutputStream out = new DataOutputStream(outToServer);\n         \n         out.writeUTF(\"Hello from \" + client.getLocalSocketAddress());\n         InputStream inFromServer = client.getInputStream();\n         DataInputStream in = new DataInputStream(inFromServer);\n         \n         System.out.println(\"Server says \" + in.readUTF());\n         client.close();\n      } catch (IOException e) {\n         e.printStackTrace();\n      }\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Implementing Socket Server in Java",
+      "paragraphs": [
+        "The following GreetingServer program is an example of a server application that uses the Socket class to listen for clients on a port number specified by a command-line argument −"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: Socket Server",
+      "paragraphs": [
+        "Compile the client and the server and then start the server as follows −",
+        "Check the client program as follows −",
+        "Output"
+      ],
+      "code": [
+        "// File Name GreetingServer.java\nimport java.net.*;\nimport java.io.*;\n\npublic class GreetingServer extends Thread {\n   private ServerSocket serverSocket;\n   \n   public GreetingServer(int port) throws IOException {\n      serverSocket = new ServerSocket(port);\n      serverSocket.setSoTimeout(10000);\n   }\n\n   public void run() {\n      while(true) {\n         try {\n            System.out.println(\"Waiting for client on port \" + \n               serverSocket.getLocalPort() + \"...\");\n            Socket server = serverSocket.accept();\n            \n            System.out.println(\"Just connected to \" + server.getRemoteSocketAddress());\n            DataInputStream in = new DataInputStream(server.getInputStream());\n            \n            System.out.println(in.readUTF());\n            DataOutputStream out = new DataOutputStream(server.getOutputStream());\n            out.writeUTF(\"Thank you for connecting to \" + server.getLocalSocketAddress()\n               + \"\\nGoodbye!\");\n            server.close();\n            \n         } catch (SocketTimeoutException s) {\n            System.out.println(\"Socket timed out!\");\n            break;\n         } catch (IOException e) {\n            e.printStackTrace();\n            break;\n         }\n      }\n   }\n   \n   public static void main(String [] args) {\n      int port = Integer.parseInt(args[0]);\n      try {\n         Thread t = new GreetingServer(port);\n         t.start();\n      } catch (IOException e) {\n         e.printStackTrace();\n      }\n   }\n}",
+        "$ java GreetingServer 6066\nWaiting for client on port 6066...",
+        "$ java GreetingClient localhost 6066\nConnecting to localhost on port 6066\nJust connected to localhost/127.0.0.1:6066\nServer says Thank you for connecting to /127.0.0.1:6066\nGoodbye!"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:42:26.396Z"
+}

@@ -1,0 +1,134 @@
+{
+  "topicId": "deque-arraydeque",
+  "title": "Java Deque Interface and ArrayDeque",
+  "sectionId": "java-collections-jdbc",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-deque-arraydeque",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-deque-arraydeque",
+      "score": 75,
+      "sectionCount": 12
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/util/java_util_arraydeque.htm",
+      "score": 31,
+      "sectionCount": 5
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java Deque Interface and ArrayDeque",
+      "paragraphs": [
+        "Java Deque is used to insert and remove elements from both ends of a collection that allows it to work as both a stack and a queue.",
+        "In this chapter, you will learn about the Java Deque interface, its methods, key features, and how it works as a double-ended queue. You will also understand how to use the ArrayDeque class to implement Deque with practical examples in Java."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is Java Deque Interface?",
+      "paragraphs": [
+        "The Deque interface is a part of the java.util package and is a subtype of the Queue interface. Deque stands for \"double-ended queue,\" which allows insertion and deletion of elements from both the front and the rear. It can function as both a stack (LIFO) and a queue (FIFO) that makes it a flexible data structure for handling elements efficiently from both ends."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Deque Interface Declaration",
+      "paragraphs": [
+        "The Deque interface is declared as an interface that extends the Queue interface.",
+        "Here is the syntax:"
+      ],
+      "code": [
+        "public interface Deque<E> extends Queue<E>"
+      ]
+    },
+    {
+      "heading": "Methods of Java Deque Interface",
+      "paragraphs": [
+        "The following table shows the commonly used methods of the Deque interface:",
+        "Method | Description\nboolean add(object) | It is used to insert the specified element into this deque and return true upon success.\nboolean offer(object) | It is used to insert the specified element into this deque.\nObject remove() | It is used to retrieve and removes the head of this deque.\nObject poll() | It is used to retrieve and removes the head of this deque, or returns null if this deque is empty.\nObject element() | It is used to retrieve, but does not remove, the head of this deque.\nObject peek() | It is used to retrieve, but does not remove, the head of this deque, or returns null if this deque is empty.\nObject peekFirst() | The method returns the head element of the deque. The method does not remove any element from the deque. Null is returned by this method, when the deque is empty.\nObject peekLast() | The method returns the last element of the deque. The method does not remove any element from the deque. Null is returned by this method, when the deque is empty.\nBoolean offerFirst(e) | Inserts the element e at the front of the queue. If the insertion is successful, true is returned; otherwise, false.\nObject offerLast(e) | Inserts the element e at the tail of the queue. If the insertion is successful, true is returned; otherwise, false."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Key Features of Deque Interface:",
+      "paragraphs": [
+        "Several key features of deque interface are as follows:",
+        "Double-Ended Operations: Deque supports operations that allow elements to be added or removed from both the front and rear of the queue. These operations include addFirst(E e), addLast(E e), removeFirst(), and removeLast().",
+        "Accessors: Deque provides methods to access elements from both ends without removing them. These methods include getFirst() and getLast().",
+        "Special Insertion and Removal Operations: Apart from regular insertion and removal operations, Deque offers specialized operations such as offerFirst(E e) and offerLast(E e) for inserting elements, and pollFirst() and pollLast() for removing elements."
+      ],
+      "code": []
+    },
+    {
+      "heading": "ArrayDeque Class",
+      "paragraphs": [
+        "In Java, we cannot create objects of an interface directly. So, to use the Deque interface, we use the ArrayDeque class, which implements it.",
+        "ArrayDeque is a resizable array that can grow or shrink as needed. It also extends the AbstractCollection class.",
+        "Some of the key features of ArrayDeque are:",
+        "• Elements can be added or removed from both ends (front and rear).\n• Null elements are not allowed.\n• ArrayDeque is not thread-safe.\n• It has no fixed size limit (no capacity restrictions).\n• It is faster than LinkedList and Stack in most cases."
+      ],
+      "code": []
+    },
+    {
+      "heading": "ArrayDeque Hierarchy",
+      "paragraphs": [
+        "The hierarchy of ArrayDeque class is given in the figure displayed at the right side of the page. The following image shows the hierarchy of the ArrayDeque class:"
+      ],
+      "code": []
+    },
+    {
+      "heading": "ArrayDeque Class Declaration",
+      "paragraphs": [
+        "The ArrayDeque class is declared as a class that extends AbstractCollection and implements Deque, Cloneable, and Serializable interfaces.",
+        "Here is the syntax:"
+      ],
+      "code": [
+        "public class ArrayDeque<E> extends AbstractCollection<E> implements Deque<E>, Cloneable, Serializable"
+      ]
+    },
+    {
+      "heading": "Java ArrayDeque Example",
+      "paragraphs": [
+        "Here are some examples of the Java ArrayDeque class to understand its usage."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example 1: Simple ArrayDeque Example",
+      "paragraphs": [
+        "In this example, we are creating an ArrayDeque, adding elements, and traversing them.",
+        "import java.util.*;  \n\npublic class Main {  \n   public static void main(String[] args) {  \n      Deque<String> deque = new ArrayDeque<String>();  \n\n      deque.add(\"Ravi\");    \n      deque.add(\"Vijay\");     \n      deque.add(\"Ajay\");    \n\n      for (String str : deque) {  \n         System.out.println(str);  \n      }  \n   }  \n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Ravi\nVijay\nAjay"
+      ]
+    },
+    {
+      "heading": "Example 2: offerFirst() and pollLast() Methods",
+      "paragraphs": [
+        "In this example, we are using offerFirst() to add elements at the beginning and pollLast() to remove elements from the end.",
+        "Output:"
+      ],
+      "code": [
+        "import java.util.*;  \n\npublic class Main {  \n   public static void main(String[] args) {  \n      Deque<String> deque = new ArrayDeque<String>();  \n\n      deque.offer(\"arvind\");  \n      deque.offer(\"vimal\");  \n      deque.add(\"mukul\");  \n      deque.offerFirst(\"jai\");  \n\n      System.out.println(\"After offerFirst Traversal...\");  \n      for(String s : deque){  \n         System.out.println(s);  \n      }  \n\n      deque.pollLast();  \n\n      System.out.println(\"After pollLast() Traversal...\");  \n      for(String s : deque){  \n         System.out.println(s);  \n      }  \n   }  \n}",
+        "After offerFirst Traversal...\njai\narvind\nvimal\nmukul\nAfter pollLast() Traversal...\njai\narvind\nvimal"
+      ]
+    },
+    {
+      "heading": "Example 3: Storing Objects in ArrayDeque",
+      "paragraphs": [
+        "In this example, we are storing user-defined Book objects in an ArrayDeque.",
+        "import java.util.*;    \n\nclass Book {    \n int id;    \n String name, author, publisher;    \n int quantity;    \n\n public Book(int id, String name, String author, String publisher, int quantity) {    \n  this.id = id;    \n  this.name = name;    \n  this.author = author;    \n  this.publisher = publisher;    \n  this.quantity = quantity;    \n }    \n}    \n\npublic class Main {    \n public static void main(String[] args) {    \n\n  Deque<Book> deque = new ArrayDeque<Book>();    \n\n  Book b1 = new Book(101,\"Let us C\",\"Yashwant Kanetkar\",\"BPB\",8);    \n  Book b2 = new Book(102,\"Data Communications & Networking\",\"Forouzan\",\"Mc Graw Hill\",4);    \n  Book b3 = new Book(103,\"Operating System\",\"Galvin\",\"Wiley\",6);    \n\n  deque.add(b1);    \n  deque.add(b2);    \n  deque.add(b3);    \n\n  for(Book b : deque){    \n   System.out.println(b.id+\" \"+b.name+\" \"+b.author+\" \"+b.publisher+\" \"+b.quantity);    \n  }    \n }    \n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "101 Let us C Yashwant Kanetkar BPB 8\n102 Data Communications & Networking Forouzan Mc Graw Hill 4\n103 Operating System Galvin Wiley 6"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:44:26.589Z"
+}

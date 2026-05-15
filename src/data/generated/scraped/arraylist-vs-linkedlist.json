@@ -1,0 +1,122 @@
+{
+  "topicId": "arraylist-vs-linkedlist",
+  "title": "Java - List Interface",
+  "sectionId": "java-collections-jdbc",
+  "source": "tutorialspoint",
+  "url": "https://www.tutorialspoint.com/java/java_list_interface.htm",
+  "allSources": [
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_list_interface.htm",
+      "score": 66,
+      "sectionCount": 12
+    },
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/difference-between-arraylist-and-linkedlist",
+      "score": 4,
+      "sectionCount": 1
+    }
+  ],
+  "sections": [
+    {
+      "heading": "List Interface",
+      "paragraphs": [
+        "The List interface extends Collection and declares the behavior of a collection that stores a sequence of elements.",
+        "• Elements can be inserted or accessed by their position in the list, using a zero-based index.\n• A list may contain duplicate elements.\n• In addition to the methods defined by Collection, List defines some of its own, which are summarized in the following table.\n• Several of the list methods will throw an UnsupportedOperationException if the collection cannot be modified, and a ClassCastException is generated when one object is incompatible with another."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Declaration of Java List Interface",
+      "paragraphs": [
+        "The following is the declaration of a List interface in Java:"
+      ],
+      "code": [
+        "public interface List<E> extends Collection<E>;"
+      ]
+    },
+    {
+      "heading": "Creating a Java list",
+      "paragraphs": [
+        "A Java list is created using the List interface. The syntax is as follows -"
+      ],
+      "code": [
+        "List<Obj> list = new ArrayList<Obj> ();"
+      ]
+    },
+    {
+      "heading": "Example of List Interface",
+      "paragraphs": [
+        "The following example demonstrates an example of List interface in Java -"
+      ],
+      "code": [
+        "import java.util.*;\n\n// The Main class\npublic class Main {\n  public static void main(String[] args) {\n    // Creating two lists using List interface\n    List < Integer > list1 = new ArrayList < Integer > ();\n    List < Integer > list2 = new ArrayList < Integer > ();\n\n    // Adding elements to list 1\n    list1.add(0, 10);\n    list1.add(1, 20);\n\n    // Printing list 1\n    System.out.println(\"list1 : \" + list1);\n\n    // Adding elements to list 2\n    list2.add(10);\n    list2.add(20);\n    list2.add(30);\n\n    // Adding all elements of list 2 in list 1\n    list1.addAll(1, list2);\n\n    // Printing list 2\n    System.out.println(\"list2 : \" + list2);\n\n    // Removes an element from list 1 (from index 1)\n    list1.remove(1);\n\n    // Printing list 1\n    System.out.println(\"list1 after removing an element: \" + list1);\n\n    // get() method\n    System.out.println(\"list1 using get() : \" + list1.get(2));\n\n    // Replacing element\n    list1.set(0, 50);\n\n    // Printing the list 1\n    System.out.println(\"list1 : \" + list1);\n  }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "list1 : [10, 20]\nlist2 : [10, 20, 30]\nlist1 after removing an element: [10, 20, 30, 20]\nlist1 using get() : 30\nlist1 : [50, 20, 30, 20]"
+      ]
+    },
+    {
+      "heading": "List Interface Methods",
+      "paragraphs": [
+        "The following are the methods of List Interface in Java -",
+        "Sr.No.\nMethod & Description\n\n\n1\nvoid add(int index, Object obj)\nInserts obj into the invoking list at the index passed in the index. Any pre-existing elements at or beyond the point of insertion are shifted up. Thus, no elements are overwritten.\n\n\n\n2\nboolean addAll(int index, Collection c)\nInserts all elements of c into the invoking list at the index passed in the index. Any pre-existing elements at or beyond the point of insertion are shifted up. Thus, no elements are overwritten. Returns true if the invoking list changes and returns false otherwise.\n\n\n\n3\nObject get(int index)\nReturns the object stored at the specified index within the invoking collection.\n\n\n\n4\nint indexOf(Object obj)\nReturns the index of the first instance of obj in the invoking list. If obj is not an element of the list, .1 is returned.\n\n\n\n5\nint lastIndexOf(Object obj)\nReturns the index of the last instance of obj in the invoking list. If obj is not an element of the list, .1 is returned.\n\n\n\n6\nListIterator listIterator( )\nReturns an iterator to the start of the invoking list.\n\n\n\n7\nListIterator listIterator(int index)\nReturns an iterator to the invoking list that begins at the specified index.\n\n\n\n8\nObject remove(int index)\nRemoves the element at position index from the invoking list and returns the deleted element. The resulting list is compacted. That is, the indexes of subsequent elements are decremented by one.\n\n\n\n9\nObject set(int index, Object obj)\nAssigns obj to the location specified by index within the invoking list.\n\n\n\n10\nList subList(int start, int end)\nReturns a list that includes elements from start to end.1 in the invoking list. Elements in the returned list are also referenced by the invoking object."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: Java List using ArrayList",
+      "paragraphs": [
+        "The above interface has been implemented using ArrayList. Following is the example to explain few methods from various class implementation of the above collection methods −"
+      ],
+      "code": [
+        "import java.util.ArrayList;\nimport java.util.List;\npublic class CollectionsDemo {\n\n   public static void main(String[] args) {\n      List<String> a1 = new ArrayList<>();\n      a1.add(\"Zara\");\n      a1.add(\"Mahnaz\");\n      a1.add(\"Ayan\");      \n      System.out.println(\" ArrayList Elements\");\n      System.out.print(\"\\t\" + a1);\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "ArrayList Elements\n   [Zara, Mahnaz, Ayan]"
+      ]
+    },
+    {
+      "heading": "Example: Java List using LinkedList",
+      "paragraphs": [
+        "The above interface has been implemented using LinkedList. Following is the example to explain few methods from various class implementation of the above collection methods −"
+      ],
+      "code": [
+        "import java.util.LinkedList;\nimport java.util.List;\npublic class CollectionsDemo {\n\n   public static void main(String[] args) {\n      List<String> a1 = new LinkedList<>();\n      a1.add(\"Zara\");\n      a1.add(\"Mahnaz\");\n      a1.add(\"Ayan\");      \n      System.out.println(\" LinkedList Elements\");\n      System.out.print(\"\\t\" + a1);\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "LinkedList Elements\n   [Zara, Mahnaz, Ayan]"
+      ]
+    },
+    {
+      "heading": "Example: Adding Element to Java List",
+      "paragraphs": [
+        "The above interface has been implemented using ArrayList. Following is another example to explain few methods from various class implementation of the above collection methods −"
+      ],
+      "code": [
+        "import java.util.ArrayList;\nimport java.util.List;\npublic class CollectionsDemo {\n\n   public static void main(String[] args) {\n      List<String> a1 = new ArrayList<>();\n      a1.add(\"Zara\");\n      a1.add(\"Mahnaz\");\n      a1.add(\"Ayan\");      \n      System.out.println(\" ArrayList Elements\");\n      System.out.print(\"\\t\" + a1);\n      \n      // remove second element\n      a1.remove(1);\n      \n      System.out.println(\"\\n ArrayList Elements\");\n      System.out.print(\"\\t\" + a1);\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "ArrayList Elements\n   [Zara, Mahnaz, Ayan]\n ArrayList Elements\n   [Zara, Ayan]"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:43:47.568Z"
+}

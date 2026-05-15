@@ -1,0 +1,140 @@
+{
+  "topicId": "multiple-catch",
+  "title": "Multiple Catch Block in Java",
+  "sectionId": "java-core-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/multiple-catch-block-in-java",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/multiple-catch-block-in-java",
+      "score": 81,
+      "sectionCount": 12
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_multi_catch_block.htm",
+      "score": 59,
+      "sectionCount": 12
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Multiple Catch Block in Java",
+      "paragraphs": [
+        "In Java, multiple catch blocks allow us to handle different types of exceptions separately. This is useful when a single try block contains code that may throw different types of exceptions.",
+        "A try block can be followed by one or more catch blocks, and each catch block must handle a different type of exception. This allows you to perform specific actions depending on the type of exception that occurs.",
+        "Alternatively, starting from Java 7, we can combine multiple exceptions in a single catch block using the | (pipe) symbol."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Using Multiple Catch Blocks",
+      "paragraphs": [
+        "A multiple catch block is used when a try block can throw different types of exceptions. Each catch handles a specific exception, and more specific exceptions should come before general ones. From Java 7 onward, multiple exceptions can be handled in a single catch block using the | (pipe) symbol."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Flowchart",
+      "paragraphs": [
+        "The following image shows the flowchart of the working of multiple catch blocks:"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [
+        "The syntax for using multiple catch blocks:"
+      ],
+      "code": [
+        "try {\n    // Code that may throw multiple exceptions\n} catch (FirstExceptionType e) {\n    // Handle first type of exception\n} catch (SecondExceptionType e) {\n    // Handle second type of exception\n} catch (Exception e) {\n    // Handle any other exceptions\n}"
+      ]
+    },
+    {
+      "heading": "Syntax Using Multi-Catch (Java 7 and above)",
+      "paragraphs": [
+        "Here is the syntax to use multiple catch blocks together using the pipe (|) sign:"
+      ],
+      "code": [
+        "try {\n    // Code that may throw multiple exceptions\n} catch (FirstExceptionType | SecondExceptionType e) {\n    // Handle either exception\n}"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates using multiple catch blocks:",
+        "Output:"
+      ],
+      "code": [
+        "// Java Program to demonstrate Multiple Catch Blocks\npublic class Main {\n    public static void main(String[] args) {\n        try {\n            int[] numbers = {1, 2, 3};\n            System.out.println(\"Number: \" + numbers[5]); // May throw ArrayIndexOutOfBoundsException\n\n            int result = 10 / 0; // May throw ArithmeticException\n\n        } catch (ArithmeticException e) {\n            System.out.println(\"Caught ArithmeticException: Division by zero is not allowed.\");\n        } catch (ArrayIndexOutOfBoundsException e) {\n            System.out.println(\"Caught ArrayIndexOutOfBoundsException: Invalid array index accessed.\");\n        } catch (Exception e) {\n            System.out.println(\"Caught Exception: Some other exception occurred.\");\n        }\n\n        System.out.println(\"Program continues after handling multiple exceptions.\");\n    }\n}",
+        "Caught ArrayIndexOutOfBoundsException: Invalid array index accessed.\nProgram continues after handling multiple exceptions."
+      ]
+    },
+    {
+      "heading": "More Examples on Multiple Catch Blocks",
+      "paragraphs": [
+        "Practice the following examples to understand how multiple catch blocks work in Java."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example 1: Handling ArithmeticException",
+      "paragraphs": [
+        "The following example demonstrates how an ArithmeticException is caught using multiple catch blocks.",
+        "public class Main {  \n    public static void main(String[] args) {  \n           try{    \n                int a[]=new int[5];    \n                a[5]=30/0;    \n               }    \n               catch(ArithmeticException e)  \n                  {  \n                   System.out.println(\"Arithmetic Exception occurs\");  \n                  }    \n               catch(ArrayIndexOutOfBoundsException e)  \n                  {  \n                   System.out.println(\"ArrayIndexOutOfBounds Exception occurs\");  \n                  }    \n               catch(Exception e)  \n                  {  \n                   System.out.println(\"Parent Exception occurs\");  \n                  }             \n               System.out.println(\"rest of the code\");    \n    }  \n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Arithmetic Exception occurs\nrest of the code"
+      ]
+    },
+    {
+      "heading": "Example 2: Handling ArrayIndexOutOfBoundsException",
+      "paragraphs": [
+        "The following example demonstrates how an ArrayIndexOutOfBoundsException is caught using multiple catch blocks.",
+        "public class Main {  \n    public static void main(String[] args) {  \n           try{    \n                int a[]=new int[5];    \n                System.out.println(a[10]);  \n               }    \n               catch(ArithmeticException e)  \n                  {  \n                   System.out.println(\"Arithmetic Exception occurs\");  \n                  }    \n               catch(ArrayIndexOutOfBoundsException e)  \n                  {  \n                   System.out.println(\"ArrayIndexOutOfBounds Exception occurs\");  \n                  }    \n               catch(Exception e)  \n                  {  \n                   System.out.println(\"Parent Exception occurs\");  \n                  }             \n               System.out.println(\"rest of the code\");    \n    }  \n}  \nCompile and Run",
+        "Output:",
+        "In this example, the try block contains two exceptions. But at a time only one exception occurs and its corresponding catch block is executed."
+      ],
+      "code": [
+        "ArrayIndexOutOfBounds Exception occurs\nrest of the code"
+      ]
+    },
+    {
+      "heading": "Example 3: Handling the First Occurring Exception",
+      "paragraphs": [
+        "In this example, the try block may throw multiple exceptions, but only the first occurring exception is handled.",
+        "public class Main {  \n    public static void main(String[] args) {  \n           try{    \n                int a[]=new int[5];    \n                a[5]=30/0;    \n                System.out.println(a[10]);  \n               }    \n               catch(ArithmeticException e)  \n                  {  \n                   System.out.println(\"Arithmetic Exception occurs\");  \n                  }    \n               catch(ArrayIndexOutOfBoundsException e)  \n                  {  \n                   System.out.println(\"ArrayIndexOutOfBounds Exception occurs\");  \n                  }    \n               catch(Exception e)  \n                  {  \n                   System.out.println(\"Parent Exception occurs\");  \n                  }             \n               System.out.println(\"rest of the code\");    \n    }  \n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Arithmetic Exception occurs\nrest of the code"
+      ]
+    },
+    {
+      "heading": "Example 4: Using Parent Exception for Unmatched Exceptions",
+      "paragraphs": [
+        "If the exception does not match a specific catch block, the parent Exception catch block is executed.",
+        "public class Main {  \n    public static void main(String[] args) {  \n           try{    \n                String s=null;  \n                System.out.println(s.length());  \n               }    \n               catch(ArithmeticException e)  \n                  {  \n                   System.out.println(\"Arithmetic Exception occurs\");  \n                  }    \n               catch(ArrayIndexOutOfBoundsException e)  \n                  {  \n                   System.out.println(\"ArrayIndexOutOfBounds Exception occurs\");  \n                  }    \n               catch(Exception e)  \n                  {  \n                   System.out.println(\"Parent Exception occurs\");  \n                  }             \n               System.out.println(\"rest of the code\");    \n    }  \n} \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Parent Exception occurs\nrest of the code"
+      ]
+    },
+    {
+      "heading": "Example 5: General Exception Before Specific Ones (Compile-time Error)",
+      "paragraphs": [
+        "Placing a general exception catch block before specific ones causes a compile-time error.",
+        "public class Main {    \n  public static void main(String args[])\n  {    \n       try\n       {    \n            int a[]=new int[5];    \n            a[5]=30/0;    \n       }    \n       catch(Exception e)\n       {\n           System.out.println(\"common task completed\");\n       }    \n       catch(ArithmeticException e)\n       {\n           System.out.println(\"task1 is completed\");\n       }    \n       catch(ArrayIndexOutOfBoundsException e)\n       {\n           System.out.println(\"task 2 completed\");\n       }    \n       System.out.println(\"rest of the code...\");    \n     }    \n}",
+        "Output:",
+        "Next TopicNested-try-block-in-java"
+      ],
+      "code": [
+        "Main.java:13: error: exception ArithmeticException has already been caught\n       catch(ArithmeticException e)\n       ^\nMain.java:17: error: exception ArrayIndexOutOfBoundsException has already been caught\ncatch(ArrayIndexOutOfBoundsException e)"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:37:05.462Z"
+}

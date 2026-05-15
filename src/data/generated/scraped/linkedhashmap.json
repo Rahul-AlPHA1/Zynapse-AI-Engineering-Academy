@@ -1,0 +1,182 @@
+{
+  "topicId": "linkedhashmap",
+  "title": "Java LinkedHashMap class",
+  "sectionId": "java-collections-jdbc",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-linkedhashmap",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-linkedhashmap",
+      "score": 107,
+      "sectionCount": 17
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/util/java_util_linkedhashmap.htm",
+      "score": 41,
+      "sectionCount": 8
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java LinkedHashMap class",
+      "paragraphs": [
+        "Java LinkedHashMap is used to store data in key-value pairs while maintaining the insertion order. It is useful when you need both fast access and ordered data. It is a part of the Java Collection Framework.",
+        "In this chapter, you will learn about the Java LinkedHashMap class, its features, and examples."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is LinkedHashMap in Java?",
+      "paragraphs": [
+        "Java LinkedHashMap class is a Hashtable and Linked List implementation of the Map interface. It extends the HashMap class and implements the Map interface.",
+        "It stores data as key-value pairs and maintains the order in which elements are inserted."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Features of LinkedHashMap",
+      "paragraphs": [
+        "Here are some of the key features of LinkedHashMap:",
+        "• Java LinkedHashMap stores values based on keys.\n• It contains unique keys.\n• It allows one null key and multiple null values.\n• It is non-synchronized.\n• It maintains insertion order.\n• The default capacity is 16 with a load factor of 0.75."
+      ],
+      "code": []
+    },
+    {
+      "heading": "LinkedHashMap class declaration",
+      "paragraphs": [
+        "Let's see the declaration for java.util.LinkedHashMap class."
+      ],
+      "code": [
+        "public class LinkedHashMap<K,V> extends HashMap<K,V> implements Map<K,V>"
+      ]
+    },
+    {
+      "heading": "LinkedHashMap class Parameters",
+      "paragraphs": [
+        "Let's see the parameters for java.util.LinkedHashMap class:",
+        "• K: It is the type of keys maintained by this map.",
+        "• V: It is the type of mapped values."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Constructors of LinkedHashMap Class",
+      "paragraphs": [
+        "Java LinkedHashMap class provides different constructors to create and initialize a LinkedHashMap."
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. LinkedHashMap()",
+      "paragraphs": [
+        "It is used to construct a default LinkedHashMap.",
+        "Here is the syntax:"
+      ],
+      "code": [
+        "LinkedHashMap<K,V> map = new LinkedHashMap<K,V>();"
+      ]
+    },
+    {
+      "heading": "2. LinkedHashMap(int capacity)",
+      "paragraphs": [
+        "It is used to construct a LinkedHashMap with the specified initial capacity.",
+        "Here is the syntax:"
+      ],
+      "code": [
+        "LinkedHashMap<K,V> map = new LinkedHashMap<K,V>(int capacity);"
+      ]
+    },
+    {
+      "heading": "3. LinkedHashMap(int capacity, float loadFactor)",
+      "paragraphs": [
+        "It is used to construct a LinkedHashMap with the specified capacity and load factor.",
+        "Here is the syntax:"
+      ],
+      "code": [
+        "LinkedHashMap<K,V> map = new LinkedHashMap<K,V>(int capacity, float loadFactor);"
+      ]
+    },
+    {
+      "heading": "4. LinkedHashMap(int capacity, float loadFactor, boolean accessOrder)",
+      "paragraphs": [
+        "It is used to construct a LinkedHashMap with the specified capacity, load factor, and ordering mode (insertion order or access order).",
+        "Here is the syntax:"
+      ],
+      "code": [
+        "LinkedHashMap<K,V> map = new LinkedHashMap<K,V>(int capacity, float loadFactor, boolean accessOrder);"
+      ]
+    },
+    {
+      "heading": "5. LinkedHashMap(Map m)",
+      "paragraphs": [
+        "It is used to construct a LinkedHashMap containing the elements of the specified Map.",
+        "Here is the syntax:"
+      ],
+      "code": [
+        "LinkedHashMap<K,V> map = new LinkedHashMap<K,V>(Map<? extends K, ? extends V> m);"
+      ]
+    },
+    {
+      "heading": "Methods of LinkedHashMap class",
+      "paragraphs": [
+        "The following table shows the commonly used methods of the LinkedHashMap class:",
+        "Method | Description\nV get(Object key) | It returns the value to which the specified key is mapped.\nvoid clear() | It removes all the key-value pairs from a map.\nboolean containsValue(Object value) | It returns true if the map maps one or more keys to the specified value.\nSet<Map.Entry<K,V>> entrySet() | It returns a Set view of the mappings contained in the map.\nvoid forEach(BiConsumer<? super K,? super V> action) | It performs the given action for each entry in the map until all entries have been processed or the action throws an exception.\nV getOrDefault(Object key, V defaultValue) | It returns the value to which the specified key is mapped or defaultValue if this map contains no mapping for the key.\nSet<K> keySet() | It returns a Set view of the keys contained in the map\nprotected boolean removeEldestEntry(Map.Entry<K,V> eldest) | It returns true on removing its eldest entry.\nvoid replaceAll(BiFunction<? super K,? super V,? extends V> function) | It replaces each entry's value with the result of invoking the given function on that entry until all entries have been processed or the function throws an exception.\nCollection<V> values() | It returns a Collection view of the values contained in this map."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Examples of LinkedHashMap",
+      "paragraphs": [
+        "Here are some examples of the Java LinkedHashMap class to understand its usage."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example 1: Simple LinkedHashMap Example",
+      "paragraphs": [
+        "In this example, we are creating a LinkedHashMap, adding elements, and traversing it.",
+        "import java.util.*;  \n\nclass Main {  \n public static void main(String args[]){  \n\n  LinkedHashMap<Integer,String> hm = new LinkedHashMap<Integer,String>();  \n\n  hm.put(100,\"Amit\");  \n  hm.put(101,\"Vijay\");  \n  hm.put(102,\"Rahul\");  \n\n  for(Map.Entry<Integer,String> m : hm.entrySet()){  \n   System.out.println(m.getKey()+\" \"+m.getValue());  \n  }  \n }  \n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "100 Amit\n101 Vijay\n102 Rahul"
+      ]
+    },
+    {
+      "heading": "Example 2: Accessing Keys and Values",
+      "paragraphs": [
+        "In this example, we are fetching keys, values, and key-value pairs from LinkedHashMap.",
+        "import java.util.*;  \n\nclass Main {  \n public static void main(String args[]){  \n\n  LinkedHashMap<Integer,String> map = new LinkedHashMap<Integer,String>();  \n\n  map.put(100,\"Amit\");    \n  map.put(101,\"Vijay\");    \n  map.put(102,\"Rahul\");    \n\n  System.out.println(\"Keys: \" + map.keySet());  \n  System.out.println(\"Values: \" + map.values());  \n  System.out.println(\"Key-Value pairs: \" + map.entrySet());  \n }  \n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Keys: [100, 101, 102]\nValues: [Amit, Vijay, Rahul]\nKey-Value pairs: [100=Amit, 101=Vijay, 102=Rahul]"
+      ]
+    },
+    {
+      "heading": "Example 3: Removing Elements from LinkedHashMap",
+      "paragraphs": [
+        "In this example, we are removing elements using the remove() method.",
+        "import java.util.*;\npublic class Main {\n   public static void main(String args[]) {\n   \tMap<Integer,String> map=new LinkedHashMap<Integer,String>();  \t  \n\t map.put(101,\"Amit\");  \n\t map.put(102,\"Vijay\");  \n\t map.put(103,\"Rahul\");  \n\t System.out.println(\"Before invoking remove() method: \"+map);   \n\tmap.remove(102);\n\tSystem.out.println(\"After invoking remove() method: \"+map);  \n   }    \n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Before invoking remove() method: {101=Amit, 102=Vijay, 103=Rahul}\nAfter invoking remove() method: {101=Amit, 103=Rahul}"
+      ]
+    },
+    {
+      "heading": "Example 4: Storing Objects in LinkedHashMap",
+      "paragraphs": [
+        "In this example, we are storing user-defined Book objects in a LinkedHashMap.",
+        "import java.util.*;  \nclass Book {  \nint id;  \nString name,author,publisher;  \nint quantity;  \npublic Book(int id, String name, String author, String publisher, int quantity) {  \n    this.id = id;  \n    this.name = name;  \n    this.author = author;  \n    this.publisher = publisher;  \n    this.quantity = quantity;  \n}  \n}  \npublic class Main {  \npublic static void main(String[] args) {  \n    //Creating map of Books  \n    Map<Integer,Book> map=new LinkedHashMap<Integer,Book>();  \n    //Creating Books  \n    Book b1=new Book(101,\"Let us C\",\"Yashwant Kanetkar\",\"BPB\",8);  \n    Book b2=new Book(102,\"Data Communications & Networking\",\"Forouzan\",\"Mc Graw Hill\",4);  \n    Book b3=new Book(103,\"Operating System\",\"Galvin\",\"Wiley\",6);  \n    //Adding Books to map \n    map.put(2,b2);\n    map.put(1,b1);\n    map.put(3,b3);\n    \n    //Traversing map\n    for(Map.Entry<Integer, Book> entry:map.entrySet()){  \n    \tint key=entry.getKey();\n    \tBook b=entry.getValue();\n        System.out.println(key+\" Details:\");\n        System.out.println(b.id+\" \"+b.name+\" \"+b.author+\" \"+b.publisher+\" \"+b.quantity); \n    }  \n}  \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "2 Details:\n102 Data Communications & Networking Forouzan Mc Graw Hill 4\n1 Details:\n101 Let us C Yashwant Kanetkar BPB 8\n3 Details:\n103 Operating System Galvin Wiley 6"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:44:59.849Z"
+}

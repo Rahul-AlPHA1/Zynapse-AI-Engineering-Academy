@@ -1,0 +1,143 @@
+{
+  "topicId": "throw-keyword",
+  "title": "Java Throw Exception",
+  "sectionId": "java-core-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-throw-exception",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-throw-exception",
+      "score": 82,
+      "sectionCount": 13
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_throw_exception.htm",
+      "score": 52,
+      "sectionCount": 8
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java Throw Exception",
+      "paragraphs": [
+        "In Java, the throw keyword is used to explicitly throw an exception within a method or block of code. It allows developers to signal that an error has occurred and needs to be handled. The thrown exception must be an instance of Throwable or one of its subclasses, such as Exception or RuntimeException."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Purpose of throw Keyword",
+      "paragraphs": [
+        "The Java throw keyword is used to throw an exception explicitly from a method or a block of code. It can be used to throw both checked and unchecked exceptions. It is mainly used to throw a custom exception and allows developers to manually trigger an exception when an undesirable situation occurs."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Exception Object and Error Message",
+      "paragraphs": [
+        "When using the throw keyword, we specify the exception object that needs to be thrown. The exception object contains a message that describes the error. These exceptions may be related to user input, server issues, hardware malfunctions, invalid computations, or other conditions based on the program’s requirements."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Rules for Throwing Exceptions",
+      "paragraphs": [
+        "The following rules must be followed during throwing expectations:",
+        "• The object that is thrown must be of type Throwable or one of its subclasses.\n• The Exception class is a direct subclass of Throwable.\n• User-defined exceptions, also known as custom exceptions, usually extend the Exception\n• If a checked exception is thrown and not handled within the method, it must be declared using the throws keyword in the method signature."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Throwing an Exception Using throw Keyword",
+      "paragraphs": [
+        "The throw keyword is used to explicitly throw an exception from a method or a block of code. It allows the programmer to manually trigger an exception when a specific condition occurs that disrupts the normal flow of the program."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [
+        "The below syntax creates an exception object and throws it explicitly at runtime.",
+        "Where, instance refers to an object of a class that must extend Throwable (which includes the Exception class and its subclasses).",
+        "Let's see an example of throw IOException.",
+        "Here:",
+        "• new is used to create an instance (object) of the exception class.\n• The error message provides context about the reason for the exception.",
+        "Where the Instance must be of type Throwable or a subclass of Throwable, for example, Exception is a subclass of Throwable, and the user-defined exceptions usually extend the Exception class."
+      ],
+      "code": [
+        "throw new exception_class(\"error message\");",
+        "tthrow new IOException(\"sorry device error\");"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates throwing an exception using the throw keyword.",
+        "Output:"
+      ],
+      "code": [
+        "class Main {\n    public static void main(String[] args) {\n        int age = 15;\n\n        if (age < 18) {\n            throw new ArithmeticException(\"Not eligible to vote\");\n        }\n\n        System.out.println(\"Eligible to vote\");\n    }\n}",
+        "Exception in thread \"main\" java.lang.ArithmeticException: Not eligible to vote"
+      ]
+    },
+    {
+      "heading": "Throwing an Unchecked Exception",
+      "paragraphs": [
+        "An unchecked exception is an exception that is not checked at compile time and usually occurs due to programming errors, such as invalid calculations or improper use of objects. In Java, unchecked exceptions extend the RuntimeException class and can be thrown using the throw keyword without declaring them using the throws clause."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "In this example, we have created a method named validate() that accepts an integer as a parameter. If the age is less than 18, we are throwing the ArithmeticException; otherwise, print a message welcoming them to vote.",
+        "import java.lang.ArithmeticException;\npublic class Main {   \n    // Function to check if a person is eligible to vote or not   \n    public static void validate(int age) {  \n        if(age < 18) {  \n            // Throw ArithmeticException if not eligible to vote  \n            throw new ArithmeticException(\"Person is not eligible to vote\");    \n        } else {  \n            System.out.println(\"Person is eligible to vote!!\");  \n        }  \n    }  \n    // Main method  \n    public static void main(String args[]) {  \n        // Calling the function  \n        validate(13);  \n        System.out.println(\"rest of the code...\");    \n    }    \n}\nCompile and Run",
+        "Output:",
+        "The above code throws an unchecked exception. Similarly, we can also throw unchecked and user-defined exceptions.",
+        "If we throw a checked exception using the throw keyword, it is a must to handle the exception using the catch block, or the method must declare it using the throws declaration."
+      ],
+      "code": [
+        "Exception in thread \"main\" java.lang.ArithmeticException: Person is not eligible to vote\n\tat Main.validate(Main.java:8)\n\tat Main.main(Main.java:17)"
+      ]
+    },
+    {
+      "heading": "Throwing a Checked Exception",
+      "paragraphs": [
+        "A checked exception is an exception that is checked at compile time and must be either handled using a try-catch block or declared using the throws keyword in the method signature. In Java, checked exceptions extend the Exception class (excluding RuntimeException)."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "In this example, we demonstrate how to throw a checked exception (FileNotFoundException) using the throw keyword and how to handle it properly using a try-catch block.",
+        "import java.io.*;  \npublic class Main {   \n    //function to check if a person is eligible to vote or not   \n    public static void method() throws FileNotFoundException {  \n        FileReader file = new FileReader(\"C:\\\\Users\\\\Desktop\\\\abc.txt\");  \n        BufferedReader fileInput = new BufferedReader(file);  \n        // Explicitly throwing a checked exception\n        throw new FileNotFoundException();  \n    }  \n    //main method  \n    public static void main(String args[]){  \n        try  {  \n            method();  \n        }   \n        catch (FileNotFoundException e)     {  \n            e.printStackTrace();  \n        }  \n        System.out.println(\"rest of the code...\");    \n    }    \n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "java.io.FileNotFoundException: C:\\Users\\Desktop\\abc.txt (No such file or directory)\n\tat java.base/java.io.FileInputStream.open0(Native Method)\n\tat java.base/java.io.FileInputStream.open(FileInputStream.java:213)\n\tat java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)\n\tat java.base/java.io.FileInputStream.<init>(FileInputStream.java:106)\n\tat java.base/java.io.FileReader.<init>(FileReader.java:60)\n\tat Main.method(Main.java:9)\n\tat Main.main(Main.java:20)"
+      ]
+    },
+    {
+      "heading": "Throwing User-Defined Exception",
+      "paragraphs": [
+        "The exception is everything else under the Throwable class. Java allows developers to create their own custom exceptions by extending the Exception class or one of its subclasses. These are known as user-defined exceptions. They are typically used when you want to enforce application-specific rules and constraints that are not covered by Java's built-in exceptions."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "In this example, we will define a custom exception called UserDefinedException and throw it manually using the throw keyword. We'll also catch and handle it using a try-catch block, just like we would with any other checked exception.",
+        "import java.io.*;  \n// class represents a user-defined exception  \nclass UserDefinedException extends Exception  {  \n    public UserDefinedException(String str)  {  \n        // Calling the constructor of the parent Exception  \n        super(str);  \n    }  \n} \n// Class that uses the above MyException  \npublic class Main  {  \n    public static void main(String args[])  {  \n        try   {  \n            // throw an object of user user-defined exception  \n            throw new UserDefinedException(\"This is user-defined exception\");  \n        }  \n        catch (UserDefinedException ude)   {  \n            System.out.println(\"Caught the exception\");  \n            // Print the message from the MyException object  \n            System.out.println(ude.getMessage());  \n        }  \n    }  \n}  \nCompile and Run",
+        "Output:",
+        "Next TopicException-propagation-in-java"
+      ],
+      "code": [
+        "Caught the exception\nThis is a user-defined exception"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:37:25.431Z"
+}

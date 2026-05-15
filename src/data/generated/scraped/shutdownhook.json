@@ -1,0 +1,124 @@
+{
+  "topicId": "shutdownhook",
+  "title": "Java - JVM Shutdown Hook",
+  "sectionId": "java-advanced",
+  "source": "tutorialspoint",
+  "url": "https://www.tutorialspoint.com/java/java_shutdown_hook.htm",
+  "allSources": [
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_shutdown_hook.htm",
+      "score": 64,
+      "sectionCount": 13
+    },
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/ShutdownHook-thread",
+      "score": 4,
+      "sectionCount": 1
+    }
+  ],
+  "sections": [
+    {
+      "heading": "JVM Shutdown",
+      "paragraphs": [
+        "The following are the two different ways for JVM shutdown",
+        "• A controlled process: JVM starts to shut down its process if the System.exit() method is called, CTRL+C is pressed, or if the last non-daemon thread terminates.\n• An abrupt manner: JVM starts to shut down its process if it receives a kill signal, the Runtime.getRuntime().halt() method is called, or any kind of OS panic."
+      ],
+      "code": []
+    },
+    {
+      "heading": "JVM Shutdown Hook",
+      "paragraphs": [
+        "A shutdown hook is simply an initialized but unstarted thread. When the virtual machine begins its shutdown sequence it will start all registered shutdown hooks in some unspecified order and let them run concurrently. When all the hooks have finished it will then run all uninvoked finalizers if finalization-on-exit has been enabled. Finally, the virtual machine will halt. Note that daemon threads will continue to run during the shutdown sequence, as will non-daemon threads if shutdown was initiated by invoking the exit method."
+      ],
+      "code": []
+    },
+    {
+      "heading": "JVM Shutdown Hook: The addShutdownHook(Thread hook) Method",
+      "paragraphs": [
+        "The Runtime addShutdownHook(Thread hook) method registers a new virtual-machine shutdown hook."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Declaration",
+      "paragraphs": [
+        "Following is the declaration for java.lang.Runtime.addShutdownHook() method"
+      ],
+      "code": [
+        "public void addShutdownHook(Thread hook)"
+      ]
+    },
+    {
+      "heading": "Parameters",
+      "paragraphs": [
+        "hook − An initialized but unstarted Thread object."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Return Value",
+      "paragraphs": [
+        "This method does not return a value."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Exception",
+      "paragraphs": [
+        "• IllegalArgumentException − If the specified hook has already been registered, or if it can be determined that the hook is already running or has already been run.\n• IllegalStateException − If the virtual machine is already in the process of shutting down.\n• SecurityException − If a security manager is present and it denies RuntimePermission(\"shutdownHooks\")."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example of JVM Shutdown Hook",
+      "paragraphs": [
+        "In this example, we're creating a class CustomThread by extending Thread class. This thread object will be used as JVM Shutdown hook. CustomThread class has run() method implementation. In main class TestThread, we've added a shutdown hook using Runtime.getRuntime().addShutdownHook() method, by passing it a thread object. In output you can verify that CustomThread run() method is called when program is about to exit."
+      ],
+      "code": [
+        "package com.tutorialspoint;\n\nclass CustomThread extends Thread {\n   public void run() {\n      System.out.println(\"JVM is shutting down.\");\n   }\n}\n\npublic class TestThread {\n   public static void main(String args[]) throws InterruptedException {\n      try {\n         // register CustomThread as shutdown hook\n         Runtime.getRuntime().addShutdownHook(new CustomThread());\n         // print the state of the program\n         System.out.println(\"Program is starting...\");\n         // cause thread to sleep for 3 seconds\n         System.out.println(\"Waiting for 3 seconds...\");\n         Thread.sleep(3000);\n         // print that the program is closing\n         System.out.println(\"Program is closing...\");\n      } catch (Exception e) {\n         e.printStackTrace();\n      }\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Program is starting...\nWaiting for 3 seconds...\nProgram is closing...\nJVM is shutting down."
+      ]
+    },
+    {
+      "heading": "Example 1",
+      "paragraphs": [
+        "In this example, we're creating a class CustomThread by implementing Runnable interface. This thread object will be used as JVM Shutdown hook. CustomThread class has run() method implementation. In main class TestThread, we've added a shutdown hook using Runtime.getRuntime().addShutdownHook() method, by passing it a thread object. In output you can verify that CustomThread run() method is called when program is about to exit."
+      ],
+      "code": [
+        "package com.tutorialspoint;\n\nclass CustomThread implements Runnable {\n   public void run() {\n      System.out.println(\"JVM is shutting down.\");\n   }\n}\n\npublic class TestThread {\n   public static void main(String args[]) throws InterruptedException {\n      try {\n         // register CustomThread as shutdown hook\n         Runtime.getRuntime().addShutdownHook(new Thread(new CustomThread()));\n         // print the state of the program\n         System.out.println(\"Program is starting...\");\n         // cause thread to sleep for 3 seconds\n         System.out.println(\"Waiting for 3 seconds...\");\n         Thread.sleep(3000);\n         // print that the program is closing\n         System.out.println(\"Program is closing...\");\n      } catch (Exception e) {\n         e.printStackTrace();\n      }\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Program is starting...\nWaiting for 3 seconds...\nProgram is closing...\nJVM is shutting down."
+      ]
+    },
+    {
+      "heading": "Example 2",
+      "paragraphs": [
+        "We can remove the shutdown hook as well using removeShutdownHook(). In this example, we're creating a class CustomThread by implementing Runnable interface. This thread object will be used as JVM Shutdown hook. CustomThread class has run() method implementation. In main class TestThread, we've added a shutdown hook using Runtime.getRuntime().addShutdownHook() method, by passing it a thread object. As last statement, we're removing the hook using Runtime.getRuntime().removeShutdownHook() method"
+      ],
+      "code": [
+        "package com.tutorialspoint;\n\nclass CustomThread implements Runnable {\n   public void run() {\n      System.out.println(\"JVM is shutting down.\");\n   }\n}\n\npublic class TestThread {\n   public static void main(String args[]) throws InterruptedException {\n      try {\n         Thread hook = new Thread(new CustomThread());\n         // register Message as shutdown hook\n         Runtime.getRuntime().addShutdownHook(hook);\n         // print the state of the program\n         System.out.println(\"Program is starting...\");\n         // cause thread to sleep for 3 seconds\n         System.out.println(\"Waiting for 3 seconds...\");\n         Thread.sleep(3000);\n         // print that the program is closing\n         System.out.println(\"Program is closing...\");\n\t\t  Runtime.getRuntime().removeShutdownHook(hook);\n      } catch (Exception e) {\n         e.printStackTrace();\n      }\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Program is starting...\nWaiting for 3 seconds...\nProgram is closing..."
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:39:48.170Z"
+}

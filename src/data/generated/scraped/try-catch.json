@@ -1,0 +1,134 @@
+{
+  "topicId": "try-catch",
+  "title": "Java try-catch Block",
+  "sectionId": "java-core-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/try-catch-in-java",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/try-catch-in-java",
+      "score": 83,
+      "sectionCount": 12
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java try-catch Block",
+      "paragraphs": [
+        "The Java try block is used to enclose the code that might throw an exception. It must be used within the method.",
+        "If an exception occurs at a particular statement in the try block, the rest of the block code will not execute. So, it is recommended not to keep the code in a try block that will not throw an exception."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java try-catch Block",
+      "paragraphs": [
+        "The try block is used to enclose the code that might throw an exception during execution. Any code that has the potential to cause an error, such as division by zero, accessing an invalid array index, or reading a file, should be placed inside the try block.",
+        "The catch block is used to handle the exception thrown by the try block. You specify the type of exception to catch inside parentheses. When an exception occurs in the try block, the corresponding catch block executes."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [
+        "The syntax of the try-catch block is as follows:",
+        "Here:",
+        "• The try block contains the code that might cause an exception.\n• The catch block handles the exception if it occurs.\n• ExceptionType can be a specific exception like ArithmeticException, IOException, or the general Exception class.\n• The catch block receives an exception object (commonly named e) that contains details about the exception."
+      ],
+      "code": [
+        "try {    \n// code that may throw an exception    \n} catch(Exception_class_Name ref) { }"
+      ]
+    },
+    {
+      "heading": "How Java Handles Exceptions Using try-catch Block?",
+      "paragraphs": [
+        "When an exception occurs, the Java Virtual Machine (JVM) first checks whether the exception is handled by the program.",
+        "• If the exception is not handled:The JVM provides a default exception handler that performs the following tasks:Prints the exception description.Prints the stack trace (the hierarchy of methods where the exception occurred).Terminates the program.\n• The JVM provides a default exception handler that performs the following tasks:Prints the exception description.Prints the stack trace (the hierarchy of methods where the exception occurred).Terminates the program.\n• Prints the exception description.\n• Prints the stack trace (the hierarchy of methods where the exception occurred).\n• Terminates the program.\n• If the exception is handled by the programmer:The normal flow of the application is maintained, and the rest of the code continues to execute.\n• The normal flow of the application is maintained, and the rest of the code continues to execute.",
+        "This mechanism makes sure that exceptions do not always crash the program and gives programmers a way to recover from runtime errors gracefully.",
+        "The following image demonstrates how try-catch block works."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example of try-catch Block",
+      "paragraphs": [
+        "The following example demonstrates how a divide by zero scenario is handled using a try-catch block.",
+        "Output:"
+      ],
+      "code": [
+        "// Java Program to demonstrate try-catch block\npublic class Main {\n    public static void main(String[] args) {\n        try {\n            int dividend = 10;\n            int divisor = 0;\n            int result = dividend / divisor; // May throw ArithmeticException\n            System.out.println(\"Result: \" + result);\n        } catch (ArithmeticException e) {\n            System.out.println(\"Error: Division by zero is not allowed.\");\n        }\n\n        System.out.println(\"Program continues after exception handling.\");\n    }\n}",
+        "Error: Division by zero is not allowed.\nProgram continues after exception handling."
+      ]
+    },
+    {
+      "heading": "Nested Try-Catch Block",
+      "paragraphs": [
+        "You can also use the nested try-catch block that means a try-catch block placed inside another try or catch block. This is useful when you want to handle different types of exceptions separately at different levels of your code.",
+        "• The outer try block handles general exceptions.\n• The inner try block handles specific exceptions that may occur within a particular code segment."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [
+        "Here is the syntax of using nested try-catch block:"
+      ],
+      "code": [
+        "try {\n    // Outer try block code\n    try {\n        // Inner try block code that may throw an exception\n    } catch (InnerExceptionType e) {\n        // Handle inner exception\n    }\n} catch (OuterExceptionType e) {\n    // Handle outer exception\n}"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates nested try catch block:",
+        "Output:",
+        "Explanation:",
+        "• The inner try block handles the ArithmeticException caused by division by zero.\n• The outer try block catches the ArrayIndexOutOfBoundsException when accessing an invalid array index."
+      ],
+      "code": [
+        "// Java Program to demonstrate Nested try-catch\npublic class Main {\n    public static void main(String[] args) {\n        try {\n            int[] numbers = {1, 2, 3};\n            System.out.println(\"Outer try block starts\");\n\n            try {\n                // Inner try block\n                int result = numbers[1] / 0; // May throw ArithmeticException\n            } catch (ArithmeticException e) {\n                System.out.println(\"Inner catch: Arithmetic Exception occurred\");\n            }\n\n            // Code that may throw another exception\n            System.out.println(numbers[5]); // May throw ArrayIndexOutOfBoundsException\n\n        } catch (ArrayIndexOutOfBoundsException e) {\n            System.out.println(\"Outer catch: Array Index Out Of Bounds Exception occurred\");\n        }\n\n        System.out.println(\"Program continues after nested exception handling.\");\n    }\n}",
+        "Outer try block starts\nInner catch: Arithmetic Exception occurred\nOuter catch: Array Index Out Of Bounds Exception occurred\nProgram continues after nested exception handling."
+      ]
+    },
+    {
+      "heading": "Problem Without Exception Handling",
+      "paragraphs": [
+        "Let's try to understand the problem if we do not use a try-catch block to handle the exception."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: Throwing Arithmetic Exception (Divide by Zero)",
+      "paragraphs": [
+        "Output:",
+        "As we see in the above example, the rest of the code is not executed (in such a case, the rest of the code statement is not printed).",
+        "There might be 100 lines of code after the exception. If the exception is not handled, all the code below the exception will not execute."
+      ],
+      "code": [
+        "public class Main { \n    public static void main(String[] args) {  \n        int data=50/0; //may throw exception   \n        System.out.println(\"rest of the code\");  \n    }  \n}",
+        "Exception in thread \"main\" java.lang.ArithmeticException: / by zero"
+      ]
+    },
+    {
+      "heading": "Handling Exception",
+      "paragraphs": [
+        "Let's see the solution to the above problem by using a Java try-catch block."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: Handling Arithmetic Exception (Divide by Zero)",
+      "paragraphs": [
+        "Examplepublic class Main {  \n    public static void main(String[] args) {  \n        try  {  \n        int data=50/0; //may throw exception   \n        }  \n        //handling the exception  \n        catch(ArithmeticException e)   {  \n            System.out.println(e);  \n        }  \n        System.out.println(\"rest of the code\");  \n    }  \n}  \nCompile and Run",
+        "Output:",
+        "As we see in the above program, the rest of the code is executed, i.e., the rest of the code statement is printed on the console.",
+        "Next TopicMultiple catch block in java"
+      ],
+      "code": [
+        "java.lang.ArithmeticException: / by zero\nrest of the code"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:36:59.627Z"
+}

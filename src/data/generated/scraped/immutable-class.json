@@ -1,0 +1,101 @@
+{
+  "topicId": "immutable-class",
+  "title": "How to create Immutable Class in Java?",
+  "sectionId": "java-core-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/how-to-create-immutable-class-in-java",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/how-to-create-immutable-class-in-java",
+      "score": 58,
+      "sectionCount": 9
+    }
+  ],
+  "sections": [
+    {
+      "heading": "How to create Immutable Class in Java?",
+      "paragraphs": [
+        "In Java, immutability refers an object's state that cannot be changed once it is created. Immutable classes, like String and wrapper classes (Integer, Boolean, etc.), provided benefits such as thread safety and easier debugging. In this chapter, we will learn what immutability is and how to create immutable classes."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is an Immutable Class?",
+      "paragraphs": [
+        "An immutable class is a class whose objects cannot be modified after they are created; if you make any change that results in a new object instead of altering the existing one.",
+        "For example, the String class in Java is immutable, once a String object is created, its value cannot be changed; if you make any modification, it creates a new String object."
+      ],
+      "code": []
+    },
+    {
+      "heading": "How to Create an Immutable Class?",
+      "paragraphs": [
+        "The following are the key rules to create an immutable class:",
+        "• Declare the class as finalThis prevents the class from being extended and modified by subclasses.\n• Make all fields private and finalThis ensures that fields cannot be changed once they are initialized.\n• Initialize fields using a constructorSet all values at the time of object creation.\n• Do not provide setter methodsAvoid methods that can modify the state of the object.\n• Return copies of mutable fields (deep copy)If the class contains mutable objects, return a copy instead of the original reference."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax to Create an Immutable Class",
+      "paragraphs": [
+        "Use the following syntax to create an immutable class by following the above mentioned rules:"
+      ],
+      "code": [
+        "final class ClassName {\n    private final dataType field1;\n    private final dataType field2;\n\n    public ClassName(dataType field1, dataType field2) {\n        this.field1 = field1;\n        this.field2 = field2;\n    }\n\n    public dataType getField1() {\n        return field1;\n    }\n\n    public dataType getField2() {\n        return field2;\n    }\n}"
+      ]
+    },
+    {
+      "heading": "Example of an Immutable Class",
+      "paragraphs": [
+        "The following example demonstrates how to create an immutable Student class:",
+        "Output:",
+        "Explanation:",
+        "The Student class is declared as final, its fields are private and final, and no setter methods are provided. This ensures that once a Student object is created, its data cannot be modified, making the class immutable."
+      ],
+      "code": [
+        "final class Student {\n    private final int id;\n    private final String name;\n    private final String course;\n\n    public Student(int id, String name, String course) {\n        this.id = id;\n        this.name = name;\n        this.course = course;\n    }\n\n    public int getId() {\n        return id;\n    }\n\n    public String getName() {\n        return name;\n    }\n\n    public String getCourse() {\n        return course;\n    }\n}\n\npublic class TestImmutable {\n    public static void main(String[] args) {\n        Student s = new Student(101, \"Rahul\", \"Java\");\n        System.out.println(s.getId() + \" \" + s.getName() + \" \" + s.getCourse());\n    }\n}",
+        "101 Rahul Java"
+      ]
+    },
+    {
+      "heading": "Limitations of Immutable Classes",
+      "paragraphs": [
+        "Although immutable classes provide many benefits, they also have some limitations:",
+        "• Higher Memory Usage: Every modification creates a new object that can increase memory consumption.\n• Performance Overhead: Frequent object creation may affect performance in applications that require many changes.\n• Complex Design: Creating immutable classes with mutable fields requires deep copying, which can make the code more complex.\n• Not Suitable for All Scenarios: Immutable objects are not ideal when data needs to be updated frequently."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Importance of Deep Copy in Immutable Classes",
+      "paragraphs": [
+        "When an immutable class contains mutable objects (such as arrays, lists, or custom objects), it returns direct references that can break immutability. To prevent this, deep copying is used so that the internal state cannot be modified from outside the class."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [
+        "It has the following syntax:"
+      ],
+      "code": [
+        "public returnType getField() {\n    return new returnType(originalField);\n}"
+      ]
+    },
+    {
+      "heading": "Example: Immutable Class Using Deep Copy",
+      "paragraphs": [
+        "The following example demonstrates how deep copy helps maintain immutability:",
+        "Output:",
+        "Explanation:",
+        "In this above example, even though the original array is modified, the internal state of the Student object remains unchanged because deep copies are used.",
+        "Next TopicUnderstanding-tostring()-method"
+      ],
+      "code": [
+        "final class Student {\n    private final int id;\n    private final String name;\n    private final int[] marks;\n\n    public Student(int id, String name, int[] marks) {\n        this.id = id;\n        this.name = name;\n        this.marks = marks.clone(); // deep copy\n    }\n\n    public int getId() {\n        return id;\n    }\n\n    public String getName() {\n        return name;\n    }\n\n    public int[] getMarks() {\n        return marks.clone(); // deep copy\n    }\n}\n\npublic class TestDeepCopy {\n    public static void main(String[] args) {\n        int[] marks = {80, 85, 90};\n        Student s = new Student(101, \"Amit\", marks);\n\n        marks[0] = 50; // modifying original array\n        System.out.println(s.getMarks()[0]); // remains unchanged\n    }\n}",
+        "80"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:36:29.896Z"
+}

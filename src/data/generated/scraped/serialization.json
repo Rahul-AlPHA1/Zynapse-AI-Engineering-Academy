@@ -1,0 +1,246 @@
+{
+  "topicId": "serialization",
+  "title": "Serialization and Deserialization in Java",
+  "sectionId": "java-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/serialization-in-java",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/serialization-in-java",
+      "score": 170,
+      "sectionCount": 19
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_serialization.htm",
+      "score": 70,
+      "sectionCount": 13
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Serialization and Deserialization in Java",
+      "paragraphs": [
+        "In Java, handling objects efficiently is important when we need to store data or transfer it over a network. One powerful mechanism that supports this is serialization and deserialization.",
+        "These concepts allow Java objects to be converted into a format that can be easily saved, transmitted, and later reconstructed. This feature is widely used in technologies such as Hibernate, RMI, JPA, EJB, and JMS."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is Serialization in Java?",
+      "paragraphs": [
+        "Serialization is the process of converting an object's state into a byte stream.",
+        "This byte stream can be:",
+        "• Stored in a file\n• Sent over a network\n• Saved in a database",
+        "Java provides the ObjectOutputStream class to perform serialization. The writeObject() method is used to serialize an object.",
+        "To make an object eligible for serialization, its class must implement the Serializable interface."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Advantages of Java Serialization",
+      "paragraphs": [
+        "It is mainly used to travel object's state on the network (that is known as marshalling).",
+        "• Platform Independence: There are no compatibility problems when transferring serialized objects between separate Java virtual machines (JVMs) running on different platforms. Java Serialization is an effective technique for inter-system communication because of its platform independence.\n• Network Communication: Java Serialization facilitates the transmission of object data over a network. This process, known as marshalling, allows objects to be serialized into a byte stream and sent across a network to be reconstructed on another machine. It is crucial for applications involving distributed systems, such as client-server architectures and web services.\n• Object Persistence: Serialization allows for indefinite storage of object state. Data can be kept between program executions by using serialized objects, which can be saved to a disc or a database and then retrieved."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is Deserialization in Java?",
+      "paragraphs": [
+        "Deserialization is the reverse process of serialization.",
+        "It converts the byte stream back into a Java object, restoring its original state.",
+        "Java provides the ObjectInputStream class to perform deserialization. The readObject() method is used to read the object from the stream."
+      ],
+      "code": []
+    },
+    {
+      "heading": "java.io.Serializable interface",
+      "paragraphs": [
+        "Serializable is a marker interface (has no data member and method). It is used to \"mark\" Java classes so that the objects of these classes may get a certain capability. The Cloneable and Remote are also marker interfaces.",
+        "The Serializable interface must be implemented by the class whose object needs to be persisted.",
+        "The String class and all the wrapper classes implement the java.io.Serializable interface by default.",
+        "Let's see the example given below:",
+        "Student.java",
+        "Explanation",
+        "This code defines a Java class named Student, implementing the Serializable interface. The Serializable interface serves as a marker, indicating that instances of the Student class can be serialized, meaning their state can be converted into a byte stream for storage or transmission.",
+        "The student class has two instance variables, id, and name, representing the student's ID and name, respectively. It also includes a constructor that initializes these variables with values passed as arguments. By implementing Serializable, instances of the Student class can be seamlessly serialized and deserialized, making them suitable for use in scenarios such as object persistence or network communication."
+      ],
+      "code": [
+        "import java.io.Serializable;\npublic class Student implements Serializable{\n int id;\n String name;\n public Student(int id, String name) {\n  this.id = id;\n  this.name = name;\n }\n}"
+      ]
+    },
+    {
+      "heading": "ObjectOutputStream Class",
+      "paragraphs": [
+        "The ObjectOutputStream class is used to write primitive data types, and Java objects to an OutputStream. Only objects that support the java.io.Serializable interface can be written to streams.",
+        "It acts as a link between byte streams and Java objects, enabling the serialization and writing of objects to a file or network connection, among other destinations. It is crucial to remember that only objects that are java.io are implementable.ObjectOutputStream can be used to write serializable interfaces to streams. The objects' ability to be serialized and have their state transformed into a byte stream is ensured by this interface."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Constructors",
+      "paragraphs": [
+        "public ObjectOutputStream(OutputStream out) throws IOException | It creates an ObjectOutputStream that writes to the specified OutputStream.\npublic ObjectOutputStream(OutputStream out, int bufferSize) throws IOException | It creates an ObjectOutputStream that writes to the specified OutputStream with the given buffer size.\nprotected ObjectOutputStream() throws IOException, SecurityException | It is used for subclass construction. Creates an ObjectOutputStream instance.\nprotected ObjectOutputStream(OutputStream out) throws IOException | It is used for subclass construction. Creates an ObjectOutputStream that writes to the specified OutputStream."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Important Methods",
+      "paragraphs": [
+        "Method | Description\npublic final void writeObject(Object obj) throws IOException {} | It writes the specified object to the ObjectOutputStream.\npublic void flush() throws IOException {} | It flushes the current output stream.\npublic void close() throws IOException {} | It closes the current output stream."
+      ],
+      "code": []
+    },
+    {
+      "heading": "ObjectInputStream class",
+      "paragraphs": [
+        "An ObjectInputStream deserializes objects and primitive data written using an ObjectOutputStream.",
+        "Constructor",
+        "1) public ObjectInputStream(InputStream in) throws IOException {} | It creates an ObjectInputStream that reads from the specified InputStream.",
+        "Important Methods",
+        "Method | Description\n1) public final Object readObject() throws IOException, ClassNotFoundException{} | It reads an object from the input stream.\n2) public void close() throws IOException {} | It closes ObjectInputStream."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example of Java Serialization",
+      "paragraphs": [
+        "In this example, we are going to serialize the object of Student class from above code. The writeObject() method of ObjectOutputStream class provides the functionality to serialize the object. We are saving the state of the object in the file named f.txt.",
+        "Persist.java",
+        "Output:",
+        "Explanation",
+        "The above Java code illustrates how to use the ObjectOutputStream class for object serialization. An instance of the Student class with the ID 211 and the name \"ravi\" is created within the main() method. Next, bytes are written to a file called \"f.txt\" using a FileOutputStream called fout that has been generated. The Student object s1 is then serialised and written to the file by creating an ObjectOutputStream with the name out and wrapping fout.",
+        "To relieve related system resources, the streams are terminated using close() after making sure that any buffered data has been sent to the file using flush(). The software prints \"success\" to the console if it is successful."
+      ],
+      "code": [
+        "import java.io.*;  \nclass Persist{  \n public static void main(String args[]){  \n  try{  \n  //Creating the object  \n  Student s1 =new Student(211,\"ravi\");  \n  //Creating stream and writing the object  \n  FileOutputStream fout=new FileOutputStream(\"f.txt\");  \n  ObjectOutputStream out=new ObjectOutputStream(fout);  \n  out.writeObject(s1);  \n  out.flush();  \n  //closing the stream  \n  out.close();  \n  System.out.println(\"success\");  \n  }catch(Exception e){System.out.println(e);}  \n }  \n}",
+        "success"
+      ]
+    },
+    {
+      "heading": "Example of Java Deserialization",
+      "paragraphs": [
+        "Deserialization is the process of reconstructing the object from the serialized state. It is the reverse operation of serialization. Let's see an example where we are reading the data from a deserialized object.",
+        "Deserialization is the process of reconstructing the object from the serialized state. It is the reverse operation of serialization. Let's see an example where we are reading the data from a deserialized object.",
+        "Depersist.java",
+        "Output:",
+        "Explanation",
+        "This Java code excerpt illustrates the use of the ObjectInputStream class for object deserialisation. A FileInputStream that reads data from the file \"f.txt\" is wrapped in an ObjectInputStream called in inside the main procedure. The serialized object that was previously written to the file is read using this stream. After that, the object is deserialised and cast to the Student class using the readObject() function.",
+        "The deserialised Student object's ID and name are then printed to the console along with other associated data. In order to free up related system resources, the stream is finally closed using the close() method. During deserialization, any exceptions are caught and their error messages are shown."
+      ],
+      "code": [
+        "import java.io.*;\nclass Depersist{\n public static void main(String args[]){\n  try{\n  //Creating stream to read the object\n  ObjectInputStream in=new ObjectInputStream(new FileInputStream(\"f.txt\"));\n  Student s=(Student)in.readObject();\n  //printing the data of the serialized object\n  System.out.println(s.id+\" \"+s.name);\n  //closing the stream\n  in.close();\n  }catch(Exception e){System.out.println(e);}\n }\n}",
+        "211 ravi"
+      ]
+    },
+    {
+      "heading": "Java Serialization with Inheritance (IS-A Relationship)",
+      "paragraphs": [
+        "If a class implements Serializable interface, then all its sub classes will also be serializable. Let's see the example given below:",
+        "SerializeISA.java",
+        "Output:",
+        "Explanation",
+        "The provided Java code showcases object serialization and deserialization, incorporating inheritance. In the code, the Person class serves as the superclass, defining basic attributes such as id and name, and implements the Serializable interface. The Student class, extending Person, adds specific attributes like course and fee, with a constructor initializing all properties, including inherited ones.",
+        "Within the SerializeISA class, serialization is demonstrated by creating a Student object (s1), writing it to a file named \"f.txt\" using an ObjectOutputStream, and then flushing and closing the stream. Deserialization occurs subsequently, reading the serialized object from \"f.txt\" via an ObjectInputStream, and printing its attributes to the console. Exception handling is implemented to manage potential errors during file operations or object manipulation."
+      ],
+      "code": [
+        "import java.io.Serializable;  \nclass Person implements Serializable{  \n int id;  \n String name;  \n Person(int id, String name) {  \n  this.id = id;  \n  this.name = name;  \n }  \n}  \nclass Student extends Person{  \n String course;  \n int fee;  \n public Student(int id, String name, String course, int fee) {  \n  super(id,name);  \n  this.course=course;  \n  this.fee=fee;  \n }  \n}  \npublic class SerializeISA\n{  \n public static void main(String args[])\n {  \n    try{  \n  //Creating the object  \n  Student s1 =new Student(211,\"ravi\",\"Engineering\",50000);  \n  //Creating stream and writing the object  \n  FileOutputStream fout=new FileOutputStream(\"f.txt\");  \n  ObjectOutputStream out=new ObjectOutputStream(fout);  \n  out.writeObject(s1);  \n  out.flush();  \n  //closing the stream  \n  out.close();  \n  System.out.println(\"success\");  \n  }catch(Exception e){System.out.println(e);}  \n  try{  \n  //Creating stream to read the object  \n  ObjectInputStream in=new ObjectInputStream(new FileInputStream(\"f.txt\"));  \n  Student s=(Student)in.readObject();  \n  //printing the data of the serialized object  \n  System.out.println(s.id+\" \"+s.name+\" \"+s.course+\" \"+s.fee);  \n  //closing the stream  \n  in.close();  \n  }catch(Exception e){System.out.println(e);}  \n }  \n}",
+        "success\n211 ravi Engineering 50000"
+      ]
+    },
+    {
+      "heading": "Java Serialization with Aggregation (HAS-A Relationship)",
+      "paragraphs": [
+        "If a class has a reference to another class, all the references must be Serializable otherwise serialization process will not be performed. In such case, NotSerializableException is thrown at runtime.",
+        "Address.java",
+        "Student.java",
+        "Since Address is not Serializable, you cannot serialize the instance of the Student class."
+      ],
+      "code": [
+        "class Address{  \n String addressLine,city,state;  \n public Address(String addressLine, String city, String state) {  \n  this.addressLine=addressLine;  \n  this.city=city;  \n  this.state=state;  \n }  \n}",
+        "import java.io.Serializable;\npublic class Student implements Serializable{\n int id;\n String name;\n Address address;//HAS-A\n public Student(int id, String name) {\n  this.id = id;\n  this.name = name;\n }\n}"
+      ]
+    },
+    {
+      "heading": "Note: All the objects within an object must be Serializable.",
+      "paragraphs": [
+        "Explanation",
+        "Address and Student are the two classes in the code that is provided. Initialized by its constructor, the Address class has addressLine, city, and state information about an address. The Student class creates a HAS-A relationship by representing a student with attributes like name and id and by providing a reference to an Address object.",
+        "The class implements the Serializable interface in order to allow Student instances to be serialized. Nevertheless, there is no Serializable implementation in the Address class, which could cause problems with serialization. In order to fix this, the Address class should additionally implement Serializable, which will guarantee that Student objects with Address references are serialized seamlessly."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Serialization with the Static Data Member",
+      "paragraphs": [
+        "If a class has any static data members, they will not be serialized.",
+        "In other words, static variables are not serialized when a class is serialized; only its instance variables are. Static variables are not part of the object's state and are not serialized with the object because they belong to the class itself and not to any particular instance of the class.",
+        "As a result, rather than initializing from the serialized stream, when an object is deserialized, its static variables will be initialized using either their default values or the values they were initialized to when the class was loaded into memory. This behaviour is intended to preserve consistency and prevent possible problems arising from the shared nature of static variables among all instances within a class.",
+        "Employee.java",
+        "Explanation",
+        "In the provided Employee class, there are three members: id, name, and company. The id and name fields represent instance-specific data for each employee and will be serialized when an Employee object is serialized. However, the company field is declared as static, making it a class-level variable shared among all instances of the Employee class. Static variables are not serialized because they are not part of the object's state; they belong to the class definition itself.",
+        "During the serialization process, only instance variables are serialized, while static variables are ignored. Therefore, when an Employee object is serialized and then deserialized, the id and name fields will be restored to their previous values, but the company field will retain its value from the class definition, not from the serialized stream. This behavior ensures that static variables maintain their consistency across all instances and are not affected by object serialization."
+      ],
+      "code": [
+        "class Employee implements Serializable{\n int id;\n String name;\n static String company=\"SSS IT Pvt Ltd\";//it won't be serialized\n public Student(int id, String name) {\n  this.id = id;\n  this.name = name;\n }\n}"
+      ]
+    },
+    {
+      "heading": "Java Serialization with Array or Collection",
+      "paragraphs": [
+        "Rule: In an array or collection, all the objects must be serializable. If any object is not serializable, serialization will fail.",
+        "When working with arrays or collections in Java serialization, it's crucial to make sure that every object inside of them can be serialized. It implies that every object in an array or collection of objects, such as an ArrayList, needs to implement the Serializable interface.",
+        "An attempt to serialize an array or collection will fail and usually throw a NotSerializableException if any of the objects in the array or collection are not serializable. It is due to the fact that serialization is a recursive operation, meaning that each object in an array or collection that is serialized likewise gets serialized.",
+        "To avoid serialization failures when dealing with arrays or collections, ensure that all objects stored within them are serializable. If a non-serializable object must be stored, consider alternatives such as transient fields or custom serialization methods to handle its serialization and deserialization. Additionally, always handle serialization exceptions gracefully to provide appropriate error handling and feedback to the user."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Externalizable in Java",
+      "paragraphs": [
+        "The Externalizable interface provides the facility of writing an object's state into a compressed byte stream. It is not a marker interface.",
+        "When a class implements the Externalizable interface, it must provide implementations for two methods: writeExternal() and readExternal(). These methods are invoked by the serialization mechanism to write the object's state to an ObjectOutput stream and to read the object's state from an ObjectInput stream, respectively.",
+        "The Externalizable interface provides two methods:",
+        "• public void writeExternal(ObjectOutput out) throws IOException\n• public void readExternal(ObjectInput in) throws IOException",
+        "1. writeExternal(ObjectOutput out): This method is called during serialization and is responsible for writing the object's state to the specified ObjectOutput stream. Developers can customize the serialization process by writing specific fields or data to the stream in any desired format. It can be used to optimize serialization by only writing essential data or by compressing the output, as mentioned in your explanation.",
+        "2. readExternal(ObjectInput in): This method is called during deserialization and is responsible for reconstructing the object's state from the specified ObjectInput stream. Developers must read the data from the stream in the same order and format as it was written during serialization. It allows for custom deserialization logic, such as handling backward compatibility or performing additional validation checks on the input data."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java transient Keyword",
+      "paragraphs": [
+        "If we do not want to serialize any data member of a class, we can mark it as transient.",
+        "Employee.java",
+        "Now, id will not be serialized, so when you deserialize the object after serialization, you will not get the value of id. It will return default value always. In such case, it will return 0 because the data type of id is an integer.",
+        "Visit next page for more details."
+      ],
+      "code": [
+        "class Employee implements Serializable{\n transient int id;\n String name;\n public Student(int id, String name) {\n  this.id = id;\n  this.name = name;\n }\n}"
+      ]
+    },
+    {
+      "heading": "SerialVersionUID",
+      "paragraphs": [
+        "The serialization process at runtime associates an id with each Serializable class which is known as SerialVersionUID. It is used to verify the sender and receiver of the serialized object. The sender and receiver must be the same. To verify it, SerialVersionUID is used. The sender and receiver must have the same SerialVersionUID, otherwise, InvalidClassException will be thrown when we deserialize the object. We can also declare our own SerialVersionUID in the Serializable class. To do so, we need to create a field SerialVersionUID and assign a value to it. It must be of the long type with static and final. It is suggested to declare the serialVersionUID field in the class explicitly and have it private also.",
+        "The deserialisation operation goes without a hitch if the serialVersionUID values match. An InvalidClassException is raised, halting the object's deserialisation, if they do not match, suggesting a possible discrepancy in the class structure between the sender and the recipient. This method guards against unexpected behaviour brought on by mismatched class versions and aids in maintaining data integrity.",
+        "It is recommended to define a static final serialVersionUID field directly in Serializable classes, even though Java automatically produces a serialVersionUID for Serializable classes based on different variables like class structure, field types, and method signatures. Developers can guarantee constant serialization behaviour even in cases when class signatures change-for example, when new fields are added or removed-by explicitly defining the serialVersionUID.",
+        "For example:",
+        "Now, the Serializable class will look like this:",
+        "Employee.java",
+        "Explanation",
+        "It is indicated that instances of this class can be serialized by the fact that the supplied Employee class implements the Serializable interface. A static final variable called serialVersionUID is declared within the class and acts as a version control mechanism for serialization.",
+        "This field makes sure that the class's serialized form is consistent between versions. The developer can better regulate versioning and retain control over the serialization process by explicitly setting a value (in this case, 1L) for serialVersionUID.",
+        "Two instance variables, name and id, which stand for the employee's name and identification number, respectively, are present in the Employee class. When an Employee object is serialized, these variables will also be serialized with the object's state.",
+        "Next TopicTransient-keyword-in-java"
+      ],
+      "code": [
+        "private static final long serialVersionUID=1L;",
+        "import java.io.Serializable;  \nclass Employee implements Serializable{  \n private static final long serialVersionUID=1L;  \n int id;  \n String name;  \n public Student(int id, String name) {  \n  this.id = id;  \n  this.name = name;  \n }  \n}"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:42:11.556Z"
+}

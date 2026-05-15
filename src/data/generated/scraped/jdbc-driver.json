@@ -1,0 +1,174 @@
+{
+  "topicId": "jdbc-driver",
+  "title": "JDBC Driver",
+  "sectionId": "java-collections-jdbc",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/jdbc-driver",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/jdbc-driver",
+      "score": 87,
+      "sectionCount": 19
+    },
+    {
+      "sourceId": "geeksforgeeks",
+      "url": "https://www.geeksforgeeks.org/java/jdbc-drivers/",
+      "score": 66,
+      "sectionCount": 16
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/jdbc/index.htm",
+      "score": 49,
+      "sectionCount": 10
+    }
+  ],
+  "sections": [
+    {
+      "heading": "JDBC Driver",
+      "paragraphs": [
+        "JDBC drivers are used for connecting Java applications to databases and performing operations like storing, retrieving, and updating data. They act as a bridge between Java programs and different database systems."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What are JDBC Drivers?",
+      "paragraphs": [
+        "JDBC drivers are software components that allow Java applications to interact with databases. They help in sending queries and receiving results from the database. Different types of drivers are available based on how the connection is established.",
+        "There are four types of JDBC drivers:",
+        "• JDBC-ODBC bridge driver\n• Native-API driver\n• Network Protocol driver\n• Thin driver"
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. JDBC-ODBC bridge driver",
+      "paragraphs": [
+        "The JDBC-ODBC bridge driver uses ODBC driver to connect to the database. The JDBC-ODBC bridge driver converts JDBC method calls into the ODBC function calls. This is now discouraged because of thin driver."
+      ],
+      "code": []
+    },
+    {
+      "heading": "In Java 8, the JDBC-ODBC Bridge has been removed.",
+      "paragraphs": [
+        "Oracle does not support the JDBC-ODBC Bridge from Java 8. Oracle recommends that you use JDBC drivers provided by the vendor of your database instead of the JDBC-ODBC Bridge."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Advantages:",
+      "paragraphs": [
+        "• easy to use.\n• can be easily connected to any database."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Disadvantages:",
+      "paragraphs": [
+        "• Performance degraded because JDBC method call is converted into the ODBC function calls.\n• The ODBC driver needs to be installed on the client machine."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example Code of JDBC-ODBC Bridge Driver",
+      "paragraphs": [
+        "In this example code, a Java program connects to a database using an ODBC Data Source (DSN) and fetches records."
+      ],
+      "code": [
+        "import java.sql.*;\n\npublic class JdbcOdbcExample {\n    public static void main(String[] args) {\n        try {\n            Class.forName(\"sun.jdbc.odbc.JdbcOdbcDriver\");\n            Connection con = DriverManager.getConnection(\"jdbc:odbc:mydsn\");\n\n            Statement stmt = con.createStatement();\n            ResultSet rs = stmt.executeQuery(\"SELECT * FROM student\");\n\n            while (rs.next()) {\n                System.out.println(rs.getInt(1) + \" \" + rs.getString(2));\n            }\n\n            con.close();\n        } catch (Exception e) {\n            System.out.println(e);\n        }\n    }\n}"
+      ]
+    },
+    {
+      "heading": "2. Native-API driver",
+      "paragraphs": [
+        "The Native API driver uses the client-side libraries of the database. The driver converts JDBC method calls into native calls of the database API. It is not written entirely in java."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Advantage:",
+      "paragraphs": [
+        "• performance upgraded than JDBC-ODBC bridge driver."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Disadvantage:",
+      "paragraphs": [
+        "• The Native driver needs to be installed on the each client machine.\n• The Vendor client library needs to be installed on client machine."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example Code of Native-API Driver",
+      "paragraphs": [
+        "In this example code, a Java program uses Oracle OCI driver to connect with an Oracle database."
+      ],
+      "code": [
+        "import java.sql.*;\n\npublic class NativeApiExample {\n    public static void main(String[] args) {\n        try {\n            Class.forName(\"oracle.jdbc.driver.OracleDriver\");\n            Connection con = DriverManager.getConnection(\n                \"jdbc:oracle:oci:@ORCL\", \"system\", \"password\");\n\n            Statement stmt = con.createStatement();\n            ResultSet rs = stmt.executeQuery(\"SELECT * FROM emp\");\n\n            while (rs.next()) {\n                System.out.println(rs.getInt(1) + \" \" + rs.getString(2));\n            }\n\n            con.close();\n        } catch (Exception e) {\n            System.out.println(e);\n        }\n    }\n}"
+      ]
+    },
+    {
+      "heading": "3. Network Protocol driver",
+      "paragraphs": [
+        "The Network Protocol driver uses middleware (application server) that converts JDBC calls directly or indirectly into the vendor-specific database protocol. It is fully written in java."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Advantage:",
+      "paragraphs": [
+        "• No client side library is required because of application server that can perform many tasks like auditing, load balancing, logging etc."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Disadvantages:",
+      "paragraphs": [
+        "• Network support is required on client machine.\n• Requires database-specific coding to be done in the middle tier.\n• Maintenance of Network Protocol driver becomes costly because it requires database-specific coding to be done in the middle tier."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example Code of Network Protocol Driver",
+      "paragraphs": [
+        "In this example code, a Java application connects to a middleware server which then communicates with the database."
+      ],
+      "code": [
+        "import java.sql.*;\n\npublic class NetworkProtocolExample {\n    public static void main(String[] args) {\n        try {\n            Class.forName(\"com.middleware.Driver\");\n            Connection con = DriverManager.getConnection(\n                \"jdbc:middleware://localhost:7001/mydb\", \"user\", \"password\");\n\n            Statement stmt = con.createStatement();\n            ResultSet rs = stmt.executeQuery(\"SELECT * FROM employee\");\n\n            while (rs.next()) {\n                System.out.println(rs.getInt(1) + \" \" + rs.getString(2));\n            }\n\n            con.close();\n        } catch (Exception e) {\n            System.out.println(e);\n        }\n    }\n}"
+      ]
+    },
+    {
+      "heading": "4. Thin driver",
+      "paragraphs": [
+        "The thin driver converts JDBC calls directly into the vendor-specific database protocol. That is why it is known as thin driver. It is fully written in Java language."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Advantage:",
+      "paragraphs": [
+        "• Better performance than all other drivers.\n• No software is required at client side or server side."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Disadvantage:",
+      "paragraphs": [
+        "• Drivers depend on the Database."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example Code of Thin Driver",
+      "paragraphs": [
+        "In this example code, a Java program uses MySQL thin driver to directly connect to a MySQL database.",
+        "Next TopicSteps To Connect To The Database In Java"
+      ],
+      "code": [
+        "import java.sql.*;\n\npublic class ThinDriverExample {\n    public static void main(String[] args) {\n        try {\n            Class.forName(\"com.mysql.cj.jdbc.Driver\");\n            Connection con = DriverManager.getConnection(\n                \"jdbc:mysql://localhost:3306/testdb\", \"root\", \"password\");\n\n            Statement stmt = con.createStatement();\n            ResultSet rs = stmt.executeQuery(\"SELECT * FROM student\");\n\n            while (rs.next()) {\n                System.out.println(rs.getInt(1) + \" \" + rs.getString(2));\n            }\n\n            con.close();\n        } catch (Exception e) {\n            System.out.println(e);\n        }\n    }\n}"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:48:06.237Z"
+}

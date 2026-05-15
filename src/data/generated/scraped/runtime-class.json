@@ -1,0 +1,115 @@
+{
+  "topicId": "runtime-class",
+  "title": "Java Runtime class",
+  "sectionId": "java-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-runtime-class",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-runtime-class",
+      "score": 65,
+      "sectionCount": 11
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java Runtime class",
+      "paragraphs": [
+        "The Java Runtime class is used to interact with the Java runtime environment. It provides methods to execute external processes, invoke garbage collection, and obtain information about total and free memory.",
+        "In a Java application, only one instance of the java.lang.Runtime class exists. This instance is shared by the entire application.",
+        "The Runtime.getRuntime() method is used to obtain this singleton instance of the Runtime class."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Importing Runtime Class",
+      "paragraphs": [
+        "The Runtime class belongs to the java.lang package. Since this package is imported automatically by Java, no explicit import statement is required to use the Runtime class in a program."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Constructors of Java Runtime Class",
+      "paragraphs": [
+        "The java.lang.Runtime class does not provide any public constructors. This is because the Runtime class follows the singleton design pattern.",
+        "An object of the Runtime class cannot be created using the new keyword. The only way to obtain its instance is by calling the Runtime.getRuntime() method, which returns the single Runtime instance associated with the Java application."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Methods of Java Runtime Class",
+      "paragraphs": [
+        "The following table lists the important methods of the Java Runtime class along with their descriptions.",
+        "Method | Description\npublic static Runtime getRuntime() | returns the instance of Runtime class.\npublic void exit(int status) | terminates the current virtual machine.\npublic void addShutdownHook(Thread hook) | registers new hook thread.\npublic Process exec(String command)throws IOException | executes given command in a separate process.\npublic int availableProcessors() | returns no. of available processors.\npublic long freeMemory() | returns amount of free memory in JVM.\npublic long totalMemory() | returns amount of total memory in JVM."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Examples of Runtime Class Methods",
+      "paragraphs": [
+        "The following examples demonstrate how different methods of the Java Runtime class are used in real programs."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example 1: Runtime exec() Method",
+      "paragraphs": [
+        "This example shows how to execute an external program using the exec() method."
+      ],
+      "code": [
+        "public class Runtime1{\n public static void main(String args[])throws Exception{\n  Runtime.getRuntime().exec(\"notepad\");//will open a new notepad\n }\n}"
+      ]
+    },
+    {
+      "heading": "Example 2: Shut Down System Using Runtime Class",
+      "paragraphs": [
+        "This example demonstrates how to shut down the system using the shutdown command.",
+        "Here you can use -s switch to shutdown system, -r switch to restart system and -t switch to specify time delay."
+      ],
+      "code": [
+        "public class Runtime2{\n public static void main(String args[])throws Exception{\n  Runtime.getRuntime().exec(\"shutdown -s -t 0\");\n }\n}"
+      ]
+    },
+    {
+      "heading": "Example 3: Shut Down Windows System Using Full Path",
+      "paragraphs": [
+        "This example shows how to shut down a Windows system by providing the full path of the shutdown command."
+      ],
+      "code": [
+        "public class Runtime2{\n public static void main(String args[])throws Exception{\n  Runtime.getRuntime().exec(\"c:\\\\Windows\\\\System32\\\\shutdown -s -t 0\");\n }\n}"
+      ]
+    },
+    {
+      "heading": "Example 4: Restart System Using Runtime Class",
+      "paragraphs": [
+        "This example demonstrates how to restart the system using the Runtime class."
+      ],
+      "code": [
+        "public class Runtime3{\n public static void main(String args[])throws Exception{\n  Runtime.getRuntime().exec(\"shutdown -r -t 0\");\n }\n}"
+      ]
+    },
+    {
+      "heading": "Example 5: Using availableProcessors() Method",
+      "paragraphs": [
+        "This example prints the number of processors available to the JVM."
+      ],
+      "code": [
+        "public class Runtime4{\n public static void main(String args[])throws Exception{\n  System.out.println(Runtime.getRuntime().availableProcessors());\n }\n}"
+      ]
+    },
+    {
+      "heading": "Example 6: Using freeMemory() and totalMemory() Methods",
+      "paragraphs": [
+        "This example shows how memory changes before and after garbage collection.",
+        "Output:",
+        "Next TopicSynchronization in java"
+      ],
+      "code": [
+        "public class MemoryTest{\n public static void main(String args[])throws Exception{\n  Runtime r=Runtime.getRuntime();\n  System.out.println(\"Total Memory: \"+r.totalMemory());\n  System.out.println(\"Free Memory: \"+r.freeMemory());\n  \n  for(int i=0;i<10000;i++){\n   new MemoryTest();\n  }\n  System.out.println(\"After creating 10000 instance, Free Memory: \"+r.freeMemory());\n  System.gc();\n  System.out.println(\"After gc(), Free Memory: \"+r.freeMemory());\n }\n}",
+        "Total Memory: 100139008\nFree Memory: 99474824\nAfter creating 10000 instance, Free Memory: 99310552\nAfter gc(), Free Memory: 100182832"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:40:09.500Z"
+}

@@ -1,0 +1,174 @@
+{
+  "topicId": "java-mastery-quiz-advanced",
+  "title": "Advanced Quiz (50 Questions)",
+  "sectionId": "java-mastery-quizzes",
+  "source": "geeksforgeeks",
+  "url": "https://www.geeksforgeeks.org/advance-java/advanced-java/",
+  "allSources": [
+    {
+      "sourceId": "geeksforgeeks",
+      "url": "https://www.geeksforgeeks.org/advance-java/advanced-java/",
+      "score": 93,
+      "sectionCount": 19
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_questions_answers.htm",
+      "score": 5,
+      "sectionCount": 1
+    }
+  ],
+  "sections": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Advanced Java refers to Java concepts beyond the basics of Core Java. It includes JDBC, Servlets, JSP, Java EE, web services and frameworks like Spring and Hibernate.",
+        "• Advanced Java is used to build robust, scalable and dynamic applications for enterprise projects, web development and backend systems.\n• It enables developers to create complex applications that integrate smoothly with databases, web servers and modern technologies.\n• It also provide opportunities in backend development, enterprise software and cloud-based applications."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Why Learn Advanced Java?",
+      "paragraphs": [
+        "• Build enterprise applications, web services and microservices.\n• Work with Spring, Hibernate and Java EE frameworks.\n• Master concurrency, multithreading and JVM optimizations.\n• Enhance career opportunities in backend development, cloud and enterprise software."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Introduction to Advanced Java",
+      "paragraphs": [
+        "Introduction to Advanced Java provides an overview of technologies and concepts used to build web, enterprise, and database-driven applications.",
+        "• Introduction\n• Core Java vs. Advanced Java"
+      ],
+      "code": []
+    },
+    {
+      "heading": "JDBC (Java Database Connectivity)",
+      "paragraphs": [
+        "JDBC allows Java applications to connect and interact with databases like MySQL. Learn to perform CRUD operations, manage transactions and use different types of statements effectively.",
+        "• Introduction\n• Connecting to Databases (MySQL)\n• CRUD Operations using JDBC\n• Types of Statements\n• Transactions in JDBC\n• Mini Project: Simple Banking Application\n• JDBC Complete Tutorial"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Servlets",
+      "paragraphs": [
+        "Servlets are Java programs that run on a web server to handle client requests dynamically. Topics include servlet creation, lifecycle, filters and CRUD operations.",
+        "• Introduction\n• Creating Servlet using NetBeans IDE\n• Working\n• Create Servlet in MyEclipse IDE\n• Life Cycle\n• Request, Response, and Session\n• Session Management\n• Filters\n• CRUD Operations\n• Mini Project: Web Application Using Servlet\n• Servlet Complete Tutorial"
+      ],
+      "code": []
+    },
+    {
+      "heading": "JSP (Java Server Pages)",
+      "paragraphs": [
+        "JSP enables dynamic web content generation with embedded Java code. Understand JSP architecture, lifecycle, expression language and comparisons with Servlets and ASP.",
+        "• Introduction\n• Life cycle\n• Directives\n• Scripting Elements\n• Expression Language\n• Implicit Objects\n• JSTL\n• Servlet vs JSP\n• JSP vs ASP\n• Mini Project: Login/Logout Example with JDBC\n• JSP Complete Tutorial"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Hibernate (ORM Framework)",
+      "paragraphs": [
+        "Hibernate simplifies database operations using Object-Relational Mapping (ORM) to map Java objects to database tables. Learn configuration, entity mapping, HQL, Criteria API and caching.",
+        "• Introduction\n• Hibernate Setup & Configuration\n• CRUD Operations\n• Mapping (One-to-One, One-to-Many, Many-to-Many)\n• Hibernate Annotations\n• Hibernate Query Language (HQL)\n• Hibernate Native SQL\n• Caching\n• Inheritance Mapping\n• Mini Project: Hibernate using JPA and MySQL\n• Hibernate Complete Tutorial"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Spring Ecosystem",
+      "paragraphs": [
+        "Spring is one of the most used Java enterprise frameworks for building scalable applications."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Spring Core",
+      "paragraphs": [
+        "Spring includes IoC, dependency injection, bean lifecycle and expression language (SpEL) features. It forms the foundation for scalable and maintainable Java applications.",
+        "• Introduction\n• Architecture\n• IoC Container\n• Create Simple Spring Application\n• BeanFactory\n• ApplicationContext\n• Dependency Injection\n• Spring Annotations\n• Autowiring\n• Bean life cycle\n• Custom Bean Scope\n• Expression Language(SpEL)\n• Mini Project: Get All Spring-Managed Beans"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Spring MVC",
+      "paragraphs": [
+        "Spring MVC enables the development of web applications following the Model-View-Controller pattern. It supports controllers, views, request mapping, validation and file upload integration.",
+        "• Introduction\n• Dispatcher Servlet in Spring\n• Create Model\n• Create View\n• Create Controller\n• @ViewResolver\n• @RequestParam\n• @RequestMapping\n• @Controller vs @RestController\n• Form Handling\n• Exception Handling\n• Integration with MySQL\n• CRUD Operations\n• Mini Project: Finding Doctors Online with MySQL\n• Spring MVC Complete Tutorial"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Spring Boot",
+      "paragraphs": [
+        "Spring Boot simplifies Spring development with auto-configuration, starters and embedded servers. It allows developers to quickly build stand-alone, production-ready applications.",
+        "• Introduction\n• Getting Started with Spring Boot Application\n• Architecture\n• Spring Boot Annotations\n• Spring Boot Configuration (Properties & YAML)\n• Spring Boot with REST API\n• RESTful Web Services\n• REST Controller\n• Create a REST API\n• Testing REST APIs (with Postman or curl)\n• Dependency Management\n• Starters\n• Exception Handling\n• Actuator\n• Mini Project: Book Inventory System\n• Spring Boot Complete Tutorial"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Spring Data JPA",
+      "paragraphs": [
+        "Spring Data JPA simplifies database operations by providing repository-based data access using JPA. It reduces boilerplate code by allowing developers to perform CRUD operations, pagination and sorting using simple method definitions.",
+        "• Introduction\n• Project Setup (Spring Initializer & Dependencies)\n• JPA Annotations @Table, @Id, @Column, @GeneratedValue\n• JpaRepository\n• Accessing Database using JpaRepository\n• Query Methods\n• Pagination and Sorting\n• Using SQL Scripts\n• Integrating Hibernate and JPA\n• Mini Project: Employee Management System\n• Spring Data Complete Tutorial"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Spring ORM",
+      "paragraphs": [
+        "Spring ORM provides integration between the Spring framework and ORM tools like Hibernate. It simplifies database operations by managing sessions, transactions and exception handling, making applications more consistent and easier to maintain.",
+        "• Introduction to Spring ORM\n• Spring Framework and Hibernate ORM\n• Configuring Hibernate with Spring\n• SessionFactory\n• Automatic Table Creation\n• Mini Project: Monitoring and Logging in Spring Boot"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Spring JDBC",
+      "paragraphs": [
+        "Spring JDBC provides a simple template-based API for database interaction.",
+        "• Template\n• SimpleJDBCTemplate\n• Example\n• Prepared Statement\n• NamedParameterJdbcTemplate\n• Using SQL Scripts\n• ResultSetExtractor"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Spring Security",
+      "paragraphs": [
+        "Spring Security is a powerful framework used to secure Java applications. It provides authentication and authorization mechanisms, helping protect applications from common security threats and ensuring controlled access to resources.",
+        "• Introduction\n• Architecture\n• Annotations\n• Spring Security with Spring Boot\n• JSP Tag Library\n• Authentication and Authorization\n• Role Based Authentication\n• CSRF, CORS\n• JWT Authentication\n• Mini Project: Registration and Login Process\n• Spring Security Complete Tutorial"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Spring AOP",
+      "paragraphs": [
+        "Aspect-Oriented Programming (AOP) in Spring helps in separating cross-cutting concerns, such as logging, security and transaction management, from the business logic.",
+        "• Introduction\n• AOP Around Advice\n• Implement AOP\n• Example (Spring1.2 Old Style AOP)\n• AspectJ Xml Configuration\n• AspectJ Annotation\n• Cache Provider\n• Around Advice\n• After Advice\n• Before Advice"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Spring Cloud",
+      "paragraphs": [
+        "Spring Cloud provides tools for building cloud-native microservices, including service discovery, load balancing and distributed configuration. It simplifies building resilient and scalable cloud applications.",
+        "• Introduction\n• Project Creation via Spring Initializr\n• Tracing Services with Zipkin\n• Cloud AWS\n• Client Side vs Server Side Load Balancer\n• Change Default Port of Eureka Server\n• Client Side Load Balancing with Ribbon\n• Create Your Custom Load Balancer\n• Mini Project: OpenFeign with Example Project"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Microservices",
+      "paragraphs": [
+        "Java Microservices break applications into smaller services that communicate with each other. This architecture improves scalability, maintainability and cloud integration.",
+        "• Introduction\n• Monolithic vs Microservices Architecture\n• Building a Simple Java Microservice with Spring Boot\n• Inter-Service Communication in Microservices\n• Service Discovery and Service Registry\n• API Gateway\n• Load Balancing and Fault Tolerance\n• Distributed Tracing\n• Packaging and Deploying Microservices (Docker Basics)\n• Mini Project: Backend Task Management System\n• Microservices Complete Tutorial"
+      ],
+      "code": []
+    },
+    {
+      "heading": "JUnit",
+      "paragraphs": [
+        "JUnit is a testing framework for Java applications that enables unit and integration testing. It supports annotations, test suites, code coverage and test-driven development.",
+        "• Introduction\n• JUnit – Executing Tests with Maven Build\n• Write Test Cases in Application\n• Unit Testing\n• Service Layer Testing (StudentService)\n• Parameterized Tests\n• Test Driven Development\n• Testing For MySQL Project\n• Annotations: @AfterEach, @AfterAll, @BeforeAll, @Tag, @RepeatedTest\n• Mini Project: Maven Project With JDBC"
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:49:23.637Z"
+}

@@ -1,0 +1,121 @@
+{
+  "topicId": "inter-thread",
+  "title": "Inter-thread Communication in Java",
+  "sectionId": "java-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/inter-thread-communication-in-java",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/inter-thread-communication-in-java",
+      "score": 64,
+      "sectionCount": 11
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_thread_communication.htm",
+      "score": 26,
+      "sectionCount": 5
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Inter-thread Communication in Java",
+      "paragraphs": [
+        "Inter-thread Communication in Java allows multiple threads to coordinate and communicate with each other to achieve synchronized execution in a multithreaded environment.",
+        "In this chapter, we will learn how threads communicate using methods like wait(), notify(), and notifyAll() to efficiently manage shared resources and thread coordination."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is Inter-thread Communication in Java?",
+      "paragraphs": [
+        "Inter-thread communication allows multiple threads to coordinate and share resources efficiently by using the wait(), notify(), and notifyAll() methods of the Object class. These methods help avoid busy waiting (polling) and enable smooth cooperation between threads, such as in the producer–consumer problem.",
+        "In this mechanism, one thread pauses its execution by calling wait(), and another thread signals it to resume by calling notify() or notifyAll().",
+        "In simple terms, the communication process between synchronized threads is known as inter-thread communication.",
+        "Inter-thread communication is achieved using the wait(), notify(), and notifyAll() methods of the Object class.",
+        "To read more Threads in Java"
+      ],
+      "code": []
+    },
+    {
+      "heading": "1) wait() Method",
+      "paragraphs": [
+        "The wait() method causes current thread to release the lock and wait until either another thread invokes the notify() method or the notifyAll() method for this object, or a specified amount of time has elapsed.",
+        "The current thread must own this object's monitor, so it must be called from the synchronized method only otherwise it will throw exception.",
+        "Method | Description\npublic final void wait() throws InterruptedException | It waits until object is notified.\npublic final void wait(long timeout) throws InterruptedException | It waits for the specified amount of time."
+      ],
+      "code": []
+    },
+    {
+      "heading": "2) notify() Method",
+      "paragraphs": [
+        "The notify() method wakes up a single thread that is waiting on this object's monitor. If any threads are waiting on this object, one of them is chosen to be awakened. The choice is arbitrary and occurs at the discretion of the implementation."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [
+        "It has the following syntax:"
+      ],
+      "code": [
+        "public final void notify()"
+      ]
+    },
+    {
+      "heading": "3) notifyAll() Method",
+      "paragraphs": [
+        "The method wakes up all threads that are waiting on this object's monitor."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [
+        "It has the followig syntax:"
+      ],
+      "code": [
+        "public final void notifyAll()"
+      ]
+    },
+    {
+      "heading": "Lifecycle of Threads in Inter-thread Communication",
+      "paragraphs": [
+        "The above diagram illustrates how threads interact with object locks during inter-thread communication.",
+        "Here are the steps involved in the lifecycle of threads during inter-thread communication:",
+        "• Threads attempt to acquire the object’s lock.\n• One thread successfully acquires the lock and enters the synchronized block or method.\n• If the thread calls the wait() method, it releases the lock and moves to the waiting state. Otherwise, it completes execution and exits.\n• When another thread calls notify() or notifyAll(), the waiting thread moves to the notified (runnable) state.\n• The notified thread becomes eligible to acquire the lock again.\n• After completing its task, the thread releases the lock and exits the object's monitor."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Object-Level Locking in Inter-thread Communication",
+      "paragraphs": [
+        "In Java, synchronization is based on objects rather than threads. Every Java object has an intrinsic lock, also known as a monitor, which is used to control synchronized access. The methods wait(), notify(), and notifyAll() work with these object-level monitors. This is why these methods are defined in the Object class instead of the Thread class."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Difference Between wait() and sleep() Methods",
+      "paragraphs": [
+        "Let's see the important differences between wait() and sleep() methods.",
+        "wait() | sleep()\nThe wait() method releases the lock. | The sleep() method does not release the lock.\nIt is a method of Object class. | It is a method of Thread class.\nIt is the non-static method. | It is the static method.\nIt should be notified by notify() or notifyAll() methods. | After the specified amount of time, sleep is completed.\nIt must be called inside a synchronized block or method. | It can be called from anywhere.\nIt throws InterruptedException. | It throws InterruptedException.\nIt is used for inter-thread communication (coordination). | It is used to pause execution for a specified duration.\nWaiting time can be indefinite unless timeout is given. | Always for a fixed time (in milliseconds/nanoseconds).\nThread must own the object's monitor before calling wait(). | No such requirement.",
+        "To read more wait() Vs. sleep() in Java"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example of Inter-thread Communication",
+      "paragraphs": [
+        "The following Java program demonstrates inter-thread communication using the wait() and notify() methods, where one thread waits for a deposit while another thread deposits money and notifies the waiting thread.",
+        "//Java Program to understand the use of Inter-Thread Communication\nclass Customer{    \n int amount=10000;    \n //creating a withdraw() method which calls the wait() method\n synchronized void withdraw(int amount){    \n  System.out.println(\"going to withdraw...\");    \n    \n  if(this.amount<amount){    \n    System.out.println(\"Less balance; waiting for deposit...\");    \n    try{wait();}catch(Exception e){}    \n  }    \n  this.amount-=amount;    \n  System.out.println(\"withdraw completed...\");    \n }    \n //creating a deposit() method with calls the notify() method\n synchronized void deposit(int amount){    \n  System.out.println(\"going to deposit...\");    \n  this.amount+=amount;    \n  System.out.println(\"deposit completed... \");    \n  notify();    \n }    \n}    \n//Creating a Main class to start threads and call deposit() and withdraw()\npublic class Main{    \n public static void main(String args[]){    \n  final Customer c=new Customer();    \n  new Thread(){    \n    public void run(){c.withdraw(15000);}    \n  }.start();    \n  new Thread(){    \n    public void run(){c.deposit(10000);}    \n  }.start();    \n }\n}    \nCompile and Run",
+        "Output:",
+        "Next TopicInterrupting A Thread"
+      ],
+      "code": [
+        "going to withdraw...\nLess balance; waiting for deposit...\ngoing to deposit...\ndeposit completed...\nwithdraw completed"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:40:48.071Z"
+}

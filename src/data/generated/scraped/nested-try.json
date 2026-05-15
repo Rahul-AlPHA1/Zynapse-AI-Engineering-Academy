@@ -1,0 +1,96 @@
+{
+  "topicId": "nested-try",
+  "title": "Java - Nested Try Block",
+  "sectionId": "java-core-advanced",
+  "source": "tutorialspoint",
+  "url": "https://www.tutorialspoint.com/java/java_nested_try_block.htm",
+  "allSources": [
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_nested_try_block.htm",
+      "score": 48,
+      "sectionCount": 9
+    },
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/nested-try-block-in-java",
+      "score": 44,
+      "sectionCount": 7
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Nested Try Block",
+      "paragraphs": [
+        "A try block can be nested within another try block. This structure is termed as Nested try block. Whenever an exception is raised within a nested try block, its exception is pushed to Stack. The exception propagates from child to parent try block and so on."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [
+        "The syntax for nested catch blocks looks like the following −",
+        "The previous statements demonstrate two try/catch blocks, but you can have any number of them. If an exception occurs in the protected child code, the exception is thrown to the catch block of the child list. If the data type of the exception thrown matches ExceptionType1, it gets caught there. If not, the exception passes up to the parent catch statement. This continues until the exception either is caught or falls through all catches, in which case the current method stops execution and the exception is thrown down to the previous method on the call stack."
+      ],
+      "code": [
+        "try { // parent try block\n   try {  // child try block\n   \n   }\n   catch(ExceptionType1 e1){  // child catch block\n   \n   }\n} catch (ExceptionType2 e1) { // parent catch block\n\n}"
+      ]
+    },
+    {
+      "heading": "Pointer To Remember While Using Nested Try Block",
+      "paragraphs": [
+        "• Child catch block should have specific exception for better code clarity. Parent catch block can have more generic exception handled so that if child catch block is not able to handle the exception then parent catch block can handle it.\n• There in no restriction on exception hiearchy to be used in child vs parent catch block.\n• If a exception is handled correctly in child catch block, then in parent, another exception can be raised and handled."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Nested Try Block Example",
+      "paragraphs": [
+        "Here is code segment showing how to use nested try/catch statements. In this example, we're creating an error by dividing a value by 0 in a nested try block. The child catch block is handling the exception and printing the same. Now in parent try block, we're again creating an error by using an invalid array index while accessing array elements and exception is raised."
+      ],
+      "code": [
+        "package com.tutorialspoint;\n\npublic class ExcepTest {\n\n   public static void main(String args[]) {\n      try {\n         int a[] = new int[2];\n         try {\n            int b = 0;\n            int c = 1/b;\n         }catch(Exception e) {\n            System.out.println(\"Exception thrown: \" + e);\n         }\n         System.out.println(\"Access element three :\" + a[3]);\n      }\n      catch (ArrayIndexOutOfBoundsException e) {\n         System.out.println(\"Exception thrown: \" + e);\n      }\n      System.out.println(\"Out of the block\");\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Exception thrown: java.lang.ArithmeticException: / by zero\nException thrown: java.lang.ArrayIndexOutOfBoundsException: 3\nOut of the block"
+      ]
+    },
+    {
+      "heading": "Example 1",
+      "paragraphs": [
+        "In this code segment, we're showing how to use another example of nested try/catch statements. In this example, we're creating an error by dividing a value by 0 in nested try block but we're not handling in corresponding catch block. As parent try block is handling the exception raised as generic exception, it captures the exception raised by child catch block and prints the same."
+      ],
+      "code": [
+        "package com.tutorialspoint;\n\npublic class ExcepTest {\n   public static void main(String args[]) {\n      try {\n         int a[] = new int[2];\n         try {\n            int b = 0;\n            int c = 1/b;\n         }catch(ArrayIndexOutOfBoundsException e) {\n            System.out.println(\"Exception thrown: \" + e);\n         }\n         System.out.println(\"Access element three :\" + a[3]);\n      }\n      catch (Exception e) {\n         System.out.println(\"Exception thrown: \" + e);\n      }\n      System.out.println(\"Out of the block\");\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Exception thrown: java.lang.ArithmeticException: / by zero\nOut of the block"
+      ]
+    },
+    {
+      "heading": "Example 2",
+      "paragraphs": [
+        "In this code segment, we're showing the case of nested try/catch statements where exceptions are not handled by any of the catch block. In this example, we're creating an error by dividing a value by 0 in nested try block but we're not handling this kind of exception in any catch block. Now JVM will capture the exception and terminate the program without printing the last statement."
+      ],
+      "code": [
+        "package com.tutorialspoint;\n\npublic class ExcepTest {\n   public static void main(String args[]) {\n      try {\n         int a[] = new int[2];\n         try {\n            int b = 0;\n            int c = 1/b;\n         }catch(ArrayIndexOutOfBoundsException e) {\n            System.out.println(\"Exception thrown: \" + e);\n         }\n         System.out.println(\"Access element three :\" + a[3]);\n      }\n      catch (ArrayIndexOutOfBoundsException e) {\n         System.out.println(\"Exception thrown: \" + e);\n      }\n      System.out.println(\"Out of the block\");\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Exception in thread \"main\" java.lang.ArithmeticException: / by zero\n\tat com.tutorialspoint.ExcepTest.main(ExcepTest.java:10)"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:37:14.705Z"
+}

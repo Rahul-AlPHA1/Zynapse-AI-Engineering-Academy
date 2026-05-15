@@ -1,0 +1,118 @@
+{
+  "topicId": "anonymous-inner",
+  "title": "Java - Anonymous Classes",
+  "sectionId": "java-core-advanced",
+  "source": "tutorialspoint",
+  "url": "https://www.tutorialspoint.com/java/java_anonymous_class.htm",
+  "allSources": [
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_anonymous_class.htm",
+      "score": 64,
+      "sectionCount": 11
+    },
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/anonymous-inner-class",
+      "score": 36,
+      "sectionCount": 6
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java Anonymous Class",
+      "paragraphs": [
+        "An anonymous class in Java is an inner class which is declared without any class name at all. In other words, a nameless inner class in Java is called an anonymous inner class. Since it does not have a name, it cannot have a constructor because we know that a constructor name is the same as the class name."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Use of Java Anonymous Inner Classes",
+      "paragraphs": [
+        "Anonymous inner classes are used when you want to create a simple class that is needed for one time only for a specific purpose. For example, implementing an interface or extending a class."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Defining Anonymous Class in Java",
+      "paragraphs": [
+        "You can define an anonymous inner class and create its object using the new operator at the same time in one step."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [
+        "The syntax of anonymous nested class is as follows −"
+      ],
+      "code": [
+        "new(argument-list){\n   // Anonymous class body\n}"
+      ]
+    },
+    {
+      "heading": "Types of Anonymous Inner Classes in Java",
+      "paragraphs": [
+        "• Anonymous inner class that extends a class\n• Anonymous inner class that implements an interface\n• Anonymous inner class as an argument"
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. Anonymous inner class that extends a class",
+      "paragraphs": [
+        "You can use an anonymous inner class to extend a class in Java."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: Anonymous inner class that extends a class",
+      "paragraphs": [
+        "In the following example,we're using a new keyword to create an object of the anonymous inner class that has a reference of parent class type.",
+        "Output",
+        "If you compile and execute the above program, you will get the following result −"
+      ],
+      "code": [
+        "package com.tutorialspoint;\n\nclass Car {\n   public void engineType() {\n      System.out.println(\"Turbo Engine\");\n   }\n}\npublic class Tester {\n   public static void main(String args[]) {\n      Car c1 = new Car();\n      c1.engineType();\n      Car c2 = new Car() {\n         @Override\n         public void engineType() {\n            System.out.println(\"V2 Engine\");\n         }\n      };\n      c2.engineType();\n   }\n}",
+        "Turbo Engine\nV2 Engine"
+      ]
+    },
+    {
+      "heading": "2. Anonymous inner class that implements an interface",
+      "paragraphs": [
+        "You can use an anonymous inner class to implement an interface in Java."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: Anonymous inner class that implements an interface",
+      "paragraphs": [
+        "In the following example,we're using a new keyword to create an object of the anonymous inner class that has a reference of an interface type.",
+        "Output",
+        "If you compile and execute the above program, you will get the following result −"
+      ],
+      "code": [
+        "package com.tutorialspoint;\n\ninterface Software {\n   public void develop();\n}\npublic class Tester {\n   public static void main(String args[]) {\n      Software s = new Software() {\n         @Override\n         public void develop() {\n            System.out.println(\"Software Developed in Java\");\n         }\n      };\n      s.develop();\n      System.out.println(s.getClass().getName());\n   }\n}",
+        "Software Developed in Java\ncom.tutorialspoint.Tester$1"
+      ]
+    },
+    {
+      "heading": "3. Anonymous inner class as an argument",
+      "paragraphs": [
+        "We can use the anonymous inner class as an argument so that it can be passed to methods or constructors."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: Anonymous inner class as an argument",
+      "paragraphs": [
+        "In the following example,we're passing an anonymous inner class as an argument to one method.",
+        "Output",
+        "If you compile and execute the above program, you will get the following result −"
+      ],
+      "code": [
+        "package com.tutorialspoint;\n\nabstract class Engine {\n   public abstract void engineType();\n}\nclass Vehicle {\n   public void transport(Engine e) {\n      e.engineType();\n   }\n}\npublic class Tester {\n   public static void main(String args[]) {\n      Vehicle v = new Vehicle();\n      v.transport(new Engine() {\n         @Override\n         public void engineType() {\n            System.out.println(\"Turbo Engine\");\n         }\n      });\n   }\n}",
+        "Turbo Engine"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:38:11.511Z"
+}

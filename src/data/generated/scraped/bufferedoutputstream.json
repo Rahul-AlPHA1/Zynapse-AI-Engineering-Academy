@@ -1,0 +1,116 @@
+{
+  "topicId": "bufferedoutputstream",
+  "title": "Java BufferedOutputStream Class",
+  "sectionId": "java-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-bufferedoutputstream-class",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-bufferedoutputstream-class",
+      "score": 72,
+      "sectionCount": 10
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java BufferedOutputStream Class",
+      "paragraphs": [
+        "The BufferedOutputStream class in Java is used to write data to an output stream efficiently by using an internal buffer.",
+        "In this chapter, we will learn what the BufferedOutputStream class is, why it is used, its declaration, constructors, methods, and how to write data to a file using an example."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is the BufferedOutputStream in Java?",
+      "paragraphs": [
+        "The BufferedOutputStream class adds a buffering mechanism to an output stream. Instead of writing data directly to the destination, it first stores the data in a buffer and then writes it in larger chunks.",
+        "This buffering improves performance by reducing the number of write operations. It is commonly used with FileOutputStream."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Adding Buffer to an OutputStream",
+      "paragraphs": [
+        "The following syntax shows how to add buffering to an output stream:"
+      ],
+      "code": [
+        "OutputStream os= new BufferedOutputStream(new FileOutputStream(\"D:\\\\IO Package\\\\testout.txt\"));"
+      ]
+    },
+    {
+      "heading": "BufferedOutputStream Class Declaration",
+      "paragraphs": [
+        "The following declaration shows how the BufferedOutputStream class is defined:"
+      ],
+      "code": [
+        "public class BufferedOutputStream extends FilterOutputStream"
+      ]
+    },
+    {
+      "heading": "Constructors of BufferedOutputStream Class",
+      "paragraphs": [
+        "The BufferedOutputStream class provides constructors to create a buffered output stream."
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. BufferedOutputStream(OutputStream out)",
+      "paragraphs": [
+        "This constructor creates a buffered output stream using the specified output stream and a default buffer size.",
+        "Syntax:",
+        "Here is the syntax of this constructor:"
+      ],
+      "code": [
+        "BufferedOutputStream(OutputStream out)"
+      ]
+    },
+    {
+      "heading": "2. BufferedOutputStream(OutputStream out, int size)",
+      "paragraphs": [
+        "This constructor creates a buffered output stream using the specified output stream with a custom buffer size.",
+        "Syntax:",
+        "Here is the syntax of this constructor:"
+      ],
+      "code": [
+        "BufferedOutputStream(OutputStream out, int size)"
+      ]
+    },
+    {
+      "heading": "Example of BufferedOutputStream Constructors",
+      "paragraphs": [
+        "This example creates a BufferedOutputStream using a FileOutputStream with the default buffer size.",
+        "Output:",
+        "File Content (testout.txt):"
+      ],
+      "code": [
+        "import java.io.*;\n\npublic class BufferedOutputStreamConstructorExample1 {\n    public static void main(String args[]) {\n        try {\n            FileOutputStream fout = new FileOutputStream(\"D:\\\\testout.txt\");\n            BufferedOutputStream bout = new BufferedOutputStream(fout);\n\n            String data = \"Default buffer example\";\n            bout.write(data.getBytes());\n\n            bout.flush();\n            bout.close();\n            fout.close();\n\n            System.out.println(\"Data written successfully\");\n        } catch (Exception e) {\n            System.out.println(e);\n        }\n    }\n}",
+        "Data written successfully",
+        "Default buffer example"
+      ]
+    },
+    {
+      "heading": "Methods of BufferedOutputStream Class",
+      "paragraphs": [
+        "The BufferedOutputStream class provides methods to write data.",
+        "Method | Description\nvoid write(int b) | It writes the specified byte to the buffered output stream.\nvoid write(byte[] b, int off, int len) | It write the bytes from the specified byte-input stream into a specified byte array, starting with the given offset\nvoid flush() | It flushes the buffered output stream."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example of BufferedOutputStream Class",
+      "paragraphs": [
+        "In this example, text data is written to a file using BufferedOutputStream. The flush() method sends buffered data to the file.",
+        "Output:",
+        "testout.txt",
+        "Next TopicJava BufferedInputStream Class"
+      ],
+      "code": [
+        "package com.javatpoint;\nimport java.io.*;\npublic class BufferedOutputStreamExample{  \npublic static void main(String args[])throws Exception{  \n\t FileOutputStream fout=new FileOutputStream(\"D:\\\\testout.txt\");  \n\t BufferedOutputStream bout=new BufferedOutputStream(fout);  \n\t String s=\"Welcome to javaTpoint.\";  \n\t byte b[]=s.getBytes();  \n\t bout.write(b);  \n\t bout.flush();  \n\t bout.close();  \n\t fout.close();  \n\t System.out.println(\"success\");  \n}  \n}",
+        "Success",
+        "Welcome to javaTpoint."
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:41:24.533Z"
+}

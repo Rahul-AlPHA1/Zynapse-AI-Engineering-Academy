@@ -1,0 +1,147 @@
+{
+  "topicId": "math-class",
+  "title": "Java Math Class",
+  "sectionId": "java-core-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-math",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-math",
+      "score": 84,
+      "sectionCount": 14
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_lang_math.htm",
+      "score": 32,
+      "sectionCount": 6
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java Math Class",
+      "paragraphs": [
+        "The Java Math class is a fundamental part of the Java language's standard library, offering a wide range of mathematical functions. It provides static methods for performing basic arithmetic operations like min(), max(), random(), round() etc. Additionally, it offers methods for more complex operations such as calculating logarithms and trigonometric functions.",
+        "Java Math class provides several methods to work on math calculations like min(), max(), avg(), sin(), cos(), tan(), round(), ceil(), floor(), abs() etc.",
+        "Unlike some of the StrictMath class numeric methods, all implementations of the equivalent function of Math class can't define to return the bit-for-bit same results. This relaxation permits implementation with better-performance where strict reproducibility is not required."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Importing Java Math Class",
+      "paragraphs": [
+        "Math class is part of the java.lang package, which is imported automatically, so you can use its methods without explicitly importing it."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax to use a Math method",
+      "paragraphs": [
+        "The syntax to se a Math class's method is as follows:"
+      ],
+      "code": [
+        "Math.methodName(arguments);"
+      ]
+    },
+    {
+      "heading": "Example Syntax",
+      "paragraphs": [
+        "The following statements demonstrates how you can use the sqrt() and pow() methods of math class:"
+      ],
+      "code": [
+        "// Calculate square root of a number\ndouble result = Math.sqrt(25);\n\n// Calculate power of a number\ndouble power = Math.pow(5, 3);"
+      ]
+    },
+    {
+      "heading": "Java Math Class Methods",
+      "paragraphs": [
+        "One of the key features of the Math class is its support for working with floating-point numbers. These methods can handle a variety of mathematical tasks involving decimals, fractions, and very large or very small numbers. For example, the Math.round() method can round a floating-point number to the nearest integer, while Math.random() can generate a random number between 0.0 and 1.0.",
+        "The Math class also provides methods for working with angles and trigonometric functions. It includes methods for calculating sine, cosine, and tangent, as well as their inverse functions. These functions are useful for tasks like calculating distances and angles in geometry, or for simulating natural phenomena in physics and engineering."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Basic Math Methods",
+      "paragraphs": [
+        "The following table shows different basic math methods in Java.",
+        "Method | Description\nMath.abs() | It will return the Absolute value of the given value.\nMath.max() | It returns the Largest of two values.\nMath.min() | It is used to return the Smallest of two values.\nMath.round() | It is used to round of the decimal numbers to the nearest value.\nMath.sqrt() | It is used to return the square root of a number.\nMath.cbrt() | It is used to return the cube root of a number.\nMath.pow() | It returns the value of first argument raised to the power to second argument.\nMath.signum() | It is used to find the sign of a given value.\nMath.ceil() | It is used to find the smallest integer value that is greater than or equal to the argument or mathematical integer.\nMath.copySign() | It is used to find the Absolute value of first argument along with sign specified in second argument.\nMath.nextAfter() | It is used to return the floating-point number adjacent to the first argument in the direction of the second argument.\nMath.nextUp() | It returns the floating-point value adjacent to d in the direction of positive infinity.\nMath.nextDown() | It returns the floating-point value adjacent to d in the direction of negative infinity.\nMath.floor() | It is used to find the largest integer value which is less than or equal to the argument and is equal to the mathematical integer of a double value.\nMath.floorDiv() | It is used to find the largest integer value that is less than or equal to the algebraic quotient.\nMath.random() | It returns a double value with a positive sign, greater than or equal to 0.0 and less than 1.0.\nMath.rint() | It returns the double value that is closest to the given argument and equal to mathematical integer.\nMath.hypot() | It returns sqrt(x2 +y2) without intermediate overflow or underflow.\nMath.ulp() | It returns the size of an ulp of the argument.\nMath.getExponent() | It is used to return the unbiased exponent used in the representation of a value.\nMath.IEEEremainder() | It is used to calculate the remainder operation on two arguments as prescribed by the IEEE 754 standard and returns value.\nMath.addExact() | It is used to return the sum of its arguments, throwing an exception if the result overflows an int or long.\nMath.subtractExact() | It returns the difference of the arguments, throwing an exception if the result overflows an int.\nMath.multiplyExact() | It is used to return the product of the arguments, throwing an exception if the result overflows an int or long.\nMath.incrementExact() | It returns the argument incremented by one, throwing an exception if the result overflows an int.\nMath.decrementExact() | It is used to return the argument decremented by one, throwing an exception if the result overflows an int or long.\nMath.negateExact() | It is used to return the negation of the argument, throwing an exception if the result overflows an int or long.\nMath.toIntExact() | It returns the value of the long argument, throwing an exception if the value overflows an int."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Logarithmic Math Methods",
+      "paragraphs": [
+        "The following table shows different Logarithmic math methods in Java.",
+        "Method | Description\nMath.log() | It returns the natural logarithm of a double value.\nMath.log10() | It is used to return the base 10 logarithm of a double value.\nMath.log1p() | It returns the natural logarithm of the sum of the argument and 1.\nMath.exp() | It returns E raised to the power of a double value, where E is Euler's number and it is approximately equal to 2.71828.\nMath.expm1() | It is used to calculate the power of E and subtract one from it."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Trigonometric Math Methods",
+      "paragraphs": [
+        "The following table shows different Trigonometric math methods in Java.",
+        "Method | Description\nMath.sin() | It is used to return the trigonometric Sine value of a Given double value.\nMath.cos() | It is used to return the trigonometric Cosine value of a Given double value.\nMath.tan() | It is used to return the trigonometric Tangent value of a Given double value.\nMath.asin() | It is used to return the trigonometric Arc Sine value of a Given double value\nMath.acos() | It is used to return the trigonometric Arc Cosine value of a Given double value.\nMath.atan() | It is used to return the trigonometric Arc Tangent value of a Given double value."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Hyperbolic Math Methods",
+      "paragraphs": [
+        "The following table shows different hyperbolic math methods in Java.",
+        "Method | Description\nMath.sinh() | It is used to return the trigonometric Hyperbolic Cosine value of a Given double value.\nMath.cosh() | It is used to return the trigonometric Hyperbolic Sine value of a Given double value.\nMath.tanh() | It is used to return the trigonometric Hyperbolic Tangent value of a Given double value."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Angular Math Methods",
+      "paragraphs": [
+        "The following table shows different angular math methods in Java.",
+        "Method | Description\nMath.toDegrees | It is used to convert the specified Radians angle to equivalent angle measured in Degrees.\nMath.toRadians | It is used to convert the specified Degrees angle to equivalent angle measured in Radians."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Examples of Math Class Methods",
+      "paragraphs": [
+        "Some useful methods of the Java Math class with practical examples."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example 1: Basic Math Operations",
+      "paragraphs": [
+        "The following example demonstrates basic mathematical operations such as maximum, square root, power, and logarithmic calculations using the Math class.",
+        "Output:"
+      ],
+      "code": [
+        "public class JavaMathExample1  \n{  \n    public static void main(String[] args)   \n    {  \n        double x = 28;  \n        double y = 4;  \n        \n        // return the maximum of two numbers\n        System.out.println(\"Maximum number of x and y is: \" +Math.max(x, y)); \n        \n        // return the square root of y \n        System.out.println(\"Square root of y is: \" + Math.sqrt(y)); \n        \n        //returns 28 power of 4 i.e. 28*28*28*28  \n        System.out.println(\"Power of x and y is: \" + Math.pow(x, y));    \n\n        // return the logarithm of given value     \n        System.out.println(\"Logarithm of x is: \" + Math.log(x)); \n        System.out.println(\"Logarithm of y is: \" + Math.log(y));\n        \n        // return the logarithm of given value when base is 10    \n        System.out.println(\"log10 of x is: \" + Math.log10(x)); \n        System.out.println(\"log10 of y is: \" + Math.log10(y));  \n        \n        // return the log of x + 1\n        System.out.println(\"log1p of x is: \" +Math.log1p(x));  \n\n        // return a power of 2  \n        System.out.println(\"exp of a is: \" +Math.exp(x));  \n        \n        // return (a power of 2)-1\n        System.out.println(\"expm1 of a is: \" +Math.expm1(x));\n    }  \n}",
+        "Maximum number of x and y is: 28.0\nSquare root of y is: 2.0\nPower of x and y is: 614656.0\nLogarithm of x is: 3.332204510175204\nLogarithm of y is: 1.3862943611198906\nlog10 of x is: 1.4471580313422192\nlog10 of y is: 0.6020599913279624\nlog1p of x is: 3.367295829986474\nexp of a is: 1.446257064291475E12\nexpm1 of a is: 1.446257064290475E12"
+      ]
+    },
+    {
+      "heading": "Example 2: Trigonometric Methods",
+      "paragraphs": [
+        "The following example demonstrates how to use trigonometric and hyperbolic functions in Java using the Math class.",
+        "Output:"
+      ],
+      "code": [
+        "public class JavaMathExample2  \n{  \n    public static void main(String[] args)   \n    {  \n        double a = 30;  \n        \n        // converting values to radian  \n        double b = Math.toRadians(a); \n        \n        // return the trigonometric sine of a    \n        System.out.println(\"Sine value of a is: \" +Math.sin(a));  \n        \n        // return the trigonometric cosine value of a\n        System.out.println(\"Cosine value of a is: \" +Math.cos(a));\n        \n        // return the trigonometric tangent value of a\n        System.out.println(\"Tangent value of a is: \" +Math.tan(a));\n        \n        // return the trigonometric arc sine of a    \n        System.out.println(\"Sine value of a is: \" +Math.asin(a));  \n        \n        // return the trigonometric arc cosine value of a\n        System.out.println(\"Cosine value of a is: \" +Math.acos(a));\n        \n        // return the trigonometric arc tangent value of a\n        System.out.println(\"Tangent value of a is: \" +Math.atan(a));\n\n        // return the hyperbolic sine of a    \n        System.out.println(\"Sine value of a is: \" +Math.sinh(a));  \n        \n        // return the hyperbolic cosine value of a\n        System.out.println(\"Cosine value of a is: \" +Math.cosh(a));\n        \n        // return the hyperbolic tangent value of a\n        System.out.println(\"Tangent value of a is: \" +Math.tanh(a));\n    }  \n}",
+        "Sine value of a is: -0.9880316240928618\nCosine value of a is: 0.15425144988758405\nTangent value of a is: -6.405331196646276\nSine value of a is: NaN\nCosine value of a is: NaN\nTangent value of a is: 1.5374753309166493\nSine value of a is: 5.343237290762231E12\nCosine value of a is: 5.343237290762231E12\nTangent value of a is: 1.0"
+      ]
+    },
+    {
+      "heading": "Example 3: Complete Math Class Reference",
+      "paragraphs": [
+        "The following example demonstrates multiple functionalities of the Math class, including power, logarithms, trigonometric functions, rounding, random numbers, hypotenuse calculation, and constants.",
+        "Output:",
+        "Next TopicWrapper class in Java"
+      ],
+      "code": [
+        "// Java program for demonstrating the features and functionalities of Java Math class with methods.\npublic class MathDemo {\n    public static void main(String[] args) {\n        double x = 28;\n        double y = 4;\n        // Basic arithmetic operations\n        System.out.println(\"Addition: \" + (x + y));\n        System.out.println(\"Subtraction: \" + (x - y));\n        System.out.println(\"Multiplication: \" + (x * y));\n        System.out.println(\"Division: \" + (x / y));\n        // Square root\n        System.out.println(\"Square root of \" + x + \": \" + Math.sqrt(x));\n        // Cube root\n        System.out.println(\"Cube root of \" + x + \": \" + Math.cbrt(x));\n        // Power\n        System.out.println(\"Power of \" + x + \" to \" + y + \": \" + Math.pow(x, y));\n        // Trigonometric functions\n        double angle = 45.0;\n        double radian = Math.toRadians(angle);\n        System.out.println(\"Sine of \" + angle + \" degrees: \" + Math.sin(radian));\n        System.out.println(\"Cosine of \" + angle + \" degrees: \" + Math.cos(radian));\n        System.out.println(\"Tangent of \" + angle + \" degrees: \" + Math.tan(radian));\n        // Rounding\n        double value = -123.456;\n        System.out.println(\"Absolute value of \" + value + \": \" + Math.abs(value));\n        System.out.println(\"Ceil value of \" + value + \": \" + Math.ceil(value));\n        System.out.println(\"Floor value of \" + value + \": \" + Math.floor(value));\n        System.out.println(\"Round value of \" + value + \": \" + Math.round(value));\n        // Random numbers\n        System.out.println(\"Random number between 0.0 and 1.0: \" + Math.random());\n        System.out.println(\"Random number between 0 and 100: \" + (int) (Math.random() * 100));\n        // Maximum and minimum\n        double[] numbers = {10.5, 20.7, 5.2, 30.9};\n        System.out.println(\"Maximum value: \" + Math.max(numbers[0], Math.max(numbers[1], Math.max(numbers[2], numbers[3]))));\n        System.out.println(\"Minimum value: \" + Math.min(numbers[0], Math.min(numbers[1], Math.min(numbers[2], numbers[3]))));\n        // Exponential and logarithmic functions\n        System.out.println(\"e^\" + x + \": \" + Math.exp(x));\n        System.out.println(\"Logarithm base 10 of \" + x + \": \" + Math.log10(x));\n        System.out.println(\"Logarithm base e of \" + x + \": \" + Math.log(x));\n        // Hypotenuse\n        double side1 = 3.0;\n        double side2 = 4.0;\n        System.out.println(\"Hypotenuse of a right triangle with sides \" + side1 + \" and \" + side2 + \": \" + Math.hypot(side1, side2));\n        // Trigonometric functions (inverse)\n        double sinValue = 0.5;\n        System.out.println(\"Arcsine of \" + sinValue + \": \" + Math.toDegrees(Math.asin(sinValue)));\n        System.out.println(\"Arccosine of \" + sinValue + \": \" + Math.toDegrees(Math.acos(sinValue)));\n        System.out.println(\"Arctangent of \" + sinValue + \": \" + Math.toDegrees(Math.atan(sinValue)));\n        // Constants\n        System.out.println(\"Value of PI: \" + Math.PI);\n        System.out.println(\"Value of E: \" + Math.E);\n    }\n}",
+        "Addition: 32.0\nSubtraction: 24.0\nMultiplication: 112.0\nDivision: 7.0\nSquare root of 28.0: 5.291502622129181\nCube root of 28.0: 3.0365889718756627\nPower of 28.0 to 4.0: 614656.0\nSine of 45.0 degrees: 0.7071067811865475\nCosine of 45.0 degrees: 0.7071067811865476\nTangent of 45.0 degrees: 0.9999999999999999\nAbsolute value of -123.456: 123.456\nCeil value of -123.456: -123.0\nFloor value of -123.456: -124.0\nRound value of -123.456: -123\nRandom number between 0.0 and 1.0: 0.40493356810101455\nRandom number between 0 and 100: 61\nMaximum value: 30.9\nMinimum value: 5.2\ne^28.0: 1.446257064291475E12\nLogarithm base 10 of 28.0: 1.4471580313422192\nLogarithm base e of 28.0: 3.332204510175204\nHypotenuse of a right triangle with sides 3.0 and 4.0: 5.0\nArcsine of 0.5: 30.000000000000004\nArccosine of 0.5: 60.00000000000001\nArctangent of 0.5: 26.56505117707799\nValue of PI: 3.141592653589793\nValue of E: 2.718281828459045"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:35:11.502Z"
+}

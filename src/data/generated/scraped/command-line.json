@@ -1,0 +1,92 @@
+{
+  "topicId": "command-line",
+  "title": "Java - Command Line Arguments",
+  "sectionId": "java-core-advanced",
+  "source": "tutorialspoint",
+  "url": "https://www.tutorialspoint.com/java/java-command-line-args.htm",
+  "allSources": [
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java-command-line-args.htm",
+      "score": 53,
+      "sectionCount": 8
+    }
+  ],
+  "sections": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "In Java, command line arguments is a way to pass inputs to the java program during application execution. Command line arguments can be passed by multiple ways to Java application or program. Most commonly, command line arguments are passed from console where a java program is executed. command-line arguments, provided during program execution, are captured in the main() method as a string array."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Passing & Accessing Command Line Arguments",
+      "paragraphs": [
+        "Consider the below syntax of passing command-line arguments:",
+        "Here we've compiled one java file namely tester.java and while running the tester class using java, we're passing three arguments which are separated by space. We can pass any number of command line arguments to java program. The Java Virtual Machine (JVM) encapsulates these inputs into the args[] array. We can check the number of arguments passed using args.length. In case no command line argument is present, then this array is empty.",
+        "We can pass Strings, integers and any other primitive value using command line arguments. Each argument passed is available in the array in the order of entry, starting from args[0]."
+      ],
+      "code": [
+        "javac tester.java\njava tester arg1 arg2 arg3",
+        "class Tester {\n   public static void main(String[] args){\n   ...   \n   }\n}"
+      ]
+    },
+    {
+      "heading": "Benefits of Command Line arguments",
+      "paragraphs": [
+        "• Command line arguments allows to configure the application behavior by passing the arguments before start of the application. Batch processes are one of the example where command line arguments are heavily used to execute java commands with configuration parameters. This mechanism enables dynamic parameterization of Java programs through console inputs, enhancing versatility and interactivity.\n• Command line arguments facilites user input retrieval and manipulation in case of console based applications"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example of Single Command Line Argument",
+      "paragraphs": [
+        "In this example, we're checking if exactly one argument is passed to represent name. In case, no arguments are passed or more than one argument is passed, we print the error message as invalid number of arguments passed. Otherwise, we're printing the name with a salutation."
+      ],
+      "code": [
+        "public class Tester {\n\n   // args array represents the command line arguments passed\n   public static void main(String[] args) {\n      // if only one argument is passed\n      if(args.length == 1) {\n\t     String name = args[0];\n         System.out.println(\"Welcome \" + name + \"!\");\n      }else { // otherwise print an error message\n         System.out.println(\"Invalid Command line argument(s) passed.\");        \n      }\t   \n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [
+        "Let us compile and run the above program without any command line argument, this will produce the following result −",
+        "Here, we've compiled the java code using javac command and then run using java command without any command line argument. Let's run the java command again with required parameter."
+      ],
+      "code": [
+        "D:\\test>javac Tester.java\n\nD:\\test>java Tester\nInvalid Command line argument(s) passed.",
+        "D:\\test>java Tester Mahesh\nWelcome Mahesh!"
+      ]
+    },
+    {
+      "heading": "Example of Multiple Command Line Arguments",
+      "paragraphs": [
+        "In this example, we're checking if exactly two arguments are passed to represent name and age. Age being a number, we're parsing the argument using parseInt() method. In case, no arguments are passed or more than two arguments are passed, we print the error message as invalid number of arguments passed. Otherwise, we're printing the name and age received."
+      ],
+      "code": [
+        "public class Tester {\n\n   // args array represents the command line arguments passed\n   public static void main(String[] args) {\n      // if two arguments are passed\n      if(args.length == 2) {\n\t     String name = args[0];\n         // parse the age as int\n         int age = Integer.parseInt(args[1]);\n         System.out.println(\"Name: \" + name + \", age: \" + age);\n      }else { // otherwise print an error message\n         System.out.println(\"Invalid Command line argument(s) passed.\");        \n      }\t   \n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [
+        "Let us compile and run the above program without any command line argument, this will produce the following result −",
+        "Here, we've compiled the java code using javac command and then run using java command without any command line argument. Let's run the java command again with required parameters."
+      ],
+      "code": [
+        "D:\\test>javac Tester.java\n\nD:\\test>java Tester\nInvalid Command line argument(s) passed.",
+        "D:\\test>java Tester Mahesh 40\nName: Mahesh, age: 40"
+      ]
+    },
+    {
+      "heading": "Conclusion",
+      "paragraphs": [
+        "Java command-line arguments are very useful to create parameterized java programs which can accept the parameters dynamically. Users have runtime control over the behavior of the program as arguments can be passed to the main() method. With command line arguments, we can manage program's output, set setup parameters, and specify input files at runtime without any compile time dependencies.",
+        "We can pass command-line arguments in many ways to a java program. Various IDEs supports providing the arguments in their execution configurations. Also, they are easy to employ. When you run the code, it can be set in the program's configuration file or supplied on the command line."
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:35:27.883Z"
+}

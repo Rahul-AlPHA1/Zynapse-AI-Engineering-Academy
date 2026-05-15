@@ -1,0 +1,446 @@
+{
+  "topicId": "array-programs",
+  "title": "Array Programs in Java",
+  "sectionId": "java-core-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/array-programs-in-java",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/array-programs-in-java",
+      "score": 323,
+      "sectionCount": 33
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/util/java_util_arrays.htm",
+      "score": 25,
+      "sectionCount": 4
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Array Programs in Java",
+      "paragraphs": [
+        "In Java, an array is a linear data structure that has a collection of the same data type. These elements are stored in a contiguous memory location. In this section, we will discuss a variety of array programs, including array operations, manipulation, sorting, searching, etc."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Array Programs",
+      "paragraphs": [
+        "Here you will find the top 30 Java array programs based on different operations, along with source code, output, and proper explanation."
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. Java program to find the sum of the array elements.",
+      "paragraphs": [
+        "To find the sum of the array's elements, first we have defined and declared an array. After that, we have defined a sum() method that adds array elements. Inside this method, the loop iterates over each element of the array and adds an element to the sum variable, repeatedly. In the main() method, we have called the sum() method that returns the sum of the array elements.",
+        "Codeclass Main {\n    static int arr[] = { 7, 4, 10, 9, 13, 26 };\n    // method for the sum of elements \n    static int sum()\n    {\n        int i, sum = 0; \n        // Iterate through all elements and add them to the sum\n        for (i = 0; i < arr.length; i++)\n            sum += arr[i];\n        return sum;\n    }\n    public static void main(String[] args)\n    {\n        System.out.println(\"The sum of the given array is: \"+ sum());\n    }\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "The sum of the given array is: 69"
+      ]
+    },
+    {
+      "heading": "2. Java program to find the reverse of an array.",
+      "paragraphs": [
+        "Reversing an array means writing an array from the last element to the first element. First, we have initializead an array. The loop iterates over the array until the array is reversed. We swap the first element with the last, the second with the second last, and so on. At last, we convert the array into a string and print the reversed array.",
+        "Codeimport java.util.Arrays;\npublic class Main {\n    public static void main(String[] args) {     \n        int[] arr = {1, 2, 3, 4, 5};\n        // Swap elements from start to end\n        for (int i = 0; i < arr.length / 2; i++) {\n            int t = arr[i];\n            arr[i] = arr[arr.length - 1 - i];\n            arr[arr.length - 1 - i] = t;\n        }\n        System.out.println(\"\" + Arrays.toString(arr));\n    }\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "[5, 4, 3, 2, 1]"
+      ]
+    },
+    {
+      "heading": "3. Java program to merge two arrays.",
+      "paragraphs": [
+        "There are various ways to merge two arrays. But in this program, we have used user-defined logic to merge two arrays. This method is useful when we need full control over the merging process without relying on built-in functions. It directly merges the arrays.",
+        "Codeimport java.util.Arrays;\npublic class Main {\n    public static void main(String[] args) {\n        int arr1[] = { 23, 45, 56, 78, 90};\n        int arr2[] = { 3, 4, 6, 8, 9, 0, 7};\n        // determining the length of both arrays\n        int sizearr1 = arr1.length;\n        int sizearr2 = arr2.length;\n        // resultant array size\n        int sizearr3 = sizearr1 + sizearr2;\n        // Creating a new array \n        int[] arr3 = new int[sizearr3];\n        // Loop to store the elements of the first array into the resultant array\n        for (int i = 0; i < sizearr1; i = i + 1) {  \n            // Storing the elements in the resultant array\n            arr3[i] = arr1[i];\n        }\n        // Loop to concatenate the elements of the second array into the resultant array\n        for (int i = 0; i < sizearr2; i = i + 1) {\n            // Storing the elements in the resultant array\n            arr3[sizearr1 + i] = arr2[i];\n        }\n        System.out.println(\"\" + Arrays.toString(arr3));\n    }\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "[23, 45, 56, 78, 90, 3, 4, 6, 8, 9, 0, 7]"
+      ]
+    },
+    {
+      "heading": "4. Java program to find the second most significant element in a sorted matrix.",
+      "paragraphs": [
+        "In a sorted matrix, the rows and columns of the elements are placed in ascending order. We can navigate the matrix and note the largest and second-largest elements to determine the second-largest element. The second-largest element will have been stored when the traverse is complete.",
+        "The program uses a simple approach to find the second-largest element in a sorted matrix. It applies a nested loop to traverse the matrix in reverse order and compares each element with the largest and second-largest elements found so far. The program updates the largest and second-largest variables accordingly. Finally, it prints the value of the second-largest element.",
+        "Codepublic class Main\n{  \n    public static void main(String[] args)   \n    {  \n        int[][] matrix =   \n        {  \n            {1,2,3},  \n            {4,5,6},  \n            {7,8,9}  \n        };  \n        int rows=matrix.length;  \n        int cols=matrix[0].length;  \n        int largest=matrix[rows-1][cols-1]; // Initialize largest with the bottom-right element  \n        int secondLargest=matrix[rows-1][cols-2]; // Initialize secondLargest with the element before largest  \n          \n        // Traverse the matrix in reverse order  \n        for (int i=rows-1;i>=0;i--)   \n        {  \n            for (int j=cols-1;j>=0;j--)   \n            {  \n                if (matrix[i][j]>largest)   \n                {  \n                    secondLargest=largest; // Update secondLargest to the previous largest  \n                    largest=matrix[i][j]; // Update largest to the new largest element  \n                }   \n              else if(matrix[i][j]>secondLargest&&matrix[i][j]<largest)   \n                {  \n                    secondLargest=matrix[i][j];   \n                }  \n            }  \n        }  \n        System.out.println(\"Second largest element in the sorted matrix is: \"+secondLargest);  \n    }  \n}  \nCompile and Run",
+        "Output:",
+        "Complexity Analysis",
+        "Time Complexity: O(rows * cols), where rows and cols are the dimensions of the matrix.",
+        "Space Complexity: O(1), as we use constant additional space."
+      ],
+      "code": [
+        "Second largest element in the sorted matrix is: 8"
+      ]
+    },
+    {
+      "heading": "5. Java program to find the k-th smallest element in a sorted matrix.",
+      "paragraphs": [
+        "In a sorted matrix, elements are arranged in ascending order, both row-wise and column-wise. The task is to find the kth smallest element in the matrix.",
+        "The program uses a min-heap implemented with a PriorityQueue to find the kth smallest element in a sorted matrix. The findKthSmallest() method initializes the minHeap and adds the elements from the first column. It then performs k-1 iterations, extracting the minimum element, finding its indices, and adding the next element from the same row to the minHeap. Finally, the method returns the kth smallest element. The main function showcases the method by providing a sample matrix and k value.",
+        "Codeimport java.util.*;  \npublic class Main  \n{  \n    public static int findKthSmallest(int[][] matrix,int k)   \n    {  \n        int rows=matrix.length;  \n        int cols=matrix[0].length;  \n        PriorityQueue<Integer> minHeap=new PriorityQueue<>();  \n        for (int i=0;i<rows;i++) {  \n            minHeap.add(matrix[i][0]);  \n        }  \n        // Perform k-1 iterations  \n        for (int i=0;i<k-1;i++)   \n        {  \n            int minElement=minHeap.poll(); // Extract the minimum element  \n            // Get the row and column index of the extracted element  \n            int rowIndex=-1;  \n            int colIndex=-1;  \n            for (int j=0;j<rows;j++)   \n            {  \n                for (int p=0;p<cols;p++)   \n                {  \n                    if (matrix[j][p]==minElement)   \n                    {  \n                        rowIndex=j;  \n                        colIndex=p+1;  \n                        break;  \n                    }  \n                }  \n            }  \n            // Add the next element from the same row to the min-heap  \n            if (colIndex<cols) {  \n                minHeap.add(matrix[rowIndex][colIndex]);  \n            }  \n        }  \n        return minHeap.peek(); // Return the kth smallest element  \n    }  \n    public static void main(String[] args)   \n    {  \n        int[][] matrix={  \n            {1,3,5},  \n            {6,7,12},  \n            {11,14,14}  \n        };  \n        int k=4;  \n        int kthSmallest=findKthSmallest(matrix,k);  \n        System.out.println(\"The \"+ k+\"-th smallest element in the sorted matrix is: \"+kthSmallest);  \n    }  \n}  \nCompile and Run",
+        "Output:",
+        "Complexity Analysis",
+        "Time Complexity: The time complexity is O(k * log(rows)).",
+        "Space Complexity: The space complexity is O(rows) for storing the elements in the min-heap."
+      ],
+      "code": [
+        "The 4-th smallest element in the sorted matrix is: 6"
+      ]
+    },
+    {
+      "heading": "6. Java program to remove duplicate elements from a sorted array.",
+      "paragraphs": [
+        "In a sorted array, duplicate elements may occur consecutively. To put off duplicates from a looked-after array, we need to adjust the array in-place, making sure that each detail appears as effective as soon as. The Java program removes duplicates from a sorted array using the \"RemoveDuplicates\" class. The method \"removeDuplicates\" returns the new length of the modified array without duplicates. It checks if the array is empty, initializes \"nextUnique\" to 1, and traverses the array starting from the second element. It assigns unique elements to the position of \"nextUnique\" and increments it. After the loop, \"nextUnique\" represents the new length. The \"main\" function showcases the method by printing the modified array.",
+        "Codeimport java.util.*;  \npublic class Main  \n{  \n    public static int removeDuplicates(int[] nums)   \n    {  \n        int n=nums.length;  \n        if (n==0)   \n        {  \n            return 0;   \n        }  \n        int nextUnique=1;   \n        // Pointer to track the position of the next unique element  \n        // Traverse the array starting from the second element  \n        for (int current=1;current<n;current++)   \n        {  \n            // Compare the current element with the element at the next unique - 1  \n            if (nums[current]!=nums[nextUnique-1])   \n            {  \n   nums[nextUnique]=nums[current]; // Assign current element to nextUnique position  \n                nextUnique++; // Increment nextUnique  \n            }  \n        }  \n        return nextUnique;   \n    }  \n    public static void main(String[] args)   \n    {  \n        int[] nums={1,1,2,2,3,4,4,5};  \n        int length=removeDuplicates(nums);  \n        System.out.print(\"Modified Array: \");  \n        for (int i=0;i<length;i++)   \n        {  \n            System.out.print(nums[i]+\" \");  \n        }  \n    }  \n}  \nCompile and Run",
+        "Output:",
+        "Complexity Analysis",
+        "Time Complexity is O(n), where n is the array's element count.",
+        "Space complexity is O(1) since the array is modified directly without additional data structures."
+      ],
+      "code": [
+        "Modified Array: 1 2 3 4 5"
+      ]
+    },
+    {
+      "heading": "7. Java program to find the frequency of each word in a string array.",
+      "paragraphs": [
+        "We shall calculate the frequency of each word in a string array using a Java program. In a list of strings, we want to know how frequently each word appears. To calculate the frequency of each word in a string array, the program employs a hash map.",
+        "A simple approach separates each string into words, and the number of each word is then saved in the hash map. After initializing a blank HashMap, the program loops through each string in the array. It determines if a word is present in the HashMap for each one it encounters.",
+        "If it does, the frequency increases; if not, it is set to 1, and the word is added to the hash map. Finally, the program prints the word-frequency pairs stored in the HashMap. The approach efficiently tracks and counts the occurrences of each word, allowing for accurate frequency analysis of the words in the string array.",
+        "Codeimport java.util.*;  \npublic class Main \n{  \n    public static void main(String[] args)   \n    {  \n        String[] strings={\"Hello world\",\"Hello Java\",\"Java is great\",\"Java is powerful\"};         // Create a HashMap to store word-frequency pairs  \n        Map<String,Integer> frequencyMap=new HashMap<>();  \n        for (String str:strings)   \n        {  \n            // Split the string into words using whitespace as the delimiter  \n            String[] words=str.split(\"\\\\s+\");  \n            // Count the occurrences of each word  \n            for (String word:words)   \n            {  \n                // Check if the word already exists in the HashMap  \n                if (frequencyMap.containsKey(word))   \n                {  \n                    // If it exists, increment its frequency by 1  \n                    frequencyMap.put(word,frequencyMap.get(word)+1);  \n                } else {  \n                    // If it does not exist, add it to the HashMap with a frequency of 1  \n                    frequencyMap.put(word,1);  \n                }  \n            }  \n        }  \n        // Print the word-frequency pairs  \n        for (Map.Entry<String, Integer> entry : frequencyMap.entrySet()) {  \n            System.out.println(\"Word: \" + entry.getKey() + \", Frequency: \" + entry.getValue());  \n        }  \n    }  \n}  \nCompile and Run",
+        "Output:",
+        "Complexity Analysis",
+        "The time complexity is O(n*m), where n represents the number of strings within the array and m is the maximum common sort of phrase in every string.",
+        "The space complexity of the program is O(n), where n is the total wide variety of words inside the array."
+      ],
+      "code": [
+        "Word: Java, Frequency: 3\nWord: world, Frequency: 1\nWord: Hello, Frequency: 2\nWord: powerful, Frequency: 1\nWord: is, Frequency: 2\nWord: great, Frequency: 1"
+      ]
+    },
+    {
+      "heading": "8. Java program to find the missing number in a sorted array of consecutive integers.",
+      "paragraphs": [
+        "Using the binary search method, we locate the missing integer in a sorted array of succeeding integers. The first detail's index is low, and the remaining is high. We determine whether or not the missing integer is on the left or proper side of the array by computing the expected value for the middle element, which ought to be the same as the first element plus the centre index. The operation is repeated until there is only one element left in the search space, at which point we update low or high as necessary. The missing number will be the expected value at the index low.",
+        "Codepublic class Main \n{  \n    public static int findMissingNumber(int[] nums)   \n    {  \n        int low=0;  \n        int high=nums.length-1;  \n        // Perform binary search  \n        while (low<=high)   \n        {  \n            int mid=low+(high-low)/2;  \n            int expectedValue=nums[0]+mid;  \n            if (nums[mid]==expectedValue)   \n            {  \n                // Missing number lies in the right half  \n                low=mid+1;  \n            } else   \n            {  \n                // Missing number lies in the left half  \n                high=mid-1;  \n            }  \n        }  \n        // Return the missing number  \n        return nums[0]+low;  \n    }  \n    public static void main(String[] args)   \n    {  \n        int[] nums={1,2,3,4,6,7,8,9};  \n        int missingNumber=findMissingNumber(nums);  \n        System.out.println(\"Missing number: \"+missingNumber);  \n    }  \n}  \nCompile and Run",
+        "Output:",
+        "Complexity Analysis",
+        "Time Complexity: The binary search approach has a time complexity of O(log n), where n is the size of the array",
+        "Space Complexity: The program has a space complexity of O(1), only using a few variables to track the low, high, and mid indices and the expected value."
+      ],
+      "code": [
+        "Missing number: 5"
+      ]
+    },
+    {
+      "heading": "9. Java program to find the element that appears only once in an array.",
+      "paragraphs": [
+        "The technique used to find the element that appears most effectively at least once in an array is primarily based on the XOR operation. By XORing all the factors within the array, the factors that seem a fair number of instances will cancel out, leaving only the detail that appears best once. To enforce this approach, we initialize a variable 'unique' to zero. Then, we iterate through each detail inside the array and XOR it with the 'particular' variable. The result is stored back in 'unique.' At the end of the iteration, 'unique' will hold the element's value that appears only once.",
+        "Codepublic class Main   \n{  \n    public static int findUnique(int[] nums)   \n    {  \n        int unique=0;  \n        for (int num:nums)   \n        {  \n            unique^=num; // XOR the current element with 'unique'  \n        }  \n        return unique;  \n    }  \n  \n    public static void main(String[] args)   \n    {  \n        int[] nums = {1,2,3,4,3,2,1};  \n        int uniqueElement=findUnique(nums);  \n        System.out.println(\"The element that appears only once: \" + uniqueElement);  \n    }  \n}  \nCompile and Run",
+        "Output:",
+        "Complexity Analysis",
+        "Time Complexity: The time complexity of this technique is O(n), where n is the length of the array.",
+        "Space Complexity: The Space complexity is O(1) because we simplest use a single variable to keep the result."
+      ],
+      "code": [
+        "The element that appears only once: 4"
+      ]
+    },
+    {
+      "heading": "10. Java program to check if an array is a palindrome.",
+      "paragraphs": [
+        "To check if an array is a palindrome, we will use a pointer method where one pointer starts evolving at the start of the array and the alternative at the end. The elements are as compared to those suggestions, and we move them closer and nearer collectively until they meet at the centre. We conclude that the array is not a palindrome if the elements at any point at the pointers are not equal. Otherwise, if the loop completes without finding any unequal elements, then the array is a palindrome. The two-pointer approach allows us to efficiently check for palindromicity by eliminating the need for additional space.",
+        "Codepublic class Main\n{  \n    public static boolean isPalindrome(int[] nums)   \n    {  \n        int left=0;                     // Initialize the left pointer at the beginning of the array  \n        int right=nums.length-1;      // Initialize the right pointer at the end of the array  \nwhile (left<=right) {      // Continue the loop until the pointers meet or cross each other  \n if (nums[left]!=nums[right])   \n{  \n   return false;             // If the elements at the pointers are not equal, the array is not a palindrome  \n            }  \n            left++;                         \n            right--;                        \n        }  \n return true;    // If the loop completes without finding unequal elements, the array is a palindrome  \n    }  \n    public static void main(String[] args) {  \n        int[] nums={1,2,3,2,1};     \n        boolean isPalindrome=isPalindrome(nums);    \n        if (isPalindrome)   \n       {  \n            System.out.println(\"The array is a palindrome.\");  \n        }   \n       else   \n       {  \n            System.out.println(\"The array is not a palindrome.\");  \n        }  \n    }  \n}\nCompile and Run",
+        "Output:",
+        "Complexity Analysis",
+        "The time complexity of the above approach is O(n), where n is the length of the array.",
+        "The space complexity is O(1) as we are not using any extra space."
+      ],
+      "code": [
+        "The array is a palindrome."
+      ]
+    },
+    {
+      "heading": "11. Java program to shuffle elements of an array.",
+      "paragraphs": [
+        "To shuffle the elements of an array, we use the Fisher-Yates shuffle algorithm is commonly used. The procedure ensures that each array's item is randomly permuted. Starting with the final entry in the array, the process iterates through the array in reverse order to get started. Each time, the current element is added to the range of the remaining unshrunk elements to create a random index. The element at the current index is then swapped with the element at the randomly generated index. The swapping continues until the first element is reached, resulting in a shuffled array with elements in random order.",
+        "Codeimport java.util.Random;  \npublic class Main   \n{  \n    public static void shuffle(int[] nums)   \n    {  \n        Random rand=new Random();  \n        for (int i=nums.length-1;i>=1;i--)   \n        {  \n            int j=rand.nextInt(i+1);  \n            // Swap the current element with the randomly selected element  \n            int temp=nums[i];  \n            nums[i]=nums[j];  \n            nums[j]=temp;  \n        }  \n    }  \n    public static void main(String[] args)   \n    {  \n        int[] nums = {1,2,3,4,5};  \n        System.out.println(\"Original array: \");  \n        for (int num:nums)   \n      {  \n            System.out.print(num + \" \");  \n        }  \n        shuffle(nums);  \n        System.out.println(\"\\nShuffled array: \");  \n        for (int num:nums)   \n      {  \n            System.out.print(num + \" \");  \n        }  \n    }  \n}  \nCompile and Run",
+        "Output:",
+        "Complexity Analysis",
+        "The time complexity of this technique is O(N), where N is the size of the array.",
+        "The space complexity is O(1) since we use a consistent quantity of extra space for the random variety."
+      ],
+      "code": [
+        "Original array: \n1 2 3 4 5 \nShuffled array: \n5 2 1 3 4"
+      ]
+    },
+    {
+      "heading": "12. Java program to check if two matrices are orthogonal.",
+      "paragraphs": [
+        "To examine if two matrices are orthogonal, we evaluate the dot manufactured of corresponding rows or columns of the matrices. The matrices are said to be orthogonal if the dot product is 0 for all pairs. The algorithm iterates through the rows or columns, then calculates the dot product and returns false if any dot product is non-zero. It then checks for appropriate dimensions. If all dot products are zero, it returns true to indicate that the matrices are orthogonal.",
+        "Codepublic class Main  \n{  \n    public static boolean areMatricesOrthogonal(int[][] matrix1,int[][] matrix2)   \n{  \n        int rows1=matrix1.length;  \n        int cols1=matrix1[0].length;  \n        int rows2=matrix2.length;  \n        int cols2=matrix2[0].length;  \n        // Check if matrices have compatible dimensions  \n        if (rows1 != rows2 || cols1 != cols2) {  \n            return false;  \n        }  \n        // Check the dot product for each row/column pair  \n        for (int i=0;i<rows1;i++) {  \n            int dotProduct = 0;  \n            for (int j=0;j<cols1;j++) {  \n                dotProduct += matrix1[i][j] * matrix2[i][j];  \n            }  \n            if (dotProduct!=0)   \n            {  \n                return false;  \n            }  \n        }  \n        return true;  \n    }  \n    public static void main(String[] args) {  \n        int[][] matrix1={{1,2},{3,4}};  \n        int[][] matrix2={{0,1},{-1,0}};  \n          \n        boolean areOrthogonal = areMatricesOrthogonal(matrix1, matrix2);  \n        if (areOrthogonal) {  \n            System.out.println(\"The matrices are orthogonal.\");  \n        } else {  \n            System.out.println(\"The matrices are not orthogonal.\");  \n        }  \n    }  \n}  \nCompile and Run",
+        "Output:",
+        "Complexity Analysis:",
+        "The time complexity of this technique is O(n), where n is the range of rows or columns in the matrices.",
+        "The space complexity is O(1), as no additional data structures are used."
+      ],
+      "code": [
+        "The matrices are not orthogonal."
+      ]
+    },
+    {
+      "heading": "13. Java program to find the maximum element in a two-dimensional array.",
+      "paragraphs": [
+        "We initialize the variable ' max' with the smallest value conceivable given the data type of the array elements to determine the greatest element in a two-dimensional array. The next step is to loop separately via the array's rows and factors. Every element is compared to the modern fee of \"max,\" and if the detail is more, \"max\" is up to date. The maximum element in the two-dimensional array will be contained in 'max' once all items have been iterated through. By comparing each element to the current maximum value, the method enables us to determine the maximum element quickly.",
+        "Codepublic class Main\n{  \n    public static int findMaximumElement(int[][] array) {  \n        int max=Integer.MIN_VALUE; // Initialize max with the minimum value  \n        for (int i=0;i<array.length;i++)   \n        {  \n            // Iterate through each element of the row  \n            for (int j=0;j<array[i].length;j++)   \n            {  \n                // Compare the current element with the current max value  \n                if (array[i][j] > max) {  \n                    max=array[i][j];   \n                }  \n            }  \n        }  \n        return max; // Return the maximum element  \n    }  \n    public static void main(String[] args) {  \n        int[][] array={  \n            {1, 2, 3},  \n            {4, 5, 6},  \n            {7, 8, 9}  \n        };  \n        int maximum=findMaximumElement(array);  \n        System.out.println(\"The maximum element in the array is: \"+maximum);  \n    }  \n}  \nCompile and Run",
+        "Output:",
+        "Complexity Analysis",
+        "The time complexity of this approach is O(n * m), where n is the number of rows and m is the number of columns in the two-dimensional array.",
+        "The space complexity is O(1) when you consider that we are not the usage of any extra area that grows with the entered size."
+      ],
+      "code": [
+        "The maximum element in the array is: 9"
+      ]
+    },
+    {
+      "heading": "14. Java program to find the sum of each diagonal in a matrix.",
+      "paragraphs": [
+        "To find the sum of each diagonal in a matrix, we iterate through the elements and calculate the diagonal index of every component by summing its row and column indices. We then add the element's value to the corresponding diagonal sum in an array. After processing all elements, the array will contain the sum of each diagonal.",
+        "Codepublic class Main {  \n    public static int[] getDiagonalSums(int[][] matrix) {  \n        int rows=matrix.length;  \n        int cols=matrix[0].length;  \n        int numDiagonals=rows+cols-1;  \n        int[] sums=new int[numDiagonals];  \n        for (int i=0;i<rows;i++)   {  \n            for (int j=0;j<cols;j++)    {  \n                int diagonalIndex=i+j;  \n                sums[diagonalIndex]+=matrix[i][j];  \n            }  \n        }  \n        return sums;  \n    }  \n    public static void main(String[] args) {  \n        int[][] matrix={  \n            {1, 2, 3},  \n            {4, 5, 6},  \n            {7, 8, 9}  \n        };  \n        int[] diagonalSums=getDiagonalSums(matrix);  \n        System.out.println(\"Sum of each diagonal:\");  \n        for (int sum:diagonalSums)  {  \n            System.out.println(sum);  \n        }  \n    }  \n}  \nCompile and Run",
+        "Output:",
+        "Complexity Analysis",
+        "The approach has a time complexity of O(m*n), where m is the number of rows and n is the number of columns in the matrix.",
+        "The space complexity is O(m + n), as we must store the diagonal sums in an array."
+      ],
+      "code": [
+        "Sum of each diagonal:\n1\n6\n15\n14\n9"
+      ]
+    },
+    {
+      "heading": "15. Java program to find the element with the maximum frequency in an array.",
+      "paragraphs": [
+        "We use a HashMap to record the frequency of each element in the array to locate the element with the highest frequency. The element with the highest frequency can be recognized via looping through the array and updating the frequency within the hash map. Then, by comparing the frequency counts in the HashMap, we identify the element with the maximum frequency. The approach allows us to efficiently find the element with the highest frequency in the array.",
+        "Codeimport java.util.*;\npublic class Main {\n    public static int findMaxFrequencyElement(int[] nums) {\n        Map<Integer, Integer> frequencyMap = new HashMap<>();\n        for (int num : nums) {\n            frequencyMap.put(num, frequencyMap.getOrDefault(num, 0) + 1);\n        }\n        return Collections.max(frequencyMap.entrySet(), Map.Entry.comparingByValue()).getKey();\n    }\n    public static void main(String[] args) {\n        int[] nums = {1, 2, 3, 2, 1, 2, 3, 3, 3};\n        System.out.println(\"Element with maximum frequency is: \" + findMaxFrequencyElement(nums));\n    }\n}\n\nCompile and Run",
+        "Output:",
+        "Complexity Analysis",
+        "The time complexity of this technique is O(n), where n is the size of the array.",
+        "The area complexity is O(n) because a HashMap can save up to n unique elements in the worst case."
+      ],
+      "code": [
+        "Element with maximum frequency is: 3"
+      ]
+    },
+    {
+      "heading": "16. Java program to rotate a two-dimensional array clockwise.",
+      "paragraphs": [
+        "To rotate a two-dimensional array clockwise, we can follow a two-step approach: transposing the array and reversing each row. First, we iterate via the array and switch each detail at function (i, j) with the detail at the role (j, i), then successfully transpose the array. After, we iterate through each row of the transposed array and reverse it by swapping the elements from the start and end of the row until they meet in the middle. The process rotates the array clockwise.",
+        "Codepublic class Main  {  \n    public static void rotateClockwise(int[][] matrix)  {  \n        int rows=matrix.length;  \n        int cols=matrix[0].length;  \n        // Transpose the array  \n        for (int i=0;i<rows;i++)    {  \n            for (int j=i;j<cols;j++)   {  \n                int temp=matrix[i][j];  \n                matrix[i][j]=matrix[j][i];  \n                matrix[j][i]=temp;  \n            }  \n        }  \n        // Reverse each row  \n        for (int i=0;i<rows;i++)   {  \n            int left=0;  \n            int right=cols-1;  \n            while (left<right)    {  \n                int temp=matrix[i][left];  \n                matrix[i][left]=matrix[i][right];  \n                matrix[i][right]=temp;  \n                left++;  \n                right--;  \n            }  \n        }  \n    }  \n    public static void main(String[] args) {  \n        int[][] matrix = {  \n            {1, 2, 3},  \n            {4, 5, 6},  \n            {7, 8, 9}  \n        };  \n        System.out.println(\"Original Matrix:\");  \n        printMatrix(matrix);  \n        rotateClockwise(matrix);  \n        System.out.println(\"Rotated Matrix:\");  \n        printMatrix(matrix);  \n    }  \n    public static void printMatrix(int[][] matrix) {  \n        int rows=matrix.length;  \n        int cols=matrix[0].length;  \n        for (int i=0;i<rows;i++)   {  \n            for (int j=0;j<cols;j++)       {  \n                System.out.print(matrix[i][j]+\" \");  \n            }  \n            System.out.println();  \n        }  \n        System.out.println();  \n    }  \n} \nCompile and Run",
+        "Output:",
+        "Complexity Analysis",
+        "The time complexity of this approach is O(n2), where n is the size of the array.",
+        "The space complexity is O(1) as we carry out the rotation in-place without using any additional storage systems."
+      ],
+      "code": [
+        "Original Matrix:\n1 2 3 \n4 5 6 \n7 8 9 \n\nRotated Matrix:\n7 4 1 \n8 5 2 \n9 6 3"
+      ]
+    },
+    {
+      "heading": "17. Java program to sort a two-dimensional array across columns.",
+      "paragraphs": [
+        "We construct a custom comparator that compares rows based on the required column to sort a two-dimensional array across columns. The Arrays.sort() method is called with the custom comparator as an argument. The sorting algorithm employs a comparator to compare rows according to the selected column and arrange them correctly. We can quickly sort the two-dimensional array across columns using this method.",
+        "Codeimport java.util.Arrays;  \nimport java.util.Comparator;  \npublic class Main {  \n    public static void sortByColumn(int[][] matrix, int column) {  \n        // Use Arrays.sort() with a custom comparator to sort the matrix by the specified column  \n        Arrays.sort(matrix,Comparator.comparingInt(row -> row[column]));  \n    }  \n    public static void main(String[] args) {  \n        int[][] matrix = {  \n            {13, 12, 11},  \n            {6, 5, 4},  \n            {19, 18, 17}  \n        };  \n        int columnToSortBy=1;  \n        System.out.println(\"Original Matrix:\");  \n        printMatrix(matrix);  \n        sortByColumn(matrix,columnToSortBy);  \n        System.out.println(\"Sorted Matrix by Column \" + columnToSortBy + \":\");  \n        printMatrix(matrix);  \n    }  \n    public static void printMatrix(int[][] matrix) {  \n        int rows=matrix.length;  \n        int cols=matrix[0].length;  \n        for (int i=0;i<rows;i++)   {  \n            for (int j=0;j<cols;j++)   {  \n                System.out.print(matrix[i][j]+\" \");  \n            }  \n            System.out.println();  \n        }  \n        System.out.println();  \n    }  \n}  \n\nCompile and Run",
+        "Output:",
+        "Complexity Analysis",
+        "The time complexity of this approach is O(n log n), where n is the number of rows in the matrix.",
+        "The space complexity is O(1) since the sorting is done in place."
+      ],
+      "code": [
+        "Original Matrix:\n13 12 11 \n 6    5   4 \n19 18 17 \n\nSorted Matrix by Column 1:\n 6    5   4 \n13 12 11 \n19 18 17"
+      ]
+    },
+    {
+      "heading": "18. Java program to perform matrix exponentiation to compute Fibonacci numbers efficiently.",
+      "paragraphs": [
+        "We might also describe the Fibonacci sequence as a matrix and calculate matrix multiplication to compute the Fibonacci numbers using matrix exponentiation speedily. The manner includes creating a transformation matrix that represents the Fibonacci series, utilizing matrix multiplication and exponentiation strategies, and then elevating the matrix to the necessary power using the powerMatrix approach. By deleting the Fibonacci number from the following matrix, we can also quickly calculate Fibonacci numbers.",
+        "Codepublic class Main {  \n    public static long computeFibonacci(int n)   {  \n        if (n<=0)   {  \n            return 0;  \n        }  \n        // Fibonacci transformation matrix  \n        long[][] fibMatrix = {{1, 1}, {1, 0}};  \n        // Raise fibMatrix to the power of (n-1)  \n        fibMatrix = powerMatrix(fibMatrix, n - 1);  \n        // Extract the Fibonacci number from the matrix  \n        return fibMatrix[0][0];  \n    }  \n    private static long[][] powerMatrix(long[][] matrix, int power) {  \n        if (power == 0) {  \n            // Identity matrix  \n            return new long[][]{{1, 0}, {0, 1}};  \n        }  \n        if (power == 1) {  \n            return matrix;  \n        }  \n        long[][] result = powerMatrix(matrix, power / 2);  \n        result = multiplyMatrices(result, result);  \n        if (power % 2 != 0) {  \n            result = multiplyMatrices(result, matrix);  \n        }  \n        return result;  \n    }  \n    private static long[][] multiplyMatrices(long[][] matrix1,long[][] matrix2)    {  \n        long[][] result=new long[2][2];  \n        result[0][0]=matrix1[0][0]*matrix2[0][0]+matrix1[0][1]*matrix2[1][0];  \n        result[0][1]=matrix1[0][0]*matrix2[0][1]+matrix1[0][1]*matrix2[1][1];  \n        result[1][0]=matrix1[1][0]*matrix2[0][0]+matrix1[1][1]*matrix2[1][0];  \n        result[1][1]=matrix1[1][0]*matrix2[0][1]+matrix1[1][1]*matrix2[1][1];  \n        return result;  \n    }  \n    public static void main(String[] args)    {  \n        int n=10;  \n        long fibonacci=computeFibonacci(n);  \n        System.out.println(\"Fibonacci number at position \"+n+\" is: \"+fibonacci);  \n    }  \n}  \nCompile and Run",
+        "Output:",
+        "Complexity Analysis",
+        "The time complexity of this approach is O(log n) since we perform matrix multiplication using the exponentiation by squaring technique.",
+        "The space complexity is O(1) since we only need a fixed-size matrix and a few additional variables."
+      ],
+      "code": [
+        "Fibonacci number at position 10 is: 55"
+      ]
+    },
+    {
+      "heading": "Note: Maintaining the relative order is not relevant for this problem.",
+      "paragraphs": [
+        "We can use a two-pointer technique to reorder an array so that all even numbers appear before all odd numbers. While the right pointer begins at the end and advances backwards, the left pointer moves ahead from the beginning. The elements pointed by the left and right pointers are examined at each step, and swaps are made as needed. All even numbers will be arranged before odd numbers by the time the loop is complete.",
+        "Codepublic class Main   \n{  \n    public static void rearrangeArray(int[] arr)   \n    {  \n        int left=0;  \n        int right=arr.length-1;  \n        while (left<=right)   {  \n            if (arr[left]%2==0)    {  \n                left++; // Move the left pointer forward if the element is even  \n            } else if (arr[right]%2==1)   {  \n                right--; // Move the right pointer backwards if the element is odd  \n            } else {  \n    swap(arr,left,right); // Swap the elements if the left element is odd and the right element is even  \n                left++; // Move the left pointer forward  \n                right--; // Move the right pointer backwards  \n            }  \n        }  \n    }  \n    public static void swap(int[] arr,int i,int j)   {  \n        int temp=arr[i];  \n        arr[i]=arr[j];  \n        arr[j]=temp;  \n    }  \n    public static void main(String[] args)    {  \n        int[] arr = {1,2,3,4,5,6,7,8,9};  \n        System.out.println(\"Original Array: \");  \n        printArray(arr);  \n        rearrangeArray(arr);  \n        System.out.println(\"Rearranged Array: \");  \n        printArray(arr);  \n    }  \n    public static void printArray(int[] arr)   {  \n        for (int num:arr)   {  \n            System.out.print(num+\" \");  \n        }  \n        System.out.println();  \n    }  \n}  \nCompile and Run",
+        "Output:",
+        "Complexity Analysis",
+        "The time complexity of this approach is O(n), where n is the number of elements in the array.",
+        "The space complexity is O(1) as we perform the rearrangement in place without using any additional data structures."
+      ],
+      "code": [
+        "Original Array: \n1 2 3 4 5 6 7 8 9 \nRearranged Array: \n8 2 6 4 5 3 7 1 9"
+      ]
+    },
+    {
+      "heading": "20. Java program to find the smallest missing positive number in an unsorted array.",
+      "paragraphs": [
+        "We can rearrange the array by assigning each positive integer to its appropriate index to discover the smallest missing positive number in an unsorted array. You can accomplish this by looping through the array and switching each element with a positive integer with the one at the desired index. The array is iterated once more to locate the first index where an element no longer corresponds to the required value after the rearrangement. The index corresponds to the smallest missing positive number. If all elements match their desired values, the smallest missing positive number is the next positive integer after the array size.",
+        "Codepublic class Main  \n{  \n    public static int findSmallestMissingPositive(int[] nums)  \n    {  \n        int n=nums.length;  \n        // Rearrange the array  \n        for (int i=0;i<n;i++)   \n        {  \n            while (nums[i]>0&&nums[i]<=n&&nums[nums[i]-1]!=nums[i])   \n            {  \n                swap(nums,i,nums[i]-1);  \n            }  \n        }  \n        //Find the smallest missing positive number  \n        for (int i=0;i<n;i++)   \n        {  \n            if (nums[i]!=i+1)   \n            {  \n                return i+1;  \n            }  \n        }  \n        // If all elements match their desired values, return the next positive integer  \n        return n+1;  \n    }  \n    public static void swap(int[] nums,int i,int j)   \n    {  \n        int temp=nums[i];  \n        nums[i]=nums[j];  \n        nums[j]=temp;  \n    }  \n    public static void main(String[] args)   \n    {  \n        int[] nums={3,4,-1,1};  \n        int smallestMissingPositive = findSmallestMissingPositive(nums);  \n        System.out.println(\"Smallest Missing Positive Number: \"+smallestMissingPositive);  \n    }  \n} \nCompile and Run",
+        "Output:",
+        "Complexity Analysis",
+        "The approach ensures a time complexity of O(n) and a space complexity of O(1) as we perform the rearrangement and search in place without additional data structures."
+      ],
+      "code": [
+        "Smallest Missing Positive Number: 2"
+      ]
+    },
+    {
+      "heading": "21. Java program to find the intersection of two arrays.",
+      "paragraphs": [
+        "The best approach to finding the intersection of two arrays is to use a HashSet data structure. We create a HashSet and add all elements from one array to it. Then, we iterate through the second array and check if each element exists in the HashSet. If it does, we add it to the result ArrayList and remove it from the HashSet to avoid duplicates.",
+        "Codeimport java.util.ArrayList;  \nimport java.util.HashSet;  \nimport java.util.List;  \npublic class Main{  \n    public static List<Integer> intersection(int[] nums1, int[] nums2) {  \n        HashSet<Integer> set=new HashSet<>();  \n        List<Integer> result=new ArrayList<>();  \n        // Add elements of nums1 to the set  \n        for (int num:nums1)  {  \n            set.add(num);  \n        }  \n        // Check for intersection in nums2  \n        for (int num:nums2)   {  \n            if (set.contains(num))   {  \n                result.add(num);  \n                set.remove(num);  \n            }  \n        }  \n        return result;  \n    }  \n    public static void main(String[] args) {  \n        int[] nums1 = {1, 2, 2, 1};  \n        int[] nums2 = {2, 2};  \n        List<Integer> intersection=intersection(nums1, nums2);  \n        System.out.println(\"Intersection: \"+intersection);  \n    }  \n}  \nCompile and Run",
+        "Output:",
+        "Complexity Analysis",
+        "The time complexity of this approach is O(n), where n is the size of the larger array.",
+        "The space complexity is O(m), where m is the size of the HashSet."
+      ],
+      "code": [
+        "Intersection: [2]"
+      ]
+    },
+    {
+      "heading": "22. Java program to find the longest subarray with an equal number of 0s and 1s.",
+      "paragraphs": [
+        "Utilizing the prefix sum method, we can determine the longest subarray that contains an equal number of 0s and 1s. We can calculate the running sum while traversing the array by assigning a value of 1 for every 1 and -1 for every 0. When the running sum reaches zero, the number of 0s and 1s we have seen thus far is equal. To find the longest subarray, we store the running sum in a HashMap and its corresponding index. If the same running sum appears again, we update the maximum length by subtracting the stored index from the current index. By keeping track of the maximum length throughout the iteration, we can find the longest subarray with equal 0s and 1s.",
+        "Codeimport java.util.HashMap;  \npublic class Main {  \n    public static int findMaxLength(int[] nums)   {  \n        int maxLength=0;  \n        int runningSum=0;  \n        HashMap<Integer,Integer> sumMap=new HashMap<>();  \n        sumMap.put(0,-1); // Handle the case when the subarray starts from the beginning  \n        for (int i=0;i<nums.length;i++)   {  \n            runningSum+=nums[i]==0?-1:1;  \n            if (sumMap.containsKey(runningSum))    {  \n                int startIndex=sumMap.get(runningSum);  \n                maxLength=Math.max(maxLength,i-startIndex);  \n            } else {  \n                sumMap.put(runningSum,i);  \n            }  \n        }  \n        return maxLength;  \n    }  \n    public static void main(String[] args)    {  \n        int[] nums = {0, 1, 0, 0, 1, 1, 0};  \n        int maxLength=findMaxLength(nums);  \n  System.out.println(\"Length of the longest subarray with equal 0s and 1s is: \"+maxLength);  \n    }  \n}  \nCompile and Run",
+        "Output:",
+        "Complexity Analysis",
+        "The time complexity of this approach is O(n) since we iterate through the array once.",
+        "The space complexity is O(n) as we store the running sum and its corresponding index in the HashMap."
+      ],
+      "code": [
+        "Length of the longest subarray with equal 0s and 1s: 6"
+      ]
+    },
+    {
+      "heading": "23. Java program to find the maximum product of two integers in an array.",
+      "paragraphs": [
+        "To find the maximum product of two integers in an array, we iterate through the array and keep track of the maximum and second maximum elements. We initialize max1 and max2 to the smallest possible integer values. Then, for each element, we compare it with max1 and update max2 and max1 accordingly. After iterating through the array, the maximum product is the product of max1 and max2, as max1 will hold the largest element and max2 will hold the second largest element.",
+        "Codepublic class Main {  \n    public static int findMaximumProduct(int[] arr)  {  \n      int max1=Integer.MIN_VALUE; // Initialize the maximum element to the smallest possible value  \n        int max2=Integer.MIN_VALUE; // Initialize the second maximum element to the smallest possible value  \n        for (int num:arr)    {  \n            if (num>max1)    {  \n                max2=max1; // Update the second maximum element  \n                max1=num; // Update the maximum element  \n            }   \n            else if (num>max2)    {  \n                max2=num; // Update the second maximum element  \n            }  \n        }  \n        return max1*max2; // Return the maximum product  \n    }  \n    public static void main(String[] args)    {  \n        int[] arr={1,2,3,4,5};  \n        int maximumProduct=findMaximumProduct(arr);  \n        System.out.println(\"Maximum Product: \"+maximumProduct);  \n    }  \n}  \nCompile and Run",
+        "Output:",
+        "Complexity Analysis",
+        "The time complexity of this approach is O(n), where n is the size of the array.",
+        "The space complexity is O(1) since we only use constant extra space to store the maximum and second maximum elements."
+      ],
+      "code": [
+        "Maximum Product: 20"
+      ]
+    },
+    {
+      "heading": "24. Java program to find the smallest subarray length with a sum greater than a given value.",
+      "paragraphs": [
+        "To find the smallest subarray length with a sum greater than a given value, we can utilize the sliding window technique. The approach involves maintaining a window that expands and contracts while calculating the current sum. We start with an empty window and gradually expand it by adding elements from the right end. If the current sum exceeds the given value, we update the minimum length of the subarray. Then, until the current total is less than or equal to the specified value, we contract the window from the left end by eliminating items. Until we reach the end of the array, we keep doing this.",
+        "Codepublic class Main{  \n    public static int findSmallestSubarray(int[] arr,int target)   {  \n        int minLength=Integer.MAX_VALUE; // Variable to store the minimum length of the subarray  \n        int currentSum=0; // Variable to track the current sum of the subarray  \n        int left=0; // Left pointer to mark the start of the subarray  \n        int right=0; // Right pointer to mark the end of the subarray  \n        while (right<arr.length) {  \n        currentSum+=arr[right]; // Add the element at the right pointer to the current sum            while (currentSum>target)   {  \n  minLength=Math.min(minLength,rightleft+1); // Update the minimum length if necessary  \n    currentSum=arr[left]; // Subtract the element at the left pointer from the current sum\n                left++; // Move the left pointer to the right to contract the window  \n            }  \n            right++; // Move the right pointer to the right to expand the window  \n        }  \n        return (minLength==Integer.MAX_VALUE)?-1:minLength;   \n    }  \n    public static void main(String[] args)   {  \n        int[] arr={1, 4, 45, 6, 0, 19};  \n        int target=51;  \n        int smallestSubarrayLength=findSmallestSubarray(arr,target);  \n        System.out.println(\"Smallest Subarray Length: \"+smallestSubarrayLength);  \n    }  \n}  \nCompile and Run",
+        "Output:",
+        "Complexity Analysis",
+        "The time complexity of this approach is O(n), where n is the size of the array.",
+        "The space complexity is O(1) since we only use constant extra space to store variables."
+      ],
+      "code": [
+        "Smallest Subarray Length: 3"
+      ]
+    },
+    {
+      "heading": "25. Java program to find the triplet with the smallest sum in an array.",
+      "paragraphs": [
+        "We can take the help of three variables (an integer array of size three will also do the work), and using a loop, we can find the minimum elements present in the given array. We will be looking for the minimum elements as we have to find the smallest sum.",
+        "Codepublic class Main   {  \npublic static void findSmallestTripletSum(int[] arr)  {  \nint n = arr.length; // finding the size  \n// for storing the first three minimum values present in the given array.  \nint fMin = Integer.MAX_VALUE;  \nint sMin = Integer.MAX_VALUE;  \nint tMin = Integer.MAX_VALUE;   \nfor (int i = 0; i < n; i++)   {   \n// getting the first, second and third minimum elements   \nif (arr[i] < fMin)   {   \n    tMin = sMin;   \n    sMin = fMin;   \n    fMin = arr[i];   \n}   \n// updating the second and third minimum elements   \nelse if (arr[i] < sMin)   {   \n    tMin = sMin;   \n    sMin = arr[i];   \n}   \nelse if (arr[i] < tMin)   {   \n    tMin = arr[i];   \n}   \n}  \n// print statement  \nSystem.out.println(\"The Triplet with the smallest sum is: {\"+ fMin + \", \" + sMin + \", \" + tMin + \"}\");  \n}  \n// main method  \npublic static void main(String[] args)   {  \nint[] arr = {5, 1, -3, -4, -2, 6};  \nfindSmallestTripletSum(arr);  \n}  \n}  \nCompile and Run",
+        "Output:",
+        "Complexity Analysis",
+        "The time complexity of this approach is O(n) since we are only using one loop in the program.",
+        "The space complexity is O(1), as we are not using any extra space that grows with the input size."
+      ],
+      "code": [
+        "The Triplet with the smallest sum is: {-4, -3, -2}"
+      ]
+    },
+    {
+      "heading": "26. Java program to increment all elements of an array by one.",
+      "paragraphs": [
+        "The input array is defined as {1, 2, 3, 4, 5}. The method incrementArrayElements(int[] array) accepts an array as an argument. It then uses a for loop to iterate over each element in the array. Increment Operation: Inside the loop, the code array[i]++ increments each element by one. The final output is printed in the main() method, where the incremented array elements are displayed.",
+        "Codepublic class Main {  \n    public static void main(String[] args) {  \n        int[] array = {1, 2, 3, 4, 5};  \n        incrementArrayElements(array);  \n        // Print the incremented array  \n        for (int i = 0; i < array.length; i++) {  \n            System.out.print(array[i] + \" \");  \n        }  \n    }  \n    public static void incrementArrayElements(int[] array) {  \n        for (int i = 0; i < array.length; i++) {  \n            array[i]++;  \n        }  \n    }  \n} \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "2 3 4 5 6"
+      ]
+    },
+    {
+      "heading": "27. Java program to move all zeroes to the end of the array.",
+      "paragraphs": [
+        "For this approach, we traverse the array twice. In the first traversal, we do the following:",
+        "• Iterate through the array while counting non-zero elements. Initialize the count at 0, which also indicates the position for the next non-zero element in the array.\n• For each non-zero element, position it at arr[count] and then increase the count by 1.\n• Once all elements have been processed, all non-zero entries will be moved to the front, keeping their original sequence.",
+        "In the second traversal, we do the following:",
+        "• Following the initial traversal, all non-zero elements will occupy the beginning of the array, while the variable 'count' will indicate the position for the first zero.\n• Proceed from 'count' to the end of the array, filling all subsequent indices with 0.",
+        "Codepublic class Main {\n    public static void main(String[] args) {\n        int[] arr = {1, 0, 2, 0, 3, 0, 4, 0};\n        int n = arr.length;  //finding array length\n        int count = 0;\n        for (int i = 0; i < n; i++) { //loop iterate over the array\n            if (arr[i] != 0) {  //compare if the array element is equals to zero or not\n                arr[count++] = arr[i];  //\n            }\n        }\n        while (count < n) {\n            arr[count++] = 0;\n        }\n        System.out.println(\"Array after moving zeroes: \" + java.util.Arrays.toString(arr));\n    }\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Array after moving zeroes: [1, 2, 3, 4, 0, 0, 0, 0]"
+      ]
+    },
+    {
+      "heading": "28. Reverse an array without changing the position of zeroes.",
+      "paragraphs": [
+        "To solve the problem, the method involves moving through the array from both ends and swapping non-zero elements until reaching the centre. Throughout this procedure, the positions of zeroes are left intact. The code employs a while loop to bypass zeroes while decrementing the index from the end. When a non-zero element is detected, it gets swapped with the corresponding non-zero element from the opposite end. This swapping continues until the centre of the array is reached.",
+        "Codeimport java.util.Arrays;\npublic class Main {\n// Print function\npublic static void printReverse(int[] arr) {\n    // Print the original array\n    System.out.print(\"Original array: \");\n    System.out.println(Arrays.toString(arr));\n    // Reverse the array without changing the position of zeroes\n    // Initialize the index to the last element\n    int j = arr.length - 1;\n    for (int i = 0; i < j; i++) {\n    // If the current element is zero, skip to the next element\n    if (arr[i] == 0) {\n        continue;\n    }\n    // If the current element is zero from the end\n    while (j > i && arr[j] == 0) {\n        // Decrement the index to the previous element\n        j--;\n    }\n    // Swap the elements\n    int temp = arr[i];\n    arr[i] = arr[j];\n    arr[j] = temp;\n    // Decrement the index to the previous element\n    j--;\n    }\n    // Prints the reversed array\n    System.out.print(\"Reversed array: \");\n    System.out.println(Arrays.toString(arr));\n}\npublic static void main(String[] args) {\n    int[] arr = { 6, 0, 8, 0, 2, 0, 1 };\n    printReverse(arr);\n}\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Original array: [6, 0, 8, 0, 2, 0, 1]\nReversed array: [1, 0, 2, 0, 8, 0, 6]"
+      ]
+    },
+    {
+      "heading": "29. Java program to find the leader element in an array.",
+      "paragraphs": [
+        "Given an array arr[] of size n, the task is to find all the Leaders in the array. An element is a Leader if it is greater than or equal to all the elements to its right side."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Note: The rightmost element is always a leader.",
+      "paragraphs": [
+        "Codepublic class Main {\n    public static void main(String[] args) {\n        int[] arr = {12, 11, 4, 7, 9, 6, 8, 15};\n        int n = arr.length;\n        int maxFromRight = arr[n - 1];\n        System.out.print(\"Leader is: \" + maxFromRight + \" \");\n        for (int i = n - 2; i >= 0; i--) {\n            if (arr[i] > maxFromRight) {\n                maxFromRight = arr[i];\n                System.out.print(maxFromRight + \" \");\n            }\n        }\n    }\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Leader is: 15"
+      ]
+    },
+    {
+      "heading": "30. Java program to find all the non-empty subarrays.",
+      "paragraphs": [
+        "To create a subarray, we first need a starting index from the original array. We can choose this starting index by looping through the range [0 to n-1] and treating each index i as a potential starting point. For each selected starting index i, we then determine an ending index from the range [i to n-1]. A nested loop, running from [i to n-1], will assist in selecting the ending index. Once both the starting and ending indices are established, an innermost loop will be required to print the elements of the subarray.",
+        "Codeimport java.util.ArrayList;\npublic class Main {\n    //Prints all subarrays in arr[0..n-1]\n    static void findSubArray(ArrayList<Integer> arr) {\n        int n = arr.size();\n        // Pick starting point\n        for (int i = 0; i < n; i++) {         \n            // Pick ending point\n            for (int j = i; j < n; j++) {             \n                // Print subarray between current starting and ending points\n                for (int k = i; k <= j; k++) {\n                    System.out.print(arr.get(k) + \" \");\n                }\n                System.out.println();\n            }\n        }\n    }\n    public static void main(String[] args) {\n        ArrayList<Integer> arr = new ArrayList<>();\n        arr.add(1);\n        arr.add(2);\n        arr.add(3);\n        System.out.println(\"Subarrays are:\");\n        findSubArray(arr);\n    }\n}\n\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Subarrays are:\n1 \n1 2 \n1 2 3 \n2 \n2 3 \n3"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:34:48.569Z"
+}

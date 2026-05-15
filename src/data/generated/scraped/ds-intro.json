@@ -1,0 +1,201 @@
+{
+  "topicId": "ds-intro",
+  "title": "Java - Data Structures",
+  "sectionId": "java-collections-jdbc",
+  "source": "tutorialspoint",
+  "url": "https://www.tutorialspoint.com/java/java_data_structures.htm",
+  "allSources": [
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_data_structures.htm",
+      "score": 123,
+      "sectionCount": 22
+    }
+  ],
+  "sections": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "The data structures provided by the Java utility package are very powerful and perform a wide range of functions. These data structures consist of the following interface and classes −",
+        "• Enumeration\n• BitSet\n• Vector\n• Stack\n• Dictionary\n• Hashtable\n• Properties",
+        "All these classes are now legacy and Java-2 has introduced a new framework called Collections Framework, which is discussed in the next chapter −"
+      ],
+      "code": []
+    },
+    {
+      "heading": "The Enumeration",
+      "paragraphs": [
+        "The Enumeration interface isn't itself a data structure, but it is very important within the context of other data structures. The Enumeration interface defines a means to retrieve successive elements from a data structure.",
+        "For example, Enumeration defines a method called nextElement that is used to get the next element in a data structure that contains multiple elements."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Following is an example showing usage of Enumeration for a Vector."
+      ],
+      "code": [
+        "import java.util.Vector;\nimport java.util.Enumeration;\n\npublic class EnumerationTester {\n\n   public static void main(String args[]) {\n      Enumeration<String> days;\n      Vector<String> dayNames = new Vector<>();\n      \n      dayNames.add(\"Sunday\");\n      dayNames.add(\"Monday\");\n      dayNames.add(\"Tuesday\");\n      dayNames.add(\"Wednesday\");\n      dayNames.add(\"Thursday\");\n      dayNames.add(\"Friday\");\n      dayNames.add(\"Saturday\");\n      days = dayNames.elements();\n      \n      while (days.hasMoreElements()) {\n         System.out.println(days.nextElement()); \n      }\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [
+        "To have more detail about this interface, check The Enumeration."
+      ],
+      "code": [
+        "Sunday\nMonday\nTuesday\nWednesday\nThursday\nFriday\nSaturday"
+      ]
+    },
+    {
+      "heading": "The BitSet",
+      "paragraphs": [
+        "The BitSet class implements a group of bits or flags that can be set and cleared individually.",
+        "This class is very useful in cases where you need to keep up with a set of Boolean values; you just assign a bit to each value and set or clear it as appropriate."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following program illustrates several of the methods supported by BitSet data structure −"
+      ],
+      "code": [
+        "import java.util.BitSet;\npublic class BitSetDemo {\n\n  public static void main(String args[]) {\n      BitSet bits1 = new BitSet(16);\n      BitSet bits2 = new BitSet(16);\n      \n      // set some bits\n      for(int i = 0; i < 16; i++) {\n         if((i % 2) == 0) bits1.set(i);\n         if((i % 5) != 0) bits2.set(i);\n      }\n     \n      System.out.println(\"Initial pattern in bits1: \");\n      System.out.println(bits1);\n      System.out.println(\"\\nInitial pattern in bits2: \");\n      System.out.println(bits2);\n\n      // AND bits\n      bits2.and(bits1);\n      System.out.println(\"\\nbits2 AND bits1: \");\n      System.out.println(bits2);\n\n      // OR bits\n      bits2.or(bits1);\n      System.out.println(\"\\nbits2 OR bits1: \");\n      System.out.println(bits2);\n\n      // XOR bits\n      bits2.xor(bits1);\n      System.out.println(\"\\nbits2 XOR bits1: \");\n      System.out.println(bits2);\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Initial pattern in bits1:\n{0, 2, 4, 6, 8, 10, 12, 14}\n\nInitial pattern in bits2:\n{1, 2, 3, 4, 6, 7, 8, 9, 11, 12, 13, 14}\n\nbits2 AND bits1:\n{2, 4, 6, 8, 12, 14}\n\nbits2 OR bits1:\n{0, 2, 4, 6, 8, 10, 12, 14}\n\nbits2 XOR bits1:\n{}"
+      ]
+    },
+    {
+      "heading": "The Vector",
+      "paragraphs": [
+        "The Vector class is similar to a traditional Java array, except that it can grow as necessary to accommodate new elements.",
+        "Like an array, elements of a Vector object can be accessed via an index into the vector.",
+        "The nice thing about using the Vector class is that you don't have to worry about setting it to a specific size upon creation; it shrinks and grows automatically when necessary."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following program illustrates several of the methods supported by Vector collection −"
+      ],
+      "code": [
+        "import java.util.*;\npublic class VectorDemo {\n\n   public static void main(String args[]) {\n      // initial size is 3, increment is 2\n      Vector v = new Vector(3, 2);\n      System.out.println(\"Initial size: \" + v.size());\n      System.out.println(\"Initial capacity: \" + v.capacity());\n      \n      v.addElement(new Integer(1));\n      v.addElement(new Integer(2));\n      v.addElement(new Integer(3));\n      v.addElement(new Integer(4));\n      System.out.println(\"Capacity after four additions: \" + v.capacity());\n\n      v.addElement(new Double(5.45));\n      System.out.println(\"Current capacity: \" + v.capacity());\n      \n      v.addElement(new Double(6.08));\n      v.addElement(new Integer(7));\n      System.out.println(\"Current capacity: \" + v.capacity());\n      \n      v.addElement(new Float(9.4));\n      v.addElement(new Integer(10));\n      System.out.println(\"Current capacity: \" + v.capacity());\n      \n      v.addElement(new Integer(11));\n      v.addElement(new Integer(12));\n      System.out.println(\"First element: \" + (Integer)v.firstElement());\n      System.out.println(\"Last element: \" + (Integer)v.lastElement());\n      \n      if(v.contains(new Integer(3)))\n         System.out.println(\"Vector contains 3.\");\n         \n      // enumerate the elements in the vector.\n      Enumeration vEnum = v.elements();\n      System.out.println(\"\\nElements in vector:\");\n      \n      while(vEnum.hasMoreElements())\n         System.out.print(vEnum.nextElement() + \" \");\n      System.out.println();\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Initial size: 0\nInitial capacity: 3\nCapacity after four additions: 5\nCurrent capacity: 5\nCurrent capacity: 7\nCurrent capacity: 9\nFirst element: 1\nLast element: 12\nVector contains 3.\n\nElements in vector:\n1 2 3 4 5.45 6.08 7 9.4 10 11 12"
+      ]
+    },
+    {
+      "heading": "The Stack",
+      "paragraphs": [
+        "The Stack class implements a last-in-first-out (LIFO) stack of elements.",
+        "You can think of a stack literally as a vertical stack of objects; when you add a new element, it gets stacked on top of the others.",
+        "When you pull an element off the stack, it comes off the top. In other words, the last element you added to the stack is the first one to come back off."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following program illustrates several of the methods supported by Stack collection −"
+      ],
+      "code": [
+        "import java.util.*;\npublic class StackDemo {\n\n   static void showpush(Stack st, int a) {\n      st.push(new Integer(a));\n      System.out.println(\"push(\" + a + \")\");\n      System.out.println(\"stack: \" + st);\n   }\n\n   static void showpop(Stack st) {\n      System.out.print(\"pop -> \");\n      Integer a = (Integer) st.pop();\n      System.out.println(a);\n      System.out.println(\"stack: \" + st);\n   }\n\n   public static void main(String args[]) {\n      Stack st = new Stack();\n      System.out.println(\"stack: \" + st);\n      showpush(st, 42);\n      showpush(st, 66);\n      showpush(st, 99);\n      showpop(st);\n      showpop(st);\n      showpop(st);\n      try {\n         showpop(st);\n      } catch (EmptyStackException e) {\n         System.out.println(\"empty stack\");\n      }\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "stack: [ ]\npush(42)\nstack: [42]\npush(66)\nstack: [42, 66]\npush(99)\nstack: [42, 66, 99]\npop -> 99\nstack: [42, 66]\npop -> 66\nstack: [42]\npop -> 42\nstack: [ ]\npop -> empty stack"
+      ]
+    },
+    {
+      "heading": "The Dictionary",
+      "paragraphs": [
+        "The Dictionary class is an abstract class that defines a data structure for mapping keys to values.",
+        "This is useful in cases where you want to be able to access data via a particular key rather than an integer index.",
+        "Since the Dictionary class is abstract, it provides only the framework for a key-mapped data structure rather than a specific implementation."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example shows the usage of Java Dictionary keys() method. We're creating a dictionary instance using Hashtable object of Integer, Integer. Then we've added few elements to it. An enumeration is retrieved using keys() method and enumeration is then iterated to print the keys of the dictionary."
+      ],
+      "code": [
+        "package com.tutorialspoint;\n\nimport java.util.Enumeration;\nimport java.util.Dictionary;\nimport java.util.Hashtable;\n\npublic class DictionaryDemo {\n   public static void main(String[] args) {\n\n      // create a new hashtable\n      Dictionary<Integer, Integer> dictionary = new Hashtable<>();\n\n      // add 2 elements\n      dictionary.put(1, 1);\n      dictionary.put(2, 2);\n\n      Enumeration<Integer> enumeration = dictionary.keys();\n\n      while(enumeration.hasMoreElements()) {\n         System.out.println(enumeration.nextElement());\n      }\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "2\n1"
+      ]
+    },
+    {
+      "heading": "The Hashtable",
+      "paragraphs": [
+        "The Hashtable class provides a means of organizing data based on some user-defined key structure.",
+        "For example, in an address list hash table you could store and sort data based on a key such as ZIP code rather than on a person's name.",
+        "The specific meaning of keys with regard to hash tables is totally dependent on the usage of the hash table and the data it contains."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example shows the usage of Java Hashtable contains() method to check if a value is present in a Hashtable or not. We've created a Hashtable object of Integer,Integer. Then few entries are added, table is printed and using contains() we're checking about two values in the table."
+      ],
+      "code": [
+        "package com.tutorialspoint;\n\nimport java.util.Hashtable;\n\npublic class HashtableDemo {\n   public static void main(String args[]) {\n      \n      // create hash table\n      Hashtable<Integer,Integer> hashtable = new Hashtable<>();\n\n      // populate hash table\n      hashtable.put(1, 1);\n      hashtable.put(2, 2);\n      hashtable.put(3, 3); \n\n      System.out.println(\"Initial table elements: \" + hashtable);\n      System.out.println(\"Hashtable contains 2 as value: \" + hashtable.contains(2));\n      System.out.println(\"Hashtable contains 4 as value: \" + hashtable.contains(4));\n   }    \n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Initial table elements: {3=3, 2=2, 1=1}\nHashtable contains 2 as value: true\nHashtable contains 4 as value: false"
+      ]
+    },
+    {
+      "heading": "The Properties",
+      "paragraphs": [
+        "Properties is a subclass of Hashtable. It is used to maintain lists of values in which the key is a String and the value is also a String.",
+        "The Properties class is used by many other Java classes. For example, it is the type of object returned by System.getProperties( ) when obtaining environmental values."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example shows the usage of Java Properties getProperty(String key) method to get a value based on a key from a Properties. We've created a Properties object. Then few entries are added. Using getProperty() method, a value is retrieved and printed."
+      ],
+      "code": [
+        "package com.tutorialspoint;\n\nimport java.util.Properties;\n\npublic class PropertiesDemo {\n   public static void main(String[] args) {\n      Properties properties = new Properties();\n\n      //populate properties object\n      properties.put(\"1\", \"tutorials\");\n      properties.put(\"2\", \"point\");\n      properties.put(\"3\", \"is best\");\n\n      System.out.println(\"Properties elements: \" + properties);\n      System.out.println(\"Value: \" + properties.getProperty(\"1\"));\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Properties elements: {1=tutorials, 2=point, 3=is best}\nValue: tutorials"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:47:27.625Z"
+}

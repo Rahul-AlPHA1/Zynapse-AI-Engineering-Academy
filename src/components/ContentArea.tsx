@@ -6,7 +6,7 @@ import { BookOpen, Loader2, PlusCircle, Sparkles, Send, BrainCircuit, CheckCircl
 import { createChatSession, streamContent } from '../services/geminiService';
 import { generateInterviewPlan, AIPlanResponse, loadMorePlanQuestions } from '../services/geminiService';
 import { curriculum } from '../data/curriculum';
-import { buildJavaOfflineLesson, isJavaOfflineTopic } from '../data/javaOfflineLessons';
+import { buildJavaOfflineLesson, isJavaOfflineTopic, preloadJavaScrapedContent } from '../data/javaOfflineLessons';
 import { QuizUI, QuizData } from './QuizUI';
 import mammoth from 'mammoth';
 import * as pdfjsLib from 'pdfjs-dist';
@@ -651,6 +651,9 @@ export function ContentArea({ topic, language, isComplete = false, isBookmarked 
       return;
     }
 
+    // Kick off lazy load of scraped Java content in background (no-await)
+    if (isJavaOfflineTopic(topic)) preloadJavaScrapedContent();
+
     // Dynamic fetch with streaming
     let isMounted = true;
     abortRef.current = false;
@@ -888,6 +891,7 @@ Make the lesson comprehensive enough to replace a normal tutorial page.`;
         console.error("Failed to generate content:", error);
         if (isMounted) {
           const detail = error instanceof Error ? error.message : "Unknown provider error";
+          if (isJavaOfflineTopic(topic)) await preloadJavaScrapedContent();
           setContent(buildOfflineLesson(topic, language, difficulty, detail));
           setIsSaved(false);
           setIsStreaming(false);

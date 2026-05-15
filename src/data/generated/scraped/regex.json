@@ -1,0 +1,201 @@
+{
+  "topicId": "regex",
+  "title": "Java Regular Expressions (Regex)",
+  "sectionId": "java-core-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-regex",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-regex",
+      "score": 122,
+      "sectionCount": 20
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_regular_expressions.htm",
+      "score": 112,
+      "sectionCount": 19
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java Regular Expressions (Regex)",
+      "paragraphs": [
+        "The Java Regex or Regular Expression is an API used to define patterns for searching or manipulating strings.",
+        "It is widely used to define constraints on strings, such as password and email validation. After learning the Java Regex, you will be able to test your regular expressions using the Java Regex Tester tool.",
+        "The Java Regex API provides one interface and three classes in the java.util.regex package"
+      ],
+      "code": []
+    },
+    {
+      "heading": "java.util.regex package",
+      "paragraphs": [
+        "The Matcher and Pattern classes provide the facility of Java regular expression. The java.util.regex package provides following classes and interfaces for regular expressions.",
+        "• MatchResult interface\n• Matcher class\n• Pattern class\n• PatternSyntaxException class"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Matcher class",
+      "paragraphs": [
+        "It implements the MatchResult interface. It is a regex engine which is used to perform match operations on a character sequence.",
+        "No. | Method | Description\n1 | boolean matches() | test whether the regular expression matches the pattern.\n2 | boolean find() | finds the next expression that matches the pattern.\n3 | boolean find(int start) | finds the next expression that matches the pattern from the given start number.\n4 | String group() | returns the matched subsequence.\n5 | int start() | returns the starting index of the matched subsequence.\n6 | int end() | returns the ending index of the matched subsequence.\n7 | int groupCount() | returns the total number of the matched subsequence."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Pattern class",
+      "paragraphs": [
+        "It is the compiled version of a regular expression. It is used to define a pattern for the regex engine.",
+        "No. | Method | Description\n1 | static Pattern compile(String regex) | compiles the given regex and returns the instance of the Pattern.\n2 | Matcher matcher(CharSequence input) | creates a matcher that matches the given input with the pattern.\n3 | static boolean matches(String regex, CharSequence input) | It works as the combination of compile and matcher methods. It compiles the regular expression and matches the given input with the pattern.\n4 | String[] split(CharSequence input) | splits the given input string around matches of given pattern.\n5 | String pattern() | returns the regex pattern."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example of Java Regular Expressions",
+      "paragraphs": [
+        "There are three ways to write the regex example in Java.",
+        "Example//Creating an example to understand the use of Java Regular Expression\nimport java.util.regex.Pattern;\nimport java.util.regex.Matcher;\n\npublic class Main{  \npublic static void main(String args[]){  \n//1st way  \nPattern p = Pattern.compile(\".s\");//. represents single character  \nMatcher m = p.matcher(\"as\");  \nboolean b = m.matches();  \n  \n//2nd way  \nboolean b2=Pattern.compile(\".s\").matcher(\"as\").matches();  \n  \n//3rd way  \nboolean b3 = Pattern.matches(\".s\", \"as\");  \n  \nSystem.out.println(b+\" \"+b2+\" \"+b3);  \n}}  \nCompile and Run"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "true true true"
+      ]
+    },
+    {
+      "heading": "Dot (.) Quantifier in Java Regex",
+      "paragraphs": [
+        "In Java regular expressions, the dot (.) quantifier matches exactly one character, except a newline. It is commonly used when the exact character is not known but its position in the string matters."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Consider the following example to understand the use of the dot (.) quantifier in Java regex.",
+        "//Java Program to understand the use of dot . quantifier\nimport java.util.regex.Pattern;  \npublic class Main{  \npublic static void main(String args[]){  \nSystem.out.println(Pattern.matches(\".s\", \"as\"));//true (2nd char is s)  \nSystem.out.println(Pattern.matches(\".s\", \"mk\"));//false (2nd char is not s)  \nSystem.out.println(Pattern.matches(\".s\", \"mst\"));//false (has more than 2 char)  \nSystem.out.println(Pattern.matches(\".s\", \"amms\"));//false (has more than 2 char)  \nSystem.out.println(Pattern.matches(\"..s\", \"mas\"));//true (3rd char is s)  \n}}\nCompile and Run"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Regex Character Classes",
+      "paragraphs": [
+        "Java Regex character classes are used to define a set or group of characters that can match a single character at a specific position in a string.",
+        "The following table shows different types of character classes in Java Regular Expressions and explains how each character class pattern is used to match specific sets or ranges of characters while performing pattern matching.",
+        "No. | Character Class | Description\n1 | [abc] | a, b, or c (simple class)\n2 | [^abc] | Any character except a, b, or c (negation)\n3 | [a-zA-Z] | a through z or A through Z, inclusive (range)\n4 | [a-d[m-p]] | a through d, or m through p: [a-dm-p] (union)\n5 | [a-z&&[def]] | d, e, or f (intersection)\n6 | [a-z&&[^bc]] | a through z, except for b and c: [ad-z] (subtraction)\n7 | [a-z&&[^m-p]] | a through z, and not m through p: [a-lq-z](subtraction)"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Consider the following example to understand the use of character classes in regular expressions:",
+        "//Java Program to understand the use of Regex Character class\nimport java.util.regex.Pattern;  \npublic class Main{  \npublic static void main(String args[]){  \nSystem.out.println(Pattern.matches(\"[amn]\", \"abcd\"));//false (not a or m or n)  \nSystem.out.println(Pattern.matches(\"[amn]\", \"a\"));//true (among a or m or n)  \nSystem.out.println(Pattern.matches(\"[amn]\", \"ammmna\"));//false (m and a comes more than once)  \n}} \nCompile and Run"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Regex Quantifiers",
+      "paragraphs": [
+        "Java Regex Quantifiers define how many times a character, group, or character class can occur in a pattern. They are used to control the repetition of elements while matching strings.",
+        "The following table shows different types of quantifiers in Java Regular Expressions and explains how each quantifier controls the number of times a character or pattern can occur in a string.",
+        "Regex | Description\nX? | X occurs once or not at all\nX+ | X occurs once or more times\nX* | X occurs zero or more times\nX{n} | X occurs n times only\nX{n,} | X occurs n or more times\nX{y,z} | X occurs at least y times but less than z times"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates how different regex quantifiers (?, +, *) work with the character class [amn].",
+        "• [amn]? (zero or one occurrence):The string can contain only one character from a, m, or n, or none at all. Any string with more than one character or repeated occurrences does not match.\n• [amn]+ (one or more occurrences):The string must contain at least one character from a, m, or n, and it can repeat multiple times. If any other character appears, the match fails.\n• [amn]* (zero or more occurrences):The string may contain any number of characters from a, m, or n, including zero occurrences. As long as no other characters are present, the match succeeds.",
+        "//Java Program to understand the use of regex quantifiers\nimport java.util.regex.Pattern;  \npublic class Main{  \npublic static void main(String args[]){  \nSystem.out.println(\"? quantifier ....\");  \nSystem.out.println(Pattern.matches(\"[amn]?\", \"a\"));//true (a or m or n comes one time)  \nSystem.out.println(Pattern.matches(\"[amn]?\", \"aaa\"));//false (a comes more than one time)  \nSystem.out.println(Pattern.matches(\"[amn]?\", \"aammmnn\"));//false (a m and n comes more than one time)  \nSystem.out.println(Pattern.matches(\"[amn]?\", \"aazzta\"));//false (a comes more than one time)  \nSystem.out.println(Pattern.matches(\"[amn]?\", \"am\"));//false (a or m or n must come one time)  \n  \nSystem.out.println(\"+ quantifier ....\");  \nSystem.out.println(Pattern.matches(\"[amn]+\", \"a\"));//true (a or m or n once or more times)  \nSystem.out.println(Pattern.matches(\"[amn]+\", \"aaa\"));//true (a comes more than one time)  \nSystem.out.println(Pattern.matches(\"[amn]+\", \"aammmnn\"));//true (a or m or n comes more than once)  \nSystem.out.println(Pattern.matches(\"[amn]+\", \"aazzta\"));//false (z and t are not matching pattern)  \n  \nSystem.out.println(\"* quantifier ....\");  \nSystem.out.println(Pattern.matches(\"[amn]*\", \"ammmna\"));//true (a or m or n may come zero or more times)  \n  \n}}  \nCompile and Run"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Regex Metacharacters",
+      "paragraphs": [
+        "Java Regex Metacharacters are special characters that have a predefined meaning in regular expressions and are used to define rules for pattern matching, such as position, repetition, or character types.",
+        "This table shows commonly used metacharacters in Java Regular Expressions along with their meanings, explaining how each metacharacter is used to match specific character types, positions, or boundaries in a string.",
+        "Regex | Description\n. | Any character (may or may not match terminator)\n\\d | Any digits, short of [0-9]\n\\D | Any non-digit, short for [^0-9]\n\\s | Any whitespace character, short for [\\t\\n\\x0B\\f\\r]\n\\S | Any non-whitespace character, short for [^\\s]\n\\w | Any word character, short for [a-zA-Z_0-9]\n\\W | Any non-word character, short for [^\\w]\n\\b | A word boundary\n\\B | A non word boundary"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates the use of regex metacharacters \\d and \\D:.",
+        "• \\d (digit):It matches exactly one digit from 0 to 9. If the input contains non-digit characters or more than one character, the match fails.\n• \\D (non-digit):It matches exactly one non-digit character. If digits are present or the string has more than one character, the match does not succeed.\n• \\D* (non-digit with quantifier):The * quantifier allows zero or more non-digit characters, so strings containing only non-digits of any length are matched successfully.",
+        "//Java Program to understand the use of Regex Metacharacters\nimport java.util.regex.Pattern;  \npublic class Main{  \npublic static void main(String args[]){  \nSystem.out.println(\"metacharacters d....\");//d means digit  \n  \nSystem.out.println(Pattern.matches(\"\\\\d\", \"abc\"));//false (non-digit)  \nSystem.out.println(Pattern.matches(\"\\\\d\", \"1\"));//true (digit and comes once)  \nSystem.out.println(Pattern.matches(\"\\\\d\", \"4443\"));//false (digit but comes more than once)  \nSystem.out.println(Pattern.matches(\"\\\\d\", \"323abc\"));//false (digit and char)  \n  \nSystem.out.println(\"metacharacters D....\");//D means non-digit  \n  \nSystem.out.println(Pattern.matches(\"\\\\D\", \"abc\"));//false (non-digit but comes more than once)  \nSystem.out.println(Pattern.matches(\"\\\\D\", \"1\"));//false (digit)  \nSystem.out.println(Pattern.matches(\"\\\\D\", \"4443\"));//false (digit)  \nSystem.out.println(Pattern.matches(\"\\\\D\", \"323abc\"));//false (digit and char)  \nSystem.out.println(Pattern.matches(\"\\\\D\", \"m\"));//true (non-digit and comes once)  \n  \nSystem.out.println(\"metacharacters D with quantifier....\");  \nSystem.out.println(Pattern.matches(\"\\\\D*\", \"mak\"));//true (non-digit and may come 0 or more times)  \n  \n}}"
+      ],
+      "code": []
+    },
+    {
+      "heading": "More Examples on Java Regex",
+      "paragraphs": [
+        "Practice the following examples to strengthen your understanding of Java Regular Expressions. These examples cover pattern matching, validation, searching, replacing, and extracting information using regex."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example 1: Alphanumeric String Validation (Fixed Length)",
+      "paragraphs": [],
+      "code": [
+        "import java.util.regex.*;\nclass RegexExample6{\npublic static void main(String args[]){\nSystem.out.println(Pattern.matches(\"[a-zA-Z0-9]{6}\", \"arun32\"));//true\nSystem.out.println(Pattern.matches(\"[a-zA-Z0-9]{6}\", \"kkvarun32\"));//false (more than 6 char)\nSystem.out.println(Pattern.matches(\"[a-zA-Z0-9]{6}\", \"JA2Uk2\"));//true\nSystem.out.println(Pattern.matches(\"[a-zA-Z0-9]{6}\", \"arun$2\"));//false ($ is not matched)\n}}"
+      ]
+    },
+    {
+      "heading": "Example 2: Mobile Number Validation Using Regex",
+      "paragraphs": [
+        "The following example demonstrates how to validate 10-digit numeric mobile numbers that must start with 7, 8, or 9, using character classes, quantifiers, and metacharacters."
+      ],
+      "code": [
+        "/*Create a regular expression that accepts 10 digit numeric characters\n starting with 7, 8 or 9 only.*/\n\nimport java.util.regex.*;\nclass RegexExample7{\npublic static void main(String args[]){\nSystem.out.println(\"by character classes and quantifiers ...\");\nSystem.out.println(Pattern.matches(\"[789]{1}[0-9]{9}\", \"9953038949\"));//true\nSystem.out.println(Pattern.matches(\"[789][0-9]{9}\", \"9953038949\"));//true\n\nSystem.out.println(Pattern.matches(\"[789][0-9]{9}\", \"99530389490\"));//false (11 characters)\nSystem.out.println(Pattern.matches(\"[789][0-9]{9}\", \"6953038949\"));//false (starts from 6)\nSystem.out.println(Pattern.matches(\"[789][0-9]{9}\", \"8853038949\"));//true\n\nSystem.out.println(\"by metacharacters ...\");\nSystem.out.println(Pattern.matches(\"[789]{1}\\\\d{9}\", \"8853038949\"));//true\nSystem.out.println(Pattern.matches(\"[789]{1}\\\\d{9}\", \"3853038949\"));//false (starts from 3)\n\n}}"
+      ]
+    },
+    {
+      "heading": "Example 3: Java Regex Finder Tool",
+      "paragraphs": [
+        "The following example demonstrates how to search and locate multiple occurrences of a regex pattern within a given text using the Pattern and Matcher classes.",
+        "Output:"
+      ],
+      "code": [
+        "import java.util.regex.Pattern;\nimport java.util.Scanner;\nimport java.util.regex.Matcher;  \npublic class RegexExample8{  \n    public static void main(String[] args){  \n        Scanner sc=new Scanner(System.in);\n        while (true) {  \n        \tSystem.out.println(\"Enter regex pattern:\");\n            Pattern pattern = Pattern.compile(sc.nextLine());  \n            System.out.println(\"Enter text:\");\n            Matcher matcher = pattern.matcher(sc.nextLine());  \n            boolean found = false;  \n            while (matcher.find()) {  \n                System.out.println(\"I found the text \"+matcher.group()+\" starting at index \"+  \n                 matcher.start()+\" and ending at index \"+matcher.end());  \n                found = true;  \n            }  \n            if(!found){  \n                System.out.println(\"No match found.\");  \n            }  \n        }  \n    }  \n}",
+        "Enter regex pattern: java\nEnter text: this is java, do you know java\nI found the text java starting at index 8 and ending at index 12\nI found the text java starting at index 26 and ending at index 30"
+      ]
+    },
+    {
+      "heading": "Example 4: Java Regex Features Demonstration",
+      "paragraphs": [
+        "The following example demonstrates various regex operations such as:",
+        "• Matching specific patterns\n• Finding words using boundaries\n• Replacing text\n• Splitting strings\n• Validating email addresses\n• Extracting domain names from URLs",
+        "Output:"
+      ],
+      "code": [
+        "// Java program for demonstrating the features and functionalities of Java Regrex\nimport java.util.regex.Matcher;\nimport java.util.regex.Pattern;\n\npublic class JavaRegrex {\n\n    public static void main(String[] args) {\n        // Example 1: Matching a specific pattern\n        System.out.println(\"Example 1: Matching a specific pattern\");\n        // Define the text in which to search\n        String text1 = \"The quick brown fox jumps over the lazy dog\";\n        // Define the pattern to match\n        String pattern1 = \"fox\";\n        // Check if the pattern matches the text using Pattern.matches()\n        boolean matches1 = Pattern.matches(pattern1, text1);\n        // Output whether the text contains the pattern\n        System.out.println(\"Does the text contain the word 'fox'? \" + matches1);\n\n        // Example 2: Using Pattern and Matcher classes\n        System.out.println(\"\\nExample 2: Using Pattern and Matcher classes\");\n        // Define the text to search within\n        String text2 = \"Java is a programming language\";\n        // Define the regex pattern to match 3-letter words\n        String regex2 = \"\\\\b\\\\w{3}\\\\b\";\n        // Compile the regex pattern into a Pattern object\n        Pattern pattern2 = Pattern.compile(regex2);\n        // Create a Matcher object to apply the pattern on the text\n        Matcher matcher2 = pattern2.matcher(text2);\n        // Find and output all matches found by iterating over Matcher's results\n        System.out.print(\"3-letter words in the text: \");\n        while (matcher2.find()) {\n            System.out.print(matcher2.group() + \" \");\n        }\n        System.out.println();\n\n        // Example 3: Replacing matched patterns\n        System.out.println(\"\\nExample 3: Replacing matched patterns\");\n        // Define the text in which to search\n        String text3 = \"The cat sat on the mat\";\n        // Define the regex pattern to match the word 'cat'\n        String regex3 = \"\\\\bcat\\\\b\";\n        // Define the replacement string\n        String replacement3 = \"dog\";\n        // Replace all occurrences of 'cat' with 'dog' using String's replaceAll()\n        // method\n        String replacedText3 = text3.replaceAll(regex3, replacement3);\n        // Output the original and replaced text\n        System.out.println(\"Original text: \" + text3);\n        System.out.println(\"Replaced text: \" + replacedText3);\n        // Example 4: Splitting text using regex\n        System.out.println(\"\\nExample 4: Splitting text using regex\");\n        // Define the text to split\n        String text4 = \"apple,banana,orange,grape\";\n        // Define the regex pattern for splitting by comma\n        String regex4 = \",\";\n        // Split the text using the regex pattern into an array of strings\n        String[] parts4 = text4.split(regex4);\n        // Output the split parts\n        System.out.print(\"Fruits separated: \");\n        for (String part : parts4) {\n            System.out.print(part + \" \");\n        }\n        System.out.println();\n        // Example 5: Validating email addresses\n        System.out.println(\"\\nExample 5: Validating email addresses\");\n        // Define an array of email addresses to validate\n        String[] emails = { \"user@example.com\", \"invalid.email.com\", \"another.user@domain.co\" };\n        // Define the regex pattern for validating email addresses\n        String emailRegex = \"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\\\.[a-zA-Z]{2,}$\";\n        // Compile the regex pattern into a Pattern object\n        Pattern emailPattern = Pattern.compile(emailRegex);\n        // Validate each email address by matching against the regex pattern\n        System.out.println(\"Validating email addresses:\");\n        for (String email : emails) {\n            // Create a Matcher object for each email\n            Matcher emailMatcher = emailPattern.matcher(email);\n            // Output the result of validation\n            System.out.println(email + \": \" + emailMatcher.matches());\n        }\n        // Example 6: Extracting domain names from URLs\n        System.out.println(\"\\nExample 6: Extracting domain names from URLs\");\n        // Define a URL\n        String url = \"https://www.example.com\";\n        // Define the regex pattern for extracting domain names from URLs\n        String domainRegex = \"^(https?://)?(www\\\\.)?([a-zA-Z0-9-]+\\\\.[a-z]{2,})\";\n        // Compile the regex pattern into a Pattern object\n        Pattern domainPattern = Pattern.compile(domainRegex);\n        // Create a Matcher object for the URL\n        Matcher domainMatcher = domainPattern.matcher(url);\n        // Find the domain name by matching against the regex pattern and output it\n        if (domainMatcher.find()) {\n            System.out.println(\"Domain extracted from URL: \" + domainMatcher.group(3));\n        }\n    }\n}",
+        "Example 1: Matching a specific pattern\nDoes the text contain the word 'fox'? false\n\nExample 2: Using Pattern and Matcher classes\n3-letter words in the text:\n\nExample 3: Replacing matched patterns\nOriginal text: The cat sat on the mat\nReplaced text: The dog sat on the mat\n\nExample 4: Splitting text using regex\nFruits separated: apple banana orange grape\n\nExample 5: Validating email addresses\nValidating email addresses:\nuser@example.com: true\ninvalid.email.com: false\nanother.user@domain.co: true\n\nExample 6: Extracting domain names from URLs\nDomain extracted from URL: example.com"
+      ]
+    },
+    {
+      "heading": "Example 5: Extracting Data Using Regex Patterns",
+      "paragraphs": [
+        "The following example demonstrates how to extract:",
+        "• Phone numbers\n• URLs\n• Email addresses\n• Dates",
+        "from a given text using regular expressions and the Matcher class.",
+        "Output:",
+        "Overall, regular expressions in Java provide a flexible and powerful way to work with strings, allowing you to perform complex matching and manipulation operations with relatively simple patterns.",
+        "Next TopicJava Exception Handling"
+      ],
+      "code": [
+        "import java.util.regex.Matcher;\nimport java.util.regex.Pattern;\npublic class RegexFeatures {\n    public static void main(String[] args) {\n        // Example 1: Extracting phone numbers from text\n        System.out.println(\"Example 1: Extracting phone numbers from text\");\n        // Define the text containing phone numbers\n        String text1 = \"Please call 123-456-7890 for assistance or 987-654-3210 for inquiries.\";\n        // Define the regex pattern to match phone numbers in the format xxx-xxx-xxxx\n        String phoneRegex1 = \"\\\\b\\\\d{3}-\\\\d{3}-\\\\d{4}\\\\b\";\n        // Compile the regex pattern into a Pattern object\n        Pattern phonePattern1 = Pattern.compile(phoneRegex1);\n        // Create a Matcher object for the text\n        Matcher phoneMatcher1 = phonePattern1.matcher(text1);\n        // Find and output all matched phone numbers\n        System.out.print(\"Phone numbers found in the text: \");\n        while (phoneMatcher1.find()) {\n            System.out.print(phoneMatcher1.group() + \" \");\n        }\n        System.out.println();\n        // Example 2: Extracting URLs from text\n        System.out.println(\"\\nExample 2: Extracting URLs from text\");\n        // Define the text containing URLs\n        String text2 = \"Visit our website at https://www.example.com or http://another.example.org\";\n        // Define the regex pattern to match URLs\n        String urlRegex2 = \"\\\\bhttps?://\\\\S+\\\\b\";\n        // Compile the regex pattern into a Pattern object\n        Pattern urlPattern2 = Pattern.compile(urlRegex2);\n        // Create a Matcher object for the text\n        Matcher urlMatcher2 = urlPattern2.matcher(text2);\n        // Find and output all matched URLs\n        System.out.print(\"URLs found in the text: \");\n        while (urlMatcher2.find()) {\n            System.out.print(urlMatcher2.group() + \" \");\n        }\n        System.out.println();\n\n        // Example 3: Matching email addresses in text\n        System.out.println(\"\\nExample 3: Matching email addresses in text\");\n        // Define the text containing email addresses\n        String text3 = \"Contact us at email@example.com or another.email@example.org\";\n        // Define the regex pattern to match email addresses\n        String emailRegex3 = \"\\\\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\\\.[a-zA-Z]{2,}\\\\b\";\n        // Compile the regex pattern into a Pattern object\n        Pattern emailPattern3 = Pattern.compile(emailRegex3);\n        // Create a Matcher object for the text\n        Matcher emailMatcher3 = emailPattern3.matcher(text3);\n        // Find and output all matched email addresses\n        System.out.print(\"Email addresses found in the text: \");\n        while (emailMatcher3.find()) {\n            System.out.print(emailMatcher3.group() + \" \");\n        }\n        System.out.println();\n\n        // Example 4: Finding dates in text\n        System.out.println(\"\\nExample 4: Finding dates in text\");\n        // Define the text containing dates\n        String text4 = \"Important meetings on 2024-02-15 and 2024/02/20\";\n        // Define the regex pattern to match dates in the format yyyy-mm-dd or yyyy/mm/dd\n        String dateRegex4 = \"\\\\b\\\\d{4}[-/]\\\\d{2}[-/]\\\\d{2}\\\\b\";\n        // Compile the regex pattern into a Pattern object\n        Pattern datePattern4 = Pattern.compile(dateRegex4);\n        // Create a Matcher object for the text\n        Matcher dateMatcher4 = datePattern4.matcher(text4);\n        // Find and output all matched dates\n        System.out.print(\"Dates found in the text: \");\n        while (dateMatcher4.find()) {\n            System.out.print(dateMatcher4.group() + \" \");\n        }\n        System.out.println();\n    }\n}",
+        "Example 1: Extracting phone numbers from text\nPhone numbers found in the text: 123-456-7890 987-654-3210 \n\nExample 2: Extracting URLs from text\nURLs found in the text: https://www.example.com http://another.example.org \n\nExample 3: Matching email addresses in text\nEmail addresses found in the text: email@example.com another.email@example.org \n\nExample 4: Finding dates in text\nDates found in the text: 2024-02-15 2024/02/20"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:36:44.986Z"
+}

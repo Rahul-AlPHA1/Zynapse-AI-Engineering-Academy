@@ -1,0 +1,147 @@
+{
+  "topicId": "reflection-api",
+  "title": "Java Reflection API",
+  "sectionId": "java-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-reflection",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-reflection",
+      "score": 91,
+      "sectionCount": 14
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java Reflection API",
+      "paragraphs": [
+        "Java Reflection allows a program to inspect and modify the behavior of classes at runtime.",
+        "In this chapter, you will learn about the Reflection API in Java, its key classes, and how it works at runtime."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is Java Reflection API?",
+      "paragraphs": [
+        "The Reflection API is used to examine and manipulate classes, methods, fields, and constructors during runtime, even if their details are not known at compile time.",
+        "It is provided by the java.lang and java.lang.reflect packages and is widely used in frameworks, tools, and advanced Java applications."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Where Reflection API is Used?",
+      "paragraphs": [
+        "The Reflection API is mainly used in the following areas:",
+        "• IDE (Integrated Development Environment): The Reflection API us used to analyze code and provide features like auto-completion and code inspection (e.g., Eclipse, NetBeans).\n• Debugger: The Reflection API helps in examining and modifying program behavior during runtime for debugging purposes.\n• Test Tools: The Reflection API is used in testing frameworks to dynamically inspect and execute code."
+      ],
+      "code": []
+    },
+    {
+      "heading": "java.lang.Class class",
+      "paragraphs": [
+        "The java.lang.Class class is used to represent a class at runtime.",
+        "It mainly performs the following tasks:",
+        "• Provides methods to get the metadata of a class at runtime.\n• Provides methods to examine and modify the runtime behavior of a class."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Commonly Used Methods of Class Class",
+      "paragraphs": [
+        "The Class class provides several methods to retrieve metadata and work with classes at runtime.",
+        "Method | Description\n1) public String getName() | returns the class name\n2) public static Class forName(String className)throws ClassNotFoundException | loads the class and returns the reference of Class class.\n3) public Object newInstance()throws InstantiationException,IllegalAccessException | creates new instance.\n4) public boolean isInterface() | checks if it is interface.\n5) public boolean isArray() | checks if it is array.\n6) public boolean isPrimitive() | checks if it is primitive.\n7) public Class getSuperclass() | returns the superclass class reference.\n8) public Field[] getDeclaredFields()throws SecurityException | returns the total number of fields of this class.\n9) public Method[] getDeclaredMethods()throws SecurityException | returns the total number of methods of this class.\n10) public Constructor[] getDeclaredConstructors()throws SecurityException | returns the total number of constructors of this class.\n11) public Method getDeclaredMethod(String name,Class[] parameterTypes)throws NoSuchMethodException,SecurityException | returns the method class instance."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Getting Class Object in Java",
+      "paragraphs": [
+        "There are three ways to get the instance of the Class class:",
+        "• forName() method of Class class\n• getClass() method of Object class\n• .class syntax"
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. Using forName() Method",
+      "paragraphs": [
+        "It is used to load the class dynamically and returns the instance of the Class class. It should be used when you know the fully qualified name of the class. It cannot be used for primitive types.",
+        "In the following example, we use the forName() method to get the Class object.",
+        "Output:"
+      ],
+      "code": [
+        "class Simple{}    \n\npublic class Test{    \n    public static void main(String args[]) throws Exception {    \n        Class c = Class.forName(\"Simple\");    \n        System.out.println(c.getName());    \n    }    \n}",
+        "Simple"
+      ]
+    },
+    {
+      "heading": "2. Using getClass() Method",
+      "paragraphs": [
+        "The getClass() method returns the instance of the Class class from an object. It is used when the type is known.",
+        "In the following example, we use the getClass() method.",
+        "Output:"
+      ],
+      "code": [
+        "class Simple{}  \n\nclass Test{  \n    void printName(Object obj){  \n        Class c = obj.getClass();    \n        System.out.println(c.getName());  \n    }  \n\n    public static void main(String args[]){  \n        Simple s = new Simple();  \n        Test t = new Test();  \n        t.printName(s);  \n    }  \n}",
+        "Simple"
+      ]
+    },
+    {
+      "heading": "3. Using .class Syntax",
+      "paragraphs": [
+        "If a type is available but no instance exists, we can obtain the Class object using .class. It can also be used with primitive data types.",
+        "In the following example, we use .class syntax.",
+        "Output:"
+      ],
+      "code": [
+        "class Test{  \n    public static void main(String args[]){  \n        Class c = boolean.class;   \n        System.out.println(c.getName());  \n\n        Class c2 = Test.class;   \n        System.out.println(c2.getName());  \n    }  \n}",
+        "boolean\n       Test"
+      ]
+    },
+    {
+      "heading": "Determining the class object",
+      "paragraphs": [
+        "The following methods of Class class are used to determine the class object:",
+        "1) public boolean isInterface(): determines if the specified Class object represents an interface type.",
+        "2) public boolean isArray(): determines if this Class object represents an array class.",
+        "3) public boolean isPrimitive(): determines if the specified Class object represents a primitive type.",
+        "Let's see the simple example of reflection API to determine the object type.",
+        "Output:"
+      ],
+      "code": [
+        "class Simple{}\ninterface My{}\n\nclass Test{\n public static void main(String args[]){\n  try{\n   Class c=Class.forName(\"Simple\");\n   System.out.println(c.isInterface());\n   \n   Class c2=Class.forName(\"My\");\n   System.out.println(c2.isInterface());\n  \n  }catch(Exception e){System.out.println(e);}\n\n }\n}",
+        "false\n true"
+      ]
+    },
+    {
+      "heading": "Advantages and Disadvantages of Using Reflection",
+      "paragraphs": [
+        "Reflection is a powerful feature in Java, but it should be used carefully. Let's understand its advantages and disadvantages in simple terms."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Advantages",
+      "paragraphs": [
+        "• Reflection allows you to inspect classes, methods, and fields at runtime.\n• You can create objects and call methods dynamically using Reflection.\n• Reflection is useful in frameworks, IDEs, and development tools.\n• Reflection helps in building flexible and reusable code."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Disadvantages",
+      "paragraphs": [
+        "• Reflection breaks encapsulation by accessing private members.\n• Reflection can expose sensitive data, leading to security risks.\n• Reflection slower performance due to runtime processing.\n• Reflection makes code harder to understand and maintain."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Conclusion",
+      "paragraphs": [
+        "Reflection is an advanced feature in Java that provides great flexibility, but it should be used only when necessary. It may affect performance and security, so it is best suited for frameworks and tools rather than regular application code.",
+        "Next TopicNew Instance() Method"
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:42:39.073Z"
+}

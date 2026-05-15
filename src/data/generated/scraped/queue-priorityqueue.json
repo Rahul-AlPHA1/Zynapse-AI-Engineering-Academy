@@ -1,0 +1,115 @@
+{
+  "topicId": "queue-priorityqueue",
+  "title": "Java Queue Interface and PriorityQueue",
+  "sectionId": "java-collections-jdbc",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-priorityqueue",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-priorityqueue",
+      "score": 63,
+      "sectionCount": 10
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_util_queue.htm",
+      "score": 40,
+      "sectionCount": 8
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java Queue Interface and PriorityQueue",
+      "paragraphs": [
+        "Java Queue Interface is used to store elements in a specific order, usually following the First-In-First-Out (FIFO) principle. It is commonly used in real-life scenarios like task scheduling and order processing. You will also learn different examples to understand how Queue works in Java.",
+        "In this chapter, you will learn about the Java Queue interface, its features, working, and examples."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is Queue Interface in Java?",
+      "paragraphs": [
+        "The Queue interface belongs to the java.util package and is a part of the Java Collections Framework. It is used to store elements in an ordered way where elements are added at the end and removed from the beginning.",
+        "Queue follows the FIFO (First-In-First-Out) principle, which makes it useful for applications like task scheduling, print queues, and order management.",
+        "Queue is an interface, so it cannot be created directly. It is implemented by classes like LinkedList and PriorityQueue."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Queue Interface Declaration",
+      "paragraphs": [
+        "The Queue interface is declared as an interface that extends the Collection interface.",
+        "Here is the syntax:"
+      ],
+      "code": [
+        "public interface Queue<E> extends Collection<E>"
+      ]
+    },
+    {
+      "heading": "Methods of Java Queue Interface",
+      "paragraphs": [
+        "The following table shows the commonly used methods of the Queue interface:",
+        "Method | Description\nboolean add(object) | It is used to insert the specified element into this queue and return true upon success.\nboolean offer(object) | It is used to insert the specified element into this queue.\nObject remove() | It is used to retrieves and removes the head of this queue.\nObject poll() | It is used to retrieves and removes the head of this queue, or returns null if this queue is empty.\nObject element() | It is used to retrieves, but does not remove, the head of this queue.\nObject peek() | It is used to retrieves, but does not remove, the head of this queue, or returns null if this queue is empty."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Features of a Queue",
+      "paragraphs": [
+        "The following are some important features of a queue.",
+        "• As discussed earlier, FIFO concept is used for insertion and deletion of elements from a queue.\n• The Java Queue provides support for all of the methods of the Collection interface including deletion, insertion, etc.\n• PriorityQueue, ArrayBlockingQueue and LinkedList are the implementations that are used most frequently.\n• The NullPointerException is raised, if any null operation is done on the BlockingQueues.\n• Those Queues that are present in the util package are known as Unbounded Queues.\n• Those Queues that are present in the util.concurrent package are known as bounded Queues.\n• All Queues barring the Deques facilitates removal and insertion at the head and tail of the queue; respectively. In fact, deques support element insertion and removal at both ends."
+      ],
+      "code": []
+    },
+    {
+      "heading": "PriorityQueue Class",
+      "paragraphs": [
+        "PriorityQueue is a class in the Java Collection Framework that is used to process elements based on priority.",
+        "In a normal queue, elements follow the FIFO (First-In-First-Out) order. However, in PriorityQueue, elements are processed according to their priority instead of insertion order."
+      ],
+      "code": []
+    },
+    {
+      "heading": "PriorityQueue Class Declaration",
+      "paragraphs": [
+        "The PriorityQueue class extends AbstractQueue and implements Serializable.",
+        "Here is the syntax:"
+      ],
+      "code": [
+        "public class PriorityQueue<E> extends AbstractQueue<E> implements Serializable"
+      ]
+    },
+    {
+      "heading": "PriorityQueue Example",
+      "paragraphs": [
+        "Here are some examples of the Java PriorityQueue class to understand its usage."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example 1: PriorityQueue with String Elements",
+      "paragraphs": [
+        "In this example, we are creating a PriorityQueue, adding elements, and performing different operations like peek(), remove(), and poll().",
+        "Output:"
+      ],
+      "code": [
+        "import java.util.*;    \n\nclass Main {    \n    public static void main(String args[]) {    \n        PriorityQueue<string> queue = new PriorityQueue<string>();    \n\n        queue.add(\"Amit\");    \n        queue.add(\"Vijay\");    \n        queue.add(\"Karan\");    \n        queue.add(\"Jai\");    \n        queue.add(\"Rahul\");    \n\n        System.out.println(\"head:\" + queue.element());    \n        System.out.println(\"head:\" + queue.peek());    \n\n        System.out.println(\"iterating the queue elements:\");    \n        Iterator<string> itr = queue.iterator();    \n        while (itr.hasNext()) {    \n            System.out.println(itr.next());    \n        }    \n\n        queue.remove();    \n        queue.poll();    \n\n        System.out.println(\"after removing two elements:\");    \n        Iterator<string> itr2 = queue.iterator();    \n        while (itr2.hasNext()) {    \n            System.out.println(itr2.next());    \n        }    \n    }    \n}\n</string></string></string></string>",
+        "head:Amit\nhead:Amit\niterating the queue elements:\nAmit\nJai\nKaran\nVijay\nRahul\nafter removing two elements:\nKaran\nRahul\nVijay"
+      ]
+    },
+    {
+      "heading": "Example 2: PriorityQueue with User-Defined Objects",
+      "paragraphs": [
+        "In this example, we are storing user-defined Book objects in a PriorityQueue using the Comparable interface.",
+        "Output:",
+        "Next TopicJava Deque & ArrayDeque"
+      ],
+      "code": [
+        "import java.util.*;  \n\nclass Book implements Comparable<book> {  \n    int id;  \n    String name, author, publisher;  \n    int quantity;  \n\n    public Book(int id, String name, String author, String publisher, int quantity) {  \n        this.id = id;  \n        this.name = name;  \n        this.author = author;  \n        this.publisher = publisher;  \n        this.quantity = quantity;  \n    }  \n\n    public int compareTo(Book b) {  \n        if (id > b.id) return 1;  \n        else if (id < b.id) return -1;  \n        else return 0;  \n    }  \n}  \n\nclass Main {  \n    public static void main(String[] args) {  \n\n        Queue<book> queue = new PriorityQueue<book>();  \n\n        Book b1 = new Book(121, \"Let us C\", \"Yashwant Kanetkar\", \"BPB\", 8);  \n        Book b2 = new Book(233, \"Operating System\", \"Galvin\", \"Wiley\", 6);  \n        Book b3 = new Book(101, \"Data Communications & Networking\", \"Forouzan\", \"Mc Graw Hill\", 4);  \n\n        queue.add(b1);  \n        queue.add(b2);  \n        queue.add(b3);  \n\n        System.out.println(\"Traversing the queue elements:\");  \n        for (Book b : queue) {  \n            System.out.println(b.id + \" \" + b.name + \" \" + b.author + \" \" + b.publisher + \" \" + b.quantity);  \n        }  \n\n        queue.remove();  \n\n        System.out.println(\"After removing one book record:\");  \n        for (Book b : queue) {  \n            System.out.println(b.id + \" \" + b.name + \" \" + b.author + \" \" + b.publisher + \" \" + b.quantity);  \n        }  \n    }  \n}\n</book></book></book>",
+        "Traversing the queue elements:\n101 Data Communications & Networking Forouzan Mc Graw Hill 4\n233 Operating System Galvin Wiley 6\n121 Let us C Yashwant Kanetkar BPB 8\nAfter removing one book record:\n121 Let us C Yashwant Kanetkar BPB 8\n233 Operating System Galvin Wiley 6"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:44:18.726Z"
+}

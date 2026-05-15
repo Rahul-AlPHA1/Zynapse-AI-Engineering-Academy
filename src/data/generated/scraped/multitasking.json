@@ -1,0 +1,187 @@
+{
+  "topicId": "multitasking",
+  "title": "Java - Multithreading",
+  "sectionId": "java-advanced",
+  "source": "tutorialspoint",
+  "url": "https://www.tutorialspoint.com/java/java_multithreading.htm",
+  "allSources": [
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_multithreading.htm",
+      "score": 111,
+      "sectionCount": 19
+    },
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/multitasking-in-multithreading",
+      "score": 4,
+      "sectionCount": 1
+    }
+  ],
+  "sections": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Java is a multi-threaded programming language which means we can develop multi-threaded program using Java. A multi-threaded program contains two or more parts that can run concurrently and each part can handle a different task at the same time making optimal use of the available resources specially when your computer has multiple CPUs.",
+        "By definition, multitasking is when multiple processes share common processing resources such as a CPU. Multi-threading extends the idea of multitasking into applications where you can subdivide specific operations within a single application into individual threads. Each of the threads can run in parallel. The OS divides processing time not only among different applications, but also among each thread within an application."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Multithreading",
+      "paragraphs": [
+        "Multi-threading enables you to write in a way where multiple activities can proceed concurrently in the same program. To achieve the multithreading (or, write multithreaded code), you need java.lang.Thread class."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Life Cycle of a Thread in Java Multithreading",
+      "paragraphs": [
+        "A thread goes through various stages in its life cycle. For example, a thread is born, started, runs, and then dies. The following diagram shows the complete life cycle of a thread.",
+        "Following are the stages of the life cycle −",
+        "• New − A new thread begins its life cycle in the new state. It remains in this state until the program starts the thread. It is also referred to as a born thread.\n• Runnable − After a newly born thread is started, the thread becomes runnable. A thread in this state is considered to be executing its task.\n• Waiting − Sometimes, a thread transitions to the waiting state while the thread waits for another thread to perform a task. A thread transitions back to the runnable state only when another thread signals the waiting thread to continue executing.\n• Timed Waiting − A runnable thread can enter the timed waiting state for a specified interval of time. A thread in this state transitions back to the runnable state when that time interval expires or when the event it is waiting for occurs.\n• Terminated (Dead) − A runnable thread enters the terminated state when it completes its task or otherwise terminates."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Thread Priorities",
+      "paragraphs": [
+        "Every Java thread has a priority that helps the operating system determine the order in which threads are scheduled.",
+        "Java thread priorities are in the range between MIN_PRIORITY (a constant of 1) and MAX_PRIORITY (a constant of 10). By default, every thread is given priority NORM_PRIORITY (a constant of 5).",
+        "Threads with higher priority are more important to a program and should be allocated processor time before lower-priority threads. However, thread priorities cannot guarantee the order in which threads execute and are very much platform dependent."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Create a Thread by Implementing a Runnable Interface",
+      "paragraphs": [
+        "If your class is intended to be executed as a thread then you can achieve this by implementing a Runnable interface. You will need to follow three basic steps −"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Step 1: Implement run() Method",
+      "paragraphs": [
+        "As a first step, you need to implement a run() method provided by a Runnable interface. This method provides an entry point for the thread and you will put your complete business logic inside this method. Following is a simple syntax of the run() method −"
+      ],
+      "code": [
+        "public void run( )"
+      ]
+    },
+    {
+      "heading": "Step 2: Instantiate a Thread Object",
+      "paragraphs": [
+        "As a second step, you will instantiate a Thread object using the following constructor −",
+        "Where, threadObj is an instance of a class that implements the Runnable interface and threadName is the name given to the new thread."
+      ],
+      "code": [
+        "Thread(Runnable threadObj, String threadName);"
+      ]
+    },
+    {
+      "heading": "Step 3: Call Thread using start() Method",
+      "paragraphs": [
+        "Once a Thread object is created, you can start it by calling start() method, which executes a call to run( ) method. Following is a simple syntax of start() method −"
+      ],
+      "code": [
+        "void start();"
+      ]
+    },
+    {
+      "heading": "Example: Create Thread by Implementing Runnable Interface",
+      "paragraphs": [
+        "Here is an example that creates a new thread and starts running it −"
+      ],
+      "code": [
+        "class RunnableDemo implements Runnable {\n   private Thread t;\n   private String threadName;\n   \n   RunnableDemo( String name) {\n      threadName = name;\n      System.out.println(\"Creating \" +  threadName );\n   }\n   \n   public void run() {\n      System.out.println(\"Running \" +  threadName );\n      try {\n         for(int i = 4; i > 0; i--) {\n            System.out.println(\"Thread: \" + threadName + \", \" + i);\n            // Let the thread sleep for a while.\n            Thread.sleep(50);\n         }\n      } catch (InterruptedException e) {\n         System.out.println(\"Thread \" +  threadName + \" interrupted.\");\n      }\n      System.out.println(\"Thread \" +  threadName + \" exiting.\");\n   }\n   \n   public void start () {\n      System.out.println(\"Starting \" +  threadName );\n      if (t == null) {\n         t = new Thread (this, threadName);\n         t.start ();\n      }\n   }\n}\n\npublic class TestThread {\n\n   public static void main(String args[]) {\n      RunnableDemo R1 = new RunnableDemo( \"Thread-1\");\n      R1.start();\n      \n      RunnableDemo R2 = new RunnableDemo( \"Thread-2\");\n      R2.start();\n   }   \n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Creating Thread-1\nStarting Thread-1\nCreating Thread-2\nStarting Thread-2\nRunning Thread-1\nThread: Thread-1, 4\nRunning Thread-2\nThread: Thread-2, 4\nThread: Thread-1, 3\nThread: Thread-2, 3\nThread: Thread-1, 2\nThread: Thread-2, 2\nThread: Thread-1, 1\nThread: Thread-2, 1\nThread Thread-1 exiting.\nThread Thread-2 exiting."
+      ]
+    },
+    {
+      "heading": "Create a Thread by Extending a Thread Class",
+      "paragraphs": [
+        "The second way to create a thread is to create a new class that extends Thread class using the following two simple steps. This approach provides more flexibility in handling multiple threads created using available methods in Thread class."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Step 1: Override run() Method",
+      "paragraphs": [
+        "You will need to override run( ) method available in Thread class. This method provides an entry point for the thread and you will put your complete business logic inside this method. Following is a simple syntax of run() method −"
+      ],
+      "code": [
+        "public void run( )"
+      ]
+    },
+    {
+      "heading": "Step 2: Call Thread using start() Method",
+      "paragraphs": [
+        "Once Thread object is created, you can start it by calling start() method, which executes a call to run( ) method. Following is a simple syntax of start() method −"
+      ],
+      "code": [
+        "void start( );"
+      ]
+    },
+    {
+      "heading": "Example: Create Thread by Extending Thread Class",
+      "paragraphs": [
+        "Here is the preceding program rewritten to extend the Thread −"
+      ],
+      "code": [
+        "class ThreadDemo extends Thread {\n   private Thread t;\n   private String threadName;\n   \n   ThreadDemo( String name) {\n      threadName = name;\n      System.out.println(\"Creating \" +  threadName );\n   }\n   \n   public void run() {\n      System.out.println(\"Running \" +  threadName );\n      try {\n         for(int i = 4; i > 0; i--) {\n            System.out.println(\"Thread: \" + threadName + \", \" + i);\n            // Let the thread sleep for a while.\n            Thread.sleep(50);\n         }\n      } catch (InterruptedException e) {\n         System.out.println(\"Thread \" +  threadName + \" interrupted.\");\n      }\n      System.out.println(\"Thread \" +  threadName + \" exiting.\");\n   }\n   \n   public void start () {\n      System.out.println(\"Starting \" +  threadName );\n      if (t == null) {\n         t = new Thread (this, threadName);\n         t.start ();\n      }\n   }\n}\n\npublic class TestThread {\n\n   public static void main(String args[]) {\n      ThreadDemo T1 = new ThreadDemo( \"Thread-1\");\n      T1.start();\n      \n      ThreadDemo T2 = new ThreadDemo( \"Thread-2\");\n      T2.start();\n   }   \n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Creating Thread-1\nStarting Thread-1\nCreating Thread-2\nStarting Thread-2\nRunning Thread-1\nThread: Thread-1, 4\nRunning Thread-2\nThread: Thread-2, 4\nThread: Thread-1, 3\nThread: Thread-2, 3\nThread: Thread-1, 2\nThread: Thread-2, 2\nThread: Thread-1, 1\nThread: Thread-2, 1\nThread Thread-1 exiting.\nThread Thread-2 exiting."
+      ]
+    },
+    {
+      "heading": "Thread Methods",
+      "paragraphs": [
+        "Following is the list of important methods available in the Thread class.",
+        "Sr.No.\nMethod & Description\n\n\n1\npublic void start()\nStarts the thread in a separate path of execution, then invokes the run() method on this Thread object.\n\n\n\n2\npublic void run()\nIf this Thread object was instantiated using a separate Runnable target, the run() method is invoked on that Runnable object.\n\n\n\n3\npublic final void setName(String name)\nChanges the name of the Thread object. There is also a getName() method for retrieving the name.\n\n\n\n4\npublic final void setPriority(int priority)\nSets the priority of this Thread object. The possible values are between 1 and 10.\n\n\n\n5\npublic final void setDaemon(boolean on)\nA parameter of true denotes this Thread as a daemon thread.\n\n\n\n6\npublic final void join(long millisec)\nThe current thread invokes this method on a second thread, causing the current thread to block until the second thread terminates or the specified number of milliseconds passes.\n\n\n\n7\npublic void interrupt()\nInterrupts this thread, causing it to continue execution if it was blocked for any reason.\n\n\n\n8\npublic final boolean isAlive()\nReturns true if the thread is alive, which is any time after the thread has been started but before it runs to completion.",
+        "The previous methods are invoked on a particular Thread object. The following methods in the Thread class are static. Invoking one of the static methods performs the operation on the currently running thread.",
+        "Sr.No.\nMethod & Description\n\n\n1\npublic static void yield()\nCauses the currently running thread to yield to any other threads of the same priority that are waiting to be scheduled.\n\n\n\n2\npublic static void sleep(long millisec)\nCauses the currently running thread to block for at least the specified number of milliseconds.\n\n\n\n3\npublic static boolean holdsLock(Object x)\nReturns true if the current thread holds the lock on the given Object.\n\n\n\n4\npublic static Thread currentThread()\nReturns a reference to the currently running thread, which is the thread that invokes this method.\n\n\n\n5\npublic static void dumpStack()\nPrints the stack trace for the currently running thread, which is useful when debugging a multithreaded application."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following ThreadClassDemo program demonstrates some of these methods of the Thread class. Consider a class DisplayMessage which implements Runnable −",
+        "Following is another class which extends the Thread class −",
+        "Following is the main program, which makes use of the above-defined classes −"
+      ],
+      "code": [
+        "// File Name : DisplayMessage.java\n// Create a thread to implement Runnable\n\npublic class DisplayMessage implements Runnable {\n   private String message;\n   \n   public DisplayMessage(String message) {\n      this.message = message;\n   }\n   \n   public void run() {\n      while(true) {\n         System.out.println(message);\n      }\n   }\n}",
+        "// File Name : GuessANumber.java\n// Create a thread to extentd Thread\n\npublic class GuessANumber extends Thread {\n   private int number;\n   public GuessANumber(int number) {\n      this.number = number;\n   }\n   \n   public void run() {\n      int counter = 0;\n      int guess = 0;\n      do {\n         guess = (int) (Math.random() * 100 + 1);\n         System.out.println(this.getName() + \" guesses \" + guess);\n         counter++;\n      } while(guess != number);\n      System.out.println(\"** Correct!\" + this.getName() + \"in\" + counter + \"guesses.**\");\n   }\n}",
+        "// File Name : ThreadClassDemo.java\npublic class ThreadClassDemo {\n\n   public static void main(String [] args) {\n      Runnable hello = new DisplayMessage(\"Hello\");\n      Thread thread1 = new Thread(hello);\n      thread1.setDaemon(true);\n      thread1.setName(\"hello\");\n      System.out.println(\"Starting hello thread...\");\n      thread1.start();\n      \n      Runnable bye = new DisplayMessage(\"Goodbye\");\n      Thread thread2 = new Thread(bye);\n      thread2.setPriority(Thread.MIN_PRIORITY);\n      thread2.setDaemon(true);\n      System.out.println(\"Starting goodbye thread...\");\n      thread2.start();\n\n      System.out.println(\"Starting thread3...\");\n      Thread thread3 = new GuessANumber(27);\n      thread3.start();\n      try {\n         thread3.join();\n      } catch (InterruptedException e) {\n         System.out.println(\"Thread interrupted.\");\n      }\n      System.out.println(\"Starting thread4...\");\n      Thread thread4 = new GuessANumber(75);\n      \n      thread4.start();\n      System.out.println(\"main() is ending...\");\n   }\n}\nclass DisplayMessage implements Runnable {\n   private String message;\n   \n   public DisplayMessage(String message) {\n      this.message = message;\n   }\n   \n   public void run() {\n      while(true) {\n         System.out.println(message);\n      }\n   }\n}\nclass GuessANumber extends Thread {\n   private int number;\n   public GuessANumber(int number) {\n      this.number = number;\n   }\n   \n   public void run() {\n      int counter = 0;\n      int guess = 0;\n      do {\n         guess = (int) (Math.random() * 100 + 1);\n         System.out.println(this.getName() + \" guesses \" + guess);\n         counter++;\n      } while(guess != number);\n      System.out.println(\"** Correct!\" + this.getName() + \"in\" + counter + \"guesses.**\");\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Starting hello thread...\nStarting goodbye thread...\nHello\nHello\nHello\nHello\nHello\nHello\nGoodbye\nGoodbye\nGoodbye\nGoodbye\nGoodbye\n......."
+      ]
+    },
+    {
+      "heading": "Major Java Multithreading Concepts",
+      "paragraphs": [
+        "While doing Multithreading programming in Java, you would need to have the following concepts very handy −",
+        "• What is thread synchronization?\n• Handling interthread communication\n• Handling thread deadlock\n• Major thread operations"
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:39:56.770Z"
+}

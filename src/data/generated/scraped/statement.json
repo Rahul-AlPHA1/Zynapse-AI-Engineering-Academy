@@ -1,0 +1,110 @@
+{
+  "topicId": "statement",
+  "title": "JDBC in Java (Java Database Connectivity)",
+  "sectionId": "java-collections-jdbc",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/jdbc-tutorial",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/jdbc-tutorial",
+      "score": 50,
+      "sectionCount": 10
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/jdbc/index.htm",
+      "score": 49,
+      "sectionCount": 10
+    },
+    {
+      "sourceId": "geeksforgeeks",
+      "url": "https://www.geeksforgeeks.org/java/types-of-statements-in-jdbc/",
+      "score": 37,
+      "sectionCount": 7
+    }
+  ],
+  "sections": [
+    {
+      "heading": "JDBC in Java (Java Database Connectivity)",
+      "paragraphs": [
+        "JDBC is used to connect Java applications with databases, execute queries, and process the results.",
+        "In this tutorial, you will learn about JDBC, its components, drivers, and how to connect and interact with databases using Java."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is JDBC in Java?",
+      "paragraphs": [
+        "JDBC (Java Database Connectivity) is a Java API that enables Java programs to connect to relational databases, execute SQL queries, and retrieve or update data. It is a part of Java Standard Edition (Java SE) and uses JDBC drivers to establish a connection with the database.",
+        "With JDBC, developers can perform operations like inserting, updating, deleting, and fetching data. It also provides support for metadata handling and batch processing."
+      ],
+      "code": []
+    },
+    {
+      "heading": "JDBC API Overview",
+      "paragraphs": [
+        "We can use the JDBC API to access tabular data stored in any relational database. With the help of JDBC, we can perform operations such as saving, updating, deleting, and retrieving data from the database. It is similar to Open Database Connectivity (ODBC) provided by Microsoft.",
+        "The current version of JDBC is 4.3, which has been a stable release since 21st September 2017. It is based on the X/Open SQL Call Level Interface. The java.sql package contains the classes and interfaces required for the JDBC API."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Popular Interfaces of JDBC API",
+      "paragraphs": [
+        "A list of popular interfaces of JDBC API are given below:",
+        "• Driver interface\n• Connection interface\n• Statement interface\n• PreparedStatement interface\n• CallableStatement interface\n• ResultSet interface\n• ResultSetMetaData interface\n• DatabaseMetaData interface\n• RowSet interface"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Popular Classes of JDBC API",
+      "paragraphs": [
+        "A list of popular classes of JDBC API are given below:",
+        "• DriverManager class\n• Blob class\n• Clob class\n• Types class"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Why Should We Use JDBC?",
+      "paragraphs": [
+        "Before JDBC, the ODBC API was used to connect and execute queries with databases. However, ODBC relies on drivers written in the C language, which are platform-dependent and less secure. To overcome these limitations, Java introduced its own API called JDBC, which uses drivers written in Java which makes it platform-independent and more secure.",
+        "Using the JDBC API, we can handle databases applications and perform the following operations:",
+        "• Connect to the database\n• Execute queries and update statements\n• Retrieve results from the database"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Features of JDBC",
+      "paragraphs": [
+        "The following features of JDBC make it a good choice for working with databases:",
+        "• Database Metadata Support: JDBC allows us to get information about the database such as tables, columns, and indexes using the DatabaseMetaData interface.\n• Dynamic Query Handling: We can use metadata to create SQL queries dynamically based on the database structure.\n• Batch Processing: JDBC allows multiple SQL statements to be grouped and executed together, which improves performance.\n• Reduced Database Calls: Batch processing reduces the number of interactions between the application and the database, making execution faster.\n• Better Performance: By minimizing repeated database calls and using efficient processing techniques, JDBC helps improve overall application performance."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Topics Covered in JDBC Tutorial",
+      "paragraphs": [
+        "The following topics are covered in this JDBC tutorial to help you understand database connectivity and operations:"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Who Should Learn JDBC?",
+      "paragraphs": [
+        "JDBC is useful for anyone who wants to work with Java and databases. It is mainly for students, beginners, and developers who want to build applications that store and manage data. If you are interested in backend development or creating dynamic websites, learning JDBC will be helpful.",
+        "It is also important for professionals working on enterprise applications, where data handling is a key part. If you want to connect Java programs with databases like MySQL or Oracle, JDBC is a must-have skill."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Prerequisites to Learn JDBC?",
+      "paragraphs": [
+        "Before learning JDBC, you should have a basic understanding of Java programming. You should know concepts like classes, objects, and simple programs. Basic knowledge of SQL (like SELECT, INSERT, UPDATE) is also important.",
+        "It will also help if you understand how databases work, such as tables and records. With these basics, you can easily learn JDBC and start building database-driven Java applications."
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:48:39.596Z"
+}

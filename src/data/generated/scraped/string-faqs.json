@@ -1,0 +1,194 @@
+{
+  "topicId": "string-faqs",
+  "title": "Java String Interview Questions and FAQs",
+  "sectionId": "java-core-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-string-faqs",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-string-faqs",
+      "score": 102,
+      "sectionCount": 25
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java String Interview Questions and FAQs",
+      "paragraphs": [
+        "Below is a curated list of commonly asked Java String interview questions and FAQs. These questions are useful for freshers as well as experienced developers preparing for technical interviews."
+      ],
+      "code": []
+    },
+    {
+      "heading": "1) How many objects will be created in the following code?",
+      "paragraphs": [],
+      "code": [
+        "String s1 = \"javatpoint\";\nString s2 = \"javatpoint\";"
+      ]
+    },
+    {
+      "heading": "4) How to reverse a String in Java?",
+      "paragraphs": [
+        "You can reverse a string using loops, StringBuilder, or recursion. Read more"
+      ],
+      "code": []
+    },
+    {
+      "heading": "5) How to check whether a String is Palindrome in Java?",
+      "paragraphs": [
+        "A string is palindrome if it reads the same forward and backward. Read more"
+      ],
+      "code": []
+    },
+    {
+      "heading": "6) Write a Java program to capitalize each word in a String",
+      "paragraphs": [
+        "Each word’s first letter is converted to uppercase using logic or String methods. Read more"
+      ],
+      "code": []
+    },
+    {
+      "heading": "7) Write a Java program to reverse each word in a String",
+      "paragraphs": [
+        "Each word is reversed individually while maintaining word order. Read more"
+      ],
+      "code": []
+    },
+    {
+      "heading": "8) Write a Java program to toggle each word in a String",
+      "paragraphs": [
+        "Uppercase letters are converted to lowercase and vice versa. Read more"
+      ],
+      "code": []
+    },
+    {
+      "heading": "9) Write a Java program to reverse and toggle each word in a String",
+      "paragraphs": [
+        "Each word is reversed and character cases are toggled. Read more"
+      ],
+      "code": []
+    },
+    {
+      "heading": "10) What is the difference between String and StringBuffer?",
+      "paragraphs": [
+        "String is immutable, while StringBuffer is mutable and thread-safe. Read more"
+      ],
+      "code": []
+    },
+    {
+      "heading": "11) What is the difference between StringBuffer and StringBuilder?",
+      "paragraphs": [
+        "StringBuffer is synchronized (thread-safe), whereas StringBuilder is faster but not synchronized. Read more"
+      ],
+      "code": []
+    },
+    {
+      "heading": "12) What does the intern() method do in Java?",
+      "paragraphs": [
+        "The intern() method stores the string in the String Constant Pool. Read more"
+      ],
+      "code": []
+    },
+    {
+      "heading": "13) How to convert String to int in Java?",
+      "paragraphs": [
+        "You can use Integer.parseInt() to convert a string into an integer. Read more"
+      ],
+      "code": []
+    },
+    {
+      "heading": "14) How to convert int to String in Java?",
+      "paragraphs": [
+        "Use String.valueOf() or Integer.toString(). Read more"
+      ],
+      "code": []
+    },
+    {
+      "heading": "15) How to convert String to Date in Java?",
+      "paragraphs": [
+        "You can use SimpleDateFormat or DateTimeFormatter. Read more"
+      ],
+      "code": []
+    },
+    {
+      "heading": "16) How to optimize Java String creation?",
+      "paragraphs": [
+        "Use string literals, StringBuilder, and avoid unnecessary object creation. Read more"
+      ],
+      "code": []
+    },
+    {
+      "heading": "17) How to check whether two Strings are anagrams?",
+      "paragraphs": [
+        "Two strings are anagrams if they contain the same characters in different order. Read more"
+      ],
+      "code": []
+    },
+    {
+      "heading": "18) How to find duplicate characters in a String?",
+      "paragraphs": [
+        "Duplicate characters can be found using loops, HashMap, or arrays. Read more"
+      ],
+      "code": []
+    },
+    {
+      "heading": "19) Why are Strings immutable in Java?",
+      "paragraphs": [
+        "Immutability improves security, caching, and thread safety. Read more"
+      ],
+      "code": []
+    },
+    {
+      "heading": "20) How to remove white spaces from a String?",
+      "paragraphs": [
+        "Use replace() or replaceAll() methods. Read more"
+      ],
+      "code": []
+    },
+    {
+      "heading": "21) Java Program to check whether one String is a rotation of another",
+      "paragraphs": [
+        "One string is a rotation of another if it can be obtained by rotating the characters of the original string. Read more"
+      ],
+      "code": []
+    },
+    {
+      "heading": "22) Java Program to count the number of words in a String",
+      "paragraphs": [
+        "Words in a string can be counted by splitting the string using spaces or regular expressions. Read more"
+      ],
+      "code": []
+    },
+    {
+      "heading": "23) Java Program to reverse a String while preserving the position of spaces",
+      "paragraphs": [
+        "Characters are reversed while spaces remain at their original positions. Read more"
+      ],
+      "code": []
+    },
+    {
+      "heading": "24) How to swap two String variables without using a third variable?",
+      "paragraphs": [
+        "Strings can be swapped using concatenation and substring operations. Read more"
+      ],
+      "code": []
+    },
+    {
+      "heading": "25) How to remove a particular character from a String?",
+      "paragraphs": [
+        "You can remove a specific character using replace() or replaceAll() methods. Read more"
+      ],
+      "code": []
+    },
+    {
+      "heading": "26) How to convert String to Integer and Integer to String in Java?",
+      "paragraphs": [
+        "Use Integer.parseInt() for String to Integer and String.valueOf() for Integer to String conversion. Read more",
+        "Next TopicJava-program-to-reverse-toggle-each-word-in-string"
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:36:39.358Z"
+}

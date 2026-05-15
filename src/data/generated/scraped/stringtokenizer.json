@@ -1,0 +1,158 @@
+{
+  "topicId": "stringtokenizer",
+  "title": "StringTokenizer Class in Java",
+  "sectionId": "java-core-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/string-tokenizer-in-java",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/string-tokenizer-in-java",
+      "score": 104,
+      "sectionCount": 14
+    }
+  ],
+  "sections": [
+    {
+      "heading": "StringTokenizer Class in Java",
+      "paragraphs": [
+        "Java StringTokenizer class is useful when a string needs to be broken into smaller tokens based on delimiters. In this chapter, we will learn what the StringTokenizer class is, along with its constructors, methods, and usage through examples."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is StringTokenizer class in Java?",
+      "paragraphs": [
+        "The StringTokenizer class is used to break a string into tokens based on specified delimiters. It belongs to the java.util package and provides a simple way to split a string into smaller parts. The delimiters can be defined at the time of object creation or applied while retrieving tokens.",
+        "StringTokenizer is considered a legacy class, and it does not provide advanced features such as distinguishing between numbers, identifiers, or quoted strings. For more flexible and modern string processing, classes like String.split() or StreamTokenizer are generally preferred.",
+        "For example, consider the string \"hello welcome to TpointTech\". As shown in the image, the StringTokenizer breaks this string into separate tokens based on the specified delimiter (such as a space), resulting in individual words like hello, welcome, to, and TpointTech."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Constructors of StringTokenizer Class",
+      "paragraphs": [
+        "There are three constructors defined in the StringTokenizer class, which are:"
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. StringTokenizer(String str)",
+      "paragraphs": [
+        "It creates a StringTokenizer for the specified string using the default delimiter (space, tab, newline, etc.).",
+        "Syntax:",
+        "It has the following syntax:"
+      ],
+      "code": [
+        "StringTokenizer st = new StringTokenizer(str);"
+      ]
+    },
+    {
+      "heading": "2. StringTokenizer(String str, String delim)",
+      "paragraphs": [
+        "It creates a StringTokenizer for the specified string using the provided delimiter(s).",
+        "Syntax:",
+        "It has the following syntax:"
+      ],
+      "code": [
+        "StringTokenizer st = new StringTokenizer(str, delim);"
+      ]
+    },
+    {
+      "heading": "3. StringTokenizer(String str, String delim, boolean returnDelims)",
+      "paragraphs": [
+        "It creates a StringTokenizer for the specified string and delimiter(s). If returnDelims is true, the delimiters are also returned as tokens. If false, delimiters are only used to separate tokens.",
+        "Syntax:",
+        "It has the following syntax:",
+        "You can choose any of the constructors, how to split your string and whether to consider delimiters as tokens, depending on your parsing needs."
+      ],
+      "code": [
+        "StringTokenizer st = new StringTokenizer(str, delim, true); // delimiters included as tokens\nStringTokenizer st2 = new StringTokenizer(str, delim, false); // delimiters not included"
+      ]
+    },
+    {
+      "heading": "Example of StringTokenizer Constructors",
+      "paragraphs": [
+        "The following example demonstrates all three constructors of the StringTokenizer class:",
+        "Output:",
+        "Explanation:",
+        "• The first constructor uses the default space delimiter.\n• The second constructor uses a custom delimiter (comma) to split the string.\n• The third constructor also uses a comma, but with returnDelims = true, so the delimiters themselves are returned as tokens."
+      ],
+      "code": [
+        "import java.util.StringTokenizer;\n\npublic class TestStringTokenizer {\n    public static void main(String[] args) {\n        String str = \"Hello,Welcome,To,TpointTech\";\n\n        // Constructor 1: Default delimiter (space)\n        StringTokenizer st1 = new StringTokenizer(\"Hello Welcome To TpointTech\");\n        System.out.println(\"Tokens using default delimiter:\");\n        while (st1.hasMoreTokens()) {\n            System.out.println(st1.nextToken());\n        }\n\n        // Constructor 2: Custom delimiter (,)\n        StringTokenizer st2 = new StringTokenizer(str, \",\");\n        System.out.println(\"\\nTokens using comma as delimiter:\");\n        while (st2.hasMoreTokens()) {\n            System.out.println(st2.nextToken());\n        }\n\n        // Constructor 3: Custom delimiter with returnDelims = true\n        StringTokenizer st3 = new StringTokenizer(str, \",\", true);\n        System.out.println(\"\\nTokens including delimiters:\");\n        while (st3.hasMoreTokens()) {\n            System.out.println(st3.nextToken());\n        }\n    }\n}",
+        "Tokens using default delimiter:\nHello\nWelcome\nTo\nTpointTech\n\nTokens using comma as delimiter:\nHello\nWelcome\nTo\nTpointTech\n\nTokens including delimiters:\nHello\n,\nWelcome\n,\nTo\n,\nTpointTech"
+      ]
+    },
+    {
+      "heading": "Methods of the StringTokenizer Class",
+      "paragraphs": [
+        "The following table shows the commonly used method of StringTokenizer class:",
+        "Methods | Description\nboolean hasMoreTokens() | It checks if there is more tokens available.\nString nextToken() | It returns the next token from the StringTokenizer object.\nString nextToken(String delim) | It returns the next token based on the delimiter.\nboolean hasMoreElements() | It is the same as hasMoreTokens() method.\nObject nextElement() | It is the same as nextToken() but its return type is Object.\nint countTokens() | It returns the total number of tokens."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example of StringTokenizer Class Methods",
+      "paragraphs": [
+        "These examples demonstrate how to use the various methods of the StringTokenizer class."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example 1: StringTokenizer.nextToken(String delim) Method",
+      "paragraphs": [
+        "The following example demonstrates how to get the next token from a string using a specified delimiter.",
+        "Output:"
+      ],
+      "code": [
+        "import java.util.*;\n\npublic class Test {\n   public static void main(String[] args) {\n       StringTokenizer st = new StringTokenizer(\"my,name,is,khan\");\n      \n      // printing next token\n      System.out.println(\"Next token is : \" + st.nextToken(\",\"));\n   }    \n}",
+        "Next token is : my"
+      ]
+    },
+    {
+      "heading": "Example 2: StringTokenizer.hasMoreTokens() Method",
+      "paragraphs": [
+        "The following example demonstrates how to check if more tokens are available and iterate through them.",
+        "Output:"
+      ],
+      "code": [
+        "import java.util.StringTokenizer;  \npublic class StringTokenizer1\n{  \n /* Driver Code */\n public static void main(String args[])\n {  \n   /* StringTokenizer object */\n   StringTokenizer st = new StringTokenizer(\"Demonstrating methods from StringTokenizer class\",\" \");  \n     /* Checks if the String has any more tokens */\n     while (st.hasMoreTokens()) \n     {  \n         System.out.println(st.nextToken());  \n     }  \n }  \n}",
+        "Demonstrating\nmethods\nfrom\nStringTokenizer\nclass"
+      ]
+    },
+    {
+      "heading": "Example 3: StringTokenizer.hasMoreElements() Method",
+      "paragraphs": [
+        "This method works similarly to hasMoreTokens() but is useful when using the Enumeration interface. Consider the following code:",
+        "Output:"
+      ],
+      "code": [
+        "import java.util.StringTokenizer;  \npublic class StringTokenizer2\n{  \n public static void main(String args[])\n {  \n   StringTokenizer st = new StringTokenizer(\"Hello everyone I am a Java developer\",\" \");  \n     while (st.hasMoreElements()) \n     {  \n         System.out.println(st.nextToken());  \n     }  \n }  \n}",
+        "Hello\neveryone\nI\nam\na\nJava\ndeveloper"
+      ]
+    },
+    {
+      "heading": "Example 4: StringTokenizer.nextElement() Method",
+      "paragraphs": [
+        "The nextElement() method returns the next token as an Object and can be used with Enumeration. Here is the example code:",
+        "Output:"
+      ],
+      "code": [
+        "import java.util.StringTokenizer;  \npublic class StringTokenizer3\n{  \n /* Driver Code */\n public static void main(String args[])\n {  \n   /* StringTokenizer object */\n   StringTokenizer st = new StringTokenizer(\"Hello Everyone Have a nice day\",\" \");  \n     /* Checks if the String has any more tokens */\n     while (st.hasMoreTokens()) \n     {  \n         /* Prints the elements from the String */\n         System.out.println(st.nextElement());  \n     }  \n }  \n}",
+        "Hello\nEveryone\nHave\na\nnice\nday"
+      ]
+    },
+    {
+      "heading": "Example 5: StringTokenizer.countTokens() Method",
+      "paragraphs": [
+        "This method counts the total number of tokens in the string. The following example demonstrates the same:",
+        "Output:"
+      ],
+      "code": [
+        "import java.util.StringTokenizer;  \npublic class StringTokenizer3\n{  \n /* Driver Code */\n public static void main(String args[])\n {  \n   /* StringTokenizer object */\n   StringTokenizer st = new StringTokenizer(\"Hello Everyone Have a nice day\",\" \");  \n         /* Prints the number of tokens present in the String */\n         System.out.println(\"Total number of Tokens: \"+st.countTokens());  \n }  \n}",
+        "Total number of Tokens: 6"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:36:36.203Z"
+}

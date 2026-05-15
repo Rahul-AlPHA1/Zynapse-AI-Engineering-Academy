@@ -1,0 +1,135 @@
+{
+  "topicId": "jdbc-mysql",
+  "title": "Java Database Connectivity with MySQL",
+  "sectionId": "java-collections-jdbc",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/example-to-connect-to-the-mysql-database",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/example-to-connect-to-the-mysql-database",
+      "score": 75,
+      "sectionCount": 14
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java Database Connectivity with MySQL",
+      "paragraphs": [
+        "Java database connectivity (JDBC) with MySQL is used to connect Java applications with MySQL databases. It allows developers to perform operations like storing, retrieving, updating, and deleting data using Java programs.",
+        "In this chapter, you will learn how to connect a Java application with a MySQL database using JDBC and execute basic database operations."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Required Information to Connect Java with MySQL Database",
+      "paragraphs": [
+        "To connect a Java application with the MySQL database, we need to follow 5 steps.",
+        "In this example, we are using MySQL as the database. So, we need to know the following information:"
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. Driver Class",
+      "paragraphs": [
+        "The driver class for the MySQL database is com.mysql.jdbc.Driver."
+      ],
+      "code": []
+    },
+    {
+      "heading": "2. Connection URL",
+      "paragraphs": [
+        "The connection URL for the MySQL database is jdbc:mysql://localhost:3306/sonoo, where jdbc is the API, mysql is the database, localhost is the server name (or IP address), 3306 is the port number, and sonoo is the database name. You can use any database name by replacing sonoo."
+      ],
+      "code": []
+    },
+    {
+      "heading": "3. Username",
+      "paragraphs": [
+        "The default username for the MySQL database is root."
+      ],
+      "code": []
+    },
+    {
+      "heading": "4. Password",
+      "paragraphs": [
+        "It is the password given by the user at the time of installing the MySQL database. In this example, we are using root as the password."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Create Database and Table",
+      "paragraphs": [
+        "Before connecting Java with MySQL, we need to create a database and table.",
+        "The above SQL statements create a database named sonoo and a table emp with three columns."
+      ],
+      "code": [
+        "create database sonoo;\nuse sonoo;\ncreate table emp(id int(10),name varchar(40),age int(3));"
+      ]
+    },
+    {
+      "heading": "Example to Connect Java Application with MySQL Database",
+      "paragraphs": [
+        "In this example, sonoo is the database name, and root is both the username and password.",
+        "The above example will fetch all the records of emp table."
+      ],
+      "code": [
+        "import java.sql.*;\nclass MysqlCon{\npublic static void main(String args[]){\ntry{\nClass.forName(\"com.mysql.jdbc.Driver\");\nConnection con=DriverManager.getConnection(\n\"jdbc:mysql://localhost:3306/sonoo\",\"root\",\"root\");\n//here sonoo is database name, root is username and password\nStatement stmt=con.createStatement();\nResultSet rs=stmt.executeQuery(\"select * from emp\");\nwhile(rs.next())\nSystem.out.println(rs.getInt(1)+\"  \"+rs.getString(2)+\"  \"+rs.getString(3));\ncon.close();\n}catch(Exception e){ System.out.println(e);}\n}\n}"
+      ]
+    },
+    {
+      "heading": "MySQL JDBC Driver (mysqlconnector.jar)",
+      "paragraphs": [
+        "To connect a Java application with the MySQL database, mysql-connector-java JAR file is required to be loaded. You can download it from the official website. Here is the link:  MySQL Community Downloads"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Ways to Load mysql-connector JAR File",
+      "paragraphs": [
+        "There are two ways to load the JAR file:",
+        "• Paste the mysql-connector JAR file in jre/lib/ext folder\n• Set classpath"
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. Paste the JAR File in JRE/lib/ext Folder",
+      "paragraphs": [
+        "Download the mysql-connector-java JAR file. Then go to the jre/lib/ext folder and paste the JAR file there. This makes the driver available globally."
+      ],
+      "code": []
+    },
+    {
+      "heading": "2. Set the Classpath",
+      "paragraphs": [
+        "There are two ways to set the classpath:",
+        "• Temporary\n• Permanent"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Setting the Temporary Classpath",
+      "paragraphs": [
+        "Open command prompt and write:",
+        "This will set the classpath for the current session only."
+      ],
+      "code": [
+        "C:>set classpath=c:\\folder\\mysql-connector-java-5.0.8-bin.jar;.;"
+      ]
+    },
+    {
+      "heading": "Setting the Permanent Classpath",
+      "paragraphs": [
+        "Go to Environment Variables and click on \"New\".",
+        "In Variable Name, write classpath and in Variable Value, paste the path like:",
+        "To see the steps of setting permanent path, click here:https://www.tpointtech.com/how-to-set-path-in-java",
+        "This will set the classpath permanently on your system.",
+        "Next TopicConnectivity With Access Without Dsn"
+      ],
+      "code": [
+        "C:\\folder\\mysql-connector-java-5.0.8-bin.jar;.;"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:48:17.097Z"
+}

@@ -1,0 +1,188 @@
+{
+  "topicId": "file-class",
+  "title": "Java File Class",
+  "sectionId": "java-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-file-class",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-file-class",
+      "score": 114,
+      "sectionCount": 18
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_file_class.htm",
+      "score": 37,
+      "sectionCount": 7
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java File Class",
+      "paragraphs": [
+        "File class in Java is used to work with files and directories. In this chapter, we will learn what the File class is, why it is used, its declaration, fields, constructors, methods, and multiple examples to clearly understand how file and directory operations work."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is File Class in Java?",
+      "paragraphs": [
+        "The File class is an abstract representation of file and directory pathnames. A pathname can be absolute (full path) or relative (path from the current directory).",
+        "The File class does not read or write file data, but it provides methods to:",
+        "• Create files and directories\n• Delete or rename files and directories\n• Check file properties\n• List directory contents"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Why is File Class Used?",
+      "paragraphs": [
+        "The File class is used to:",
+        "• Manage files and directories programmatically\n• Check file existence and permissions\n• Get file information like name, size, and path\n• Perform directory listing operations",
+        "It acts as a bridge between Java programs and the file system."
+      ],
+      "code": []
+    },
+    {
+      "heading": "File Class Declaration",
+      "paragraphs": [
+        "The File class belongs to the java.io package."
+      ],
+      "code": [
+        "public class File implements Serializable, Comparable<File>"
+      ]
+    },
+    {
+      "heading": "Fields of File Class",
+      "paragraphs": [
+        "The following are commonly used static fields of the File class:",
+        "Field | Description\npathSeparator | System-dependent path separator as a string\npathSeparatorChar | System-dependent path separator character\nseparator | System-dependent name separator as a string\nseparatorChar | System-dependent name separator character"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Constructors of File Class",
+      "paragraphs": [
+        "The File class provides several constructors to create file or directory path objects."
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. File(String pathname)",
+      "paragraphs": [
+        "This constructor creates a new File instance using the given pathname.",
+        "Here is the syntax:"
+      ],
+      "code": [
+        "File file = new File(\"test.txt\");"
+      ]
+    },
+    {
+      "heading": "2. File(String parent, String child)",
+      "paragraphs": [
+        "This constructor creates a new File instance using a parent path and child path.",
+        "Here is the syntax:"
+      ],
+      "code": [
+        "File file = new File(\"D:/data\", \"test.txt\");"
+      ]
+    },
+    {
+      "heading": "3. File(File parent, String child)",
+      "paragraphs": [
+        "This constructor creates a new File instance from a parent File object and child pathname.",
+        "Here is the syntax:"
+      ],
+      "code": [
+        "File parent = new File(\"D:/data\");</p>\n<p>File file = new File(parent, \"test.txt\");"
+      ]
+    },
+    {
+      "heading": "4. File(URI uri)",
+      "paragraphs": [
+        "This constructor creates a new File instance by converting the given file: URI.",
+        "Here is the syntax:"
+      ],
+      "code": [
+        "File file = new File(new URI(\"file:///D:/test.txt\"));"
+      ]
+    },
+    {
+      "heading": "Example of File Class Constructors",
+      "paragraphs": [
+        "The following example demonstrates different ways to create File objects."
+      ],
+      "code": [
+        "import java.io.File;\n\npublic class FileConstructorExample {\n    public static void main(String[] args) {\n\n        File f1 = new File(\"sample.txt\");\n        File f2 = new File(\"D:/docs\", \"notes.txt\");\n        File parent = new File(\"D:/docs\");\n        File f3 = new File(parent, \"report.txt\");\n\n        System.out.println(f1.getPath());\n        System.out.println(f2.getPath());\n        System.out.println(f3.getPath());\n    }\n}"
+      ]
+    },
+    {
+      "heading": "Methods of File Class",
+      "paragraphs": [
+        "The File class provides the following methods to work with files and directories:",
+        "Modifier and Type | Method | Description\nstatic File | createTempFile(String prefix, String suffix) | It creates an empty file in the default temporary-file directory, using the given prefix and suffix to generate its name.\nboolean | createNewFile() | It atomically creates a new, empty file named by this abstract pathname if and only if a file with this name does not yet exist.\nboolean | canWrite() | It tests whether the application can modify the file denoted by this abstract pathname.String[]\nboolean | canExecute() | It tests whether the application can execute the file denoted by this abstract pathname.\nboolean | canRead() | It tests whether the application can read the file denoted by this abstract pathname.\nboolean | isAbsolute() | It tests whether this abstract pathname is absolute.\nboolean | isDirectory() | It tests whether the file denoted by this abstract pathname is a directory.\nboolean | isFile() | It tests whether the file denoted by this abstract pathname is a normal file.\nString | getName() | It returns the name of the file or directory denoted by this abstract pathname.\nString | getParent() | It returns the pathname string of this abstract pathname's parent, or null if this pathname does not name a parent directory.\nPath | toPath() | It returns a java.nio.file.Path object constructed from the this abstract path.\nURI | toURI() | It constructs a file: URI that represents this abstract pathname.\nFile[] | listFiles() | It returns an array of abstract pathnames denoting the files in the directory denoted by this abstract pathname\nlong | getFreeSpace() | It returns the number of unallocated bytes in the partition named by this abstract path name.\nString[] | list(FilenameFilter filter) | It returns an array of strings naming the files and directories in the directory denoted by this abstract pathname that satisfy the specified filter.\nboolean | mkdir() | It creates the directory named by this abstract pathname."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Examples of Java File Class",
+      "paragraphs": [
+        "Practice the following examples to understand different operations of the File class."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example 1: Creating a File",
+      "paragraphs": [
+        "The following example demonstrates how to create a new file.",
+        "Output:"
+      ],
+      "code": [
+        "import java.io.File;\nimport java.io.IOException;\n\npublic class FileExample1 {\n    public static void main(String[] args) {\n        try {\n            File file = new File(\"javaFile123.txt\");\n            if (file.createNewFile()) {\n                System.out.println(\"New file is created!\");\n            } else {\n                System.out.println(\"File already exists.\");\n            }\n        } catch (IOException e) {\n            e.printStackTrace();\n        }\n    }\n}",
+        "New file is created!"
+      ]
+    },
+    {
+      "heading": "Example 2: Getting File Path Information",
+      "paragraphs": [
+        "The following example demonstrates how to get absolute and canonical paths.",
+        "Output:"
+      ],
+      "code": [
+        "import java.io.File;\n\npublic class FileExample2 {\n    public static void main(String[] args) {\n        try {\n            File file = new File(\"testFile1.txt\");\n            file.createNewFile();\n\n            File canonical = file.getCanonicalFile();\n            System.out.println(canonical);\n            System.out.println(canonical.exists());\n            System.out.println(canonical.getAbsolutePath());\n        } catch (Exception e) {\n            e.printStackTrace();\n        }\n    }\n}",
+        "testFile1.txt\ntrue\n/home/Work/Project/File/testFile1.txt"
+      ]
+    },
+    {
+      "heading": "Example 3: Listing Files in a Directory",
+      "paragraphs": [
+        "The following example demonstrates how to list all file names in a directory.",
+        "Output:"
+      ],
+      "code": [
+        "import java.io.File;\n\npublic class FileExample3 {\n    public static void main(String[] args) {\n        File dir = new File(\"/Users/sonoojaiswal/Documents\");\n        String[] files = dir.list();\n\n        for (String name : files) {\n            System.out.println(name);\n        }\n    }\n}",
+        "info.properties\ninfo.properties.rtf\n.DS_Store\n.localized\nAlok news\napache-tomcat-9.0.0.M19\napache-tomcat-9.0.0.M19.tar\nbestreturn_org.rtf\nBIODATA.pages\nBIODATA.pdf\nBIODATA.png\nstruts2jars.zip\nworkspace"
+      ]
+    },
+    {
+      "heading": "Example 4: Getting File Properties",
+      "paragraphs": [
+        "The following example demonstrates how to read file properties such as size, hidden status, and write permission.",
+        "Output:"
+      ],
+      "code": [
+        "import java.io.File;\n\npublic class FileExample4 {\n    public static void main(String[] args) {\n        File dir = new File(\"/Users/sonoojaiswal/Documents\");\n        File[] files = dir.listFiles();\n\n        for (File file : files) {\n            System.out.println(\n                file.getName() +\n                \" Can Write: \" + file.canWrite() +\n                \" Is Hidden: \" + file.isHidden() +\n                \" Length: \" + file.length() + \" bytes\"\n            );\n        }\n    }\n}",
+        "info.properties Can Write: true Is Hidden: false Length: 15 bytes\ninfo.properties.rtf Can Write: true Is Hidden: false Length: 385 bytes\n.DS_Store Can Write: true Is Hidden: true Length: 36868 bytes\n.localized Can Write: true Is Hidden: true Length: 0 bytes\nAlok news Can Write: true Is Hidden: false Length: 850 bytes\napache-tomcat-9.0.0.M19 Can Write: true Is Hidden: false Length: 476 bytes\napache-tomcat-9.0.0.M19.tar Can Write: true Is Hidden: false Length: 13711360 bytes\nbestreturn_org.rtf Can Write: true Is Hidden: false Length: 389 bytes\nBIODATA.pages Can Write: true Is Hidden: false Length: 707985 bytes\nBIODATA.pdf Can Write: true Is Hidden: false Length: 69681 bytes\nBIODATA.png Can Write: true Is Hidden: false Length: 282125 bytes\nworkspace Can Write: true Is Hidden: false Length: 1972 bytes"
+      ]
+    },
+    {
+      "heading": "Note: File size, hidden status, and permissions may vary depending on the operating system and directory contents.",
+      "paragraphs": [
+        "Next TopicHow to Create a File in Java?"
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:41:39.393Z"
+}

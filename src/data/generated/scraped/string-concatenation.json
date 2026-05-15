@@ -1,0 +1,163 @@
+{
+  "topicId": "string-concatenation",
+  "title": "String Concatenation in Java",
+  "sectionId": "java-core-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/string-concatenation-in-java",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/string-concatenation-in-java",
+      "score": 108,
+      "sectionCount": 15
+    }
+  ],
+  "sections": [
+    {
+      "heading": "String Concatenation in Java",
+      "paragraphs": [
+        "String concatenation is a basic and commonly used operation in Java that allows you to combine two or more strings into a single string. String concatenation is widely used for creating messages, formatting output, and working with text data.",
+        "The following are the different ways to concatenate strings in Java:",
+        "• Using String Concatenation (+=) Operator\n• Using String.concat() Method\n• Using StringBuilder or StringBuffer Class\n• Using String.join() Method\n• Using String.format() Method\n• Using Collector.joining() Method"
+      ],
+      "code": []
+    },
+    {
+      "heading": "String Concatenation Using += Operator",
+      "paragraphs": [
+        "The simplest and most commonly used method for concatenating strings in Java is using the + operator. We can concatenate two or more strings by simply using the + operator between them."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example 1",
+      "paragraphs": [
+        "Let us take an example to demonstrate the string concatenation using the += operator.",
+        "Output:",
+        "The Java compiler internally manipulate the string by using the following statement.",
+        "In Java, String concatenation is implemented through the StringBuilder (or StringBuffer) class and it's append method. String concatenation operator produces a new String by appending the second operand onto the end of the first operand. The String concatenation operator can concatenate not only String but primitive values also. Let's understand it through a Java program."
+      ],
+      "code": [
+        "class TestStringConcatenation1{\n public static void main(String args[]){\n   String s=\"Sachin\"+\" Tendulkar\";\n   System.out.println(s);//Sachin Tendulkar\n }\n}",
+        "Sachin Tendulkar",
+        "String s=(new StringBuilder()).append(\"Sachin\").append(\" Tendulkar).toString();"
+      ]
+    },
+    {
+      "heading": "Example 2",
+      "paragraphs": [
+        "Let us take another example to demonstrate the string concatenation using the StringBuilder.",
+        "Output:"
+      ],
+      "code": [
+        "class TestStringConcatenation2{\n public static void main(String args[]){\n   String s=50+30+\"Sachin\"+40+40;\n   System.out.println(s);//80Sachin4040\n }\n}",
+        "80Sachin4040"
+      ]
+    },
+    {
+      "heading": "String Concatenation Using String.concat() Method",
+      "paragraphs": [
+        "The concat() method belongs to the Java String class. It is an alternative to the + operator for string concatenation. It appends one string to the end of another."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Synatx:",
+      "paragraphs": [
+        "It has the following syntax:"
+      ],
+      "code": [
+        "public String concat(String another)"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates how to concatenate strings using the concat() method.",
+        "Output:",
+        "The above Java program, concatenates two String objects s1 and s2 using concat() method and stores the result into s3 object."
+      ],
+      "code": [
+        "class TestStringConcatenation3{\n public static void main(String args[]){\n   String s1=\"Sachin \";\n   String s2=\"Tendulkar\";\n   String s3=s1.concat(s2);\n   System.out.println(s3);//Sachin Tendulkar\n  }\n}",
+        "Sachin Tendulkar"
+      ]
+    },
+    {
+      "heading": "String Concatenation Using StringBuilder or StringBuffer Class",
+      "paragraphs": [
+        "In order to address the performance concerns associated with the + operator and concat() method, Java provides two classes, StringBuilder and StringBuffer, that are specifically designed for efficient string manipulation.",
+        "StringBuilder is class provides append() method to perform concatenation operation. The append() method accepts arguments of different types like Objects, StringBuilder, int, char, CharSequence, boolean, float, double. StringBuilder is the most popular and fastet way to concatenate strings in Java. It is mutable class which means values stored in StringBuilder objects can be updated or changed."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates how to concatenate strings efficiently using the StringBuilder or StringBuffer class.",
+        "Output:",
+        "Both the classes StringBuilder and StringBuffer are mutable. It means that they can be modified without creating new instances for each operation. It makes them more efficient than the + operator or concat() method, especially in scenarios involving repeated concatenation in loops."
+      ],
+      "code": [
+        "public class StringBuilderExample {\n    public static void main(String[] args) {\n        String firstName = \"Manoj\";\n        String lastName = \"Mamilla\";\n        // Using StringBuilder for efficient string concatenation\n        StringBuilder stringBuilder = new StringBuilder();\n        stringBuilder.append(\"Hello, \");\n        stringBuilder.append(firstName);\n        stringBuilder.append(\" \");\n        stringBuilder.append(lastName);\n        String result = stringBuilder.toString();\n        System.out.println(result);  \n    }\n}",
+        "Hello, Manoj Mamilla"
+      ]
+    },
+    {
+      "heading": "String Concatenation Using String.join() Method",
+      "paragraphs": [
+        "Java 8 introduced the String.join() method, which is a concise and expressive way to concatenate multiple strings with a delimiter:"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates how to concatenate multiple strings using the String.join() method.",
+        "Output:",
+        "There are some other possible ways to concatenate Strings in Java,"
+      ],
+      "code": [
+        "public class StringJoinExample {\n    public static void main(String[] args) {\n        String firstName = \"Manoj\";\n        String lastName = \"Mamilla\";\n        // Using String.join for concatenation with a delimiter\n        String result = String.join(\" \", \"Hello,\", firstName, lastName);\n        System.out.println(result);  \n    }\n}",
+        "Hello, Manoj Mamilla"
+      ]
+    },
+    {
+      "heading": "String Concatenation Using String.format() Method",
+      "paragraphs": [
+        "The String.format() method provides another way to concatenate strings in Java while allowing for more control over the formatting. Here is an example using the format() method."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates how to concatenate strings using formatted text with the String.format() method.",
+        "Output:",
+        "Here, the String objects result is assigned the concatenated result of Strings firstName and lastName using the String.format() method. The format() accepts parameters as format specifier followed by String objects or values."
+      ],
+      "code": [
+        "public class StringFormatExample {\n    public static void main(String[] args) {\n        String firstName = \"Manoj\";\n        String lastName = \"Mamilla\";\n        // Using String.format for string concatenation with formatting\n        String result = String.format(\"Hello, %s %s\", firstName, lastName);\n        System.out.println(result);  \n    }\n}",
+        "Hello, Manoj Mamilla"
+      ]
+    },
+    {
+      "heading": "String Concatenation Using Collector.joining() Method",
+      "paragraphs": [
+        "The Collectors class in Java 8 offers joining() method that concatenates the input elements in a similar order as they occur."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates how to concatenate strings using the joining() collector from the Stream API.",
+        "Output:"
+      ],
+      "code": [
+        "import java.util.*;\nimport java.util.stream.Collectors;\npublic class ColJoining\n{\n    /* Driver Code */\n\tpublic static void main(String args[])\n\t{\n\t    List<String> liststr = Arrays.asList(\"abc\", \"pqr\", \"xyz\"); //List of String array\n    String str = liststr.stream().collect(Collectors.joining(\", \")); //performs joining operation\n\t    System.out.println(str.toString());  //Displays result\n\t}\n}",
+        "abc, pqr, xyz"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:36:01.446Z"
+}

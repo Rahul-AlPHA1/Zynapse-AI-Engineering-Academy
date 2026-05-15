@@ -1,0 +1,230 @@
+{
+  "topicId": "static-nested",
+  "title": "Java static keyword",
+  "sectionId": "java-core-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/static-keyword-in-java",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/static-keyword-in-java",
+      "score": 158,
+      "sectionCount": 19
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_static_class.htm",
+      "score": 51,
+      "sectionCount": 7
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java static keyword",
+      "paragraphs": [
+        "In this chapter, you will learn about the static keyword in Java, its purpose, and how it is used with variables, methods, blocks, and nested classes to manage memory and access class-level members."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is the Static Keyword in Java?",
+      "paragraphs": [
+        "The static keyword in Java is used for memory management mainly. We can apply static keyword with variables, methods, blocks and nested classes. The static keyword belongs to the class than an instance of the class."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Types of Static Members",
+      "paragraphs": [
+        "The static keyword can be used with the following:",
+        "• Variable (also known as a class variable)\n• Method (also known as a class method)\n• Block\n• Nested class"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Uses of static Keyword",
+      "paragraphs": [
+        "Beyond memory management, the static keyword in Java has several other uses. When it comes to variables, it means that all instances of the class share the variable and belong to the class as a whole, not just any one instance.",
+        "Static methods are available throughout the program since they can be called without first generating an instance of the class. When the class loads, static blocks are used to initialise static variables or carry out one-time operations.",
+        "Furthermore, nested static classes can be instantiated individually but are still linked to the outer class. Moreover, class names can be used to access static variables and methods directly, eliminating the need to build an object instance. This is especially helpful for constants or utility methods."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Characteristics of static Keyword",
+      "paragraphs": [
+        "Here are the characteristics of the static keyword:",
+        "• Belongs to the Class, Not the Object: Anything marked as static is tied to the class itself, not individual objects. It means all objects share the same static variables and methods.\n• Access Without an Object: Since static members belong to the class, you can access them directly using the class name (ClassName.methodName()). No need to create an object.\n• Static Methods Cannot Use Instance Variables Directly: A static method does not know about specific objects, so it cannot directly access non-static (instance) variables or methods.\n• Main Method is Static: The main method in Java is static so that Java can run the program without creating an object first.\n• Executed Once When the Class is Loaded: A static block runs once when the class is first loaded, making it useful for initializing things like constants.\n• Not Overridden Like Normal Methods: Static methods do not follow typical method overriding. If a subclass defines the same static method, it's more like re-declaring it rather than overriding it."
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. Java Static Variable",
+      "paragraphs": [
+        "If we declare any variable as static, it is known as a static variable.",
+        "• The static variable can be used to refer to the common property of all objects (which is not unique for each object), for example, the company name of employees, college name of students, etc.\n• The static variable gets memory only once in the class area at the time of class loading.\n• Static variables in Java are also initialized to default values if not explicitly initialized by the programmer. They can be accessed directly using the class name without needing to create an instance of the class.\n• Static variables are shared among all instances of the class, meaning if the value of a static variable is changed in one instance, it will reflect the change in all other instances as well."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example of Static Variable",
+      "paragraphs": [
+        "The following example demonstrate the static variable in Java.",
+        "Output:",
+        "Explanation:",
+        "The usage of static variables is demonstrated in this Java program. In addition to a static variable called college, the Student class defines two instance variables: rollno and name. It has a constructor to set the instance variables' initial values and a display() function to output the rollno, name, and college values.",
+        "Two Student objects, s1 and s2, with different roll numbers and names, are created via the TestStaticVariable1 class. After that, each object's display() method is called printing its details. The college name can be modified for all objects at once by uncommenting the line Student.college=\"BBDIT\", demonstrating how static variables are shared by all instances of a class."
+      ],
+      "code": [
+        "//Java Program to demonstrate the use of static variable  \nclass Student{  \n   int rollno;//instance variable  \n   String name;  \n   static String college =\"ITS\";//static variable  \n   //constructor  \n   Student(int r, String n){  \n   rollno = r;  \n   name = n;  \n   }  \n   //method to display the values  \n   void display (){System.out.println(rollno+\" \"+name+\" \"+college);}  \n}  \n//Main class to show the values of objects  \npublic class Main{  \n public static void main(String args[]){  \n Student s1 = new Student(111,\"Karan\");  \n Student s2 = new Student(222,\"Aryan\");  \n //we can change the college of all objects by the single line of code  \n //Student.college=\"BBDIT\";  \n s1.display();  \n s2.display();  \n }  \n}",
+        "111 Karan ITS\n222 Aryan ITS"
+      ]
+    },
+    {
+      "heading": "Example: Counter Without Using Static Variable",
+      "paragraphs": [
+        "In this example, we have created an instance variable named count, which is incremented in the constructor. Since the instance variable gets the memory at the time of object creation, each object will have a copy of the instance variable. If it is incremented, it would not reflect other objects. So each object will have the value 1 in the count variable.",
+        "Output:",
+        "Explanation:",
+        "The idea of instance variables that are specific to each object derived from a class is demonstrated by this Java program. The count variable in the Counter class is an instance variable that is allocated memory each time an object of the class is instantiated. It is initialized to zero.",
+        "Every time an object is produced, the constructor prints the current value of the count variable and increases it. Three Counter objects (c1, c2, and c3) with separate instances of the count variable are generated in the main procedure. Because of this, the count is increased independently for each object that is generated, and the output shows the count value for each object that increases successively."
+      ],
+      "code": [
+        "//Java Program to demonstrate the use of an instance variable  \n//which get memory each time when we create an object of the class.  \nclass Counter{  \n    int count=0;//will get memory each time when the instance is created  \n  \n    Counter(){  \n        count++;//incrementing value  \n        System.out.println(count);  \n    }  \n}\npublic class Main{\n    public static void main(String args[]){  \n        //Creating objects  \n        Counter c1=new Counter();  \n        Counter c2=new Counter();  \n        Counter c3=new Counter();  \n    }  \n}",
+        "1\n1\n1"
+      ]
+    },
+    {
+      "heading": "Example: Counter Using Static Variable",
+      "paragraphs": [
+        "As we have mentioned above, a static variable will get the memory only once; if an object changes the value of the static variable, it will retain its value.",
+        "Output:",
+        "Explanation:",
+        "This Java program demonstrates the utilization of a static variable, which is shared among all objects created from the class. In the Counter2 class, the count variable is declared as static, ensuring it is allocated memory only once and retains its value across all instances of the class.",
+        "Each time an object of the class is created, the constructor increments the value of the static variable count and prints its current value. In the main method, three Counter2 objects (c1, c2, and c3) are instantiated, and as they share the same static variable count, its value increments sequentially across the objects, reflecting the shared nature of static variables among all instances of a class."
+      ],
+      "code": [
+        "//Java Program to illustrate the use of static variable which  \n//is shared with all objects.  \nclass Counter{  \n    static int count=0;//will get memory only once and retains its value  \n  \n    Counter(){  \n        count++;//incrementing value of static variable \n        System.out.println(count);  \n    }  \n}\npublic class Main{\n    public static void main(String args[]){  \n        //Creating objects  \n        Counter c1=new Counter();  \n        Counter c2=new Counter();  \n        Counter c3=new Counter();  \n    }  \n}",
+        "1\n2\n3"
+      ]
+    },
+    {
+      "heading": "2. Java Static Method",
+      "paragraphs": [
+        "If we apply a static keyword with any method, it is known as a static method.",
+        "• A static method belongs to the class rather than the object of a class.\n• A static method can be invoked without the need for creating an instance of a class.\n• A static method can access static data members and can change their value of it."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example of Static Method",
+      "paragraphs": [
+        "Let us take another example to demonstrat the static method in Java.",
+        "Output:",
+        "This Java program demonstrates how to use a static method inside of a class. In addition to a static variable called college, the Student class defines two instance variables: rollno and name. To alter the value of the static variable college, it has a static function called change().",
+        "In addition, the class has a constructor for initialising instance variables and a display() method for printing the rollno, name, and college values. The main method of the TestStaticMethod class shows how to use the change() method to modify the college value.",
+        "After that, the display() method is used to create three Student objects (s1, s2, and s3) with distinct roll numbers and names, and their details are shown. This illustrates how the static method change() influences the static variable college for all instances of the class."
+      ],
+      "code": [
+        "//Java Program to demonstrate the use of a static method.  \nclass Student{  \n     int rollno;  \n     String name;  \n     static String college = \"ITS\";  \n     //static method to change the value of static variable  \n     static void change(){  \n        college = \"BBDIT\";  \n     }  \n     //constructor to initialize the variable  \n     Student(int r, String n){  \n        rollno = r;  \n        name = n;  \n     }  \n     //method to display values  \n     void display(){System.out.println(rollno+\" \"+name+\" \"+college);}  \n}  \n//Main class to create and display the values of object  \npublic class Main{  \n    public static void main(String args[]){  \n        Student.change();//calling change method  \n        //creating objects  \n        Student s1 = new Student(111,\"Karan\");  \n        Student s2 = new Student(222,\"Aryan\");  \n        Student s3 = new Student(333,\"Sonoo\");  \n        //calling display method  \n        s1.display();  \n        s2.display();  \n        s3.display();  \n    }  \n}",
+        "111 Karan BBDIT\n222 Aryan BBDIT\n333 Sonoo BBDIT"
+      ]
+    },
+    {
+      "heading": "Example: Performing Normal Calculations",
+      "paragraphs": [
+        "Let's see another example of a static method that performs a normal calculation.",
+        "Output:",
+        "Explanation:",
+        "This Java program shows how to find the cube of a given number by using a static function. The static method cube(int x) in the Calculate class multiplies an integer parameter x three times to return its cube.",
+        "The same class's main method demonstrates how to use the class name Calculate to access the static method cube() directly without first having to create an instance of the class.",
+        "The cube() method is used in this example with argument 5, and the outcome is saved in the variable result before being printed to the console. This program demonstrates how easy and effective it is to use static methods for routine computations or actions that do not call for object creation."
+      ],
+      "code": [
+        "//Java Program to get the cube of a given number using the static method  \n  \nclass Calculate{  \n  static int cube(int x){  \n  return x*x*x;  \n  }  \n}\npublic class Main{\n  public static void main(String args[]){  \n  int result=Calculate.cube(5);  \n  System.out.println(result);  \n  }  \n}",
+        "125"
+      ]
+    },
+    {
+      "heading": "Restrictions for the Static Method",
+      "paragraphs": [
+        "There are the following two main restrictions for the static method.",
+        "• The static method cannot use non-static data members or call a non-static method directly.\n• this and super keyword cannot be used in static context.",
+        "Example:",
+        "Output:",
+        "Explanation:",
+        "The Java code provided contains a class called A. A defined instance variable with the value 40 that is designated as non-static is present in class A. Nonetheless, an attempt is made to use System.out.println(a); to directly access the instance variable an in the class A main() method.",
+        "Because static methods in Java cannot directly access non-static variables, this will lead to a compilation problem. An instance of class A must first be generated in order to access the non-static variable inside the static main() method. The variable a can then be accessed using that instance. It would, therefore, be OK to use A obj = new A(); System.out.println(obj.a); to access an in the main method."
+      ],
+      "code": [
+        "class A{\n int a=40;//non static\n \n public static void main(String args[]){\n  System.out.println(a);\n }\n}",
+        "Compile Time Error"
+      ]
+    },
+    {
+      "heading": "3. Java Static Block",
+      "paragraphs": [
+        "• It is used to initialize the static data member.\n• It is executed before the main() method at the time of class loading."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example of Static Block",
+      "paragraphs": [
+        "Let us take an example to demonstrate the static block in Java.",
+        "Output:",
+        "Explanation:",
+        "In the given Java code, there's a class named A2. Inside this class, there's a static block, which is a block of code enclosed within curly braces and marked with the static keyword. Static blocks are executed only once when the class is loaded into memory, before the execution of the main method or the creation of any object of the class.",
+        "In this case, the static block contains the statement System.out.println(\"static block is invoked\"), which prints the message \"static block is invoked\" to the console when the class A2 is loaded into memory.",
+        "Additionally, there's a main() method in the class A2 that prints \"Hello main\" to the console when executed. However, since the main method is the entry point of the program, it needs to be invoked explicitly, typically by the Java Virtual Machine (JVM) when executing the program.",
+        "Therefore, when you run the program, the static block is executed first, printing the message from the static block, followed by the execution of the main method, printing \"Hello main\" to the console."
+      ],
+      "code": [
+        "//Java program to illustrate the use of static block\npublic class Main{  \n  static{System.out.println(\"static block is invoked\");}  \n  public static void main(String args[]){  \n   System.out.println(\"main() method is invoked\");  \n  }  \n}",
+        "static block is invoked\nmain() method is invoked"
+      ]
+    },
+    {
+      "heading": "Using Static Block to Run a Program",
+      "paragraphs": [
+        "Earlier, it was possible to execute a Java program using only a static block, which ran when the class was loaded. However, since JDK 1.7, a main() method is required, and a program cannot run using a static block alone.",
+        "Here, we are going to take an example to demonstrate a Java program using static block.",
+        "Output:",
+        "Explanation:",
+        "Class A3 in the provided Java code has a static block that uses System.exit(0); to end the program after printing \"static block is invoked\" to the console. Because of this, the static block runs when the class loads into memory, printing the message and stopping the program right away to stop more code from running."
+      ],
+      "code": [
+        "class A3{\n  static{\n  System.out.println(\"static block is invoked\");\n  System.exit(0);\n  }\n}",
+        "static block is invoked\nSince JDK 1.7 and above, output would be:\nError: Main method not found in class A3, please define the main method as:\npublic static void main(String[] args)\nor a JavaFX application class must extend javafx.application.Application"
+      ]
+    },
+    {
+      "heading": "4. Static Nested Classes",
+      "paragraphs": [
+        "A static nested class is declared with the static keyword. It behaves like a regular top-level class but is nested for packaging convenience. Static nested classes cannot directly access non-static members of the enclosing class."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [
+        "It has the following syntax:"
+      ],
+      "code": [
+        "class A{\n     static class B{}//static nested class\n}"
+      ]
+    },
+    {
+      "heading": "Example of Nested Static Class",
+      "paragraphs": [
+        "The following example demonstrates a nested static class representing a Library and its Book:",
+        "Output:"
+      ],
+      "code": [
+        "class Library {\n    static class Book {\n        void info() {\n            System.out.println(\"This is a library book\");\n        }\n    }\n}\n\npublic class Test {\n    public static void main(String[] args) {\n        Library.Book myBook = new Library.Book();\n        myBook.info();\n    }\n}",
+        "This is a library book"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:38:20.388Z"
+}

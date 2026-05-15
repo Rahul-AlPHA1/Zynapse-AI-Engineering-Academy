@@ -1,0 +1,210 @@
+{
+  "topicId": "map-interface",
+  "title": "Java Map Interface",
+  "sectionId": "java-collections-jdbc",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-map",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-map",
+      "score": 123,
+      "sectionCount": 21
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_map_interface.htm",
+      "score": 52,
+      "sectionCount": 10
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java Map Interface",
+      "paragraphs": [
+        "Java Map Interface is used to store data in the form of key-value pairs. It allows you to store and access data using a key. It is widely used in real-world applications like searching, updating, and managing data.",
+        "In this chapter, you will learn about the Java Map interface, its features, and examples."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is Map Interface in Java?",
+      "paragraphs": [
+        "The Map interface in Java is a part of the java.util package. It stores data as key-value pairs, where each key is unique and maps to only one value. A Map is useful when you want to search, update, or delete data using a key."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Why to Use Map Interface?",
+      "paragraphs": [
+        "The following points explain why the Map interface is useful:",
+        "• Efficient Data Retrieval:Map allows fast searching of values using keys. It is very useful when you need to quickly access data from a large dataset.\n• No Duplicate Keys:Each key in a Map is unique and maps to only one value. This helps maintain data consistency and avoids duplicate entries.\n• Flexible Data Types:You can store different types of objects as keys and values in a Map. This makes it flexible for representing different types of relationships.\n• Associative Structure:Map works like a dictionary where each key is linked to a value. It helps in organizing data in a meaningful and structured way.\n• Caching and Memoization:Map can store results of operations so they can be reused later. This improves performance by avoiding repeated calculations."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Key Features of Map Interface",
+      "paragraphs": [
+        "The following points describe the key features of the Map interface:",
+        "• Key-Value Pair Structure:Map stores data in the form of key and value pairs. Each key is used to access its corresponding value.\n• No Duplicate Keys:A Map does not allow duplicate keys, but it can have duplicate values. If you add a duplicate key, the old value is replaced with the new value.\n• Allows Null Values:Some Map implementations allow null keys and values. For example, HashMap allows one null key and multiple null values.\n• Not a Subtype of Collection:Map is not a part of the Collection interface. It is a separate interface in the Java Collections Framework.\n• Traversal Using Set:A Map cannot be traversed directly. To iterate over it, you need to use keySet(), values(), or entrySet() methods.\n• Different Implementations:Map has different implementations like HashMap, LinkedHashMap, and TreeMap. Each implementation works differently based on ordering and performance."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Key Features of Map Interface",
+      "paragraphs": [
+        "The following points describe the key features of the Map interface:",
+        "• Key-Value Pair Structure:Map stores data in the form of key and value pairs. Each key is used to access its corresponding value.\n• No Duplicate Keys:A Map does not allow duplicate keys, but it can have duplicate values. If you add a duplicate key, the old value is replaced with the new value.\n• Allows Null Values:Some Map implementations allow null keys and values. For example, HashMap allows one null key and multiple null values.\n• Not a Subtype of Collection:Map is not a part of the Collection interface. It is a separate interface in the Java Collections Framework.\n• Traversal Using Set:A Map cannot be traversed directly. To iterate over it, you need to use keySet(), values(), or entrySet() methods.\n• Different Implementations:Map has different implementations like HashMap, LinkedHashMap, and TreeMap. Each implementation works differently based on ordering and performance."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Hierarchy of Map Interface",
+      "paragraphs": [
+        "The following image shows the hierarchy of the Map interface and its implementations:"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Classes of Map Interface",
+      "paragraphs": [
+        "The following table describes the commonly used classes that implement the Map interface:",
+        "Class | Description\nHashMap | HashMap is the implementation of Map, but it doesn't maintain any order.\nLinkedHashMap | LinkedHashMap is the implementation of Map. It inherits HashMap class. It maintains insertion order.\nTreeMap | TreeMap is the implementation of Map and SortedMap. It maintains ascending order."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Methods of Map Interface",
+      "paragraphs": [
+        "The following table shows the commonly used methods of the Map interface:",
+        "Method | Description\nV put(Object key, Object value) | It is used to insert an entry in the map.\nvoid putAll(Map map) | It is used to insert the specified map in the map.\nV putIfAbsent(K key, V value) | It inserts the specified value with the specified key in the map only if it is not already specified.\nV remove(Object key) | It is used to delete an entry for the specified key.\nboolean remove(Object key, Object value) | It removes the specified values with the associated specified keys from the map.\nSet keySet() | It returns the Set view containing all the keys.\nSet<Map.Entry<K,V>> entrySet() | It returns the Set view containing all the keys and values.\nvoid clear() | It is used to reset the map.\nV compute(K key, BiFunction<? super K,? super V,? extends V> remappingFunction) | It is used to compute a mapping for the specified key and its current mapped value (or null if there is no current mapping).\nV computeIfAbsent(K key, Function<? super K,? extends V> mappingFunction) | It is used to compute its value using the given mapping function, if the specified key is not already associated with a value (or is mapped to null), and enters it into this map unless null.\nV computeIfPresent(K key, BiFunction<? super K,? super V,? extends V> remappingFunction) | It is used to compute a new mapping given the key and its current mapped value if the value for the specified key is present and non-null.\nboolean containsValue(Object value) | This method returns true if some value equal to the value exists within the map, else return false.\nboolean containsKey(Object key) | This method returns true if some key equal to the key exists within the map, else return false.\nboolean equals(Object o) | It is used to compare the specified Object with the Map.\nvoid forEach(BiConsumer<? super K,? super V> action) | It performs the given action for each entry in the map until all entries have been processed or the action throws an exception.\nV get(Object key) | This method returns the object that contains the value associated with the key.\nV getOrDefault(Object key, V defaultValue) | It returns the value to which the specified key is mapped, or defaultValue if the map contains no mapping for the key.\nint hashCode() | It returns the hash code value for the Map\nboolean isEmpty() | This method returns true if the map is empty; returns false if it contains at least one key.\nV merge(K key, V value, BiFunction<? super V,? super V,? extends V> remappingFunction) | If the specified key is not already associated with a value or is associated with null, associates it with the given non-null value.\nV replace(K key, V value) | It replaces the specified value for a specified key.\nboolean replace(K key, V oldValue, V newValue) | It replaces the old value with the new value for a specified key.\nvoid replaceAll(BiFunction<? super K,? super V,? extends V> function) | It replaces each entry's value with the result of invoking the given function on that entry until all entries have been processed or the function throws an exception.\nCollectionvalues() | It returns a collection view of the values contained in the map.\nint size() | This method returns the number of entries in the map."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Map.Entry Interface",
+      "paragraphs": [
+        "Map.Entry is an inner interface of the Map interface which represents a single pair of key-value in a map. It additionally allows one to get a map and to iterate over its entries, convert the map to a set of keys/values, etc. It returns a collection-view of the map, whose elements are of this class. It provides methods to get keys and values."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Methods of Map.Entry interface",
+      "paragraphs": [
+        "The following table shows the commonly used methods of the Map.Entry interface:",
+        "Method | Description\nK getKey() | It is used to obtain a key.\nV getValue() | It is used to obtain value.\nint hashCode() | It is used to obtain hashCode.\nV setValue(V value) | It is used to replace the value corresponding to this entry with the specified value.\nboolean equals(Object o) | It is used to compare the specified object with the other existing objects.\nstatic <K extends Comparable<? super K>,V> Comparator<Map.Entry<K,V>> comparingByKey() | It returns a comparator that compare the objects in natural order on key.\nstatic <K,V> Comparator<Map.Entry<K,V>> comparingByKey(Comparator<? super K> cmp) | It returns a comparator that compare the objects by key using the given Comparator.\nstatic <K,V extends Comparable<? super V>> Comparator<Map.Entry<K,V>> comparingByValue() | It returns a comparator that compare the objects in natural order on value.\nstatic <K,V> Comparator<Map.Entry<K,V>> comparingByValue(Comparator<? super V> cmp) | It returns a comparator that compare the objects by value using the given Comparator."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Map Examples",
+      "paragraphs": [
+        "Here are some examples of the Java Map interface to understand its usage."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example 1: Non-Generic Map (Old Style)",
+      "paragraphs": [
+        "In this example, we are using a non-generic Map and traversing it using Iterator.",
+        "//Non-generic\nimport java.util.*;\npublic class Main {\npublic static void main(String[] args) {\n\tMap map=new HashMap();\n\t//Adding elements to map\n\tmap.put(1,\"Amit\");\n\tmap.put(5,\"Rahul\");\n\tmap.put(2,\"Jai\");\n\tmap.put(6,\"Amit\");\n\t//Traversing Map\n\tSet set=map.entrySet();//Converting to Set so that we can traverse\n\tIterator itr=set.iterator();\n\twhile(itr.hasNext()){\n\t\t//Converting to Map.Entry so that we can get key and value separately\n\t\tMap.Entry entry=(Map.Entry)itr.next();\n\t\tSystem.out.println(entry.getKey()+\" \"+entry.getValue());\n\t}\n}\n}",
+        "Output:"
+      ],
+      "code": [
+        "1 Amit\n2 Jai\n5 Rahul\n6 Amit"
+      ]
+    },
+    {
+      "heading": "Example 2: Generic Map Using HashMap",
+      "paragraphs": [
+        "In this example, we are using a generic Map and traversing it using entrySet().",
+        "import java.util.*;\nclass Main{\n   public static void main(String args[]){\n      // Creating a HashMap instance\n      Map<Integer,String> map=new HashMap<Integer,String>();   \n      // Adding key-value pairs to the map\n      map.put(100,\"Amit\");\n      map.put(101,\"Vijay\");\n      map.put(102,\"Rahul\");  \n      // Elements can traverse in any order\n      // Iterating over the entries of the map\n      for(Map.Entry m:map.entrySet()){\n         // Printing the key-value pairs\n         System.out.println(m.getKey()+\" \"+m.getValue());\n      }\n   }\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "100 Amit\n101 Vijay\n102 Rahul"
+      ]
+    },
+    {
+      "heading": "Example 3: Sorting Map by Key (Ascending Order)",
+      "paragraphs": [
+        "import java.util.*;\nclass Main {\n    public static void main(String args[]) {\n        // Creating a HashMap instance to store key-value pairs\n        Map<Integer, String> map = new HashMap<Integer, String>();\n        // Adding key-value pairs to the map\n        map.put(100, \"Amit\");\n        map.put(101, \"Vijay\");\n        map.put(102, \"Rahul\");\n        // Returns a Set view of the mappings contained in this map\n        map.entrySet() // Returns a Set view of the mappings contained in this map\n            .stream() // Returns a sequential Stream with this collection as its source\n            .sorted(Map.Entry.comparingByKey()) // Sorted according to the provided Comparator\n            .forEach(System.out::println); // Performs an action for each element of this stream\n    }\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "100=Amit\n101=Vijay\n102=Rahul"
+      ]
+    },
+    {
+      "heading": "Example 4: Sorting Map by Key (Descending Order)",
+      "paragraphs": [
+        "In this example, we are sorting the Map entries by key in descending order.",
+        "import java.util.*;\nclass main {\n    public static void main(String args[]) {\n        // Creating a HashMap instance to store key-value pairs\n        Map<Integer, String> map = new HashMap<Integer, String>();\n        // Adding key-value pairs to the map\n        map.put(100, \"Amit\");\n        map.put(101, \"Vijay\");\n        map.put(102, \"Rahul\");\n        // Returns a Set view of the mappings contained in this map\n        map.entrySet() // Returns a Set view of the mappings contained in this map\n            .stream() // Returns a sequential Stream with this collection as its source\n            .sorted(Map.Entry.comparingByKey(Comparator.reverseOrder())) // Sorted according to the provided Comparator\n            .forEach(System.out::println); // Performs an action for each element of this stream\n    }\n}\nCompile and Run",
+        "Output:",
+        "Note: The Map interface is implemented by several classes such as HashMap, LinkedHashMap, and TreeMap."
+      ],
+      "code": [
+        "102=Rahul\n101=Vijay\n100=Amit"
+      ]
+    },
+    {
+      "heading": "HashMap",
+      "paragraphs": [
+        "HashMap is an important data structure in Java which implements the Map interface. In this way, it provides a scheme for storing of key-value pairs. A HashMap has each key unique and only has one value for each key. This enables the lookup of values by their keys that are paired with them.",
+        "One of the most important features of HashMap is its underlying implementation as a hash table that allows constant-time performance for basic operations such as insertion, deletion, and retrieval on average, providing a good hash function and proper capacity management."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "In this example, we are creating a HashMap to store student IDs and names, retrieving a value using a key, iterating through the map, and checking if a key exists.",
+        "import java.util.HashMap;\nimport java.util.Map;\npublic class Main {\n    public static void main(String[] args) {\n        // Creating a HashMap to store student IDs and their corresponding names\n        Map<Integer, String> studentMap = new HashMap<>();\n        // Adding some student records to the HashMap\n        studentMap.put(1001, \"John Smith\");\n        studentMap.put(1002, \"Emily Brown\");\n        studentMap.put(1003, \"Michael Johnson\");\n        // Retrieving and printing a student's name based on their ID\n        int studentIdToFind = 1002;\n        String studentName = studentMap.get(studentIdToFind);\n        if (studentName != null) {\n            System.out.println(\"Student with ID \" + studentIdToFind + \" is: \" + studentName);\n        } else {\n            System.out.println(\"Student with ID \" + studentIdToFind + \" not found.\");\n        }\n        // Iterating over the entries of the HashMap and printing each key-value pair\n        System.out.println(\"Student Records:\");\n        for (Map.Entry<Integer, String> entry : studentMap.entrySet()) {\n            System.out.println(\"ID: \" + entry.getKey() + \", Name: \" + entry.getValue());\n        }\n        // Checking if a student ID exists in the HashMap\n        int idToCheck = 1004;\n        boolean exists = studentMap.containsKey(idToCheck);\n        System.out.println(\"Student with ID \" + idToCheck + \" exists in records: \" + exists);\n    }\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Student with ID 1002 is: Emily BrownStudent Records:\nID: 1001, Name: John Smith\nID: 1002, Name: Emily Brown\nID: 1003, Name: Michael Johnson\nStudent with ID 1004 exists in records: false"
+      ]
+    },
+    {
+      "heading": "LinkedHashMap",
+      "paragraphs": [
+        "LinkedHashMap is a class in Java that extends HashMap and implements the Map interface. It is similar to HashMap in functionality but maintains a predictable iteration order, that is, the order in which keys were inserted into the map (insertion order). This makes LinkedHashMap a good choice when the insertion order needs to be preserved.",
+        "LinkedHashMap has a special feature of maintaining a doubly linked list of its entries, which allows iteration in either insertion order or access order (the order in which entries were last accessed)."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "In this example, we are creating a LinkedHashMap to store student IDs and names, and iterating over the entries while maintaining insertion order.",
+        "import java.util.LinkedHashMap;\nimport java.util.Map;\npublic class Main {\n    public static void main(String[] args) {\n        // Creating a LinkedHashMap to store student IDs and their corresponding names\n        Map<Integer, String> studentMap = new LinkedHashMap<>();\n        // Adding some student records to the LinkedHashMap\n        studentMap.put(1001, \"John Smith\");\n        studentMap.put(1002, \"Emily Brown\");\n        studentMap.put(1003, \"Michael Johnson\");\n        // Iterating over the entries of the LinkedHashMap and printing each key-value pair\n        System.out.println(\"Student Records:\");\n        for (Map.Entry<Integer, String> entry : studentMap.entrySet()) {\n            System.out.println(\"ID: \" + entry.getKey() + \", Name: \" + entry.getValue());\n        }\n    }\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Student Records:\nID: 1001, Name: John Smith\nID: 1002, Name: Emily Brown\nID: 1003, Name: Michael Johnson"
+      ]
+    },
+    {
+      "heading": "TreeMap",
+      "paragraphs": [
+        "TreeMap is a sorted map implementation that stores key-value pairs in a Red-Black tree structure. It ensures that elements are arranged based on their keys, either in natural order or using a user-defined comparator.",
+        "This data structure provides O(log n) time complexity for insertion, deletion, and retrieval operations. TreeMap implements the NavigableMap interface, which provides methods for navigation and range-based operations.",
+        "It is commonly used for maintaining data in sorted order, performing range searches, and processing data efficiently in a sorted manner."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "In this example, we are creating a TreeMap to store student IDs and names, and iterating over the entries in sorted (ascending) order of keys.",
+        "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        // Creating a TreeMap to store student IDs and their corresponding names\n        TreeMap<Integer, String> studentMap = new TreeMap<>();\n        // Adding some student records to the TreeMap\n        studentMap.put(1003, \"Michael Johnson\");\n        studentMap.put(1001, \"John Smith\");\n        studentMap.put(1002, \"Emily Brown\");\n        // Iterating over the entries of the TreeMap and printing each key-value pair\n        System.out.println(\"Student Records:\");\n        for (Map.Entry<Integer, String> entry : studentMap.entrySet()) {\n            System.out.println(\"ID: \" + entry.getKey() + \", Name: \" + entry.getValue());\n        }\n    }\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Student Records:\nID: 1001, Name: John Smith\nID: 1002, Name: Emily Brown\nID: 1003, Name: Michael Johnson"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:44:34.915Z"
+}

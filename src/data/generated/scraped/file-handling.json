@@ -1,0 +1,288 @@
+{
+  "topicId": "file-handling",
+  "title": "File Handling in Java",
+  "sectionId": "java-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/file-handling-in-java",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/file-handling-in-java",
+      "score": 187,
+      "sectionCount": 30
+    }
+  ],
+  "sections": [
+    {
+      "heading": "File Handling in Java",
+      "paragraphs": [
+        "File handling in Java allows us to create, read, write, update, and delete files stored on the system. In this chapter, we will learn what file handling is, why it is used, the concept of streams, common file methods, and different file operations with complete examples."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is File Handling in Java?",
+      "paragraphs": [
+        "In Java, a file is a named location on disk used to store related information. File handling refers to the process of managing files programmatically, such as:",
+        "• Creating a file\n• Retrieving file information\n• Writing data into a file\n• Reading data from a file\n• Deleting a file",
+        "Java provides the java.io package to perform file handling operations."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Stream in Java",
+      "paragraphs": [
+        "A stream represents a sequence of data. File handling is performed using streams, which are classified into two types."
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. Byte Stream",
+      "paragraphs": [
+        "Byte Stream is used to handle byte-oriented data, such as images, audio files, and binary files.Classes like FileInputStream and FileOutputStream are used for byte stream operations."
+      ],
+      "code": []
+    },
+    {
+      "heading": "2. Character Stream",
+      "paragraphs": [
+        "Character Stream is used to handle character-oriented data, such as text files.Classes like FileReader, FileWriter, BufferedReader, and BufferedWriter are used for character stream operations."
+      ],
+      "code": []
+    },
+    {
+      "heading": "File Class Methods",
+      "paragraphs": [
+        "The following are some commonly used methods of the File class:",
+        "S.No. | Method | Return Type | Description\n1. | canRead() | Boolean | The canRead() method is used to check whether we can read the data of the file or not.\n2. | createNewFile() | Boolean | The createNewFile() method is used to create a new empty file.\n3. | canWrite() | Boolean | The canWrite() method is used to check whether we can write the data into the file or not.\n4. | exists() | Boolean | The exists() method is used to check whether the specified file is present or not.\n5. | delete() | Boolean | The delete() method is used to delete a file.\n6. | getName() | String | The getName() method is used to find the file name.\n7. | getAbsolutePath() | String | The getAbsolutePath() method is used to get the absolute pathname of the file.\n8. | length() | Long | The length() method is used to get the size of the file in bytes.\n9. | list() | String[] | The list() method is used to get an array of the files available in the directory.\n10. | mkdir() | Boolean | The mkdir() method is used for creating a new directory."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Create a File",
+      "paragraphs": [
+        "The create a file operation is used to create a new file in the system. This operation is performed using the createNewFile() method of the File class. This method returns true if the file is created successfully and false if the file already exists at the specified location."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "This example demonstrates how a new file is created using the createNewFile() method.",
+        "Output:",
+        "Explanation:",
+        "In the above code, we import the File and IOException class for performing file operation and handling errors, respectively. We create the f0 object of the File class and specify the location of the directory where we want to create a file. In the try block, we call the createNewFile() method through the f0 object to create a new file in the specified location. If the method returns false, it will jump to the else section. If there is any error, it gets handled in the catch block."
+      ],
+      "code": [
+        "// Importing File class\nimport java.io.File;\n// Importing the IOException class for handling errors\nimport java.io.IOException; \n class CreateFile {\n               public static void main(String args[]) {\n               try {\n                       // Creating an object of a file\n                       File f0 = new File(\"D:FileOperationExample.txt\"); \n                       if (f0.createNewFile()) {\n                                  System.out.println(\"File \" + f0.getName() + \" is created successfully.\");\n                       } else {\n                                  System.out.println(\"File is already exist in the directory.\");\n                       }\n                     } catch (IOException exception) {\n                              System.out.println(\"An unexpected error is occurred.\");\n                              exception.printStackTrace();\n                  } \n        }\n}"
+      ]
+    },
+    {
+      "heading": "Get File Information",
+      "paragraphs": [
+        "The get file Information operation is used to retrieve details about a file. Java provides several methods to obtain information such as the file name, absolute path, readability, writability, and file size (length)."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "This example demonstrates how to access and display different properties of a file, including its name, path, permissions, and size.",
+        "Output:",
+        "Description:",
+        "In the above code, we import the java.io.File package and create a class FileInfo. In the main method, we create an object of the text file which we have created in our previous example. We check the existence of the file using a conditional statement, and if it is present, we get the following information about that file:",
+        "• We get the name of the file using the getName()\n• We get the absolute path of the file using the getAbsolutePath() method of the file.\n• We check whether we can write data into a file or not using the canWrite()\n• We check whether we can read the data of the file or not using the canRead()\n• We get the length of the file by using the length()",
+        "If the file doesn't exist, we show a custom message."
+      ],
+      "code": [
+        "// Import the File class\nimport java.io.File; \nclass FileInfo {\n\tpublic static void main(String[] args) {\n\t\t// Creating file object\n\t\tFile f0 = new File(\"D:FileOperationExample.txt\");\n\t\tif (f0.exists()) {\n\t\t\t// Getting file name\n\t\t\tSystem.out.println(\"The name of the file is: \" + f0.getName());\n \n\t\t\t// Getting path of the file \n\t\t\tSystem.out.println(\"The absolute path of the file is: \" + f0.getAbsolutePath());   \n \n\t\t\t// Checking whether the file is writable or not\n\t\t\tSystem.out.println(\"Is file writeable?: \" + f0.canWrite());  \n \n\t\t\t// Checking whether the file is readable or not\n\t\t\tSystem.out.println(\"Is file readable \" + f0.canRead());  \n \n\t\t\t// Getting the length of the file in bytes\n\t\t\tSystem.out.println(\"The size of the file in bytes is: \" + f0.length());  \n\t\t} else {\n\t\t\tSystem.out.println(\"The file does not exist.\");\n\t\t}\n\t}\n}"
+      ]
+    },
+    {
+      "heading": "Write to a File",
+      "paragraphs": [
+        "The write to a file operation allows data to be stored inside a file. To write data, Java uses the FileWriter class along with its write() method. After writing data, it is important to close the stream using the close() method to release system resources."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "This example demonstrates how data is written into a file using FileWriter and how closing the stream ensures that all data is saved properly.",
+        "Output:",
+        "Explanation:",
+        "In the above code, we import the java.io.FileWriter and java.io.IOException classes. We create a class WriteToFile, and in its main method, we use the try-catch block. In the try section, we create an instance of the FileWriter class, i.e., fwrite. We call the write method of the FileWriter class and pass the content to that function which we want to write. After that, we call the close() method of the FileWriter class to close the file stream. After writing the content and closing the stream, we print a custom message.",
+        "If we get any error in the try section, it jumps to the catch block. In the catch block, we handle the IOException and print a custom message."
+      ],
+      "code": [
+        "// Importing the FileWriter class\nimport java.io.FileWriter; \n \n// Importing the IOException class for handling errors\nimport java.io.IOException; \n \nclass WriteToFile {\n\tpublic static void main(String[] args) {\n\t\n\ttry {\n\t\tFileWriter fwrite = new FileWriter(\"D:FileOperationExample.txt\");\n\t\t// writing the content into the FileOperationExample.txt file\n\t\tfwrite.write(\"A named location used to store related information is referred to as a File.\"); \n \n\t\t// Closing the stream\n\t\tfwrite.close(); \n\t\tSystem.out.println(\"Content is successfully wrote to the file.\");\n\t} catch (IOException e) {\n\t\tSystem.out.println(\"Unexpected error occurred\");\n\t\te.printStackTrace();\n\t\t}\n\t}\n}"
+      ]
+    },
+    {
+      "heading": "Read from a File",
+      "paragraphs": [
+        "The read from a file operation is used to read data stored in a file. Java commonly uses the Scanner class for this purpose. An instance of the Scanner class is created, and methods like hasNextLine() and nextLine() are used to read file content. After reading the data, the stream must be closed using the close() method."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "This example demonstrates how file data is read line by line using the Scanner class.",
+        "Output:",
+        "Expalnation:",
+        "In the above code, we import the \"java.util.Scannner\", \"java.io.File\" and \"java.io.IOException\" classes. We create a class ReadFromFile, and in its main method, we use the try-catch block. In the try section, we create an instance of both the Scanner and the File classes. We pass the File class object to the Scanner class object and then iterate the scanner class object using the \"While\" loop and print each line of the file. We also need to close the scanner class object, so we use the close() function. If we get any error in the try section, it jumps to the catch block. In the catch block, we handle the IOException and print a custom message."
+      ],
+      "code": [
+        "// Importing the File class\nimport java.io.File; \n// Importing FileNotFoundException class for handling errors\nimport java.io.FileNotFoundException; \n// Importing the Scanner class for reading text files\nimport java.util.Scanner; \n \nclass ReadFromFile {\n\tpublic static void main(String[] args) {\n\t\ttry {\n\t\t\t// Create f1 object of the file to read data\n\t\t\tFile f1 = new File(\"D:FileOperationExample.txt\");  \n\t\t\tScanner dataReader = new Scanner(f1);\n\t\t\twhile (dataReader.hasNextLine()) {\n\t\t\t\tString fileData = dataReader.nextLine();\n\t\t\t\tSystem.out.println(fileData);\n\t\t\t}\n\t\t\tdataReader.close();\n\t\t} catch (FileNotFoundException exception) {\n\t\t\tSystem.out.println(\"Unexcpected error occurred!\");\n\t\t\texception.printStackTrace();\n\t\t}\n\t}\n}"
+      ]
+    },
+    {
+      "heading": "Delete a File",
+      "paragraphs": [
+        "The delete a file operation is used to remove a file from the system. Java provides the delete() method of the File class to perform this task. Since no input or output stream is used while deleting a file, there is no need to close any stream."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "This example demonstrates how an existing file is deleted using the delete() method and how Java confirms the deletion status.",
+        "Output:",
+        "Explanation:",
+        "In the above code, we import the File class and create a class DeleteFile. In the main() method of the class, we create f0 object of the file which we want to delete. In the if statement, we call the delete() method of the file using the f0 object. If the delete() method returns true, we print the success custom message. Otherwise, it jumps to the else section where we print the unsuccessful custom message.",
+        "All the above-mentioned operations are used to read, write, delete, and create file programmatically."
+      ],
+      "code": [
+        "// Importing the File class\nimport java.io.File; \nclass DeleteFile {\n  public static void main(String[] args) { \n    File f0 = new File(\"D:FileOperationExample.txt\"); \n    if (f0.delete()) { \n      System.out.println(f0.getName()+ \" file is deleted successfully.\");\n    } else {\n      System.out.println(\"Unexpected error found in deletion of the file.\");\n    } \n  } \n}"
+      ]
+    },
+    {
+      "heading": "Check Whether a File Exists",
+      "paragraphs": [
+        "To check whether a file exists, the exists() method of the File class is used. This method checks the presence of a file or directory at the specified location and returns true if it is found; otherwise, it returns false."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "This example demonstrates how Java checks the existence of a file before performing any file operation.",
+        "Output:"
+      ],
+      "code": [
+        "import java.io.File;\n\npublic class FileExistsExample {\n    public static void main(String[] args) {\n        File file = new File(\"test.txt\");\n\n        if (file.exists()) {\n            System.out.println(\"File exists\");\n        } else {\n            System.out.println(\"File does not exist\");\n        }\n    }\n}",
+        "File exists"
+      ]
+    },
+    {
+      "heading": "Create a Directory",
+      "paragraphs": [
+        "Java also allows creating directories (folders), which is useful when files need to be organized into specific locations. To create a directory, the mkdir() method of the File class is used that creates a single directory and returns true if the directory is created successfully or false if it already exists or cannot be created."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "This example demonstrates how a new directory is created using Java file-handling methods.",
+        "Output:"
+      ],
+      "code": [
+        "import java.io.File;\n\npublic class CreateDirectoryExample {\n    public static void main(String[] args) {\n        File dir = new File(\"MyFolder\");\n\n        if (dir.mkdir()) {\n            System.out.println(\"Directory created successfully\");\n        } else {\n            System.out.println(\"Directory already exists\");\n        }\n    }\n}",
+        "Directory created successfully"
+      ]
+    },
+    {
+      "heading": "List Files in a Directory",
+      "paragraphs": [
+        "You can list out all files and subdirectories present inside a directory by using the list() or listFiles() method of the File class. These methods retrieve the names or file objects of all entries available in the specified directory."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "This example demonstrates how lists all files and folders available inside a directory.",
+        "Output:"
+      ],
+      "code": [
+        "import java.io.File;\n\npublic class ListFilesExample {\n    public static void main(String[] args) {\n        File folder = new File(\"MyFolder\");\n        String[] files = folder.list();\n\n        for (String file : files) {\n            System.out.println(file);\n        }\n    }\n}",
+        "file1.txt\nfile2.txt\nsubFolder"
+      ]
+    },
+    {
+      "heading": "Rename a File",
+      "paragraphs": [
+        "You can rename a file or move it to another location by using the renameTo() method of the File class. This method changes the name or path of the file and returns true if the operation is successful; otherwise, it returns false."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "This example demonstrates how an existing file is renamed using Java file-handling functionality.",
+        "Output:"
+      ],
+      "code": [
+        "import java.io.File;\n\npublic class RenameFileExample {\n    public static void main(String[] args) {\n        File oldFile = new File(\"old.txt\");\n        File newFile = new File(\"new.txt\");\n\n        if (oldFile.renameTo(newFile)) {\n            System.out.println(\"File renamed successfully\");\n        } else {\n            System.out.println(\"File rename failed\");\n        }\n    }\n}",
+        "File renamed successfully"
+      ]
+    },
+    {
+      "heading": "File Permissions",
+      "paragraphs": [
+        "You can check and modify file permissions by using methods such as canRead(), canWrite(), canExecute(), setReadable(), setWritable(), and setExecutable() provided by the File class. You can also use the FilePermission class and its methods to read, write, and change the file's permissions."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "This example demonstrates how Java checks and updates file access permissions.",
+        "Output:"
+      ],
+      "code": [
+        "import java.io.File;\n\npublic class FilePermissionExample {\n    public static void main(String[] args) {\n        File file = new File(\"test.txt\");\n\n        System.out.println(file.canRead());\n        System.out.println(file.canWrite());\n    }\n}",
+        "true\ntrue"
+      ]
+    },
+    {
+      "heading": "File Size and Last Modified Time",
+      "paragraphs": [
+        "You can determine the size of a file and the last modified date by using the length() and lastModified() methods of the File class. These methods return the file size in bytes and the last modification time."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "This example demonstrates how Java retrieves the file size and last modified timestamp.",
+        "Output:"
+      ],
+      "code": [
+        "import java.io.File;\n\npublic class FileInfoExample {\n    public static void main(String[] args) {\n        File file = new File(\"test.txt\");\n\n        System.out.println(file.length());\n        System.out.println(file.lastModified());\n    }\n}",
+        "1024\n1707052800000"
+      ]
+    },
+    {
+      "heading": "Handling File Exceptions",
+      "paragraphs": [
+        "File operations may cause exceptions such as file not found or access denied. These situations are handled using Java's exception handling mechanism (try, catch, and finally)."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "This example demonstrates how Java handles exceptions that may occur during file operations.",
+        "Output:"
+      ],
+      "code": [
+        "import java.io.File;\nimport java.io.FileReader;\n\npublic class FileExceptionExample {\n    public static void main(String[] args) {\n        try {\n            FileReader fr = new FileReader(\"missing.txt\");\n        } catch (Exception e) {\n            System.out.println(\"File not found\");\n        }\n    }\n}",
+        "File not found"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:41:32.285Z"
+}

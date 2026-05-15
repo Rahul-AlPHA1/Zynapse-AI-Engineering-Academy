@@ -1,0 +1,65 @@
+{
+  "topicId": "start-twice",
+  "title": "Can we start a thread twice",
+  "sectionId": "java-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/can-we-start-a-thread-twice",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/can-we-start-a-thread-twice",
+      "score": 34,
+      "sectionCount": 5
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Can we start a thread twice",
+      "paragraphs": [
+        "Threads in Java allow a program to perform multiple tasks concurrently. Once a thread is started using start(), it executes its run() method. A thread can be started only once, and trying to start it again will throw an exception. This chapter explains why and how to run the same task multiple times safely."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Can We Start a Thread Twice in Java?",
+      "paragraphs": [
+        "In Java, a thread cannot be started more than once. Once a thread has been started, calling the start() method again on the same thread object will throw an IllegalThreadStateException.",
+        "In other words, a thread runs only once, and any attempt to start it a second time results in an exception."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: Starting a Thread Twice",
+      "paragraphs": [
+        "The following example demonstrates what happens if you try to start a thread twice:",
+        "Output:",
+        "Explanation:",
+        "• The first call to t1.start() executes the thread normally.\n• The second call to t1.start() throws an IllegalThreadStateException, because a thread cannot be restarted once it has completed execution."
+      ],
+      "code": [
+        "public class TestThreadTwice1 extends Thread {  \n    public void run() {  \n        System.out.println(\"running...\");  \n    }  \n\n    public static void main(String args[]) {  \n        TestThreadTwice1 t1 = new TestThreadTwice1();  \n        t1.start();  \n        t1.start(); // Attempting to start the same thread again\n    }  \n}",
+        "running...\nException in thread \"main\" java.lang.IllegalThreadStateException"
+      ]
+    },
+    {
+      "heading": "Tip to Create and Manage Two Threads for the Same Task",
+      "paragraphs": [
+        "Once a thread is started, it cannot be started again. If you want to run the same task multiple times, you need to create a new thread object each time."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates running the same task using two thread objects:",
+        "Output:",
+        "Next TopicWhat If We call run() method directly"
+      ],
+      "code": [
+        "class MyTask extends Thread {\n    public void run() {\n        System.out.println(\"Task is running by \" + Thread.currentThread().getName());\n    }\n\n    public static void main(String[] args) {\n        MyTask t1 = new MyTask();\n        MyTask t2 = new MyTask(); // Create a new thread object for the same task\n\n        t1.start(); // First thread starts\n        t2.start(); // Second thread starts\n    }\n}",
+        "Task is running by Thread-0\nTask is running by Thread-1"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:39:05.102Z"
+}

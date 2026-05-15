@@ -1,0 +1,108 @@
+{
+  "topicId": "resultset",
+  "title": "ResultSet",
+  "sectionId": "java-collections-jdbc",
+  "source": "geeksforgeeks",
+  "url": "https://www.geeksforgeeks.org/java/set-in-java/",
+  "allSources": [
+    {
+      "sourceId": "geeksforgeeks",
+      "url": "https://www.geeksforgeeks.org/java/set-in-java/",
+      "score": 48,
+      "sectionCount": 10
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_set_interface.htm",
+      "score": 48,
+      "sectionCount": 9
+    },
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/ResultSet-Interface",
+      "score": 44,
+      "sectionCount": 6
+    }
+  ],
+  "sections": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "In Java, the Set interface is a part of the Java Collection Framework, located in the java.util package. It represents a collection of unique elements, meaning it does not allow duplicate values.",
+        "• The set interface does not allow duplicate elements.\n• It can contain at most one null value except TreeSet implementation which does not allow null.\n• The set interface provides efficient search, insertion, and deletion operations."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Declaration of Set Interface",
+      "paragraphs": [
+        "The declaration of Set interface is listed below:",
+        "Explanation: In the above example, HashSet will appear as an empty set, as no elements were added. The order of elements in HashSet is not guaranteed, so the elements will be displayed in a random order if any are added."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Hierarchy of Set interface",
+      "paragraphs": [
+        "The image below demonstrates the hierarchy of Java Set interface."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Classes that implement the Set interface",
+      "paragraphs": [
+        "• HashSet: A set that stores unique elements without any specific order, using a hash table and allows one null element.\n• EnumSet : A high-performance set designed specifically for enum types, where all elements must belong to the same enum.\n• LinkedHashSet: A set that maintains the order of insertion while storing unique elements.\n• TreeSet: A set that stores unique elements in sorted order, either by natural ordering or a specified comparator."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Creating Set Objects",
+      "paragraphs": [
+        "Since Set is an interface, objects cannot be created of the typeset. We always need a class that implements this interface in order to create an object. And also, after the introduction of Generics in Java 1.5, it is possible to restrict the type of object that can be stored in the Set. This type-safe set can be defined as:"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Performing Various Operations on Set",
+      "paragraphs": [
+        "Set interface provides commonly used operations to manage unique elements in a collection. Now let us discuss these operations individually as follows:"
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. Adding Elements",
+      "paragraphs": [
+        "To add elements to a Set in Java, use the add() method."
+      ],
+      "code": [
+        "[A, B, C]"
+      ]
+    },
+    {
+      "heading": "2. Accessing the Elements",
+      "paragraphs": [
+        "After adding the elements, if we wish to access the elements, we can use inbuilt methods like contains()."
+      ],
+      "code": [
+        "Set is [A, B, C]\nContains D false"
+      ]
+    },
+    {
+      "heading": "3. Removing Elements",
+      "paragraphs": [
+        "The values can be removed from the Set using the remove() method."
+      ],
+      "code": [
+        "Initial HashSet [A, B, C, D, E]\nAfter removing element [A, C, D, E]"
+      ]
+    },
+    {
+      "heading": "4. Iterating elements",
+      "paragraphs": [
+        "There are various ways to iterate through the Set. The most famous one is to use the enhanced for loop."
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:48:50.546Z"
+}

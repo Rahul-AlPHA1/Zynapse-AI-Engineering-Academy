@@ -1,0 +1,134 @@
+{
+  "topicId": "jdbc-oracle",
+  "title": "Java Database Connectivity with Oracle",
+  "sectionId": "java-collections-jdbc",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/example-to-connect-to-the-oracle-database",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/example-to-connect-to-the-oracle-database",
+      "score": 74,
+      "sectionCount": 14
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java Database Connectivity with Oracle",
+      "paragraphs": [
+        "Java database connectivity with Oracle is used to connect Java applications with Oracle databases. It allows developers to store, retrieve, and manage data using Java programs.",
+        "In this chapter, you will learn how to connect a Java application with an Oracle database using JDBC and perform basic database operations."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Required Information to Connect Java with Oracle Database",
+      "paragraphs": [
+        "To connect a Java application with the Oracle database, we need to follow 5 steps. In this example, we are using Oracle 10g as the database. For this, we need the following information:"
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. Driver Class",
+      "paragraphs": [
+        "The driver class for the Oracle database is oracle.jdbc.driver.OracleDriver. This class is used to establish the connection between Java and Oracle."
+      ],
+      "code": []
+    },
+    {
+      "heading": "2. Connection URL",
+      "paragraphs": [
+        "The connection URL for the Oracle 10g database is jdbc:oracle:thin:@localhost:1521:xe. Here, jdbc is the API, oracle is the database, thin is the driver, localhost is the server name (or IP address), 1521 is the port number, and XE is the Oracle service name. You can find these details in the tnsnames.ora file."
+      ],
+      "code": []
+    },
+    {
+      "heading": "3. Username",
+      "paragraphs": [
+        "The default username for the Oracle database is \"system\". This is a predefined administrative user created during installation. You can also create and use your own custom username for better security and application use."
+      ],
+      "code": []
+    },
+    {
+      "heading": "4. Password",
+      "paragraphs": [
+        "The password is the one set by the user at the time of installing the Oracle database. There is no fixed default password, as it depends on what was chosen during installation. You should always use a secure password and avoid using default credentials in real applications."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Creating a Table",
+      "paragraphs": [
+        "Before establishing a connection, let's first create a table in the Oracle database. A table is used to store data in rows and columns, and it is required before performing any database operations like insert, update, or fetch.",
+        "The following SQL query is used to create a table named emp with three columns: id, name, and age.",
+        "In this table, id stores numeric values, name stores text data, and age stores small numeric values. After creating the table, you can insert records and access them using your Java application."
+      ],
+      "code": [
+        "create table emp(\nid number(10),\nname varchar2(40),\nage number(3)\n);"
+      ]
+    },
+    {
+      "heading": "Example to Connect Java Application with Oracle database",
+      "paragraphs": [
+        "In this example, we are connecting to an Oracle database and getting data from emp table. Here, system and oracle are the username and password of the Oracle database."
+      ],
+      "code": [
+        "import java.sql.*;\nclass OracleCon{\npublic static void main(String args[]){\ntry{\n//step1 load the driver class\nClass.forName(\"oracle.jdbc.driver.OracleDriver\");\n\n//step2 create  the connection object\nConnection con=DriverManager.getConnection(\n\"jdbc:oracle:thin:@localhost:1521:xe\",\"system\",\"oracle\");\n\n//step3 create the statement object\nStatement stmt=con.createStatement();\n\n//step4 execute query\nResultSet rs=stmt.executeQuery(\"select * from emp\");\nwhile(rs.next())\nSystem.out.println(rs.getInt(1)+\"  \"+rs.getString(2)+\"  \"+rs.getString(3));\n\n//step5 close the connection object\ncon.close();\n\n}catch(Exception e){ System.out.println(e);}\n\n}\n}"
+      ]
+    },
+    {
+      "heading": "Downloading and Adding Oracle JDBC Driver (ojdbc14.jar)",
+      "paragraphs": [
+        "To connect a Java application with the Oracle database, the ojdbc14.jar file is required. This JAR file contains the Oracle JDBC driver classes needed for database connectivity.",
+        "Download the JAR file (ojdbc14.jar) and add it to your project's classpath so that the Java program can use it to establish a connection with the Oracle database."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Ways to Load ojdbc14.jar File",
+      "paragraphs": [
+        "There are two ways to load the ojdbc14.jar file so that your Java application can connect to the Oracle database."
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. Paste the ojdbc14.jar File in JRE/lib/ext Folder",
+      "paragraphs": [
+        "Firstly, locate the ojdbc14.jar file on your system. Then go to the JRE/lib/ext folder and paste the JAR file there. This makes the driver available globally to Java applications."
+      ],
+      "code": []
+    },
+    {
+      "heading": "2. Set the Classpath",
+      "paragraphs": [
+        "Another way is to set the classpath so that Java can find the ojdbc14.jar file.",
+        "There are two ways to set the classpath:",
+        "• Temporary\n• Permanent"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Setting the Temporary Classpath",
+      "paragraphs": [
+        "Firstly, locate the ojdbc14.jar file. Then open the command prompt and write:",
+        "This will set the classpath only for the current session."
+      ],
+      "code": [
+        "C:>set classpath=c:\\folder\\ojdbc14.jar;.;"
+      ]
+    },
+    {
+      "heading": "Setting the Permanent Classpath",
+      "paragraphs": [
+        "Go to Environment Variables in your system settings and click on \"New\". In the Variable Name, write classpath and in the Variable Value, paste the path of ojdbc14.jar like this:",
+        "This will set the classpath permanently for your system.",
+        "To see the steps of setting permanent path, read: Java - Set or Change the PATH System Variable",
+        "Next TopicExample To Connect To The Mysql Database"
+      ],
+      "code": [
+        "C:\\oraclexe\\app\\oracle\\product\\10.2.0\\server\\jdbc\\lib\\ojdbc14.jar;.;"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:48:13.567Z"
+}

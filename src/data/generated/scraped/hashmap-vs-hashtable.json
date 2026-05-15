@@ -1,0 +1,103 @@
+{
+  "topicId": "hashmap-vs-hashtable",
+  "title": "Java - Map Interface",
+  "sectionId": "java-collections-jdbc",
+  "source": "tutorialspoint",
+  "url": "https://www.tutorialspoint.com/java/java_map_interface.htm",
+  "allSources": [
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_map_interface.htm",
+      "score": 52,
+      "sectionCount": 10
+    },
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/difference-between-hashmap-and-hashtable",
+      "score": 44,
+      "sectionCount": 8
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Map Interface",
+      "paragraphs": [
+        "The Map interface maps unique keys to values. A key is an object that you use to retrieve a value at a later date.",
+        "• Given a key and a value, you can store the value in a Map object. After the value is stored, you can retrieve it by using its key.\n• Several methods throw a NoSuchElementException when no items exist in the invoking map.\n• A ClassCastException is thrown when an object is incompatible with the elements in a map.\n• A NullPointerException is thrown if an attempt is made to use a null object and null is not allowed in the map.\n• An UnsupportedOperationException is thrown when an attempt is made to change an unmodifiable map."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Map Interface Methods",
+      "paragraphs": [
+        "Sr.No.\nMethod & Description\n\n\n1\nvoid clear( )\nRemoves all key/value pairs from the invoking map.\n\n\n\n2\nboolean containsKey(Object k)\nReturns true if the invoking map contains k as a key. Otherwise, returns false.\n\n\n\n3\nboolean containsValue(Object v)\nReturns true if the map contains v as a value. Otherwise, returns false.\n\n\n\n4\nSet entrySet( )\nReturns a Set that contains the entries in the map. The set contains objects of type Map.Entry. This method provides a set-view\nof the invoking map.\n\n\n\n5\nboolean equals(Object obj)\nReturns true if obj is a Map and contains the same entries. Otherwise, returns false.\n\n\n\n6\nObject get(Object k)\nReturns the value associated with the key k.\n\n\n\n7\nint hashCode( )\nReturns the hash code for the invoking map.\n\n\n\n8\nboolean isEmpty( )\nReturns true if the invoking map is empty. Otherwise, returns false.\n\n\n\n9\nSet keySet( )\nReturns a Set that contains the keys in the invoking map. This method provides a set-view of the keys in the invoking map.\n\n\n\n10\nObject put(Object k, Object v)\nPuts an entry in the invoking map, overwriting any previous value associated with the key. The key and value are k and v, respectively. Returns null if the key did not already exist. Otherwise, the previous value linked to the key is returned.\n\n\n\n11\nvoid putAll(Map m)\nPuts all the entries from m into this map.\n\n\n\n12\nObject remove(Object k)\nRemoves the entry whose key equals k.\n\n\n\n13\nint size( )\nReturns the number of key/value pairs in the map.\n\n\n\n14\nCollection values( )\nReturns a collection containing the values in the map. This method provides a collection-view of the values in the map."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Classes that Implement Map",
+      "paragraphs": [
+        "The following are the classes that implement a Map to use the functionalities of a Map -",
+        "• HashMap\n• EnumMap\n• LinkedHashMap\n• WeakHashMap\n• TreeMap"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Interfaces that Extend Map",
+      "paragraphs": [
+        "The following are the interfaces that extend the Map interface -",
+        "• SortedMap\n• NavigableMap\n• ConcurrentMap"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example 1",
+      "paragraphs": [
+        "Map has its implementation in various classes like HashMap. Following is an example to explain map functionality −"
+      ],
+      "code": [
+        "import java.util.HashMap;\nimport java.util.Map;\npublic class CollectionsDemo {\n\n   public static void main(String[] args) {\n      Map<String, String> m1 = new HashMap<>(); \n      m1.put(\"Zara\", \"8\");\n      m1.put(\"Mahnaz\", \"31\");\n      m1.put(\"Ayan\", \"12\");\n      m1.put(\"Daisy\", \"14\");\n\n      System.out.println();\n      System.out.println(\" Map Elements\");\n      System.out.print(\"\\t\" + m1);\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Map Elements\n\t{Daisy = 14, Ayan = 12, Zara = 8, Mahnaz = 31}"
+      ]
+    },
+    {
+      "heading": "Example 2",
+      "paragraphs": [
+        "Map has its implementation in various classes like TreeMap which sorts the entries based on keys. Following is an example to explain map functionality using TreeMap −"
+      ],
+      "code": [
+        "import java.util.Map;\nimport java.util.TreeMap;\n\npublic class CollectionsDemo {\n\n   public static void main(String[] args) {\n      Map<String, String> m1 = new TreeMap<>(); \n      m1.put(\"Zara\", \"8\");\n      m1.put(\"Mahnaz\", \"31\");\n      m1.put(\"Ayan\", \"12\");\n      m1.put(\"Daisy\", \"14\");\n\n      System.out.println();\n      System.out.println(\" Map Elements\");\n      System.out.print(\"\\t\" + m1);\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Map Elements\n\t{Ayan=12, Daisy=14, Mahnaz=31, Zara=8}"
+      ]
+    },
+    {
+      "heading": "Example 3",
+      "paragraphs": [
+        "Map has its implementation in various classes like HashMap. Following is an example to explain map functions using HashMap to add and remove elements to the map−"
+      ],
+      "code": [
+        "import java.util.HashMap;\nimport java.util.Map;\npublic class CollectionsDemo {\n\n   public static void main(String[] args) {\n      Map<String, String> m1 = new HashMap<>(); \n      m1.put(\"Zara\", \"8\");\n      m1.put(\"Mahnaz\", \"31\");\n      m1.put(\"Ayan\", \"12\");\n      m1.put(\"Daisy\", \"14\");\n\n      System.out.println();\n      System.out.println(\" Map Elements\");\n      System.out.print(\"\\t\" + m1);\n\t  \n      m1.remove(\"Daisy\");\n\t  System.out.println(\" Map Elements\");\n      System.out.print(\"\\t\" + m1);\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Map Elements\n\t{Daisy=14, Ayan=12, Zara=8, Mahnaz=31} Map Elements\n\t{Ayan=12, Zara=8, Mahnaz=31}"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:45:23.201Z"
+}

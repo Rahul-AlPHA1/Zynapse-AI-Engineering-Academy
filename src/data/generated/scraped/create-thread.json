@@ -1,0 +1,140 @@
+{
+  "topicId": "create-thread",
+  "title": "Java - Creating a Thread",
+  "sectionId": "java-advanced",
+  "source": "tutorialspoint",
+  "url": "https://www.tutorialspoint.com/java/java_create_thread.htm",
+  "allSources": [
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_create_thread.htm",
+      "score": 77,
+      "sectionCount": 14
+    },
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/how-to-create-a-thread-in-java",
+      "score": 63,
+      "sectionCount": 9
+    }
+  ],
+  "sections": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "There are two different ways to create a thread in Java. We have listed them as follows:",
+        "• By Implementing a Runnable Interface\n• By Extending a Thread Class"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Create a Thread by Implementing a Runnable Interface",
+      "paragraphs": [
+        "If your class is intended to be executed as a thread then you can achieve this by implementing a Runnable interface. You will need to follow three basic steps −"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Step 1",
+      "paragraphs": [
+        "As a first step, you need to implement a run() method provided by a Runnable interface. This method provides an entry point for the thread and you will put your complete business logic inside this method. Following is a simple syntax of the run() method −"
+      ],
+      "code": [
+        "public void run( )"
+      ]
+    },
+    {
+      "heading": "Step 2",
+      "paragraphs": [
+        "As a second step, you will instantiate a Thread object using the following constructor −",
+        "Where, threadObj is an instance of a class that implements the Runnable interface and threadName is the name given to the new thread."
+      ],
+      "code": [
+        "Thread(Runnable threadObj, String threadName);"
+      ]
+    },
+    {
+      "heading": "Step 3",
+      "paragraphs": [
+        "Once a Thread object is created, you can start it by calling start() method, which executes a call to run( ) method. Following is a simple syntax of start() method −"
+      ],
+      "code": [
+        "void start();"
+      ]
+    },
+    {
+      "heading": "Example to Create a Thread by Implementing a Runnable Interface",
+      "paragraphs": [
+        "In this example, we're creating a class RunnableDemo by implementing Runnable interface. RunnableDemo class has run() method implementation. In main class TestThread, we've created the RunnableDemo objects and using those objects we've created two Thread objects. When Thread.start() method is called on each thread objects, threads start processing and program is executed."
+      ],
+      "code": [
+        "package com.tutorialspoint;\nclass RunnableDemo implements Runnable {\n   private String threadName;\n   RunnableDemo( String name) {\n      threadName = name;\n      System.out.println(\"Thread: \" + threadName + \", \" + \"State: New\");\n   }\n\n   public void run() {\n      System.out.println(\"Thread: \" + threadName + \", \" + \"State: Running\");\n      for(int i = 4; i > 0; i--) {\n         System.out.println(\"Thread: \" + threadName + \", \" + i);         \n      }\n      System.out.println(\"Thread: \" + threadName + \", \" + \"State: Dead\");\n   }\n}\n\npublic class TestThread {\n   public static void main(String args[]) {\n\t  RunnableDemo runnableDemo1 = new RunnableDemo( \"Thread-1\");\n\t  RunnableDemo runnableDemo2 = new RunnableDemo( \"Thread-2\");\n\t  \n\t  Thread thread1 = new Thread(runnableDemo1);\n\t  Thread thread2 = new Thread(runnableDemo2);\n\t\n\t  thread1.start();\n\t  thread2.start();\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Thread: Thread-1, State: New\nThread: Thread-2, State: New\nThread: Thread-1, State: Running\nThread: Thread-1, 4\nThread: Thread-1, 3\nThread: Thread-1, 2\nThread: Thread-1, 1\nThread: Thread-1, State: Dead\nThread: Thread-2, State: Running\nThread: Thread-2, 4\nThread: Thread-2, 3\nThread: Thread-2, 2\nThread: Thread-2, 1\nThread: Thread-2, State: Dead"
+      ]
+    },
+    {
+      "heading": "Create a Thread by Extending a Thread Class",
+      "paragraphs": [
+        "The second way to create a thread is to create a new class that extends Thread class using the following two simple steps. This approach provides more flexibility in handling multiple threads created using available methods in Thread class."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Step 1",
+      "paragraphs": [
+        "You will need to override run() method available in Thread class. This method provides an entry point for the thread and you will put your complete business logic inside this method. Following is a simple syntax of run() method −"
+      ],
+      "code": [
+        "public void run( )"
+      ]
+    },
+    {
+      "heading": "Step 2",
+      "paragraphs": [
+        "Once Thread object is created, you can start it by calling start() method, which executes a call to run( ) method. Following is a simple syntax of start() method −"
+      ],
+      "code": [
+        "void start( );"
+      ]
+    },
+    {
+      "heading": "Example to Create a Thread by Extending a Thread Class",
+      "paragraphs": [
+        "Here is the preceeding program rewritten to extend the Thread − In this example, we've created a ThreadDemo class which extends Thread class. We're calling super(name) in constructor() method to assign a name to the thread and called super.start() to start the thread processing."
+      ],
+      "code": [
+        "package com.tutorialspoint;\nclass ThreadDemo extends Thread {\n   ThreadDemo( String name) {\n\t  super(name);\n      System.out.println(\"Thread: \" + name + \", \" + \"State: New\");\n   }\n   public void run() {\n      System.out.println(\"Thread: \" + Thread.currentThread().getName() + \", \" + \"State: Running\");\n      for(int i = 4; i > 0; i--) {\n         System.out.println(\"Thread: \" + Thread.currentThread().getName() + \", \" + i); \n      }\n      System.out.println(\"Thread: \" + Thread.currentThread().getName() + \", \" + \"State: Dead\");\n   }\n\n   public void start () {\n      System.out.println(\"Thread: \" + Thread.currentThread().getName() + \", \" + \"State: Start\");\n      super.start();\n   }\n}\npublic class TestThread {\n   public static void main(String args[]) {\n\t  ThreadDemo thread1 = new ThreadDemo( \"Thread-1\");\n\t  ThreadDemo thread2 = new ThreadDemo( \"Thread-2\");\n\t  thread1.start();\n\t  thread2.start();\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Thread: Thread-1, State: New\nThread: Thread-2, State: New\nThread: main, State: Start\nThread: main, State: Start\nThread: Thread-1, State: Running\nThread: Thread-1, 4\nThread: Thread-1, 3\nThread: Thread-1, 2\nThread: Thread-2, State: Running\nThread: Thread-1, 1\nThread: Thread-1, State: Dead\nThread: Thread-2, 4\nThread: Thread-2, 3\nThread: Thread-2, 2\nThread: Thread-2, 1\nThread: Thread-2, State: Dead"
+      ]
+    },
+    {
+      "heading": "Example: Demonstrating sleep() Method",
+      "paragraphs": [
+        "In this example, we're showcasing use of sleep() method to delay the processing. It helps in showing the parallel processing in the output. We've added Thread.sleep() call in the run method. InterruptedException is handled as thread can be interrupted during sleep mode."
+      ],
+      "code": [
+        "package com.tutorialspoint;\nclass ThreadDemo extends Thread {\n   ThreadDemo( String name) {\n\t  super(name);\n      System.out.println(\"Thread: \" + name + \", \" + \"State: New\");\n   }\n   public void run() {\n      System.out.println(\"Thread: \" + Thread.currentThread().getName() + \", \" + \"State: Running\");\n      for(int i = 4; i > 0; i--) {\n         System.out.println(\"Thread: \" + Thread.currentThread().getName() + \", \" + i); \n         try {\n\t\t\tThread.sleep(50);\n\t\t} catch (InterruptedException e) {\n\t\t\t// TODO Auto-generated catch block\n\t\t\te.printStackTrace();\n\t\t}\n      }\n      System.out.println(\"Thread: \" + Thread.currentThread().getName() + \", \" + \"State: Dead\");\n   }\n   public void start () {\n      System.out.println(\"Thread: \" + Thread.currentThread().getName() + \", \" + \"State: Start\");\n      super.start();\n   }\n}\n\npublic class TestThread {\n   public static void main(String args[]) {\n\t   ThreadDemo thread1 = new ThreadDemo( \"Thread-1\");\n\t   ThreadDemo thread2 = new ThreadDemo( \"Thread-2\");\n\t   thread1.start();\n\t   thread2.start();\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Thread: Thread-1, State: New\nThread: Thread-2, State: New\nThread: main, State: Start\nThread: main, State: Start\nThread: Thread-1, State: Running\nThread: Thread-1, 4\nThread: Thread-2, State: Running\nThread: Thread-2, 4\nThread: Thread-2, 3\nThread: Thread-1, 3\nThread: Thread-1, 2\nThread: Thread-2, 2\nThread: Thread-2, 1\nThread: Thread-1, 1\nThread: Thread-1, State: Dead\nThread: Thread-2, State: Dead"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:38:50.838Z"
+}

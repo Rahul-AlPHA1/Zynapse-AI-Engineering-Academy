@@ -1,0 +1,179 @@
+{
+  "topicId": "linkedlist",
+  "title": "Java LinkedList Class",
+  "sectionId": "java-collections-jdbc",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-linkedlist",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-linkedlist",
+      "score": 107,
+      "sectionCount": 16
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/util/java_util_linkedlist.htm",
+      "score": 44,
+      "sectionCount": 9
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java LinkedList Class",
+      "paragraphs": [
+        "Java LinkedList is used to store and manage a collection of data where frequent insertion and deletion of elements are required.",
+        "In Java, arrays have a fixed size and are not efficient for adding or removing elements. To solve this problem, LinkedList provides a dynamic data structure where elements can be easily inserted or deleted without shifting other elements."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is Java LinkedList?",
+      "paragraphs": [
+        "Java LinkedList is a class that implements a doubly linked list data structure. It is part of the Java Collections Framework and is used to store elements dynamically.",
+        "Unlike arrays, LinkedList does not store elements in continuous memory. Instead, it stores elements as nodes, where each node contains:",
+        "• The actual data\n• A reference to the next node\n• A reference to the previous node",
+        "This makes insertion and deletion operations faster and more efficient.",
+        "The LinkedList class:",
+        "• Extends the AbstractList class\n• Implements the List and Deque interfaces",
+        "LinkedList can be used in multiple ways such as:",
+        "• List\n• Stack\n• Queue",
+        "It also allows duplicate elements, maintains insertion order, and can grow or shrink dynamically based on the data."
+      ],
+      "code": []
+    },
+    {
+      "heading": "LinkedList Class Declaration",
+      "paragraphs": [
+        "LinkedList is a class that maintains insertion order and allows duplicate elements. It provides methods to add, remove, and access elements in the list.",
+        "It also implements the Deque interface, which means it supports operations at both ends (beginning and end) like adding or removing elements.",
+        "Let's see the declaration of the java.util.LinkedList class:"
+      ],
+      "code": [
+        "public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>, Deque<E>, Cloneable, Serializable"
+      ]
+    },
+    {
+      "heading": "Constructors of Java LinkedList",
+      "paragraphs": [
+        "The LinkedList class provides constructors to create linked list objects in different ways.",
+        "• You can create an empty LinkedList\n• You can create a LinkedList from another collection"
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. LinkedList()",
+      "paragraphs": [
+        "This constructor is used to create an empty LinkedList.",
+        "Here is the syntax:"
+      ],
+      "code": [
+        "LinkedList<Type> list = new LinkedList<>();"
+      ]
+    },
+    {
+      "heading": "2. LinkedList(Collection c)",
+      "paragraphs": [
+        "This constructor is used to create a LinkedList containing elements from another collection. The elements are added in the same order as the collection.",
+        "Here is the syntax:"
+      ],
+      "code": [
+        "LinkedList<Type> list = new LinkedList<>(collection);"
+      ]
+    },
+    {
+      "heading": "Methods of LinkedList Class",
+      "paragraphs": [
+        "The following table shows the commonly used methods of the LinkedList class:",
+        "Method | Description\nboolean add(E e) | It is used to append the specified element to the end of a list.\nvoid add(int index, E element) | It is used to insert the specified element at the specified position index in a list.\nboolean addAll(Collection<? extends E> c) | It is used to append all of the elements in the specified collection to the end of this list, in the order that they are returned by the specified collection's iterator.\nboolean addAll(Collection<? extends E> c) | It is used to append all of the elements in the specified collection to the end of this list, in the order that they are returned by the specified collection's iterator.\nboolean addAll(int index, Collection<? extends E> c) | It is used to append all the elements in the specified collection, starting at the specified position of the list.\nvoid addFirst(E e) | It is used to insert the given element at the beginning of a list.\nvoid addLast(E e) | It is used to append the given element to the end of a list.\nvoid clear() | It is used to remove all the elements from a list.\nObject clone() | It is used to return a shallow copy of an ArrayList.\nboolean contains(Object o) | It is used to return true if a list contains a specified element.\nIterator<E> descendingIterator() | It is used to return an iterator over the elements in a deque in reverse sequential order.\nE element() | It is used to retrieve the first element of a list.\nE get(int index) | It is used to return the element at the specified position in a list.\nE getFirst() | It is used to return the first element in a list.\nE getLast() | It is used to return the last element in a list.\nint indexOf(Object o) | It is used to return the index in a list of the first occurrence of the specified element, or -1 if the list does not contain any element.\nint lastIndexOf(Object o) | It is used to return the index in a list of the last occurrence of the specified element, or -1 if the list does not contain any element.\nListIterator<E> listIterator(int index) | It is used to return a list-iterator of the elements in proper sequence, starting at the specified position in the list.\nboolean offer(E e) | It adds the specified element as the last element of a list.\nboolean offerFirst(E e) | It inserts the specified element at the front of a list.\nboolean offerLast(E e) | It inserts the specified element at the end of a list.\nE peek() | It retrieves the first element of a list\nE peekFirst() | It retrieves the first element of a list or returns null if a list is empty.\nE peekLast() | It retrieves the last element of a list or returns null if a list is empty.\nE poll() | It retrieves and removes the first element of a list.\nE pollFirst() | It retrieves and removes the first element of a list, or returns null if a list is empty.\nE pollLast() | It retrieves and removes the last element of a list, or returns null if a list is empty.\nE pop() | It pops an element from the stack represented by a list.\nvoid push(E e) | It pushes an element onto the stack represented by a list.\nE remove() | It is used to retrieve and removes the first element of a list.\nE remove(int index) | It is used to remove the element at the specified position in a list.\nboolean remove(Object o) | It is used to remove the first occurrence of the specified element in a list.\nE removeFirst() | It removes and returns the first element from a list.\nboolean removeFirstOccurrence(Object o) | It is used to remove the first occurrence of the specified element in a list (when traversing the list from head to tail).\nE removeLast() | It removes and returns the last element from a list.\nboolean removeLastOccurrence(Object o) | It removes the last occurrence of the specified element in a list (when traversing the list from head to tail).\nE set(int index, E element) | It replaces the element at the specified position in a list with the specified element.\nObject[] toArray() | It is used to return an array containing all the elements in a list in proper sequence (from first to the last element).\n<T> T[] toArray(T[] a) | It returns an array containing all the elements in the proper sequence (from first to the last element); the runtime type of the returned array is that of the specified array.\nint size() | It is used to return the number of elements in a list."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Traversing LinkedList Elements",
+      "paragraphs": [
+        "You can create a LinkedList and traverse its elements using an iterator."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Let's see a simple example to traverse LinkedList elements.",
+        "import java.util.*;  \npublic class Main{  \n public static void main(String args[]){  \n  \n  LinkedList<String> al=new LinkedList<String>();  \n  al.add(\"Ravi\");  \n  al.add(\"Vijay\");  \n  al.add(\"Ravi\");  \n  al.add(\"Ajay\");  \n  \n  Iterator<String> itr=al.iterator();  \n  while(itr.hasNext()){  \n   System.out.println(itr.next());  \n  }  \n }  \n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Ravi\nVijay\nRavi\nAjay"
+      ]
+    },
+    {
+      "heading": "Adding Elements to LinkedList",
+      "paragraphs": [
+        "You can add elements to a LinkedList by using different ways like add(E e), add(int index, E element), addAll(Collection c), addAll(int index, Collection c), addFirst(E e), and addLast(E e) methods."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Let's see a simple example to add elements in different ways.",
+        "import java.util.*;  \npublic class Main{  \n public static void main(String args[]){  \n LinkedList<String> ll=new LinkedList<String>();  \n System.out.println(\"Initial list of elements: \"+ll);  \n\n ll.add(\"Ravi\");  \n ll.add(\"Vijay\");  \n ll.add(\"Ajay\");  \n System.out.println(\"After invoking add(E e) method: \"+ll);  \n\n ll.add(1, \"Gaurav\");  \n System.out.println(\"After invoking add(int index, E element) method: \"+ll);  \n\n LinkedList<String> ll2=new LinkedList<String>();  \n ll2.add(\"Sonoo\");  \n ll2.add(\"Hanumat\");  \n\n ll.addAll(ll2);  \n System.out.println(\"After invoking addAll(Collection<? extends E> c) method: \"+ll);  \n\n LinkedList<String> ll3=new LinkedList<String>();  \n ll3.add(\"John\");  \n ll3.add(\"Rahul\");  \n\n ll.addAll(1, ll3);  \n System.out.println(\"After invoking addAll(int index, Collection<? extends E> c) method: \"+ll);  \n\n ll.addFirst(\"Lokesh\");  \n System.out.println(\"After invoking addFirst(E e) method: \"+ll);  \n\n ll.addLast(\"Harsh\");  \n System.out.println(\"After invoking addLast(E e) method: \"+ll);  \n }  \n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Initial list of elements: []\nAfter invoking add(E e) method: [Ravi, Vijay, Ajay]\nAfter invoking add(int index, E element) method: [Ravi, Gaurav, Vijay, Ajay]\nAfter invoking addAll(Collection c) method:\n[Ravi, Gaurav, Vijay, Ajay, Sonoo, Hanumat]\nAfter invoking addAll(int index, Collection c) method:\n[Ravi, John, Rahul, Gaurav, Vijay, Ajay, Sonoo, Hanumat]\nAfter invoking addFirst(E e) method:\n[Lokesh, Ravi, John, Rahul, Gaurav, Vijay, Ajay, Sonoo, Hanumat]\nAfter invoking addLast(E e) method:\n[Lokesh, Ravi, John, Rahul, Gaurav, Vijay, Ajay, Sonoo, Hanumat, Harsh]"
+      ]
+    },
+    {
+      "heading": "Removing Elements from LinkedList",
+      "paragraphs": [
+        "The LinkedList elements can be removed by using different methods like remove(Object o), remove(int index), removeAll(Collection c), removeFirst(), removeLast(), removeFirstOccurrence(Object o), removeLastOccurrence(Object o), and clear()."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Let's see a simple example to remove elements.",
+        "import java.util.*;  \npublic class Main {  \n public static void main(String [] args){  \n\n LinkedList<String> ll=new LinkedList<String>();  \n ll.add(\"Ravi\");  \n ll.add(\"Vijay\");  \n ll.add(\"Ajay\");  \n ll.add(\"Anuj\");  \n ll.add(\"Gaurav\");  \n ll.add(\"Harsh\");  \n ll.add(\"Virat\");  \n ll.add(\"Gaurav\");  \n ll.add(\"Harsh\");  \n ll.add(\"Amit\");  \n\n System.out.println(\"Initial list of elements: \"+ll);  \n\n ll.remove(\"Vijay\");  \n System.out.println(\"After invoking remove(object) method: \"+ll);   \n\n ll.remove(0);  \n System.out.println(\"After invoking remove(index) method: \"+ll);   \n\n LinkedList<String> ll2=new LinkedList<String>();  \n ll2.add(\"Ravi\");  \n ll2.add(\"Hanumat\");  \n\n ll.addAll(ll2);  \n System.out.println(\"Updated list : \"+ll);   \n\n ll.removeAll(ll2);  \n System.out.println(\"After invoking removeAll() method: \"+ll);   \n\n ll.removeFirst();  \n System.out.println(\"After invoking removeFirst() method: \"+ll);  \n\n ll.removeLast();  \n System.out.println(\"After invoking removeLast() method: \"+ll);  \n\n ll.removeFirstOccurrence(\"Gaurav\");  \n System.out.println(\"After invoking removeFirstOccurrence() method: \"+ll);  \n\n ll.removeLastOccurrence(\"Harsh\");  \n System.out.println(\"After invoking removeLastOccurrence() method: \"+ll);  \n\n ll.clear();  \n System.out.println(\"After invoking clear() method: \"+ll);   \n }  \n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Initial list of elements: [Ravi, Vijay, Ajay, Anuj, Gaurav, Harsh, Virat, Gaurav, Harsh, Amit]\nAfter invoking remove(object) method: [Ravi, Ajay, Anuj, Gaurav, Harsh, Virat, Gaurav, Harsh, Amit]\nAfter invoking remove(index) method: [Ajay, Anuj, Gaurav, Harsh, Virat, Gaurav, Harsh, Amit]\nUpdated list : [Ajay, Anuj, Gaurav, Harsh, Virat, Gaurav, Harsh, Amit, Ravi, Hanumat]\nAfter invoking removeAll() method: [Ajay, Anuj, Gaurav, Harsh, Virat, Gaurav, Harsh, Amit]\nAfter invoking removeFirst() method: [Gaurav, Harsh, Virat, Gaurav, Harsh, Amit]\nAfter invoking removeLast() method: [Gaurav, Harsh, Virat, Gaurav, Harsh]\nAfter invoking removeFirstOccurrence() method: [Harsh, Virat, Gaurav, Harsh]\nAfter invoking removeLastOccurrence() method: [Harsh, Virat, Gaurav]\nAfter invoking clear() method: []"
+      ]
+    },
+    {
+      "heading": "Reversing LinkedList Elements",
+      "paragraphs": [
+        "You can traverse the LinkedList in reverse order using a descending iterator."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Let's see a simple example to reverse elements.",
+        "import java.util.*;  \npublic class Main{  \n public static void main(String args[]){  \n\n LinkedList<String> ll=new LinkedList<String>();  \n ll.add(\"Ravi\");  \n ll.add(\"Vijay\");  \n ll.add(\"Ajay\");  \n\n Iterator i=ll.descendingIterator();  \n while(i.hasNext()){  \n  System.out.println(i.next());  \n }  \n }  \n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Ajay\nVijay\nRavi"
+      ]
+    },
+    {
+      "heading": "LinkedList Example with Objects (Book)",
+      "paragraphs": [
+        "In this example, we store and traverse custom objects using LinkedList.",
+        "Let's see a simple example using a Book class.",
+        "import java.util.*;  \nclass Book {  \nint id;  \nString name,author,publisher;  \nint quantity;  \n\npublic Book(int id, String name, String author, String publisher, int quantity) {  \n this.id = id;  \n this.name = name;  \n this.author = author;  \n this.publisher = publisher;  \n this.quantity = quantity;  \n}  \n}  \n\npublic class Main {  \npublic static void main(String[] args) {  \n\n List<Book> list=new LinkedList<Book>();  \n\n Book b1=new Book(101,\"Let us C\",\"Yashwant Kanetkar\",\"BPB\",8);  \n Book b2=new Book(102,\"Data Communications & Networking\",\"Forouzan\",\"Mc Graw Hill\",4);  \n Book b3=new Book(103,\"Operating System\",\"Galvin\",\"Wiley\",6);  \n\n list.add(b1);  \n list.add(b2);  \n list.add(b3);  \n\n for(Book b:list){  \n  System.out.println(b.id+\" \"+b.name+\" \"+b.author+\" \"+b.publisher+\" \"+b.quantity);  \n }  \n}  \n}\nCompile and Run",
+        "Output:",
+        "Next TopicArrayList vs LinkedList"
+      ],
+      "code": [
+        "101 Let us C Yashwant Kanetkar BPB 8\n102 Data Communications & Networking Forouzan Mc Graw Hill 4\n103 Operating System Galvin Wiley 6"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:43:38.778Z"
+}

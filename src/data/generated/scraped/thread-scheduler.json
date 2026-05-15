@@ -1,0 +1,106 @@
+{
+  "topicId": "thread-scheduler",
+  "title": "Thread Scheduler in Java",
+  "sectionId": "java-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/thread-scheduler-in-java",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/thread-scheduler-in-java",
+      "score": 59,
+      "sectionCount": 10
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Thread Scheduler in Java",
+      "paragraphs": [
+        "Thread Scheduler in Java is responsible for deciding the order in which threads are executed by the Java Virtual Machine (JVM). It determines which thread runs at a given time and manages CPU time for multiple threads in a program.",
+        "In this chapter, we will explore how the thread scheduler works, understand different thread states, and learn how thread priorities affect the execution order of threads."
+      ],
+      "code": []
+    },
+    {
+      "heading": "How Thread Scheduler Works in Java?",
+      "paragraphs": [
+        "A thread scheduler is responsible for deciding which thread will run and which threads will wait. Only threads that are in the runnable state are considered by the thread scheduler.",
+        "If there is more than one thread in the runnable state, the thread scheduler decides which thread to execute based on two main factors: priority and time of arrival."
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. Priority",
+      "paragraphs": [
+        "Each thread has a priority between 1 and 10. Threads with higher priority are more likely to be chosen by the thread scheduler."
+      ],
+      "code": []
+    },
+    {
+      "heading": "2. Time of Arrival",
+      "paragraphs": [
+        "If two or more threads have the same priority, the scheduler looks at the time of arrival. The thread that became runnable first gets executed first.",
+        "By using these two factors, the thread scheduler manages the execution order of threads and ensures that multiple threads can share CPU time effectively."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Working of Thread Scheduler with Example",
+      "paragraphs": [
+        "Let's understand how the thread scheduler works with an example. Suppose there are five threads with different arrival times and priorities. The thread scheduler decides which thread gets the CPU first.",
+        "• The thread with the highest priority is selected to run first.\n• If a thread is already running and a new thread with higher priority becomes runnable, the current thread can be pre-empted, and the higher-priority thread gets CPU time.\n• When two threads have the same priority and arrival time, the scheduler follows the First-Come-First-Served (FCFS) principle that means the thread that arrived first executes first.",
+        "This ensures that threads are executed efficiently based on priority and arrival time.",
+        "The following example demonstrates how the thread scheduler selects threads based on priority and arrival time."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: Demonstrating Thread Scheduler",
+      "paragraphs": [
+        "The following example demonstrates how the thread scheduler selects threads based on priority and arrival time.",
+        "Output:",
+        "Explanation:",
+        "• The thread scheduler usually selects higher-priority threads first.\n• Threads with the same priority (like Thread 2 and Thread 4) may execute in FCFS order (whichever becomes runnable first).\n• This is a simulation, so exact order can vary depending on the JVM and OS."
+      ],
+      "code": [
+        "class MyThread extends Thread {\n    public MyThread(String name, int priority) {\n        super(name);          // Set thread name\n        setPriority(priority); // Set thread priority (1 to 10)\n    }\n\n    public void run() {\n        System.out.println(getName() + \" with priority \" + getPriority() + \" is running.\");\n    }\n\n    public static void main(String[] args) {\n        MyThread t1 = new MyThread(\"Thread 1\", 3);\n        MyThread t2 = new MyThread(\"Thread 2\", 7);\n        MyThread t3 = new MyThread(\"Thread 3\", 5);\n        MyThread t4 = new MyThread(\"Thread 4\", 7);\n        MyThread t5 = new MyThread(\"Thread 5\", 2);\n\n        t1.start();\n        t2.start();\n        t3.start();\n        t4.start();\n        t5.start();\n    }\n}",
+        "Thread 2 with priority 7 is running.\nThread 4 with priority 7 is running.\nThread 3 with priority 5 is running.\nThread 1 with priority 3 is running.\nThread 5 with priority 2 is running."
+      ]
+    },
+    {
+      "heading": "Thread Scheduler Algorithms",
+      "paragraphs": [
+        "On the basis of the above-mentioned factors, the scheduling algorithm is followed by a Java thread scheduler."
+      ],
+      "code": []
+    },
+    {
+      "heading": "First Come First Serve Scheduling:",
+      "paragraphs": [
+        "In this scheduling algorithm, the scheduler picks the threads thar arrive first in the runnable queue. Observe the following table:",
+        "Threads | Time of Arrival\nt1 | 0\nt2 | 1\nt3 | 2\nt4 | 3",
+        "In the above table, we can see that Thread t1 has arrived first, then Thread t2, then t3, and at last t4, and the order in which the threads will be processed is according to the time of arrival of threads.",
+        "Hence, Thread t1 will be processed first, and Thread t4 will be processed last."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Time-slicing scheduling:",
+      "paragraphs": [
+        "Usually, the First Come First Serve algorithm is non-preemptive, which is bad as it may lead to infinite blocking (also known as starvation). To avoid that, some time-slices are provided to the threads so that after some time, the running thread has to give up the CPU. Thus, the other waiting threads also get time to run their job.",
+        "In the above diagram, each thread is given a time slice of 2 seconds. Thus, after 2 seconds, the first thread leaves the CPU, and the CPU is then captured by Thread2. The same process repeats for the other threads too."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Preemptive-Priority Scheduling:",
+      "paragraphs": [
+        "The name of the scheduling algorithm denotes that the algorithm is related to the priority of the threads.",
+        "Suppose there are multiple threads available in the runnable state. The thread scheduler picks that thread that has the highest priority. Since the algorithm is also preemptive, therefore, time slices are also provided to the threads to avoid starvation. Thus, after some time, even if the highest priority thread has not completed its job, it has to release the CPU because of preemption.",
+        "Next TopicThread.sleep() in Java"
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:38:57.069Z"
+}

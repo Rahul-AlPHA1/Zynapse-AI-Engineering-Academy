@@ -1,0 +1,125 @@
+{
+  "topicId": "sleeping-thread",
+  "title": "Java Thread.sleep() Method",
+  "sectionId": "java-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/thread-sleep-in-java",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/thread-sleep-in-java",
+      "score": 79,
+      "sectionCount": 11
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java Thread.sleep() Method",
+      "paragraphs": [
+        "The Java Thread class provides the two variants of the sleep() method. First one accepts only an argument, whereas the other variant accepts two arguments. The method sleep() is being used to halt the working of a thread for a given amount of time. The time up to which the thread remains in the sleeping state is known as the sleeping time of the thread. After the sleeping time is over, the thread starts its execution from where it has left."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is Thread.sleep()?",
+      "paragraphs": [
+        "The Thread.sleep() method is used to pause the execution of the current thread for a specified amount of time. During this period, the thread does not consume CPU resources and moves to the timed waiting state. After the specified time elapses, the thread becomes runnable again and waits for the scheduler to pick it for execution.",
+        "To understand the various states and life cycle of a thread, read: Thread Life Cycle."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [
+        "The syntaxes with different parameters of the Thread.sleep() are as follow:",
+        "Here,",
+        "• The version with one parameter (millis) is a native method; the version with two parameters (millis, nanos) is implemented in Java.\n• Since it throws a checked exception, you must use a try-catch block or declare throws InterruptedException.\n• Any thread, including the main thread, can call Thread.sleep()."
+      ],
+      "code": [
+        "public static void sleep(long mls) throws InterruptedException \npublic static void sleep(long mls, int n) throws InterruptedException"
+      ]
+    },
+    {
+      "heading": "Parameters of Thread.sleep()",
+      "paragraphs": [
+        "The sleep() method takes the following parameters:",
+        "• millis (mls): Specifies the time in milliseconds for which the thread will sleep.\n• nanos (n): Specifies additional nanoseconds (0 to 999,999) to pause the thread for more precise timing."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Return Type",
+      "paragraphs": [
+        "The sleep() method does not return any value."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Examples of Thread.sleep() Method",
+      "paragraphs": [
+        "The following are examples showing different use cases of the Thread.sleep() method."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example 1: Simple Sleep on Main Thread",
+      "paragraphs": [
+        "The following example demonstrates a simple pause of 2 seconds in the main thread using Thread.sleep().",
+        "Output:",
+        "In this example, the main thread prints \"Start\", pauses for 2 seconds, and then prints \"End\"."
+      ],
+      "code": [
+        "public class SleepExample {\n    public static void main(String[] args) {\n        System.out.println(\"Start\");\n        try {\n            Thread.sleep(2000); // Pause for 2000 milliseconds (2 seconds)\n        } catch (InterruptedException e) {\n            System.out.println(\"Thread interrupted\");\n        }\n        System.out.println(\"End\");\n    }\n}",
+        "Start\nEnd"
+      ]
+    },
+    {
+      "heading": "Example 2: Handling InterruptedException",
+      "paragraphs": [
+        "The following example shows how to handle InterruptedException when a sleeping thread is interrupted by another thread.",
+        "Output:",
+        "In this code, the child thread sleeps for 5 seconds but gets interrupted by the main thread after 2 seconds. The catch block handles the interruption gracefully."
+      ],
+      "code": [
+        "public class InterruptHandling {\n    public static void main(String[] args) {\n        Thread thread = new Thread(() -> {\n            try {\n                System.out.println(\"Thread will sleep for 5 seconds.\");\n                Thread.sleep(5000);\n                System.out.println(\"Thread woke up after sleep.\");\n            } catch (InterruptedException e) {\n                System.out.println(\"Thread was interrupted during sleep.\");\n            }\n        });\n        thread.start();\n        try {\n            Thread.sleep(2000); // Main thread sleeps for 2 seconds\n            thread.interrupt(); // Interrupt the sleeping thread\n        } catch (InterruptedException e) {\n            e.printStackTrace();\n        }\n    }\n}",
+        "Thread will sleep for 5 seconds.\nThread was interrupted during sleep."
+      ]
+    },
+    {
+      "heading": "Example 3: Sleep in a Custom Thread",
+      "paragraphs": [
+        "The following example demonstrates using Thread.sleep() in a custom thread created by extending the Thread class.",
+        "Output:",
+        "As you know well that at a time only one thread is executed. If you sleep a thread for the specified time, the thread scheduler picks up another thread and so on."
+      ],
+      "code": [
+        "class TestSleepMethod1 extends Thread{  \n public void run(){  \n  for(int i=1;i<5;i++){ \n  // the thread will sleep for the 500 milli seconds \n    try{Thread.sleep(500);}catch(InterruptedException e){System.out.println(e);}  \n    System.out.println(i);  \n  }  \n }  \n public static void main(String args[]){  \n  TestSleepMethod1 t1=new TestSleepMethod1();  \n  TestSleepMethod1 t2=new TestSleepMethod1();  \n   \n  t1.start();  \n  t2.start();  \n }  \n}",
+        "1\n1\n2\n2\n3\n3\n4\n4"
+      ]
+    },
+    {
+      "heading": "Example 4: Sleep in Main Thread with Loop",
+      "paragraphs": [
+        "The following example shows how the main thread can sleep in a loop.",
+        "Output:"
+      ],
+      "code": [
+        "// important import statements\nimport java.lang.Thread;\nimport java.io.*;\n\n\npublic class TestSleepMethod2\n{\n    // main method\npublic static void main(String argvs[])\n{\n\ntry {\nfor (int j = 0; j < 5; j++)\n{\n\n// The main thread sleeps for the 1000 milliseconds, which is 1 sec\n// whenever the loop runs\nThread.sleep(1000);\n\n// displaying the value of the variable\nSystem.out.println(j);\n}\n}\ncatch (Exception expn) \n{\n// catching the exception\nSystem.out.println(expn);\n}\n}\n}",
+        "0\n1\n2\n3\n4"
+      ]
+    },
+    {
+      "heading": "Example 5: Sleep with Negative Time",
+      "paragraphs": [
+        "The following example demonstrates that Thread.sleep() throws an exception when the sleeping time is negative.",
+        "Output:",
+        "Next TopicCan we start a Thread Twice"
+      ],
+      "code": [
+        "// important import statements\nimport java.lang.Thread;\nimport java.io.*;\n\npublic class TestSleepMethod3\n{\n// main method\npublic static void main(String argvs[])\n{\n// we can also use throws keyword followed by\n// exception name for throwing the exception\ntry \n{\nfor (int j = 0; j < 5; j++) \n{\n\n// it throws the exception IllegalArgumentException\n// as the time is -ive which is -100\nThread.sleep(-100);\n\n// displaying the variable's value\nSystem.out.println(j);\n}\n}\ncatch (Exception expn) \n{\n\n// the exception iscaught here \nSystem.out.println(expn);\n}\n}\n}",
+        "java.lang.IllegalArgumentException: timeout value is negative"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:39:02.338Z"
+}

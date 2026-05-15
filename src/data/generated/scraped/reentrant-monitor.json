@@ -1,0 +1,325 @@
+{
+  "topicId": "reentrant-monitor",
+  "title": "Reentrant Monitor in Java",
+  "sectionId": "java-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/reentrant-monitor-in-java",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/reentrant-monitor-in-java",
+      "score": 219,
+      "sectionCount": 28
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_reentrant_monitor.htm",
+      "score": 61,
+      "sectionCount": 12
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Reentrant Monitor in Java",
+      "paragraphs": [
+        "In Java, a reentrant monitor is a synchronization technique that permits a thread to repeatedly enter the same synchronized region without stopping itself. Java uses both explicit locks like ReentrantLock and intrinsic locks (monitors) to accomplish this functionality. Reentrant refers to the ability of a thread to reacquire a lock without creating a deadlock.",
+        "Every object in Java serves as an implicit monitor, and additional locking tools like ReentrantLock or the synchronized keyword are used to enforce synchronization. ReentrantLock is superior to intrinsic monitors in terms of flexibility, control, and fairness."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Why It Is Called Reentrant?",
+      "paragraphs": [
+        "A lock is reentrant because:",
+        "• As the same thread can obtain the same lock more than once, a lock is reentrant.\n• A hold count rises with each acquisition.\n• Only when the hold counts drops to zero is the lock unlocked.",
+        "When a synchronized method calls another synchronized method that utilizes the same lock internally, this feature is essential."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Reentrant Monitor Vs. ReentrantLock",
+      "paragraphs": [
+        "Aspect | Intrinsic Monitor (synchronized) | ReentrantLock\nLock type | Implicit | Explicit\nReentrancy | Yes | Yes\nFairness | No control | Can be fair/unfair\nLock timeout | No | Yes (tryLock)\nInterruptible | No | Yes\nHold count access | No | Yes (getHoldCount)"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Working of Reentrant Monitor",
+      "paragraphs": [
+        "A Reentrant Monitor works by tracking ownership and re-entries, allowing the same thread to repeatedly acquire a lock while blocking others until the lock is fully released.",
+        "Lock Ownership: In a reentrant monitor, a lock can only be owned by one thread at a time. A thread becomes the monitor owner and has exclusive access to the vital part when it obtains the lock.",
+        "Re-entry Capability: The monitor does not prevent the same thread from attempting to obtain the lock once more. Rather, the lock increments a hold count internally and permits re-entry.",
+        "Hold Count Tracking: The hold count is increased with each successful lock() call made by the owning thread. The number of times the thread has entered the monitor is indicated by this count.",
+        "Mutual Exclusion: All other threads are prohibited from accessing the monitor while one thread is the owner.",
+        "• Other threads either use tryLock() to fail instantly or lock() to wait.",
+        "Fairness Control: The monitor may be either fair or unfair by default. Fair mode ensures predictable scheduling by giving the lock to the thread that has been waiting the longest.",
+        "Conditional Access: A thread can try to enter the monitor without being blocked by using tryLock(). The thread keeps running without stopping if the monitor is busy.",
+        "Monitor Exit: The hold count is decreased by one for every unlock() call.",
+        "• Only when the hold count reaches 0 is the monitor released.",
+        "Step 8- Lock Handover: The monitor becomes accessible after it is released. In order to gain ownership, waiting threads either compete or are scheduled (depending on fairness).",
+        "Internal Safety Guarantee: The reentrant monitor ensures:",
+        "• No self-deadlock\n• Safe nested method calls\n• Controlled access to shared resources"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Mechanisms for Reentrant Monitors",
+      "paragraphs": [
+        "Reentrant monitors operate internally through a series of synchronized procedures that guarantee proper lock release, preserve exclusive access, and enable a thread to securely re-enter a locked area. These features are implemented by Java in both explicit monitors (ReentrantLock) and intrinsic monitors (synchronized)."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Lock Ownership Tracking",
+      "paragraphs": [
+        "Fundamental Mechanism: Each reentrant monitor keeps track of which thread is currently in possession of the lock. When a thread obtains the monitor, it is noted as the sole owner; until the lock is completely released, no other thread is permitted to access it.",
+        "Why this is important?",
+        "Ownership monitoring makes sure that only the owning thread is permitted to re-enter; all other threads are either blocked or denied."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Hold Count Management",
+      "paragraphs": [
+        "Reentrancy-Enabling Mechanism: The monitor increases an internal hold count each time the owning thread re-acquires the same lock. The number of times the thread has entered the protected area is indicated by this count.",
+        "Key behaviour",
+        "• First lock() → hold count = 1\n• Every re-entry → hold count increases\n• Lock is released only when count reaches zero",
+        "This mechanism prevents premature release of the monitor."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Self-Reentry Validation",
+      "paragraphs": [
+        "Deadlock Prevention Mechanism",
+        "Before blocking a thread, the monitor checks:",
+        "Is the current thread already the owner?",
+        "• If yes, the monitor allows immediate re-entry instead of forcing the thread to wait.",
+        "Why this is important?",
+        "Self-deadlock happens when a thread tries to obtain a lock it already has, is avoided by this check."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Concurrency Control Mechanism",
+      "paragraphs": [
+        "While a thread owns the reentrant monitor:",
+        "• All other threads are denied access to the critical section\n• The owner thread is the only one that can resume or continue running.",
+        "By doing this, shared resources are ensured to be thread-safe even when nested method calls are made."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Queueing and Thread Suspension",
+      "paragraphs": [
+        "Contention Handling Mechanism",
+        "When the same monitor is requested by several threads:",
+        "• A waiting queue is created for threads that are unable to obtain the lock.\n• When a waiting thread can try acquisition again is determined by the monitor.",
+        "Contention is handled by this method without infringing on exclusive ownership."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Fairness Policy Handling",
+      "paragraphs": [
+        "Scheduling Mechanism",
+        "Reentrant monitors may operate in:",
+        "• Unfair mode - threads may acquire the lock out of order.\n• Fair mode - longest-waiting thread is granted access first.",
+        "Fairness is implemented by managing the waiting queue in FIFO order."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Controlled Exit Mechanism",
+      "paragraphs": [
+        "Each unlock() call",
+        "• Decrements the hold count by one\n• Checks whether the count has reached zero",
+        "Only when the hold count becomes zero does the monitor",
+        "• Clear ownership\n• Allow another waiting thread to acquire the lock",
+        "It ensures a clean and predictable handover."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Condition Management (Advanced Mechanism)",
+      "paragraphs": [
+        "Thread Coordination Mechanism",
+        "Reentrant monitors support condition variables that allow threads to:",
+        "• Release the lock for a little time.\n• Wait for specific conditions\n• Obtain the lock again after being informed",
+        "Advanced thread coordination is made possible in this way without compromising reentrancy."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Memory Visibility Guarantees",
+      "paragraphs": [
+        "Consistency Mechanism:",
+        "Reentrant monitors enforce happens-before relationships, ensuring that:",
+        "• Changes made by the owning thread are visible\n• State is consistent when the lock is released and re-acquired",
+        "It prevents stale data access in concurrent execution."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Interrupt and Timeout Awareness",
+      "paragraphs": [
+        "Responsiveness Mechanism",
+        "Reentrant monitors that are explicit support:",
+        "• Lock acquisition that is interruptible\n• Timed lock attempts",
+        "While waiting for the monitor, threads might continue to respond thanks to these techniques."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: Basic Reentrant Behaviour (Same Thread Acquires Lock Multiple Times)",
+      "paragraphs": [
+        "The same thread can obtain the same lock more than once without blocking, a phenomenon known as reentrancy. The internal hold count is increased with each lock() operation and may be seen with getHoldCount(). The monitor makes sure that the thread maintains ownership throughout calls to nested methods. Only when all relevant unlock() calls have been made is the lock fully freed.",
+        "Exampleimport java.util.concurrent.locks.ReentrantLock;\nclass Main {\n    // Explicit reentrant monitor\n    private static ReentrantLock lock = new ReentrantLock();\n    static void methodA() {\n        lock.lock(); // first acquisition\n        try {\n            System.out.println(\"Inside methodA\");\n            methodB(); // same thread re-enters the lock\n        } finally {\n            lock.unlock(); // releases one hold\n        }\n    }\n    static void methodB() {\n        lock.lock(); // reentrant acquisition\n        try {\n            System.out.println(\"Inside methodB\");\n            System.out.println(\"Hold Count: \" + lock.getHoldCount());\n        } finally {\n            lock.unlock(); // releases second hold\n        }\n    }\n    public static void main(String[] args) {\n        methodA();\n    }\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Inside methodA\nInside methodB\nHold Count: 2"
+      ]
+    },
+    {
+      "heading": "Example: tryLock() with Conditional Execution (Non-Blocking Monitor Access)",
+      "paragraphs": [
+        "In this case, tryLock() makes the reentrant monitor accessible without blocking. In the event that the lock is already held, the thread proceeds straight to the alternate path without waiting. This keeps threads from suspending and is helpful in areas where performance is crucial. Using unlock(), the ownership of the monitor is explicitly handled and released.",
+        "Example import java.util.concurrent.locks.ReentrantLock;\nclass Main {\n    private static ReentrantLock lock = new ReentrantLock();\n    static void operation() {\n        // Attempts immediate lock acquisition\n        if (lock.tryLock()) {\n            try {\n                System.out.println(\"Lock acquired by thread\");\n            } finally {\n                lock.unlock(); // mandatory release\n            }\n        } else {\n            System.out.println(\"Lock not acquired, skipping operation\");\n        }\n    }\n    public static void main(String[] args) {\n        new Thread(Main::operation).start();\n        new Thread(Main::operation).start();\n    }\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Lock acquired by thread\nLock not acquired, skipping operation"
+      ]
+    },
+    {
+      "heading": "Example: Fair Reentrant Monitor (FIFO Lock Acquisition)",
+      "paragraphs": [
+        "As this code use a fair reentrant monitor, threads are ensured to obtain the lock in FIFO order. By choosing the thread that has been waiting the longest, the fairness policy keeps people from going starved. Fairness ensures predictable scheduling even though it somewhat affects throughput. The owning thread still has complete reentrant access to the monitor.",
+        "Exampleimport java.util.concurrent.locks.ReentrantLock;\nclass Main {\n    // Fair monitor: threads acquire lock in waiting order\n    private static ReentrantLock lock = new ReentrantLock(true);\n    static void task() {\n        lock.lock(); // fair lock acquisition\n        try {\n            System.out.println(Thread.currentThread().getName() + \" acquired lock\");\n        } finally {\n            lock.unlock(); // release monitor\n        }\n    }\n    public static void main(String[] args) {\n        new Thread(Main::task, \"Thread-1\").start();\n        new Thread(Main::task, \"Thread-2\").start();\n        new Thread(Main::task, \"Thread-3\").start();\n        new Thread(Main::task, \"Thread-4\").start();\n        new Thread(Main::task, \"Thread-5\").start();\n    }\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Thread-1 acquired lock\nThread-2 acquired lock\nThread-3 acquired lock\nThread-4 acquired lock\nThread-5 acquired lock"
+      ]
+    },
+    {
+      "heading": "Example: Hold Count and Ownership Check",
+      "paragraphs": [
+        "The tracking of monitor ownership is the main topic of this example. The number of times the current thread has entered the reentrant monitor is shown by getHoldCount(). Exclusive ownership has been verified by isHeldByCurrentThread(). Until all reentrant acquisitions are matched with matching unlock() operations, the lock is still in effect.",
+        "Exampleimport java.util.concurrent.locks.ReentrantLock;\nclass Main {\n    private static ReentrantLock lock = new ReentrantLock();\n    static void execute() {\n        lock.lock(); // first lock\n        lock.lock(); // reentrant lock\n        try {\n            // Displays number of times current thread holds the monitor\n            System.out.println(\"Hold Count: \" + lock.getHoldCount());\n            System.out.println(\"Is Held By Current Thread: \" + lock.isHeldByCurrentThread());\n        } finally {\n            lock.unlock(); // reduces hold count\n            lock.unlock(); // completely releases lock\n        }\n    }\n    public static void main(String[] args) {\n        execute();\n    }\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Hold Count: 2\nIs Held By Current Thread: true"
+      ]
+    },
+    {
+      "heading": "Safe Nested Method Calls",
+      "paragraphs": [
+        "A thread can safely call a synchronized method from another synchronized method using the same lock thanks to reentrancy.",
+        "The thread would block itself and result in a deadlock in the absence of reentrancy.",
+        "Here, the same thread re-enters the lock while already holding it, which is safely permitted."
+      ],
+      "code": [
+        "lock.lock();\nmethodA();   // calls methodB() internally\nlock.unlock();"
+      ]
+    },
+    {
+      "heading": "Prevention of Self-Deadlock",
+      "paragraphs": [
+        "When a thread already has a lock, it should never wait for it. Even when execution passes through several protected ways, self-deadlock is prevented thanks to reentrancy.",
+        "The thread continues execution instead of blocking itself."
+      ],
+      "code": [
+        "void methodA() {\n    lock.lock();\n    methodB();  // same lock used again\n    lock.unlock();\n}"
+      ]
+    },
+    {
+      "heading": "Clean and Natural Object-Oriented Design",
+      "paragraphs": [
+        "Methods in object-oriented applications frequently rely on other methods within the same class. Synchronization can continue to be method-centric rather than call-context-centric thanks to reentrancy.",
+        "Each method can independently ensure thread safety without knowing the caller's state."
+      ],
+      "code": [
+        "lock.lock();\nupdateAccount();   // internally calls validateAccount()\nlock.unlock();"
+      ]
+    },
+    {
+      "heading": "Reliable Inheritance and Method Overriding",
+      "paragraphs": [
+        "In inheritance hierarchies, parent class methods are frequently called by child class methods. Both approaches can be synchronized thanks to reentrancy, which eliminates the need to change the locking logic.",
+        "Example",
+        "The same thread can enter both synchronized methods safely."
+      ],
+      "code": [
+        "class Parent {\n    synchronized void process() { }\n}\nclass Child extends Parent {\n    synchronized void execute() {\n        process(); // safe due to reentrancy\n    }\n}"
+      ]
+    },
+    {
+      "heading": "Accurate Lock State Management",
+      "paragraphs": [
+        "Reentrant locks provide exact control over lock ownership by keeping track of the hold count. By doing this, locks are guaranteed to be released only after all nested entries have been exited.",
+        "Example:",
+        "This prevents premature unlocking and data inconsistency."
+      ],
+      "code": [
+        "lock.lock();  // count = 1\nlock.lock();  // count = 2\nlock.unlock(); // count = 1\nlock.unlock(); // count = 0 (released)"
+      ]
+    },
+    {
+      "heading": "Simplified Developer Responsibility:",
+      "paragraphs": [
+        "It is not necessary for developers to check if a lock is already in place before going into a crucial area. Error-prone logic is decreased via reentrancy, which transfers this duty to the Java concurrency framework.",
+        "Code becomes cleaner, safer, and easier to maintain."
+      ],
+      "code": [
+        "lock.lock();\nperformTask(); // no need to check lock ownership\nlock.unlock();"
+      ]
+    },
+    {
+      "heading": "Advantages of Reentrant Monitor",
+      "paragraphs": [
+        "Supports Safe Re-entry: The same thread can obtain the same lock more than once without blocking itself thanks to a reentrant monitor. This guarantees seamless execution throughout nested method calls and prevents self-deadlock.",
+        "Prevents Self-Deadlock: In the absence of reentrancy, a thread would have to wait indefinitely for a lock it already has. Reentrant monitors identify who owns the property and permit re-entry right away. As a result, synchronization in practical applications is safer and more dependable.",
+        "Enables Clean Object-Oriented Design: Without verifying the lock status of the caller, each method is capable of autonomously managing its own synchronization. This facilitates readable and modular code.",
+        "Accurate Lock State Management: Reentrant monitors keep track of the number of times a lock is obtained by keeping a hold count. Only when every re-entry has been completed is the lock unlocked. Prevents inconsistent data and early unlocking.",
+        "Advanced Synchronization Features: Reentrant monitors (via ReentrantLock) support:",
+        "• Fair and unfair locking\n• Interruptible locking\n• Timed lock attempts\n• Condition variables",
+        "These features provide greater control than intrinsic monitors.",
+        "Reliable Inheritance and Method Overriding:",
+        "Parent and child class methods can both be synchronized safely. Reentrancy ensures smooth execution across inheritance hierarchies."
+      ],
+      "code": [
+        "lock.lock();\nmethodA();   // internally calls another locked method\nlock.unlock();",
+        "lock.lock();\nupdate();\nvalidate();   // both safely synchronized\nlock.unlock();",
+        "class Child extends Parent {\n    synchronized void execute() {\n        super.process();\n    }\n}"
+      ]
+    },
+    {
+      "heading": "Disadvantages of Reentrant Monitor",
+      "paragraphs": [
+        "Increased Complexity: It is necessary to manually manage lock() and unlock() for explicit reentrant monitors. Serious concurrency flaws may result from improper use. It could result in deadlock if an unlock() is absent.",
+        "Risk of Lock Mismanagement: If unlock() calls do not match the number of lock() calls, the monitor may never be released.",
+        "Performance Overhead: Hold counts, waiting lines, and ownership data are all kept up to date via reentrant monitors. When compared to more straightforward synchronization, this adds a little performance overhead.",
+        "Fair Locks Reduce Throughput: Due to scheduling overhead, fair locking lowers speed but ensures ordering.",
+        "Harder Debugging: It can be challenging to track down problems like incorrect hold counts or lock leakage. Concurrency bugs are frequently random in appearance.",
+        "Overuse Can Reduce Scalability:",
+        "Excessive locking can:",
+        "• Reduce parallelism\n• Increase thread contention\n• Lower system throughput"
+      ],
+      "code": [
+        "lock.lock();\n// missing unlock → lock leak"
+      ]
+    },
+    {
+      "heading": "Conclusion",
+      "paragraphs": [
+        "In order to provide secure nested method calls and avoid self-deadlock, a Java Reentrant Monitor offers a potent synchronization mechanism that permits a thread to obtain the same lock repeatedly without stopping itself. It supports clean object-oriented architecture and retains exclusive access to shared resources by monitoring lock ownership and hold count.",
+        "Fairness, timed locking, and interruptible waits are examples of advanced concurrency characteristics made possible by reentrant monitors. They are necessary for creating dependable and scalable multithreaded Java applications, despite the fact that they increase some complexity and overhead."
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:41:01.655Z"
+}

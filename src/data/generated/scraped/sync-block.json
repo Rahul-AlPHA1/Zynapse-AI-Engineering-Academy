@@ -1,0 +1,97 @@
+{
+  "topicId": "sync-block",
+  "title": "Java Synchronized Block",
+  "sectionId": "java-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-synchronized-block",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-synchronized-block",
+      "score": 52,
+      "sectionCount": 9
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java Synchronized Block",
+      "paragraphs": [
+        "In this chapter, you will learn what a synchronized block is, why it is used, and how to implement it with practical examples."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is a Synchronized Block?",
+      "paragraphs": [
+        "A synchronized block is used to synchronize a specific portion of code instead of synchronizing the entire method. It allows better control over shared resources and improves performance by reducing the scope of synchronization.",
+        "For a given object, only one thread can execute the synchronized block at a time and excessive use of synchronization may impact application performance. Overall, synchronized blocks are generally more efficient than synchronized methods due to their limited scope."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Need of Synchronized Block",
+      "paragraphs": [
+        "Sometimes, a method may contain many lines of code, but only a few of them need synchronization. In such cases, using a synchronized block is more efficient than synchronizing the entire method. If all the code inside a method is placed within a synchronized block, it behaves the same as a synchronized method."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [
+        "To create/define a synchronized block, you need to use the \"synchronized\" keyword. Here is the syntax to define a synchronized block:"
+      ],
+      "code": [
+        "synchronized (objectReference) {\n    // critical section\n}"
+      ]
+    },
+    {
+      "heading": "Example of Synchronized Block",
+      "paragraphs": [
+        "Consider this example, where only a specific part of the method is synchronized to prevent multiple threads from accessing the shared resource simultaneously.",
+        "Exampleclass Table {    \n    void printTable(int n) {      \n        synchronized (this) { // synchronized block      \n            for (int i = 1; i <= 5; i++) {      \n                System.out.println(n * i);      \n                try {      \n                    Thread.sleep(400);      \n                } catch (Exception e) {      \n                    System.out.println(e);      \n                }      \n            }      \n        }      \n    }      \n}      \n\nclass MyThread1 extends Thread {      \n    Table t;      \n    MyThread1(Table t) {      \n        this.t = t;      \n    }      \n    public void run() {      \n        t.printTable(5);      \n    }      \n}      \n\nclass MyThread2 extends Thread {      \n    Table t;      \n    MyThread2(Table t) {      \n        this.t = t;      \n    }      \n    public void run() {      \n        t.printTable(100);      \n    }      \n}      \n\npublic class Main {      \n    public static void main(String args[]) {      \n        Table obj = new Table();      \n        MyThread1 t1 = new MyThread1(obj);      \n        MyThread2 t2 = new MyThread2(obj);      \n        t1.start();      \n        t2.start();      \n    }      \n}     \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "5\n10\n15\n20\n25\n100\n200\n300\n400\n500"
+      ]
+    },
+    {
+      "heading": "Synchronized Block Using Anonymous Class",
+      "paragraphs": [
+        "This approach uses a synchronized block inside a method while creating threads through anonymous classes. It reduces code length and ensures that only one thread at a time can access the shared resource."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "In this example, the threads are created using anonymous classes to reduce code length while still ensuring thread safety.",
+        "//Creating a class which containse synchronized block within method\nclass Table  \n{      \n void printTable(int n){    \n   synchronized(this){//synchronized block    \n     for(int i=1;i<=5;i++){    \n      System.out.println(n*i);    \n      try{    \n       Thread.sleep(400);    \n      }catch(Exception e){System.out.println(e);}    \n     }    \n   }    \n }//end of the method    \n}    \n\n//Creating Main class to create and start threads\npublic class Main{    \n public static void main(String args[]){    \n  final Table obj = new Table();//only one object    \n  Thread t1=new Thread(){\n    public void run(){    \n      obj.printTable(5);    \n    } \n  };\n  Thread t2=new Thread(){\n    public void run(){    \n      obj.printTable(100);    \n    } \n  };\n  t1.start();    \n  t2.start();    \n }    \n}    \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "5\n10\n15\n20\n25\n100\n200\n300\n400\n500"
+      ]
+    },
+    {
+      "heading": "Message Passing Example using Synchronized Block",
+      "paragraphs": [
+        "In this concept, a synchronized block is used to allow only one thread to send or process a message at a time, ensuring ordered execution and preventing message interference between threads."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "In this example, a synchronized block ensures that only one thread sends a message at a time.",
+        "// A Sender class  \nclass Sender   \n{   \n  public void SenderMsg(String msg)  \n  {   \n    System.out.println(\"Sending a Message: \"  + msg);  \n    try  \n    {   \n      Thread.sleep(800);   \n    }   \n    catch (Exception e)   \n    {   \n      System.out.println(\"Thread interrupted.\");   \n    }   \n    System.out.println(msg+ \"Sent\");  \n  }  \n}   \n// A Sender class for sending a message using Threads   \nclass SenderThread extends Thread   \n{   \n  private String msg;   \n  Sender sd;   \n  \n  // Receiver method to receive a message object and a message to be sent   \n  SenderThread(String m, Sender obj)  \n  {   \n    msg = m;  \n    sd = obj;   \n  }   \n  \n  public void run()   \n  {   \n    // Checks that only one thread sends a message at a time.   \n    synchronized(sd)   \n    {   \n      // synchronizing the sender object   \n      sd.SenderMsg(msg);  \n    }   \n  }   \n}   \n// Creating a main class   \npublic class Main\n{   \n  public static void main(String args[])   \n  {   \n    Sender sender = new Sender();   \n    SenderThread sender1 = new SenderThread(\"Hola \" , sender);  \n    SenderThread sender2 =  new SenderThread(\"Welcome to TpointTech website \", sender);  \n  \n    sender1.start();   \n    sender2.start();   \n  \n    // wait for threads to end   \n    try  \n    {   \n      sender1.join();   \n      sender2.join();   \n    }   \n    catch(Exception e)   \n    {   \n      System.out.println(\"Interrupted\");   \n    }   \n  }   \n}  \nCompile and Run",
+        "Output:",
+        "Next TopicStatic-synchronization-in-java"
+      ],
+      "code": [
+        "Sending a Message: Hola \nHola Sent\nSending a Message: Welcome to TpointTech website \nWelcome to TpointTech website Sent"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:40:25.062Z"
+}

@@ -1,5 +1,23 @@
 import { javaOfflineCatalog } from './generated/javaOfflineCatalog';
-import { getScrapedTopic, type ScrapedSection } from './generated/javaScrapedContent';
+import type { ScrapedSection } from './generated/javaScrapedContent';
+
+// Lazy-loaded: only bundled when first Java offline topic is requested
+let _scrapedModule: typeof import('./generated/javaScrapedContent') | null = null;
+async function loadScrapedContent() {
+  if (!_scrapedModule) {
+    _scrapedModule = await import('./generated/javaScrapedContent');
+  }
+  return _scrapedModule;
+}
+function getScrapedTopic(topicId: string) {
+  // Sync lookup from already-loaded module (called after preload)
+  return _scrapedModule ? _scrapedModule.getScrapedTopic(topicId) : null;
+}
+
+// Preload scraped content when Java module topics are about to be rendered
+export async function preloadJavaScrapedContent() {
+  await loadScrapedContent();
+}
 
 type Difficulty = 'beginner' | 'standard' | 'expert';
 type JavaGroup =
@@ -2107,12 +2125,30 @@ ${questions.map(([question, answer], index) => `${index + 1}. **${question}**\n 
 // Scraped content renderer
 // ---------------------------------------------------------------------------
 
+const HINGLISH_SECTION_INTROS = [
+  'Ye section samjhata hai:',
+  'Is part mein:',
+  'Yahan detail mein dekho:',
+  'Is concept ko samjho:',
+  'Iska matlab hai:',
+];
+
 function renderScrapedSection(sec: ScrapedSection, hinglish: boolean): string {
   const lines: string[] = [];
-  if (sec.heading) lines.push(`### ${sec.heading}`);
+  if (sec.heading) {
+    if (hinglish) {
+      const intro = HINGLISH_SECTION_INTROS[Math.abs(sec.heading.charCodeAt(0)) % HINGLISH_SECTION_INTROS.length];
+      lines.push(`### ${sec.heading}\n> _${intro}_`);
+    } else {
+      lines.push(`### ${sec.heading}`);
+    }
+  }
   sec.paragraphs.forEach(p => { if (p.trim()) lines.push(p.trim()); });
-  sec.code.forEach(c => {
-    if (c.trim()) lines.push('```java\n' + c.trim() + '\n```');
+  sec.code.forEach((c, i) => {
+    if (c.trim()) {
+      const codeLabel = hinglish ? `**Example Code ${i + 1}:**` : `**Example ${i + 1}:**`;
+      lines.push(`${codeLabel}\n\`\`\`java\n${c.trim()}\n\`\`\``);
+    }
   });
   return lines.join('\n\n');
 }

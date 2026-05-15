@@ -1,0 +1,112 @@
+{
+  "topicId": "how-gc-works",
+  "title": "How Garbage Collection Works in Java?",
+  "sectionId": "java-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/how-garbage-collection-works-in-java",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/how-garbage-collection-works-in-java",
+      "score": 58,
+      "sectionCount": 10
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_collection_interface.htm",
+      "score": 21,
+      "sectionCount": 4
+    }
+  ],
+  "sections": [
+    {
+      "heading": "How Garbage Collection Works in Java?",
+      "paragraphs": [
+        "In Java, garbage collection is the process of managing memory, automatically. It finds the unused objects (that are no longer used by the program) and delete or remove them to free up the memory. The garbage collection mechanism uses several GC algorithms. The most popular algorithm that is used is Mark and Sweep.",
+        "In this section, we will learn when an object becomes eligible to garbage collection, types of garbage collection, and Mark and Sweep algorithm. Along with this, we will understand how garbage collection works in Java?"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Garbage Collector Overview",
+      "paragraphs": [
+        "When a program executes in Java, it uses memory in different ways. The heap is a part of memory where objects live. It's the only part of memory that involved in the garbage collection process. It is also known as garbage collectible heap. All the garbage collection makes sure that the heap has as much free space as possible. The function of the garbage collector is to find and delete the objects that cannot be reached."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Important Points About Garbage Collector",
+      "paragraphs": [
+        "• It is controlled by a thread known as Garbage Collector.\n• Java provides two methods System.gc() and Runtime.gc() that sends request to the JVM for garbage collection. Remember, it is not necessary that garbage collection will happen.\n• Java programmer are free from memory management. We cannot force the garbage collector to collect the garbage, it depends on the JVM.\n• If the Heap Memory is full, the JVM will not allow to create a new object and shows an error java.lang.OutOfMemoryError.\n• When garbage collector removes object from the memory, first, the garbage collector thread calls the finalize() method of that object and then remove."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Object Allocation",
+      "paragraphs": [
+        "When an object allocates, the JRockit JVM checks the size of the object. It distinguishes between small and large objects. The small and large size depends on the JVM version, heap size, garbage collection strategy, and platform used. The size of an object is usually between 2 to 128 KB.",
+        "The small objects are stored in Thread Local Area (TLA) which is a free chunk of the heap. TLA does not synchronize with other threads. When TLA becomes full, it requests for new TLA.",
+        "On the other hand, large objects that do not fit inside the TLA directly allocated into the heap. If a thread is using the young space, it directly stored in the old space. The large object requires more synchronization between the threads."
+      ],
+      "code": []
+    },
+    {
+      "heading": "When an Object becomes eligible for Garbage Collection?",
+      "paragraphs": [
+        "An object become eligible if it is not used by any program or thread or any static references or its references is null. If two objects having reference (cyclic reference) of each other and does not have any live reference then both objects collected by the garbage collector. There are some other cases when an object become eligible for garbage collection:",
+        "• If the reference of that object is explicitly set to null.\n• The object also becomes eligible if it is created inside a block and the reference goes out of the scope once control exit from the block."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What does Java Garbage Collector?",
+      "paragraphs": [
+        "JVM controls the garbage collector. JVM decides when to perform the garbage collection. You can also request to the JVM to run the garbage collector. But there is no guarantee under any conditions that the JVM will comply. JVM runs the garbage collector if it senses that memory is running low. When Java program request for the garbage collector, the JVM usually grants the request in short order. It does not make sure that the requests accept.",
+        "The point to understand is that \"when an object becomes eligible for garbage collection?\"",
+        "Every Java program has more than one thread. Each thread has its execution stack. There is a thread to run in Java program that is a main() method. Now we can say that an object is eligible for garbage collection when no live thread can access it. The garbage collector considers that object as eligible for deletion. If a program has a reference variable that refers to an object, that reference variable available to live thread, this object is called reachable.",
+        "Here a question arises that \"Can a Java application run out of memory?\"",
+        "The answer is yes. The garbage collection system attempts to objects from the memory when they are not in use. Though, if you are maintaining many live objects, garbage collection does not guarantee that there is enough memory. Only available memory will be managed effectively."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Types of Garbage Collection",
+      "paragraphs": [
+        "There are five types of garbage collection are as follows:",
+        "• Serial GC: It uses the mark and sweeps approach for young and old generations, which is minor and major GC.\n• Parallel GC: It is similar to serial GC except that, it spawns N (the number of CPU cores in the system) threads for young generation garbage collection.\n• Parallel Old GC: It is similar to parallel GC, except that it uses multiple threads for both generations.\n• Concurrent Mark Sweep (CMS) Collector: It does the garbage collection for the old generation. You can limit the number of threads in CMS collector using XX:ParalleCMSThreads=JVM option. It is also known as Concurrent Low Pause Collector.\n• G1 Garbage Collector: It introduced in Java 7. Its objective is to replace the CMS collector. It is a parallel, concurrent, and CMS collector. There is no young and old generation space. It divides the heap into several equal-sized heaps. It first collects the regions with lesser live data."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Mark and Sweep Algorithm",
+      "paragraphs": [
+        "JRockit JVM uses the mark and sweep algorithm for performing the garbage collection. It contains two phases, the mark phase, and the sweep phase.",
+        "Mark Phase: Objects that are accessible from the threads, native handles, and other GC root sources are marked as live. Every object tree has more than one root object. GC root is always reachable. So, any object that has a garbage collection root at its root. It identifies and marks all objects that are in use, and the remaining can be considered garbage.",
+        "Sweep Phase: In this phase, the heap is traversed to find the gap between the live objects. These gaps are recorded in the free list and are available for new object allocation.",
+        "There are two improved versions of mark and sweep:",
+        "• Concurrent Mark and Sweep\n• Parallel Mark and Sweep"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Concurrent Mark and Sweep",
+      "paragraphs": [
+        "It allows the threads to continue running during a large portion of the garbage collection. There are following types of marking:",
+        "• Initial marking: It identifies the root set of live objects. It is done while threads are paused.\n• Concurrent marking: In this marking, the reference from the root set are followed. It finds and marks the rest of the live objects in a heap. It is done while the thread is running.\n• Precleaning marking: It identifies the changes made by concurrent marking. Other live objects marked and found. It is done while the threads are running.\n• Final marking: It identifies the changes made by precleaning marking. Other live objects marked and found. It is done while threads are paused."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Parallel Mark and Sweep",
+      "paragraphs": [
+        "It uses all available CPU in the system for performing the garbage collection as fast as possible. It is also called the parallel garbage collector. Threads do not execute when the parallel garbage collection executes.",
+        "Pros of Mark and Sweep",
+        "• It is a recurring process.\n• It is an infinite loop.\n• No additional overheads allowed during the execution of an algorithm.",
+        "Cons of Mark and Sweep",
+        "• It stops the normal program execution while the garbage collection algorithm runs.\n• It runs multiple times on a program."
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:43:09.371Z"
+}

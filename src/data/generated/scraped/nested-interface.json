@@ -1,0 +1,114 @@
+{
+  "topicId": "nested-interface",
+  "title": "Java Nested Interface",
+  "sectionId": "java-core-advanced",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/nested-interface",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/nested-interface",
+      "score": 63,
+      "sectionCount": 10
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_nested_try_block.htm",
+      "score": 48,
+      "sectionCount": 9
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java Nested Interface",
+      "paragraphs": [
+        "A nested interface is an interface declared within another interface or class. Nested interfaces are used to group related interfaces to make the code easier to organize and maintain. A nested interface must be accessed through its outer interface or class and cannot be accessed directly."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Rules to Create a Nested Interface",
+      "paragraphs": [
+        "When creating a nested interface, the following rules should be remembered:",
+        "• A nested interface must be declared public if it is defined inside another interface.\n• If the nested interface is defined inside a class, it can have any access modifier (public, protected, private, or default).\n• All nested interfaces are implicitly static, so you do not need to use the static keyword explicitly.\n• A nested interface must be accessed through its outer interface or class; it cannot be accessed directly."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Creating Nested Interface",
+      "paragraphs": [
+        "A nested interface can be created by declaring it inside another interface or inside a class and it must be accessed through its outer interface or class and cannot be accessed directly."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax (Inside an Interface)",
+      "paragraphs": [
+        "The syntax to create a nested interface inside an interface is as follows:"
+      ],
+      "code": [
+        "interface OuterInterface {  \n    interface NestedInterface {  \n        void method();  \n    }  \n}"
+      ]
+    },
+    {
+      "heading": "Syntax (Inside a Class)",
+      "paragraphs": [
+        "The syntax to create a nested interface inside ac class is as follows:"
+      ],
+      "code": [
+        "class OuterClass {  \n    interface NestedInterface {  \n        void method();  \n    }  \n}"
+      ]
+    },
+    {
+      "heading": "Example: Nested Interface (Interface within an Interface)",
+      "paragraphs": [
+        "The following example demonstrates creating and using a nested interface which is declared inside an interface:",
+        "Output:",
+        "As you can see in the above example, we are accessing the Message interface by its outer interface Showable because it cannot be accessed directly. It is just like the almirah inside the room; we cannot access the almirah directly because we must enter the room first. In the collection framework, the sun microsystem has provided a nested interface Entry. Entry is the subinterface of Map, i.e., accessed by Map.Entry."
+      ],
+      "code": [
+        "interface Showable{\n  void show();\n  interface Message{\n   void msg();\n  }\n}\nclass TestNestedInterface1 implements Showable.Message{\n public void msg(){System.out.println(\"Hello nested interface\");}\n\n public static void main(String args[]){\n  Showable.Message message=new TestNestedInterface1();//upcasting here\n  message.msg();\n }\n}",
+        "hello nested interface"
+      ]
+    },
+    {
+      "heading": "Example: Nested Interface (Interface within a class)",
+      "paragraphs": [
+        "The following example demonstrates creating and using a nested interface which is declared inside a class:"
+      ],
+      "code": [
+        "public static interface Showable$Message\n  {\n    public abstract void msg();\n  }"
+      ]
+    },
+    {
+      "heading": "Example of nested interface which is declared within the class",
+      "paragraphs": [
+        "Let's see how we can define an interface inside the class and how we can access it.",
+        "Output:"
+      ],
+      "code": [
+        "class A{\n  interface Message{\n   void msg();\n  }\n}\n\nclass TestNestedInterface2 implements A.Message{\n public void msg(){System.out.println(\"Hello nested interface\");}\n\n public static void main(String args[]){\n  A.Message message=new TestNestedInterface2();//upcasting here\n  message.msg();\n }\n}",
+        "hello nested interface"
+      ]
+    },
+    {
+      "heading": "Class Inside a Nested Interface",
+      "paragraphs": [
+        "A class can be defined inside an interface, including a nested interface. When a class is defined inside an interface, the Java compiler automatically treats it as a static nested class. This allows the class to be accessed using the interface name without creating an instance of the interface."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates creating a class inside an interface:",
+        "Output:"
+      ],
+      "code": [
+        "interface M {  \n    class A {  \n        void display() {  \n            System.out.println(\"Class inside interface\");  \n        }  \n    }  \n}  \n\npublic class TestClassInInterface {  \n    public static void main(String[] args) {  \n        // Access the nested class using the interface name\n        M.A obj = new M.A();  \n        obj.display();  \n    }  \n}",
+        "Class inside interface"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:38:27.695Z"
+}

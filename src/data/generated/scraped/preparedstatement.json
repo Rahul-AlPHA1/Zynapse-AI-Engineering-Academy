@@ -1,0 +1,141 @@
+{
+  "topicId": "preparedstatement",
+  "title": "Java PreparedStatement Interface",
+  "sectionId": "java-collections-jdbc",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/PreparedStatement-interface",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/PreparedStatement-interface",
+      "score": 94,
+      "sectionCount": 12
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java PreparedStatement Interface",
+      "paragraphs": [
+        "The PreparedStatement interface is an important part of JDBC used to execute parameterized SQL queries. It helps in improving performance and making database operations more secure.",
+        "In this chapter, you will learn about the PreparedStatement interface, why it is used, and how to create and use it in Java."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is PreparedStatement Interface?",
+      "paragraphs": [
+        "The PreparedStatement interface is a subinterface of Statement. It is used to execute parameterized queries, where values are passed at runtime.",
+        "For example:",
+        "Here, ? represents parameters whose values are set using setter methods."
+      ],
+      "code": [
+        "String sql=\"insert into emp values(?,?,?)\";"
+      ]
+    },
+    {
+      "heading": "Why Use PreparedStatement?",
+      "paragraphs": [
+        "PreparedStatement is used to execute queries efficiently and securely by allowing dynamic values and improving performance:",
+        "• Improves Performance: The query is compiled only once, so execution becomes faster when used multiple times.\n• More Secure: It helps prevent SQL injection by using parameters instead of direct values.\n• Easy to Use: Values can be set dynamically using setter methods like setInt(), setString(), etc."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Importing / Using PreparedStatement Interface",
+      "paragraphs": [
+        "To use the PreparedStatement interface in a Java program, we need to import it from the java.sql package.",
+        "Here is the import statement to use PreparedStatement interface:",
+        "In most cases, we use:",
+        "This imports all JDBC classes, including PreparedStatement, Connection, and ResultSet."
+      ],
+      "code": [
+        "import java.sql.PreparedStatement;",
+        "import java.sql.*;"
+      ]
+    },
+    {
+      "heading": "Getting the Instance of PreparedStatement",
+      "paragraphs": [
+        "The prepareStatement() method of the Connection interface is used to create a PreparedStatement object.",
+        "The syntax to get the instance of PreparedStatement:",
+        "This method takes a SQL query as input and returns a PreparedStatement object ready for execution."
+      ],
+      "code": [
+        "public PreparedStatement prepareStatement(String query)throws SQLException{}"
+      ]
+    },
+    {
+      "heading": "Methods of PreparedStatement interface",
+      "paragraphs": [
+        "The important methods of PreparedStatement interface are given below:",
+        "Method | Description\npublic void setInt(int paramIndex, int value) | sets the integer value to the given parameter index.\npublic void setString(int paramIndex, String value) | sets the String value to the given parameter index.\npublic void setFloat(int paramIndex, float value) | sets the float value to the given parameter index.\npublic void setDouble(int paramIndex, double value) | sets the double value to the given parameter index.\npublic int executeUpdate() | executes the query. It is used for create, drop, insert, update, delete etc.\npublic ResultSet executeQuery() | executes the select query. It returns an instance of ResultSet."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Examples of PreparedStatement Interface",
+      "paragraphs": [
+        "The following examples demonstrate how to use the PreparedStatement interface to perform different database operations."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example 1: Insert Record Using PreparedStatement",
+      "paragraphs": [
+        "Before running the code, create the table:",
+        "The following code inserts a record into the emp table.",
+        "Output:"
+      ],
+      "code": [
+        "create table emp(id number(10),name varchar2(50));",
+        "import java.sql.*;\n\nclass InsertPrepared {\n    public static void main(String args[]) {\n        try {\n            Class.forName(\"oracle.jdbc.driver.OracleDriver\");\n\n            Connection con = DriverManager.getConnection(\n                \"jdbc:oracle:thin:@localhost:1521:xe\",\"system\",\"oracle\");\n\n            PreparedStatement stmt = con.prepareStatement(\n                \"insert into emp values(?,?)\");\n\n            stmt.setInt(1, 101);\n            stmt.setString(2, \"Ratan\");\n\n            int i = stmt.executeUpdate();\n            System.out.println(i + \" records inserted\");\n\n            con.close();\n\n        } catch (Exception e) {\n            System.out.println(e);\n        }\n    }\n}",
+        "1 records inserted"
+      ]
+    },
+    {
+      "heading": "Example 2: Update Record Using PreparedStatement",
+      "paragraphs": [
+        "The following code updates a record in the emp table.",
+        "Output:"
+      ],
+      "code": [
+        "PreparedStatement stmt=con.prepareStatement(\"update emp set name=? where id=?\");\nstmt.setString(1,\"Sonoo\");//1 specifies the first parameter in the query i.e. name\nstmt.setInt(2,101);\n\nint i=stmt.executeUpdate();\nSystem.out.println(i+\" records updated\");",
+        "1 records updated"
+      ]
+    },
+    {
+      "heading": "Example 3: Delete Record Using PreparedStatement",
+      "paragraphs": [
+        "The following code deletes a record from the emp table.",
+        "Output:"
+      ],
+      "code": [
+        "PreparedStatement stmt=con.prepareStatement(\"delete from emp where id=?\");\nstmt.setInt(1,101);\n\nint i=stmt.executeUpdate();\nSystem.out.println(i+\" records deleted\");",
+        "1 records deleted"
+      ]
+    },
+    {
+      "heading": "Example 4: Retrieve Records Using PreparedStatement",
+      "paragraphs": [
+        "Output:"
+      ],
+      "code": [
+        "PreparedStatement stmt=con.prepareStatement(\"select * from emp\");\nResultSet rs=stmt.executeQuery();\nwhile(rs.next()){\nSystem.out.println(rs.getInt(1)+\" \"+rs.getString(2));\n}",
+        "101 Sonoo"
+      ]
+    },
+    {
+      "heading": "Example 5: Insert Records Using User Input",
+      "paragraphs": [
+        "The following code inserts multiple records until the user enters 'n'.",
+        "Output:",
+        "Next TopicResultSetMetaData Interface"
+      ],
+      "code": [
+        "import java.sql.*;\nimport java.io.*;\nclass RS{\npublic static void main(String args[])throws Exception{\nClass.forName(\"oracle.jdbc.driver.OracleDriver\");\nConnection con=DriverManager.getConnection(\"jdbc:oracle:thin:@localhost:1521:xe\",\"system\",\"oracle\");\n\nPreparedStatement ps=con.prepareStatement(\"insert into emp130 values(?,?,?)\");\n\nBufferedReader br=new BufferedReader(new InputStreamReader(System.in));\n\ndo{\nSystem.out.println(\"enter id:\");\nint id=Integer.parseInt(br.readLine());\nSystem.out.println(\"enter name:\");\nString name=br.readLine();\nSystem.out.println(\"enter salary:\");\nfloat salary=Float.parseFloat(br.readLine());\n\nps.setInt(1,id);\nps.setString(2,name);\nps.setFloat(3,salary);\nint i=ps.executeUpdate();\nSystem.out.println(i+\" records affected\");\n\nSystem.out.println(\"Do you want to continue: y/n\");\nString s=br.readLine();\nif(s.startsWith(\"n\")){\nbreak;\n}\n}while(true);\n\ncon.close();\n}}",
+        "enter id:\n101\nenter name:\nRahul\nenter salary:\n30000\n1 records affected\nDo you want to continue: y/n\nn"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:48:55.781Z"
+}

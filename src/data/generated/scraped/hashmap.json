@@ -1,0 +1,220 @@
+{
+  "topicId": "hashmap",
+  "title": "Java HashMap",
+  "sectionId": "java-collections-jdbc",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-hashmap",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-hashmap",
+      "score": 130,
+      "sectionCount": 22
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/util/java_util_hashmap.htm",
+      "score": 41,
+      "sectionCount": 8
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java HashMap",
+      "paragraphs": [
+        "Java HashMap is used to store data in key-value pairs where each key is unique. It allows fast operations like searching, updating, and deleting data using keys. It is one of the most commonly used classes in the Java Collection Framework.",
+        "In this chapter, you will learn about the Java HashMap class, its features, and examples."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is HashMap in Java?",
+      "paragraphs": [
+        "Java HashMap class implements the Map interface and is used to store key-value pairs. Each key must be unique, and if a duplicate key is inserted, the old value is replaced with the new value.",
+        "HashMap is part of the java.util package and allows one null key and multiple null values. It is not synchronized and provides fast performance for basic operations.",
+        "It extends the AbstractMap class and implements the Map interface."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Hierarchy of HashMap Class",
+      "paragraphs": [
+        "HashMap is a part of the Java Collection Framework. It extends the AbstractMap class and implements the Map interface.",
+        "The Map interface further extends other interfaces in the hierarchy, making HashMap a key component for storing key-value pairs in Java.",
+        "The following image shows the hierarchy of the HashMap class:"
+      ],
+      "code": []
+    },
+    {
+      "heading": "HashMap Class Declaration",
+      "paragraphs": [
+        "Let's see the declaration for java.util.HashMap class."
+      ],
+      "code": [
+        "public class HashMap<K,V> extends AbstractMap<K,V> implements Map<K,V>, Cloneable, Serializable"
+      ]
+    },
+    {
+      "heading": "HashMap Class Parameters",
+      "paragraphs": [
+        "Let's see the Parameters for java.util.HashMap class.",
+        "• K: It is the type of keys maintained by this map.\n• V: It is the type of mapped values."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Constructors of Java HashMap Class",
+      "paragraphs": [
+        "Java HashMap class provides different constructors to create and initialize a HashMap."
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. HashMap()",
+      "paragraphs": [
+        "It is used to construct a default HashMap.",
+        "Here is the syntax:"
+      ],
+      "code": [
+        "HashMap<K,V> map = new HashMap<K,V>();"
+      ]
+    },
+    {
+      "heading": "2. HashMap(Map m)",
+      "paragraphs": [
+        "It is used to construct a HashMap containing the elements of the specified Map.",
+        "Here is the syntax:"
+      ],
+      "code": [
+        "HashMap<K,V> map = new HashMap<K,V>(Map<? extends K, ? extends V> m);"
+      ]
+    },
+    {
+      "heading": "3. HashMap(int capacity)",
+      "paragraphs": [
+        "It is used to construct a HashMap with the specified initial capacity.",
+        "Here is the syntax:"
+      ],
+      "code": [
+        "HashMap<K,V> map = new HashMap<K,V>(int capacity);"
+      ]
+    },
+    {
+      "heading": "4. HashMap(int capacity, float loadFactor)",
+      "paragraphs": [
+        "It is used to construct a HashMap with the specified capacity and load factor.",
+        "Here is the syntax:"
+      ],
+      "code": [
+        "HashMap<K,V> map = new HashMap<K,V>(int capacity, float loadFactor);"
+      ]
+    },
+    {
+      "heading": "Methods of Java HashMap Class",
+      "paragraphs": [
+        "The following table shows the commonly used methods of the HashMap class:",
+        "Method | Description\nvoid clear() | It is used to remove all of the mappings from this map.\nboolean isEmpty() | It is used to return true if this map contains no key-value mappings.\nObject clone() | It is used to return a shallow copy of this HashMap instance: the keys and values themselves are not cloned.\nSet entrySet() | It is used to return a collection view of the mappings contained in this map.\nSet keySet() | It is used to return a set view of the keys contained in this map.\nV put(Object key, Object value) | It is used to insert an entry in the map.\nvoid putAll(Map map) | It is used to insert the specified map in the map.\nV putIfAbsent(K key, V value) | It inserts the specified value with the specified key in the map only if it is not already specified.\nV remove(Object key) | It is used to delete an entry for the specified key.\nboolean remove(Object key, Object value) | It removes the specified values with the associated specified keys from the map.\nV compute(K key, BiFunction<? super K,? super V,? extends V> remappingFunction) | It is used to compute a mapping for the specified key and its current mapped value (or null if there is no current mapping).\nV computeIfAbsent(K key, Function<? super K,? extends V> mappingFunction) | It is used to compute its value using the given mapping function, if the specified key is not already associated with a value (or is mapped to null), and enters it into this map unless null.\nV computeIfPresent(K key, BiFunction<? super K,? super V,? extends V> remappingFunction) | It is used to compute a new mapping given the key and its current mapped value if the value for the specified key is present and non-null.\nboolean containsValue(Object value) | This method returns true if some value equal to the value exists within the map, else return false.\nboolean containsKey(Object key) | This method returns true if some key equal to the key exists within the map, else return false.\nboolean equals(Object o) | It is used to compare the specified Object with the Map.\nvoid forEach(BiConsumer<? super K,? super V> action) | It performs the given action for each entry in the map until all entries have been processed or the action throws an exception.\nV get(Object key) | This method returns the object that contains the value associated with the key.\nV getOrDefault(Object key, V defaultValue) | It returns the value to which the specified key is mapped, or defaultValue if the map contains no mapping for the key.\nboolean isEmpty() | This method returns true if the map is empty; returns false if it contains at least one key.\nV merge(K key, V value, BiFunction<? super V,? super V,? extends V> remappingFunction) | If the specified key is not already associated with a value or is associated with null, associates it with the given non-null value.\nV replace(K key, V value) | It replaces the specified value for a specified key.\nboolean replace(K key, V oldValue, V newValue) | It replaces the old value with the new value for a specified key.\nvoid replaceAll(BiFunction<? super K,? super V,? extends V> function) | It replaces each entry's value with the result of invoking the given function on that entry until all entries have been processed or the function throws an exception.\nCollection<V> values() | It returns a collection view of the values contained in the map.\nint size() | This method returns the number of entries in the map."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Creating a Simple HashMap",
+      "paragraphs": [
+        "A HashMap is used to store key-value pairs. We can add elements using the put() method and traverse them using entrySet()."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "In this example, we are creating a HashMap, adding elements, and traversing it.",
+        "import java.util.*;\npublic class Main{\n public static void main(String args[]){\n   HashMap<Integer,String> map=new HashMap<Integer,String>();//Creating HashMap  \n   map.put(1,\"Mango\");  //Put elements in Map\n   map.put(2,\"Apple\");  \n   map.put(3,\"Banana\"); \n   map.put(4,\"Grapes\"); \n\t \n   System.out.println(\"Iterating Hashmap...\");\n   for(Map.Entry m : map.entrySet()){  \n    System.out.println(m.getKey()+\" \"+m.getValue());  \n   }\n}\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Iterating Hashmap...\n1 Mango\n2 Apple\n3 Banana\n4 Grapes"
+      ]
+    },
+    {
+      "heading": "Handling Duplicate Keys in HashMap",
+      "paragraphs": [
+        "HashMap does not allow duplicate keys. If a duplicate key is added, the old value is replaced with the new value."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "In this example, we are adding a duplicate key, which replaces the previous value.",
+        "import java.util.*;  \n\npublic class Main {  \n public static void main(String args[]){  \n\n  HashMap<Integer,String> map = new HashMap<Integer,String>();  \n\n  map.put(1,\"Mango\");  \n  map.put(2,\"Apple\");    \n  map.put(3,\"Banana\");   \n  map.put(1,\"Grapes\");  \n\n  for(Map.Entry<Integer,String> m : map.entrySet()){    \n   System.out.println(m.getKey()+\" \"+m.getValue());    \n  }  \n }  \n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "1 Grapes\n2 Apple\n3 Banana"
+      ]
+    },
+    {
+      "heading": "Adding Elements in HashMap",
+      "paragraphs": [
+        "Elements can be added using methods like put(), putIfAbsent(), and putAll()."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "In this example, we are adding elements using different methods like put(), putIfAbsent(), and putAll().",
+        "import java.util.*;  \n\nclass Main {  \n public static void main(String args[]){  \n\n  HashMap<Integer,String> hm = new HashMap<Integer,String>();  \n\n  hm.put(100,\"Amit\");    \n  hm.put(101,\"Vijay\");    \n  hm.put(102,\"Rahul\");   \n\n  hm.putIfAbsent(103, \"Gaurav\");  \n\n  HashMap<Integer,String> map = new HashMap<Integer,String>();  \n  map.put(104,\"Ravi\");  \n  map.putAll(hm);  \n\n  for(Map.Entry<Integer,String> m : map.entrySet()){    \n   System.out.println(m.getKey()+\" \"+m.getValue());    \n  }  \n }  \n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "100 Amit\n101 Vijay\n102 Rahul\n103 Gaurav\n104 Ravi"
+      ]
+    },
+    {
+      "heading": "Removing Elements from HashMap",
+      "paragraphs": [
+        "Elements can be removed using remove() methods based on key or key-value pair."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "In this example, we are removing elements using remove() methods.",
+        "import java.util.*;  \n\npublic class Main {  \n public static void main(String args[]){  \n\n  HashMap<Integer,String> map = new HashMap<Integer,String>();  \n\n  map.put(100,\"Amit\");    \n  map.put(101,\"Vijay\");    \n  map.put(102,\"Rahul\");  \n  map.put(103,\"Gaurav\");  \n\n  map.remove(100);  \n  map.remove(102, \"Rahul\");  \n\n  for(Map.Entry<Integer,String> m : map.entrySet()){    \n   System.out.println(m.getKey()+\" \"+m.getValue());    \n  }  \n }  \n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "101 Vijay\n103 Gaurav"
+      ]
+    },
+    {
+      "heading": "Replacing Elements in HashMap",
+      "paragraphs": [
+        "We can replace values using replace() and replaceAll() methods."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "In this example, we are replacing values using replace() and replaceAll() methods.",
+        "import java.util.*;  \n\nclass Main {  \n public static void main(String args[]){  \n\n  HashMap<Integer,String> hm = new HashMap<Integer,String>();  \n\n  hm.put(100,\"Amit\");    \n  hm.put(101,\"Vijay\");    \n  hm.put(102,\"Rahul\");   \n\n  hm.replace(102, \"Gaurav\");  \n  hm.replaceAll((k,v) -> \"Ajay\");  \n\n  for(Map.Entry<Integer,String> m : hm.entrySet()){  \n   System.out.println(m.getKey()+\" \"+m.getValue());   \n  }  \n }  \n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "100 Ajay\n101 Ajay\n102 Ajay"
+      ]
+    },
+    {
+      "heading": "Difference Between HashSet and HashMap",
+      "paragraphs": [
+        "HashSet stores only values, whereas HashMap stores key-value pairs (entries). The following table shows the main differences between HashSet and HashMap based on the different aspects:",
+        "Feature | HashSet | HashMap\nContains | Only values | Key-value pairs (entries)\nData Structure | Implements Set interface | Implements Map interface\nUsage | Used for storing unique elements | Used for storing key-value pairs\nNull Elements | Allows one null element | Allows one null key and multiple null values\nOrdering | Unordered | Unordered\nRetrieval | Direct access by value | Access by key\nImplementation | Implemented using HashMap internally | Implemented using HashTable internally\nPerformance | Typically offers better performance | It might have a slightly lower performance\nMemory Overhead | Lower due to storing only values | >Higher due to storing both keys and values\nIteration | Iterating over elements is straightforward | Iterating over entries is less intuitive\nUse Cases | Checking for presence, maintaining uniqueness | Associating values with keys, efficient value retrieval\nConcurrency | Not synchronised, not suitable for concurrent access without external synchronisation | Can be synchronised or use ConcurrentHashMap for concurrent access\nAPI Differences | Methods for adding, removing, and checking containment | Methods for getting/setting values based on keys, additional operations for managing key-value pairs"
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:44:44.709Z"
+}
