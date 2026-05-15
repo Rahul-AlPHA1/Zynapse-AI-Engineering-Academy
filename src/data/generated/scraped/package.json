@@ -1,0 +1,233 @@
+{
+  "topicId": "package",
+  "title": "Packages in Java",
+  "sectionId": "java-oops",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/packages-in-java",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/packages-in-java",
+      "score": 160,
+      "sectionCount": 19
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_packages.htm",
+      "score": 135,
+      "sectionCount": 14
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Packages in Java",
+      "paragraphs": [
+        "A Java package is a group of similar types of classes, interfaces and sub-packages. This chapter explains how Java packages work and how they help in organizing, managing, and using classes in Java programs."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is Package in Java?",
+      "paragraphs": [
+        "A Java package groups related classes, interfaces, and sub-packages into one unit. It helps organize large programs, avoid name conflicts, control access, and make code reusable and modular.",
+        "There are two types of Java Packages:",
+        "• Built-in Packages\n• User-defined Packages"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Built-in Packages",
+      "paragraphs": [
+        "Built-in packages are predefined packages provided by Java that contain ready-to-use classes and interfaces. Some of the built-in packages that are commonly used are:",
+        "• lang: It contains those classes that are required for language support, such as classes for primitive data types and math operations. This package is automatically imported into Java.\n• io: It contains all those classes that are required for the input/output operations.\n• util: It contains utility classes that are needed for the data structures, such as Array, List, Map, etc.\n• applet: All those classes that are required for finding applets are found in this package.\n• awt: It contains all those classes that are required for creating components of the GUI (Graphical User Interface).\n• net: It includes classes that are used for doing tasks in the field of networking."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java User-defined Packages",
+      "paragraphs": [
+        "User-defined packages are packages created by programmers to group their own classes and interfaces. They help to avoid naming conflicts, support access control, and allow developers to structure large projects in a clean and modular way."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Here, we will create two Java files in two different packages (or folders). We will also create three files. One file each for both the folders, and the last file is of the main class.",
+        "Observe the following. The two folders, mypackage1 and mypackage2, have been created.",
+        "Inside mypackage1, create a file Class1.java.",
+        "The following code is written for the Class1.java file.",
+        "Similarly, create Class2.java file inside mypackage2",
+        "The following code is written for the Class2.java file.",
+        "Now, outside of both packages, create the Main.java file.",
+        "The following code is written for the Main.java file.",
+        "Example// importing both the classes\nimport mypackage1.Class1;\nimport mypackage2.Class2;\npublic class Main {\n    // main method\n    public static void main(String args[])\n    {\n         // instantiating both the classes Class1 and Class2\n        Class1 obj1 = new Class1();\n        Class2 obj2 = new Class2();\n        obj1.get1();\n        obj2.get2();\n    }\n}",
+        "Output:"
+      ],
+      "code": [
+        "// Note that Class1 is the part of the package mypackage1. Therefore, package \n// mypackage1; statement is written.\npackage mypackage1;\npublic class Class1 {\n    public void get1() {\n        System.out.println(\"Inside the package 1.\");\n    }\n}",
+        "// Note that Class2 is the part of the package mypackage2. Therefore, package \n// mypackage2; statement is written.\npackage mypackage2;\npublic class Class2 {\n    public void get2() {\n        System.out.println(\"Inside the package 2.\");\n    }\n}",
+        "Inside the package 1.\nInside the package 2."
+      ]
+    },
+    {
+      "heading": "Note: If we change the access specifier of the classes Class1 and Class2 from public to protected, default, or private, then the compiler will give an error. Observe the following.",
+      "paragraphs": [
+        "Save this file as Class1.java",
+        "Save this file as Class2.java",
+        "Now, when we run the Main.java file, the following error is observed.",
+        "Explanation",
+        "The error is coming because protected and default access specifiers restrict the visibility of the classes outside the package. Therefore, the main class cannot access Class1 and Class2."
+      ],
+      "code": [
+        "package mypackage1;\n// public class Class1 {\nprotected class Class1 { // changed the access specifier to protected\n    public void get1() {\n        System.out.println(\"Inside the package 1.\");\n    }\n}",
+        "package mypackage2;\n// public class Class2 {\nclass Class2 { // changed the access specifier to default\n    public void get2() {\n        System.out.println(\"Inside the package 2.\");\n    }\n}",
+        ".\\mypackage1\\Class1.java:3: error: modifier protected not allowed here\nprotected class Class1 { // changed the access specifier to protected\n          ^\nMain.java:2: error: Class1 is not public in mypackage1; cannot be accessed from outside package\nimport mypackage1.Class1;\n                 ^\nMain.java:4: error: Class2 is not public in mypackage2; cannot be accessed from outside package\nimport myPackage2.Class2;\n                 ^\nMain.java:11: error: Class1 is not public in mypackage1; cannot be accessed from outside package\n        Class1 obj1 = new Class1();\n        ^\nMain.java:11: error: Class1 is not public in mypackage1; cannot be accessed from outside package\n        Class1 obj1 = new Class1();\n                          ^\nMain.java:13: error: Class2 is not public in mypackage2; cannot be accessed from outside package\n                Class2 obj2 = new Class2();\n                ^\nMain.java:13: error: Class2 is not public in mypackage2; cannot be accessed from outside package\n                Class2 obj2 = new Class2();"
+      ]
+    },
+    {
+      "heading": "Note: In this example, we have created the folders mypackage1 and mypackage2 explicitly. If we want to build it using the command prompt, then do the following.",
+      "paragraphs": [
+        "First, put all three files (Class1.java, Class2.java, Main.java) in one location (in my case location is the test folder).",
+        "Ensure that the access specifier of Class1 and Class2 is public in this case. Now, compile it using the following command.",
+        "Here, -d is for the destination. After -d, we see a dot(.), which means in the current directory, and *.java means all the Java files.",
+        "After doing the compilation work, we see the following.",
+        "We see that both the packages have been created. Now, run the Main.class file using the command",
+        "And we get the output as:"
+      ],
+      "code": [
+        "javac -d . *.java",
+        "java Main",
+        "Inside the package 1.\nInside the package 2."
+      ]
+    },
+    {
+      "heading": "Static Import of the Packages",
+      "paragraphs": [
+        "The static import feature was first introduced in Java version 5 and is still present in later versions of Java. Static import allows only public static members (methods or fields) of a class to be used in the code without specifying the name of the class in which it is defined.",
+        "The following example demonstrate the static import of the packages in Java.",
+        "Exampleimport static java.lang.System.*; // notice the word static in the import statement\npublic class Main {\n    public static void main(String args[]) {\n        // no need to write System.out.println\n        // only out.println will do the work\n        out.println(\"In the main method\");\n    }\n}",
+        "Output:",
+        "Explanation:",
+        "\"System\" is a class present in the java.lang package, and out is a static variable present in the System class. By using static import, we are able to access the out variable without using the class name \"System\"."
+      ],
+      "code": [
+        "In the main method"
+      ]
+    },
+    {
+      "heading": "Dealing With Name Conflicts Using Packages",
+      "paragraphs": [
+        "As discussed earlier, name conflicts can be handled using packages. Let's see an example to understand it.",
+        "Exampleimport java.sql.*;\nimport java.util.*;\npublic class Main {\n    public static void main(String args[]) {\n       // creating an object of the class Date\n       Date d = new Date(44l);\n       System.out.println(\"Inside main method.\");\n    }\n}",
+        "Output:",
+        "Explanation",
+        "In the program, java.sql and java.util packages have been imported. Each package contains the Date class. When the Date class is instantiated, the compiler does not know which Date class it should refer to, whether the compiler should refer to the Date class of the java.sql package or the Date class of java.util package. It leads to ambiguity. Therefore, the error has come.",
+        "To solve this error, we have to use the class name along with the package name. The fully qualified name clearly tells the compiler which Date class it should refer to.",
+        "Exampleimport java.sql.*;\nimport java.util.*;\npublic class Main {\n    public static void main(String args[]) {\n       // Date class comes with the java.sql package name. It indicates that\n       // Date class used here belongs to the java.sql package. Hence, there is no any \n       // ambiguity. Therefore, no error has occurred.        \n       // creating an object of the class Date\n       java.sql.Date d = new java.sql.Date(44l);\n       System.out.println(\"Inside main method.\");\n    }\n}",
+        "Output:"
+      ],
+      "code": [
+        "Main.java:7: error: reference to Date is ambiguous\n       Date d = new Date(44l);\n       ^\n  both class java.util.Date in java.util and class java.sql.Date in java.sql match\nMain.java:7: error: reference to Date is ambiguous\n       Date d = new Date(44l);\n                    ^\n  both class java.util.Date in java.util and class java.sql.Date in java.sql match\n2 errors",
+        "Inside the main method."
+      ]
+    },
+    {
+      "heading": "Java Subpackage",
+      "paragraphs": [
+        "A package inside a package is called a subpackage. It should be created to categorize the package further.",
+        "Let's take an example, Sun Microsystems has defined a package named java that contains many classes like System, String, Reader, Writer, Socket, etc. These classes represent a particular group. For example, Reader and Writer classes are for Input/Output operations, Socket and ServerSocket classes are for networking, etc. and so on.",
+        "So, Sun has subcategorized the Java package into subpackages such as lang, net, io, etc. and put the Input/Output related classes in the io package, Server and ServerSocket classes in the net package and so on.",
+        "The standard for defining a package is domain.company.package for examlle com.tpointtech.bean or org.sssit.dao.",
+        "The following example demonstrate the working of Subpackages in Java.",
+        "Examplepackage com.tpointtech.core;  \nclass Main {  \n  public static void main(String args[]){  \n   System.out.println(\"Hello subpackage\");  \n  }  \n}",
+        "To Compile: javac -d . Main.java",
+        "To Run: java com.tpointtech.core.Main",
+        "Output:"
+      ],
+      "code": [
+        "Hello subpackage"
+      ]
+    },
+    {
+      "heading": "Advantages of Using Packages",
+      "paragraphs": [
+        "Several advantages of packages in Java are as follows:"
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. Avoid Naming Conflicts",
+      "paragraphs": [
+        "Packages are used to avoid naming conflicts among class names.",
+        "Suppose there is a class called Employee. We know that employees are in the HR as well as the IT department of a company. So, the question is, if we write Employee, then it is of which department? Here, packages come into the picture, and we can write Employee as the fully qualified name for both the department and company.hr.Employee and company.it.Employee. Thus, the naming conflict is avoided."
+      ],
+      "code": []
+    },
+    {
+      "heading": "2. Organize Classes",
+      "paragraphs": [
+        "For organizing the class, interfaces and other components, packages are used.",
+        "Think of a library. There are different shelves for the various kinds of books. Maths books are stored in one place. Science books are stored in another place, etc. Similarly, we can also group similar types of classes in one place. Packages help in doing so. In Java, built-in classes are also organized using packages. Observe the following diagram.",
+        "• Control Access: It is the package that controls the access of the protected and default members. Think what would be the use of default and protected access specifiers if packages were absent?\n• Reusability: Java enhances the reusability management of code and does the promotion of data encapsulation with the help of packages."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Package Structure and Naming Rules",
+      "paragraphs": [
+        "Here, we are going to discuss the package structure and naming rules in Java."
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. Naming Conventions",
+      "paragraphs": [
+        "Java packages should be in lowercase, and the dot should separate the components (.). If the component is a class, then the first letter of the class name should be capitalized.",
+        "To read more Java Naming Conventions"
+      ],
+      "code": []
+    },
+    {
+      "heading": "2. Structure of Directory",
+      "paragraphs": [
+        "The names of the directories and the package names are closely related.",
+        "For example, if the package name is company.hr.Employee, then the company is the directory, and inside it, there is another directory called hr, and inside it, there is a class called Employee. Notice that E is in capital, indicating that it is a class name.",
+        "Example:",
+        "Here, lang is a subpackage inside the package java."
+      ],
+      "code": [
+        "import java.lang.*;"
+      ]
+    },
+    {
+      "heading": "Accessing Classes from Package",
+      "paragraphs": [
+        "Here, we are going to discuss how we can access class from packages in Java."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Importing a Specific Class",
+      "paragraphs": [
+        "We can access classes of a package using the import keyword. For example, if we want to access a specific class of the java.util package, then use the following statement:",
+        "Here, we are accessing a specific class called ArrayList of the package java.util. Similarly, if we want to include another class of the different package, we can write",
+        "Here, we have imported BigInteger class of the java.math package."
+      ],
+      "code": [
+        "import java.util.ArrayList;",
+        "import java.math.BigInteger;"
+      ]
+    },
+    {
+      "heading": "Importing All Classes",
+      "paragraphs": [
+        "If we want to use a class without using the import statement, then we have to write the following."
+      ],
+      "code": [
+        "Inside the main method"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:34:13.201Z"
+}

@@ -1,0 +1,188 @@
+{
+  "topicId": "abstract-class",
+  "title": "Abstract class in Java",
+  "sectionId": "java-oops",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/abstract-class-in-java",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/abstract-class-in-java",
+      "score": 116,
+      "sectionCount": 17
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_abstraction.htm",
+      "score": 71,
+      "sectionCount": 11
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Abstract class in Java",
+      "paragraphs": [
+        "In Java programming, abstract classes are used to define the structure and behavior of classes within an inheritance hierarchy. They act as a blueprint for other classes, where some methods may be declared without implementation. In this chapter, we will learn the concept of abstract classes including their features, advantages, and examples.",
+        "Before learning about abstract classes in Java, it is necessary to first understand the concept of abstraction."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is Abstraction in Java?",
+      "paragraphs": [
+        "Abstraction is the process of hiding implementation details and showing only the required functionality to the user. In other words, it displays only the essential features while hiding internal details.",
+        "For example, when sending an SMS, we type the message and send it without knowing how the message is processed or delivered internally.",
+        "Abstraction allows you to focus on what an object does rather than how it does it.",
+        "There are two ways to achieve abstraction in Java:",
+        "• Using Abstract Class (can provide 0% to 100% abstraction)\n• Using Interface (provides 100% abstraction)"
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is Abstract Class in Java?",
+      "paragraphs": [
+        "A class declared using the abstract keyword is known as an abstract class in Java. It can contain both abstract methods (methods without a body) and non-abstract methods (methods with a body).",
+        "An abstract class provides partial abstraction. It cannot be created on its own and is used only as a parent class. It defines a common structure and shared behavior, while child classes provide their own implementations. Abstract methods do not have a body and must be implemented by the subclasses."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Points to Remember",
+      "paragraphs": [
+        "• An abstract class must be declared with an abstract keyword.",
+        "• It can have abstract and non-abstract methods.",
+        "• It cannot be instantiated.",
+        "• It can have constructors and static methods also.",
+        "• It can have final methods which will force the subclass not to change the body of the method."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Creating / Declaring an Abstract Class",
+      "paragraphs": [
+        "An abstract class is created using the abstract keyword. It is used as a parent class and cannot be instantiated directly."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [
+        "Here is the syntax to create an abstract class:",
+        "In this example, Shape is an abstract class. It contains one abstract method area() without a body and one concrete method display() with an implementation. Any subclass of Shape must implement the area() method, while it can directly use the display() method."
+      ],
+      "code": [
+        "public abstract class Shape {\n    public abstract double area();\n    public void display() {\n        System.out.println(\"This is a shape.\");\n    }\n}"
+      ]
+    },
+    {
+      "heading": "Abstract Method",
+      "paragraphs": [
+        "A method that is declared using the abstract keyword and does not have an implementation (method body) is known as an abstract method."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Here is an example how an abstract method looks like:",
+        "An abstract method only declares the method signature. Its implementation must be provided by the subclass that extends the abstract class."
+      ],
+      "code": [
+        "abstract void printStatus(); // no method body"
+      ]
+    },
+    {
+      "heading": "Abstract Class with an Abstract Method",
+      "paragraphs": [
+        "The following example shows an abstract class that contains an abstract method. Subclasses must provide the implementation for the abstract method.",
+        "Here, Bike is an abstract class with the abstract method run(). The subclass Honda provides the implementation of run(). This shows how abstract classes define a method structure while leaving the details to subclasses.",
+        "Example//Creating an abstract class having abstract method\nabstract class Bike{  \n  abstract void run();  \n}  \n//Creating a child class and override abstract method\nclass Honda extends Bike{  \nvoid run(){System.out.println(\"running safely\");}  \n}\n//Creating a Main class to create object and call methods\npublic class Main{\npublic static void main(String args[]){  \n Bike obj = new Honda();  \n obj.run();  \n}  \n} \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "running safely"
+      ]
+    },
+    {
+      "heading": "More Examples of Abstract Class",
+      "paragraphs": [
+        "Practice the following examples to better understand the concept of abstract classes and how they are used in Java."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example 1: Shape Abstract Class",
+      "paragraphs": [
+        "In this example, Shape is an abstract class, and its implementation is provided by the Rectangle and Circle classes. The specific implementation is usually hidden from the end user and may be provided through a factory method.",
+        "Exampleabstract class Shape{  \n abstract void draw();  \n}  \n//In real scenario, implementation is provided by others i.e. unknown by end user  \nclass Rectangle extends Shape{  \n void draw(){System.out.println(\"drawing rectangle\");}  \n}  \nclass Circle extends Shape{  \n void draw(){System.out.println(\"drawing circle\");}  \n}  \n//In real scenario, method is called by programmer or user  \npublic class Main{  \n public static void main(String args[]){  \n  //In a real scenario, object is provided through method, e.g., getShape() method  \n  Shape s=new Circle();\n  s.draw();  \n}  \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "drawing circle"
+      ]
+    },
+    {
+      "heading": "Example 2: Bank Abstract Class",
+      "paragraphs": [
+        "This example shows how abstract classes can define a common interface for related classes, while subclasses provide their own implementation.",
+        "Exampleabstract class Bank{    \n    abstract int getRateOfInterest();    \n}    \nclass SBI extends Bank{    \n    int getRateOfInterest(){return 7;}    \n}    \nclass PNB extends Bank{    \n    int getRateOfInterest(){return 8;}    \n}    \n    \npublic class Main{    \n public static void main(String args[]){    \n  Bank b;  \n  b=new SBI();  \n  System.out.println(\"Rate of Interest is: \"+b.getRateOfInterest()+\" %\");    \n  b=new PNB();  \n  System.out.println(\"Rate of Interest is: \"+b.getRateOfInterest()+\" %\");    \n }\n}   \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Rate of Interest is: 7 %\nRate of Interest is: 8 %"
+      ]
+    },
+    {
+      "heading": "Abstract Class having Constructor, Data Members, and Methods",
+      "paragraphs": [
+        "An abstract class in Java can contain data members, abstract methods, concrete methods, constructors, and even the main() method."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example shows an abstract class Bike with:",
+        "• A constructor that runs when an object of the subclass is created.\n• An abstract method run() that must be implemented by subclasses.\n• A concrete method changeGear() that can be inherited as-is.",
+        "Example//Example of an abstract class that has abstract and non-abstract methods  \nabstract class Bike{  \n   Bike(){System.out.println(\"bike is created\");}  \n   abstract void run();  \n   void changeGear(){System.out.println(\"gear changed\");}  \n}  \n//Creating a Child class which inherits Abstract class  \nclass Honda extends Bike{  \n void run(){System.out.println(\"running safely..\");}  \n}  \n//Creating a Main class which calls abstract and non-abstract methods  \npublic class Main{  \n public static void main(String args[]){  \n  Bike obj = new Honda();  \n  obj.run();  \n  obj.changeGear();  \n }  \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "bike is created\n       running safely..\n       gear changed"
+      ]
+    },
+    {
+      "heading": "Rules of Abstract Classes",
+      "paragraphs": [
+        "1. If a class contains an abstract method, the class itself must be declared abstract.",
+        "Output:",
+        "2. If a subclass extends an abstract class with abstract methods, it must either implement all abstract methods or be declared abstract itself.",
+        "Output:"
+      ],
+      "code": [
+        "class Bike12 {  \n    abstract void run();  \n}",
+        "compile time error",
+        "abstract class Vehicle {\n    abstract void start();\n}\n\n// Subclass not implementing abstract method must be abstract\nabstract class Car extends Vehicle {\n}\n\n// Subclass implementing abstract method can be instantiated\nclass Honda extends Vehicle {\n    void start() {\n        System.out.println(\"Honda started\");\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Vehicle v = new Honda();\n        v.start();  // Output: Honda started\n    }\n}",
+        "Honda started"
+      ]
+    },
+    {
+      "heading": "Another Real Scenario of Abstract Class",
+      "paragraphs": [
+        "The abstract class can also be used to provide some implementation of the interface. In such case, the end user may not be forced to override all the methods of the interface."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Note: If we are beginner to Java, learn interface first then see this example.",
+      "paragraphs": [
+        "Exampleinterface A{  \n    void a();  \n    void b();  \n    void c();  \n    void d();  \n}  \n  \nabstract class B implements A{  \n    public void c(){System.out.println(\"I am c\");}  \n}  \n  \nclass M extends B{  \n    public void a(){System.out.println(\"I am a\");}  \n    public void b(){System.out.println(\"I am b\");}  \n    public void d(){System.out.println(\"I am d\");}  \n}  \n  \npublic class Main{  \n    public static void main(String args[]){  \n        A a=new M();  \n        a.a();  \n        a.b();  \n        a.c();  \n        a.d();  \n    }\n} \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "I am a\n   I am b\n   I am c\n   I am d"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:33:30.501Z"
+}

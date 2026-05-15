@@ -1,0 +1,258 @@
+{
+  "topicId": "oops-concepts-intro",
+  "title": "OOPs Concepts in Java",
+  "sectionId": "java-oops",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-oops-concepts",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-oops-concepts",
+      "score": 164,
+      "sectionCount": 25
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_oops_concepts.htm",
+      "score": 107,
+      "sectionCount": 20
+    }
+  ],
+  "sections": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Tutorial  Compiler  Programs  OOPs Collections  Interview Questions"
+      ],
+      "code": []
+    },
+    {
+      "heading": "OOPs Concepts in Java",
+      "paragraphs": [
+        "Object-oriented programming is a paradigm that provides concepts, such as inheritance, data binding, polymorphism, etc.",
+        "Simula is considered the first object-oriented programming language. The programming paradigm where everything is represented as an object is known as a pure object-oriented programming language.",
+        "Smalltalk is considered the first truly object-oriented programming language.",
+        "The popular object-oriented languages are Java, C#, PHP, Python, C++, etc."
+      ],
+      "code": []
+    },
+    {
+      "heading": "OOPs (Object-Oriented Programming)",
+      "paragraphs": [
+        "Object-oriented programming aims to implement real-world entities, for example, objects, classes, abstraction, inheritance, polymorphism, etc.",
+        "Object means a real-world entity such as a pen, chair, table, computer, watch, etc. Object-oriented programming is a methodology or paradigm for designing a program using classes and objects. It simplifies software development and maintenance by providing some concepts:",
+        "• Object\n• Class\n• Inheritance\n• Polymorphism\n• Abstraction\n• Encapsulation",
+        "Apart from these concepts, there are some other terms which are used in Object-Oriented design:",
+        "• Coupling\n• Cohesion\n• Association\n• Aggregation\n• Composition"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Object",
+      "paragraphs": [
+        "Any entity that has state and behavior is known as an object. For example, a chair, pen, table, keyboard, bike, etc. It can be physical or logical.",
+        "An Object can be defined as an instance of a class. It contains an address and takes up some space in memory. Objects can communicate without knowing the details of each other's data or code. The only necessary thing is the type of message accepted and the type of response returned by the objects.",
+        "Example: A dog is an object because it has states like color, name, breed, etc. as well as behaviors like wagging the tail, barking, eating, etc.",
+        "The primary elements of an object are:",
+        "• State: It is embodied in an object's properties. Additionally, it reflects an object's attributes.\n• Behavior: An object's methods are a representation of it. Additionally, it represents how an object reacts to other objects.\n• Identity: Identity is a special name that gives a thing the ability to communicate with other objects.\n• Method: A method is a group of statements that carry out a certain operation and give an outcome. A method can complete a certain task without giving back any results. Methods are regarded as time savers since they enable us to reuse the code without having to type it again. Java differs from languages like C, C++, and Python in that each method needs to be a component of a class."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example of Object",
+      "paragraphs": [
+        "The following example demonstrates how to create a class, instantiate an object, assign values to object fields, and invoke a method using that object.",
+        "class Dog {\n    String name;\n    void bark() {\n        System.out.println(name + \" says Woof!\");\n    }\n}\npublic class Main {\n    public static void main(String[] args) {\n        Dog myDog = new Dog();     // Creating an object\n        myDog.name = \"Rocky\";      // Assigning value to the object's field\n        myDog.bark();              // Calling method on the object\n    }\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Rocky says Woof!"
+      ]
+    },
+    {
+      "heading": "Class",
+      "paragraphs": [
+        "Class is a logical entity. A class can also be defined as a blueprint from which we can create an individual object. Class does not consume any space.",
+        "In general, a class declaration includes the following in the order as it appears:",
+        "• Modifiers: A class can be public or have default access.\n• class keyword: The class keyword is used to create a class.\n• Class name: The name must begin with an initial letter (capitalized by convention).\n• Superclass (if any): The name of the class's parent (superclass), if any, preceded by the keyword extends. A class can only extend (subclass) one parent.\n• Interfaces (if any): A comma-separated list of interfaces implemented by the class, if any, preceded by the keyword implements. A class can implement more than one interface.\n• Body: The class body surrounded by braces, { }."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Inheritance",
+      "paragraphs": [
+        "When one object acquires all the properties and behaviors of a parent object, it is known as inheritance. It provides code reusability. It is used to achieve runtime polymorphism."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example of Inheritance",
+      "paragraphs": [
+        "The following example demonstrates inheritance, where the Car class extends the Vehicle class and accesses both inherited methods and its own method.",
+        "// Superclass (Parent)\nclass Vehicle {\n    void start() {\n        System.out.println(\"Vehicle is starting...\");\n    }\n    void stop() {\n        System.out.println(\"Vehicle is stopping...\");\n    }\n}\n// Subclass (Child) - Inherits from Vehicle\nclass Car extends Vehicle {\n    void honk() {\n        System.out.println(\"Car is honking!\");\n    }\n}\npublic class MainExample {\n    public static void main(String[] args) {\n        Car myCar = new Car();\n        // Calling inherited methods (from Vehicle)\n        myCar.start();\n        myCar.stop();\n        // Calling child class method\n        myCar.honk();\n    }\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Vehicle is starting...\nVehicle is stopping...\nCar is honking!"
+      ]
+    },
+    {
+      "heading": "Polymorphism",
+      "paragraphs": [
+        "If one task is performed in different ways, it is known as polymorphism. For example, to convince the customer differently, to draw something, for example, a shape, a triangle, a rectangle, etc.",
+        "In Java, we use method overloading and method overriding to achieve polymorphism.",
+        "Another example can be to speak something; for example, a cat says meow, a dog barks woof, etc."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example of Polymorphism",
+      "paragraphs": [
+        "The following example demonstrates polymorphism by showing method overloading at compile time and method overriding at runtime.",
+        "class Animal {\n    // Method Overloading (compile-time polymorphism)\n    void sound() {\n        System.out.println(\"An animal makes a sound\");\n    }\n    void sound(String type) {\n        System.out.println(\"Animal sound: \" + type);\n    }\n}\nclass Dog extends Animal {\n    // Method Overriding (runtime polymorphism)\n    @Override\n    void sound(String type) {\n        System.out.println(\"Dog barking is: \" + type);\n    }\n}\npublic class Main {\n    public static void main(String[] args) {\n        Animal a = new Animal();\n        Dog d = new Dog();\n        Animal poly = new Dog(); \n        // Method Overloading\n        a.sound();\n        a.sound(\"Generic\");\n        // Method Overriding\n        d.sound(\"Loud\");\n        // Performing the Polymorphism \n        poly.sound(\"Soft\");\n    }\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "An animal makes a sound\nAnimal sound: Generic\nDog barking is: Loud\nDog barking is: Soft"
+      ]
+    },
+    {
+      "heading": "Abstraction",
+      "paragraphs": [
+        "Hiding internal implementation and showing functionality only to the user is known as abstraction. For example, in phone calls, we do not know the internal processing. In Java, we use abstract classes and interfaces to achieve abstraction."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example of Abstraction",
+      "paragraphs": [
+        "The following example demonstrates abstraction using an abstract class with both abstract and concrete methods.",
+        "abstract class Animal {\n    abstract void makeSound();\n    // Creating a Concrete method \n    void breathe() {\n        System.out.println(\"Animal is breathing...\");\n    }\n}\n// Concrete subclass\nclass Dog extends Animal {\n    // implementation for an abstract method\n    @Override\n    void makeSound() {\n        System.out.println(\"Dog barking\");\n    }\n}\npublic class Main {\n    public static void main(String[] args) {\n        Animal myDog = new Dog();\n        myDog.breathe();\n        myDog.makeSound();\n    }\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Animal is breathing...\nDog barking"
+      ]
+    },
+    {
+      "heading": "Encapsulation",
+      "paragraphs": [
+        "Binding (or wrapping) code and data together into a single unit is known as encapsulation. For example, a capsule is wrapped with different medicines.",
+        "A Java class is an example of encapsulation. A Java bean is a fully encapsulated class because all the data members are private."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example of Abstraction",
+      "paragraphs": [
+        "The following example demonstrates encapsulation by using private data members along with public getter and setter methods.",
+        "class Student {\n    // Private data members\n    private String name;\n    // Setter method\n    public void setName(String name) {\n        this.name = name;\n    }\n    // Getter method\n    public String getName() {\n        return name;\n    }\n}\npublic class Main {\n    public static void main(String[] args) {\n        Student s = new Student();\n        // Setting value using setter\n        s.setName(\"John\");\n        // Getting value using getter\n        System.out.println(\"Student Name: \" + s.getName());\n    }\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Student Name: John"
+      ]
+    },
+    {
+      "heading": "Coupling",
+      "paragraphs": [
+        "Coupling refers to the knowledge, information, or dependency of another class. It arises when classes are aware of each other. If a class has information about another class, there is strong coupling. In Java, we use private, protected, and public modifiers to display the visibility level of a class, method, and field. We can use interfaces for the weaker coupling because there is no concrete implementation."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates coupling, where one class depends on another class to perform its operation.",
+        "Output:"
+      ],
+      "code": [
+        "// Tightly coupled class\nclass Engine {\n    void start() {\n        System.out.println(\"Engine started\");\n    }\n}\n\nclass Car {\n    private Engine engine;   // Car is dependent on Engine\n\n    Car() {\n        engine = new Engine();   // Strong coupling\n    }\n\n    void drive() {\n        engine.start();\n        System.out.println(\"Car is moving\");\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Car myCar = new Car();\n        myCar.drive();\n    }\n}",
+        "Engine started\nCar is moving"
+      ]
+    },
+    {
+      "heading": "Cohesion",
+      "paragraphs": [
+        "Cohesion refers to the level of a component that performs a single well-defined task. A single well-defined task is done by a highly cohesive method. The weakly cohesive method will split the task into separate parts. The java.io package is highly cohesive because it has I/O related classes and interfaces. However, the java.util package is a weakly cohesive package because it has unrelated classes and interfaces."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates cohesion, where a class performs a single well-defined responsibility.",
+        "Output:"
+      ],
+      "code": [
+        "// Highly cohesive class\nclass Calculator {\n\n    int add(int a, int b) {\n        return a + b;\n    }\n\n    int subtract(int a, int b) {\n        return a - b;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Calculator calc = new Calculator();\n\n        System.out.println(\"Addition: \" + calc.add(10, 5));\n        System.out.println(\"Subtraction: \" + calc.subtract(10, 5));\n    }\n}",
+        "Addition: 15\nSubtraction: 5"
+      ]
+    },
+    {
+      "heading": "Association",
+      "paragraphs": [
+        "The association represents the relationship between the objects. Here, one object can be associated with one object or many objects. There can be four types of association between the objects:",
+        "• One-to-One\n• One to Many\n• Many to One\n• Many-to-Many",
+        "For example, a country can have one prime minister (one-to-one), and a prime minister can have many ministers (one-to-many). Also, many MPs can have one prime minister (many to one), and many ministers can have many departments (many to many)."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates association, where objects of one class are related to objects of another class.",
+        "Output:"
+      ],
+      "code": [
+        "// Associated class\nclass PrimeMinister {\n    String name;\n\n    PrimeMinister(String name) {\n        this.name = name;\n    }\n}\n\n// Another associated class\nclass Country {\n    String countryName;\n    PrimeMinister pm;   // Association\n\n    Country(String countryName, PrimeMinister pm) {\n        this.countryName = countryName;\n        this.pm = pm;\n    }\n\n    void showDetails() {\n        System.out.println(\"Country: \" + countryName);\n        System.out.println(\"Prime Minister: \" + pm.name);\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        PrimeMinister pm = new PrimeMinister(\"John\");\n        Country country = new Country(\"ABC Nation\", pm);\n\n        country.showDetails();\n    }\n}",
+        "Country: ABC Nation\nPrime Minister: John"
+      ]
+    },
+    {
+      "heading": "Aggregation",
+      "paragraphs": [
+        "Aggregation is a way to achieve Association. It represents the relationship where one object contains other objects as a part of its state. It represents the weak relationship between objects. It is also termed as a HAS-A relationship in Java. Like, inheritance represents the IS-A relationship. It is another way to reuse objects."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates aggregation, where one class contains a reference to another class as a part of its state.",
+        "Output:"
+      ],
+      "code": [
+        "// Aggregated class\nclass Department {\n    String deptName;\n\n    Department(String deptName) {\n        this.deptName = deptName;\n    }\n}\n\n// Aggregator class\nclass University {\n    String universityName;\n    Department department;   // Aggregation (HAS-A relationship)\n\n    University(String universityName, Department department) {\n        this.universityName = universityName;\n        this.department = department;\n    }\n\n    void showDetails() {\n        System.out.println(\"University: \" + universityName);\n        System.out.println(\"Department: \" + department.deptName);\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Department dept = new Department(\"Computer Science\");\n        University uni = new University(\"ABC University\", dept);\n\n        uni.showDetails();\n    }\n}",
+        "University: ABC University\nDepartment: Computer Science"
+      ]
+    },
+    {
+      "heading": "Composition",
+      "paragraphs": [
+        "The composition is also a way to achieve Association. The composition represents the relationship where one object contains other objects as a part of its state. There is a strong relationship between the containing object and the dependent object. It is the state where objects do not have an independent existence. If we delete the parent object, all the child objects will be deleted automatically."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates composition, where a class owns another class and the contained object cannot exist independently.",
+        "Output:"
+      ],
+      "code": [
+        "// Composed class\nclass Engine {\n    void start() {\n        System.out.println(\"Engine started\");\n    }\n}\n\n// Owner class\nclass Car {\n    private Engine engine;   // Composition (strong HAS-A relationship)\n\n    Car() {\n        engine = new Engine();   // Engine created inside Car\n    }\n\n    void drive() {\n        engine.start();\n        System.out.println(\"Car is moving\");\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Car myCar = new Car();\n        myCar.drive();\n    }\n}",
+        "Engine started\nCar is moving"
+      ]
+    },
+    {
+      "heading": "Advantages of OOP Over Procedure-Oriented Programming Language",
+      "paragraphs": [
+        "• OOPs make development and maintenance easier, whereas in a procedure-oriented programming language, it is not easy to manage if the code grows as the project size increases.\n• OOP provides data hiding, whereas in a procedure-oriented programming language, global data can be accessed from anywhere.\n• OOPs provide the ability to simulate real-world events much more effectively. We can provide the solution to real-world problems if we use an Object-Oriented Programming language.",
+        "Next TopicNaming Convention in Java"
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:31:25.453Z"
+}

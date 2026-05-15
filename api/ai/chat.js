@@ -1,5 +1,7 @@
+export const config = { maxDuration: 60 };
+
 const PROVIDER_NAMES = { gemini: "Google Gemini", groq: "Groq" };
-const DEFAULT_MODELS = { gemini: "gemini-2.5-flash", groq: "llama-3.3-70b-versatile" };
+const DEFAULT_MODELS = { gemini: "gemini-2.5-flash", groq: "llama-3.1-8b-instant" };
 const ENV_KEYS = { gemini: "GEMINI_API_KEY", groq: "GROQ_API_KEY" };
 
 function isHostedProvider(p) { return p === "gemini" || p === "groq"; }
@@ -22,7 +24,7 @@ async function callGemini(key, model, messages) {
   const contents = messages
     .filter(m => m.role !== "system")
     .map(m => ({ role: m.role === "assistant" ? "model" : "user", parts: [{ text: m.content }] }));
-  const body = { contents, generationConfig: { temperature: 0.25 } };
+  const body = { contents, generationConfig: { temperature: 0.25, maxOutputTokens: 4096 } };
   if (systemText) body.systemInstruction = { parts: [{ text: systemText }] };
   const res = await fetch(
     `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${key}`,
@@ -35,7 +37,7 @@ async function callGemini(key, model, messages) {
 }
 
 async function callGroq(key, model, messages) {
-  const body = { model, messages, temperature: 0.25, top_p: 0.9, max_completion_tokens: 8192 };
+  const body = { model, messages, temperature: 0.25, top_p: 0.9, max_completion_tokens: 2048 };
   const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
     method: "POST",
     headers: { "Content-Type": "application/json", Authorization: `Bearer ${key}` },

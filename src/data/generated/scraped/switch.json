@@ -1,0 +1,141 @@
+{
+  "topicId": "switch",
+  "title": "Java - switch statement",
+  "sectionId": "java-basics",
+  "source": "tutorialspoint",
+  "url": "https://www.tutorialspoint.com/java/switch_statement_in_java.htm",
+  "allSources": [
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/switch_statement_in_java.htm",
+      "score": 81,
+      "sectionCount": 14
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java switch Statement",
+      "paragraphs": [
+        "Java switch statement allows a variable to be tested for equality against a list of values. Each value is called a case, and the variable being switched on is checked for each case.",
+        "The switch statement can be used when multiple if-else statements are required. It can have multiple code blocks along with the case values and execute one of many code blocks based on the matched case value."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [
+        "The syntax of Java switch statement is −"
+      ],
+      "code": [
+        "switch(expression) {\n   case value :\n      // Statements\n      break; // optional\n   \n   case value :\n      // Statements\n      break; // optional\n   \n   // You can have any number of case statements.\n   default : // Optional\n      // Statements\n}"
+      ]
+    },
+    {
+      "heading": "Rules for Using switch Statement",
+      "paragraphs": [
+        "The following rules apply to a switch statement −",
+        "• The variables used in a switch statement can only be integers, convertable integers (byte, short, char), strings, and enums.\n• You can have any number of case statements within a switch. Each case is followed by the value to be compared to and a colon.\n• The value for a case must be the same data type as the variable in the switch, and it must be a constant or a literal.\n• When the variable being switched on is equal to a case, the statements following that case will execute until a break statement is reached.\n• When a break statement is reached, the switch terminates, and the flow of control jumps to the next line following the switch statement.\n• Not every case needs to contain a break. If no break appears, the flow of control will fall through  to subsequent cases until a break is reached.\n• A switch statement can have an optional default case, which must appear at the end of the switch. The default case can be used for performing a task when none of the cases is true. No break is needed in the default case."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example 1",
+      "paragraphs": [
+        "In this example, we're showing use of switch statement where cases are based on a char. We've created a variable grade. Based on value of grade, each case is checked. if a case is satisfied and break statement is present then following cases are not checked."
+      ],
+      "code": [
+        "public class Test {\n\n   public static void main(String args[]) {\n      char grade = 'C';\n\n      switch(grade) {\n         case 'A' :\n            System.out.println(\"Excellent!\"); \n            break;\n         case 'B' :\n         case 'C' :\n            System.out.println(\"Well done\");\n            break;\n         case 'D' :\n            System.out.println(\"You passed\");\n         case 'F' :\n            System.out.println(\"Better try again\");\n            break;\n         default :\n            System.out.println(\"Invalid grade\");\n      }\n      System.out.println(\"Your grade is \" + grade);\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [
+        "Compile and run the above program using various command line arguments. This will produce the following result −"
+      ],
+      "code": [
+        "Well done\nYour grade is C"
+      ]
+    },
+    {
+      "heading": "Example 2",
+      "paragraphs": [
+        "In this example, we're showing use of switch statement where cases are based on a int. We've created a variable grade. Based on value of grade, each case is checked. if a case is satisfied and break statement is present then following cases are not checked."
+      ],
+      "code": [
+        "public class Test {\n\n   public static void main(String args[]) {\n      int grade = 3;\n\n      switch(grade) {\n         case 1 :\n            System.out.println(\"Excellent!\"); \n            break;\n         case 2 :\n         case 3 :\n            System.out.println(\"Well done\");\n            break;\n         case 4 :\n            System.out.println(\"You passed\");\n         case 5 :\n            System.out.println(\"Better try again\");\n            break;\n         default :\n            System.out.println(\"Invalid grade\");\n      }\n      System.out.println(\"Your grade is \" + grade);\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [
+        "Compile and run the above program using various command line arguments. This will produce the following result −"
+      ],
+      "code": [
+        "Well done\nYour grade is 3"
+      ]
+    },
+    {
+      "heading": "Example 3",
+      "paragraphs": [
+        "In this example, we're showing use of switch statement where cases are based on a String. We've created a variable grade. Based on value of grade, each case is checked. if a case is satisfied and break statement is present then following cases are not checked."
+      ],
+      "code": [
+        "public class Test {\n\n   public static void main(String args[]) {\n      String grade = \"C\";\n\n      switch(grade) {\n         case \"A\" :\n            System.out.println(\"Excellent!\"); \n            break;\n         case \"B\" :\n         case \"C\" :\n            System.out.println(\"Well done\");\n            break;\n         case \"D\" :\n            System.out.println(\"You passed\");\n         case \"F\" :\n            System.out.println(\"Better try again\");\n            break;\n         default :\n            System.out.println(\"Invalid grade\");\n      }\n      System.out.println(\"Your grade is \" + grade);\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [
+        "Compile and run the above program using various command line arguments. This will produce the following result −"
+      ],
+      "code": [
+        "Well done\nYour grade is C"
+      ]
+    },
+    {
+      "heading": "Using default Keyword With switch Statement",
+      "paragraphs": [
+        "The default keyword is used to specify a code block when no case value is matched. The default keyword is optional, but it should be used in the switch case statement."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: With the default Keyword",
+      "paragraphs": [
+        "The following example demonstrates the use of the default keyword with a switch statement:"
+      ],
+      "code": [
+        "public class SwitchWithDefault {\n    public static void main(String[] args) {\n        int month = 13; // Example with an invalid month\n\n        switch (month) {\n            case 1:\n                System.out.println(\"January\");\n                break;\n            case 2:\n                System.out.println(\"February\");\n                break;\n            case 3:\n                System.out.println(\"March\");\n                break;\n            case 4:\n                System.out.println(\"April\");\n                break;\n            case 12:\n                System.out.println(\"December\");\n                break;\n            default:\n                System.out.println(\"Invalid month\");\n        }\n    }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [
+        "Compile and run the above program using various command line arguments. This will produce the following result −"
+      ],
+      "code": [
+        "Invalid month"
+      ]
+    },
+    {
+      "heading": "Example: Without the default Keyword",
+      "paragraphs": [
+        "The following example demonstrates the use of the default keyword with a switch statement:"
+      ],
+      "code": [
+        "public class SwitchWithoutDefault {\n    public static void main(String[] args) {\n        int month = 13; // Example with an invalid month\n\n        switch (month) {\n            case 1:\n                System.out.println(\"January\");\n                break;\n            case 2:\n                System.out.println(\"February\");\n                break;\n            case 3:\n                System.out.println(\"March\");\n                break;\n            case 4:\n                System.out.println(\"April\");\n                break;\n            case 12:\n                System.out.println(\"December\");\n                break;\n        }\n    }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [
+        "Compile and run the above program using various command line arguments. This will produce the following result −",
+        "Note: Since the given month's value is 13 and we did not use the \"default\" statement here. Thus, nothing will be printed."
+      ],
+      "code": [
+        "NO OUTPUT"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:30:39.465Z"
+}

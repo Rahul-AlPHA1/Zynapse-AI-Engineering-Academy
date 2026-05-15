@@ -1,0 +1,159 @@
+{
+  "topicId": "instanceof",
+  "title": "Java instanceof Keyword",
+  "sectionId": "java-oops",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/downcasting-with-instanceof-operator",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/downcasting-with-instanceof-operator",
+      "score": 104,
+      "sectionCount": 15
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java instanceof Keyword",
+      "paragraphs": [
+        "This chapter explains the instanceof operator in Java, which is used to check an object's type at runtime, compare it with a class, subclass, or interface, and determine the relationship between objects and their types."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is the instanceof Operator in Java?",
+      "paragraphs": [
+        "The instanceof operator is used to check whether an object is an instance of a specific class, subclass, or interface. It is also called the type comparison operator because it compares an object with a type and returns true or false. If the object being tested is null, the operator always returns false."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax of instanceof Operator",
+      "paragraphs": [
+        "The following is the syntax of instanceof Operator:",
+        "Here",
+        "• objectReference: The reference variable of the object to be tested.\n• ClassName: the class, subclass, or interface against which the object is tested.\n• The operator returns true if the object is an instance of the specified type; otherwise, it returns false."
+      ],
+      "code": [
+        "objectReference instanceof ClassName"
+      ]
+    },
+    {
+      "heading": "Examples of instanceof Operator",
+      "paragraphs": [
+        "Practice these examples to understand how the instanceof operator works?"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example 1",
+      "paragraphs": [
+        "The following example demonstrates a simple use of the instanceof operator to test an object against its own class.",
+        "Output:",
+        "An object of subclass type is also a type of parent class. For example, if Dog extends Animal then object of Dog can be referred by either Dog or Animal class."
+      ],
+      "code": [
+        "class Simple1{\n public static void main(String args[]){\n Simple1 s=new Simple1();\n System.out.println(s instanceof Simple1);//true\n }\n}",
+        "true"
+      ]
+    },
+    {
+      "heading": "Example 2",
+      "paragraphs": [
+        "The following example shows that an object of a subclass is also considered an instance of its parent class.",
+        "Output:"
+      ],
+      "code": [
+        "class Animal{}\nclass Dog1 extends Animal{//Dog inherits Animal\n\n public static void main(String args[]){\n Dog1 d=new Dog1();\n System.out.println(d instanceof Animal);//true\n }\n}",
+        "true"
+      ]
+    },
+    {
+      "heading": "The instanceof Operator with a Null Variable",
+      "paragraphs": [
+        "If we apply the instanceof operator to a variable that has a null value, it always returns false."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Let's see the example given below where we apply instanceof operator with the variable that have null value.",
+        "Output:"
+      ],
+      "code": [
+        "class Dog2{\n public static void main(String args[]){\n  Dog2 d=null;\n  System.out.println(d instanceof Dog2);//false\n }\n}",
+        "false"
+      ]
+    },
+    {
+      "heading": "Downcasting with the instanceof Operator",
+      "paragraphs": [
+        "When Subclass type refers to the object of Parent class, it is known as downcasting. If we perform it directly, compiler gives Compilation error. If you perform it by typecasting, ClassCastException is thrown at runtime. But if we use instanceof operator, downcasting is possible.",
+        "If we perform downcasting by typecasting, ClassCastException is thrown at runtime."
+      ],
+      "code": [
+        "Dog d=new Animal();//Compilation error",
+        "Dog d=(Dog)new Animal();\n//Compiles successfully but ClassCastException is thrown at runtime"
+      ]
+    },
+    {
+      "heading": "Safe Downcasting Using instanceof",
+      "paragraphs": [
+        "The instanceof operator allows safe downcasting by checking the object type before casting."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates the safe downcasting using instanceof operator:",
+        "Output:"
+      ],
+      "code": [
+        "class Animal { }\n\nclass Dog3 extends Animal {\n  static void method(Animal a) {\n    if(a instanceof Dog3){\n       Dog3 d=(Dog3)a;//downcasting\n       System.out.println(\"ok downcasting performed\");\n    }\n  }\n \n  public static void main (String [] args) {\n    Animal a=new Dog3();\n    Dog3.method(a);\n  }\n  \n }",
+        "ok downcasting performed"
+      ]
+    },
+    {
+      "heading": "Downcasting Without instanceof",
+      "paragraphs": [
+        "Downcasting can also work without instanceof if the actual object type matches the reference type."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates the downcasting without using the instanceof operator:",
+        "Output:",
+        "Note: If the actual object is not a Dog4, a ClassCastException is thrown. Using instanceof avoids this runtime error."
+      ],
+      "code": [
+        "class Animal { }\nclass Dog4 extends Animal {\n  static void method(Animal a) {\n       Dog4 d=(Dog4)a;//downcasting\n       System.out.println(\"ok downcasting performed\");\n  }\n   public static void main (String [] args) {\n    Animal a=new Dog4();\n    Dog4.method(a);\n  }\n}",
+        "ok downcasting performed",
+        "Animal a=new Animal();\nDog.method(a);\n//Now ClassCastException but not in case of instanceof operator"
+      ]
+    },
+    {
+      "heading": "Real Use of instanceof Operator",
+      "paragraphs": [
+        "The instanceof operator is very useful when you work with interfaces or polymorphic objects. It lets you safely convert types and calls the right method when the program runs."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates the real use of the instanceof operator to safely perform downcasting and invoke subclass-specific methods when working with interface references.",
+        "Output:",
+        "Next TopicAbstract class in java"
+      ],
+      "code": [
+        "interface Printable{}\nclass A implements Printable{\npublic void a(){System.out.println(\"a method\");}\n}\nclass B implements Printable{\npublic void b(){System.out.println(\"b method\");}\n}\n\nclass Call{\nvoid invoke(Printable p){//upcasting\nif(p instanceof A){\nA a=(A)p;//Downcasting \na.a();\n}\nif(p instanceof B){\nB b=(B)p;//Downcasting \nb.b();\n}\n\n}\n}//end of Call class\n\nclass Test4{\npublic static void main(String args[]){\nPrintable p=new B();\nCall c=new Call();\nc.invoke(p);\n}\n}",
+        "b method"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:33:24.423Z"
+}

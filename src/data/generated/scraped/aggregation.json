@@ -1,0 +1,83 @@
+{
+  "topicId": "aggregation",
+  "title": "Java - Aggregation",
+  "sectionId": "java-oops",
+  "source": "tutorialspoint",
+  "url": "https://www.tutorialspoint.com/java/java_aggregation.htm",
+  "allSources": [
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_aggregation.htm",
+      "score": 42,
+      "sectionCount": 8
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java Aggregation",
+      "paragraphs": [
+        "An aggregation is a relationship between two classes where one class contains an instance of another class. For example, when an object A contains a reference to another object B or we can say Object A has a HAS-A relationship with Object B, then it is termed as Aggregation in Java Programming."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Use of Java Aggregation",
+      "paragraphs": [
+        "Aggregation in Java helps in reusing the code. Object B can have utility methods and which can be utilized by multiple objects. Whichever class has object B then it can utilize its methods."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example 1",
+      "paragraphs": [
+        "In this example, we're creating few classes like Vehicle, Speed. A Van class is defined which extends Vehicle class and has a Speed class object. Van class inherits properties from Vehicle class and Speed being its property, we're passing it from caller object. In output, we're printing the details of Van object."
+      ],
+      "code": [
+        "package com.tutorialspoint;\n\nclass Vehicle{\n   private String vin;\n\n   public String getVin() {\n      return vin;\n   }\n\n   public void setVin(String vin) {\n      this.vin = vin;\n   }\t\n}\nclass Speed{\n   private double max;\n\n   public double getMax() {\n      return max;\n   }\n\n   public void setMax(double max) {\n      this.max = max;\n   }\n}\n\nclass Van extends Vehicle {\n   private Speed speed;\n\n   public Speed getSpeed() {\n      return speed;\n   }\n\n   public void setSpeed(Speed speed) {\n      this.speed = speed;\n   }\n\n   public void print() {\n      System.out.println(\"Vin: \" +this.getVin() + \", Max Speed: \" + speed.getMax() );\n   }\n} \n\npublic class Tester {\n\n   public static void main(String[] args) {\n      Speed speed = new Speed();\n      speed.setMax(120);\n      Van van = new Van();\n\n      van.setVin(\"abcd1233\");\n      van.setSpeed(speed);\n      van.print();\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Vin: abcd1233, Max Speed: 120.0"
+      ]
+    },
+    {
+      "heading": "Example 2",
+      "paragraphs": [
+        "In this  example, we're creating few classes like Student, Address. A student can has a address. So we've defined an address as an instance variable in Student class. In output, we're printing the student details."
+      ],
+      "code": [
+        "package com.tutorialspoint;\n\nclass Address {\n   int strNum;\n   String city;\n   String state;\n   String country;\n\n   Address(int street, String c, String st, String country) {\n      this.strNum = street;\n      this.city = c;\n      this.state = st;\n      this.country = country;\n   }\n}\nclass Student {\n   int rno;\n   String stName;\n\n   Address stAddr;\n   Student(int roll, String name, Address address){\n      this.rno = roll;\n      this.stName = name;\n      this.stAddr = address;\n   }\n}\n\npublic class Tester {\n\n   public static void main(String[] args) {\n      Address ad= new Address(10, \"Bareilly\", \"UP\", \"India\");\n      Student st= new Student(1, \"Aashi\", ad);\n      System.out.println(\"Roll no: \"+ st.rno);\n      System.out.println(\"Name: \"+ st.stName);\n      System.out.println(\"Street: \"+ st.stAddr.strNum);\n      System.out.println(\"City: \"+ st.stAddr.city);\n      System.out.println(\"State: \"+ st.stAddr.state);\n      System.out.println(\"Country: \"+ st.stAddr.country);\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [
+        "In a unique sense, this is a type of association. Aggregation is a one way directed relationship that precisely expresses HAS-A relationship between classes. Additionally, when two classes are aggregated, terminating one of them has no effect on the other. When compared to composition, it is frequently designated as a weak relationship. In comparison, the parent owns the child entity, which means the child entity cannot be accessed directly and cannot exist without the parent object. Contrarily, in an association, the parent and child entities may both exist in their own right."
+      ],
+      "code": [
+        "Roll no: 1\nName: Aashi\nStreet: 10\nCity: Bareilly\nState: UP\nCountry: India"
+      ]
+    },
+    {
+      "heading": "HAS-A Relationship",
+      "paragraphs": [
+        "These relationships are mainly based on the usage. This determines whether a certain class HAS-A certain thing. This relationship helps to reduce duplication of code as well as bugs."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "This shows that class Van HAS-A Speed. By having a separate class for Speed, we do not have to put the entire code that belongs to speed inside the Van class, which makes it possible to reuse the Speed class in multiple applications.",
+        "In Object-Oriented feature, the users do not need to bother about which object is doing the real work. To achieve this, the Van class hides the implementation details from the users of the Van class. So, basically what happens is the users would ask the Van class to do a certain action and the Van class will either do the work by itself or ask another class to perform the action."
+      ],
+      "code": [
+        "public class Vehicle{}\npublic class Speed{}\n\npublic class Van extends Vehicle {\n   private Speed sp;\n}"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:32:23.784Z"
+}

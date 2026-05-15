@@ -1,0 +1,116 @@
+{
+  "topicId": "keywords",
+  "title": "Java Keywords",
+  "sectionId": "java-basics",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-keywords",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-keywords",
+      "score": 62,
+      "sectionCount": 12
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java Keywords",
+      "paragraphs": [
+        "Java keywords are also known as reserved words. Keywords are particular words that act as a key to a code. These are predefined words by Java so they cannot be used as a variable or object name or class name."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Understanding Java Keywords with Example",
+      "paragraphs": [
+        "Java keywords are reserved words that have a predefined meaning in the Java language and cannot be used as identifiers such as variable names, class names, or method names."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Consider the following example to understand how Java keywords are used in a program.",
+        "public class Demo {\n    public static void main(String[] args) {\n        int number = 10;\n        if (number > 5) {\n            System.out.println(\"Number is greater than 5\");\n        }\n    }\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Number is greater than 5"
+      ]
+    },
+    {
+      "heading": "Explanation:",
+      "paragraphs": [
+        "In the above example, words like public, class, static, void, int, and if are Java keywords. Each keyword has a special purpose defined by Java. For instance,",
+        "• class is used to declare a class\n• int is used to define an integer variable, and\n• if is used for conditional execution."
+      ],
+      "code": []
+    },
+    {
+      "heading": "List of Java Keywords",
+      "paragraphs": [
+        "These keywords help the Java compiler understand the structure and behavior of the program."
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. Data Type Keywords",
+      "paragraphs": [
+        "The following list demonstrate the data type keywords.",
+        "Keywords | Usage\nboolean | Java boolean keyword is used to declare a variable as a boolean type. It can hold True and False values only.\nbyte | Java byte keyword is used to declare a variable that can hold 8-bit data values.\nchar | Java char keyword is used to declare a variable that can hold unsigned 16-bit Unicode characters.\ndouble | Java double keyword is used to declare a variable that can hold 64-bit floating-point number.\nfloat | Java float keyword is used to declare a variable that can hold a 32-bit floating-point number.\nint | Java int keyword is used to declare a variable that can hold a 32-bit signed integer.\nlong | Java long keyword is used to declare a variable that can hold a 64-bit integer.\nshort | Java short keyword is used to declare a variable that can hold a 16-bit integer."
+      ],
+      "code": []
+    },
+    {
+      "heading": "2. Control Flow Keywords",
+      "paragraphs": [
+        "The following list demonstrate the control flow keywords.",
+        "Keywords | Usage\nbreak | Java break keyword is used to break the loop or switch statement. It breaks the current flow of the program at specified conditions.\ncase | Java case keyword is used with the switch statements to mark blocks of text.\ncontinue | The Java continue keyword is used to continue the loop. It continues the current flow of the program and skips the remaining code at the specified condition.\ndefault | Java default keyword is used to specify the default block of code in a switch statement.\ndo | The Java do keyword is used in the control statement to declare a loop. It can iterate a part of the program several times.\nelse | Java else keyword is used to indicate the alternative branches in an if statement.\nfor | Java for keyword is used to start a for loop. It is used to execute a set of instructions/functions repeatedly when some condition becomes true. If the number of iteration is fixed, it is recommended to use for loop.\nif | Java if keyword tests the condition. It executes the if block if the condition is true.\nreturn | Java return keyword is used to return from a method when its execution is complete.\nswitch | The Java switch keyword contains a switch statement that executes code based on test value. The switch statement tests the equality of a variable against multiple values.\nwhile | Creates a while loop"
+      ],
+      "code": []
+    },
+    {
+      "heading": "3. Modifier Keywords",
+      "paragraphs": [
+        "The following list demonstrate the modifier keywords.",
+        "Keywords | Usage\nabstract | Java abstract keyword is used to declare an abstract class. An abstract class can provide the implementation of the interface. It can have abstract and non-abstract methods.\nfinal | Java final keyword is used to indicate that a variable holds a constant value. It is used with a variable. It is used to restrict the user from updating the value of the variable.\nnative | Java native keyword is used to specify that a method is implemented in native code using JNI (Java Native Interface).\nprivate | Java private keyword is an access modifier. It is used to indicate that a method or variable may be accessed only in the class in which it is declared.\nprotected | The protected keyword is an access modifier. It can be accessible within the package and outside the package but through inheritance only. It cannot be applied to the class.\npublic | Java public keyword is an access modifier. It is used to indicate that an item is accessible anywhere. It has the widest scope among all other modifiers.\nstatic | Java static keyword is used to indicate that a variable or method is a class method. The static keyword in Java is mainly used for memory management.\nstrictfp | Java strictfp is used to restrict the floating-point calculations to ensure portability.\nsynchronized | Java synchronized keyword is used to specify the critical sections or methods in multithreaded code.\ntransient | Java transient keyword is used in serialization. If you define any data member as transient, it will not be serialized.\nvolatile | Java volatile keyword is used to indicate that a variable may change asynchronously."
+      ],
+      "code": []
+    },
+    {
+      "heading": "4. Class Related Keywords",
+      "paragraphs": [
+        "The following list demonstrate the class related keywords.",
+        "Keywords | Usage\nclass | Java class keyword is used to declare a class.\nextends | Java extends keyword is used to indicate that a class is derived from another class or interface.\nsuper | Java super keyword is a reference variable that is used to refer to parent class objects. It can be used to invoke the immediate parent class method.\nimplements | Java implements keyword is used to implement an interface.\ninterface | Java interface keyword is used to declare an interface. It can have only abstract methods.\nnew | Java new keyword is used to create new objects.\nthis | Java this keyword can be used to refer the current object in a method or constructor."
+      ],
+      "code": []
+    },
+    {
+      "heading": "5. Exceptional Handling Related Keywords",
+      "paragraphs": [
+        "The following list demonstrate the error handling keywords.",
+        "Keywords | Usage\ntry | Java try keyword is used to start a block of code that will be tested for exceptions. The try block must be followed by either catch or finally block.\ncatch | Java catch keyword is used to catch the exceptions generated by try statements. It must be used after the try block only.\nfinally | Java finally keyword indicates a block of code in a try-catch structure. This block is always executed whether an exception is handled or not.\nthrow | The Java throw keyword is used to explicitly throw an exception. The throw keyword is mainly used to throw custom exceptions. It is followed by an instance.\nthrows | The Java throws keyword is used to declare an exception. Checked exceptions can be propagated with throws."
+      ],
+      "code": []
+    },
+    {
+      "heading": "6. Package Related Keywords",
+      "paragraphs": [
+        "The following list demonstrate the package related keywords.",
+        "Keywords | Usage\nimport | Java import keyword makes classes and interfaces available and accessible to the current source code.\npackage | Java package keyword is used to declare a Java package that includes the classes."
+      ],
+      "code": []
+    },
+    {
+      "heading": "7. Other Keywords",
+      "paragraphs": [
+        "The following list demonstrate the other keywords.",
+        "Keywords | Usage\nassert | Assert describes a predicate placed in a Java program to indicate that the developer thinks that the predicate is always true at that place.\nenum | Java enum keyword is used to define a fixed set of constants. Enum constructors are always private or default.\ninstanceof | Java instanceof keyword is used to test whether the object is an instance of the specified class or implements an interface.\nnull | Java null keyword is used to indicate that a reference does not refer to anything. It removes the garbage value.\nvoid | Java void keyword is used to specify that a method does not have a return value.",
+        "The keywords const and goto are reserved, even though they are not currently used. true, false, and null might seem like keywords, but they are actually literals; we cannot use them as identifiers in your programs.",
+        "Next TopicJava-program-to-find-the-minimum-number-of-operations-required-to-reach-n-steps"
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:30:29.011Z"
+}

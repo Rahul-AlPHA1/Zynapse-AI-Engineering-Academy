@@ -1,0 +1,234 @@
+{
+  "topicId": "data-types",
+  "title": "Data Types in Java",
+  "sectionId": "java-basics",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-data-types",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-data-types",
+      "score": 153,
+      "sectionCount": 19
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_basic_datatypes.htm",
+      "score": 111,
+      "sectionCount": 22
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Data Types in Java",
+      "paragraphs": [
+        "In programming languages, data types specify the different sizes and values that can be stored in the variable or constants. Each data type is predefined, which makes Java a statically and strongly typed language. There are the following two types of data types in Java.",
+        "• Primitive Data Types: The primitive data types include boolean, char, byte, short, int, long, float and double.\n• Non-Primitive Data Types: The non-primitive data types include Classes, Interfaces, String, and Arrays.",
+        "Let's understand in detail."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Primitive Data Types",
+      "paragraphs": [
+        "In Java, primitive data types are the building blocks of data manipulation. These are the basic data types.",
+        "In Java, there are mainly eight primitive data types which are as follows.",
+        "• boolean data type\n• char data type\n• byte data type\n• short data type\n• int data type\n• long data type\n• float data type\n• double data type",
+        "Java is a statically typed programming language. It means all variables must be declared before their use. That is why we need to declare the variable's type and name. Let's discuss each data type one by one."
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. Boolean Data Type",
+      "paragraphs": [
+        "In Java, the boolean data type represents a single bit of information with two possible states: true or false. The size of the Boolean data type is 1 byte (8 bits).",
+        "It is used to store the result of logical expressions or conditions. Unlike other primitive data types like int or double, boolean does not have a specific size or range. It is typically implemented as a single bit, although the exact implementation may vary across platforms.",
+        "Syntax:",
+        "ExampleBoolean a = false;\nBoolean b = true;  Compile and Run"
+      ],
+      "code": [
+        "boolean flag;"
+      ]
+    },
+    {
+      "heading": "2. Byte Data Type",
+      "paragraphs": [
+        "The byte data type in Java is a primitive data type that represents an 8-bits signed two's complement integer. It has a range of values from -128 to 127. Its default value is 0.",
+        "The byte data type is commonly used when working with raw binary data or when memory conservation is a concern, as it occupies less memory than larger integer types like int or long.",
+        "Syntax:",
+        "Examplebyte a = 10;\nbyte b = -20;\nCompile and Run"
+      ],
+      "code": [
+        "byte size;"
+      ]
+    },
+    {
+      "heading": "3. Short Data Type",
+      "paragraphs": [
+        "The short data type in Java is a primitive data type that represents a 16-bits signed two-complement integer. Its range of values is -32,768 to 32,767.",
+        "Similar to the byte data type, short is used when memory conservation is a concern, but more precision than byte is required. Its default value is 0.",
+        "Syntax:",
+        "Exampleshort a = 10000;  \nshort b = -5000;Compile and Run"
+      ],
+      "code": [
+        "short var;"
+      ]
+    },
+    {
+      "heading": "4. int Data Type",
+      "paragraphs": [
+        "The int data type in Java is a primitive data type that represents a 32-bits signed two's complement integer. It has a range of values from -2,147,483,648 to 2,147,483,647.",
+        "The int data type is one of the most commonly used data types. It is typically used to store whole numbers without decimal points. Its default value is 0.",
+        "Syntax:",
+        "In Java, int variables are declared using the int keyword. For example, int myInt = 54 ; declares an int variable named myInt and initializes it with the value 54. int variables can be used in mathematical expressions, assigned to other int variables, and used in conditional statements.",
+        "Remember: In Java SE 8 and later versions, we can use the int data type to represent an unsigned 32-bit integer. It has a value in the range [0, 232-1]. Use the Integer class to use the int data type as an unsigned integer.",
+        "Exampleint a = 100000;  \nint b = -200000;Compile and Run"
+      ],
+      "code": [
+        "int myInt = 54;"
+      ]
+    },
+    {
+      "heading": "5. long Data Type",
+      "paragraphs": [
+        "The long data type in Java is a primitive data type that represents a 64-bits signed two's complement integer. It has a wider range of values than int, ranging from - 9,223,372,036,854,775,808 to 9,223,372,036,854,775,807. Its default value is 0.0L or 0.0l.",
+        "The long data type is used when the int data type is not large enough to hold the desired value or when a larger range of integer values is needed.",
+        "Syntax:",
+        "The long data type is commonly used in applications where large integer values are required, such as in scientific computations, financial applications, and systems programming. It provides greater precision and a larger range than int, making it suitable for scenarios where int is insufficient.",
+        "Examplelong a = 5000000L;  \nlong b = -6000000L;Compile and Run"
+      ],
+      "code": [
+        "long num = 15000000000L;\nlong num = 9,223,372,036,854,775l"
+      ]
+    },
+    {
+      "heading": "6. float Data Type",
+      "paragraphs": [
+        "The float data type in Java is a primitive data type that represents single-precision 32-bits IEEE 754 floating-point numbers. It can represent a wide range of decimal values, but it is not suitable for precise values such as currency. Its default value is 0.0f or 0.0F.",
+        "The float data type is useful for applications where a higher range of values is needed and precision is not critical.",
+        "Syntax:",
+        "One of the key characteristics of the float data type is its ability to represent a wide range of values, both positive and negative, including very small and very large values. However, due to its limited precision (approximately 6-7 significant decimal digits), it is not suitable for applications where exact decimal values are required.",
+        "Examplefloat f = 234.5f; \nCompile and Run"
+      ],
+      "code": [
+        "float num = 67;"
+      ]
+    },
+    {
+      "heading": "7. double Data Type",
+      "paragraphs": [
+        "The double data type in Java is a primitive data type that represents double-precision 64-bits IEEE 754 floating-point numbers. Its default value is 0.0. It provides a wider range of values and greater precision compared to the float data type, which makes it suitable for applications where accurate representation of decimal values is required.",
+        "Syntax:",
+        "One of the key advantages of the double data type is its ability to represent a wider range of values with greater precision compared to float. It can accurately represent values with up to approximately 15-16 significant decimal digits, making it suitable for applications that require high precision, such as financial calculations, scientific computations, and graphics programming.",
+        "Exampledouble d = 12.3; Compile and Run"
+      ],
+      "code": [
+        "double num = 75.658d;"
+      ]
+    },
+    {
+      "heading": "8. char Data Type",
+      "paragraphs": [
+        "The char data type in Java is a primitive data type that represents a single 16-bits Unicode character. It can store any character from the Unicode character set, which allows Java to support the internationalisation and representation of characters from various languages and writing systems.",
+        "Syntax:",
+        "The char data type is commonly used to represent characters, such as letters, digits, and symbols. It can also be used to perform arithmetic operations, as the Unicode values of characters can be treated as integers.",
+        "Examplechar c = 'A';Compile and Run",
+        "For example, we can perform addition or subtraction operations on char variables to manipulate their Unicode values.",
+        "Type | Default Values | Size | Range of Values | Example\nboolean | false | 8 bits | true, false | true, false, 0, 1\nbyte | 0 | 8 bits | -128 to 127 | -\nchar | \\u0000 | 16 bits | Characters Representation of ASCII values0 to 255 | 'z', '\\u0041', '\\11', '\\\\', '\\', '\\n'\nshort | 0 | 16 bits | -32,768 to 32,767 | -\nint | 0 | 32 bits | -2,147,483,648to2,147,483,647 | -5,-1,0,6,8\nlong | 0 | 64 bits | -9,223,372,036,854,775,808to9,223,372,036,854,775,807 | -7L,-2L,0L,1L,2L\nfloat | 0.0f | 32 bits | up to 7 decimal digits | 3.14f, 89.09F, -9.3F\ndouble | 0.0 | 64 bits | up to 16 decimal digits | 6.98765e300d , -567899e-600d , 2e2d"
+      ],
+      "code": [
+        "char alphabets = 'J';\nchar a = 60, b = 61, c = 62;"
+      ]
+    },
+    {
+      "heading": "Java Primitive Data Type Example",
+      "paragraphs": [
+        "File Name: Main.java",
+        "Examplepublic class Main\n{\n    public static void main(String args[])\n    {\n        boolean flag = true;\n        char ch = 'z';\n        int num = 1234;\n        byte size = 2;\n        short srt = 78;\n        double value = 2.4546778;\n        float temp = 3.8f;\n        long val = 1888889;\n        System.out.println(\"boolean: \" + flag);\n        System.out.println(\"char: \" + ch);\n        System.out.println(\"integer: \" + num);\n        System.out.println(\"byte: \" + size);\n        System.out.println(\"short: \" + srt);\n        System.out.println(\"float: \" + value);\n        System.out.println(\"double: \" + temp);\n        System.out.println(\"long: \" + val);\n    }\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "boolean: true\nchar: z\ninteger: 1234\nbyte: 2\nshort: 78\nfloat: 2.4546778\ndouble: 3.8\nlong: 1888889"
+      ]
+    },
+    {
+      "heading": "Non-Primitive Data Types in Java",
+      "paragraphs": [
+        "In Java, non-primitive data types are also known as reference data types. It is used to store complex objects rather than simple values. Reference data types store references or memory addresses that point to the location of the object in memory. This distinction is important because it affects how these data types are stored, passed, and manipulated in Java programs."
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. Class",
+      "paragraphs": [
+        "One common non-primitive data type in Java is the class. Classes are used to create objects, which are instances of the class. A class defines the properties and behaviours of objects, including variables (fields) and methods.",
+        "For example, you might create a Person class to represent a person, with variables for the person's name, age, and address, and methods to set and get these values.",
+        "Syntax:"
+      ],
+      "code": [
+        "class Main\n{\n//code\n}"
+      ]
+    },
+    {
+      "heading": "2. Interface",
+      "paragraphs": [
+        "Interfaces are another important non-primitive data type in Java. An interface defines a contract for what a class implementing the interface must provide without specifying how it should be implemented. Interfaces are used to achieve abstraction and multiple inheritance.",
+        "Syntax:"
+      ],
+      "code": [
+        "// interface\ninterface Shape {\n  public void draw(); // interface method (does not have a body)\n  public void color(); // interface method (does not have a body)\n}"
+      ]
+    },
+    {
+      "heading": "3. Arrays",
+      "paragraphs": [
+        "Arrays are a fundamental non-primitive data type in Java that allows you to store multiple values of the same type in a single variable. Arrays have a fixed size, which is specified when the array is created and can be accessed using an index. Arrays are commonly used to store lists of values or to represent matrices and other multi-dimensional data structures.",
+        "Syntax:"
+      ],
+      "code": [
+        "int[] arr = { 1, 2, 3, 4, 5 };"
+      ]
+    },
+    {
+      "heading": "4. String",
+      "paragraphs": [
+        "In Java, a string is a sequence of characters. In simple words, we can define a string as an array of characters. The difference between a character array and a string in Java is that the string is designed to hold a sequence of characters in a single variable, whereas a character array is a collection of separate char-type entities. Note that, unlike C/C++, Java strings are not terminated with a null character.",
+        "Syntax:"
+      ],
+      "code": [
+        "// string without using new operator \nString s = \"tpointtech\"; \n// String using new operator \nString str = new String(\"Austria\");"
+      ]
+    },
+    {
+      "heading": "5. enum",
+      "paragraphs": [
+        "Java also includes other non-primitive data types, such as enums and collections. Enums are used to define a set of named constants, providing a way to represent a fixed set of values. Collections are a framework of classes and interfaces that provide dynamic data structures such as lists, sets, and maps, which can grow or shrink in size as needed.",
+        "Syntax:",
+        "Overall, non-primitive data types in Java are essential for creating complex and flexible programs. They allow us to create and manipulate objects, define relationships between objects, and represent complex data structures."
+      ],
+      "code": [
+        "enum Grade {\n  FIRST,\n  SECOND,\n  THIRD\n}"
+      ]
+    },
+    {
+      "heading": "Java Non-Primitive Data Type Example",
+      "paragraphs": [
+        "File Name: Main.java",
+        "Exampleenum Color {\n    RED,\n    GREEN,\n    BLUE;\n}\npublic class Main {\n    public static void main(String[] args) {\n        String str = \"Hello\";\n        int[] arr = { 1, 2, 3, 4, 5 };\n        Color clr = Color.BLUE;\n        System.out.println(clr);\n        System.out.println(str);\n        for (int member: arr) {\n        System.out.print(member+\", \");\n        }\n    }\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "BLUE\nHello\n1, 2, 3, 4, 5"
+      ]
+    },
+    {
+      "heading": "Why char uses 2 bytes in Java, and what is \\u0000 ?",
+      "paragraphs": [
+        "It is because Java uses the Unicode system, not the ASCII code system. The \\u0000 is the lowest range of the Unicode system. To get a detailed explanation of a Unicode, visit the next page.",
+        "Next TopicUnicode System In Java"
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:30:04.350Z"
+}

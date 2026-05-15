@@ -1,0 +1,79 @@
+{
+  "topicId": "naming-conventions",
+  "title": "Java Naming Convention",
+  "sectionId": "java-oops",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-naming-conventions",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-naming-conventions",
+      "score": 43,
+      "sectionCount": 6
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java Naming Convention",
+      "paragraphs": [
+        "Java naming conventions are rules to follow when deciding what to name your identifiers, such as class, package, variable, constant, method, etc.",
+        "But it is not forced to follow. So, it is known as a convention, not a rule. Several Java communities, such as Sun Microsystems and Netscape suggest these conventions.",
+        "All the classes, interfaces, packages, methods, and fields of the Java programming language are named according to the Java naming convention. Failure to follow these conventions may generate confusion or erroneous code."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Advantage of Naming Conventions in Java",
+      "paragraphs": [
+        "By using standard Java naming conventions, you make your code easier to read for yourself and other programmers. Readability of a Java program is very important. It indicates that less time is spent figuring out what the code does.",
+        "• Enhanced Maintainability: Consistent naming conventions make it easier to maintain and update the code. Developers can quickly understand the purpose and usage of different components, reducing the time and effort required for modifications and debugging.\n• Improved Collaboration: Adhering to naming conventions when working in a team ensures that all team members can understand and contribute to the codebase more efficiently. It also reduces the learning curve for new developers and facilitates smoother code reviews and pair programming sessions.\n• Reduced Errors: Clear and consistent naming helps prevent errors that can arise from misinterpreting the role of variables, methods, or classes. It reduces the likelihood of introducing bugs due to misunderstandings about what a piece of code is supposed to do.\n• Code Consistency: Naming conventions promote a uniform coding style across the project, making the codebase look coherent and professional. This uniformity is crucial for large projects where multiple developers are contributing code over an extended period.\n• Better Integration with Development Tools: Many development tools, such as IDEs and static code analysers, are designed to work well with standard naming conventions. When these conventions are followed, these tools can provide better code completion, refactoring, and error detection."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Naming Conventions Rules for Different Identifiers",
+      "paragraphs": [
+        "The following table shows the popular conventions used for the different identifiers.",
+        "Identifiers Type | Naming Rules | Examples\nClass | It should start with the uppercase letter.It should be a noun such as Color, Button, System, Thread, etc.Use appropriate words, instead of acronyms. | public class Employee{//code snippet}\nInterface | It should start with the uppercase letter.It should be an adjective such as Runnable, Remote, ActionListener.Use appropriate words, instead of acronyms. | interface Printable{//code snippet}\nMethod | It should start with lowercase letter.It should be a verb such as main(), print(), println().If the name contains multiple words, start it with a lowercase letter followed by an uppercase letter such as actionPerformed(). | class Employee{// methodvoid draw(){//code snippet}}\nVariable | It should start with a lowercase letter such as id, name.It should not start with the special characters like & (ampersand), $ (dollar), _ (underscore).If the name contains multiple words, start it with the lowercase letter followed by an uppercase letter such as firstName, lastName.Avoid using one-character variables such as x, y, z. | class Employee{// variableint id;//code snippet}\nPackage | It should be a lowercase letter such as java, lang.If the name contains multiple words, it should be separated by dots (.) such as java.util, java.lang. | //packagepackage com.javatpoint;class Employee{//code snippet}\nConstant | It should be in uppercase letters such as RED, YELLOW.If the name contains multiple words, it should be separated by an underscore(_) such as MAX_PRIORITY.It may contain digits but not as the first letter. | class Employee{//constantstatic final int MIN_AGE = 18;//code snippet}"
+      ],
+      "code": []
+    },
+    {
+      "heading": "CamelCase in Java Naming Conventions",
+      "paragraphs": [
+        "Java follows the camel-case syntax for naming the class, interface, method, and variable.",
+        "If the name is combined with two words, the second word will always start with an uppercase letter, such as actionPerformed(), firstName, ActionEvent, ActionListener, etc.",
+        "This approach improves readability by clearly distinguishing the different parts of a name. Here's a detailed breakdown of how camelCase is applied in various contexts within Java:",
+        "1. Classes and Interfaces: PascalCase (Upper CamelCase): Each word starts with an uppercase letter. This style is used for naming classes and interfaces.",
+        "Examples: ActionEvent, ActionListener, EmployeeDetails, AccountManager.",
+        "2. Methods and Variables: CamelCase (Lower CamelCase): The first word starts with a lowercase letter, and each subsequent word starts with an uppercase letter. This style is used for naming methods and variables.",
+        "Examples: actionPerformed(), firstName, calculateInterest(), accountBalance."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Readability and Consistency",
+      "paragraphs": [
+        "Using camelCase makes the names easier to read and comprehend. It also provides visual cues about the structure and function of the identifier. This technique helps maintain and tidy up the code by avoiding the use of underscores and reducing name complexity."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example of Naming Convention",
+      "paragraphs": [
+        "Examplepublic class Main {\n     public static void main(String[] args)\n     {\n       int var=98;  //as per naming convention variable name in lower case (var)\n       System.out.println(\"Initial value of variable is: \" + var);\n     }\n}\nCompile and Run",
+        "Output:",
+        "In the above code, we have defined all the identifiers as per the naming convention rules.",
+        "All keywords in Java are in lower case. So, we have defined a class as public by using the class and public keywords. The first letter of the class name must be in capital letters, so we have named the class as Main.",
+        "In the next statement, we have used other Java keywords like public, static, and void. The method name starts with lower case, so here main() is the method that is the starting point of the Java program. Inside the main() method, we have passed String-type arguments.",
+        "In the next statement, we have defined and initialised a variable of type int named var in lower case letters.",
+        "Again, in the next statement, we have followed naming convention rules. In which the first letter of System is in capital letters because it is a class name. out is in lower case because object first letter must be in lower case. The println() is a method, so it is also in lower case.",
+        "Next TopicObjects and Classes in Java"
+      ],
+      "code": [
+        "Initial value of variable is: 98"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:31:29.313Z"
+}

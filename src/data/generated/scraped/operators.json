@@ -1,0 +1,216 @@
+{
+  "topicId": "operators",
+  "title": "Java Operators",
+  "sectionId": "java-basics",
+  "source": "tutorialspoint",
+  "url": "https://www.tutorialspoint.com/java/java_basic_operators.htm",
+  "allSources": [
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_basic_operators.htm",
+      "score": 150,
+      "sectionCount": 19
+    }
+  ],
+  "sections": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Java operators are the symbols that are used to perform various operations on variables and values. By using these operators, we can perform operations like addition, subtraction, checking less than or greater than, etc.",
+        "There are different types of operators in Java, we have listed them below −",
+        "• Arithmetic Operators\n• Assignment Operators\n• Relational Operators\n• Logical Operators\n• Bitwise Operators\n• Misc Operators"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Arithmetic Operators",
+      "paragraphs": [
+        "Arithmetic operators are used in mathematical expressions in the same way that they are used in algebra. The following table lists the arithmetic operators −",
+        "Assume integer variable A holds 10 and variable B holds 20, then −",
+        "Operator\nDescription\nExample\n\n\n&plus; (Addition)\nAdds values on either side of the operator.\nA &plus; B will give 30\n\n\n- (Subtraction)\nSubtracts right-hand operand from left-hand operand.\nA - B will give -10\n\n\n&ast; (Multiplication)\nMultiplies values on either side of the operator.\nA &ast; B will give 200\n\n\n/ (Division)\nDivides left-hand operand by right-hand operand.\nB / A will give 2\n\n\n% (Modulus)\nDivides left-hand operand by right-hand operand and returns remainder.\nB % A will give 0\n\n\n&plus;&plus; (Increment)\nIncreases the value of operand by 1.\nB&plus;&plus; gives 21\n\n\n-- (Decrement)\nDecreases the value of operand by 1.\nB-- gives 19"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates the usage of arithmetic operators in Java:",
+        "When the above code is compiled and executed, it produces the following result −"
+      ],
+      "code": [
+        "public class ArithmeticExample {\n    public static void main(String[] args) {\n        int a = 10, b = 5;\n        \n        // Addition\n        System.out.println(\"a + b = \" + (a + b)); // 15\n        \n        // Subtraction\n        System.out.println(\"a - b = \" + (a - b)); // 5\n        \n        // Multiplication\n        System.out.println(\"a * b = \" + (a * b)); // 50\n        \n        // Division\n        System.out.println(\"a / b = \" + (a / b)); // 2\n        \n        // Modulus\n        System.out.println(\"a % b = \" + (a % b)); // 0\n    }\n}",
+        "a + b = 15\na - b = 5\na * b = 50\na / b = 2\na % b = 0"
+      ]
+    },
+    {
+      "heading": "Java Assignment Operators",
+      "paragraphs": [
+        "Assignment Operators are used to assign values to variables. These operators modify the value of a variable based on the operation performed. The most commonly used assignment operator is =, but Java provides multiple compound assignment operators for shorthand operations.",
+        "Following are the assignment operators supported by Java language −",
+        "Operator\nDescription\nExample\n\n\n=\nSimple assignment operator. Assigns values from right side operands to left side operand.\nC = A &plus; B will assign value of A &plus; B into C\n\n\n&plus;=\nAdd AND assignment operator. It adds right operand to the left operand and assign the result to left operand.\nC &plus;= A is equivalent to C = C &plus; A\n\n\n-=\nSubtract AND assignment operator. It subtracts right operand from the left operand and assign the result to left operand.\nC -= A is equivalent to C = C − A\n\n\n&ast;=\nMultiply AND assignment operator. It multiplies right operand with the left operand and assign the result to left operand.\nC &ast;= A is equivalent to C = C &ast; A\n\n\n/=\nDivide AND assignment operator. It divides left operand with the right operand and assign the result to left operand.\nC /= A is equivalent to C = C / A\n\n\n%=\nModulus AND assignment operator. It takes modulus using two operands and assign the result to left operand.\nC %= A is equivalent to C = C % A\n\n\n<<=\nLeft shift AND assignment operator.\nC <<= 2 is same as C = C << 2\n\n\n>>=\nRight shift AND assignment operator.\nC >>= 2 is same as C = C >> 2\n\n\n&=\nBitwise AND assignment operator.\nC &= 2 is same as C = C & 2\n\n\n^=\nbitwise exclusive OR and assignment operator.\nC ^= 2 is same as C = C ^ 2\n\n\n|=\nbitwise inclusive OR and assignment operator.\nC |= 2 is same as C = C | 2"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates the usage of assignment operators in Java:",
+        "When the above code is compiled and executed, it produces the following result −"
+      ],
+      "code": [
+        "public class AssignmentExample {\n    public static void main(String[] args) {\n        int a = 10;\n        \n        // Assign and add\n        a += 5;\n        System.out.println(\"a += 5: \" + a); // 15\n        \n        // Assign and subtract\n        a -= 3;\n        System.out.println(\"a -= 3: \" + a); // 12\n        \n        // Assign and multiply\n        a *= 2;\n        System.out.println(\"a *= 2: \" + a); // 24\n        \n        // Assign and divide\n        a /= 4;\n        System.out.println(\"a /= 4: \" + a); // 6\n        \n        // Assign and modulus\n        a %= 5;\n        System.out.println(\"a %= 5: \" + a); // 1\n    }\n}",
+        "a += 5: 15\na -= 3: 12\na *= 2: 24\na /= 4: 6\na %= 5: 1"
+      ]
+    },
+    {
+      "heading": "Java Relational Operators",
+      "paragraphs": [
+        "Relational operators are used to compare two values. These operators return a boolean result: true if the condition is met and false otherwise. Relational operators are commonly used in decision-making statements like if conditions and loops.",
+        "There are following relational operators supported by Java language.",
+        "Assume variable A holds 10 and variable B holds 20, then −",
+        "Operator\nDescription\nExample\n\n\n== (equal to)\nChecks if the values of two operands are equal or not, if yes then condition becomes true.\n(A == B) is not true.\n\n\n!= (not equal to)\nChecks if the values of two operands are equal or not, if values are not equal then condition becomes true.\n(A != B) is true.\n\n\n> (greater than)\nChecks if the value of left operand is greater than the value of right operand, if yes then condition becomes true.\n(A > B) is not true.\n\n\n< (less than)\nChecks if the value of left operand is less than the value of right operand, if yes then condition becomes true.\n(A < B) is true.\n\n\n>= (greater than or equal to)\nChecks if the value of left operand is greater than or equal to the value of right operand, if yes then condition becomes true.\n(A >= B) is not true.\n\n\n<= (less than or equal to)\nChecks if the value of left operand is less than or equal to the value of right operand, if yes then condition becomes true.\n(A <= B) is true."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates the usage of relational operators in Java:",
+        "When the above code is compiled and executed, it produces the following result −"
+      ],
+      "code": [
+        "public class RelationalExample {\n    public static void main(String[] args) {\n        int A = 10, B = 5;\n        \n        System.out.println(\"A == B: \" + (A == B)); // false\n        System.out.println(\"A != B: \" + (A != B)); // true\n        System.out.println(\"A > B: \" + (A > B));   // true\n        System.out.println(\"A < B: \" + (A < B));   // false\n        System.out.println(\"A >= B: \" + (A >= B)); // true\n        System.out.println(\"A <= B: \" + (A <= B)); // false\n    }\n}",
+        "A == B: false\nA != B: true\nA > B: true\nA < B: false\nA >= B: true\nA <= B: false"
+      ]
+    },
+    {
+      "heading": "Java Logical Operators",
+      "paragraphs": [
+        "Logical operators are used to perform logical operations on boolean values. These operators are commonly used in decision-making statements such as if conditions and loops to control program flow.",
+        "The following table lists the logical operators −",
+        "Assume Boolean variables A holds true and variable B holds false, then −",
+        "Operator\nDescription\nExample\n\n\n&& (logical and)\nCalled Logical AND operator. If both the operands are non-zero, then the condition becomes true.\n(A && B) is false\n\n\n|| (logical or)\nCalled Logical OR Operator. If any of the two operands are non-zero, then the condition becomes true.\n(A || B) is true\n\n\n! (logical not)\nCalled Logical NOT Operator. Use to reverses the logical state of its operand. If a condition is true then Logical NOT operator will make false.\n!(A && B) is true"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates the usage of logical operators in Java:",
+        "When the above code is compiled and executed, it produces the following result −"
+      ],
+      "code": [
+        "public class LogicalExample {\n    public static void main(String[] args) {\n        boolean A = true, B = false;\n        \n        System.out.println(\"A && B: \" + (A && B)); // false\n        System.out.println(\"A || B: \" + (A || B)); // true\n        System.out.println(\"!A: \" + (!A)); // false\n        System.out.println(\"!B: \" + (!B)); // true\n    }\n}",
+        "A && B: false\nA || B: true\n!A: false\n!B: true"
+      ]
+    },
+    {
+      "heading": "Java Bitwise Operators",
+      "paragraphs": [
+        "Bitwise operators are used to perform operations at the binary (bit) level. These operators work on individual bits of numbers. They are commonly used in low-level programming, encryption, and performance optimization.",
+        "Java defines several bitwise operators, which can be applied to the integer types, long, int, short, char, and byte.",
+        "Bitwise operator works on bits and performs bit-by-bit operation. Assume if a = 60 and b = 13; now in binary format they will be as follows −",
+        "The following table lists the bitwise operators −",
+        "Assume integer variable A holds 60 and variable B holds 13 then −",
+        "Operator\nDescription\nExample\n\n\n& (bitwise and)\nBinary AND Operator copies a bit to the result if it exists in both operands.\n(A & B) will give 12 which is 0000 1100\n\n\n| (bitwise or)\nBinary OR Operator copies a bit if it exists in either operand.\n(A | B) will give 61 which is 0011 1101\n\n\n^ (bitwise XOR)\nBinary XOR Operator copies the bit if it is set in one operand but not both.\n(A ^ B) will give 49 which is 0011 0001\n\n\n⁓ (bitwise compliment)\nBinary Ones Complement Operator is unary and has the effect of 'flipping' bits.\n(⁓A ) will give -61 which is 1100 0011 in 2's complement form due to a signed binary number.\n\n\n<< (left shift)\nBinary Left Shift Operator. The left operands value is moved left by the number of bits specified by the right operand.\nA << 2 will give 240 which is 1111 0000\n\n\n>> (right shift)\nBinary Right Shift Operator. The left operands value is moved right by the number of bits specified by the right operand.\nA >> 2 will give 15 which is 1111\n\n\n>>> (zero fill right shift)\nShift right zero fill operator. The left operands value is moved right by the number of bits specified by the right operand and shifted values are filled up with zeros.\nA >>>2 will give 15 which is 0000 1111"
+      ],
+      "code": [
+        "a = 0011 1100\nb = 0000 1101\na&b = 0000 1100\na|b = 0011 1101\na^b = 0011 0001\n~a  = 1100 0011"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates the usage of bitwise operators in Java:",
+        "When the above code is compiled and executed, it produces the following result −"
+      ],
+      "code": [
+        "public class BitwiseExample {\n    public static void main(String[] args) {\n        int A = 60; // 0011 1100\n        int B = 13; // 0000 1101\n        \n        System.out.println(\"A & B: \" + (A & B)); // 12  (0000 1100)\n        System.out.println(\"A | B: \" + (A | B)); // 61  (0011 1101)\n        System.out.println(\"A ^ B: \" + (A ^ B)); // 49  (0011 0001)\n        System.out.println(\"~A: \" + (~A)); // -61  (1100 0011 in 2's complement)\n        System.out.println(\"A << 2: \" + (A << 2)); // 240 (1111 0000)\n        System.out.println(\"A >> 2: \" + (A >> 2)); // 15  (0000 1111)\n        System.out.println(\"A >>> 2: \" + (A >>> 2)); // 15  (0000 1111)\n    }\n}",
+        "A & B: 12\nA | B: 61\nA ^ B: 49\n~A: -61\nA << 2: 240\nA >> 2: 15\nA >>> 2: 15"
+      ]
+    },
+    {
+      "heading": "Java Miscellaneous Operators",
+      "paragraphs": [
+        "There are few other operators supported by Java Language."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Conditional Operator ( ? : )",
+      "paragraphs": [
+        "Conditional operator is also known as the ternary operator. This operator consists of three operands and is used to evaluate Boolean expressions. The goal of the operator is to decide, which value should be assigned to the variable. The operator is written as −"
+      ],
+      "code": [
+        "variable x = (expression) ? value if true : value if false"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Following is an example −",
+        "In this example, we're creating two variables a and b and using ternary operator we've decided the values of b and printed it.",
+        "Output"
+      ],
+      "code": [
+        "public class Test {\n\n   public static void main(String args[]) {\n      int a, b;\n      a = 10;\n      b = (a == 1) ? 20: 30;\n      System.out.println( \"Value of b is : \" +  b );\n\n      b = (a == 10) ? 20: 30;\n      System.out.println( \"Value of b is : \" + b );\n   }\n}",
+        "Value of b is : 30\nValue of b is : 20"
+      ]
+    },
+    {
+      "heading": "instanceof Operator",
+      "paragraphs": [
+        "This operator is used only for object reference variables. The operator checks whether the object is of a particular type (class type or interface type). instanceof operator is written as −",
+        "If the object referred by the variable on the left side of the operator passes the IS-A check for the class/interface type on the right side, then the result will be true. Following is an example −"
+      ],
+      "code": [
+        "( Object reference variable ) instanceof  (class/interface type)"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "In this example, we're creating a String variable name and then using instanceof operator we've checking the name is of String or not.",
+        "Output",
+        "This operator will still return true, if the object being compared is the assignment compatible with the type on the right. Following is one more example −"
+      ],
+      "code": [
+        "public class Test {\n\n   public static void main(String args[]) {\n\n      String name = \"James\";\n\n      // following will return true since name is type of String\n      boolean result = name instanceof String;\n      System.out.println( result );\n   }\n}",
+        "true"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "In this example, we're creating a variable a of class Vehicle and then using instanceof operator we've checking the name is of type Car or not.",
+        "Output"
+      ],
+      "code": [
+        "class Vehicle {}\n\npublic class Car extends Vehicle {\n\n   public static void main(String args[]) {\n\n      Vehicle a = new Car();\n      boolean result =  a instanceof Car;\n      System.out.println( result );\n   }\n}",
+        "true"
+      ]
+    },
+    {
+      "heading": "Java Operators Precedence & Associativity",
+      "paragraphs": [
+        "Operator precedence determines the grouping of terms in an expression. This affects how an expression is evaluated. Certain operators have higher precedence than others; for example, the multiplication operator has higher precedence than the addition operator −",
+        "For example, x = 7 &plus; 3 &ast; 2; here x is assigned 13, not 20 because operator &ast; has higher precedence than &plus;, so it first gets multiplied with 3 &ast; 2 and then adds into 7.",
+        "Here, operators with the highest precedence appear at the top of the table, those with the lowest appear at the bottom. Within an expression, higher precedence operators will be evaluated first.",
+        "Category \nOperator\nAssociativity \n \n \nPostfix\nexpression++ expression-- \nLeft to right \n \n \nUnary \n++expression --expression +expression -expression ⁓ ! \nRight to left\n \n \nMultiplicative \n* / %\nLeft to right \n \n \nAdditive\n+ - \nLeft to right \n\n \nShift \n<< >> >>> \nLeft to right \n \n \nRelational\n< >  <= >= instanceof \nLeft to right \n\n \nEquality \n== != \nLeft to right \n \n \nBitwise AND\n& \nLeft to right \n \n \nBitwise XOR \n^\nLeft to right\n \n \nBitwise OR \n| \nLeft to right \n \n \nLogical AND\n&& \nLeft to right \n \n\nLogical OR \n|| \nLeft to right \n \n \nConditional\n?: \nRight to left \n \n\nAssignment \n= += -= *= /= %= ^= |= <<= >>= >>>= \nRight to left"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates how operator precedence and associativity affect expression evaluation in Java:",
+        "When the above code is compiled and executed, it produces the following result −"
+      ],
+      "code": [
+        "public class OperatorPrecedenceExample {\n    public static void main(String[] args) {\n        int result1 = 10 + 5 * 2; // Multiplication (*) has higher precedence than addition (+)\n        int result2 = (10 + 5) * 2; // Parentheses () change precedence\n        int result3 = 20 / 4 * 2; // Left-to-right associativity\n        int result4 = 10 - 3 + 2; // Left-to-right associativity\n        \n        System.out.println(\"10 + 5 * 2 = \" + result1);\n        System.out.println(\"(10 + 5) * 2 = \" + result2);\n        System.out.println(\"20 / 4 * 2 = \" + result3);\n        System.out.println(\"10 - 3 + 2 = \" + result4);\n    }\n}",
+        "10 + 5 * 2 = 20\n(10 + 5) * 2 = 30\n20 / 4 * 2 = 10\n10 - 3 + 2 = 9"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:30:24.824Z"
+}

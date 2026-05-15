@@ -1,0 +1,116 @@
+{
+  "topicId": "abstract-vs-interface",
+  "title": "Java - Abstraction",
+  "sectionId": "java-oops",
+  "source": "tutorialspoint",
+  "url": "https://www.tutorialspoint.com/java/java_abstraction.htm",
+  "allSources": [
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_abstraction.htm",
+      "score": 71,
+      "sectionCount": 11
+    }
+  ],
+  "sections": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "As per dictionary, abstraction is the quality of dealing with ideas rather than events. For example, when you consider the case of e-mail, complex details such as what happens as soon as you send an e-mail, the protocol your e-mail server uses are hidden from the user. Therefore, to send an e-mail you just need to type the content, mention the address of the receiver, and click send."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Abstraction",
+      "paragraphs": [
+        "Abstraction is a process of hiding the implementation details from the user, only the functionality will be provided to the user. In other words, the user will have the information on what the object does instead of how it does it. In Java programming, abstraction is achieved using Abstract classes and interfaces."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Abstract Classes",
+      "paragraphs": [
+        "A Java class which contains the abstract keyword in its declaration is known as abstract class.",
+        "• Java abstract classes may or may not contain abstract methods, i.e., methods without body ( public void get(); )\n• But, if a class has at least one abstract method, then the class must be declared abstract.\n• If a class is declared abstract, it cannot be instantiated.\n• To use an abstract class, you have to inherit it from another class, provide implementations to the abstract methods in it.\n• If you inherit an abstract class, you have to provide implementations to all the abstract methods in it."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: Java Abstract Class",
+      "paragraphs": [
+        "This section provides you an example of the Java Abstract Class. To create an abstract class in Java, just use the abstract keyword before the class keyword, in the class declaration.",
+        "You can observe that except abstract methods the Employee class is same as normal class in Java. The class is now abstract, but it still has three fields, seven methods, and one constructor.",
+        "Now you can try to instantiate the Employee class in the following way −",
+        "When you compile the above class, it gives you the following error −"
+      ],
+      "code": [
+        "/* File name : Employee.java */\npublic abstract class Employee {\n   private String name;\n   private String address;\n   private int number;\n\n   public Employee(String name, String address, int number) {\n      System.out.println(\"Constructing an Employee\");\n      this.name = name;\n      this.address = address;\n      this.number = number;\n   }\n   \n   public double computePay() {\n     System.out.println(\"Inside Employee computePay\");\n     return 0.0;\n   }\n   \n   public void mailCheck() {\n      System.out.println(\"Mailing a check to \" + this.name + \" \" + this.address);\n   }\n\n   public String toString() {\n      return name + \" \" + address + \" \" + number;\n   }\n\n   public String getName() {\n      return name;\n   }\n \n   public String getAddress() {\n      return address;\n   }\n   \n   public void setAddress(String newAddress) {\n      address = newAddress;\n   }\n \n   public int getNumber() {\n      return number;\n   }\n}",
+        "/* File name : AbstractDemo.java */\npublic class AbstractDemo {\n\n   public static void main(String [] args) {\n      /* Following is not allowed and would raise error */\n      Employee e = new Employee(\"George W.\", \"Houston, TX\", 43);\n      System.out.println(\"\\n Call mailCheck using Employee reference--\");\n      e.mailCheck();\n   }\n}\n\nabstract class Employee {\n   private String name;\n   private String address;\n   private int number;\n\n   public Employee(String name, String address, int number) {\n      System.out.println(\"Constructing an Employee\");\n      this.name = name;\n      this.address = address;\n      this.number = number;\n   }\n   \n   public double computePay() {\n     System.out.println(\"Inside Employee computePay\");\n     return 0.0;\n   }\n   \n   public void mailCheck() {\n      System.out.println(\"Mailing a check to \" + this.name + \" \" + this.address);\n   }\n\n   public String toString() {\n      return name + \" \" + address + \" \" + number;\n   }\n\n   public String getName() {\n      return name;\n   }\n \n   public String getAddress() {\n      return address;\n   }\n   \n   public void setAddress(String newAddress) {\n      address = newAddress;\n   }\n \n   public int getNumber() {\n      return number;\n   }\n}",
+        "Employee.java:46: Employee is abstract; cannot be instantiated\n      Employee e = new Employee(\"George W.\", \"Houston, TX\", 43);\n                   ^\n1 error"
+      ]
+    },
+    {
+      "heading": "Inheriting the Java Abstract Class",
+      "paragraphs": [
+        "We can inherit the properties of Employee class just like concrete class in the following way −"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: Inheriting the Abstract Class in Java",
+      "paragraphs": [
+        "Here, you cannot instantiate the Employee class, but you can instantiate the Salary Class, and using this instance you can access all the three fields and seven methods of Employee class as shown below."
+      ],
+      "code": [
+        "/* File name : Salary.java */\npublic class Salary extends Employee {\n   private double salary;   // Annual salary\n   \n   public Salary(String name, String address, int number, double salary) {\n      super(name, address, number);\n      setSalary(salary);\n   }\n   \n   public void mailCheck() {\n      System.out.println(\"Within mailCheck of Salary class \");\n      System.out.println(\"Mailing check to \" + getName() + \" with salary \" + salary);\n   }\n \n   public double getSalary() {\n      return salary;\n   }\n   \n   public void setSalary(double newSalary) {\n      if(newSalary >= 0.0) {\n         salary = newSalary;\n      }\n   }\n   \n   public double computePay() {\n      System.out.println(\"Computing salary pay for \" + getName());\n      return salary/52;\n   }\n}",
+        "/* File name : AbstractDemo.java */\npublic class AbstractDemo {\n\n   public static void main(String [] args) {\n      Salary s = new Salary(\"Mohd Mohtashim\", \"Ambehta, UP\", 3, 3600.00);\n      Employee e = new Salary(\"John Adams\", \"Boston, MA\", 2, 2400.00);\n      System.out.println(\"Call mailCheck using Salary reference --\");\n      s.mailCheck();\n      System.out.println(\"\\n Call mailCheck using Employee reference--\");\n      e.mailCheck();\n   }\n}\nabstract class Employee {\n   private String name;\n   private String address;\n   private int number;\n\n   public Employee(String name, String address, int number) {\n      System.out.println(\"Constructing an Employee\");\n      this.name = name;\n      this.address = address;\n      this.number = number;\n   }\n   \n   public double computePay() {\n     System.out.println(\"Inside Employee computePay\");\n     return 0.0;\n   }\n   \n   public void mailCheck() {\n      System.out.println(\"Mailing a check to \" + this.name + \" \" + this.address);\n   }\n\n   public String toString() {\n      return name + \" \" + address + \" \" + number;\n   }\n\n   public String getName() {\n      return name;\n   }\n \n   public String getAddress() {\n      return address;\n   }\n   \n   public void setAddress(String newAddress) {\n      address = newAddress;\n   }\n \n   public int getNumber() {\n      return number;\n   }\n}\nclass Salary extends Employee {\n   private double salary;   // Annual salary\n   \n   public Salary(String name, String address, int number, double salary) {\n      super(name, address, number);\n      setSalary(salary);\n   }\n   \n   public void mailCheck() {\n      System.out.println(\"Within mailCheck of Salary class \");\n      System.out.println(\"Mailing check to \" + getName() + \" with salary \" + salary);\n   }\n \n   public double getSalary() {\n      return salary;\n   }\n   \n   public void setSalary(double newSalary) {\n      if(newSalary >= 0.0) {\n         salary = newSalary;\n      }\n   }\n   \n   public double computePay() {\n      System.out.println(\"Computing salary pay for \" + getName());\n      return salary/52;\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Constructing an Employee\nConstructing an Employee\nCall mailCheck using Salary reference --\nWithin mailCheck of Salary class \nMailing check to Mohd Mohtashim with salary 3600.0\n\n Call mailCheck using Employee reference--\nWithin mailCheck of Salary class \nMailing check to John Adams with salary 2400.0"
+      ]
+    },
+    {
+      "heading": "Java Abstract Methods",
+      "paragraphs": [
+        "If you want a class to contain a particular method but you want the actual implementation of that method to be determined by child classes, you can declare the method in the parent class as an abstract.",
+        "• abstract keyword is used to declare the method as abstract.\n• You have to place the abstract keyword before the method name in the method declaration.\n• An abstract method contains a method signature, but no method body.\n• Instead of curly braces, an abstract method will have a semoi colon (;) at the end."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example 1: Implementing Abstract Method in Java",
+      "paragraphs": [
+        "Following is an example of the abstract method.",
+        "Declaring a method as abstract has two consequences −",
+        "• The class containing it must be declared as abstract.\n• Any class inheriting the current class must either override the abstract method or declare itself as abstract.",
+        "Note − Eventually, a descendant class has to implement the abstract method; otherwise, you would have a hierarchy of abstract classes that cannot be instantiated.",
+        "Suppose Salary class inherits the Employee class, then it should implement the computePay() method as shown below −"
+      ],
+      "code": [
+        "public abstract class Employee {\n   private String name;\n   private String address;\n   private int number;\n   \n   public abstract double computePay();\n   // Remainder of class definition\n}",
+        "/* File name : Salary.java */\npublic class Salary extends Employee {\n   private double salary;   // Annual salary\n  \n   public double computePay() {\n      System.out.println(\"Computing salary pay for \" + getName());\n      return salary/52;\n   }\n   // Remainder of class definition\n}"
+      ]
+    },
+    {
+      "heading": "Example 2: Implementing Abstract Method in Java",
+      "paragraphs": [
+        "Following example showcases the concept of abstract method."
+      ],
+      "code": [
+        "/* File name : AbstractDemo.java */\npublic class AbstractDemo {\n   public static void main(String [] args) {\n      Salary s = new Salary(\"Mohd Mohtashim\", \"Ambehta, UP\", 3, 3600.00);\n      System.out.println(\"salary: \" + s.computePay());\n   }\n}\nabstract class Employee {\n   private String name;\n   private String address;\n   private int number;\n\n   public Employee(String name, String address, int number) {\n      System.out.println(\"Constructing an Employee\");\n      this.name = name;\n      this.address = address;\n      this.number = number;\n   }\n\n   public abstract double computePay();\n      // Remainder of class definition\n\n   public String getName() {\n      return name;\n   }\n\n   public void setName(String name) {\n      this.name = name;\n   }\n\n   public String getAddress() {\n      return address;\n   }\n\n   public void setAddress(String address) {\n      this.address = address;\n   }\n\n   public int getNumber() {\n      return number;\n   }\n\n   public void setNumber(int number) {\n      this.number = number;\n   }\n}\nclass Salary extends Employee {\n   private double salary;   // Annual salary\n\n   public Salary(String name, String address, int number, double salary) {\n      super(name, address, number);\n      this.salary = salary;\n   }\n\n   public double computePay() {\n      System.out.println(\"Computing salary pay for \" + getName());\n      return salary/52;\n   }\n   // Remainder of class definition\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Constructing an Employee\nComputing salary pay for Mohd Mohtashim\nsalary: 69.23076923076923"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:34:04.598Z"
+}

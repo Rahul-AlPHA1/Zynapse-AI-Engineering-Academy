@@ -1,0 +1,198 @@
+{
+  "topicId": "while-loop",
+  "title": "Java While Loop",
+  "sectionId": "java-basics",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-while-loop",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-while-loop",
+      "score": 123,
+      "sectionCount": 18
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_while_loop.htm",
+      "score": 59,
+      "sectionCount": 11
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java While Loop",
+      "paragraphs": [
+        "In programming, loops play a pivotal role in iterating over a set of statements repeatedly until a specific condition is met. One such loop in Java is the 'while' loop, known for its simplicity and versatility."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What Is while Loop in Java?",
+      "paragraphs": [
+        "The Java while loop is used to iterate a part of the program repeatedly until the specified Boolean condition is true. As soon as the Boolean condition becomes false, the loop automatically stops.",
+        "The while loop is considered as a repeating if statement. If the number of iteration is not fixed, it is recommended to use the while loop."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax pf the Java While Loop",
+      "paragraphs": [
+        "It has the following syntax:",
+        "Here, condition is a boolean expression that determines whether the loop should continue iterating or not. The statements within the curly braces are executed repeatedly as long as the condition evaluates to true."
+      ],
+      "code": [
+        "while (condition){    \n//code to be executed   \nIncrement / decrement statement  \n}"
+      ]
+    },
+    {
+      "heading": "Parts of while Loop",
+      "paragraphs": [
+        "The different parts of while loop are as follows:",
+        "1. Condition: It is an expression which is tested. If the condition is true, the loop body is executed and control goes to update expression. When the condition becomes false, we exit the while loop.",
+        "Example:",
+        "2. Update Expression: Every time the loop body is executed, this expression increments or decrements loop variable.",
+        "Example:"
+      ],
+      "code": [
+        "i <=100",
+        "i++;"
+      ]
+    },
+    {
+      "heading": "while Loop Example",
+      "paragraphs": [
+        "This example shows the basic usage of a while loop in Java. Here, we want to print numbers from 1 to 5:",
+        "Explanation:",
+        "In this example, the loop starts with the variable i initialized to 1. The condition i <= 5 is checked before each iteration, and the loop continues as long as the condition is true. Inside the loop, the value of i is printed and then increased by 1, which prevents the loop from running infinitely."
+      ],
+      "code": [
+        "int i = 1;\nwhile (i <= 5) {\n    System.out.println(i);\n    i++;\n}"
+      ]
+    },
+    {
+      "heading": "Java While Loop Flowchart",
+      "paragraphs": [
+        "Here, the important thing about while loop is that, sometimes it may not even execute. If the condition to be tested results into false, the loop body is skipped and first statement after the while loop will be executed."
+      ],
+      "code": []
+    },
+    {
+      "heading": "More Examples on while Loop",
+      "paragraphs": [
+        "Here, we are going to discuss several examples to demonstrate the while loop in Java."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example 1: Printing Numbers from 1 to 10",
+      "paragraphs": [
+        "In the following example, we print integer values from 1 to 10. Unlike the for loop, we separately need to initialize and increment the variable used in the condition (here, i). Otherwise, the loop will execute infinitely.",
+        "Examplepublic class Main {  \npublic static void main(String[] args) {  \n    int i=1;  \n    while(i<=10){  \n        System.out.println(i);  \n    i++;  \n    }  \n}  \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "1\n2\n3\n4\n5\n6\n7\n8\n9\n10"
+      ]
+    },
+    {
+      "heading": "Example 2: Finding Factorial of a Number",
+      "paragraphs": [
+        "Let us take an example to demonstrate how to find the factorial of a number using while loop in Java.",
+        "Example// Java Program to print factorial of 5 using while loop\npublic class Main {  \n    public static void main(String[] args) {  \n        // Declare a variable to 5. This is the number whose factorial is to be calculated.  \n        int number = 5;  \n        // Declare a variable 'factorial' and initialize it to 1. This variable will hold the result of the factorial calculation.  \n        int factorial = 1;  \n        // Declare a variable 'i' and initialize it to 1.  \n        int i = 1;\n        //Start a while loop \n        while( i <= number ) {  \n            // Multiply the current value of 'factorial' by 'i' and store the result back in 'factorial'.  \n            factorial *= i; // This is equivalent to factorial = factorial * i; \n            i++;\n        }  \n        // Print the calculated factorial to the console.  \n        System.out.println(\"Factorial of \" + number + \" is: \" + factorial);  \n    }  \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Factorial of 5 is: 120"
+      ]
+    },
+    {
+      "heading": "Java Nested While Loop",
+      "paragraphs": [
+        "A while loop inside the while loop is called nested while loop in Java. The basic syntax of nested while loop is given below:"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax of Java Nested While Loop",
+      "paragraphs": [
+        "It has the following syntax:"
+      ],
+      "code": [
+        "while (condition){    \n //code to be executed   \n while (condition){    \n  //code to be executed   \n  Increment / decrement statement  \n }\n Increment / decrement statement  \n}"
+      ]
+    },
+    {
+      "heading": "Example 1: Printing Row and Column Values",
+      "paragraphs": [
+        "This example demonstrates the use of a nested while loop in Java, where the inner loop runs completely for each iteration of the outer loop.",
+        "Example//Java Program to use nested while loop in Java\npublic class Main {  \npublic static void main(String[] args) {  \n    int i=1;\n    //outer while loop\n    while(i<=3){  \n        //inner while loop\n        int j=1;\n        while(j<=5){\n            System.out.println(i+\" \"+j);  \n            j++;  \n        }  \n    i++;\n    }\n}  \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "1 1\n1 2\n1 3\n1 4\n1 5\n2 1\n2 2\n2 3\n2 4\n2 5\n3 1\n3 2\n3 3\n3 4\n3 5"
+      ]
+    },
+    {
+      "heading": "Example 2: Printing Multiplication Table",
+      "paragraphs": [
+        "This program uses a nested while loop to print the multiplication table from 1 to 10 in a structured format.",
+        "Example//Java Program to print multiplication table using while loop in Java\npublic class Main {  \npublic static void main(String[] args) {  \n    int i=1;\n    //outer while loop\n    while(i<=10){  \n        //inner while loop\n        int j=1;\n        while(j<=10){\n            System.out.print(i*j+\" \");  \n            j++;  \n        }  \n        System.out.println();\n    i++;\n    }\n}  \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "1 2 3 4 5 6 7 8 9 10 \n2 4 6 8 10 12 14 16 18 20 \n3 6 9 12 15 18 21 24 27 30 \n4 8 12 16 20 24 28 32 36 40 \n5 10 15 20 25 30 35 40 45 50 \n6 12 18 24 30 36 42 48 54 60 \n7 14 21 28 35 42 49 56 63 70 \n8 16 24 32 40 48 56 64 72 80 \n9 18 27 36 45 54 63 72 81 90 \n10 20 30 40 50 60 70 80 90 100"
+      ]
+    },
+    {
+      "heading": "Java Infinitive while Loop",
+      "paragraphs": [
+        "While loops can inadvertently become infinite if the condition always evaluates to true. For instance: If we pass true in the while loop, it will be infinitive while loop."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax of Java infinitive while Loop",
+      "paragraphs": [
+        "It has the following syntax:",
+        "This loop will continue indefinitely because the condition true is always true. Therefore, it is crucial to ensure that the condition in a while loop eventually becomes false to exit the loop."
+      ],
+      "code": [
+        "while(true){\n//code to be executed\n}"
+      ]
+    },
+    {
+      "heading": "Example: Java Inifinitive while Loop",
+      "paragraphs": [
+        "Let us take an example to demonstrate the Java infinitive while Loop.",
+        "Output:"
+      ],
+      "code": [
+        "public class WhileExample2 {  \npublic static void main(String[] args) { \n // setting the infinite while loop by passing true to the condition\n    while(true){  \n        System.out.println(\"infinitive while loop\");  \n    }  \n}  \n}",
+        "infinitive while loop\ninfinitive while loop\ninfinitive while loop\ninfinitive while loop\ninfinitive while loop\nctrl+c"
+      ]
+    },
+    {
+      "heading": "Preventing Infinite Loops",
+      "paragraphs": [
+        "To prevent infinite loops, it is essential to incorporate mechanisms that modify the loop's condition within the loop block. For instance, using a variable to control the loop:",
+        "In this example, the loop will execute five times, incrementing the count variable with each iteration until it reaches 5, satisfying the condition and ending the loop."
+      ],
+      "code": [
+        "int count = 0;\nwhile (count < 5) {\n    System.out.println(\"Count: \" + count);\n    count++;\n}"
+      ]
+    },
+    {
+      "heading": "Example: prevent infinite loops with a while loop",
+      "paragraphs": [
+        "The following example demonstrates how to prevent infinite loops with a while loop:",
+        "Output:",
+        "The while loop in Java offers a versatile mechanism for executing repetitive tasks based on a condition. Its simplicity and flexibility make it a valuable tool for various programming scenarios, from simple iteration to complex input validation. However, care must be taken to prevent infinite loops by ensuring that the loop's condition eventually evaluates to false. Understanding and mastering the while loop is essential for any Java programmer aiming to write efficient and reliable code."
+      ],
+      "code": [
+        "public class PreventingInfiniteLoop {\n    public static void main(String[] args) {\n        int count = 0;\n        while (count < 5) {\n            System.out.println(\"Count: \" + count);\n            count++;\n        }\n    }\n}",
+        "Count: 0\nCount: 1\nCount: 2\nCount: 3\nCount: 4"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:30:54.753Z"
+}

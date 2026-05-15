@@ -1,0 +1,190 @@
+{
+  "topicId": "access-modifiers",
+  "title": "Access Modifiers in Java",
+  "sectionId": "java-oops",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/access-modifiers-in-java",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/access-modifiers-in-java",
+      "score": 117,
+      "sectionCount": 19
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_access_modifiers.htm",
+      "score": 99,
+      "sectionCount": 14
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Access Modifiers in Java",
+      "paragraphs": [
+        "Access modifiers in Java are keywords that define where a class, method, or variable can be accessed. These modifiers help to protect data and control access to code. In this chapter, we will learn about the access modifiers and how they control the visibility of classes, methods, and variables."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What are Access Modifiers in Java?",
+      "paragraphs": [
+        "Access modifiers are keywords that define the visibility or accessibility of classes, methods, constructors, and variables. They control where these members can be accessed from such as inside the same class, within the same package, or from other packages. By applying the access modifiers, we can restrict or allow access.",
+        "There are four types of access modifiers in Java:",
+        "• public\n• private\n• protected\n• default",
+        "Let us understand each access modifiers in details."
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. public Access Modifier",
+      "paragraphs": [
+        "The access level of a public modifier is everywhere. It can be accessed from within the class, outside the class, within the package and outside the package. It has the widest scope among all other modifiers."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates the use of public access modifiers.",
+        "Output:"
+      ],
+      "code": [
+        "//save by A.java    \npackage pack;  \npublic class A {  \npublic void msg() { System.out.println(\"Hello\"); }  \n}",
+        "//save by Main.java    \npackage mypack;  \nimport pack.*;  \nclass Main {  \n  public static void main (String args[]) {  \n   A obj = new A();  \n   obj.msg();  \n  }  \n}",
+        "Hello"
+      ]
+    },
+    {
+      "heading": "2. private Access Modifier",
+      "paragraphs": [
+        "The access level of a private modifier is only within the class. It cannot be accessed from outside the class."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates the use of private access modifiers.",
+        "When we compile the above program, it shows the following compile-time error"
+      ],
+      "code": [
+        "class A{  \nprivate int data=40;  \nprivate void msg(){System.out.println(\"Hello java\");}  \n}   \npublic class Main{  \n public static void main(String args[]){  \n   A obj=new A();  \n   System.out.println(obj.data);//Compile Time Error  \n   obj.msg();//Compile Time Error  \n   }  \n}",
+        "Main.java:8: error: data has private access in A\n   System.out.println(obj.data);//Compile Time Error  \n                         ^\nMain.java:9: error: msg() has private access in A\n   obj.msg();//Compile Time Error  \n      ^\n2 errors"
+      ]
+    },
+    {
+      "heading": "Role of Private Constructor",
+      "paragraphs": [
+        "If you make any class constructor private, you cannot create an instance of that class from outside the class. For example:",
+        "When we compile the above program, it shows the following compile-time error."
+      ],
+      "code": [
+        "class A{  \nprivate A(){}//private constructor  \nvoid msg(){System.out.println(\"Hello java\");}  \n}  \npublic class Main{  \n public static void main(String args[]){  \n   A obj=new A();//Compile Time Error  \n }  \n}",
+        "Main.java:7: error: A() has private access in A\n   A obj=new A();//Compile Time Error  \n         ^\n1 error"
+      ]
+    },
+    {
+      "heading": "3. protected Access Modifier",
+      "paragraphs": [
+        "The protected access modifier is accessible within the package and outside the package, but through inheritance only. The protected access modifier can be applied to the data member, method and constructor. It cannot be applied to the class. It provides more accessibility than the default modifier."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates the use of protected access modifiers.",
+        "Output:"
+      ],
+      "code": [
+        "//save by A.java  \npackage pack;  \npublic class A {  \nprotected void msg() { System.out.println(\"Hello\"); }  \n}",
+        "//save by Main.java  \npackage mypack;  \nimport pack.*;  \nclass Main extends A {  \n  public static void main (String args[]) {  \n   B obj = new B();  \n   obj.msg();  \n  }  \n}",
+        "Hello"
+      ]
+    },
+    {
+      "heading": "4. Default Access Modifier",
+      "paragraphs": [
+        "When we do not specify any specifier, the default access specifier is prefixed by default. The default modifier is accessible within a package only. It cannot be accessed from outside the package. It provides more accessibility than private. But it is more restrictive than protected and public."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates the use of default access modifiers.",
+        "Output:",
+        "In the above example, the scope of class A and its method msg() is default, so it cannot be accessed from outside the package. When we compile the above program, we get a compile-time error."
+      ],
+      "code": [
+        "//save by A.java  \npackage pack;  \nclass A {  \n  void msg() {System.out.println(\"Hello\"); }  \n}",
+        "//save by Main.java  \npackage mypack;  \nimport pack.*;  \npublic class Main {  \n  public static void main (String args[])   {  \n   A obj = new A();//Compile Time Error  \n   obj.msg();           //Compile Time Error  \n  }  \n}",
+        "Compile Time Error"
+      ]
+    },
+    {
+      "heading": "Access Modifiers with Method Overriding",
+      "paragraphs": [
+        "Access modifiers also affect method overriding in inheritance. When a subclass overrides a method from its parent class, the overridden method cannot have a more restrictive access modifier than the original method."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Rules",
+      "paragraphs": [
+        "Follow the below given rules while using the access modifiers with the method overriding:",
+        "• A method declared as public in the parent class must be public in the child class.\n• A method declared as protected in the parent class can be protected or public in the child class.\n• A method with default (no modifier) in the parent class can be default or protected or public in the child class, but not private.\n• A method declared as private in the parent class is not inherited, so it cannot be overridden."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates the access specifiers with method overloading.",
+        "The default modifier is more restrictive than protected. That is why there is a compile-time error."
+      ],
+      "code": [
+        "class A {  \nprotected void msg() { System.out.println(\"Hello java\"); }  \n}  \npublic class Main extends A {  \nvoid msg(){System.out.println(\"Hello java\"); }             //C.T.Error  \n public static void main (String args[]) {  \n   Main obj=new Main();  \n   obj.msg();  \n   }  \n}"
+      ]
+    },
+    {
+      "heading": "Accessibility or Scope of Java Access Modifiers",
+      "paragraphs": [
+        "The following table shows the accessibility or scope of Java access modifiers:",
+        "Access Modifier | Within Class | Within Package | Outside Package by Subclass Only | Outside Package\nPrivate | Y | N | N | N\nDefault | Y | Y | N | N\nProtected | Y | Y | Y | N\nPublic | Y | Y | Y | Y"
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. public",
+      "paragraphs": [
+        "• Accessible from anywhere (inside/outside the package).\n• Has the widest accessibility.\n• Used for methods and classes that need to be globally accessible."
+      ],
+      "code": []
+    },
+    {
+      "heading": "2. private",
+      "paragraphs": [
+        "• Strictly the most restrictive modifier.\n• Limits access only to within the same class.\n• Essential for encapsulation and protecting sensitive data.\n• Not accessible outside the class, even in the same package.\n• Private constructor prevents object creation outside the class."
+      ],
+      "code": []
+    },
+    {
+      "heading": "3. protected",
+      "paragraphs": [
+        "• Accessible within the same package.\n• Accessible outside the package, but only through inheritance.\n• More accessible than the default, but more restrictive than the public."
+      ],
+      "code": []
+    },
+    {
+      "heading": "4. default",
+      "paragraphs": [
+        "• When no modifier is specified.\n• Limited access only to other classes within the same package.\n• Cannot be accessed outside the package, even by subclasses.",
+        "Next TopicEncapsulation-in-java"
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:34:21.759Z"
+}

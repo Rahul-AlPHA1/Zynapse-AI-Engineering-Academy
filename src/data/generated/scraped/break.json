@@ -1,0 +1,209 @@
+{
+  "topicId": "break",
+  "title": "Java Break Statement",
+  "sectionId": "java-basics",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-break",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-break",
+      "score": 130,
+      "sectionCount": 21
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_break_statement.htm",
+      "score": 75,
+      "sectionCount": 15
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java Break Statement",
+      "paragraphs": [
+        "The `break` statement in Java is a powerful tool for controlling the flow of your program. It is used to exit a loop or switch statement prematurely. It allows us to customize the behavior of code based on specific conditions."
+      ],
+      "code": []
+    },
+    {
+      "heading": "How do break statements work in Loops?",
+      "paragraphs": [
+        "When a break statement is encountered inside a loop, the loop is immediately terminated and the program control resumes at the next statement following the loop."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Using break with Loops and Switch Statements",
+      "paragraphs": [
+        "The Java break statement is used to break loop or switch statement. It breaks the current flow of the program at specified condition. In case of inner loop, it breaks only inner loop."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Practical Example of break Statement",
+      "paragraphs": [
+        "For example, consider a situation if we are searching for a specific value in an array using a for loop. We can use the break statement to exit the loop as soon as we find the value, like this:",
+        "In this example, as soon as the value 3 is found in the array, the break statement is executed, and the loop is terminated. Without the break statement, the loop would continue iterating through the remaining elements of the array that is unnecessary once the value has been found.",
+        "Overall, the break statement is a versatile tool that allows us to customize the flow of Java programs, making them more efficient and easier to read. However, it is important to use break judiciously and understand its impact on the flow of code to avoid unintended consequences."
+      ],
+      "code": [
+        "int[] array = {1, 2, 3, 4, 5};\nint targetValue = 3;\nfor (int i = 0; i < array.length; i++) {\n    if (array[i] == targetValue) {\n        System.out.println(\"Value found at index \" + i);\n        break;\n    }\n}"
+      ]
+    },
+    {
+      "heading": "Use of break Statement",
+      "paragraphs": [
+        "We can use Java break statement in all types of loops such as for loop, while loop and do-while loop."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax of the break Statement",
+      "paragraphs": [],
+      "code": [
+        "jump-statement;  \nbreak;"
+      ]
+    },
+    {
+      "heading": "Flowchart of break Statement",
+      "paragraphs": [
+        "The flowchart of a break statement starts with the condition check of the loop. If the condition is true, the loop body is executed, and then the condition is checked again. If the condition becomes false, the loop is exited normally, and the program continues with the statement after the loop.",
+        "However, if a break statement is encountered inside the loop body, the control jumps to the statement immediately after the loop, bypassing the normal exit condition check. This behavior allows us to prematurely exit a loop based on certain conditions, even if the loop's condition is still true.",
+        "It is important to note that a break statement only affects the innermost loop that contains it. If we have nested loops and we use a break statement in the inner loop, only that inner loop will be exited, and the outer loops will continue executing normally unless they also have their own break statements."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Break Statement with Loop",
+      "paragraphs": [
+        "The break statement with loop is used to immediately terminate the execution of a loop when a specific condition is met and transfer control to the statement that follows the loop."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: Java break statement with Loop",
+      "paragraphs": [
+        "The following example shows the use of the break statement inside a for loop. The loop runs from 1 to 10, but when the value of i becomes 5, the break statement stops the loop. As a result, only the numbers 1 to 4 are printed.",
+        "Output:"
+      ],
+      "code": [
+        "//Java Program to demonstrate the use of break statement  \n//inside the for loop.\npublic class BreakExample {\npublic static void main(String[] args) {\n    //using for loop\n    for(int i=1;i<=10;i++){\n    \tif(i==5){\n    \t    //breaking the loop\n    \t\tbreak;\n    \t}\n    \tSystem.out.println(i);\n    }\n}\n}",
+        "1\n2\n3\n4"
+      ]
+    },
+    {
+      "heading": "Java Break Statement with Inner Loop",
+      "paragraphs": [
+        "It breaks inner loop only if you use break statement inside the inner loop."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: Java Break Statement with Inner Loop",
+      "paragraphs": [
+        "The following example shows the use of the break statement inside a for loop. The loop runs from 1 to 10, but when the value of i becomes 5, the break statement stops the loop. As a result, only the numbers 1 to 4 are printed.",
+        "Output:"
+      ],
+      "code": [
+        "//Java Program to illustrate the use of break statement  \n//inside an inner loop \npublic class BreakExample2 {\npublic static void main(String[] args) {\n            //outer loop \n\t        for(int i=1;i<=3;i++){  \n\t                //inner loop\n\t                for(int j=1;j<=3;j++){  \n\t                    if(i==2&&j==2){  \n\t                        //using break statement inside the inner loop\n\t                        break;  \n\t                    }  \n\t                    System.out.println(i+\" \"+j);  \n\t                }  \n\t        }  \n}\n}",
+        "1 1\n1 2\n1 3\n2 1\n3 1\n3 2\n3 3"
+      ]
+    },
+    {
+      "heading": "Java break Statement with Labelled for Loop",
+      "paragraphs": [
+        "We can use break statement with a label. The feature is introduced since JDK 1.5. So, we can break any loop in Java now whether it is outer or inner loop."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: Java break Statement with Labelled for Loop",
+      "paragraphs": [
+        "The following example demonstrates the use of a labeled break statement. Two loops are defined with labels aa (outer loop) and bb (inner loop). When the condition i == 2 and j == 2 becomes true, break aa terminates the outer loop, not just the inner loop. As a result, the program stops executing both loops immediately and prints the values generated before the break condition.",
+        "Output:"
+      ],
+      "code": [
+        "//Java Program to illustrate the use of continue statement\n//with label inside an inner loop to break outer loop\npublic class BreakExample3 {\npublic static void main(String[] args) {\n            aa:\n\t        for(int i=1;i<=3;i++){  \n\t                bb:\n\t                for(int j=1;j<=3;j++){  \n\t                    if(i==2&&j==2){  \n\t                        //using break statement with label\n\t                        break aa;  \n\t                    }  \n\t                    System.out.println(i+\" \"+j);  \n\t                }  \n\t        }  \n}\n}",
+        "1 1\n1 2\n1 3\n2 1"
+      ]
+    },
+    {
+      "heading": "Java break Statement with while loop",
+      "paragraphs": [
+        "The break statement with a while loop is used to stop the loop execution immediately when a specified condition becomes true, and control moves to the statement after the loop."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: Java break Statement with while loop",
+      "paragraphs": [
+        "The following example demonstrates the use of the break statement inside a while loop. The loop runs while the value of i is less than or equal to 10. When i becomes 5, the break statement is executed, which immediately terminates the loop. As a result, only the values from 1 to 4 are printed.",
+        "Output:"
+      ],
+      "code": [
+        "//Java Program to demonstrate the use of break statement\n//inside the while loop.\npublic class BreakWhileExample {\npublic static void main(String[] args) {\n    //while loop\n    int i=1;\n    while(i<=10){\n        if(i==5){\n    \t    //using break statement\n            i++;\n    \t\tbreak;//it will break the loop\n    \t}\n    \tSystem.out.println(i);\n        i++;\n    }\n}\n}",
+        "1\n2\n3\n4"
+      ]
+    },
+    {
+      "heading": "Java break Statement with do-while loop",
+      "paragraphs": [
+        "The break statement with a do-while loop is used to terminate the loop execution instantly when a specific condition is met, even though the loop executes at least once before the condition is checked."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: Java break Statement with do-while loop",
+      "paragraphs": [
+        "The following example demonstrates the use of the break statement inside a do-while loop. The loop starts with i = 1 and executes at least once. When the value of i becomes 5, the break statement stops the loop immediately. As a result, only the numbers from 1 to 4 are printed.",
+        "Output:"
+      ],
+      "code": [
+        "//Java Program to demonstrate the use of break statement\n//inside the Java do-while loop.\npublic class BreakDoWhileExample {\npublic static void main(String[] args) {\n    //declaring variable\n    int i=1;\n    //do-while loop\n    do{\n        if(i==5){\n    \t   //using break statement\n           i++;\n    \t   break;//it will break the loop\n    \t}\n    \tSystem.out.println(i);\n        i++;\n    }while(i<=10);\n}\n}",
+        "1\n2\n3\n4"
+      ]
+    },
+    {
+      "heading": "Java Break Statement with Switch",
+      "paragraphs": [
+        "The break statement can be utilized alongside switch statement in Java for successfully exiting"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: Java Break Statement with Switch",
+      "paragraphs": [
+        "The following example shows the use of the break statement in a switch statement. The program displays a menu and processes the user’s choice. The break statement exits the switch after each case, while selecting option 4 exits the program.",
+        "Output:",
+        "To understand the example of break with switch statement, go with the link: Java Switch Statement."
+      ],
+      "code": [
+        "import java.util.Scanner;\npublic class JavaBreak1 {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        System.out.println(\"Choose an option:\");\n        System.out.println(\"1. Option 1\");\n        System.out.println(\"2. Option 2\");\n        System.out.println(\"3. Option 3\");\n        System.out.println(\"4. Exit\");\n        while (true) {\n            System.out.print(\"Enter your choice: \");\n            int choice = scanner.nextInt();\n            switch (choice) {\n                case 1:\n                    System.out.println(\"You chose Option 1\");\n                    break; // Exit the switch statement\n                case 2:\n                    System.out.println(\"You chose Option 2\");\n                    break; // Exit the switch statement\n                case 3:\n                    System.out.println(\"You chose Option 3\");\n                    break; // Exit the switch statement\n                case 4:\n                    System.out.println(\"Exiting...\");\n                    scanner.close();\n                    return; // Exit the program\n                default:\n                    System.out.println(\"Invalid choice. Please try again.\");\n                    break; // Exit the switch statement\n            }\n        }\n    }\n}",
+        "Choose an option:\n1. Option 1\n2. Option 2\n3. Option 3\n4. Exit\nEnter your choice: 1\nYou chose Option 1\nEnter your choice: 2\nYou chose Option 2\nEnter your choice: 3\nYou chose Option 3\nEnter your choice: 4\nExiting..."
+      ]
+    },
+    {
+      "heading": "Real-World Uses of Java break Statement",
+      "paragraphs": [
+        "The break statement in Java is commonly used in various applications to control the flow of a program and manage loop iterations or switch cases. One common application is in searching algorithms, where break can be used to exit a loop once a desired condition is met. For example, in linear search, the loop can be terminated early if the target element is found, saving unnecessary iterations.",
+        "Another application is in error handling, where break can be used to exit a loop if an error condition is encountered. It can prevent the program from continuing to execute potentially faulty code and causing further issues. Additionally, break can be used in switch statements to exit the switch block once a specific case is matched, improving the efficiency of the code.",
+        "In user input validation, break can be used to exit a loop that prompts the user for input until a valid input is provided. Once the valid input is received, the loop can be exited using break, and the program can continue with the next steps. It helps in ensuring that the program does not proceed with invalid or unexpected input."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: Real-World Uses of Java break Statement",
+      "paragraphs": [
+        "Let's understand about the break statement of Java with the help of an example program that demonstrates the usage of break statement in all types of scenarios in a program.",
+        "Output:",
+        "Next TopicJava continue statement"
+      ],
+      "code": [
+        "import java.util.Scanner;\npublic class JavaBreak {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int number;\n        // Using break in a for loop\n        System.out.println(\"Using break in a for loop:\");\n        for (int i = 1; i <= 5; i++) {\n            System.out.print(\"Enter a number (or -1 to exit): \");\n            number = scanner.nextInt();\n            // Check if the user wants to exit the loop\n            if (number == -1) {\n                // If the user wants to exit, break out of the loop\n                break;\n            }\n            // If the user doesn't want to exit, display the number\n            System.out.println(\"You entered: \" + number);\n        }\n        // Using break in a while loop\n        System.out.println(\"\\nUsing break in a while loop:\");\n        int i = 1;\n        while (i <= 5) {\n            System.out.print(\"Enter a number (or -1 to exit): \");\n            number = scanner.nextInt();\n            // Check if the user wants to exit the loop\n            if (number == -1) {\n                // If the user wants to exit, break out of the loop\n                break;\n            }\n            // If the user doesn't want to exit, display the number\n            System.out.println(\"You entered: \" + number);\n            i++;\n        }\n        // Using break in a do-while loop\n        System.out.println(\"\\nUsing break in a do-while loop:\");\n        i = 1;\n        do {\n            System.out.print(\"Enter a number (or -1 to exit): \");\n            number = scanner.nextInt();\n            // Check if the user wants to exit the loop\n            if (number == -1) {\n                // If the user wants to exit, break out of the loop\n                break;\n            }\n            // If the user doesn't want to exit, display the number\n            System.out.println(\"You entered: \" + number);\n            i++;\n        } while (i <= 5);\n        // Close the scanner\n        scanner.close();\n    }\n}",
+        "Using break in a for loop:\nEnter a number (or -1 to exit): 6\nYou entered: 6\nEnter a number (or -1 to exit): 5\nYou entered: 5\nEnter a number (or -1 to exit): 1\nYou entered: 1\nEnter a number (or -1 to exit): 2\nYou entered: 2\nEnter a number (or -1 to exit): 36\nYou entered: 36\nUsing break in a while loop:\nEnter a number (or -1 to exit): 5\nYou entered: 5\nEnter a number (or -1 to exit): 2\nYou entered: 2\nEnter a number (or -1 to exit): 2\nYou entered: 2\nEnter a number (or -1 to exit): 2\nYou entered: 2\nEnter a number (or -1 to exit): 2\nYou entered: 2\nUsing break in a do-while loop:\nEnter a number (or -1 to exit): 2\nYou entered: 2\nEnter a number (or -1 to exit): 2\nYou entered: 2\nEnter a number (or -1 to exit): 2"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:31:05.353Z"
+}

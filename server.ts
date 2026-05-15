@@ -21,7 +21,7 @@ export async function startServer(port = Number(process.env.PORT || 3000)) {
   const app = express();
   const PORT = port;
 
-  app.use(express.json());
+  app.use(express.json({ limit: '1mb' }));
 
   type LocalRunResult = {
     output: string;
@@ -185,6 +185,123 @@ export async function startServer(port = Number(process.env.PORT || 3000)) {
   const PISTON_BASE = process.env.PISTON_URL || 'https://emkc.org/api/v2/piston';
   const OLLAMA_URL = process.env.OLLAMA_URL || 'http://localhost:11434';
   const OLLAMA_TIMEOUT_MS = Number(process.env.OLLAMA_TIMEOUT_MS || 180_000);
+  const HOSTED_AI_DEFAULT_MODELS: Record<'gemini' | 'groq', string> = {
+    gemini: 'gemini-2.5-flash',
+    groq: 'llama-3.1-8b-instant',
+  };
+  const HOSTED_AI_ENV_KEYS: Record<'gemini' | 'groq', string> = {
+    gemini: 'GEMINI_API_KEY',
+    groq: 'GROQ_API_KEY',
+  };
+  const HOSTED_AI_NAMES: Record<'gemini' | 'groq', string> = {
+    gemini: 'Google Gemini',
+    groq: 'Groq',
+  };
+  const GROQ_SAFE_MAX_COMPLETION_TOKENS = 2048;
+
+  type HostedAIProvider = 'gemini' | 'groq';
+  type HostedAIMessage = { role: 'system' | 'user' | 'assistant'; content: string };
+
+  function isHostedAIProvider(provider: string): provider is HostedAIProvider {
+    return provider === 'gemini' || provider === 'groq';
+  }
+
+  function hostedAIKey(provider: HostedAIProvider, suppliedKey?: unknown) {
+    const userKey = typeof suppliedKey === 'string' ? suppliedKey.trim() : '';
+    return {
+      key: userKey || (process.env[HOSTED_AI_ENV_KEYS[provider]] || '').trim(),
+      source: userKey ? 'user' : 'hosted',
+    };
+  }
+
+  function hostedAIError(provider: HostedAIProvider, status: number, body: string) {
+    const limited = status === 401 || status === 403 || status === 429 || status === 413;
+    const hint = limited
+      ? `${HOSTED_AI_NAMES[provider]} key is unavailable, quota-limited, or request-limited. Try ${HOSTED_AI_DEFAULT_MODELS[provider]} or add your own ${HOSTED_AI_ENV_KEYS[provider]}.`
+      : `${HOSTED_AI_NAMES[provider]} request failed.`;
+    return `${hint}${body ? ` Upstream: ${body.slice(0, 800)}` : ''}`;
+  }
+
+  function geminiRequestBody(messages: HostedAIMessage[], options: { jsonMode?: boolean; schema?: unknown } = {}) {
+    const systemText = messages
+      .filter(message => message.role === 'system')
+      .map(message => message.content)
+      .join('\n\n');
+    const contents = messages
+      .filter(message => message.role !== 'system')
+      .map(message => ({
+        role: message.role === 'assistant' ? 'model' : 'user',
+        parts: [{ text: message.content }],
+      }));
+    const generationConfig: Record<string, unknown> = {
+      temperature: 0.25,
+      maxOutputTokens: 4096,
+    };
+    if (options.jsonMode) {
+      generationConfig.responseMimeType = 'application/json';
+      if (options.schema) generationConfig.responseSchema = options.schema;
+    }
+    const body: Record<string, unknown> = { contents, generationConfig };
+    if (systemText) body.systemInstruction = { parts: [{ text: systemText }] };
+    return body;
+  }
+
+  function geminiText(data: any) {
+    return (data?.candidates?.[0]?.content?.parts || [])
+      .map((part: { text?: string }) => part.text || '')
+      .join('');
+  }
+
+  async function callHostedGemini(params: {
+    key: string;
+    model: string;
+    messages: HostedAIMessage[];
+    jsonMode?: boolean;
+    schema?: unknown;
+  }) {
+    const resp = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(params.model)}:generateContent?key=${params.key}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(geminiRequestBody(params.messages, { jsonMode: params.jsonMode, schema: params.schema })),
+      },
+    );
+    const text = await resp.text();
+    if (!resp.ok) throw new Error(hostedAIError('gemini', resp.status, text));
+    return geminiText(text ? JSON.parse(text) : {});
+  }
+
+  async function callHostedGroq(params: {
+    key: string;
+    model: string;
+    messages: HostedAIMessage[];
+    jsonMode?: boolean;
+  }) {
+    const body: Record<string, unknown> = {
+      model: params.model,
+      messages: params.messages,
+      temperature: 0.25,
+      top_p: 0.9,
+      max_completion_tokens: GROQ_SAFE_MAX_COMPLETION_TOKENS,
+    };
+    if (params.jsonMode) body.response_format = { type: 'json_object' };
+    const resp = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${params.key}` },
+      body: JSON.stringify(body),
+    });
+    const text = await resp.text();
+    if (!resp.ok) throw new Error(hostedAIError('groq', resp.status, text));
+    const data = text ? JSON.parse(text) : {};
+    return data.choices?.[0]?.message?.content || '';
+  }
+
+  function logHostedAI(event: string, details: Record<string, unknown>) {
+    const safeDetails = { ...details };
+    delete safeDetails.key;
+    console.log(`[AI proxy] ${event}`, safeDetails);
+  }
 
   async function fetchOllama(pathname: string, init?: RequestInit) {
     const controller = new AbortController();
@@ -195,6 +312,197 @@ export async function startServer(port = Number(process.env.PORT || 3000)) {
       clearTimeout(timer);
     }
   }
+
+  async function streamHostedGemini(params: {
+    key: string;
+    model: string;
+    messages: HostedAIMessage[];
+    keySource: string;
+    res: express.Response;
+  }) {
+    const upstream = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(params.model)}:streamGenerateContent?alt=sse&key=${params.key}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(geminiRequestBody(params.messages)),
+      },
+    );
+    if (!upstream.ok || !upstream.body) {
+      const text = await upstream.text().catch(() => upstream.statusText);
+      throw new Error(hostedAIError('gemini', upstream.status, text));
+    }
+
+    params.res.writeHead(200, {
+      'Content-Type': 'text/plain; charset=utf-8',
+      'Cache-Control': 'no-cache, no-transform',
+      'X-Zynapse-Provider': 'gemini',
+      'X-Zynapse-Key-Source': params.keySource,
+      'X-Accel-Buffering': 'no',
+    });
+
+    const reader = upstream.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = '';
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split('\n');
+      buffer = lines.pop() || '';
+      for (const line of lines) {
+        const trimmed = line.trim();
+        if (!trimmed.startsWith('data:')) continue;
+        try {
+          const json = JSON.parse(trimmed.slice(5).trim());
+          const parts = json?.candidates?.[0]?.content?.parts || [];
+          for (const part of parts) {
+            if (part.text) params.res.write(part.text);
+          }
+        } catch {
+          // Skip keep-alive or partial SSE fragments.
+        }
+      }
+    }
+  }
+
+  async function streamHostedGroq(params: {
+    key: string;
+    model: string;
+    messages: HostedAIMessage[];
+    keySource: string;
+    res: express.Response;
+  }) {
+    const upstream = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${params.key}` },
+      body: JSON.stringify({
+        model: params.model,
+        messages: params.messages,
+        temperature: 0.25,
+        top_p: 0.9,
+        max_completion_tokens: GROQ_SAFE_MAX_COMPLETION_TOKENS,
+        stream: true,
+      }),
+    });
+    if (!upstream.ok || !upstream.body) {
+      const text = await upstream.text().catch(() => upstream.statusText);
+      throw new Error(hostedAIError('groq', upstream.status, text));
+    }
+
+    params.res.writeHead(200, {
+      'Content-Type': 'text/plain; charset=utf-8',
+      'Cache-Control': 'no-cache, no-transform',
+      'X-Zynapse-Provider': 'groq',
+      'X-Zynapse-Key-Source': params.keySource,
+      'X-Accel-Buffering': 'no',
+    });
+
+    const reader = upstream.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = '';
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split('\n');
+      buffer = lines.pop() || '';
+      for (const line of lines) {
+        const trimmed = line.replace(/^data:\s*/, '').trim();
+        if (!trimmed || trimmed === '[DONE]') continue;
+        try {
+          const json = JSON.parse(trimmed);
+          const chunk = json.choices?.[0]?.delta?.content;
+          if (chunk) params.res.write(chunk);
+        } catch {
+          // Skip keep-alive or partial SSE fragments.
+        }
+      }
+    }
+  }
+
+  app.get('/api/ai/status', (_req, res) => {
+    res.json({
+      ok: true,
+      runtime: 'express',
+      providers: {
+        gemini: Boolean((process.env.GEMINI_API_KEY || '').trim()),
+        groq: Boolean((process.env.GROQ_API_KEY || '').trim()),
+      },
+    });
+  });
+
+  app.post('/api/ai/chat', async (req, res) => {
+    try {
+      const { provider, messages, model, key } = req.body || {};
+      if (!isHostedAIProvider(provider)) return res.status(400).json({ ok: false, error: 'Only Gemini and Groq are supported.' });
+      if (!Array.isArray(messages) || messages.length === 0) return res.status(400).json({ ok: false, error: 'messages are required' });
+
+      const resolved = hostedAIKey(provider, key);
+      if (!resolved.key) throw new Error(`${HOSTED_AI_ENV_KEYS[provider]} is not configured. Add it to .env/Vercel or AI Provider Settings.`);
+      const selectedModel = typeof model === 'string' && model.trim() ? model.trim() : HOSTED_AI_DEFAULT_MODELS[provider];
+      logHostedAI('chat:start', { provider, model: selectedModel, keySource: resolved.source, messages: messages.length });
+
+      const text = provider === 'gemini'
+        ? await callHostedGemini({ key: resolved.key, model: selectedModel, messages })
+        : await callHostedGroq({ key: resolved.key, model: selectedModel, messages });
+
+      logHostedAI('chat:ok', { provider, model: selectedModel, chars: text.length });
+      res.json({ ok: true, text, provider, model: selectedModel, keySource: resolved.source });
+    } catch (err: any) {
+      logHostedAI('chat:error', { error: err.message || String(err) });
+      res.status(502).json({ ok: false, error: err.message || 'AI request failed' });
+    }
+  });
+
+  app.post('/api/ai/generate', async (req, res) => {
+    try {
+      const { provider, prompt, schema, type, model, key } = req.body || {};
+      if (!isHostedAIProvider(provider)) return res.status(400).json({ ok: false, error: 'Only Gemini and Groq are supported.' });
+      if (!prompt || typeof prompt !== 'string') return res.status(400).json({ ok: false, error: 'prompt is required' });
+
+      const resolved = hostedAIKey(provider, key);
+      if (!resolved.key) throw new Error(`${HOSTED_AI_ENV_KEYS[provider]} is not configured. Add it to .env/Vercel or AI Provider Settings.`);
+      const selectedModel = typeof model === 'string' && model.trim() ? model.trim() : HOSTED_AI_DEFAULT_MODELS[provider];
+      const jsonInstruction = `\n\nReturn ONLY raw JSON (${type === 'array' ? 'array' : 'object'}). No markdown fences, no explanation.`;
+      const messages: HostedAIMessage[] = [{ role: 'user', content: prompt + jsonInstruction }];
+      logHostedAI('generate:start', { provider, model: selectedModel, keySource: resolved.source, promptChars: prompt.length });
+
+      const text = provider === 'gemini'
+        ? await callHostedGemini({ key: resolved.key, model: selectedModel, messages, jsonMode: true, schema })
+        : await callHostedGroq({ key: resolved.key, model: selectedModel, messages, jsonMode: true });
+
+      logHostedAI('generate:ok', { provider, model: selectedModel, chars: text.length });
+      res.json({ ok: true, text, provider, model: selectedModel, keySource: resolved.source });
+    } catch (err: any) {
+      logHostedAI('generate:error', { error: err.message || String(err) });
+      res.status(502).json({ ok: false, error: err.message || 'AI request failed' });
+    }
+  });
+
+  app.post('/api/ai/stream', async (req, res) => {
+    try {
+      const { provider, messages, model, key } = req.body || {};
+      if (!isHostedAIProvider(provider)) return res.status(400).json({ ok: false, error: 'Only Gemini and Groq are supported.' });
+      if (!Array.isArray(messages) || messages.length === 0) return res.status(400).json({ ok: false, error: 'messages are required' });
+
+      const resolved = hostedAIKey(provider, key);
+      if (!resolved.key) throw new Error(`${HOSTED_AI_ENV_KEYS[provider]} is not configured. Add it to .env/Vercel or AI Provider Settings.`);
+      const selectedModel = typeof model === 'string' && model.trim() ? model.trim() : HOSTED_AI_DEFAULT_MODELS[provider];
+      logHostedAI('stream:start', { provider, model: selectedModel, keySource: resolved.source, messages: messages.length });
+
+      if (provider === 'gemini') await streamHostedGemini({ key: resolved.key, model: selectedModel, messages, keySource: resolved.source, res });
+      else await streamHostedGroq({ key: resolved.key, model: selectedModel, messages, keySource: resolved.source, res });
+      logHostedAI('stream:ok', { provider, model: selectedModel });
+      res.end();
+    } catch (err: any) {
+      logHostedAI('stream:error', { error: err.message || String(err) });
+      if (res.headersSent) {
+        return res.end();
+      }
+      res.status(502).json({ ok: false, error: err.message || 'AI stream failed' });
+    }
+  });
 
   app.get('/api/system/specs', (_req, res) => {
     res.json({

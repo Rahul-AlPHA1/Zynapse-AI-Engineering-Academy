@@ -1,0 +1,184 @@
+{
+  "topicId": "if-else",
+  "title": "Java if-else Statement",
+  "sectionId": "java-basics",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-if-else",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-if-else",
+      "score": 109,
+      "sectionCount": 17
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/if_else_statement_in_java.htm",
+      "score": 96,
+      "sectionCount": 16
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java if-else Statement",
+      "paragraphs": [
+        "In programming, decision-making plays a pivotal role in determining the flow of execution. Whether it's directing traffic in a complex intersection or navigating through various scenarios in a program, making decisions is essential. In Java, one of the fundamental constructs for decision-making is the 'if-else' statement. Let's delve into what 'if-else' statements are, how they work, and how they can be effectively utilised in Java programming.",
+        "The Java if statement is used to test the condition. It checks the Boolean condition: true or false. There are mainly four types of if statements in Java.",
+        "• if statement\n• if-else statement\n• if-else-if ladder\n• nested if statement"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java if Statement",
+      "paragraphs": [
+        "The simplest type of control structure for decision-making in Java is the if statement. It executes the if block if the condition is true. It checks a Boolean condition and executes the code block inside the if statement if the condition is true. This statement merely bypasses the block if the condition is false. Using specific criteria helps regulate the program's flow. It is frequently employed in real-world applications for conditional executions, checks, and validation."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax:",
+      "paragraphs": [
+        "It has the following syntax:"
+      ],
+      "code": [
+        "if(condition){\n//code to be executed\n}"
+      ]
+    },
+    {
+      "heading": "Example: Checking Age",
+      "paragraphs": [
+        "Here, we are going to take an example to demonstrate how to find the age using the if statement in Java.",
+        "Example//Java Program to demonstate the use of if statement.\npublic class Main {\npublic static void main(String[] args) {\n    //defining an 'age' variable\n\tint age=20;\n\t//checking the age\n\tif(age>18){\n\t\tSystem.out.print(\"Age is greater than 18\");\n\t}\n}\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Age is greater than 18"
+      ]
+    },
+    {
+      "heading": "Java if-else Statement",
+      "paragraphs": [
+        "The Java if-else statement is a basic control structure that allows us to run multiple code blocks depending on whether a condition is true or false. It executes the if block if the condition is true; otherwise, the else block is executed. It enables decision-making within a program and permits the execution flow to alter based on different circumstances. In real-time situations like error handling, branching logic, and validation, it is frequently utilized."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax:",
+      "paragraphs": [
+        "It has the following syntax:"
+      ],
+      "code": [
+        "if(condition){\n//code if condition is true\n}else{\n//code if condition is false\n}"
+      ]
+    },
+    {
+      "heading": "Example: Checking EVEN or ODD",
+      "paragraphs": [
+        "Let us take a program to find odd and even number using the Java if-else statement.",
+        "Examplepublic class Main {\npublic static void main(String[] args) {\n    //defining a variable\n\tint number=13;\n\t//Check if the number is divisible by 2 or not\n\tif(number%2==0){\n\t\tSystem.out.println(\"even number\");\n\t}else{\n\t\tSystem.out.println(\"odd number\");\n\t}\n}\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "odd number"
+      ]
+    },
+    {
+      "heading": "Example: Checking Leap Year",
+      "paragraphs": [
+        "A year is a leap, if it is divisible by 4 and 400. But, not by 100.",
+        "Examplepublic class Main {  \npublic static void main(String[] args) {  \n    int year=2020;  \n    if(((year % 4 ==0) && (year % 100 !=0)) || (year % 400==0)){\n        System.out.println(\"LEAP YEAR\");\n    }\n    else{\n        System.out.println(\"COMMON YEAR\");\n    }\n}  \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "LEAP YEAR"
+      ]
+    },
+    {
+      "heading": "Java if-else-if ladder Statement",
+      "paragraphs": [
+        "The if-else-if ladder statement executes one condition from multiple statements. An optional else block comes at the end of the code after an if condition and one or more else if blocks. Every condition is checked from top to bottom as the program runs, and the block corresponding to the first true condition is run. The else block is run if none of the conditions are met. Many possible paths can be handled clearly and understandably with the help of this statement."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax:",
+      "paragraphs": [
+        "It has the following syntax:"
+      ],
+      "code": [
+        "if(condition1){\n//code to be executed if condition1 is true\n}else if(condition2){\n//code to be executed if condition2 is true\n}\nelse if(condition3){\n//code to be executed if condition3 is true\n}\n...\nelse{\n//code to be executed if all the conditions are false\n}"
+      ]
+    },
+    {
+      "heading": "Example: Checking Grading System",
+      "paragraphs": [
+        "Let us take an example to demonstrate how to check grading system using if-else-if ladder statement in Java.",
+        "Example//Java Program to demonstrate the use of If else-if ladder.\n//It is a program of grading system for fail, D grade, C grade, B grade, A grade and A+.\npublic class Main {\npublic static void main(String[] args) {\n\tint marks=65;\n\t\n\tif(marks<50){\n\t\tSystem.out.println(\"fail\");\n\t}\n\telse if(marks>=50 && marks<60){\n\t\tSystem.out.println(\"D grade\");\n\t}\n\telse if(marks>=60 && marks<70){\n\t\tSystem.out.println(\"C grade\");\n\t}\n\telse if(marks>=70 && marks<80){\n\t\tSystem.out.println(\"B grade\");\n\t}\n\telse if(marks>=80 && marks<90){\n\t\tSystem.out.println(\"A grade\");\n\t}else if(marks>=90 && marks<100){\n\t\tSystem.out.println(\"A+ grade\");\n\t}else{\n\t\tSystem.out.println(\"Invalid!\");\n\t}\n}\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "C grade"
+      ]
+    },
+    {
+      "heading": "Example: Checking Positive, Negative, or Zero",
+      "paragraphs": [
+        "Let us take an example to demonstrate how to check positive, negative, and zero using the if else-if ladder statement in Java.",
+        "Examplepublic class Main {  \npublic static void main(String[] args) {  \n    int number=-13;  \n    if(number>0){\n    System.out.println(\"POSITIVE\");\n    }else if(number<0){\n    System.out.println(\"NEGATIVE\");\n    }else{\n    System.out.println(\"ZERO\");\n   }\n}  \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "NEGATIVE"
+      ]
+    },
+    {
+      "heading": "Java Nested if statement",
+      "paragraphs": [
+        "In Java, putting one if statement inside another is known as a \"nested if statement.\" In this way, a hierarchical decision-making framework is created, allowing you to check for a secondary condition only if the first condition is true. It is helpful for testing several linked circumstances that are interdependent. Nested if statements are strong, but they should be used sparingly to prevent making the code difficult to read and update."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax:",
+      "paragraphs": [
+        "It has the following syntax:"
+      ],
+      "code": [
+        "if(condition){  \n     //code to be executed  \n          if(condition){\n             //code to be executed  \n    }  \n}"
+      ]
+    },
+    {
+      "heading": "Example: Checking Elegibility for Blood Donation",
+      "paragraphs": [
+        "Example//Java Program to demonstrate the use of Nested If Statement.\npublic class Main {  \npublic static void main(String[] args) {  \n    //Creating two variables for age and weight\n    int age=20;\n    int weight=80;  \n    //applying condition on age and weight\n    if(age>=18){  \n        if(weight>50){\n            System.out.println(\"You are eligible to donate blood\");\n        }  \n    }  \n}}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "You are eligible to donate blood"
+      ]
+    },
+    {
+      "heading": "Example: Checking Elegibility for Blood Donation",
+      "paragraphs": [
+        "Example//Java Program to demonstrate the use of Nested If Statement.  \npublic class Main {    \npublic static void main(String[] args) {    \n    //Creating two variables for age and weight  \n    int age=25;  \n    int weight=48;    \n    //applying condition on age and weight  \n    if(age>=18){    \n        if(weight>50){  \n            System.out.println(\"You are eligible to donate blood\");  \n        } else{\n            System.out.println(\"You are not eligible to donate blood\");  \n        }\n    } else{\n      System.out.println(\"Age must be greater than 18\");\n    }\n}  \n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "You are not eligible to donate blood"
+      ]
+    },
+    {
+      "heading": "Ternary Operator",
+      "paragraphs": [
+        "We can also use ternary operator (? :) to perform the task of if...else statement. It is a shorthand way to check the condition. If the condition is true, the result of ? is returned. But, if the condition is false, the result of : is returned.",
+        "Examplepublic class Main {  \npublic static void main(String[] args) {  \n    int number=13;  \n    //Using ternary operator\n    String output=(number%2==0)?\"even number\":\"odd number\";  \n    System.out.println(output);\n}  \n}  \nCompile and Run",
+        "Output:",
+        "Next TopicJava Switch Statement"
+      ],
+      "code": [
+        "odd number"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:30:34.383Z"
+}

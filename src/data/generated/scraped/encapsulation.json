@@ -1,0 +1,131 @@
+{
+  "topicId": "encapsulation",
+  "title": "Java - Encapsulation",
+  "sectionId": "java-oops",
+  "source": "tutorialspoint",
+  "url": "https://www.tutorialspoint.com/java/java_encapsulation.htm",
+  "allSources": [
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_encapsulation.htm",
+      "score": 76,
+      "sectionCount": 14
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java Encapsulation",
+      "paragraphs": [
+        "Encapsulation is one of the four fundamental OOP concepts. The other three are inheritance, polymorphism, and abstraction.",
+        "Encapsulation in Java is a mechanism of wrapping the data (variables) and code acting on the data (methods) together as a single unit. In encapsulation, the variables of a class will be hidden from other classes, and can be accessed only through the methods of their current class. Therefore, it is also known as data hiding."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Achieving Encapsulation in Java",
+      "paragraphs": [
+        "To achieve encapsulation in Java −",
+        "• Declare the variables of a class as private.\n• Provide public setter and getter methods to modify and view the variables values."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Encapsulation Example",
+      "paragraphs": [
+        "Following is an example that demonstrates how to achieve Encapsulation in Java −",
+        "The public setXXX() and getXXX() methods are the access points of the instance variables of the EncapTest class. Normally, these methods are referred as getters and setters. Therefore, any class that wants to access the variables should access them through these getters and setters.",
+        "The variables of the EncapTest class can be accessed using the following program −"
+      ],
+      "code": [
+        "/* File name : EncapTest.java */\npublic class EncapTest {\n   private String name;\n   private String idNum;\n   private int age;\n\n   public int getAge() {\n      return age;\n   }\n\n   public String getName() {\n      return name;\n   }\n\n   public String getIdNum() {\n      return idNum;\n   }\n\n   public void setAge( int newAge) {\n      age = newAge;\n   }\n\n   public void setName(String newName) {\n      name = newName;\n   }\n\n   public void setIdNum( String newId) {\n      idNum = newId;\n   }\n}",
+        "/* File name : RunEncap.java */\npublic class RunEncap {\n\n   public static void main(String args[]) {\n      EncapTest encap = new EncapTest();\n      encap.setName(\"James\");\n      encap.setAge(20);\n      encap.setIdNum(\"12343ms\");\n\n      System.out.print(\"Name : \" + encap.getName() + \" Age : \" + encap.getAge());\n   }\n}\n\npublic class EncapTest {\n   private String name;\n   private String idNum;\n   private int age;\n\n   public int getAge() {\n      return age;\n   }\n\n   public String getName() {\n      return name;\n   }\n\n   public String getIdNum() {\n      return idNum;\n   }\n\n   public void setAge( int newAge) {\n      age = newAge;\n   }\n\n   public void setName(String newName) {\n      name = newName;\n   }\n\n   public void setIdNum( String newId) {\n      idNum = newId;\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Name : James Age : 20"
+      ]
+    },
+    {
+      "heading": "Benefits of Encapsulation",
+      "paragraphs": [
+        "• The fields of a class can be made read-only or write-only.\n• A class can have total control over what is stored in its fields."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Encapsulation: Read-Only Class",
+      "paragraphs": [
+        "A read-only class can have only getter methods to get the values of the attributes, there should not be any setter method."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: Creating Read-Only Class",
+      "paragraphs": [
+        "In this example, we defined a class Person with two getter methods getName() and getAge(). These methods can be used to get the values of attributes declared as private in the class."
+      ],
+      "code": [
+        "// Class \"Person\"\nclass Person {\n  private String name = \"Robert\";\n  private int age = 21;\n\n  // Getter methods\n  public String getName() {\n    return this.name;\n  }\n\n  public int getAge() {\n    return this.age;\n  }\n}\n\npublic class Main {\n  public static void main(String args[]) {\n    // Object to Person class\n    Person per = new Person();\n\n    // Getting and printing the values\n    System.out.println(\"Name of the person is: \" + per.getName());\n    System.out.println(\"Age of the person is: \" + per.getAge());\n  }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Name of the person is: Robert\nAge of the person is: 21"
+      ]
+    },
+    {
+      "heading": "Java Encapsulation: Write-Only Class",
+      "paragraphs": [
+        "A write-only class can have only setter methods to set the values of the attributes, there should not be any getter method."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: Creating Write-Only Class",
+      "paragraphs": [
+        "In this example, we defined a class Person with two setter methods setName() and setAge(). These methods can be used to set the values of attributes declared as private in the class."
+      ],
+      "code": [
+        "// Class \"Person\"\nclass Person {\n  private String name;\n  private int age;\n\n  // Setter Methods\n  public void setName(String name) {\n    this.name = name;\n  }\n  public void setAge(int age) {\n    this.age = age;\n  }\n}\n\npublic class Main {\n  public static void main(String args[]) {\n    // Object to Person class\n    Person per = new Person();\n\n    // Setting the values\n    per.setName(\"Robert\");\n    per.setAge(21);\n  }\n}"
+      ]
+    },
+    {
+      "heading": "Example 1: Person Class (Fully Encapsulated)",
+      "paragraphs": [
+        "This example creates a fully encapsulated class named \"Person\". This class has private class attributes, setter, and getter methods."
+      ],
+      "code": [
+        "// Class \"Person\"\nclass Person {\n  private String name;\n  private int age;\n\n  // Setter Methods\n  public void setName(String name) {\n    this.name = name;\n  }\n  public void setAge(int age) {\n    this.age = age;\n  }\n\n  // Getter methods\n  public String getName() {\n    return this.name;\n  }\n\n  public int getAge() {\n    return this.age;\n  }\n}\n\n// The Main class to test encapsulated class \"Person\"\npublic class Main {\n  public static void main(String args[]) {\n    // Objects to Person class\n    Person per1 = new Person();\n    Person per2 = new Person();\n\n    // Setting the values\n    per1.setName(\"Robert\");\n    per1.setAge(21);\n\n    per2.setName(\"Riyan\");\n    per2.setAge(22);\n\n    // Printing the values\n    System.out.println(\"Person 1: Name : \" + per1.getName() + \" Age : \" + per1.getAge());\n    System.out.println(\"Person 2: Name : \" + per2.getName() + \" Age : \" + per2.getAge());\n\n  }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Person 1: Name : Robert Age : 21\nPerson 2: Name : Riyan Age : 22"
+      ]
+    },
+    {
+      "heading": "Example 2: Employee Class (Fully Encapsulated)",
+      "paragraphs": [
+        "This example creates a fully encapsulated class named \"Employee\". This class has private class attributes, setter, and getter methods."
+      ],
+      "code": [
+        "// Class \"Employee\"\nclass Employee {\n  private String emp_name;\n  private String emp_id;\n  private double net_salary;\n\n  // Constructor\n  public Employee(String emp_name, String emp_id, double net_salary) {\n    this.emp_name = emp_name;\n    this.emp_id = emp_id;\n    this.net_salary = net_salary;\n  }\n\n  // Getter methods\n  public String getEmpName() {\n    return emp_name;\n  }\n\n  public String getEmpId() {\n    return emp_id;\n  }\n\n  public double getSalary() {\n    return net_salary;\n  }\n\n  // Setter methods\n  public void setEmpName(String emp_name) {\n    this.emp_name = emp_name;\n  }\n\n  public void setEmpId(String emp_id) {\n    this.emp_id = emp_id;\n  }\n\n  public void setSalary(double net_salary) {\n    this.net_salary = net_salary;\n  }\n}\n\n// The Main class to test encapsulated class \"Employee\"\npublic class Main {\n  public static void main(String args[]) {\n    // Objects to Employee class\n    // First object - setting values using constructor\n    Employee emp = new Employee(\"Robert\", \"EMP001\", 75450.00);\n\n    // Printing data\n    System.out.println(\"Employee (Intial Values):\");\n    System.out.println(emp.getEmpId() + \" , \" + emp.getEmpName() + \" , \" + emp.getSalary());\n\n    // Updating values using setter methods\n    emp.setEmpName(\"Riyan\");\n    emp.setEmpId(\"EMP002\");\n    emp.setSalary(90500.00);\n\n    // Printing data\n    System.out.println(\"Employee (Updated Values):\");\n    System.out.println(emp.getEmpId() + \" , \" + emp.getEmpName() + \" , \" + emp.getSalary());\n  }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Employee (Intial Values):\nEMP001 , Robert , 75450.0\nEmployee (Updated Values):\nEMP002 , Riyan , 90500.0"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:34:26.224Z"
+}

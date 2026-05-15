@@ -1,0 +1,188 @@
+{
+  "topicId": "method-overloading",
+  "title": "Method Overloading in Java",
+  "sectionId": "java-oops",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/method-overloading-in-java",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/method-overloading-in-java",
+      "score": 114,
+      "sectionCount": 17
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_method_overloading.htm",
+      "score": 68,
+      "sectionCount": 13
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Method Overloading in Java",
+      "paragraphs": [
+        "Method Overloading in Java allows us to create multiple methods with the same name to perform similar tasks using different parameters. In this chapter, we will learn how method overloading works, its rules, advantages, and practical examples."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is Method Overloading in Java?",
+      "paragraphs": [
+        "Method overloading in Java is the feature that enables defining more than one method in a class having the same name but with different types and number of parameters. When a method is called, Java decides which version of it to execute depending on the arguments given. If we have to perform only one operation, having the same name of the methods increases the readability of the Java program."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Understanding Method Overloading with Examples",
+      "paragraphs": [
+        "Suppose you have to perform the addition of the given numbers, but there can be any number of arguments if you write the method such as a(int,int) for two parameters, and b(int,int,int) for three parameters then it may be difficult for you as well as other programmers to understand the behavior of the method because its name differs. Here's an explanation with real-life examples:"
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. Math Operations",
+      "paragraphs": [
+        "In Math class, you might have multiple methods for adding numbers, each accepting a different number of arguments:",
+        "Here, the add() method is overloaded to handle both adding two integers and adding three doubles."
+      ],
+      "code": [
+        "public class MathOperations {\n    public int add(int a, int b) {\n        return a + b;\n    }\n    public double add(double a, double b, double c) {\n        return a + b + c;\n    }\n}"
+      ]
+    },
+    {
+      "heading": "2. String Manipulation",
+      "paragraphs": [
+        "In a utility class for string manipulation, you might have overloaded methods for concatenating strings:",
+        "These methods enable concatenating two or three strings together based on the number of arguments passed."
+      ],
+      "code": [
+        "public class StringUtils {\n    public String concatenate(String str1, String str2) {\n        return str1 + str2;\n    }\n    public String concatenate(String str1, String str2, String str3) {\n        return str1 + str2 + str3;\n    }\n}"
+      ]
+    },
+    {
+      "heading": "Different Approaches of Method Overloading",
+      "paragraphs": [
+        "Method overloading in Java can be achieved in the following two ways:",
+        "• By Changing the Number of Arguments:Method overloading is achieved by defining methods with the same name but a different number of parameters.\n• By Changing the Data Type:Method overloading can also be achieved by keeping the number of parameters same but changing their data types.",
+        "Let’s understand each approach to method overloading in detail with syntax and examples."
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. Method Overloading by Changing the Number of Arguments",
+      "paragraphs": [
+        "Method overloading in Java allows defining multiple methods with the same name but different parameter lists. One common form of overloading is changing the number of arguments in the method signature. In this example, we have created two methods, the first add() method performs addition of two numbers, and the second add method performs addition of three numbers.",
+        "In this example, we are creating static methods so that we don't need to create instance for calling methods. Let us take an example to demonstrate the method overloading by changing number of arguments in Java.",
+        "Example// Class Adder contains overloaded methods to add integers  \nclass Adder {  \n    // Method to add two integers  \n    static int add(int a, int b) {  \n        return a + b;  \n    }  \n    // Method to add three integers  \n    static int add(int a, int b, int c) {  \n        return a + b + c;  \n    }  \n}  \npublic class Main {  \n    public static void main(String[] args) {  \n        // Calling the add method with two integers  \n        System.out.println(Adder.add(11, 11)); // Output: 22  \n        // Calling the add method with three integers  \n        System.out.println(Adder.add(11, 11, 11)); // Output: 33  \n    }  \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "22\n33"
+      ]
+    },
+    {
+      "heading": "2. Method Overloading by Changing Data Type",
+      "paragraphs": [
+        "Method overloading in Java also allows changing the data type of arguments in the method signature. Here's an example demonstrating method overloading based on the data type of arguments: In this example, we have created two methods that differs in data type. The first add method receives two integer arguments and second add method receives two double arguments.",
+        "Here, we are going to take an example to demonstrate method overloading by changing the data type of arguments in Java.",
+        "Example// Class Adder contains overloaded methods to add numbers  \nclass Adder {  \n    // Method to add two integers  \n    static int add(int a, int b) {  \n        return a + b;  \n    }  \n    // Method to add two doubles  \n    static double add(double a, double b) {  \n        return a + b;  \n    }  \n}  \npublic class Main {  \n    public static void main(String[] args) {  \n        // Calling the add method with two integers  \n        System.out.println(Adder.add(11, 11)); // Output: 22       \n        // Calling the add method with two doubles  \n        System.out.println(Adder.add(12.3, 12.6)); // Output: 24.9  \n    }  \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "22\n24.9"
+      ]
+    },
+    {
+      "heading": "Return Type Limitation in Method Overloading",
+      "paragraphs": [
+        "Method overloading in Java is based on the method signature, which includes the method name and parameter list. The return type alone is not sufficient to distinguish between overloaded methods because Java does not consider the return type when resolving method calls. If two methods have the same name and parameter list but different return types, the compiler cannot determine which method to call based solely on the return type."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Let us take an example to demonstrate how the method overloading is not possible by changing the return type of method only in Java.",
+        "Output:",
+        "System.out.println(Adder.add(11,11)); //Here, how can Java determine which add() method should be called?"
+      ],
+      "code": [
+        "// Class Adder contains overloaded methods to add numbers\nclass Adder {\n    // Method to add two integers and return an integer\n    static int add(int a, int b) {\n        return a + b;\n    }\n    // Method to add two integers and return a double\n    static double add(int a, int b) {\n        return a + b;\n    }\n}\npublic class Main {\n    public static void main(String[] args) {\n        // This line of code will cause ambiguity because both add methods have the same signature\n        System.out.println(Adder.add(11, 11)); // Error: ambiguity\n    }\n}",
+        "Main.java:9: error: method add(int,int) is already defined in class Adder\n    static double add(int a, int b) {\n                  ^\n1 error"
+      ]
+    },
+    {
+      "heading": "Method Overloading and the main() Method",
+      "paragraphs": [
+        "The main() method can be overloaded in Java which is technically correct. But, it won't be considered as the entry point for the Java Virtual Machine (JVM) to start the execution of the program. While overloading the main() method is syntactically valid, it does not serve the purpose of being the entry point for program execution.",
+        "The JVM expects the standard signature public static void main(String[] args) for the entry point. Any other overloaded main() method will be treated as a regular method and will not be invoked by the JVM to start the program.",
+        "Therefore, although overloading main() is possible, it's not practically useful for program execution. Let's see a simple example.",
+        "Example// Class Main demonstrates method overloading with main() method  \npublic class Main {    \n    public static void main(String[] args) {  \n        System.out.println(\"main with String[]\");  \n    }  \n    // Overloaded main method with parameter String args  \n    public static void main(String args) {  \n        System.out.println(\"main with String\");  \n    }  \n    // Overloaded main method with no parameters  \n    public static void main() {  \n        System.out.println(\"main without args\");  \n    }  \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "main with String[]"
+      ]
+    },
+    {
+      "heading": "Method Overloading and Type Promotion",
+      "paragraphs": [
+        "One type is promoted to another implicitly if no matching datatype is found. Let's understand the concept by the figure given below:",
+        "As displayed in the above diagram, byte can be promoted to short, int, long, float or double. The short datatype can be promoted to int, long, float or double. The char datatype can be promoted to int,long,float or double and so on."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: Method Overloading with TypePromotion",
+      "paragraphs": [
+        "Let us take an example to demonstrate the Method Overloading with TypePromotion in Java.",
+        "Exampleclass OverloadingCalculation{  \n  void sum(int a,long b){System.out.println(a+b);}  \n  void sum(int a,int b,int c){System.out.println(a+b+c);}  \n}\npublic class Main{\n  public static void main(String args[]){  \n  OverloadingCalculation obj=new OverloadingCalculation();  \n  obj.sum(20,20);//now second int literal will be promoted to long  \n  obj.sum(20,20,20);  \n  }  \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "40\n60"
+      ]
+    },
+    {
+      "heading": "Example: Method Overloading with Type Promotion if Matching Found",
+      "paragraphs": [
+        "If there are matching type arguments in the method, type promotion is not performed. Let us take an example to demonstrate the method overloading with type promotion if matching found in Java.",
+        "Exampleclass OverloadingCalculation{  \n  void sum(int a,int b){System.out.println(\"int arg method invoked\");}  \n  void sum(long a,long b){System.out.println(\"long arg method invoked\");}  \n}\npublic class Main{\n  public static void main(String args[]){  \n  OverloadingCalculation obj=new OverloadingCalculation();  \n  obj.sum(20,20);//now int arg sum() method gets invoked  \n  }  \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "int arg method invoked"
+      ]
+    },
+    {
+      "heading": "Example: Method Overloading with Type Promotion in case of Ambiguity",
+      "paragraphs": [
+        "If there are no matching type arguments in the method, and each method promotes similar number of arguments, there will be ambiguity.",
+        "Exampleclass OverloadingCalculation3{\n  void sum(int a,long b){System.out.println(\"a method invoked\");}\n  void sum(long a,int b){System.out.println(\"b method invoked\");}\n}\npublic class Main{\n  public static void main(String args[]){\n  OverloadingCalculation3 obj=new OverloadingCalculation3();\n  obj.sum(20,20);//now ambiguity\n  }\n}",
+        "Output:"
+      ],
+      "code": [
+        "Compile Time Error"
+      ]
+    },
+    {
+      "heading": "Advantages of Method Overloading",
+      "paragraphs": [
+        "Following are the advantages of using method overloading in Java:",
+        "• Readability and Maintainability: Overloading allows methods to have the same name and different parameter lists, which increases readability and comprehensibility of the code. It helps developers to name the different functions in a good way so that other developers can easily understand the code and maintain it.\n• Code Reusability: To avoid using too many methods with different names even when their function is similar, method overloading makes it possible to reuse method names but have different types or numbers of parameters. It causes the code to be reusable and, therefore, reduces code duplication.\n• Flexibility: Method overloading gives the developer an advantage in creating methods which can be called with any number of different parameters types or numbers. It offers such flexibility to make APIs that can be expanded to multiple utilities.\n• Polymorphism: Method overloading is a key to the realization of polymorphism in the Java, which permits objects of the same type to react differently to method calls depending on the method's arguments. This behavior somewhat polymorphic, hence leads to modularity and extensibility of code.\n• Simplifies API Design: In the case of API design, the method overload is simplifying the interface as it serves multiple ways in which to interact with the same functionality. The API users can select the most convenient method signature according to their needs and then create a more thoughtful and user-centered interface as a result.\n• Enhances Code Readability: Overloading methods creates an opportunity of having multifaceted functions encapsulated within a class. Developers not only pick the same method name for similar operations, but also the purpose of each method becomes clearer, as well as their intended use cases."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Disadvantages of Method Overloading",
+      "paragraphs": [
+        "Following are the disadvantages of using method overloading in Java:",
+        "• Ambiguity: Overloading may result in ambiguity if two of more overloaded methods have the same types of parameters. In such instances, the compiler cannot tell which method has to be invoked based on argument alone therefore compilation error can occur.\n• Complexity: Deepening the use of method overloading may make code complex, especially if there are many overloaded methods with similar names but different patterns of parameters. Such complexity raises the bar for apprehension of code and its maintenance, particularly for developers who are knowledgeable about the codebase.\n• Hidden Behavior: Similar APIs might have different outcomes and behaviours, which may confuse the developers in such kind of situation. If such a utilization of class methods is not properly documented or understood, then it may lead to unexpected outcomes or bugs in the code.\n• Performance Overhead: Nonetheless, the contribution of performance impact of method overloading is, in fact, negligible, however, the presence of the excessive use of overloaded methods with complex parameter lists could lead to a slight performance overhead mainly due to method resolution at runtime.\n• Overuse: Some developers may bypass this rule completely and use method overloading too much to avoid coming up with different method names for similar features. In comparison, excessive calling of overloading methods carries the risk of code bloat and decreased code clarity, hence making it harder to underpin each method purpose.\n• Maintenance Challenges: Developers who are modifying or extending code which contains method overloading method should be even more careful to ensure that the changes they make will not affect the behavior of other overloaded methods unintentionally. This creates greater maintenance difficulty, which is particularly true in the case of extensive codebases.",
+        "Next TopicMethod Overriding in java"
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:32:30.662Z"
+}

@@ -1,0 +1,79 @@
+{
+  "topicId": "super-keyword",
+  "title": "Super Keyword in Java",
+  "sectionId": "java-oops",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/super-keyword-in-java",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/super-keyword-in-java",
+      "score": 43,
+      "sectionCount": 6
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Super Keyword in Java",
+      "paragraphs": [
+        "In Java, the super keyword provides a way for a subclass to access members (methods, variables, or constructors) of its immediate parent class."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is super Keyword in Java?",
+      "paragraphs": [
+        "The super keyword is a reference variable used to refer to the immediate parent class object. Whenever you create an instance of a subclass, an instance of the parent class is created implicitly, which is accessed using the super reference variable."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Advantages of Using super Keyword",
+      "paragraphs": [
+        "Here are the advantages of using the super keyword in Java:",
+        "• Simplifies Constructor Chaining: The super() call ensures that the parent class's constructor is executed before the child class's, maintaining proper initialization across the inheritance hierarchy.\n• Access to Overridden Methods: It allows a subclass to invoke a method from the parent class even when the subclass has overridden the method. This is useful for extending functionality without completely overriding it.\n• Access to Hidden Fields: It provides access to parent class fields that subclass fields may hide with the same name.\n• Code Reusability: By invoking the parent class's methods or constructors, it promotes code reuse and reduces redundancy.\n• Maintains Hierarchical Relationships: It preserves and utilizes the hierarchical structure of inheritance, making the code more organized and easier to manage."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Using super to Access Parent Class Instance Variables",
+      "paragraphs": [
+        "We can use the super keyword to access the data member or field of the parent class. It is used if parent class and child class have the same fields.",
+        "The following example demonstrates how the super keyword can be used to access an instance variable of the parent class when it is hidden by a subclass variable.",
+        "Example//Java Program to illustrate the use of super keyword\n//Creating parent class\nclass Animal{  \n    String color=\"white\";  \n}  \n//Creating child class\nclass Dog extends Animal{  \n    String color=\"black\";  \n    void printColor(){  \n        System.out.println(color);//prints color of Dog class  \n        System.out.println(super.color);//prints color of Animal class  \n    }  \n}  \n//Creating Main class to create object and call methods\npublic class Main{  \n    public static void main(String args[]){  \n        Dog d=new Dog();  \n        d.printColor();  \n    }\n}  \nCompile and Run",
+        "Output:",
+        "In the above example, Animal and Dog both classes have a common property color. If we print the color property, it will print the color of the current class by default. To access the parent property, we need to use the super keyword."
+      ],
+      "code": [
+        "black\nwhite"
+      ]
+    },
+    {
+      "heading": "Using super to Invoke Parent Class Methods",
+      "paragraphs": [
+        "The super keyword can also be used to invoke the parent class method. It should be used if the subclass contains the same method as the parent class. In other words, it is used if a method is overridden.",
+        "The following example demonstrates how the super keyword can be used to call a method of the parent class from a subclass.",
+        "Example//Java Program to illustrate the use of super()\n//Creating parent class\nclass Animal{  \n    void eat(){System.out.println(\"eating...\");}  \n}  \n//Creating child class\nclass Dog extends Animal{  \n    void eat(){System.out.println(\"eating bread...\");}  \n    void bark(){System.out.println(\"barking...\");}  \n    void work(){  \n        super.eat();  \n        bark();  \n    }  \n}  \n//Creating Main class to create object and call methods\npublic class Main{  \n    public static void main(String args[]){  \n        Dog d=new Dog();  \n        d.work();  \n    }\n}  \nCompile and Run",
+        "Output:",
+        "In the above example, Animal and Dog both classes have the eat() method. If we call the eat() method from the Dog class, it will call the eat() method of the Dog class by default because priority is given to local.",
+        "To call the parent class method, we need to use the super keyword."
+      ],
+      "code": [
+        "eating...\nbarking..."
+      ]
+    },
+    {
+      "heading": "Using super to Invoke Parent Class Constructor",
+      "paragraphs": [
+        "The super keyword can also be used to invoke the parent class constructor. Let's see a simple example:",
+        "The following example demonstrates how the super keyword is used to call the constructor of the parent class from a subclass.",
+        "Exampleclass Animal{  \n    Animal(){System.out.println(\"animal is created\");}  \n}  \nclass Dog extends Animal{  \n    Dog(){  \n        super();  //calls the constructor of parent class\n        System.out.println(\"dog is created\");  \n    }  \n}  \npublic class Main{  \n    public static void main(String args[]){  \n        Dog d=new Dog();  \n    }\n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "animal is created\ndog is created"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:32:48.052Z"
+}

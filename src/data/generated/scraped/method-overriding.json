@@ -1,0 +1,138 @@
+{
+  "topicId": "method-overriding",
+  "title": "Method Overriding in Java",
+  "sectionId": "java-oops",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/method-overriding-in-java",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/method-overriding-in-java",
+      "score": 78,
+      "sectionCount": 12
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_overriding.htm",
+      "score": 66,
+      "sectionCount": 13
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Method Overriding in Java",
+      "paragraphs": [
+        "Method Overriding in Java is used to achieve runtime polymorphism and dynamic behavior. In this chapter, we will learn about the method overloading, rules to implement with the help of examples."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is Method Overriding in Java?",
+      "paragraphs": [
+        "Method Overriding allows a subclass to provide its own specific implementation of a method that is already defined in its parent class. Method overriding supports runtime polymorphism by enabling dynamic method binding, where the method call is resolved at runtime based on the actual object type."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Usage of Java Method Overriding",
+      "paragraphs": [
+        "The following points describe the uses of method overriding in Java:",
+        "• Method overriding is used to provide the specific implementation of a method that is already provided by its superclass.\n• Method overriding is used for runtime polymorphism.\n• Method overriding allows subclasses to reuse and build upon the functionality provided by their superclass, reducing redundancy and promoting modular code design.\n• Subclasses can override methods to tailor them to their specific needs or to implement specialized behavior that is unique to the subclass.\n• Method overriding enables dynamic method dispatch, where the actual method implementation to be executed is determined at runtime based on the type of object, supporting flexibility and polymorphic behavior."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Rules for Java Method Overriding",
+      "paragraphs": [
+        "The following are the important rules of method overriding in Java:",
+        "• Same Method Name: The overriding method in the subclass must have the same name as the method in the superclass that it is overriding.\n• Same Parameters: The overriding method must have the same number and types of parameters as the method in the superclass. This ensures compatibility and consistency with the method signature defined in the superclass.\n• IS-A Relationship (Inheritance): Method overriding requires an IS-A relationship between the subclass and the superclass. This means that the subclass must inherit from the superclass, either directly or indirectly, to override its methods.\n• Same Return Type or Covariant Return Type: The return type of the overriding method can be the same as the return type of the overridden method in the superclass, or it can be a subtype of the return type in the superclass. This is known as the covariant return type, introduced in Java 5.\n• Access Modifier Restrictions: The access modifier of the overriding method must be the same as or less restrictive than the access modifier of the overridden method in the superclass. Specifically, a method declared as public in the superclass can be overridden as public or protected but not as private. Similarly, a method declared as protected in the superclass can be overridden as protected or public but not as private. A method declared as default (package-private) in the superclass can be overridden with default, protected, or public, but not as private.\n• No Final Methods: Methods declared as final in the superclass cannot be overridden in the subclass. Because final methods cannot be modified or extended.\n• No Static Methods: Static methods in Java are resolved at compile time and cannot be overridden. Instead, they are hidden in the subclass if a method with the same signature is defined in the subclass."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Understanding the problem without method overriding",
+      "paragraphs": [
+        "Let's understand the problem that we may face in the program if we do not use method overriding.",
+        "Example//Java Program to demonstrate why we need method overriding  \n//Here, we are calling the method of parent class with child class object \n//Creating a parent class  \nclass Vehicle{  \n  void run(){System.out.println(\"Vehicle is running\");}  \n}  \n//Creating a child class  \nclass Bike extends Vehicle{}\n//Creating a Main class to create object and call methods\npublic class Main{\n  public static void main(String args[]){  \n  //creating an instance of child class  \n  Bike obj = new Bike();  \n  //calling the method with child class instance  \n  obj.run();  \n  }  \n}  \nCompile and Run",
+        "Output:",
+        "Explanation",
+        "We construct an instance of the Bike class and use it to invoke the run() method within the Bike class. As a result of Bike deriving from Vehicle, the run() function of the Vehicle class is overridden in the Bike class, resulting in the print \"Vehicle is running\" when the method is used on a Bike object. It demonstrates how method overriding, in which the method specified in the subclass overrides the method in the superclass with the identical signature, can result in polymorphic behaviour."
+      ],
+      "code": [
+        "Vehicle is running"
+      ]
+    },
+    {
+      "heading": "Example of Method Overriding",
+      "paragraphs": [
+        "In this example, we have defined the run() method in the subclass Bike and the same method also defined in in the parent class i.e. Vehicle, but it has some specific implementation. The method's name and parameters are the same, and there is an IS-A relationship between the classes, so there is method overriding.",
+        "Example//Java Program to illustrate the use of Java Method Overriding    \n//Creating a parent class.    \nclass Vehicle{    \n  //defining a method    \n  void run(){System.out.println(\"Vehicle is running\");}    \n}    \n//Creating a child class    \nclass Bike extends Vehicle{    \n  //defining the same method as in the parent class    \n  void run(){System.out.println(\"Bike is running safely\");}   \n}\n//Creating a Main class to create object and call method\npublic class Main{ \n  public static void main(String args[]){    \n  Bike obj = new Bike();//creating object    \n  obj.run();//calling method    \n  }    \n}    \nCompile and Run",
+        "Output:",
+        "Explanation",
+        "A method in a subclass (Bike) overrides the same method in its superclass (Vehicle), as this Java program illustrates. The run() method in this example is shared by both types, but the Bike class implements it differently, outputting \"Bike is running safely.\" The overridden function in the Bike class gets executed when we create an instance of Bike and use the run() method on it, proving that the implementation of the subclass takes precedence over the implementation of the superclass. It demonstrates how Java's dynamic polymorphism feature allows methods with the same signature to behave differently in various classes, even if they are part of the same inheritance tree."
+      ],
+      "code": [
+        "Bike is running safely"
+      ]
+    },
+    {
+      "heading": "A Real World Example of Java Method Overriding",
+      "paragraphs": [
+        "Consider a scenario where Bank is a class that provides functionality to get the rate of interest. However, the rate of interest varies according to banks. For example, SBI, ICICI and AXIS banks could provide 8%, 7%, and 9% rate of interest.",
+        "Example//Java Program to demonstrate the real scenario of Java Method Overriding    \n//where three classes are overriding the method of a parent class.    \n//Creating a parent class.    \nclass Bank{    \nint getRateOfInterest(){return 0;}    \n}    \n//Creating child classes    \nclass SBI extends Bank{    \nint getRateOfInterest(){return 8;}    \n}    \nclass ICICI extends Bank{    \nint getRateOfInterest(){return 7;}    \n}    \nclass AXIS extends Bank{    \nint getRateOfInterest(){return 9;}    \n}    \n//Create a Main class to create objects and call the methods    \npublic class Main{    \npublic static void main(String args[]){    \nSBI s=new SBI();    \nICICI i=new ICICI();    \nAXIS a=new AXIS();    \nSystem.out.println(\"SBI Rate of Interest: \"+s.getRateOfInterest());    \nSystem.out.println(\"ICICI Rate of Interest: \"+i.getRateOfInterest());    \nSystem.out.println(\"AXIS Rate of Interest: \"+a.getRateOfInterest());    \n}    \n}  \nCompile and Run",
+        "Output:",
+        "Explanation",
+        "This Java programme uses a real-world scenario where three classes-SBI, ICICI, and AXIS-override a method from their parent class, Bank, to demonstrate the idea of method overriding. The getRateOfInterest() function of the Bank class yields 0. With their own implementation, each of the child classes overrides this method: SBI returns 8, ICICI returns 7, and AXIS returns 9. Each child class object is created in the Test2 class, and then each object's getRateOfInterest() method is used to print out the corresponding interest rates for each bank. This illustrates how polymorphic behaviour dependent on the type of object at runtime is made possible by method overriding, which enables each subclass to give its own implementation of a method inherited from the superclass."
+      ],
+      "code": [
+        "SBI Rate of Interest: 8\nICICI Rate of Interest: 7\nAXIS Rate of Interest: 9"
+      ]
+    },
+    {
+      "heading": "Static Methods and Method Overriding",
+      "paragraphs": [
+        "Static methods cannot be overridden in Java. When a subclass declares a static method with the same signature as a static method in its superclass, it does not override the method; instead, it hides the superclass method. As a result, the method that gets executed is determined at compile time based on the reference type, not at runtime based on the actual object type. Therefore, static methods do not support runtime polymorphism like instance methods.",
+        "Method overriding is based on dynamic method dispatch, where the method call is resolved at runtime according to the actual object. However, static methods are associated with the class itself, not with individual objects, and hence they are resolved at compile time. Because of this, static methods are not eligible for dynamic dispatch and cannot be overridden.",
+        "Additionally, there is a difference in how static and instance methods are handled in memory. Instance methods are invoked through objects and are tied to the heap memory, while static methods are stored in the method area of the JVM and are shared among all instances of the class. Due to these fundamental differences in behavior, binding, and memory allocation, static methods cannot participate in method overriding."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Method Overriding and main() Method",
+      "paragraphs": [
+        "The main() method in cannot be overridden because it is declared as static. The main() method is defined as public static void main(String[] args) and serves as the entry point of program execution.",
+        "Static methods belong to the class, not to objects, so they do not support runtime polymorphism. They are resolved at compile time, which makes method overriding impossible. Therefore, even if a subclass defines a main() method with the same signature, it does not override the superclass method, and the main() method cannot be overridden in Java."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Method Overloading Vs. Method Overriding",
+      "paragraphs": [
+        "The following table shows the demonstrate the difference between Method Overloading and Method Overriding:",
+        "Aspect | Method Overloading | Method Overriding\nPurpose and Intent | Method overloading is used to increase the readability of the program. | Method overriding is used to provide the specific implementation of the method that is already provided by its superclass.\nRelationship between Classes | Method overloading is performed within class. | Method overriding occurs in two classes that have IS-A (inheritance) relationship.\nParameter Requirements | In case of method overloading, parameters must be different. | In case of method overriding, parameters must be the same.\nPolymorphism Type | Method overloading is the example of compile-time polymorphism. | Method overriding is the example of runtime polymorphism.\nReturn Type Constraints | In Java, method overloading can't be performed by changing the return type of the method only. Return type can be the same or different in method overloading, but you must have to change the parameter. | Return type must be the same or covariant in method overriding.\nAccess Modifiers | It can have any access modifier. | The overriding method cannot have a more restrictive access modifier than the overridden method.\nExceptions | It can throw any exceptions. | It throws only checked exceptions declared in the superclass method or its subclasses.\nInvocation | It resolved at compile-time. | It resolved at runtime using dynamic method dispatch.\nInheritance Required | Not required. | Required (through subclassing or interface implementation).\nBinding | It uses static binding. | It uses dynamic binding.\nEarly and Late Binding | It is also known as early binding. | It is also known as late binding.\nSignature Matching | Method signatures must be different. | Method signatures must be identical.\nStatis Method | Static method can be overloaded. | Static method cannot be overridden.\nFinal and Public Method | It is applicable to both private and final methods. | It is not applicable to private and final methods.\nError | If any error occurs, can be caught at compile-time. | If any error occurs, can be caught at run-time."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Access Modifiers with Method Overriding",
+      "paragraphs": [
+        "If you are overriding any method, overridden method (i.e. declared in subclass) must not be more restrictive."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Let us take an example to demonstrate the Access Modifiers with Method Overriding in Java.",
+        "Output:",
+        "Explanation",
+        "Class A declares a method called msg() with the protected access modifier in the provided Java code. By extending class A, class Simple aims to replace the message() function with a default access modifier. But because the default access modifier is more restricted than protected, this leads to a compile-time error. When overriding a method in Java, the overridden method's access level in the subclass needs to be at least as liberal as the method's access level in the superclass. Thus, in order to fix the issue, either the class Simple method's access modifier-such as protected or public-should be as liberal as protected, or the class A method should have a less permissive access modifier-such as default or public.",
+        "Next TopicCovariant Return Type in Java"
+      ],
+      "code": [
+        "class A{  \nprotected void msg(){System.out.println(\"Hello java\");}  \n}  \npublic class Simple extends A{  \nvoid msg(){System.out.println(\"Hello java\");}//C.T.Error  \n public static void main(String args[]){  \n   Simple obj=new Simple();  \n   obj.msg();  \n   }  \n}"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:32:41.728Z"
+}

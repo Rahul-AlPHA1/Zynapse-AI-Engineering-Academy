@@ -1,0 +1,104 @@
+{
+  "topicId": "cpp-vs-java",
+  "title": "Java vs C++",
+  "sectionId": "java-basics",
+  "source": "tutorialspoint",
+  "url": "https://www.tutorialspoint.com/java/java-vs-cpp.htm",
+  "allSources": [
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java-vs-cpp.htm",
+      "score": 55,
+      "sectionCount": 9
+    },
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/cpp-vs-java",
+      "score": 29,
+      "sectionCount": 4
+    }
+  ],
+  "sections": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Java is a general-purpose, high-level programming language. Java programming language was originally developed by Sun Microsystems which was initiated by James Gosling and released in 1995 as core component of Sun Microsystems' Java platform (Java 1.0 [J2SE]).",
+        "C++ is a middle-level, case-sensitive, object-oriented programming language. Bjarne Stroustrupcreated C++ at Bell Labs. C++ is a platform-independent programming language that works on Windows, Mac OS, and Linux.",
+        "Read through this chapter to get an overview of C++ and Java and the features that differentiate these two popular programming languages."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is Java?",
+      "paragraphs": [
+        "The latest release of the Java Standard Edition is Java SE 23. With the advancement of Java and its widespread popularity, multiple configurations were built to suit various types of platforms. For example: J2EE for Enterprise Applications, J2ME for Mobile Applications.",
+        "The new J2 versions were renamed as Java SE, Java EE, and Java ME respectively. Java is guaranteed to be Write Once, Run Anywhere."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Features of Java",
+      "paragraphs": [
+        "The most important features of Java are listed below −",
+        "• Object Oriented − In Java, everything is an Object. Java can be easily extended since it is based on the Object model.\n• Platform Independent − Unlike many other programming languages including C and C++, when Java is compiled, it is not compiled into platform specific machine, rather into platform independent byte code. This byte code is distributed over the web and interpreted by the Java Virtual Machine (JVM) on whichever platform it is being run on.\n• Secure − The Java is highly secure as it does not allow anyone to interact with memory. It has bytecode verification and security APIs.\n• Portable − The Java is architecture-neutral and having no implementation dependent aspects of the specification makes Java portable.\n• Robust − Java makes an effort to eliminate error prone situations by emphasizing mainly on compile time error checking and runtime checking.\n• Multithreaded − With Java's multithreaded feature it is possible to write programs that can perform many tasks simultaneously. This design feature allows the developers to construct interactive applications that can run smoothly.\n• Interpreted − Java byte code is translated on the fly to native machine instructions and is not stored anywhere. The development process is more rapid and analytical since the linking is an incremental and light-weight process."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Take a look at the following simple Java program −",
+        "In our example, we have taken two variables \"a\" and \"b\" and assigning some value to those variables. Note that in Java, we need to declare datatype for variables explicitly, as Java is strictly typed language. As Java is an object oriented language, we use objects to perform any action. We have used the Scanner class object to read user input from console which is represented by System.in object. System.out object method println() is used to print the values received.",
+        "On execution, this Java code will produce the following output −"
+      ],
+      "code": [
+        "package com.tutorialspoint;\nimport java.util.Scanner;\n\npublic class JavaTester {\n   public static void main(String args[]) {\n      String a, b;\n      Scanner scanner = new Scanner(System.in);  \n      System.out.println(\"Enter The value for variable a\");\n      a = scanner.nextLine();\n      System.out.println(\"Enter The value for variable b\");\n      b = scanner.nextLine();\n      System.out.println(\"The value you have entered for a is \" + a);\n      System.out.println(\"The value you have entered for b is \" + b);\n      scanner.close();\n   }\t   \n}",
+        "Enter The value for variable a\n10\nEnter The value for variable b\n20\nThe value you have entered for a is 10\nThe value you have entered for b is 20"
+      ]
+    },
+    {
+      "heading": "What is C++?",
+      "paragraphs": [
+        "C++ is a statically typed, compiled, multi-paradigm, general-purpose programming language with a steep learning curve. Video games, desktop apps, and embedded systems use it extensively. C++ is so compatible with C that it can build practically all C source code without any changes. Object-oriented programming makes C++ a better-structured."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Features of C++",
+      "paragraphs": [
+        "Let's see some features of C++ and the reason of its popularity.",
+        "• Middle-level language − It's a middle-level language since it can be used for both systems development and large-scale consumer applications like Media Players, Photoshop, Game Engines, etc.\n• Execution Speed − C++ code runs quickly. Because it's compiled and uses procedures extensively. Garbage collection, dynamic typing, and other modern features impede program execution.\n• Object-oriented language − Object-oriented programming is flexible and manageable. Large apps are possible. Growing code makes procedural code harder to handle. C++'s key advantage over C.\n• Extensive Library Support − C++ has a vast library. Third-party libraries are supported for fast development."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Let's understand the syntax of C++ through an example −",
+        "In our example, we are taking input for two variables \"a\" and \"b\" from the user through the keyboard and displaying the data on the console.",
+        "On execution, it will produce the following output −"
+      ],
+      "code": [
+        "#include <iostream>\n\nusing namespace std;\n\nint main() {\n   int a, b;\n   cout << \"Enter The value for variable a \\n\";\n   cin >> a;\n   cout << \"Enter The value for variable b\";\n   cin >> b;\n   cout << \"The value of a is \"<< a << \"and\" << b;\n   return 0;\n}",
+        "Enter The value for variable a\n10\nEnter The value for variable b\n20\nThe value of a is 10 and 20"
+      ]
+    },
+    {
+      "heading": "Difference between Java and C++",
+      "paragraphs": [
+        "The following table compares and contrasts the important features of C++ and Java −",
+        "Java\nC++\n\n\nThe Java bytecode works on any operating System. Bytecode is targeted for JVM. \nThe JVM then interprets the byte code and runs the underlying machine specific code. Thus, Java code needs not to be changed to run on different machines.\nIt doesn't work on every operating system since libraries are different on different systems.\n\n\nIt can run on any OS. Java code is platform independent. No platform specific code is required. Size of int, long remains same on all platforms.\nC++ programs are compiled differently on each platform, so the compiled file can’t run on all operating systems without recompilation\n\n\nIt is portable. Being platform independent, a java code can be transferred as it is on any machine without any plaform specific modification. \nA Java code written in Windows machine can run in Unix machine in same fashion without any modification.\nIt is portable to a limited extend.\n\n\nIt is an interpreted language.\nIt is a compiled language.\n\n\nIt supports single inheritance only. Multiple inheritance can be achieved using interfaces (partial only).\nA class can extend only a single class, however an interface can extend multiple inheritance.\nMultiple inheritance can lead to ambigous results. As virtual keyword is not supported in Java, multiple inhertance is not supported.\nIt supports single and multiple Inheritance. \nUsing the virtual keyword, ambigous reference can be resolved.\n\n\nJava provides limited support to pointers. Pointers being a complex functionality, Java refrains from using them. \nJava provides concept of reference to point to objects or precisely their addresses.\nC++ supports pointer operations. Developers can perform complex operations, can write optimized memory based code using pointers. But it is quite complex and requires strong programming skills to master them.\n\n\nJava supports thread operations. Java has by default support for multithreading. It allows concurrent programming to improve efficiency and to reduce time taken\nIt doesn't support threads by design. It can be done by using third party threading libraries.\n\n\nJava doesn't support global scope. Java is a strict object oriented language and global scope is not available. Using packages, it supports across package scope though.\nC++ supports global scope as well as namespace scope.\n\n\nJava doesn't have the goto keyword. But same functionality is achivable using label. A break/continue statement can jump to a labelled statement location.\nIt supports the goto keyword. Using the goto keyword, we can jump to any labelled location.\n\n\nIt performs object management automatically using garbage collector. Garbage Collector service automatically detects and frees up the space.\nIt performs object management manually with the help of \"new\" and \"delete\". Developers have to take measures to ensure memory is properly allocated/deallocated to prevent memory leaks."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Conclusion",
+      "paragraphs": [
+        "Java is independent of the operating system, which allows it to operate on any OS through the JVM. Additionally, it offers automatic memory management and built-in multithreading for safety and ease of use. It does not include complex features like pointers, which increases the security and maintainability of the code.",
+        "On the other hand, the C++ provides greater flexibility with the use of pointers and manual memory management. This, in turn, increases the level of complexity. For this and other reasons, Java is the most suitable option when it comes to companies that want to develop secure, dependable, and portable software."
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:29:13.445Z"
+}

@@ -1,0 +1,176 @@
+{
+  "topicId": "array",
+  "title": "Java - Arrays",
+  "sectionId": "java-core-advanced",
+  "source": "tutorialspoint",
+  "url": "https://www.tutorialspoint.com/java/java_arrays.htm",
+  "allSources": [
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_arrays.htm",
+      "score": 107,
+      "sectionCount": 19
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What are Arrays in Java?",
+      "paragraphs": [
+        "Java provides a data structure called the array, which stores a fixed-size sequential collection of elements of the same data type. An array is used to store a collection of data, but it is often more useful to think of an array as a collection of variables of the same type.",
+        "Instead of declaring individual variables, such as number0, number1, ..., and number99, you declare one array variable such as numbers and use numbers[0], numbers[1], and ..., numbers[99] to represent individual variables.",
+        "This tutorial introduces how to declare array variables, create arrays, and process arrays using indexed variables."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Declaring Array Variables",
+      "paragraphs": [
+        "To use an array in a program, you must declare a variable to reference the array, and you must specify the type of array the variable can reference. Here is the syntax for declaring an array variable −"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [
+        "Note − The style dataType[] arrayRefVar is preferred. The style dataType arrayRefVar[] comes from the C/C&plus;&plus; language and was adopted in Java to accommodate C/C&plus;&plus; programmers."
+      ],
+      "code": [
+        "dataType[] arrayRefVar;   // preferred way.\nor\ndataType arrayRefVar[];  // works but not preferred way."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following code snippets are examples of this syntax −"
+      ],
+      "code": [
+        "double[] myList;   // preferred way.\nor\ndouble myList[];   // works but not preferred way."
+      ]
+    },
+    {
+      "heading": "Creating Arrays",
+      "paragraphs": [
+        "You can create an array by using the new operator with the following syntax −"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [
+        "The above statement does two things −",
+        "• It creates an array using new dataType[arraySize].\n• It assigns the reference of the newly created array to the variable arrayRefVar.",
+        "Declaring an array variable, creating an array, and assigning the reference of the array to the variable can be combined in one statement, as shown below −",
+        "Alternatively you can create arrays as follows −",
+        "The array elements are accessed through the index. Array indices are 0-based; that is, they start from 0 to arrayRefVar.length-1."
+      ],
+      "code": [
+        "arrayRefVar = new dataType[arraySize];",
+        "dataType[] arrayRefVar = new dataType[arraySize];",
+        "dataType[] arrayRefVar = {value0, value1, ..., valuek};"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Following statement declares an array variable, myList, creates an array of 10 elements of double type and assigns its reference to myList −",
+        "Following picture represents array myList. Here, myList holds ten double values and the indices are from 0 to 9."
+      ],
+      "code": [
+        "double[] myList = new double[10];"
+      ]
+    },
+    {
+      "heading": "Processing Arrays",
+      "paragraphs": [
+        "When processing array elements, we often use either for loop or foreach loop because all of the elements in an array are of the same type and the size of the array is known."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: Creating, Iterating and Performing Other Operations on Arrays",
+      "paragraphs": [
+        "This will produce the following result −"
+      ],
+      "code": [
+        "public class TestArray {\n\n   public static void main(String[] args) {\n      double[] myList = {1.9, 2.9, 3.4, 3.5};\n\n      // Print all the array elements\n      for (int i = 0; i < myList.length; i++) {\n         System.out.println(myList[i] + \" \");\n      }\n     \n      // Summing all elements\n      double total = 0;\n      for (int i = 0; i < myList.length; i++) {\n         total += myList[i];\n      }\n      System.out.println(\"Total is \" + total);\n      \n      // Finding the largest element\n      double max = myList[0];\n      for (int i = 1; i < myList.length; i++) {\n         if (myList[i] > max) max = myList[i];\n      }\n      System.out.println(\"Max is \" + max);  \n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "1.9\n2.9\n3.4\n3.5\nTotal is 11.7\nMax is 3.5"
+      ]
+    },
+    {
+      "heading": "The foreach Loops with Arrays",
+      "paragraphs": [
+        "JDK 1.5 introduced a new for loop known as foreach loop or enhanced for loop, which enables you to traverse the complete array sequentially without using an index variable.",
+        "The following code displays all the elements in the array myList −"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: Displaying All Elements of an Arrays",
+      "paragraphs": [
+        "This will produce the following result −"
+      ],
+      "code": [
+        "public class TestArray {\n\n   public static void main(String[] args) {\n      double[] myList = {1.9, 2.9, 3.4, 3.5};\n\n      // Print all the array elements\n      for (double element: myList) {\n         System.out.println(element);\n      }\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "1.9\n2.9\n3.4\n3.5"
+      ]
+    },
+    {
+      "heading": "Passing Arrays to Methods",
+      "paragraphs": [
+        "Just as you can pass primitive type values to methods, you can also pass arrays to methods. For example, the following method displays the elements in an int array −"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "You can invoke it by passing an array. For example, the following statement invokes the printArray method to display 3, 1, 2, 6, 4, and 2 −"
+      ],
+      "code": [
+        "public static void printArray(int[] array) {\n   for (int i = 0; i < array.length; i++) {\n      System.out.print(array[i] + \" \");\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [],
+      "code": [
+        "printArray(new int[]{3, 1, 2, 6, 4, 2});"
+      ]
+    },
+    {
+      "heading": "Returning an Array from a Method",
+      "paragraphs": [
+        "A method may also return an array. For example, the following method returns an array that is the reversal of another array −"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [],
+      "code": [
+        "public static int[] reverse(int[] list) {\n   int[] result = new int[list.length];\n\n   for (int i = 0, j = result.length - 1; i < list.length; i++, j--) {\n      result[j] = list[i];\n   }\n   return result;\n}"
+      ]
+    },
+    {
+      "heading": "The Arrays Class",
+      "paragraphs": [
+        "The java.util.Arrays class contains various static methods for sorting and searching arrays, comparing arrays, and filling array elements. These methods are overloaded for all primitive types.",
+        "Sr.No.\nMethod & Description\n\n\n1\npublic static int binarySearch(Object[] a, Object key)\nSearches the specified array of Object ( Byte, Int , double, etc.) for the specified value using the binary search algorithm. The array must be sorted prior to making this call. This returns index of the search key, if it is contained in the list; otherwise, it returns (  (insertion point &plus; 1)).\n\n\n\n2\npublic static boolean equals(long[] a, long[] a2)\nReturns true if the two specified arrays of longs are equal to one another. Two arrays are considered equal if both arrays contain the same number of elements, and all corresponding pairs of elements in the two arrays are equal. This returns true if the two arrays are equal. Same method could be used by all other primitive data types (Byte, short, Int, etc.)\n\n\n\n3\npublic static void fill(int[] a, int val)\nAssigns the specified int value to each element of the specified array of ints. The same method could be used by all other primitive data types (Byte, short, Int, etc.)\n\n\n\n4\npublic static void sort(Object[] a)\nSorts the specified array of objects into an ascending order, according to the natural ordering of its elements. The same method could be used by all other primitive data types ( Byte, short, Int, etc.)"
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:34:34.030Z"
+}

@@ -1,0 +1,210 @@
+{
+  "topicId": "polymorphism",
+  "title": "Polymorphism in Java",
+  "sectionId": "java-oops",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/polymorphism-in-java",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/polymorphism-in-java",
+      "score": 141,
+      "sectionCount": 16
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_polymorphism.htm",
+      "score": 86,
+      "sectionCount": 11
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Polymorphism in Java",
+      "paragraphs": [
+        "Polymorphism in Java is an object-oriented concept that allows the same method name to perform different tasks based on the object or parameters. This chapters explains everything about polymorphism with usages and examples."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is Polymorphism in Java?",
+      "paragraphs": [
+        "The polymorphism is an object-oriented programming concept that allows a single action or method to behave in different ways. It enables the same method name to perform different tasks depending on the object that calls it or the parameters passed to it.",
+        "The word polymorphism is derived from two Greek words: poly and morphs. The word <poly means many, and morphs means forms. Therefore, polymorphism means many forms.",
+        "There are two types of polymorphism in Java:",
+        "• Compile-time Polymorphism\n• Runtime Polymorphism.",
+        "We can perform polymorphism in Java by method overloading and method overriding."
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. Java Compile-Time Polymorphism",
+      "paragraphs": [
+        "In Java, method overloading is used to achieve compile-time polymorphism. Using method overloading, a class can have multiple methods with the same name but different parameter lists. The compiler determines which method to call at compile time based on the number, type, and order of parameters passed.",
+        "In method overloading, methods must have the same name but must differ in the number or data types of parameters. When a method is called, the compiler selects the most suitable overloaded method based on the arguments provided. If an exact match is found, that method is invoked; otherwise, the compiler applies type promotion to find the closest matching method."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example of Compile-Time Polymorphism",
+      "paragraphs": [
+        "The following example demonstrates the implementation of compiler-time polymorphism using method overloading:",
+        "Exampleclass Calculation {  \n    int add(int a, int b) {  \n        return a + b;  \n    }  \n    double add(double a, double b) {  \n        return a + b;  \n    }  \n}  \npublic class Main {  \n    public static void main(String[] args) {  \n        Calculation calc = new Calculation();  \n        // Compile-time polymorphism: selecting the appropriate add method based on parameter types  \n        System.out.println(\"Sum of integers: \" + calc.add(5, 3));  \n        System.out.println(\"Sum of doubles: \" + calc.add(2.5, 3.7));  \n    }  \n}  \nCompile and Run",
+        "Output:",
+        "Explanation",
+        "In this example, the Calculation class has two add methods-one accepting two integers and the other allowing two doubles. The types of arguments given in the method call decide which add method the compiler calls during compilation. This choice is made at compile time, proving polymorphism."
+      ],
+      "code": [
+        "Sum of integers: 8\nSum of doubles: 6.2"
+      ]
+    },
+    {
+      "heading": "2. Runtime Polymorphism in Java",
+      "paragraphs": [
+        "Runtime polymorphism, also known as Dynamic Method Dispatch, is a process in which the call to an overridden method is resolved at runtime rather than at compile time.",
+        "In this process, an overridden method is invoked using a superclass reference variable that refers to a subclass object. The method that gets executed is determined by the actual object being referred to, not by the reference type.",
+        "Let's first understand the upcasting before Runtime Polymorphism."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Upcasting",
+      "paragraphs": [
+        "If the reference variable of Parent class refers to the object of Child class, it is known as upcasting. For example:",
+        "For upcasting, we can use the reference variable of class type or an interface type. For Example:",
+        "Here, the relationship of B class would be:",
+        "Since Object is the root class of all classes in Java, so we can write B IS-A Object."
+      ],
+      "code": [
+        "class A{}\nclass B extends A{}",
+        "A a=new B();//upcasting",
+        "interface I{}\nclass A{}\nclass B extends A implements I{}",
+        "B IS-A A\nB IS-A I\nB IS-A Object"
+      ]
+    },
+    {
+      "heading": "Example of Runtime Polymorphism",
+      "paragraphs": [
+        "In this example, we are creating two classes Bike and Splendor. Splendor class extends Bike class and overrides its run() method. We are calling the run method by the reference variable of Parent class. Since it refers to the subclass object and subclass method overrides the Parent class method, the subclass method is invoked at runtime.",
+        "Since method invocation is determined by the JVM not compiler, it is known as runtime polymorphism.",
+        "Exampleclass Bike{  \n  void run(){System.out.println(\"running\");}  \n}  \nclass Splendor extends Bike{  \n  void run(){System.out.println(\"running safely with 60km\");}  \n}\npublic class Main{\n  public static void main(String args[]){  \n    Bike b = new Splendor();//upcasting  \n    b.run();  \n  }  \n}  \nCompile and Run",
+        "Output:",
+        "Explanation",
+        "This Java sample uses method overriding to illustrate runtime polymorphism. While the Splendour class extends Bike and overrides the run() method to output \"running safely with 60km,\" the Bike class provides a method called run() that prints \"running.\" Because of upcasting, a Bike reference variable called b is generated in the main method that points to a Splendour object. Runtime polymorphism is demonstrated by the overridden method from the Splendour class, which is called when the run() method is called using this reference variable. The JVM determines which method to call based on the actual object type at runtime."
+      ],
+      "code": [
+        "running safely with 60km."
+      ]
+    },
+    {
+      "heading": "Real Life Examples of Runtime Polymorphism",
+      "paragraphs": [
+        "Practice the following real-life examples of runtime polymorphism to understand the concept better:"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example 1: Bank Class",
+      "paragraphs": [
+        "Consider a scenario where Bank is a class that provides a method to get the rate of interest. However, the rate of interest may differ according to banks. For example, SBI, ICICI, and AXIS banks are providing 8.4%, 7.3%, and 9.7% rate of interest."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Note: This example is also given in method overriding but there was no upcasting.",
+      "paragraphs": [
+        "Source Codeclass Bank{  \n    float getRateOfInterest(){return 0;}  \n}  \nclass SBI extends Bank{  \n    float getRateOfInterest(){return 8.4f;}  \n}  \nclass ICICI extends Bank{  \n    float getRateOfInterest(){return 7.3f;}  \n}  \nclass AXIS extends Bank{  \n    float getRateOfInterest(){return 9.7f;}  \n}  \npublic class Main{  \n public static void main(String args[]){  \n  Bank b;  \n  b=new SBI();  \n  System.out.println(\"SBI Rate of Interest: \"+b.getRateOfInterest());  \n  b=new ICICI();  \n  System.out.println(\"ICICI Rate of Interest: \"+b.getRateOfInterest());  \n  b=new AXIS();  \n  System.out.println(\"AXIS Rate of Interest: \"+b.getRateOfInterest());  \n }  \n}  \nCompile and Run",
+        "Output:",
+        "Explanation",
+        "This Java sample uses method overriding to demonstrate polymorphism. It provides a method called getRateOfInterest() on the Bank type, which returns 0. The Bank class is extended by the subclasses SBI, ICICI, and AXIS, which override the getRateOfInterest() function to return particular interest rates. Objects of SBI, ICICI, and AXIS are created and assigned to a Bank reference variable b in the TestPolymorphism class's main method. The relevant getRateOfInterest() method is dynamically executed through polymorphism, depending on the actual object type provided to b, and the interest rates for SBI, ICICI, and AXIS banks are printed out."
+      ],
+      "code": [
+        "SBI Rate of Interest: 8.4\nICICI Rate of Interest: 7.3\nAXIS Rate of Interest: 9.7"
+      ]
+    },
+    {
+      "heading": "Example 2: Shape Class",
+      "paragraphs": [
+        "Let us take another example to demonstrate the shape class using runtime polymorphism.",
+        "Source Codeclass Shape{  \n    void draw(){System.out.println(\"drawing...\");}  \n}  \nclass Rectangle extends Shape{  \n    void draw(){System.out.println(\"drawing rectangle...\");}  \n}  \nclass Circle extends Shape{  \n    void draw(){System.out.println(\"drawing circle...\");}  \n}  \nclass Triangle extends Shape{  \n    void draw(){System.out.println(\"drawing triangle...\");}  \n}  \npublic class Main{  \n    public static void main(String args[]){  \n        Shape s;  \n        s=new Rectangle();  \n        s.draw();  \n        s=new Circle();  \n        s.draw();  \n        s=new Triangle();  \n        s.draw();  \n    }  \n}  \nCompile and Run",
+        "Output:",
+        "Explanation",
+        "In the context of shapes, this Java code serves as an example of polymorphism through method overriding. It defines a draw() method that prints \"drawing...\" on a base class Shape. Subclasses Rectangle, Circle, and Triangle extend Shape and provide particular implementations for each shape in their overrides of the draw() function. Objects of the Shape reference variables s are created and assigned to Rectangle, Circle, and Triangle in the TestPolymorphism2 class's main method. Through polymorphism, the appropriate implementation based on the actual object type allocated to s is dynamically triggered when the draw() method is called using this reference variable. As a result, for each shape, it outputs \"drawing triangle...\", \"drawing circle...\", and \"drawing rectangle...\" This demonstrates how Java programming's polymorphism allows for flexibility and dynamic behaviour."
+      ],
+      "code": [
+        "drawing rectangle...\ndrawing circle...\ndrawing triangle..."
+      ]
+    },
+    {
+      "heading": "Example 3: Animal Class",
+      "paragraphs": [
+        "Let us another example to demonstrate the runtime polymorphism using Animal Class.",
+        "Source Codeclass Animal{  \n    void eat(){System.out.println(\"eating...\");}  \n}  \nclass Dog extends Animal{  \n    void eat(){System.out.println(\"eating bread...\");}  \n}  \nclass Cat extends Animal{  \n    void eat(){System.out.println(\"eating rat...\");}  \n}  \nclass Lion extends Animal{  \n    void eat(){System.out.println(\"eating meat...\");}  \n}  \npublic class Main{  \n    public static void main(String[] args){  \n        Animal a;  \n        a=new Dog();  \n        a.eat();  \n        a=new Cat();  \n        a.eat();  \n        a=new Lion();  \n        a.eat();  \n    }\n}  \nCompile and Run",
+        "Output:",
+        "Explanation",
+        "This Java sample uses method overriding to demonstrate polymorphism. It defines an eat() function for the basic class Animal, which is overridden by the subclasses Dog, Cat, and Lion with different eating habits. Polymorphic behaviour is demonstrated by assigning objects of various subclasses to an Animal reference variable an in the main function. This reference is then used to call the eat() method, which dynamically invokes the appropriate override implementation based on the actual object type."
+      ],
+      "code": [
+        "eating bread...\neating rat...\neating meat..."
+      ]
+    },
+    {
+      "heading": "Java Runtime Polymorphism with Data Member",
+      "paragraphs": [
+        "A method is overridden, not the data members, so runtime polymorphism can't be achieved by data members.",
+        "In the example given below, both the classes have a data member speedlimit. We are accessing the data member by the reference variable of Parent class which refers to the subclass object. Since we are accessing the data member which is not overridden, hence it will access the data member of the Parent class always."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Rule: Runtime polymorphism can't be achieved by data members.",
+      "paragraphs": [
+        "Exampleclass Bike{  \n int speedlimit=90;  \n}  \nclass Honda extends Bike{  \n int speedlimit=150;  \n}\npublic class Main{\n public static void main(String args[]){  \n  Bike obj=new Honda();  \n  System.out.println(obj.speedlimit);//90  \n }\n}\nCompile and Run",
+        "Output:",
+        "Explanation",
+        "The base class Bike and the subclass Honda3 are part of the class hierarchy defined by this Java code. The speedlimit member variable for the Bike class is initialised to 90, whereas the speedlimit variable for the Honda3 class is initialised to 150. An object of type Bike is created in the Honda3 class's main method, but because of upcasting, it is referred to by the Honda3 reference variable obj. Obj.speedlimit produces 90 instead of 150 when it is accessed and printed.",
+        "It is due to the fact that member variables in Java are not polymorphism-prone; rather, compile-time member variable access is determined by the reference type. Because it's the reference to the speedlimit member variable, the Bike class is where it comes from even though obj refers to a Honda3 object."
+      ],
+      "code": [
+        "90"
+      ]
+    },
+    {
+      "heading": "Java Runtime Polymorphism with Multilevel Inheritance",
+      "paragraphs": [
+        "Let's see the simple example of Runtime Polymorphism with multilevel inheritance.",
+        "Exampleclass Animal{  \n    void eat(){System.out.println(\"eating\");}  \n}  \nclass Dog extends Animal{  \n    void eat(){System.out.println(\"eating fruits\");}  \n}  \nclass BabyDog extends Dog{  \n    void eat(){System.out.println(\"drinking milk\");}  \n}\npublic class Main{\n    public static void main(String args[]){  \n        Animal a1,a2,a3;  \n        a1=new Animal();  \n        a2=new Dog();  \n        a3=new BabyDog();  \n        a1.eat();  \n        a2.eat();  \n        a3.eat();  \n    }  \n}  \nCompile and Run",
+        "Output:",
+        "Explanation",
+        "This Java sample illustrates polymorphism and method overriding in an animal class hierarchy. While the Dog and BabyDog classes extend Animal and override eat() to print \"eating fruits\" and \"drinking milk,\" respectively, the Animal class defines an eat() function that prints \"eating.\" The main method exhibits polymorphic behaviour by creating and calling Animal, Dog, and BabyDog objects using the eat() method. This dynamically invokes the appropriate override implementation based on the actual object type supplied to the reference variable.",
+        "Exampleclass Animal{  \n    void eat(){System.out.println(\"animal is eating...\");}  \n}  \nclass Dog extends Animal{  \n    void eat(){System.out.println(\"dog is eating...\");}  \n}  \nclass BabyDog extends Dog{}  \n\npublic class Main{  \n    public static void main(String args[]){  \n        Animal a=new BabyDog();  \n        a.eat();  \n    }\n}  \nCompile and Run",
+        "Explanation",
+        "This Java code exemplifies polymorphism and method overriding. The class hierarchy is defined as follows: Dog extends Animal and overrides eat() to print \"dog is eating...\", BabyDog extends Dog, and Animal has an eat() method that prints \"animal is eating...\" An object of BabyDog is generated and allocated to an Animal reference variable an in the main procedure. The override eat() function from the BabyDog class is dynamically invoked when a.eat() is called, exhibiting polymorphism behaviour in which the method used depends on the actual object type at runtime."
+      ],
+      "code": [
+        "eating\neating fruits\ndrinking Milk"
+      ]
+    },
+    {
+      "heading": "Advantages of Polymorphism",
+      "paragraphs": [
+        "There are several advantages of Polymorphism in Java. Some of them are as follows:",
+        "1. Code Reusability",
+        "Polymorphism allows methods in subclasses to override methods in their superclass, enabling code reuse and maintaining a consistent interface across related classes.",
+        "2. Flexibility and Extensibility",
+        "Polymorphism allows subclasses to provide their own implementations of methods defined in the superclass, making it easier to extend and customize behavior without modifying existing code.",
+        "3. Dynamic Method Invocation:",
+        "Polymorphism enables dynamic method invocation, where the method called is determined by the actual object type at runtime, providing flexibility in method dispatch.",
+        "4. Interface Implementation:",
+        "Interfaces in Java allow multiple classes to implement the same interface with their own implementations, facilitating polymorphic behavior and enabling objects of different classes to be treated interchangeably based on a common interface.",
+        "5. Method Overloading:",
+        "Polymorphism is also achieved through method overloading, where multiple methods with the same name but different parameter lists can be defined within a class or its subclasses, enhancing code readability and allowing flexibility in method invocation based on parameter types.",
+        "6. Reduced Code Complexity:",
+        "Polymorphism helps reduce code complexity by promoting a modular and hierarchical class structure, making it easier to understand, maintain, and extend large-scale software systems.",
+        "Next TopicStatic-and-dynamic-binding-in-java"
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:33:15.366Z"
+}

@@ -1,0 +1,127 @@
+{
+  "topicId": "do-while",
+  "title": "Java do-while Loop",
+  "sectionId": "java-basics",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-do-while-loop",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-do-while-loop",
+      "score": 72,
+      "sectionCount": 11
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_do_while_loop.htm",
+      "score": 57,
+      "sectionCount": 11
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java do-while Loop",
+      "paragraphs": [
+        "In Java, when you need a loop that executes at least once before checking a condition, the do-while loop is used, as it checks the condition after executing the loop body."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is do-while Loop in Java?",
+      "paragraphs": [
+        "The Java do-while loop is used to iterate a part of the program repeatedly, until the specified condition is true. If the number of iteration is not fixed and you must have to execute the loop at least once, it is recommended to use a do-while loop.",
+        "Java do-while loop is called an exit control loop. Therefore, unlike while loop and for loop, the do-while check the condition at the end of loop body. The Java do-while loop is executed at least once because condition is checked after loop body."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax of do-while Loop",
+      "paragraphs": [
+        "It has the following syntax:",
+        "The different parts of do-while loop:",
+        "1. Condition: It is an expression which is tested. If the condition is true, the loop body is executed and control goes to update expression. As soon as the condition becomes false, loop breaks automatically.",
+        "i <=100",
+        "2. Update expression: Every time the loop body is executed, the this expression increments or decrements loop variable.",
+        "i++;"
+      ],
+      "code": [
+        "do{  \n//code to be executed / loop body\n//update statement \n}while (condition);"
+      ]
+    },
+    {
+      "heading": "Flow chart of do-while loop",
+      "paragraphs": [
+        "The given diagram demonstrate the working of do-while loop in Java."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Examples of do-while Loop",
+      "paragraphs": [
+        "Here, we are going to take several examples to demonstrate the do-while loop in Java."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example 1: Printing Numbers from 1 to 10",
+      "paragraphs": [
+        "In the below example, we print integer values from 1 to 10. Unlike the for loop, we separately need to initialize and increment the variable used in the condition (here, i). Otherwise, the loop will execute infinitely.",
+        "Example//Simple do-while example in Java\npublic class Main {    \npublic static void main(String[] args) {  \n    //initialization  \n    int i=1;    \n    //do-while loop\n    do{    \n        System.out.println(i);    \n    i++;    \n    }while(i<=10);    \n}    \n}    \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "1\n2\n3\n4\n5\n6\n7\n8\n9\n10"
+      ]
+    },
+    {
+      "heading": "Example 2: Finding Factorial of a Number",
+      "paragraphs": [
+        "Let us take an example to find the factorial of a number using do-while loop in Java.",
+        "Example// Java Program to print factorial of 5 using do-while loop\npublic class Main {  \n    public static void main(String[] args) {  \n        int number = 5;  \n        int factorial = 1;  \n        int i = 1;\n        //Start a do-while loop \n        do {  \n            // Multiply the current value of 'factorial' by 'i' and store the result back in 'factorial'.  \n            factorial *= i; // This is equivalent to factorial = factorial * i; \n            i++;\n        } while( i <= number ); \n        // Print the calculated factorial to the console.  \n        System.out.println(\"Factorial of \" + number + \" is: \" + factorial);  \n    }  \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Factorial of 5 is: 120"
+      ]
+    },
+    {
+      "heading": "Java Infinitive do-while Loop",
+      "paragraphs": [
+        "If you pass true in the do-while loop, it will be infinitive do-while loop."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax of Infinitive do-while Loop",
+      "paragraphs": [
+        "It has the following syntax:"
+      ],
+      "code": [
+        "do{\n//code to be executed\n}while(true);"
+      ]
+    },
+    {
+      "heading": "Example 1: Java Infinitive do-while Loop",
+      "paragraphs": [
+        "Let us take another example to demonstrate the working of infinitive do-while loop in Java.",
+        "Output:"
+      ],
+      "code": [
+        "public class DoWhileExample2 {\npublic static void main(String[] args) {\n\tdo{\n\t\tSystem.out.println(\"infinitive do while loop\");\n\t}while(true);\n}\n}",
+        "infinitive do while loop\ninfinitive do while loop\ninfinitive do while loop\nctrl+c"
+      ]
+    },
+    {
+      "heading": "Example 2: Java Infinitive do-while Loop",
+      "paragraphs": [
+        "Let us take an example to demonstrate the working of infinitive do-while loop in Java.",
+        "Output:"
+      ],
+      "code": [
+        "import java.util.Scanner;\npublic class DoWhileLoop {\n\tpublic static void main(String[] args) {\n\t\t// Creating a Scanner object for reading input from the user\n\t\tScanner sc = new Scanner(System.in);\n\t\t// Declare variables to store user input and the s of numbers\n\t\tint n;\n\t\tint s = 0;\n\t\tint c = 0; // Variable to c the n of iterations\n\t\t// Display a welcome message\n\t\tSystem.out.println(\"Welcome to the Do-While Loop Program!\");\n\t\t// Start a do-while loop\n\t\tdo {\n\t\t\t// Prompt the user to enter a n\n\t\t\tSystem.out.print(\"Please enter the value of a and n (or -1 to exit): \");\n\t\t\t// Read the n entered by the user\n\t\t\tn = sc.nextInt();\n\t\t\t// Check if the n is not equal to -1 (exit condition)\n\t\t\tif (n != -1) {\n\t\t\t\t// Add the n to the s\n\t\t\t\ts += n;\n\t\t\t\t// Increment the c of iterations\n\t\t\t\tc++;\n\t\t\t}\n\t\t\t// Continue looping until the user enters -1\n\t\t} while (n != -1);\n\t\t// Display the s of the numbers entered\n\t\tSystem.out.println(\"Sum of the numbers entered: \" + s);\n\t\t// Display the n of iterations (excluding the exit condition)\n\t\tSystem.out.println(\"Number of iterations: \" + c);\n\t\t// Calculate and display the average of the numbers entered\n\t\tdouble average = (double) s / c;\n\t\tSystem.out.println(\"Average of the numbers entered: \" + average);\n\t\t// Close the Scanner object to release system resources\n\t\tsc.close();\n\t}\n}",
+        "Welcome to the Do-While Loop Program!\nPlease enter the value of a and n (or -1 to exit): 5\nPlease enter a n (or -1 to exit): -1\nSum of the numbers entered: 5\nNumber of iterations: 1\nAverage of the numbers entered: 5.0"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:31:00.143Z"
+}

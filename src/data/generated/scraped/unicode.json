@@ -1,0 +1,120 @@
+{
+  "topicId": "unicode",
+  "title": "Java - Unicode System",
+  "sectionId": "java-basics",
+  "source": "tutorialspoint",
+  "url": "https://www.tutorialspoint.com/java/java_unicode_system.htm",
+  "allSources": [
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_unicode_system.htm",
+      "score": 70,
+      "sectionCount": 10
+    },
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/unicode-system-in-java",
+      "score": 38,
+      "sectionCount": 6
+    }
+  ],
+  "sections": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Unicode is an international character set that encompasses a vast range of characters, symbols, and scripts from many languages across the globe."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Unicode System in Java",
+      "paragraphs": [
+        "Java programming language, being platform-independent, has built-in support for Unicode characters, allowing developers to create applications that can work seamlessly with diverse languages and scripts.",
+        "Before Unicode, there were multiple standards to represent character encoding −",
+        "• ASCII − for the United States.\n• ISO 8859-1 − for Western European Language.\n• KOI-8 − for Russian.\n• GB18030 and BIG-5  − for Chinese.",
+        "So to support multinational application codes, some character was using single byte, some two. An even same code may represent a different character in one language and may represent other characters in another language.",
+        "To overcome above shortcoming, the Unicode system was developed where each character is represented by 2 bytes. As Java was developed for multilingual languages it adopted the Unicode system. The lowest value is represented by \\u0000 and the highest value is represented by \\uFFFF."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Approaches: Working with Unicode Characters & Values",
+      "paragraphs": [
+        "There are two approaches for working with Unicode characters in Java: Using Unicode Escape Sequences and Directly Storing Unicode Characters.",
+        "The first approach involves representing Unicode characters using escape sequences and is useful when the characters cannot be directly typed or displayed in the Java code. The second approach involves directly storing Unicode characters in variables and is more convenient when the characters can be directly typed or displayed.",
+        "The choice of approach depends on the specific requirements of the program. However, in general, Approach 2 is simpler and more convenient when the characters can be directly typed or displayed, while Approach 1 is necessary when they cannot."
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. Using Unicode Escape Sequences",
+      "paragraphs": [
+        "One way to store Unicode characters in Java is by using Unicode escape sequences. An escape sequence is a series of characters that represent a special character. In Java, a Unicode escape sequence starts with the characters '\\u' followed by four hexadecimal digits that represent the Unicode code point of the desired character."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: Use of Unicode Escape Sequences",
+      "paragraphs": [
+        "Compile and run above program. This will produce the following result −",
+        "Output",
+        "In the above code snippet, the Unicode escape sequence '\\u0041' represents the character 'A.' The escape sequence is assigned to the char variable unicodeChar, and the stored character is then printed to the console."
+      ],
+      "code": [
+        "package com.tutorialspoint;\n\npublic class UnicodeCharacterDemo {\n   public static void main (String[]args) {   \t\t \n      //Unicode escape sequence\n      char unicodeChar = '\\u0041';\n      // point for 'A'\n      System.out.println(\"Stored Unicode Character: \" + unicodeChar);\n   }\n}",
+        "Stored Unicode Character: A"
+      ]
+    },
+    {
+      "heading": "2. Storing Unicode Values Directly",
+      "paragraphs": [
+        "Alternatively, you can directly store a Unicode character in a char variable by enclosing the character in single quotes. However, this approach may not be feasible for characters that cannot be typed directly using a keyboard or are not visible, such as control characters."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example 1: Assigning Unicode Character to Variable",
+      "paragraphs": [
+        "Compile and run above program. This will produce the following result −",
+        "Output",
+        "In this example, the character 'A' is directly enclosed in single quotes and assigned to the char variable unicodeChar. The stored character is then printed to the console."
+      ],
+      "code": [
+        "package com.tutorialspoint;\n\npublic class UnicodeCharacterDemo {\n   public static void main(String[] args) {\n      // Storing Unicode character directly\n      char unicodeChar = 'A';\n      // Directly storing the character 'A'\n      System.out.println(\"Stored Unicode Character: \" + unicodeChar);\n   }\n}",
+        "Stored Unicode Character: A"
+      ]
+    },
+    {
+      "heading": "Example 2: Assigning Unicode Values to Variables",
+      "paragraphs": [
+        "Compile and run above program. This will produce the following result −",
+        "Output"
+      ],
+      "code": [
+        "package com.tutorialspoint;\n\npublic class UnicodeCharacterDemo {\n   public static void main(String[] args) {\n      // Storing Unicode characters using escape sequences\n      char letterA = '\\u0041';\n      char letterSigma = '\\u03A3';\n      char copyrightSymbol = '\\u00A9';\n      // Storing Unicode characters directly\n      char letterZ = 'Z';\n      char letterOmega = '';\n      char registeredSymbol = '';\n      // Printing the stored Unicode characters\n      System.out.println(\"Stored Unicode Characters using Escape Sequences:\");\n      System.out.println(\"Letter A: \" + letterA);\n      System.out.println(\"Greek Capital Letter Sigma: \" + letterSigma);\n      System.out.println(\"Copyright Symbol: \" + copyrightSymbol);\n      System.out.println(\"\\nStored Unicode Characters Directly:\");\n      System.out.println(\"Letter Z: \" + letterZ);\n      System.out.println(\"Greek Capital Letter Omega: \" + letterOmega);\n      System.out.println(\"Registered Symbol: \" + registeredSymbol);\n   }\n}",
+        "Stored Unicode Characters using Escape Sequences:\nLetter A: A\nGreek Capital Letter Sigma: \nCopyright Symbol: \n\nStored Unicode Characters Directly:\nLetter Z: Z\nGreek Capital Letter Omega: \nRegistered Symbol:"
+      ]
+    },
+    {
+      "heading": "Example 3: Assigning Unicode Characters and Values to Variables",
+      "paragraphs": [
+        "This example demonstrates how to manipulate the stored Unicode characters. It calculates the difference between the capital letter 'A' and the small letter 'a' and uses that difference to calculate the capital letter 'C.' It then calculates the small letter 'c' by adding 32 to the Unicode code point of the capital letter 'C.' The manipulated Unicode characters are printed to the console.",
+        "Compile and run above program. This will produce the following result −",
+        "Output"
+      ],
+      "code": [
+        "package com.tutorialspoint;\n\npublic class UnicodeCharacterDemo {\n   public static void main(String[] args) {\n      // Storing Unicode characters using escape sequences\n      char letterA = '\\u0041';\n      char letterSmallA = '\\u0061';\n      // Storing Unicode characters directly\n      char letterB = 'B';\n\n      // Manipulating the stored Unicode characters\n      int difference = letterA - letterSmallA;\n      char letterC = (char) (letterB + difference);\n      char letterSmallC = (char) (letterC + 32);\n      // Printing the manipulated Unicode characters\n      System.out.println(\"Manipulated Unicode Characters:\");\n      System.out.println(\"Difference between A and a: \" + difference);\n      System.out.println(\"Calculated Letter C: \" + letterC);\n      System.out.println(\"Calculated Letter c: \" + letterSmallC);\n   }\n}",
+        "Manipulated Unicode Characters:\nDifference between A and a: -32\nCalculated Letter C: \"\nCalculated Letter c: B"
+      ]
+    },
+    {
+      "heading": "Conclusion",
+      "paragraphs": [
+        "In Java, you can store Unicode characters using character literals by employing either Unicode escape sequences or directly enclosing the characters in single quotes. Both approaches have their advantages and limitations. Escape sequences provide a consistent way to represent any Unicode character in the source code, while directly storing characters is more convenient when dealing with characters that can be easily typed or displayed.",
+        "This article has provided an algorithm to store Unicode characters in Java, discussed two different approaches for storing these characters, and demonstrated working examples for each approach. Understanding these techniques will help developers create applications that can work seamlessly with diverse languages and scripts, leveraging the power of Unicode in Java programming."
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:30:17.474Z"
+}

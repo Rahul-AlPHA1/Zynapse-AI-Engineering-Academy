@@ -1,0 +1,95 @@
+{
+  "topicId": "call-by-value",
+  "title": "Call by Value and Call by Reference in Java",
+  "sectionId": "java-oops",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/call-by-value-and-call-by-reference-in-java",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/call-by-value-and-call-by-reference-in-java",
+      "score": 50,
+      "sectionCount": 9
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Call by Value and Call by Reference in Java",
+      "paragraphs": [
+        "In Java, call by value and call by reference explain how values are passed to methods. In this chapter, we will learn how Java passes data to methods and understand the difference between call by value and call by reference using examples."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Call by Value",
+      "paragraphs": [
+        "In Java, when a method is called by passing a value as an argument, it is referred to as call by value. With Java's call-by-value feature, a copy of the variable is passed to the method. As a result, any modifications made within the method only affect that method and do not impact the original variable in the main method.",
+        "This is the primary distinction between Java's call-by-reference and call-by-value functions. Passing a variable with basic data types is considered a call by value; therefore, any modifications made to the variable will not be reflected in the caller's scope."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Important Points to Remember",
+      "paragraphs": [
+        "• Java always uses call by value, even for objects.\n• When a primitive type (like int, double, float) is passed to a method, a copy of the value is made.\n• Changes inside the method do not affect the original variable"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example 1: Call by Value with Primitive Data",
+      "paragraphs": [
+        "The following example demonstrates how Java uses call by value when passing primitive data to a method.",
+        "class Main {  \n int data=50;  \n void change(int data)  {  \n data=data+100;  //changes will be in the local variable only  \n }  \n public static void main(String args[]) {  \n   Main op=new Main ();  \n   System.out.println(\"before change \"+op.data);  \n   op.change(500);  \n   System.out.println(\"after change \"+op.data);  \n }  \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "before change 50\nafter change 50"
+      ]
+    },
+    {
+      "heading": "Example 2: Call by Value with Object Reference",
+      "paragraphs": [
+        "The following example demonstrates how Java passes object references using call by value that allows changes to the object's instance variables.",
+        "class Main {  \n int data=50;  \n void change(Main op) {  \n op.data=op.data+100; //changes will be in the instance variable  \n }  \n public static void main(String args[]) {  \n   Main op=new Main();  \n   System.out.println(\"before change \"+op.data);  \n   op.change(op); //passing object  \n   System.out.println(\"after change \"+op.data);  \n }  \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "before change 50\nafter change 150"
+      ]
+    },
+    {
+      "heading": "Call by Reference (Object Reference)",
+      "paragraphs": [
+        "In Java, Call by Reference means passing a reference (memory address) of the object by value to a method. Even though Java strictly uses call by value, it duplicates the reference before passing it as a value to the method when we send the reference of an object. The most important difference between call by value and call by reference in Java is that the copied reference also points to the same address, ensuring that all modifications are reflected in the main method."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Important Points to Remember",
+      "paragraphs": [
+        "• Java does not support true call by reference; it passes the reference by value.\n• When an object is passed, a copy of the reference is made.\n• The reference still points to the same object, so modifications inside the method affect the original object."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: Modifying Object Inside a Method (Call by Reference)",
+      "paragraphs": [
+        "The following example demonstrates how passing an object as a parameter allows a method to modify the object's actual data.",
+        "class Data {\n    int value;\n}\npublic class Main {\n    public static void main(String[] args) {\n        Data obj = new Data();\n        obj.value = 10;\n        modifyObject(obj);\n        System.out.println(\"After the method call, value = \" + obj.value); // Modified to 15\n    }\n//passing object as parameter\n    static void modifyObject(Data d) {\n        d.value = d.value + 5; // Changes the actual object\n    }\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "After the method call, value = 15"
+      ]
+    },
+    {
+      "heading": "Differences Between Call by Value and Call by Reference",
+      "paragraphs": [
+        "The following tables shows the key differences between call by value and call by reference based on different aspects:",
+        "Feature | Call by Value | Call by Reference\nDefinition | A copy of the actual value is passed to the method. | A copy of the reference (address) is passed to the method.\nJava Support | Java uses call by value for both primitive types and objects. | Java does not support true call by reference; instead, it passes the reference by value.\nEffect on Original Data | Changes made to the value inside the method do not affect the original variable. | Changes to the object's state within the method impact the original object (but not the reference itself).\nApplicable to | It is applicable to primitive types (like int, double, float, etc.) only. | It is applicable to objects ( instances of classes) only.\nObjects | A copy of the reference to the object is passed. Changes to the object's attributes affect the original object. | Not applicable, as Java does not support true call-by-reference.\nExample with Primitives | If an int is passed, modifying it inside the method does not impact the original int. | Not applicable.\nExample with Objects | If an object is passed, modifying its fields will affect the original object, but reassigning the reference will not. | Not applicable.\nMemory Consumption | It requires more memory because a copy of the variable is created. | The reference points to the same memory location as the original object, so no more memory is needed.\nTrue call by Reference? | Yes | No"
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:32:11.303Z"
+}

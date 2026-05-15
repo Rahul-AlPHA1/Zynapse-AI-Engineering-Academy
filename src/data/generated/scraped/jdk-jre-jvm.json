@@ -1,0 +1,54 @@
+{
+  "topicId": "jdk-jre-jvm",
+  "title": "Difference Between JDK, JRE, and JVM",
+  "sectionId": "java-basics",
+  "source": "tutorialspoint",
+  "url": "https://www.tutorialspoint.com/java/java-jdk-jre-jvm.htm",
+  "allSources": [
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java-jdk-jre-jvm.htm",
+      "score": 21,
+      "sectionCount": 5
+    }
+  ],
+  "sections": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "All three JDK, JRE and JVM are interdependent. JDK is Java Development Kit primarily meant for Developers to develop Java based applications. JRE is Java Runtime Environment where Java program runs. JDK carries JRE as an integral part of it. JRE can be installed seperately as well on systems where no development is to be done and we only need to run the Java based application or a java program is to be executed. The JVM is a specification, and can have different implementations, as long as they adhere to the specs. The specs can be found in the below link − https://docs.oracle.com. JRE is an implementation of the JVM."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is JDK?",
+      "paragraphs": [
+        "JDK is an abbreviation for Java Development Kit which includes all the tools, executables, and binaries required to compile, debug, and execute a Java Program.JDK is platform dependent i.e. there are separate installers for Windows, Mac, and Unix systems. JDK includes both JVM and JRE and is entirely responsible for code execution. It is the version of JDK that represents a version of Java."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is JRE?",
+      "paragraphs": [
+        "JRE is a Java Runtime Environment which is the implementation of JVM i.e. the specifications that are defined in JVM are implemented and create a corresponding environment for the execution of code. JRE comprises mainly Java binaries and other classes to execute the program like JVM which physically exists. Along with Java binaries JRE also consists of various technologies of deployment, user interfaces to interact with code executed, some base libraries for different functionalities, and language and util-based libraries."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is JVM?",
+      "paragraphs": [
+        "JVM is the abbreviation for Java Virtual Machine which is a specification that provides a runtime environment in which Java byte code can be executed i.e. it is something that is abstract and its implementation is independent of choosing the algorithm and has been provided by Sun and other companies. It is JVM which is responsible for converting Byte code to machine-specific code. It can also run those programs which are written in other languages and compiled to Java bytecode. The JVM performs the mentioned tasks: Loads code, Verifies code, Executes code, and Provides runtime environment."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Difference between JDK, JRE, and JVM",
+      "paragraphs": [
+        "Following are the important differences between JDK, JRE, and JVM −",
+        "Sr. No.\nKey\nJDK\nJRE\nJVM\n\n\n\n\n1\nDefinition\nJDK (Java Development Kit) is a software development kit to develop applications in Java. In addition to JRE, JDK also contains number of development tools (compilers, JavaDoc, Java Debugger etc.).\nJRE (Java Runtime Environment) is the implementation of JVM and is defined as a software package that provides Java class libraries, along with Java Virtual Machine (JVM), and other components to run applications written in Java programming.\nJVM (Java Virtual Machine) is an abstract machine that is platform-dependent and has three notions as a specification, a document that describes requirement of JVM implementation, implementation, a computer program that meets JVM requirements, and instance, an implementation that executes Java byte code provides a runtime environment for executing Java byte code.\n\n\n2\nPrime functionality\nJDK is primarily used for code execution and has prime functionality of development.\nOn other hand JRE is majorly responsible for creating environment for code execution.\nJVM on other hand specifies all the implementations and responsible to provide these implementations to JRE.\n\n\n3\nPlatform Independence\nJDK is platform dependent i.e for different platforms different JDK required.\nLike of JDK JRE is also platform dependent.\nJVM is platform independent.\n\n\n4\nTools\nAs JDK is responsible for prime development so it contains tools for developing, debugging and monitoring java application.\nOn other hand JRE does not contain tools such as compiler or debugger etc. Rather it contains class libraries and other supporting files that JVM requires to run the program.\nJVM does not include software development tools.\n\n\n5\nImplementation\nJDK = Java Runtime Environment (JRE) + Development tools\nJRE = Java Virtual Machine (JVM) + Libraries to run the application\nJVM = Only Runtime environment for executing the Java byte code."
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:29:48.684Z"
+}

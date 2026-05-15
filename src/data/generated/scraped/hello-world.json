@@ -1,0 +1,133 @@
+{
+  "topicId": "hello-world",
+  "title": "Java Hello World Program",
+  "sectionId": "java-basics",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-hello-world-program",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-hello-world-program",
+      "score": 79,
+      "sectionCount": 12
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_hello_world.htm",
+      "score": 53,
+      "sectionCount": 10
+    }
+  ],
+  "sections": [
+    {
+      "heading": "\"Hello World\" - First Java Program",
+      "paragraphs": [
+        "The \"Hello World\" program (First program) is the simplest Java program that helps beginners understand the basic structure of a Java program. Wiring \"Hello World\" program tells you to create a class, write the main() method, and display output on the console.",
+        "Writing \"Hello World\" program is the first step in learning Java and to understand the key concepts."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Prerequisite to Write Hello World Program",
+      "paragraphs": [
+        "For executing any Java program, the following software or application must be properly installed.",
+        "• Install the JDK if we do not have installed it, download the JDK and install it.\n• Set path of the jdk/bin directory, go through the link How to Set Path in Java\n• Create the Java program.\n• Compile and run the Java program."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Hello World Program",
+      "paragraphs": [
+        "The following Java program demonstrates how to print \"Hello World\" to the console:",
+        "Examplepublic class Main{\n public static void main(String args[]){\n  System.out.println(\"Hello World!\");\n }\n}\nCompile and Run"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Compiling and Executing",
+      "paragraphs": [
+        "Here are the steps for compiling and executing a Java program:",
+        "• Save the program with a .java extension (e.g., Simple.java).\n• Open Command Prompt and navigate to the directory containing the file.\n• Compile the program using:javac Simple.java\n• Run the compiled program using:java Simple\n• View the output on the console."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Output:",
+      "paragraphs": [],
+      "code": [
+        "Hello Java"
+      ]
+    },
+    {
+      "heading": "Compilation Flow:",
+      "paragraphs": [
+        "When we compile Java program using javac tool, the Java compiler converts the source code into byte code."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Parameters used in First Java Program",
+      "paragraphs": [
+        "Let's see what is the meaning of class, public, static, void, main, String[], System.out.println().",
+        "• class keyword is used to declare a class in Java.\n• public keyword is an access modifier that represents visibility. It means it is visible to all.\n• static is a keyword. If we declare any method as static, it is known as the static method. The core advantage of the static method is that there is no need to create an object to invoke the static method. The main() method is executed by the JVM, so it does not require creating an object to invoke the main() method. So, it saves memory.\n• void is the return type of the method. It means it does not return any value.\n• The main() method represents the starting point of the program.\n• String[] args or String args[] is used for command line argument. We will discuss it in coming section.\n• System.out.println() is used to print statement on the console. Here, System is a class, out is an object of the PrintStream class, println() is a method of the PrintStream class. We will discuss the internal working of System.out.println() statement in the coming section."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Writing and Running a Java Program Using Notepad",
+      "paragraphs": [
+        "To write the simple program, we need to open notepad by Start Menu -> All Programs -> Accessories -> Notepad and write a simple program as we have shown below:",
+        "As we can see in the above notepad window, we have written a simple Java program and saved it as Simple.java.",
+        "In order to compile and run the above program, open the Command Prompt window by using the following steps:",
+        "Click on start menu -> All Programs -> Accessories -> command prompt. When we have done with all the steps properly, following window appears on the screen:",
+        "To compile and run the above program, go to your current directory first; my current directory is c:\\new. Write the following commands:",
+        "To compile: | javac Simple.java\nTo execute: | java Simple"
+      ],
+      "code": []
+    },
+    {
+      "heading": "In how many ways we can write a Java program?",
+      "paragraphs": [
+        "There are many ways to write a Java program. The modifications that can be done in a Java program are given below:",
+        "1) By changing the sequence of the modifiers, method prototype is not changed in Java.",
+        "Let's see the simple code of the main() method.",
+        "2) The subscript notation in the Java array can be used after type, before the variable or after the variable.",
+        "Let's see the different codes to write the main method.",
+        "3) You can provide var-args support to the main() method by passing 3 ellipses (dots)",
+        "Let's see the simple code of using var-args in the main() method. We will learn about var-args later in the Java New Features chapter.",
+        "4) Having a semicolon at the end of class is optional in Java.",
+        "Let's see the simple code."
+      ],
+      "code": [
+        "static public void main(String args[])",
+        "public static void main(String[] args)\npublic static void main(String []args)\npublic static void main(String args[])",
+        "public static void main(String... args)",
+        "class A{  \nstatic public void main(String... args){  \nSystem.out.println(\"hello java4\");  \n}  \n};  //optional"
+      ]
+    },
+    {
+      "heading": "Valid Java main() method signature",
+      "paragraphs": [],
+      "code": [
+        "public static void main(String[] args)\npublic static void main(String []args)\npublic static void main(String args[])\npublic static void main(String... args)\nstatic public void main(String[] args)\npublic static final void main(String[] args)\nfinal public static void main(String[] args)\nfinal strictfp public static void main(String[] args)"
+      ]
+    },
+    {
+      "heading": "Invalid Java main() method signature",
+      "paragraphs": [],
+      "code": [
+        "public void main(String[] args)\nstatic void main(String[] args)\npublic void static main(String[] args)\nabstract public static void main(String[] args)"
+      ]
+    },
+    {
+      "heading": "Resolving an error \"javac is not recognized as an internal or external command\"?",
+      "paragraphs": [
+        "If there occurs a problem like displayed in the below figure, we need to set a path. Since DOS does not recognize javac and java as internal or external command. To overcome this problem, we need to set Java path.",
+        "The path is not required in a case where we save your program inside the JDK/bin directory. However, it is an excellent approach to set the path. Click here for How to set path in java.",
+        "Next TopicInternal details of Hello Java Program"
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:29:18.224Z"
+}

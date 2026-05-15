@@ -1,0 +1,203 @@
+{
+  "topicId": "continue",
+  "title": "Java - continue Statement",
+  "sectionId": "java-basics",
+  "source": "tutorialspoint",
+  "url": "https://www.tutorialspoint.com/java/java_continue_statement.htm",
+  "allSources": [
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_continue_statement.htm",
+      "score": 113,
+      "sectionCount": 23
+    },
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-continue",
+      "score": 97,
+      "sectionCount": 13
+    }
+  ],
+  "sections": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "The continue statement can be used in any loop control structure to skip the current iteration and jump to the next one. In a for loop, it immediately transfers control to the update statement, while in a while or do-while loop, it jumps directly to the Boolean expression for the next iteration."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax of continue Statement",
+      "paragraphs": [
+        "The syntax of a continue is a single statement inside any loop −"
+      ],
+      "code": [
+        "continue;"
+      ]
+    },
+    {
+      "heading": "Flow Diagram of continue Statement",
+      "paragraphs": [
+        "See the following image to know how continue statement works to skip the current iteration of the loop:"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Using continue with while Loop",
+      "paragraphs": [
+        "In a while loop, the continue statement skips the remaining code in the current iteration and immediately checks the loop's condition for the next iteration."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "In this example, we're showing the use of a continue statement to skip an element 15 in a while loop which is used to print element from 10 to 19. Here we've initialized an int variable x with a value of 10. Then in while loop, we're checking x as less than 20 and within while loop, we're printing the value of x and incrementing the value of x by 1. While loop will run until x becomes 15. Once x is 15, continue statement will jump the while loop while skipping the execution of the body and loop continues."
+      ],
+      "code": [
+        "public class Test {\n\n   public static void main(String args[]) {\n      int x = 10;\n\n      while( x < 20 ) {\n         x++;\n         if(x == 15){\n            continue;\t\t \n         }   \n         System.out.print(\"value of x : \" + x );\n         System.out.print(\"\\n\");\n      }\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "value of x : 11\nvalue of x : 12\nvalue of x : 13\nvalue of x : 14\nvalue of x : 16\nvalue of x : 17\nvalue of x : 18\nvalue of x : 19\nvalue of x : 20"
+      ]
+    },
+    {
+      "heading": "Using continue with for Loop",
+      "paragraphs": [
+        "Similarly, in a for loop, the continue statement skips the remaining code in the current iteration and immediately proceeds to the update statement for the next iteration."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "In this example, we're showing the use of a continue statement within a for loop to skip an elements of an array to print. Here we're creating an array of integers as numbers and initialized it some values. We've created a variable named index to represent index of the array within for loop, check it against size of the array and incremented it by 1. Within for loop body, we're printing element of the array using index notation. Once 30 is encountered as value, continue statement jumps to the update section of for loop and loop continues."
+      ],
+      "code": [
+        "public class Test {\n\n   public static void main(String args[]) {\n      int [] numbers = {10, 20, 30, 40, 50};\n\n      for(int index = 0; index < numbers.length; index++) {\n         if(numbers[index] == 30){\n            continue;\n         }\n         System.out.print(\"value of item : \" + numbers[index] );         \n         System.out.print(\"\\n\");\n      }\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "value of item : 10\nvalue of item : 20\nvalue of item : 40\nvalue of item : 50"
+      ]
+    },
+    {
+      "heading": "Using continue with do while Loop",
+      "paragraphs": [
+        "Similarly, in a do-while loop, the continue statement skips the remaining code in the current iteration and immediately jumps to the Boolean expression to check the loop condition for the next iteration."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "In this example, we're showing the use of a continue statement to skip an element 15 in a do while loop which is used to print element from 10 to 19. Here we've initialized an int variable x with a value of 10. Then in do while loop, we're checking x as less than 20 after body and within while loop, we're printing the value of x and incrementing the value of x by 1. While loop will run until x becomes 15. Once x is 15, continue statement will jump the while loop while skipping the execution of the body and loop continues."
+      ],
+      "code": [
+        "public class Test {\n\n   public static void main(String args[]) {\n      int x = 10;\n\n      do {\n         x++;\n         if(x == 15){\n            continue;\t\t \n         }   \n         System.out.print(\"value of x : \" + x );\n         System.out.print(\"\\n\");\n      } while( x < 20 );\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "value of x : 11\nvalue of x : 12\nvalue of x : 13\nvalue of x : 14\nvalue of x : 16\nvalue of x : 17\nvalue of x : 18\nvalue of x : 19\nvalue of x : 20"
+      ]
+    },
+    {
+      "heading": "Use Cases of continue Statement",
+      "paragraphs": [
+        "The continue statement has several practical use cases in programming:"
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. Skipping Specific Values in a Loop",
+      "paragraphs": [
+        "The continue statement can be used to bypass certain iterations based on conditions."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "In this example, we are skipping even numbers in a for loop:"
+      ],
+      "code": [
+        "for (int i = 1; i <= 10; i++) {\n    if (i % 2 == 0) {\n        continue; // Skip even numbers\n    }\n    System.out.println(i);\n}"
+      ]
+    },
+    {
+      "heading": "2. Ignoring Specific Input in User Input Loops",
+      "paragraphs": [
+        "The continue statement is useful for skipping invalid or unwanted inputs in loops."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "In this example, we are skipping negative numbers:"
+      ],
+      "code": [
+        "Scanner scanner = new Scanner(System.in);\nfor (int i = 0; i < 5; i++) {\n    System.out.print(\"Enter a positive number: \");\n    int num = scanner.nextInt();\n    \n    if (num < 0) {\n        System.out.println(\"Negative numbers are not allowed, skipping...\");\n        continue; // Skip negative numbers\n    }\n    \n    System.out.println(\"You entered: \" + num);\n}"
+      ]
+    },
+    {
+      "heading": "3. Skipping Iteration in Nested Loops",
+      "paragraphs": [
+        "The continue statement can be used to skip specific conditions inside nested loops without exiting them."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "In this example, we are skipping a specific condition in a grid output:"
+      ],
+      "code": [
+        "for (int i = 1; i <= 3; i++) {\n    for (int j = 1; j <= 3; j++) {\n        if (i == j) {\n            continue; // Skip when row index equals column index\n        }\n        System.out.println(\"i: \" + i + \", j: \" + j);\n    }\n}"
+      ]
+    },
+    {
+      "heading": "4. Skipping Blank Lines While Processing Files",
+      "paragraphs": [
+        "The continue statement can be used in file processing to ignore empty lines."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following code will skip empty lines in a file:"
+      ],
+      "code": [
+        "BufferedReader reader = new BufferedReader(new FileReader(\"data.txt\"));\nString line;\nwhile ((line = reader.readLine()) != null) {\n    if (line.trim().isEmpty()) {\n        continue; // Skip empty lines\n    }\n    System.out.println(line);\n}\nreader.close();"
+      ]
+    },
+    {
+      "heading": "5. Filtering Specific Characters in a String",
+      "paragraphs": [
+        "The continue statement is useful for skipping unwanted characters in string processing."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following code will skip vowels in a string:"
+      ],
+      "code": [
+        "String str = \"hello world\";\nfor (char ch : str.toCharArray()) {\n    if (\"aeiou\".indexOf(ch) != -1) {\n        continue; // Skip vowels\n    }\n    System.out.print(ch);\n}"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:31:10.347Z"
+}

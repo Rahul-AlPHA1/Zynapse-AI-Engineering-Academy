@@ -1,0 +1,229 @@
+{
+  "topicId": "this-keyword",
+  "title": "this Keyword in Java",
+  "sectionId": "java-oops",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/this-keyword-in-java",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/this-keyword-in-java",
+      "score": 147,
+      "sectionCount": 22
+    }
+  ],
+  "sections": [
+    {
+      "heading": "this Keyword in Java",
+      "paragraphs": [
+        "The this keyword in Java is used to refer to the current object of a class and access its members. In this chapter, we will learn how this is used with variables, methods, and constructors with the help of examples."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What Is this Keyword in Java?",
+      "paragraphs": [
+        "In Java, the \"this\" keyword is a reference to the current object of a class. It is mainly used to differentiate between instance variables and parameters with the same name, call one constructor from another, or pass the current object as an argument to methods or constructors."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Characteristics of this Keyword",
+      "paragraphs": [
+        "The following are the characteristics of this keyword in Java:",
+        "• Represents the Current Object: Think of this as a way for an object to refer to itself. If an object is calling a method, this points to that specific instance.\n• Helps Avoid Confusion: If a method parameter has the same name as an instance variable, this makes it clear which one is the instance variable.\n• Calls Other Methods in the Same Class: We don't always need this, but we can use it explicitly to call another method within the same class.\n• Supports Constructor Chaining: this() can be used inside a constructor to call another constructor in the same class, helping reuse code.\n• Passes the Current Object as an Argument: Sometimes, we need to send the current object to another method or class. This makes that possible.\n• Returns the Current Object: A method can return this, allowing method chaining, which is common in fluent APIs."
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. Using this to Refer to Current Class Instance Variables",
+      "paragraphs": [
+        "Java this keyword can be used to refer current class instance variable. If the instance variables and parameters are ambiguous, this keyword resolves the problem of ambiguity."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example without this keyword",
+      "paragraphs": [
+        "Let's understand the problem if we do not use this keyword by the example given below:",
+        "Exampleclass Student{  \nint rollno;  \nString name;  \nfloat fee;  \nStudent(int rollno,String name,float fee){  \nrollno=rollno;  \nname=name;  \nfee=fee;  \n}  \nvoid display(){System.out.println(rollno+\" \"+name+\" \"+fee);}  \n}  \npublic class Main{  \npublic static void main(String args[]){  \nStudent s1=new Student(111,\"Ankit\",5000f);  \nStudent s2=new Student(112,\"Sumit\",6000f);  \ns1.display();  \ns2.display();  \n}}  \nCompile and Run",
+        "Output:",
+        "Explanation:",
+        "In the above example, parameters (formal arguments) and instance variables are the same. So, we are using this keyword to distinguish the local variable and instance variable."
+      ],
+      "code": [
+        "0 null 0.0\n0 null 0.0"
+      ]
+    },
+    {
+      "heading": "Example: Using this keyword",
+      "paragraphs": [
+        "Let us take another example to demonstrate the working of this keyword in Java.",
+        "Exampleclass Student{  \nint rollno;  \nString name;  \nfloat fee;  \nStudent(int rollno,String name,float fee){  \nthis.rollno=rollno;  \nthis.name=name;  \nthis.fee=fee;  \n}  \nvoid display(){System.out.println(rollno+\" \"+name+\" \"+fee);}  \n}  \npublic class Main{  \npublic static void main(String args[]){  \nStudent s1=new Student(111,\"Ankit\",5000f);  \nStudent s2=new Student(112,\"Sumit\",6000f);  \ns1.display();  \ns2.display();  \n}}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "111 Ankit 5000.0\n112 Sumit 6000.0"
+      ]
+    },
+    {
+      "heading": "Example: Without requiring this keyword",
+      "paragraphs": [
+        "If local variables(formal arguments) and instance variables are different, there is no need to use this keyword like in the following program:",
+        "Exampleclass Student{  \nint rollno;  \nString name;  \nfloat fee;  \nStudent(int r,String n,float f){  \nrollno=r;  \nname=n;  \nfee=f;  \n}  \nvoid display(){System.out.println(rollno+\" \"+name+\" \"+fee);}  \n}  \n  class Main {  \npublic static void main(String args[]){  \nStudent s1=new Student(111,\"Ankit\",5000f);  \nStudent s2=new Student(112,\"Sumit\",6000f);  \ns1.display();  \ns2.display();  \n}}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "111 Ankit 5000.0\n112 Sumit 6000.0"
+      ]
+    },
+    {
+      "heading": "2. Using this to Call Current Class Methods",
+      "paragraphs": [
+        "You may invoke the method of the current class by using this keyword. If you do not use this keyword, the compiler automatically adds this keyword while invoking the method.",
+        "Let's see the following example to demonstrate how to use the this keyword to call current class methods in Java.",
+        "Exampleclass A{  \nvoid m(){System.out.println(\"hello m\");}  \nvoid n(){  \nSystem.out.println(\"hello n\");  \n//m();//same as this.m()  \nthis.m();  \n}  \n}  \nclass Main{  \npublic static void main(String args[]){  \nA a=new A();  \na.n();  \n}}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "hello n\nhello m"
+      ]
+    },
+    {
+      "heading": "3. Using this() to Call the Current Class Constructor",
+      "paragraphs": [
+        "The this() constructor call can be used to invoke the current class constructor. It is used to reuse the constructor. In other words, it is used for constructor chaining."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: Calling Default Constructor From Parameterized Constructor",
+      "paragraphs": [
+        "Let us take an example to demonstrate how to call the default constructor from parameterized constructor in Java.",
+        "Exampleclass A{  \nA(){System.out.println(\"hello a\");}  \nA(int x){  \nthis();  \nSystem.out.println(x);  \n}  \n}  \npublic class Main{  \npublic static void main(String args[]){  \nA a=new A(10);  \n}}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "hello a\n10"
+      ]
+    },
+    {
+      "heading": "Example: Calling Parameterized Constructor From Default Constructor",
+      "paragraphs": [
+        "Let us take an example to demonstrate how to call the parameterized constructor from default constructor in Java.",
+        "Exampleclass A{  \nA(){  \nthis(5);  \nSystem.out.println(\"hello a\");  \n}  \nA(int x){  \nSystem.out.println(x);  \n}  \n}  \nclass Main{  \npublic static void main(String args[]){  \nA a=new A();  \n}}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "5\nhello a"
+      ]
+    },
+    {
+      "heading": "Real usage of this() constructor call",
+      "paragraphs": [
+        "The this() constructor call should be used to reuse the constructor from the constructor. It maintains the chain between the constructors i.e. it is used for constructor chaining. Let's see the example given below that displays the actual use of this keyword.",
+        "The this() constructor call should be used to reuse the constructor from the constructor. It maintains the chain between the constructors, i.e., it is used for constructor chaining.",
+        "Let's see the example given below that displays the actual use of this keyword.",
+        "Exampleclass Student{  \n    int rollno;  \n    String name,course;  \n    float fee;  \n    Student(int rollno,String name,String course)\n    {  \n        this.rollno=rollno;  \n        this.name=name;  \n        this.course=course;  \n    }  \n    Student(int rollno,String name,String course,float fee)\n    {  \n        this(rollno,name,course);//reusing constructor  \n        this.fee=fee;  \n    }  \n    void display()\n    {\n        System.out.println(rollno+\" \"+name+\" \"+course+\" \"+fee);\n    }  \n}  \npublic class Main{  \n    public static void main(String args[]){  \n        Student s1=new Student(111,\"ankit\",\"java\");  \n        Student s2=new Student(112,\"sumit\",\"java\",6000f);  \n        s1.display();  \n        s2.display();  \n    }\n}  \nCompile and Run",
+        "Output:",
+        "Rule: Call to this() must be the first statement in the constructor."
+      ],
+      "code": [
+        "111 ankit java 0.0\n112 sumit java 6000.0"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "In the following example, a compile-time error occurs because the this() constructor call is not the first statement inside the constructor.",
+        "Output:"
+      ],
+      "code": [
+        "class Student{  \nint rollno;  \nString name,course;  \nfloat fee;  \nStudent(int rollno,String name,String course){  \nthis.rollno=rollno;  \nthis.name=name;  \nthis.course=course;  \n}  \nStudent(int rollno,String name,String course,float fee){  \nthis.fee=fee;  \nthis(rollno,name,course);//C.T.Error  \n}  \nvoid display(){System.out.println(rollno+\" \"+name+\" \"+course+\" \"+fee);}  \n}  \nclass Main{  \npublic static void main(String args[]){  \nStudent s1=new Student(111,\"Ankit\",\"Java\");  \nStudent s2=new Student(112,\"Sumit\",\"Java\",6000f);  \ns1.display();  \ns2.display();  \n}}",
+        "Compile Time Error: Call to this must be the first statement in the constructor"
+      ]
+    },
+    {
+      "heading": "4. Using this to Pass the Current Object as a Method Argument",
+      "paragraphs": [
+        "Java this keyword can also be passed as an argument in the method. It is mainly used in event handling."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Let's take an example to demonstrate how to use the this keyword to Pass the Current Object as a Method Argument.",
+        "Exampleclass Main{  \n  void m(Main obj){  \n  System.out.println(\"method is invoked\");  \n  }  \n  void p(){  \n  m(this);  \n  }  \n  public static void main(String args[]){  \n  Main m = new Main();  \n  m.p();  \n  }  \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "method is invoked"
+      ]
+    },
+    {
+      "heading": "Application",
+      "paragraphs": [
+        "In event handling (or) in a situation where we have to provide reference of a class to another one. It is used to reuse one object in many methods."
+      ],
+      "code": []
+    },
+    {
+      "heading": "5. Using this to Pass the Current Object in a Constructor Call",
+      "paragraphs": [
+        "We can pass the this keyword in the constructor also. It is useful if we have to use one object in multiple classes."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Let's take an example to demonstrate how to use this keyword to ass the Current Object in a Constructor Call.",
+        "Output:"
+      ],
+      "code": [
+        "class B{  \n  A4 obj;  \n  B(A4 obj){  \n    this.obj=obj;  \n  }  \n  void display(){  \n    System.out.println(obj.data);//using data member of A4 class  \n  }  \n}  \n  class Main {  \n  int data=10;  \n  A4(){  \n   B b=new B(this);  \n   b.display();  \n  }  \n  public static void main(String args[]){  \n   A4 a=new A4();  \n  }  \n}",
+        "10"
+      ]
+    },
+    {
+      "heading": "6. Using this to Return the Current Class Instance",
+      "paragraphs": [
+        "We can return this keyword as a statement from the method. In such a case, the return type of the method must be the class type (non-primitive)."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [
+        "It has the following syntax:"
+      ],
+      "code": [
+        "return_type method_name(){\nreturn this;\n}"
+      ]
+    },
+    {
+      "heading": "Example of this keyword that you return as a statement from the method",
+      "paragraphs": [
+        "Let us take an example of this keyword that you return as a statement from the method.",
+        "Exampleclass A{  \nA getA(){  \nreturn this;  \n}  \nvoid msg(){System.out.println(\"Hello Java\");}  \n}  \nclass Main{  \npublic static void main(String args[]){  \nnew A().getA().msg();  \n}  \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Hello Java"
+      ]
+    },
+    {
+      "heading": "Proving this keyword",
+      "paragraphs": [
+        "Let's prove that this keyword refers to the current class instance variable. In this program, we are printing the reference variable, and this output of both variables are same.",
+        "Exampleclass Main{  \nvoid m(){  \nSystem.out.println(this);//prints same reference ID \n}  \npublic static void main(String args[]){  \nMain obj=new Main();  \nSystem.out.println(obj);//prints the reference ID  \nobj.m();  \n}  \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "A5@22b3ea59\nA5@22b3ea59"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:31:59.151Z"
+}

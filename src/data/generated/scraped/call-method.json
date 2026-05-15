@@ -1,0 +1,190 @@
+{
+  "topicId": "call-method",
+  "title": "How to Call a Method in Java?",
+  "sectionId": "java-oops",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/how-to-call-a-method-in-java",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/how-to-call-a-method-in-java",
+      "score": 131,
+      "sectionCount": 16
+    }
+  ],
+  "sections": [
+    {
+      "heading": "How to Call a Method in Java?",
+      "paragraphs": [
+        "In Java, a method is a collection of statements that performs a specific task or operation. It is widely used because it provides the reusability of code means that written once and used many times. It also offers easy modification. Each method has its name by which it is called. When the compiler reads the method name, the method is called and performs the specified task.",
+        "To read more Method in Java and Types of Methods in Java"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Calling Instance Method in Java",
+      "paragraphs": [
+        "The method of the class where it is defined is known as an instance method. It is a non-static method. Before calling or invoking the instance method, it is necessary to create an object of its class. It can access the instance variables of that object. It can use this keyword to refer to the current object."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: Calling Instance Method",
+      "paragraphs": [
+        "Exampleclass Demo {\n// Method declaration\npublic void displayMessage() {\nSystem.out.println(\"This is an instance method.\");\n}\n}\npublic class Main {\npublic static void main(String[] args) {\n// Create an object of the class Demo\nDemo obj = new Demo();\nobj.displayMessage();\n}\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "This is an instance method."
+      ]
+    },
+    {
+      "heading": "Calling Static Method in Java",
+      "paragraphs": [
+        "In Java, a static method is a method that is invoked or called without creating an object of the class in which the method is defined. All the methods that have the static keyword before the method name are known as static methods. We can also create a static method by using the static keyword before the method name. We can call a static method by using the ClassName.methodName.",
+        "To read more Static Method in Java",
+        "The best example of the static method is the main() method. It is called without creating the object."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: Calling Static Method",
+      "paragraphs": [
+        "In the following program, we have called the static method of the Math class, named min(), that returns the minimum value of two numbers.",
+        "Exampleimport java.util.*;  \npublic class Main  \n{  \n    public static void main(String args[])   \n    {  \n        int a;  \n        //calling static method of the Math class  \n        a=Math.min(23,98);  \n        System.out.println(\"Minimum number is: \" + a);  \n    }  \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Minimum number is: 23"
+      ]
+    },
+    {
+      "heading": "Calling the Pre-Defined Method in Java",
+      "paragraphs": [
+        "In Java, pre-defined methods are the methods that are already defined in built-in classes. When we require any pre-defined method, we just call the method by its name."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: Calling Pre-defined Method",
+      "paragraphs": [
+        "In the following example, we have used the method named hashCode() of the class Object. To call the pre-defined method hashCode(), we have created an object obj of the Object class because it is a method of the Object class. By using the object, we have called the hashCode() method that returns a hash code value for the object.",
+        "Examplepublic class Main  \n{  \n    public static void main(String[] args)   \n    {  \n        int a;      \n        Object obj=new Object();      \n        a=obj.hashCode();  \n        System.out.println(\"Hash Code of the object is: \"+a);  \n    }  \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Hash Code of the object is: 724542711"
+      ]
+    },
+    {
+      "heading": "Calling User-Defined Method in Java",
+      "paragraphs": [
+        "To call a user-defined method, first, we create a method and then call it. A method must be made in the class with the name of the method, followed by parentheses (). The method definition consists of a method header and method body.",
+        "We can call a method by using the following:",
+        "If the method is static, we use the following:",
+        "Where obj is the object of the class."
+      ],
+      "code": [
+        "method_name();  // non static method calling",
+        "obj.method_name();   // static method calling"
+      ]
+    },
+    {
+      "heading": "Example: Calling User-defined Method",
+      "paragraphs": [
+        "Examplepublic class Main  \n{  \n    //user-defined static method  \n    static void showMessage()   \n    {  \n        System.out.println(\"The static method invoked.\");  \n    }  \n    //user-defined non-static method  \n    void displayMessage()   \n    {  \n        System.out.println(\"Non-static method invoked.\");  \n    }  \n    public static void main(String[] args)   \n    {  \n        //calling a static method without using the object  \n        showMessage(); //called method  \n        //creating an object of the class  \n        Main obj = new Main();  \n        //calling non-static method  \n        obj.displayMessage(); //called method  \n    }  \n}\nCompile and Run",
+        "Output:",
+        "A class can contain two or more methods with the same name. Now, a question arises about how we can call two methods with the same name.",
+        "When a class has two or more methods with the same name, it is differentiated by either return type or type of parameter, or number of parameters. This concept is called method overloading.",
+        "To read more Method Overloading in Java",
+        "For example:",
+        "The above two methods have the same name sum() but both are different. The first sum() method returns an int value and parses two integer x and y as parameters. While the second sum() method returns a double value and parses two double values a and y as parameters.",
+        "Let's create a program that overloads sub() method.",
+        "Examplepublic class Main  \n{  \n    static int sub(int x, int y)   \n    {  \n        return x - y;  \n    }  \n    static double sub(double x, double y)   \n    {  \n        return x - y;  \n    }  \n    public static void main(String[] args)   \n    {  \n        int a = sub(45, 23);  \n        double b = sub(23.67,10.5);  \n        System.out.println(\"subtraction of integer values: \" +a);  \n        System.out.println(\"subtraction of double values: \" +b);  \n    }  \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "The static method invoked.\nNon-static method invoked.",
+        "int sum(int x, int y);  \ndouble sum(double x, double y);",
+        "subtraction of integer values: 22\nsubtraction of double values: 13.170000000000002"
+      ]
+    },
+    {
+      "heading": "Calling Abstract Method in Java",
+      "paragraphs": [
+        "An abstract method is a method that is declared with an abstract keyword. The abstract method only has a method declaration. The body of the abstract method is defined in the other class. The abstract method must be declared in the abstract class. We can set the visibility of abstract methods as private or public. We cannot declare an abstract method as final because it violates the advantage of the abstract method.",
+        "The actual implementation of the abstract method must be in the child's class. We can define an abstract method as follows:",
+        "Let's create an example of calling the abstract method."
+      ],
+      "code": [
+        "abstract public void findArea();"
+      ]
+    },
+    {
+      "heading": "Example: Calling Abstract Method",
+      "paragraphs": [
+        "In the following example, we have created a class with the name AbstractMethodExample and declared it as abstract. In this class, we have declared an abstract method named show(). After that, we have created another class named AbstractMethodCalling that extends the AbstractMethodExample class. In this class, we have implemented the abstract method.",
+        "To call the abstract method show(), we have created an instance of the parent class and invoked the abstract method.",
+        "Example//abstract class  \nabstract class AbstractMethodExample   \n{    \n    //abstract method declaration  \n    abstract void show();    \n}    \npublic class Main extends AbstractMethodExample  \n{    \n    //abstract method implementation      \n    void show()  \n    {  \n        System.out.println(\"The abstract method called.\");  \n    }    \n    public static void main(String args[])  \n    {    \n        AbstractMethodExample obj = new Main();    \n        //calling abstract method   \n        obj.show();    \n    } \n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "The abstract method called."
+      ]
+    },
+    {
+      "heading": "Calling Final Method in Java",
+      "paragraphs": [
+        "A method declared as final is known as a final method. It cannot be overridden by the sub class. The final method can be called like any other method."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Parent Class",
+      "paragraphs": [
+        "Child Class",
+        "Consider the following scenario for calling the final method:",
+        "From the Same Class",
+        "From a Subclass (Inherited)",
+        "Inside Another Method of the Subclass"
+      ],
+      "code": [
+        "class Parent {\n    final void showMessage() {\n        System.out.println(\"Hello from Parent\");\n    }\n}",
+        "class Child extends Parent {\n    void display() {\n        showMessage(); // Calls Parent's final method\n    }\n}",
+        "Parent p = new Parent();\np.showMessage();  // Output: Hello from Parent",
+        "Child c = new Child();\nc.showMessage();  // Output: Hello from Parent",
+        "class Child extends Parent {\n    void anotherMethod() {\n        showMessage();  // Calls Parent's final method\n    }\n}"
+      ]
+    },
+    {
+      "heading": "Example: Calling Final Method",
+      "paragraphs": [
+        "Exampleclass Bike {\n\tfinal void run() { // final method\n\t\tSystem.out.println(\"running\");\n\t}\n}\npublic class Main extends Bike {\n\t// We cannot override the final method\n\t/*\n\t * void run() { System.out.println(\"running safely with 100kmph\"); }\n\t */\n\tpublic static void main(String args[]) {\n\t\tMain obj = new Main();\n\t\tobj.run();\n\t}\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "running"
+      ]
+    },
+    {
+      "heading": "Calling Synchronized Method in Java",
+      "paragraphs": [
+        "The synchronized keyword can be used with methods and blocks. When a method or block is declared as synchronized, a lock is obtained on the specified object, and other threads are blocked from accessing the synchronized code until the lock is released.",
+        "A synchronized method is used when we want to ensure that only one thread at a time can access the entire method. It is useful when the method modifies shared resources (like class variables or data structures)."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: Calling Synchronized Method",
+      "paragraphs": [
+        "We can call a synchronized method just like any other method. The difference is that the JVM ensures only one thread can execute it at a time, preventing race conditions and ensuring thread safety.",
+        "Examplepublic class Main {\n\tprivate int counter = 0;\n\t// synchronized method\n\tpublic synchronized void increment() {\n\t\tcounter++;\n\t}\n\tpublic static void main(String[] args) throws InterruptedException {\n\t\tMain obj = new Main();\n\t\tThread thread1 = new Thread(() -> {\n\t\t\tfor (int i = 0; i < 1000; i++) {\n\t\t\t\tobj.increment();\n\t\t\t}\n\t\t});\n\t\tThread thread2 = new Thread(() -> {\n\t\t\tfor (int i = 0; i < 1000; i++) {\n\t\t\t\tobj.increment();\n\t\t\t}\n\t\t});\n\t\tthread1.start();\n\t\tthread2.start();\n\t\tthread1.join();\n\t\tthread2.join();\n\t\tSystem.out.println(\"Counter: \" + obj.counter);\n\t}\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Counter: 2000"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:32:03.383Z"
+}

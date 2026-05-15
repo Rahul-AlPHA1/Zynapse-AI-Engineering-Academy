@@ -1,0 +1,321 @@
+{
+  "generatedAt": "2026-05-15T11:33:45.148Z",
+  "topicCount": 45,
+  "topics": [
+    {
+      "id": "abstract-class",
+      "title": "Abstract class in Java",
+      "sectionId": "java-oops",
+      "source": "tpointtech",
+      "sectionCount": 17
+    },
+    {
+      "id": "aggregation",
+      "title": "Java - Aggregation",
+      "sectionId": "java-oops",
+      "source": "tutorialspoint",
+      "sectionCount": 8
+    },
+    {
+      "id": "break",
+      "title": "Java Break Statement",
+      "sectionId": "java-basics",
+      "source": "tpointtech",
+      "sectionCount": 21
+    },
+    {
+      "id": "call-by-value",
+      "title": "Call by Value and Call by Reference in Java",
+      "sectionId": "java-oops",
+      "source": "tpointtech",
+      "sectionCount": 9
+    },
+    {
+      "id": "call-method",
+      "title": "How to Call a Method in Java?",
+      "sectionId": "java-oops",
+      "source": "tpointtech",
+      "sectionCount": 16
+    },
+    {
+      "id": "comments",
+      "title": "Java Comments",
+      "sectionId": "java-basics",
+      "source": "tpointtech",
+      "sectionCount": 15
+    },
+    {
+      "id": "constructor",
+      "title": "Constructors in Java",
+      "sectionId": "java-oops",
+      "source": "tpointtech",
+      "sectionCount": 25
+    },
+    {
+      "id": "continue",
+      "title": "Java - continue Statement",
+      "sectionId": "java-basics",
+      "source": "tutorialspoint",
+      "sectionCount": 23
+    },
+    {
+      "id": "cpp-vs-java",
+      "title": "Java vs C++",
+      "sectionId": "java-basics",
+      "source": "tutorialspoint",
+      "sectionCount": 9
+    },
+    {
+      "id": "data-types",
+      "title": "Data Types in Java",
+      "sectionId": "java-basics",
+      "source": "tpointtech",
+      "sectionCount": 19
+    },
+    {
+      "id": "do-while",
+      "title": "Java do-while Loop",
+      "sectionId": "java-basics",
+      "source": "tpointtech",
+      "sectionCount": 11
+    },
+    {
+      "id": "features-of-java",
+      "title": "Features of Java",
+      "sectionId": "java-basics",
+      "source": "tpointtech",
+      "sectionCount": 14
+    },
+    {
+      "id": "final-keyword",
+      "title": "final keyword in Java",
+      "sectionId": "java-oops",
+      "source": "tpointtech",
+      "sectionCount": 23
+    },
+    {
+      "id": "for-loop",
+      "title": "Java for Loop",
+      "sectionId": "java-basics",
+      "source": "tpointtech",
+      "sectionCount": 22
+    },
+    {
+      "id": "hello-world",
+      "title": "Java Hello World Program",
+      "sectionId": "java-basics",
+      "source": "tpointtech",
+      "sectionCount": 12
+    },
+    {
+      "id": "history-of-java",
+      "title": "Java - History",
+      "sectionId": "java-basics",
+      "source": "tutorialspoint",
+      "sectionCount": 5
+    },
+    {
+      "id": "identifiers",
+      "title": "Identifiers in Java",
+      "sectionId": "java-basics",
+      "source": "tpointtech",
+      "sectionCount": 1
+    },
+    {
+      "id": "if-else",
+      "title": "Java if-else Statement",
+      "sectionId": "java-basics",
+      "source": "tpointtech",
+      "sectionCount": 17
+    },
+    {
+      "id": "inheritance",
+      "title": "Java - Inheritance",
+      "sectionId": "java-oops",
+      "source": "tutorialspoint",
+      "sectionCount": 25
+    },
+    {
+      "id": "instance-initializer",
+      "title": "Instance Initializer Block in Java",
+      "sectionId": "java-oops",
+      "source": "tpointtech",
+      "sectionCount": 15
+    },
+    {
+      "id": "instanceof",
+      "title": "Java instanceof Keyword",
+      "sectionId": "java-oops",
+      "source": "tpointtech",
+      "sectionCount": 15
+    },
+    {
+      "id": "internal-details",
+      "title": "Java - Basic Syntax",
+      "sectionId": "java-basics",
+      "source": "tutorialspoint",
+      "sectionCount": 20
+    },
+    {
+      "id": "jdk-jre-jvm",
+      "title": "Difference Between JDK, JRE, and JVM",
+      "sectionId": "java-basics",
+      "source": "tutorialspoint",
+      "sectionCount": 5
+    },
+    {
+      "id": "jvm-machine",
+      "title": "JVM (Java Virtual Machine) Architecture",
+      "sectionId": "java-basics",
+      "source": "tutorialspoint",
+      "sectionCount": 18
+    },
+    {
+      "id": "keywords",
+      "title": "Java Keywords",
+      "sectionId": "java-basics",
+      "source": "tpointtech",
+      "sectionCount": 12
+    },
+    {
+      "id": "method-overloading",
+      "title": "Method Overloading in Java",
+      "sectionId": "java-oops",
+      "source": "tpointtech",
+      "sectionCount": 17
+    },
+    {
+      "id": "method-overriding",
+      "title": "Method Overriding in Java",
+      "sectionId": "java-oops",
+      "source": "tpointtech",
+      "sectionCount": 12
+    },
+    {
+      "id": "naming-conventions",
+      "title": "Java Naming Convention",
+      "sectionId": "java-oops",
+      "source": "tpointtech",
+      "sectionCount": 6
+    },
+    {
+      "id": "object-class",
+      "title": "Java Classes and Objects",
+      "sectionId": "java-oops",
+      "source": "tpointtech",
+      "sectionCount": 26
+    },
+    {
+      "id": "oops-concepts-intro",
+      "title": "OOPs Concepts in Java",
+      "sectionId": "java-oops",
+      "source": "tpointtech",
+      "sectionCount": 25
+    },
+    {
+      "id": "operators",
+      "title": "Java Operators",
+      "sectionId": "java-basics",
+      "source": "tutorialspoint",
+      "sectionCount": 19
+    },
+    {
+      "id": "polymorphism",
+      "title": "Polymorphism in Java",
+      "sectionId": "java-oops",
+      "source": "tpointtech",
+      "sectionCount": 16
+    },
+    {
+      "id": "programs",
+      "title": "Java Programs | Java Programming Examples",
+      "sectionId": "java-basics",
+      "source": "tpointtech",
+      "sectionCount": 14
+    },
+    {
+      "id": "recursion",
+      "title": "Recursion in Java",
+      "sectionId": "java-oops",
+      "source": "tpointtech",
+      "sectionCount": 17
+    },
+    {
+      "id": "set-path",
+      "title": "How to set path in Java?",
+      "sectionId": "java-basics",
+      "source": "geeksforgeeks",
+      "sectionCount": 4
+    },
+    {
+      "id": "static-dynamic-binding",
+      "title": "Static and Dynamic Binding in Java",
+      "sectionId": "java-oops",
+      "source": "tpointtech",
+      "sectionCount": 8
+    },
+    {
+      "id": "static-keyword",
+      "title": "Java static keyword",
+      "sectionId": "java-oops",
+      "source": "tpointtech",
+      "sectionCount": 19
+    },
+    {
+      "id": "super-keyword",
+      "title": "Super Keyword in Java",
+      "sectionId": "java-oops",
+      "source": "tpointtech",
+      "sectionCount": 6
+    },
+    {
+      "id": "switch",
+      "title": "Java - switch statement",
+      "sectionId": "java-basics",
+      "source": "tutorialspoint",
+      "sectionCount": 14
+    },
+    {
+      "id": "this-keyword",
+      "title": "this Keyword in Java",
+      "sectionId": "java-oops",
+      "source": "tpointtech",
+      "sectionCount": 22
+    },
+    {
+      "id": "type-casting",
+      "title": "Type Casting in Java",
+      "sectionId": "java-basics",
+      "source": "tpointtech",
+      "sectionCount": 16
+    },
+    {
+      "id": "unicode",
+      "title": "Java - Unicode System",
+      "sectionId": "java-basics",
+      "source": "tutorialspoint",
+      "sectionCount": 10
+    },
+    {
+      "id": "variables",
+      "title": "Java Variables",
+      "sectionId": "java-basics",
+      "source": "tpointtech",
+      "sectionCount": 15
+    },
+    {
+      "id": "what-is-java",
+      "title": "Java Tutorial",
+      "sectionId": "java-basics",
+      "source": "tpointtech",
+      "sectionCount": 20
+    },
+    {
+      "id": "while-loop",
+      "title": "Java While Loop",
+      "sectionId": "java-basics",
+      "source": "tpointtech",
+      "sectionCount": 18
+    }
+  ]
+}

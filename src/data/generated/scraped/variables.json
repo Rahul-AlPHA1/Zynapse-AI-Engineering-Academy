@@ -1,0 +1,167 @@
+{
+  "topicId": "variables",
+  "title": "Java Variables",
+  "sectionId": "java-basics",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-variables",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-variables",
+      "score": 98,
+      "sectionCount": 15
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_variable_types.htm",
+      "score": 74,
+      "sectionCount": 12
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java Variables",
+      "paragraphs": [
+        "In Java, a variable is the name of memory location that are used like a container to store values during Java program execution. Every variable must be assigned a data type to define the kind of data it can hold. In Java, variables are categorized into three types: local, instance, and static variables. In this chapter, we will learn about the Java variables and types with the help of examples.",
+        "Before understanding Java variables and their types, you must be familiar with what a variable is and how it is named."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is a Variable?",
+      "paragraphs": [
+        "A variable is the name of a reserved area allocated in memory. In other words, it is a name of the memory location. It is a combination of \"vary + able\" which means its value can be changed."
+      ],
+      "code": [
+        "int data=50;//Here data is variable"
+      ]
+    },
+    {
+      "heading": "Types of Java Variables",
+      "paragraphs": [
+        "There are three types of variables in Java:",
+        "• Java Local Variable\n• Java Instance Variable\n• Java Static Variable"
+      ],
+      "code": []
+    },
+    {
+      "heading": "1) Java Local Variable",
+      "paragraphs": [
+        "A variable declared inside the body of the method is called local variable. You can use this variable only within that method and the other methods in the class aren't even aware that the variable exists.",
+        "A local variable cannot be defined with \"static\" keyword."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example of Local Variable",
+      "paragraphs": [
+        "Let us take an example to demonstrate the Local Variable in Java.",
+        "Example        //defining a Local Variable\n        int num = 10;\n        System.out.println(\" Variable: \" + num);\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Variable: 10"
+      ]
+    },
+    {
+      "heading": "2) Java Instance Variable",
+      "paragraphs": [
+        "A variable declared inside the class but outside the body of the method, is called an instance variable. It is not declared as static.",
+        "It is called an instance variable because its value is instance-specific and is not shared among instances."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example of Instance Variable",
+      "paragraphs": [
+        "Let us take an example to demonstrate the Instance Variable in Java.",
+        "Example        \npublic class InstanceVariableDemo {\n    //Defining Instance Variables\n    public String name;\n    public int age=19;\n //Creadting a default Constructor initializing Instance Variable\n    public InstanceVariableDemo()\n    {\n        this.name = \"Deepak\";\n    }\n}\npublic class Main{\n    public static void main(String[] args)\n    {\n        // Object Creation\n       InstanceVariableDemo obj = new InstanceVariableDemo();\n        System.out.println(\"Student Name is: \" + obj.name);\n        System.out.println(\"Age: \"+ obj.age);\n    }\n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Student Name is: Deepak\nAge: 19"
+      ]
+    },
+    {
+      "heading": "3) Java Static Variable",
+      "paragraphs": [
+        "A variable that is declared as static is called a static variable. It cannot be local. You can create a single copy of the static variable and share it among all the instances of the class. Memory allocation for static variables happens only once when the class is loaded in the memory."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example Static Variable",
+      "paragraphs": [
+        "Let us take an example to demonstrate the Static Variable in Java.",
+        "Exampleclass Student{\n    //static variable\n   static int age;\n}\npublic class Main{\n   public static void main(String args[]){\n       Student s1 = new Student();\n       Student s2 = new Student();\n       s1.age = 24;\n       s2.age = 21;\n       Student.age = 23;\n       System.out.println(\"S1\\'s age is: \" + s1.age);\n       System.out.println(\"S2\\'s age is: \" + s2.age);\n   }\n} \n\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "S1's age is: 23\nS2's age is: 23"
+      ]
+    },
+    {
+      "heading": "More Examples on Java Variables",
+      "paragraphs": [
+        "Let’s see some other examples for better understanding about the Java variables:"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Variables Example 1: Add Two Numbers",
+      "paragraphs": [
+        "In the following program, we use variables to store values and perform an addition operation. The variables a and b hold values, c stores their sum, and the result is printed.",
+        "Exampleint a=10;  \nint b=10;  \nint c=a+b;  \nSystem.out.println(c);  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "20"
+      ]
+    },
+    {
+      "heading": "Variables Example 2: Widening Type Casting",
+      "paragraphs": [
+        "This example demonstrates implicit type casting in Java. The integer variable a stores the value 10, which is automatically converted to a float and assigned to f. Both values are then printed, showing that Java safely converts an int to a float without data loss.",
+        "Exampleint a=10;\nfloat f=a;\nSystem.out.println(a);\nSystem.out.println(f);\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "10\n10.0"
+      ]
+    },
+    {
+      "heading": "Variables Example 3: Narrowing Type Casting",
+      "paragraphs": [
+        "This example demonstrates explicit type casting from float to int in Java. Directly assigning f to a causes a compile-time error because a float cannot be automatically converted to an int. By using (int)f, the float value 10.5 is cast to 10, truncating the decimal part, and both values are printed.",
+        "Examplefloat f=10.5f;\n//int a=f;//Compile time error\nint a=(int)f;\nSystem.out.println(f);\nSystem.out.println(a);\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "10.5\n10"
+      ]
+    },
+    {
+      "heading": "Variables Example 4: Overflow",
+      "paragraphs": [
+        "This example demonstrates overflow during explicit type casting in Java. The integer value 130 is explicitly cast to a byte, but since the byte range is from -128 to 127, the value overflows and results in -126.",
+        "Example//Overflow\nint a=130;\nbyte b=(byte)a;\nSystem.out.println(a);\nSystem.out.println(b);\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "130\n-126"
+      ]
+    },
+    {
+      "heading": "Variables Example 5: Adding Lower Type",
+      "paragraphs": [
+        "This example shows type promotion in Java. Although a and b are bytes, the expression a + b is automatically promoted to int, causing a compile-time error when assigned to a byte. By explicitly casting the result to byte, the value is stored in c and printed successfully.",
+        "Examplebyte a=10;\nbyte b=10;\n//byte c=a+b;//Compile Time Error: because a+b=20 will be int\nbyte c=(byte)(a+b);\nSystem.out.println(c);\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "20"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:28:15.599Z"
+}

@@ -1,0 +1,202 @@
+{
+  "topicId": "recursion",
+  "title": "Recursion in Java",
+  "sectionId": "java-oops",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/recursion-in-java",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/recursion-in-java",
+      "score": 129,
+      "sectionCount": 17
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java-recursion.htm",
+      "score": 84,
+      "sectionCount": 11
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What is Recursion in Java?",
+      "paragraphs": [
+        "Recursion is a process in which a method calls itself to solve a problem. The method that calls itself is known as a recursive method.",
+        "A recursive method works by dividing a problem into smaller parts and solving each part using the same method logic. Every recursive method must have a base condition, which stops the recursive calls and prevents infinite execution."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax of Recursion",
+      "paragraphs": [
+        "Here is the syntax to write a recursive method:"
+      ],
+      "code": [
+        "returnType methodName(parameters) {\n    // Base condition\n    if (condition) {\n        return value;\n    }\n\n    // Recursive call\n    return methodName(modifiedParameters);\n}"
+      ]
+    },
+    {
+      "heading": "How Recursion Works?",
+      "paragraphs": [
+        "Recursion works using two main cases: the base case and the recursive case, which are explained below:"
+      ],
+      "code": []
+    },
+    {
+      "heading": "1. Base Case",
+      "paragraphs": [
+        "The base case acts as the stopping condition for recursion. It is important because, without a base case, the recursive method would continue calling itself indefinitely that will lead to a StackOverflowError. The base case specifies the condition under which the recursion terminates."
+      ],
+      "code": []
+    },
+    {
+      "heading": "2. Recursive Case",
+      "paragraphs": [
+        "The recursive case is the part of the method where it calls itself with modified arguments. These arguments move the problem closer to the base case. With each recursive call, the problem size is reduced until the base case is reached."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Examples of Recursion",
+      "paragraphs": [
+        "Practice the following programs to understand the concept of recursion in Java."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example 1: Sum of First N Natural Numbers Using Recursion",
+      "paragraphs": [
+        "The following program demonstrates how recursion is used to calculate the sum of the first N natural numbers.",
+        "class SumExample {  \n    // Recursive function to calculate the sum of first 'n' natural numbers  \n    public static int sum(int n) {  \n        // Base case: If n is 0, return 0 (base case)  \n        if (n == 0)  \n            return 0;  \n        else  \n return n + sum(n - 1); \n// Recursive case: If n is not 0, recursively call the sum function with n-1 and add it to n \n    }  \n}\npublic class Main{\n public static void main(String[] args) {  \n    int num = 5; // Number of natural numbers to sum  \n    // Calculate sum of first 'num' natural numbers using recursive sum function  \n    int result = SumExample.sum(num);\n    // Print the result  \n    System.out.println(\"Sum of first \" + num + \" natural numbers is: \" + result);  \n }  \n}  \nCompile and Run",
+        "Output:",
+        "In this example, if (n == 0) is the base case. When n becomes 0, the recursion stops."
+      ],
+      "code": [
+        "Sum of first 5 natural numbers is: 15"
+      ]
+    },
+    {
+      "heading": "Example 2: Recursive Method Calling Itself Infinite Times",
+      "paragraphs": [
+        "The following program demonstrates a recursive method that calls itself without a base case, resulting in infinite recursion.",
+        "class RecursionExample {\n    // Recursive function p() which prints \"hello\" and calls itself indefinitely\n    static void p() {\n        System.out.println(\"hello\"); // Print \"hello\"\n        p(); // Recursive call to itself\n    }\n}\npublic class Main{\n    public static void main(String[] args) {\n        RecursionExample.p(); // Initial call to p() from the main method\n    }\n}",
+        "Output:"
+      ],
+      "code": [
+        "hello\nhello\n...\njava.lang.StackOverflowError"
+      ]
+    },
+    {
+      "heading": "Example 3: Recursive Method Executed Finite Times",
+      "paragraphs": [
+        "The following program demonstrates recursion that runs a finite number of times using a base condition.",
+        "class RecursionExample {  \n    static int count = 0; // Static variable to keep track of the count  \n    // Recursive method p() which increments count, prints \"hello\" along with the count, and calls itself recursively  \n    static void p() {  \n        count++; // Increment the count  \n        // Check if count is less than or equal to 5  \n        if (count <= 5) {  \n            System.out.println(\"hello \" + count); // Print \"hello\" along with the current count  \n            p(); // Recursive call to itself  \n        }  \n    }  \n}\npublic class Main{\n    public static void main(String[] args) {  \n        RecursionExample.p(); // Initial call to the p() method from the main method  \n    }  \n}\nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "hello 1\nhello 2\nhello 3\nhello 4\nhello 5"
+      ]
+    },
+    {
+      "heading": "Example 4: Factorial of a Number Using Recursion",
+      "paragraphs": [
+        "The following program demonstrates how recursion is used to calculate the factorial of a number.",
+        "class FactorialExample {  \n    // Recursive function to calculate the factorial of a non-negative integer 'n'  \n    public static int factorial(int n) {  \n        // Base case: If n is 0 or 1, factorial is 1  \n        if (n == 0 || n == 1)  \n            return 1;  \n        // Recursive case: If n is greater than 1, recursively call factorial function with n-1 and multiply it with n  \n        else  \n            return n * factorial(n - 1);  \n    }  \n}\npublic class Main{\n    public static void main(String[] args) {  \n        int num = 5; // Number for which factorial is to be calculated  \n        // Calculate factorial of 'num' using recursive factorial function  \n        int result = FactorialExample.factorial(num);  \n        // Print the result  \n        System.out.println(\"Factorial of \" + num + \" is: \" + result);  \n    }  \n}  \nCompile and Run",
+        "Output:",
+        "Working of above program:"
+      ],
+      "code": [
+        "Factorial of 5 is: 120",
+        "factorial(5) \n   factorial(4) \n      factorial(3) \n         factorial(2) \n            factorial(1) \n               return 1 \n            return 2*1 = 2 \n         return 3*2 = 6 \n      return 4*6 = 24 \n   return 5*24 = 120"
+      ]
+    },
+    {
+      "heading": "Example 5: Fibonacci Series Using Recursion",
+      "paragraphs": [
+        "The following program demonstrates how to generate a Fibonacci series using recursion.",
+        "class F{  \n    static int n1=0,n2=1,n3=0;      \n     static void printFibo(int count){      \n        if(count>0){      \n             n3 = n1 + n2;      \n             n1 = n2;      \n             n2 = n3;      \n             System.out.print(\" \"+n3);     \n             printFibo(count-1);      \n         }      \n     }        \n}\npublic class Main{\n public static void main(String[] args) {  \n    int count=15;      \n    System.out.print(F.n1+\" \"+F.n2);//printing 0 and 1      \n    F.printFibo(count-2);//n-2 because 2 numbers are already printed     \n }  \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "0 1 1 2 3 5 8 13 21 34 55 89 144 233 377"
+      ]
+    },
+    {
+      "heading": "Stack Overflow Error in Recursion",
+      "paragraphs": [
+        "A Stack Overflow Error is a runtime error that occurs when a program exceeds the size of the call stack due to excessive recursive method calls. This usually happens when a recursive function does not have a proper termination condition or when the recursion depth becomes too large.",
+        "For example, if you try to calculate the factorial of a very large number, the program may throw a stack overflow error because each recursive call consumes stack memory. Similarly, calculating the factorial of a negative number without proper validation can also lead to infinite recursion and cause a stack overflow error."
+      ],
+      "code": []
+    },
+    {
+      "heading": "How to Avoid Stack Overflow Error in Recursion?",
+      "paragraphs": [
+        "To prevent a stack overflow error, follow the guidelines given below:",
+        "• Ensure a Proper Base CaseAlways define a correct base case that eventually stops the recursion. In the factorial example, the base case occurs when n is 0 or 1.\n• Limit Recursion DepthAvoid deep recursion when possible. For problems that require a large number of recursive calls, consider using an iterative approach instead.\n• Optimize RecursionRecursive logic can sometimes be optimized to reduce stack usage. Techniques such as tail recursion help minimize the number of stack frames, and some compilers can optimize tail-recursive calls into iterative forms.",
+        "For example, here is the factorial function with an additional check to prevent negative numbers:",
+        "Exampleclass FactorialExample {  \n    // Recursive function to calculate the factorial of a non-negative integer 'n'  \n    public static int factorial(int n) {  \n        // Base case: if n is negative, return an error code  \n        if (n < 0)  \n            return -1; // Error code for invalid input  \n        // Base case: if n is 0 or 1, factorial is 1  \n        else if (n == 0 || n == 1)  \n            return 1;  \n        // Recursive case: if n is greater than 1, recursively call factorial function with n-1 and multiply it with n  \n        else  \n            return n * factorial(n - 1);  \n    }  \n}\npublic class Main{\n    public static void main(String[] args) {  \n        int num = 5; // Number for which factorial is to be calculated  \n        // Calculate factorial of 'num' using recursive factorial function  \n        int result = FactorialExample.factorial(num);  \n        // Print the result  \n        System.out.println(\"Factorial of \" + num + \" is: \" + result);  \n    }  \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Factorial of 5 is: 120"
+      ]
+    },
+    {
+      "heading": "Memory Allocation During Recursion",
+      "paragraphs": [
+        "In recursion, memory is allocated to function calls on the program's call stack. Each time a function is called, a new stack frame is created and pushed onto the call stack. This stack frame contains information such as function parameters, local variables, return address, and other necessary data for executing the function.",
+        "When a function returns, its stack frame is popped off the call stack, releasing the memory allocated to it. This process continues until the initial function call (usually main() in Java) completes, at which point the call stack becomes empty.",
+        "Let's break down how memory allocation works during recursion:",
+        "Initial Function Call:",
+        "• When a function is called for the first time, its parameters and local variables are allocated memory within a stack frame.\n• The return address, which indicates where to return after the function completes, is also stored in the stack frame.\n• If the function calls itself recursively, a new stack frame is created for each recursive call.",
+        "Recursive Calls:",
+        "• Each recursive call results in the creation of a new stack frame.\n• The parameters and local variables of each recursive call are stored in their respective stack frames.\n• As the recursion progresses, the call stack grows deeper, with each function call adding a new stack frame on top of the previous one.",
+        "Base Case and Returning:",
+        "• When the base case (i.e., the termination condition of the recursion) is reached, the function begins to return.\n• As each function returns, its stack frame is popped off the call stack, freeing up the memory allocated to it.\n• The return value of each function call is typically used in the calculation of the previous function call's result, until the initial function call returns the final result.",
+        "Stack Overflow:",
+        "• If the depth of recursion becomes too large, the call stack may run out of memory, leading to a stack overflow error.\n• This typically happens when there are too many nested function calls and the call stack exceeds its maximum size."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Let’s consider the following example and understand the concept of memory allocation during recursion:",
+        "Output:",
+        "Explanation:",
+        "In this example, when factorial(5) is called:",
+        "Initial Call (factorial(5)):",
+        "• A stack frame is created for the initial call to factorial(5).\n• Inside this stack frame, the value of n is set to 5, and other necessary information, such as the return address, is stored.",
+        "First Recursive Call (factorial(4)):",
+        "• Upon encountering the recursive call factorial(n - 1), a new stack frame is created for factorial(4).\n• This stack frame contains its own copy of the parameter n, which is set to 4.\n• The call stack now contains two stack frames: one for factorial(5) and one for factorial(4).",
+        "Subsequent Recursive Calls:",
+        "• The process repeats as more recursive calls are made, each resulting in the creation of a new stack frame with its own copy of the parameter n.\n• Each stack frame remains on the call stack until its corresponding function call completes.",
+        "Base Case and Returning:",
+        "• Eventually, the base case (n == 0 or n == 1) is reached, and the recursion starts to unwind.\n• As each function call returns, its stack frame is removed from the call stack, freeing up memory.\n• The return values of the recursive calls are used to calculate the final result.",
+        "Final Result:",
+        "• After all recursive calls have returned, the initial call to factorial(5) obtains the final result.\n• Once the main function completes, the call stack becomes empty, and all memory allocated to the function calls is released."
+      ],
+      "code": [
+        "public class FactorialExample {\n    public static int factorial(int n) {\n        // Base case\n        if (n == 0 || n == 1)\n            return 1;\n        // Recursive case\n        else\n            return n * factorial(n - 1);\n    }\n    public static void main(String[] args) {\n        int result = factorial(5);\n        System.out.println(\"Factorial of 5 is: \" + result);\n    }\n}",
+        "Factorial of 5 is: 120"
+      ]
+    },
+    {
+      "heading": "Advantages of Recursion",
+      "paragraphs": [
+        "Recursion makes code simpler, more readable, and closely matches the natural structure of problems. It promotes modularity, reusability, and works well for mathematical computations and tree-like data structures binary trees, graphs, and linked lists."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Disadvantages of Recursion",
+      "paragraphs": [
+        "Recursion can be slower and memory-intensive due to multiple function calls that may cause stack overflow if too deep. It is harder to debug, and may not scale well for very large inputs."
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:32:08.527Z"
+}

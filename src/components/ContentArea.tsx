@@ -6,6 +6,7 @@ import { BookOpen, Loader2, PlusCircle, Sparkles, Send, BrainCircuit, CheckCircl
 import { createChatSession, streamContent } from '../services/geminiService';
 import { generateInterviewPlan, AIPlanResponse, loadMorePlanQuestions } from '../services/geminiService';
 import { curriculum } from '../data/curriculum';
+import { buildJavaOfflineLesson, isJavaOfflineTopic } from '../data/javaOfflineLessons';
 import { QuizUI, QuizData } from './QuizUI';
 import mammoth from 'mammoth';
 import * as pdfjsLib from 'pdfjs-dist';
@@ -394,7 +395,7 @@ async function openPdfPrintDocument(options: PdfExportOptions) {
 }
 
 function contentCacheKey(topicId: string, language: string, difficulty: Difficulty) {
-  return `zynapse_offline_v2_${topicId}_${language}_${difficulty}`;
+  return `zynapse_offline_v5_${topicId}_${language}_${difficulty}`;
 }
 
 function getLastInterviewQuestionNumber(markdown: string | null) {
@@ -456,6 +457,97 @@ OUTPUT STYLE:
 Use clean Markdown with headings, tables, bullets, code blocks, and ASCII diagrams where helpful.
 Avoid tiny shallow answers. Make it a complete mini-chapter.
 Minimum depth target: cover the topic at a level suitable for serious self-study, interview preparation, and real project usage.`;
+}
+
+function findModuleForTopic(topic: any) {
+  return curriculum.find(m =>
+    m.title === topic?.moduleTitle ||
+    m.sections.some(s => s.topics.some(t => t.id === topic?.id))
+  );
+}
+
+function buildModuleContext(topic: any) {
+  const moduleData = findModuleForTopic(topic);
+  return moduleData
+    ? moduleData.sections.map(s => `${s.title}: ${s.topics.map(t => t.title).join(', ')}`).join('\n')
+    : `${topic?.sectionTitle || 'Current section'}: ${topic?.title || 'Selected topic'}`;
+}
+
+function buildOfflineLesson(topic: any, language: string, difficulty: Difficulty, reason: string) {
+  if (isJavaOfflineTopic(topic)) {
+    return buildJavaOfflineLesson({ topic, language, difficulty, reason });
+  }
+
+  const moduleData = findModuleForTopic(topic);
+  const section = moduleData?.sections.find(s => s.topics.some(t => t.id === topic?.id));
+  const nearbyTopics = section?.topics
+    .filter(t => t.id !== topic?.id)
+    .slice(0, 8)
+    .map(t => t.title) || [];
+  const moduleTitle = topic?.moduleTitle || moduleData?.title || 'Zynapse';
+  const sectionTitle = topic?.sectionTitle || section?.title || 'Current section';
+  const depth = difficulty === 'beginner'
+    ? 'Start with definitions first, then practice tiny examples.'
+    : difficulty === 'expert'
+    ? 'Focus on internals, trade-offs, edge cases, and production-grade reasoning.'
+    : 'Balance concepts, examples, and interview readiness.';
+
+  return `# ${topic?.title || 'Selected Topic'}
+
+> Offline Study Mode: AI providers are temporarily unavailable, but this topic is still usable. Reason: ${reason}
+
+## Learning Outcomes
+- Understand what **${topic?.title || 'this topic'}** means in the context of **${moduleTitle}**.
+- Know the prerequisite ideas to review before going deeper.
+- Practice the topic through small exercises and interview-style prompts.
+- Decide what to learn next from the same module.
+
+## Context
+- Module: **${moduleTitle}**
+- Section: **${sectionTitle}**
+- Level: **${difficulty}**
+- Study approach: ${depth}
+
+## Core Explanation
+${topic?.title || 'This topic'} is one part of the larger ${moduleTitle} path. Start by identifying:
+
+1. The main definition: what problem this topic solves.
+2. The moving parts: terms, syntax, APIs, tools, or concepts involved.
+3. The workflow: how a learner uses it step by step.
+4. The mistakes: what commonly breaks and how to debug it.
+5. The production angle: where it matters in real projects or interviews.
+
+## Study Checklist
+| Area | What To Do |
+| --- | --- |
+| Definition | Write a 2-line definition in your own words. |
+| Example | Build or explain one tiny example. |
+| Debugging | List 3 errors a beginner might make. |
+| Interview | Prepare one "why", one "how", and one "when not to use it" answer. |
+| Project | Connect this topic to a small real-world feature. |
+
+## Practice Tasks
+1. Explain ${topic?.title || 'this topic'} to a beginner in 5 sentences.
+2. Create one minimal code/config/example related to it.
+3. Write 5 flashcards: definition, purpose, syntax/steps, common mistake, real-world use.
+4. Compare this topic with one related concept from the same module.
+
+## Interview Prompts
+1. What is ${topic?.title || 'this topic'}, and why does it matter?
+2. What are the prerequisites someone should know first?
+3. What is a common mistake and how would you debug it?
+4. How would you use this in a real project?
+5. What trade-offs or limitations should a senior engineer know?
+
+## Related Topics
+${nearbyTopics.length ? nearbyTopics.map(t => `- ${t}`).join('\n') : '- Review the previous and next topics in the sidebar.'}
+
+## Recovery
+- If using Groq, wait for the TPM cooldown or switch to Gemini.
+- If using Gemini, add/refresh the Gemini key in AI Provider Settings.
+- If using Ollama, start Ollama locally and select an installed chat model.
+- Use **Save Offline** after content loads so this topic remains available later.
+`;
 }
 
 export function ContentArea({ topic, language, isComplete = false, isBookmarked = false, note = '', onToggleComplete, onToggleBookmark, onSaveNote, onNavigate, onQuizOpen }: ContentAreaProps) {
@@ -569,10 +661,7 @@ export function ContentArea({ topic, language, isComplete = false, isBookmarked 
       try {
         const session = createChatSession(language);
         sessionRef.current = session;
-        const moduleData = curriculum.find(m => m.title === topic.moduleTitle || m.sections.some(s => s.topics.some(t => t.id === topic.id)));
-        const moduleContext = moduleData
-          ? moduleData.sections.map(s => `${s.title}: ${s.topics.map(t => t.title).join(', ')}`).join('\n')
-          : `${topic.sectionTitle}: ${topic.title}`;
+        const moduleContext = buildModuleContext(topic);
 
         const difficultyNote =
           difficulty === 'beginner'
@@ -784,7 +873,6 @@ Make the lesson comprehensive enough to replace a normal tutorial page.`;
           setIsStreaming(true);
           let accumulated = '';
           const messages = [
-            { role: 'system', content: mentorContract },
             { role: 'user', content: prompt },
           ];
           for await (const chunk of streamContent(messages)) {
@@ -800,7 +888,8 @@ Make the lesson comprehensive enough to replace a normal tutorial page.`;
         console.error("Failed to generate content:", error);
         if (isMounted) {
           const detail = error instanceof Error ? error.message : "Unknown provider error";
-          setContent(`# Error\nFailed to load content.\n\n**Reason:** ${detail}\n\nOpen AI Provider Settings and add your own Gemini or Groq API key for more content. Hosted keys are used first when available, then your saved keys are used as fallback.`);
+          setContent(buildOfflineLesson(topic, language, difficulty, detail));
+          setIsSaved(false);
           setIsStreaming(false);
         }
       } finally {

@@ -1,0 +1,130 @@
+{
+  "topicId": "programs",
+  "title": "Java Programs | Java Programming Examples",
+  "sectionId": "java-basics",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-programs",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-programs",
+      "score": 70,
+      "sectionCount": 14
+    }
+  ],
+  "sections": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Tutorial  Compiler  Programs  OOPs Collections  Interview Questions"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Programs | Java Programming Examples",
+      "paragraphs": [
+        "Java programs are frequently asked in interviews and examinations. These programs are commonly based on topics such as control statements, array, string, and object-oriented programming concepts. Basic Java programs like Fibonacci series, prime number, factorial, and palindrome are among the most commonly asked. All the Java programs are explained with appropriate examples and outputs. Beginners are advised to study the Java tutorial before practicing these programs. The following section presents a list of Java programs.",
+        "• Java Basic Programs\n• Java Number Programs\n• Java Array Programs\n• Java Matrix Programs\n• Java String Programs\n• Java Searching and Sorting Programs\n• Java Conversion Programs\n• Pattern programs\n• Singly Linked List Programs\n• Circular Linked List Programs\n• Doubly Linked List Programs\n• Tree Programs"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Basic Programs",
+      "paragraphs": [
+        "These are basic programs that help in understanding fundamental programming concepts.",
+        "• Fibonacci Series in Java\n• Prime Number Program in Java\n• Palindrome Program in Java\n• Factorial Program in Java\n• Armstrong Number in Java\n• How to Generate Random Number in Java\n• How to Print Pattern in Java\n• How to Compare Two Objects in Java\n• How to Create Object in Java\n• How to Print ASCII Value in Java"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Number Programs",
+      "paragraphs": [
+        "These are number programs that help in understanding basic number-related concepts.",
+        "• How to Reverse a Number in Java\n• Java Program to convert Number to Word\n• Automorphic Number Program in Java\n• Peterson Number in Java\n• Sunny Number in Java\n• Tech Number in Java\n• Fascinating Number in Java\n• Keith Number in Java\n• Neon Number in Java\n• Spy Number in Java\n• ATM program Java\n• Autobiographical Number in Java\n• Emirp Number in Java\n• Sphenic Number in Java\n• Buzz Number Java\n• Duck Number Java\n• Evil Number Java\n• ISBN Number Java\n• Krishnamurthy Number Java\n• Bouncy Number in Java\n• Mystery Number in Java\n• Smith Number in Java\n• Strontio Number in Java\n• Xylem and Phloem Number in Java\n• nth Prime Number Java\n• Java Program to Display Alternate Prime Numbers\n• Java Program to Find Square Root of a Number Without sqrt Method\n• Java Program to Swap Two Numbers Using Bitwise Operator\n• Java Program to Find GCD of Two Numbers\n• Java Program to Find Largest of Three Numbers\n• Java Program to Find Smallest of Three Numbers Using Ternary Operator\n• Java Program to Check if a Number is Positive or Negative\n• Java Program to Check if a Given Number is Perfect Square\n• Java Program to Display Even Numbers From 1 to 100\n• Java Program to Display Odd Numbers From 1 to 100\n• Java Program to Find Sum of Natural Numbers"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Array Programs",
+      "paragraphs": [
+        "These are array programs that demonstrate common operations such as copying, searching, sorting, rotating, and analyzing elements in an array.",
+        "• Java Program to copy all elements of one array into another array\n• Java Program to find the frequency of each element in the array\n• Java Program to left rotate the elements of an array\n• Java Program to print the duplicate elements of an array\n• Java Program to print the elements of an array\n• Java Program to print the elements of an array in reverse order\n• Java Program to print the elements of an array present on even position\n• Java Program to print the elements of an array present on odd position\n• Java Program to print the largest element in an array\n• Java Program to print the smallest element in an array\n• Java Program to print the number of elements present in an array\n• Java Program to print the sum of all the items of the array\n• Java Program to right rotate the elements of an array\n• Java Program to sort the elements of an array in ascending order\n• Java Program to sort the elements of an array in descending order\n• Java Program to Find 3rd Largest Number in an array\n• Java Program to Find 2nd Largest Number in an array\n• Java Program to Find Largest Number in an array\n• Java to Program Find 2nd Smallest Number in an array\n• Java Program to Find Smallest Number in an array\n• Java Program to Remove Duplicate Element in an array\n• Java Program to Print Odd and Even Numbers from an array\n• How to Sort an Array in Java"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Matrix Programs",
+      "paragraphs": [
+        "These are matrix programs that demonstrate basic operations such as addition, subtraction, multiplication, transpose, and analysis of matrices.",
+        "• Java Matrix Programs\n• Java Program to Add Two Matrices\n• Java Program to Multiply Two Matrices\n• Java Program to subtract the two matrices\n• Java Program to determine whether two matrices are equal\n• Java Program to display the lower triangular matrix\n• Java Program to display the upper triangular matrix\n• Java Program to find the frequency of odd & even numbers in the given matrix\n• Java Program to find the product of two matrices\n• Java Program to find the sum of each row and each column of a matrix\n• Java Program to find the transpose of a given matrix\n• Java Program to determine whether a given matrix is an identity matrix\n• Java Program to determine whether a given matrix is a sparse matrix\n• Java Program to Transpose matrix"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java String Programs",
+      "paragraphs": [
+        "These are string programs that demonstrate common string operations such as counting characters, searching, comparing, modifying, and analyzing strings.",
+        "• Java Program to count the total number of characters in a string\n• Java Program to count the total number of punctuation characters exists in a String\n• Java Program to count the total number of vowels and consonants in a string\n• Java Program to determine whether two strings are the anagram\n• Java Program to divide a string in 'N' equal parts.\n• Java Program to find all subsets of a string\n• Java Program to find the longest repeating sequence in a string\n• Java Program to find all the permutations of a string\n• Java Program to remove all the white spaces from a string\n• Java Program to replace lower-case characters with upper-case and vice-versa\n• Java Program to replace the spaces of a string with a specific character\n• Java Program to determine whether a given string is palindrome\n• Java Program to determine whether one string is a rotation of another\n• Java Program to find maximum and minimum occurring character in a string\n• Java Program to find Reverse of the string\n• Java program to find the duplicate characters in a string\n• Java program to find the duplicate words in a string\n• Java Program to find the frequency of characters\n• Java Program to find the largest and smallest word in a string\n• Java Program to find the most repeated word in a text file\n• Java Program to find the number of the words in the given text file\n• Java Program to separate the Individual Characters from a String\n• Java Program to swap two string variables without using third or temp variable.\n• Java Program to print smallest and biggest possible palindrome word in a given string\n• Reverse String in Java Word by Word\n• Reserve String without reverse() function"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Searching and Sorting Programs",
+      "paragraphs": [
+        "These programs demonstrate basic searching and sorting techniques used to organize and locate data efficiently.",
+        "• Linear Search in Java\n• Binary Search in Java\n• Bubble Sort in Java\n• Selection Sort in Java\n• Insertion Sort in Java"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Conversion Programs",
+      "paragraphs": [
+        "These programs demonstrate type conversion between different data types such as numbers, strings, characters, dates, and binary formats.",
+        "• How to convert String to int in Java\n• How to convert int to String in Java\n• How to convert String to long in Java\n• How to convert long to String in Java\n• How to convert String to float in Java\n• How to convert float to String in Java\n• How to convert String to double in Java\n• How to convert double to String in Java\n• How to convert String to Date in Java\n• How to convert Date to String in Java\n• How to convert String to char in Java\n• How to convert char to String in Java\n• How to convert String to Object in Java\n• How to convert Object to String in Java\n• How to convert int to long in Java\n• How to convert long to int in Java\n• How to convert int to double in Java\n• How to convert double to int in Java\n• How to convert char to int in Java\n• How to convert int to char in Java\n• How to convert String to boolean in Java\n• How to convert boolean to String in Java\n• How to convert Date to Timestamp in Java\n• How to convert Timestamp to Date in Java\n• How to convert Binary to Decimal in Java\n• How to convert Decimal to Binary in Java\n• How to convert Hex to Decimal in Java\n• How to convert Decimal to Hex in Java\n• How to convert Octal to Decimal in Java\n• How to convert Decimal to Octal in Java"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Pattern programs",
+      "paragraphs": [
+        "These programs demonstrate pattern printing using loops and basic control statements.",
+        "• Java program to print the following spiral pattern on the console\n• Java program to print the following pattern\n• Java program to print the following pattern 2\n• Java program to print the following pattern 3\n• Java program to print the following pattern 4\n• Java program to print the following pattern 5\n• Java program to print the following pattern on the console\n• Java program to print the following pattern on the console 2\n• Java program to print the following pattern on the console 3\n• Java program to print the following pattern on the console 4\n• Java program to print the following pattern on the console 5\n• Java program to print the following pattern on the console 6\n• Java program to print the following pattern on the console 7\n• Java program to print the following pattern on the console 8\n• Java program to print the following pattern on the console 9\n• Java program to print the following pattern on the console 10\n• Java program to print the following pattern on the console 11\n• Java program to print the following pattern on the console 12"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Singly Linked List Programs",
+      "paragraphs": [
+        "These programs demonstrate operations performed on singly linked lists such as creation, insertion, deletion, traversal, and searching.",
+        "• Singly linked list Examples in Java\n• Java Program to create and display a singly linked list\n• Java program to create a singly linked list of n nodes and count the number of nodes\n• Java program to create a singly linked list of n nodes and display it in reverse order\n• Java program to delete a node from the beginning of the singly linked list\n• Java program to delete a node from the middle of the singly linked list\n• Java program to delete a node from the end of the singly linked list\n• Java program to determine whether a singly linked list is the palindrome\n• Java program to find the maximum and minimum value node from a linked list\n• Java Program to insert a new node at the middle of the singly linked list\n• Java program to insert a new node at the beginning of the singly linked list\n• Java program to insert a new node at the end of the singly linked list\n• Java program to remove duplicate elements from a singly linked list\n• Java Program to search an element in a singly linked list"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Circular Linked List Programs",
+      "paragraphs": [
+        "These programs demonstrate operations performed on circular linked lists such as creation, insertion, deletion, traversal, and searching.",
+        "• Java program to create and display a Circular Linked List\n• Java program to create a Circular Linked List of N nodes and count the number of nodes\n• Java program to create a Circular Linked List of n nodes and display it in reverse order\n• Java program to delete a node from the beginning of the Circular Linked List\n• Java program to delete a node from the end of the Circular Linked List\n• Java program to delete a node from the middle of the Circular Linked List\n• Java program to find the maximum and minimum value node from a circular linked list\n• Java program to insert a new node at the beginning of the Circular Linked List\n• Java program to insert a new node at the end of the Circular Linked List\n• Java program to insert a new node at the middle of the Circular Linked List\n• Java program to remove duplicate elements from a Circular Linked List\n• Java program to search an element in a Circular Linked List\n• Java program to sort the elements of the Circular Linked List"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Doubly Linked List Programs",
+      "paragraphs": [
+        "These programs demonstrate operations on doubly linked lists, such as insertion, deletion, traversal, rotation, and sorting.",
+        "• Java program to convert a given binary tree to doubly linked list\n• Java program to create a doubly linked list from a ternary tree\n• Java program to create a doubly linked list of n nodes and count the number of nodes\n• Java program to create a doubly linked list of n nodes and display it in reverse order\n• Java program to create and display a doubly linked list\n• Java program to delete a new node from the beginning of the doubly linked list\n• Java program to delete a new node from the end of the doubly linked list\n• Java program to delete a new node from the middle of the doubly linked list\n• Java program to find the maximum and minimum value node from a doubly linked list\n• Java program to insert a new node at the end of the Doubly Linked List\n• Java program to insert a new node at the middle of the Doubly Linked List\n• Java program to remove duplicate elements from a Doubly Linked List\n• Java program to rotate doubly linked list by N nodes\n• Java program to search an element in a doubly linked list\n• Java program to sort the elements of the doubly linked list"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Tree Programs",
+      "paragraphs": [
+        "These programs demonstrate various operations on binary trees and binary search trees, including traversal, searching, insertion, deletion, and analysis.",
+        "• Java Program to calculate the Difference between the Sum of the Odd Level and the Even Level Nodes of a Binary Tree\n• Java program to construct a Binary Search Tree and perform deletion and In-order traversal\n• Java program to convert Binary Tree to Binary Search Tree\n• Java program to determine whether all leaves are at same level\n• Java program to determine whether two trees are identical\n• Java program to find maximum width of a binary tree\n• Java program to find the largest element in a Binary Tree\n• Java program to find the maximum depth or height of a tree\n• Java program to find the nodes which are at the maximum distance in a Binary Tree\n• Java program to find the smallest element in a tree\n• Java program to find the sum of all the nodes of a binary tree\n• Java program to find the total number of possible Binary Search Trees with N keys\n• Java program to implement Binary Tree using the Linked List\n• Java program to search a node in a Binary Tree",
+        "Next TopicJava-classes-and-objects"
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:31:18.366Z"
+}

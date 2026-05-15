@@ -1,0 +1,192 @@
+{
+  "topicId": "interface",
+  "title": "Java - Interfaces",
+  "sectionId": "java-oops",
+  "source": "tutorialspoint",
+  "url": "https://www.tutorialspoint.com/java/java_interfaces.htm",
+  "allSources": [
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_interfaces.htm",
+      "score": 112,
+      "sectionCount": 21
+    },
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/functional-interfaces-in-java",
+      "score": 84,
+      "sectionCount": 14
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java Interfaces",
+      "paragraphs": [
+        "Java interface is a collection of abstract methods. The interface is used to achieve abstraction in which you can define methods without their implementations (without having the body of the methods). An interface is a reference type and is similar to the class.",
+        "Along with abstract methods, an interface may also contain constants, default methods, static methods, and nested types. Method bodies exist only for default methods and static methods.",
+        "Writing an interface is similar to writing a class. However, a class describes the attributes and behaviors of an object. An interface contains behaviors that a class implements. Unless the class that implements the interface is abstract, all the methods of the interface need to be defined in the class."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Similarities",
+      "paragraphs": [
+        "An interface is similar to a class in the following ways −",
+        "• An interface can contain any number of methods.\n• An interface is written in a file with a .java extension, with the name of the interface matching the name of the file.\n• The byte code of an interface appears in a .class file.\n• Interfaces appear in packages, and their corresponding bytecode file must be in a directory structure that matches the package name."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Differences",
+      "paragraphs": [
+        "However, an interface is different from a class in several ways, including −",
+        "• You cannot instantiate an interface.\n• An interface does not contain any constructors.\n• All of the methods in an interface are abstract.\n• An interface cannot contain instance fields. The only fields that can appear in an interface must be declared both static and final.\n• An interface is not extended by a class; it is implemented by a class.\n• An interface can extend multiple interfaces."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Declaring an Interface in Java",
+      "paragraphs": [
+        "The interface keyword is used to declare an interface. Here is a simple example to declare an interface −"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example to Declare a Java Interface",
+      "paragraphs": [
+        "Following is an example of an interface −"
+      ],
+      "code": [
+        "/* File name : NameOfInterface.java */\nimport java.lang.*;\n// Any number of import statements\n\npublic interface NameOfInterface {\n   // Any number of final, static fields\n   // Any number of abstract method declarations\\\n}"
+      ]
+    },
+    {
+      "heading": "Propeties of Java Interface",
+      "paragraphs": [
+        "Interfaces have the following properties −",
+        "• An interface is implicitly abstract. You do not need to use the abstract keyword while declaring an interface.\n• Each method in an interface is also implicitly abstract, so the abstract keyword is not needed.\n• Methods in an interface are implicitly public."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [],
+      "code": [
+        "/* File name : Animal.java */\ninterface Animal {\n   public void eat();\n   public void travel();\n}"
+      ]
+    },
+    {
+      "heading": "Implementing Interfaces in Java",
+      "paragraphs": [
+        "When a class implements an interface, you can think of the class as signing a contract, agreeing to perform the specific behaviors of the interface. If a class does not perform all the behaviors of the interface, the class must declare itself as abstract.",
+        "A class uses the implements keyword to implement an interface. The implements keyword appears in the class declaration following the extends portion of the declaration."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: Implement an Interface in Java",
+      "paragraphs": [],
+      "code": [
+        "/* File name : MammalInt.java */\npublic class MammalInt implements Animal {\n\n   public void eat() {\n      System.out.println(\"Mammal eats\");\n   }\n\n   public void travel() {\n      System.out.println(\"Mammal travels\");\n   } \n\n   public int noOfLegs() {\n      return 0;\n   }\n\n   public static void main(String args[]) {\n      MammalInt m = new MammalInt();\n      m.eat();\n      m.travel();\n   }\n} \ninterface Animal {\n   public void eat();\n   public void travel();\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Mammal eats\nMammal travels"
+      ]
+    },
+    {
+      "heading": "Rules for defining overriding methods in Java Interfaces",
+      "paragraphs": [
+        "When overriding methods defined in interfaces, there are several rules to be followed −",
+        "• Checked exceptions should not be declared on implementation methods other than the ones declared by the interface method or subclasses of those declared by the interface method.\n• The signature of the interface method and the same return type or subtype should be maintained when overriding the methods.\n• An implementation class itself can be abstract and if so, interface methods need not be implemented."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Rules for implementing Java Interfaces",
+      "paragraphs": [
+        "When implementation interfaces, there are several rules −",
+        "• A class can implement more than one interface at a time.\n• A class can extend only one class, but implement many interfaces.\n• An interface can extend another interface, in a similar way as a class can extend another class."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Extending Java Interfaces",
+      "paragraphs": [
+        "An interface can extend another interface in the same way that a class can extend another class. The extends keyword is used to extend an interface, and the child interface inherits the methods of the parent interface."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example: How to Extend Java Interface",
+      "paragraphs": [
+        "The following Sports interface is extended by Hockey and Football interfaces.",
+        "The Hockey interface has four methods, but it inherits two from Sports; thus, a class that implements Hockey needs to implement all six methods. Similarly, a class that implements Football needs to define the three methods from Football and the two methods from Sports."
+      ],
+      "code": [
+        "// Filename: Sports.java\npublic interface Sports {\n   public void setHomeTeam(String name);\n   public void setVisitingTeam(String name);\n}\n\n// Filename: Football.java\npublic interface Football extends Sports {\n   public void homeTeamScored(int points);\n   public void visitingTeamScored(int points);\n   public void endOfQuarter(int quarter);\n}\n\n// Filename: Hockey.java\npublic interface Hockey extends Sports {\n   public void homeGoalScored();\n   public void visitingGoalScored();\n   public void endOfPeriod(int period);\n   public void overtimePeriod(int ot);\n}"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [],
+      "code": [
+        "interface Sports {\n   public void setHomeTeam(String name);\n   public void setVisitingTeam(String name);\n}\n\ninterface Football extends Sports {\n   public void homeTeamScored(int points);\n   public void visitingTeamScored(int points);\n   public void endOfQuarter(int quarter);\n}\n\ninterface Hockey extends Sports {\n   public void homeGoalScored();\n   public void visitingGoalScored();\n   public void endOfPeriod(int period);\n   public void overtimePeriod(int ot);\n}\n\npublic class HockeyDemo implements Hockey {\n\n   public void setHomeTeam(String name) {\n      System.out.println(\"Home team: \" + name);\n   }\n\n   public void setVisitingTeam(String name) {}\n\n   public void homeGoalScored() {}\n\n   public void visitingGoalScored() {}\n\n   public void endOfPeriod(int period) {}\n\n   public void overtimePeriod(int ot) {}\n\n   public static void main(String[] args) {\n      Hockey hockeyDemo = new HockeyDemo();\n      hockeyDemo.setHomeTeam(\"India\");\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Home team: India"
+      ]
+    },
+    {
+      "heading": "Extending Multiple Java Interfaces",
+      "paragraphs": [
+        "A Java class can only extend one parent class. Multiple inheritance is not allowed. Interfaces are not classes, however, and an interface can extend more than one parent interface.",
+        "The extends keyword is used once, and the parent interfaces are declared in a comma-separated list.",
+        "For example, if the Hockey interface extended both Sports and Event, it would be declared as −"
+      ],
+      "code": [
+        "public interface Hockey extends Sports, Event"
+      ]
+    },
+    {
+      "heading": "Example: How to Extend Multiple Java Interface",
+      "paragraphs": [],
+      "code": [
+        "interface Sports {\n   public void setHomeTeam(String name);\n   public void setVisitingTeam(String name);\n}\n\ninterface Football extends Sports {\n   public void homeTeamScored(int points);\n   public void visitingTeamScored(int points);\n   public void endOfQuarter(int quarter);\n}\n\ninterface Hockey extends Sports {\n   public void homeGoalScored();\n   public void visitingGoalScored();\n   public void endOfPeriod(int period);\n   public void overtimePeriod(int ot);\n}\n\ninterface Event {\n   public void organize();\n}\npublic class HockeyDemo implements Hockey, Event {\n\n   public void setHomeTeam(String name) {\n      System.out.println(\"Home team: \" + name);\n   }\n\n   public void setVisitingTeam(String name) {}\n\n   public void homeGoalScored() {}\n\n   public void visitingGoalScored() {}\n\n   public void endOfPeriod(int period) {}\n\n   public void overtimePeriod(int ot) {}\n\n   public static void main(String[] args) {\n      HockeyDemo hockeyDemo = new HockeyDemo();\n      hockeyDemo.setHomeTeam(\"India\");\n      hockeyDemo.organize();\n   }\n\n   public void organize() {\n      System.out.println(\"Match organized. \");\n   }\n}"
+      ]
+    },
+    {
+      "heading": "Output",
+      "paragraphs": [],
+      "code": [
+        "Home team: India\nMatch organized."
+      ]
+    },
+    {
+      "heading": "Tagging Java Interfaces",
+      "paragraphs": [
+        "The most common use of extending interfaces occurs when the parent interface does not contain any methods. For example, the MouseListener interface in the java.awt.event package extended java.util.EventListener, which is defined as −"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "An interface with no methods in it is referred to as a tagging interface. There are two basic design purposes of tagging interfaces −",
+        "Creates a common parent − As with the EventListener interface, which is extended by dozens of other interfaces in the Java API, you can use a tagging interface to create a common parent among a group of interfaces. For example, when an interface extends EventListener, the JVM knows that this particular interface is going to be used in an event delegation scenario.",
+        "Adds a data type to a class − This situation is where the term, tagging comes from. A class that implements a tagging interface does not need to define any methods (since the interface does not have any), but the class becomes an interface type through polymorphism."
+      ],
+      "code": [
+        "package java.util;\npublic interface EventListener\n{}"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:34:00.226Z"
+}

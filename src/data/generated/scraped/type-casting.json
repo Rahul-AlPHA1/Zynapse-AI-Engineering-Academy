@@ -1,0 +1,162 @@
+{
+  "topicId": "type-casting",
+  "title": "Type Casting in Java",
+  "sectionId": "java-basics",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/type-casting-in-java",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/type-casting-in-java",
+      "score": 90,
+      "sectionCount": 16
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_type_casting.htm",
+      "score": 71,
+      "sectionCount": 12
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Type Casting in Java",
+      "paragraphs": [
+        "Type casting in Java is a fundamental concept that allows developers to convert data from one data type to another. It is essential for handling data in various situations, especially when dealing with different types of variables, expressions, and methods. In Java, type casting is a method or process that converts a data type into another data type in both manually and automatically. The compiler does the automatic conversion, and manual conversion is performed by the programmer."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Type Casting",
+      "paragraphs": [
+        "Converting a value from one data type to another data type is known as type casting."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Rules of Typecasting",
+      "paragraphs": [
+        "Widening Conversion (Implicit)",
+        "• No explicit notation is required.\n• Conversion from a smaller data type to a larger data type is allowed.\n• No risk of data loss.",
+        "Narrowing Conversion (Explicit)",
+        "• Requires explicit notation using parentheses and casting.\n• Conversion from a larger data type to a smaller data type is allowed.\n• Risk of data loss due to truncation."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Use Cases",
+      "paragraphs": [
+        "Typecasting is commonly used in various scenarios, such as:",
+        "• Converting between primitive data types.\n• Handling data in expressions and calculations.\n• Interacting with different methods and APIs that expect specific data types."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Types of Type Casting",
+      "paragraphs": [
+        "There are two types of type casting:",
+        "• Widening Type Casting\n• Narrowing Type Casting"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Widening Type Casting",
+      "paragraphs": [
+        "Converting a lower data type into a higher one is called widening type casting. It is also known as implicit conversion or casting down. It is done automatically. It is safe because there is no chance of losing data. It takes place when:",
+        "• Both data types must be compatible with each other.\n• The target type must be larger than the source type."
+      ],
+      "code": [
+        "byte -> short -> char -> int -> long -> float -> double"
+      ]
+    },
+    {
+      "heading": "Why Widening Type Casting?",
+      "paragraphs": [
+        "Widening conversion needs to be implemented in order to enable Java to work smoothly with different data types. It creates unbroken workflows when an element of a smaller type is used in a context that needs a larger type. The reason for generalizing the narrower type is in order not to avoid losing any data by converting the smaller type to the larger one and preserving all the information."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Types of Widening Type Casting",
+      "paragraphs": [
+        "The common procedure of the Widening type casting is about conversion from primitive to primitive data types in Java.",
+        "• From byte to short, int, long, float, or double.\n• From data to type int, long, float, or double.\n• Char to int, long, float, or double can be converted.\n• Various other types, like int, long, float, or double, can also be used."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Important Points to Remember",
+      "paragraphs": [
+        "• Widening typecasting is performed automatically by the Java compiler when converting from a smaller data type to a larger data type.\n• No explicit notation, such as casting, is required for widening typecasting.\n• Widening conversions are always safe and do not result in any loss of data.\n• Widening typecasting is commonly used in assignments, expressions, and method invocations where data of different types interact.",
+        "For example, the conversion between a numeric data type and to char or Boolean is not done automatically. Also, the char and Boolean data types are not compatible with each other. Let's see an example.",
+        "Examplepublic class Main  {  \npublic static void main(String[] args)  {  \nint x = 7;  \n//automatically converts the integer type into the long type  \nlong y = x;  \n//automatically converts the long type into float type  \nfloat z = y;  \nSystem.out.println(\"Before conversion, int value \"+x);  \nSystem.out.println(\"After conversion, long value \"+y);  \nSystem.out.println(\"After conversion, float value \"+z);  \n}  \n}  \nCompile and Run",
+        "Output:",
+        "In the above example, we have taken a variable x and converted it into a long type. After that, the long type is converted into the float type."
+      ],
+      "code": [
+        "Before conversion, the value is: 7\nAfter conversion, the long value is: 7\nAfter conversion, the float value is: 7.0"
+      ]
+    },
+    {
+      "heading": "Narrowing Type Casting",
+      "paragraphs": [
+        "Converting a higher data type into a lower one is called narrowing type casting. It is also known as explicit conversion or casting up. It is done manually by the programmer. If we do not perform casting, then the compiler reports a compile-time error."
+      ],
+      "code": [
+        "double -> float -> long -> int -> char -> short -> byte"
+      ]
+    },
+    {
+      "heading": "Why Narrowing Type casting?",
+      "paragraphs": [
+        "Narrowing typecasting becomes necessary when we need to convert data from a larger data type to a smaller one. It often occurs when we are working with data of different sizes and need to fit larger values into smaller containers.",
+        "Let's see an example of narrowing type casting.",
+        "In the following example, we have performed the narrowing type casting two times. First, we have converted the double type into a long data type, and then that long data type is converted into an int type.",
+        "Examplepublic class Main  {  \npublic static void main(String args[])  {  \ndouble d = 166.66;  \n//converting double data type into long data type  \nlong l = (long)d;  \n//converting long data type into int data type  \nint i = (int)l;  \nSystem.out.println(\"Before conversion: \"+d);  \n//fractional part lost  \nSystem.out.println(\"After conversion into long type: \"+l);  \n//fractional part lost  \nSystem.out.println(\"After conversion into int type: \"+i);  \n}  \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Before conversion: 166.66\nAfter conversion into long type: 166\nAfter conversion into int type: 166"
+      ]
+    },
+    {
+      "heading": "Potential Data Loss",
+      "paragraphs": [
+        "One of the risky things incurred with narrowing type casting is data loss. When going from a larger data type to a smaller one, we may lose accuracy or range. For example, if the value of the target data type is larger than the range represented by the larger data type."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Handling Potential Data Loss",
+      "paragraphs": [
+        "• The data stability depends on your caution when type casting.\n• Make certain that the value that is being converted falls within the range of the data target type.\n• Remember about the potential miscalculation, especially when converting floating-point numbers to integers.\n• Employ rounding or other techniques to ensure data integrity given the demands of your application."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Avoiding Runtime Errors",
+      "paragraphs": [
+        "Narrowing type casting or any other improper usage of it can lead to runtime errors consisting of data truncation or unexpected behaviors.",
+        "• Data loss might happen, and cope with it appropriately.\n• Check your code thoroughly, especially when it involves converting between different data types.\n• Looking at different methods, for example, widening type casting or the use of data structures that can handle larger values without precision loss, is an alternative way of doing it."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Type Casting Pitfalls",
+      "paragraphs": [
+        "While type casting is a powerful feature, it comes with certain pitfalls:",
+        "• Data loss in narrowing conversions.\n• Potential runtime errors if type casting is not handled properly.\n• Reduced code readability if type casting is overused."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Avoiding Pitfalls",
+      "paragraphs": [
+        "• Use implicit type casting where possible to ensure data integrity.\n• Employ explicit type casting only when necessary, and handle potential data loss carefully.\n• Thoroughly test code involving type casting to identify and address any runtime issues.",
+        "Next TopicReal-time-example-for-immutable-class-in-java"
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:30:12.064Z"
+}

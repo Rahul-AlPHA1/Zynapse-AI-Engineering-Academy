@@ -1,0 +1,167 @@
+{
+  "topicId": "comments",
+  "title": "Java Comments",
+  "sectionId": "java-basics",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-comments",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-comments",
+      "score": 102,
+      "sectionCount": 15
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_comments.htm",
+      "score": 95,
+      "sectionCount": 16
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java Comments",
+      "paragraphs": [
+        "The Java comments are the statements in a program that are not executed by the compiler and interpreter."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Why do we use comments in a code?",
+      "paragraphs": [
+        "• Comments are used to make the program more readable by adding the details of the code.\n• It makes easy to maintain the code and to find the errors easily.\n• The comments can be used to provide information or explanation about the variable, method, class, or any statement.\n• It can also be used to prevent the execution of program code while testing the alternative code."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Types of Java Comments",
+      "paragraphs": [
+        "There are three types of comments in Java.",
+        "• Single Line Comment\n• Multi Line Comment\n• Documentation Comment"
+      ],
+      "code": []
+    },
+    {
+      "heading": "1) Java Single Line Comment",
+      "paragraphs": [
+        "The single-line comment is used to comment only one line of the code. It is the widely used and easiest way of commenting the statements.",
+        "Single line comments starts with two forward slashes (//). Any text in front of // is not executed by Java."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [
+        "It has the following syntax:"
+      ],
+      "code": [
+        "//This is single line comment"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example shows single-line comments in Java. Comments starting with // are ignored by the compiler. The program prints 10.",
+        "Output:"
+      ],
+      "code": [
+        "public class CommentExample1 {  \npublic static void main(String[] args) {  \nint i=10; // i is a variable with value 10\nSystem.out.println(i);  //printing the variable i\n}  \n}",
+        "10"
+      ]
+    },
+    {
+      "heading": "2) Java Multi Line Comment",
+      "paragraphs": [
+        "The multi-line comment is used to comment multiple lines of code. It can be used to explain a complex code snippet or to comment multiple lines of code at a time (as it will be difficult to use single-line comments there).",
+        "Multi-line comments are placed between /* and */. Any text between /* and */ is not executed by Java."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [
+        "It has the following syntax:"
+      ],
+      "code": [
+        "/* \nThis  \nis  \nmulti line  \ncomment \n*/"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example shows multi-line comments in Java. Comments enclosed between /* and */ are ignored by the compiler. The program prints 10 and skips the commented code.",
+        "Output:"
+      ],
+      "code": [
+        "public class CommentExample2 {  \npublic static void main(String[] args) {  \n/* Let's declare and \n print variable in java. */  \n  int i=10;  \n    System.out.println(i);  \n/* float j = 5.9;\n    float k = 4.4;\n    System.out.println( j + k ); */  \n}  \n}",
+        "10"
+      ]
+    },
+    {
+      "heading": "3) Java Documentation Comment",
+      "paragraphs": [
+        "Documentation comments are usually used to write large programs for a project or software application as it helps to create documentation API. These APIs are needed for reference, i.e., which classes, methods, arguments, etc., are used in the code.",
+        "To create documentation API, we need to use the javadoc tool. The documentation comments are placed between /** and */."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [
+        "It has the following syntax:"
+      ],
+      "code": [
+        "/** \n*\n*We can use various tags to depict the parameter\n*or heading or author name\n*We can also use HTML tags  \n*\n*/"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates the use of a Java documentation comment. The comment starts with /** and ends with */ and is used to describe the class and its functionality.",
+        "Output:"
+      ],
+      "code": [
+        "/**\n * This program prints a welcome message.\n */\npublic class DocCommentExample {\n    public static void main(String[] args) {\n        System.out.println(\"Welcome to Java!\");\n    }\n}",
+        "Welcome to Java!"
+      ]
+    },
+    {
+      "heading": "javadoc tags",
+      "paragraphs": [
+        "Some of the commonly used tags in documentation comments:",
+        "Tag | Syntax | Description\n{@docRoot} | {@docRoot} | to depict relative path to root directory of generated document from any page.\n@author | @author name - text | To add the author of the class.\n@code | {@code text} | To show the text in code font without interpreting it as html markup or nested javadoc tag.\n@version | @version version-text | To specify \"Version\" subheading and version-text when -version option is used.\n@since | @since release | To add \"Since\" heading with since text to generated documentation.\n@param | @param parameter-name description | To add a parameter with given name and description to 'Parameters' section.\n@return | @return description | Required for every method that returns something (except void)",
+        "Let's use the Javadoc tag in a Java program."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example using Javadoc tag",
+      "paragraphs": [
+        "The following example shows Java documentation comments used to describe a class and its methods. These comments start with /** */ and can include tags like @author, @param, and @return.",
+        "Compile it by javac tool:",
+        "Create Document",
+        "Create documentation API by javadoc tool:",
+        "Now, the HTML files are created for the Calculate class in the current directory, i.e., abcDemo. Open the HTML files, and we can see the explanation of Calculate class provided through the documentation comment."
+      ],
+      "code": [
+        "import java.io.*;\n\n/**\n * <h2> Calculation of numbers </h2>\n * This program implements an application\n * to perform operation such as addition of numbers \n * and print the result \n * <p>\n * <b>Note:</b> Comments make the code readable and \n * easy to understand.\n * \n * @author Anurati \n * @version 16.0\n * @since 2021-07-06\n */\n \n public class Calculate{\n    /**\n     * This method calculates the summation of two integers.\n     * @param input1 This is the first parameter to sum() method\n     * @param input2 This is the second parameter to the sum() method.\n     * @return int This returns the addition of input1 and input2\n     */\n    public int sum(int input1, int input2){\n        return input1 + input2;\n    }\n    /**\n    * This is the main method uses of sum() method.\n    * @param args Unused\n    * @see IOException \n    */  \n    public static void main(String[] args) {\n        Calculate obj = new Calculate();\n        int result = obj.sum(40, 20);\n\n        System.out.println(\"Addition of numbers: \" + result);\n    }  \n }"
+      ]
+    },
+    {
+      "heading": "Are Java comments executable?",
+      "paragraphs": [
+        "Ans: As we know, Java comments are not executed by the compiler or interpreter, however, before the lexical transformation of code in compiler, contents of the code are encoded into ASCII in order to make the processing easy.",
+        "Test.java",
+        "Output:",
+        "The above code generate the output because the compiler parses the Unicode character \\u000d as a new line before the lexical transformation, and thus the code is transformed as shown below:",
+        "Test.java",
+        "Thus, the Unicode character shifts the print statement to next line and it is executed as a normal Java code."
+      ],
+      "code": [
+        "public class Test{\n\tpublic static void main(String[] args) {\n\t\t//the below comment will be executed\n// \\u000d System.out.println(\"Java comment is executed!!\");\n\t}\n}",
+        "public class Test{\n\tpublic static void main(String[] args) {\n\t\t//the below comment will be executed\n//\nSystem.out.println(\"Java comment is executed!!\");\n\t}\n}"
+      ]
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:31:15.592Z"
+}

@@ -374,7 +374,7 @@ export function AIProviderSettings({ isOpen, onClose }: AIProviderSettingsProps)
                         {cfg.isLocal && (
                           <div>
                             <p className="text-xs text-zinc-500 leading-relaxed">
-                              Local Ollama is locked to {LOCAL_OLLAMA_MODEL} for low-end CPU stability.
+                              Local Ollama defaults to {LOCAL_OLLAMA_MODEL}, but you can use any installed chat model from your PC.
                             </p>
                           </div>
                         )}
@@ -444,13 +444,13 @@ export function AIProviderSettings({ isOpen, onClose }: AIProviderSettingsProps)
                   <label className="text-xs text-zinc-400 block mb-1.5">Local Model</label>
                   <div className="px-3 py-2 rounded-lg bg-black/40 border border-emerald-500/25 text-white text-sm">
                     <span className="font-mono">{LOCAL_OLLAMA_MODEL}</span>
-                    <span className="ml-2 text-zinc-500">({LOCAL_OLLAMA_MODEL_NAME}, locked low-end CPU model)</span>
+                    <span className="ml-2 text-zinc-500">({LOCAL_OLLAMA_MODEL_NAME}, low-end default)</span>
                   </div>
                 </div>
 
                 <div>
                   <p className="text-xs text-zinc-500 leading-relaxed">
-                    Zynapse local mode now uses only {LOCAL_OLLAMA_MODEL}. If it is missing, setup and tests will pull it automatically through Ollama.
+                    Zynapse local mode uses your selected Ollama model. {LOCAL_OLLAMA_MODEL} remains the low-end default, and installed models appear in the selector.
                   </p>
                 </div>
 

@@ -1,0 +1,151 @@
+{
+  "topicId": "instance-initializer",
+  "title": "Instance Initializer Block in Java",
+  "sectionId": "java-oops",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/instance-initializer-block-in-java",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/instance-initializer-block-in-java",
+      "score": 86,
+      "sectionCount": 15
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_initializer_block.htm",
+      "score": 53,
+      "sectionCount": 10
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Instance Initializer Block in Java",
+      "paragraphs": [
+        "In Java, when we create an object, we sometimes need to set values for its variables. While we can assign values directly, extra steps may be needed during initialization. This is where the Instance Initializer Block is useful. In this chapter, we will learn about the Instance Initializer Block and see how it works with the help of examples."
+      ],
+      "code": []
+    },
+    {
+      "heading": "What is Instance Initializer Block in Java?",
+      "paragraphs": [
+        "An Instance Initializer Block is used to initialize instance variables. It runs every time when an object of the class is created and can perform additional operations while initializing."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax of Instance Initializer Block",
+      "paragraphs": [
+        "An Instance Initializer Block is written inside a class but outside any method or constructor. It is enclosed within curly braces { }."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [
+        "The following is syntax to initialize instance variables:"
+      ],
+      "code": [
+        "{\n    // code to initialize instance variables\n}"
+      ]
+    },
+    {
+      "heading": "Points to Remember:",
+      "paragraphs": [
+        "Some of the important points regarding instance initializer block are:",
+        "• It is used to initialize instance variables.\n• You can have multiple instance initializer blocks in a class; they execute in the order they appear.\n• It runs before the constructor when an object is created."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example of Instance Initializer Block",
+      "paragraphs": [
+        "Let's see the simple example of instance initializer block that performs initialization.",
+        "Output:",
+        "There are three places in java where you can perform operations:",
+        "• method\n• constructor\n• block"
+      ],
+      "code": [
+        "class Bike7{\n    int speed;\n    \n    Bike7(){System.out.println(\"speed is \"+speed);}\n \n    {speed=100;}\n     \n    public static void main(String args[]){\n    Bike7 b1=new Bike7();\n    Bike7 b2=new Bike7();\n    }    \n}",
+        "speed is 100\nspeed is 100"
+      ]
+    },
+    {
+      "heading": "Order of Execution: Instance Initializer Block and Constructor",
+      "paragraphs": [
+        "In Java, when an object is created, both the instance initializer block and the constructor are executed. The instance initializer block may appear to run first, but internally, the Java compiler inserts the code of the instance initializer block into the constructor after the call to super(). This means the constructor starts execution first, and then the instance initializer block code is executed."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "The following example demonstrates the order of execution of instance initializer block and constructor:",
+        "Output:",
+        "In the above example, it seems that instance initializer block is firstly invoked but NO. Instance intializer block is invoked at the time of object creation. The Java compiler copies the instance initializer block in the constructor after the first statement super(). So firstly, constructor is invoked. Let's understand it by the figure given below:"
+      ],
+      "code": [
+        "class Bike8 {  \n    int speed;  \n    \n    Bike8() {\n        System.out.println(\"constructor is invoked\");\n    }  \n\n    {  \n        System.out.println(\"instance initializer block invoked\");\n    }  \n    \n    public static void main(String args[]) {  \n        Bike8 b1 = new Bike8();  \n        Bike8 b2 = new Bike8();  \n    }      \n}",
+        "instance initializer block invoked\nconstructor is invoked\ninstance initializer block invoked\nconstructor is invoked"
+      ]
+    },
+    {
+      "heading": "Rules for instance initializer block",
+      "paragraphs": [
+        "There are mainly three important rules of the instance initializer block in Java:",
+        "• The instance initializer block is executed whenever an object of the class is created.\n• The instance initializer block is invoked after the parent class constructor (super()) is called.\n• If a class has multiple instance initializer blocks, they are executed in the order in which they appear in the class."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Instance Initializer Block Executed After super() Call",
+      "paragraphs": [
+        "The following program shows that the instance initializer block is executed after the parent class constructor (super()) is called and before the child class constructor body is executed:"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Output:"
+      ],
+      "code": [
+        "class A {  \n    A() {  \n        System.out.println(\"parent class constructor invoked\");  \n    }  \n}  \n\nclass B2 extends A {  \n    B2() {  \n        super();  \n        System.out.println(\"child class constructor invoked\");  \n    }  \n\n    {  \n        System.out.println(\"instance initializer block is invoked\");  \n    }  \n\n    public static void main(String args[]) {  \n        B2 b = new B2();  \n    }  \n}",
+        "parent class constructor invoked\ninstance initializer block is invoked\nchild class constructor invoked"
+      ]
+    },
+    {
+      "heading": "Explanation",
+      "paragraphs": [
+        "• When an object of the child class is created, the parent class constructor is called first using super().\n• After that, the instance initializer block is executed.\n• Finally, the child class constructor body is executed."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Instance Initializer Block with Multiple Constructors",
+      "paragraphs": [
+        "This example demonstrates that the instance initializer block is executed for every object creation, regardless of which constructor is called."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Output:"
+      ],
+      "code": [
+        "class A {  \n    A() {  \n        System.out.println(\"parent class constructor invoked\");  \n    }  \n}  \n\nclass B3 extends A {  \n    B3() {  \n        super();  \n        System.out.println(\"child class constructor invoked\");  \n    }  \n\n    B3(int a) {  \n        super();  \n        System.out.println(\"child class constructor invoked \" + a);  \n    }  \n\n    {  \n        System.out.println(\"instance initializer block is invoked\");  \n    }  \n\n    public static void main(String args[]) {  \n        B3 b1 = new B3();  \n        B3 b2 = new B3(10);  \n    }  \n}",
+        "parent class constructor invoked\ninstance initializer block is invoked\nchild class constructor invoked\nparent class constructor invoked\ninstance initializer block is invoked\nchild class constructor invoked 10"
+      ]
+    },
+    {
+      "heading": "Explanation",
+      "paragraphs": [
+        "• Each time an object of class B3 is created, the parent class constructor is invoked first.\n• The instance initializer block is executed next.\n• Finally, the corresponding child class constructor body is executed.\n• The instance initializer block runs for both constructors, showing that it is independent of constructor overloading.",
+        "Next TopicFinal-keyword-in-java"
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:32:54.094Z"
+}

@@ -1,0 +1,57 @@
+{
+  "topicId": "history-of-java",
+  "title": "Java - History",
+  "sectionId": "java-basics",
+  "source": "tutorialspoint",
+  "url": "https://www.tutorialspoint.com/java/java-history.htm",
+  "allSources": [
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java-history.htm",
+      "score": 24,
+      "sectionCount": 5
+    }
+  ],
+  "sections": [
+    {
+      "heading": "History of Java",
+      "paragraphs": [
+        "Java programming language was originally developed by Sun Microsystems which was initiated by James Gosling and released in 1995 as core component of Sun Microsystems' Java platform (Java 1.0 [J2SE]). History of even naming of the Java is very interesting. It went under many names."
+      ],
+      "code": []
+    },
+    {
+      "heading": "GreenTalk",
+      "paragraphs": [
+        "James Gosling was leading a team named as 'Green' team. Target of this team was to create a new language which can work on multiple electronic devices seemlessly. Initially C++ was the original choice to develop the project. James Gosling wanted to enhance C++ to achieve the target but due to high memory usage, that idea was rejected and team started with a new language initially named as GreenTalk. The file extension used as .gt. Later this language was termed as Oak and finally to Java."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Oak",
+      "paragraphs": [
+        "James Gosling renamed language to Oak. There was an Oak tree in front of his office. James Gosling used this name as Oak represents solidarity and Oak tree is the national tree of multiple countries like USA, France, Romania etc. But Oak technologies already had Oak as a trademark and James team had to brainstrom another title for the language."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Finally Java",
+      "paragraphs": [
+        "Team put multiple names like DNA, Silk, Ruby and Java. Java was finalized by the team. James Gosling tabled Java title based on type of espresso coffee bean. Java is an island in Indonesia where new coffee was discovered termed as Java coffee. As per James Gosling, Java was among the top choice along with Silk. Finally Java was selected as it was quite unique and represented the essence of being dynamic,revolutionary and fun to say.",
+        "Sun released the first public implementation as Java 1.0 in 1995. It promised Write Once, Run Anywhere (WORA), providing no-cost run-times on popular platforms.",
+        "On 13 November, 2006, Sun released much of Java as free and open source software under the terms of the GNU General Public License (GPL).",
+        "On 8 May, 2007, Sun finished the process, making all of Java's core code free and open-source, aside from a small portion of code to which Sun did not hold the copyright.",
+        "The latest release of the Java Standard Edition is Java SE 21. With the advancement of Java and its widespread popularity, multiple configurations were built to suit various types of platforms. For example: J2EE for Enterprise Applications, J2ME for Mobile Applications."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Versions History",
+      "paragraphs": [
+        "Over the period of nearly 30 years, Java has seen many minor and major versions. Following is a brief explaination of versions of java till date."
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:27:58.532Z"
+}

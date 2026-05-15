@@ -1,0 +1,235 @@
+{
+  "topicId": "for-loop",
+  "title": "Java for Loop",
+  "sectionId": "java-basics",
+  "source": "tpointtech",
+  "url": "https://www.tpointtech.com/java-for-loop",
+  "allSources": [
+    {
+      "sourceId": "tpointtech",
+      "url": "https://www.tpointtech.com/java-for-loop",
+      "score": 146,
+      "sectionCount": 22
+    },
+    {
+      "sourceId": "tutorialspoint",
+      "url": "https://www.tutorialspoint.com/java/java_for_loop.htm",
+      "score": 146,
+      "sectionCount": 24
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Java for Loop",
+      "paragraphs": [
+        "For loops in Java are a fundamental control structure used to repeat a block of code a specific number of times or iterate through a sequence of values. They are incredibly useful for tasks that require repetition, such as processing items in an array, generating repetitive output, or executing a block of code a predetermined number of times.",
+        "The Java for loop is used to iterate a part of the program several times. If the number of iteration is fixed, it is recommended to use for loop.",
+        "There are the following three types of for loops in Java.",
+        "• Simple for Loop\n• For-each or Enhanced for Loop\n• Labelled for Loop"
+      ],
+      "code": []
+    },
+    {
+      "heading": "Java Simple for Loop",
+      "paragraphs": [
+        "A simple for loop is the same as C/C++. We can initialize the variable, check condition and increment/decrement value. It consists of four parts:",
+        "• Initialization: It is the initial condition which is executed once when the loop starts. Here, we can initialize the variable, or we can use an already initialized variable. It is an optional condition.\n• Condition: It is the second condition which is executed each time to test the condition of the loop. It continues execution until the condition is false. It must return boolean value either true or false. It is an optional condition.\n• Increment/Decrement: It increments or decrements the variable value. It is an optional condition.\n• Statement: The statement of the loop is executed each time until the second condition is false."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax of the for loop",
+      "paragraphs": [
+        "It has the following syntax:"
+      ],
+      "code": [
+        "for(initialization; condition; increment/decrement){  \n//statement or code to be executed  \n}"
+      ]
+    },
+    {
+      "heading": "Flowchart of the for loop",
+      "paragraphs": [
+        "The following flowchart shows the working of the for loop."
+      ],
+      "code": []
+    },
+    {
+      "heading": "for Loop Example 1: Printing Numbers from 1 to 10",
+      "paragraphs": [
+        "Let us take an example to demonstrate how to print numbers from 1 to 10 using the for loop in Java.",
+        "Example//Java Program to demonstrate the example of for loop  \n//which prints table of 1  \npublic class Main {  \npublic static void main(String[] args) {  \n    //Code of Java for loop  \n    for(int i=1;i<=10;i++){  \n        System.out.println(i);  \n    }  \n}  \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "1\n2\n3\n4\n5\n6\n7\n8\n9\n10"
+      ]
+    },
+    {
+      "heading": "for Loop Example 2: Finding Factorial",
+      "paragraphs": [
+        "Let us take another example to demonstrate how to find factorial of a number using the for loop.",
+        "Example// Java Program to print factorial of 5 \npublic class Main {  \n    public static void main(String[] args) {  \n        // Declare an integer variable 'number' and initialize it to 5. This is the number whose factorial is to be calculated.  \n        int number = 5;  \n        // Declare an integer variable 'factorial' and initialize it to 1. This variable will hold the result of the factorial calculation.  \n        int factorial = 1;  \n        // Start a for loop with the loop variable 'i' initialized to 1.  \n        \n        for (int i = 1; i <= number; i++) {  \n            // Multiply the current value of 'factorial' by 'i' and store the result back in 'factorial'.  \n            factorial *= i; // This is equivalent to factorial = factorial * i;  \n        }  \n        // After the loop has completed, print the calculated factorial to the console.  \n        System.out.println(\"Factorial of \" + number + \" is: \" + factorial);  \n    }  \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "Factorial of 5 is: 120"
+      ]
+    },
+    {
+      "heading": "Java Nested for Loop",
+      "paragraphs": [
+        "If we have a for loop inside the another loop, it is known as nested for loop. The inner loop executes completely whenever outer loop executes.",
+        "The structure allows us to perform complex iterations by running a for loop for each iteration of the outer for loop. Nested for loops are particularly useful when working with multi-dimensional data structures like arrays or when we need to perform operations that require multiple levels of looping, such as generating a matrix or table."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax of the Java Nested for Loop",
+      "paragraphs": [
+        "It has the following syntax:"
+      ],
+      "code": [
+        "for (initialization; termination; increment) {\n    // Outer loop block\n    for (initialization; termination; increment) {\n        // Inner loop block\n    }\n}"
+      ]
+    },
+    {
+      "heading": "Nested for Loop Example 1: Demonstrating Loop inside Loop",
+      "paragraphs": [
+        "Here, we are going to take an example to demonstrate the nested for loop in Java.",
+        "Example//Java program to understand the use of nested for loop\npublic class Main {  \npublic static void main(String[] args) {  \n //loop of i  \n for(int i=1;i<=3;i++){  \n  //loop of j  \n  for(int j=1;j<=3;j++){  \n        System.out.println(i+\" \"+j);  \n  }//end of i  \n }//end of j  \n}  \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "1 1\n1 2\n1 3\n2 1\n2 2\n2 3\n3 1\n3 2\n3 3"
+      ]
+    },
+    {
+      "heading": "Nested for Loop Example 2: Printing Left-Aligned Star Triangle",
+      "paragraphs": [
+        "In this example, we are going to print the left-aligned star triangle using the nested for loop.",
+        "Example//Java program to print pyramid using for loop\npublic class Main {  \n public static void main(String[] args) {  \n  for(int i=1;i<=5;i++){  \n   for(int j=1;j<=i;j++){  \n        System.out.print(\"* \");  \n   }  \n   System.out.println();//new line  \n  }  \n }  \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "* \n* * \n* * * \n* * * * \n* * * * *"
+      ]
+    },
+    {
+      "heading": "Nested for Loop Example 3: Printing Inverted Right-Angled Star Pyramid",
+      "paragraphs": [
+        "In this example, we are going to print the inverted right-aligned star triangle using the nested for loop.",
+        "Example//Java program to print pyramid or star pattern using for loop\npublic class Main {  \n public static void main(String[] args) {  \n  int term=6;  \n  for(int i=1;i<=term;i++){  \n   for(int j=term;j>=i;j--){  \n        System.out.print(\"* \");  \n   }  \n  System.out.println();//new line  \n  }  \n }  \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "* * * * * * \n* * * * * \n* * * * \n* * * \n* * \n*"
+      ]
+    },
+    {
+      "heading": "Java for-each Loop",
+      "paragraphs": [
+        "The for-each loop is used to traverse array or collection in Java. It is easier to use than simple for loop because we don't need to increment value and use subscript notation.",
+        "It works on the basis of elements and not the index. It returns element one by one in the defined variable."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax of the Java for-each Loop",
+      "paragraphs": [
+        "It has the following syntax:"
+      ],
+      "code": [
+        "for(data_type variable : array_name){  \n//code to be executed  \n}"
+      ]
+    },
+    {
+      "heading": "for each Loop Example: Printing Array Elements",
+      "paragraphs": [
+        "Let us take an example to demonstrate how to print array elements in Java.",
+        "Example//Java For-each loop example which prints the  \n//elements of the array  \npublic class Main {  \npublic static void main(String[] args) {  \n    //Declaring an array  \n    int arr[]={12,23,44,56,78};  \n    //Printing array using for-each loop  \n    for(int i:arr){  \n        System.out.println(i);  \n    }  \n}  \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "12\n23\n44\n56\n78"
+      ]
+    },
+    {
+      "heading": "Java Labelled for Loop",
+      "paragraphs": [
+        "A labelled for loop in Java is a for loop that has been assigned a label. Labels in Java provide a way to identify a block of code, making it possible to break out of or continue an outer loop from within a nested loop. This feature is particularly useful when working with nested loops and we need to control the flow of the outer loop from within an inner loop. Labels enhance the control flow in complex looping structures, allowing for more precise and flexible loop management.",
+        "We can have a name of each Java for loop. To do so, we use label before the for loop. It is useful while using the nested for loop as we can break/continue specific for loop."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax of the Java Labelled for Loop",
+      "paragraphs": [
+        "It has the following syntax:"
+      ],
+      "code": [
+        "labelname:  \nfor(initialization; condition; increment/decrement){  \n//code to be executed  \n}"
+      ]
+    },
+    {
+      "heading": "Example 1:",
+      "paragraphs": [
+        "Let us take an example to demonstrate the Java labelled for loop.",
+        "Example//A Java program to demonstrate the use of labeled for loop  \npublic class Main {  \npublic static void main(String[] args) {  \n    //Using Label for outer and for loop  \n    aa:  \n        for(int i=1;i<=3;i++){  \n            bb:  \n                for(int j=1;j<=3;j++){  \n                    if(i==2&&j==2){  \n                        break aa;  \n                    }  \n                    System.out.println(i+\" \"+j);  \n                }  \n        }  \n}  \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "1 1\n1 2\n1 3\n2 1"
+      ]
+    },
+    {
+      "heading": "Example 2:",
+      "paragraphs": [
+        "If you use break bb;, it will break inner loop only which is the default behaviour of any loop.",
+        "Examplepublic class Main {  \npublic static void main(String[] args) {  \n    aa:  \n        for(int i=1;i<=3;i++){  \n            bb:  \n                for(int j=1;j<=3;j++){  \n                    if(i==2&&j==2){  \n                        break bb;  \n                    }  \n                    System.out.println(i+\" \"+j);  \n                }  \n        }  \n}  \n}  \nCompile and Run",
+        "Output:"
+      ],
+      "code": [
+        "1 1\n1 2\n1 3\n2 1\n3 1\n3 2\n3 3"
+      ]
+    },
+    {
+      "heading": "Java Infinitive for Loop",
+      "paragraphs": [
+        "An infinitive for loop in Java is a loop that has no termination condition, or the condition is always true, causing the loop to run indefinitely until the program is manually terminated or interrupted by a break statement or an exception. This type of loop is used when you want to create a continuous loop that keeps running until an external condition or user interaction dictates otherwise.",
+        "If we use a pair of semicolons (;;) in the for loop, it will be infinitive for loop."
+      ],
+      "code": []
+    },
+    {
+      "heading": "Syntax of the Java Infinitive for Loop",
+      "paragraphs": [
+        "It has the following syntax:"
+      ],
+      "code": [
+        "for(;;){\n//code to be executed\n}"
+      ]
+    },
+    {
+      "heading": "Example: Java infinitive for Loop",
+      "paragraphs": [
+        "Let us take an example to demonstrate the java infinitive for loop.",
+        "Output:",
+        "Now, we need to press Ctrl+C to exit from the program."
+      ],
+      "code": [
+        "//Java program to demonstrate the use of infinite for loop\n//which prints an statement\npublic class ForExample {\npublic static void main(String[] args) {\n    //Using no condition in for loop\n\tfor(;;){\n\t\tSystem.out.println(\"infinitive loop\");\n\t}\n}\n}",
+        "infinitive loop\ninfinitive loop\ninfinitive loop\ninfinitive loop\ninfinitive loop"
+      ]
+    },
+    {
+      "heading": "Java for Loop vs while Loop vs do-while Loop",
+      "paragraphs": [
+        "There are several differences between Java for loop, while loop, and do-while loop. Some of them are as follows:",
+        "Comparison | for loop | while loop | do-while loop\nIntroduction | The Java for loop is a control flow statement that iterates a part of the programs multiple times. | The Java while loop is a control flow statement that executes a part of the programs repeatedly on the basis of given boolean condition. | The Java do while loop is a control flow statement that executes a part of the programs at least once and the further execution depends upon the given boolean condition.\nWhen to use | If the number of iteration is fixed, it is recommended to use for loop. | If the number of iteration is not fixed, it is recommended to use while loop. | If the number of iteration is not fixed and you must have to execute the loop at least once, it is recommended to use the do-while loop.\nSyntax | for(init;condition;incr/decr){// code to be executed} | while(condition){//code to be executed} | do{//code to be executed}while(condition);\nExample | //for loopfor(int i=1;i<=10;i++){System.out.println(i);} | //while loopint i=1;while(i<=10){System.out.println(i);i++;} | //do-while loopint i=1;do{System.out.println(i);i++;}while(i<=10);\nSyntax for infinitive loop | for(;;){//code to be executed} | while(true){//code to be executed} | do{//code to be executed}while(true);",
+        "Next TopicFor-Each Loop in Java"
+      ],
+      "code": []
+    }
+  ],
+  "scrapedAt": "2026-05-15T11:30:48.162Z"
+}

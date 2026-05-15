@@ -60,7 +60,7 @@ export const PROVIDER_CONFIGS: Record<AIProvider, ProviderConfig> = {
     name: "Groq",
     baseUrl: "https://api.groq.com/openai/v1",
     keyStorageKey: "GROQ_API_KEY",
-    defaultModel: "llama-3.3-70b-versatile",
+    defaultModel: "llama-3.1-8b-instant",
     requiresKey: true,
     models: [
       { id: "llama-3.3-70b-versatile", name: "Llama 3.3 70B", description: "Best quality on Groq" },
@@ -178,6 +178,21 @@ const ls = (key: string) =>
   typeof window !== "undefined" ? localStorage.getItem(key)?.trim() || "" : "";
 
 const HOSTED_PROXY_PROVIDERS: AIProvider[] = ["gemini", "groq"];
+const GROQ_SAFE_MAX_COMPLETION_TOKENS = 2048;
+const HOSTED_FAST_MODELS: Partial<Record<AIProvider, string>> = {
+  groq: "llama-3.1-8b-instant",
+};
+const DEFAULT_FALLBACK_CHAIN: AIProvider[] = [
+  "gemini",
+  "groq",
+  "deepseek",
+  "claude",
+  "openai",
+  "mistral",
+  "together",
+  "nvidia",
+  "ollama",
+];
 
 function isHostedBrowser() {
   if (typeof window === "undefined") return false;
@@ -186,8 +201,39 @@ function isHostedBrowser() {
     !["localhost", "127.0.0.1", "::1"].includes(hostname);
 }
 
+function isHttpBrowser() {
+  if (typeof window === "undefined") return false;
+  return window.location.protocol.startsWith("http");
+}
+
 function canUseHostedProxy(provider: AIProvider) {
-  return isHostedBrowser() && HOSTED_PROXY_PROVIDERS.includes(provider);
+  return isHttpBrowser() && HOSTED_PROXY_PROVIDERS.includes(provider);
+}
+
+function readFallbackChain() {
+  const raw = ls("AI_FALLBACK_CHAIN");
+  if (!raw) return DEFAULT_FALLBACK_CHAIN;
+  try {
+    const parsed = JSON.parse(raw);
+    if (Array.isArray(parsed)) {
+      const valid = parsed.filter((provider): provider is AIProvider => provider in PROVIDER_CONFIGS);
+      if (valid.length > 0) return valid;
+    }
+  } catch {
+    // Ignore corrupted localStorage settings and fall back to defaults.
+  }
+  return DEFAULT_FALLBACK_CHAIN;
+}
+
+function readGroqModel() {
+  const model = ls("GROQ_MODEL") || PROVIDER_CONFIGS.groq.defaultModel;
+  if (model === "llama-3.3-70b-versatile") {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("GROQ_MODEL", PROVIDER_CONFIGS.groq.defaultModel);
+    }
+    return PROVIDER_CONFIGS.groq.defaultModel;
+  }
+  return model;
 }
 
 export const getAIConfig = () => ({
@@ -202,7 +248,7 @@ export const getAIConfig = () => ({
   ollamaUrl: ls("OLLAMA_URL") || "http://localhost:11434",
 
   geminiModel: ls("GEMINI_MODEL") || PROVIDER_CONFIGS.gemini.defaultModel,
-  groqModel: ls("GROQ_MODEL") || PROVIDER_CONFIGS.groq.defaultModel,
+  groqModel: readGroqModel(),
   claudeModel: ls("CLAUDE_MODEL") || PROVIDER_CONFIGS.claude.defaultModel,
   openaiModel: ls("OPENAI_MODEL") || PROVIDER_CONFIGS.openai.defaultModel,
   mistralModel: ls("MISTRAL_MODEL") || PROVIDER_CONFIGS.mistral.defaultModel,
@@ -213,9 +259,7 @@ export const getAIConfig = () => ({
 
   primaryProvider: (ls("AI_PROVIDER") as AIProvider) || "gemini",
   fallbackEnabled: ls("AI_FALLBACK") !== "false",
-  fallbackChain: ls("AI_FALLBACK_CHAIN")
-    ? (JSON.parse(ls("AI_FALLBACK_CHAIN")) as AIProvider[])
-    : (["gemini", "groq", "deepseek", "claude", "openai", "mistral", "together", "nvidia", "ollama"] as AIProvider[]),
+  fallbackChain: readFallbackChain(),
 });
 
 type AIConfig = ReturnType<typeof getAIConfig>;
@@ -266,31 +310,92 @@ function getProviderKey(provider: AIProvider, cfg: AIConfig) {
   }
 }
 
+function hasConfiguredCloudProvider(provider: AIProvider, cfg: AIConfig) {
+  if (HOSTED_PROXY_PROVIDERS.includes(provider) && isHttpBrowser()) return true;
+  return Boolean(getProviderKey(provider, cfg));
+}
+
+function getHostedProviderModel(provider: AIProvider, cfg: AIConfig, useUserKey: boolean) {
+  if (!useUserKey && HOSTED_FAST_MODELS[provider]) return HOSTED_FAST_MODELS[provider]!;
+  return getProviderModel(provider, cfg);
+}
+
 function uniqueProviders(providers: AIProvider[]) {
   return providers.filter((provider, index) => providers.indexOf(provider) === index);
 }
 
-function getProviderChain(cfg: AIConfig) {
+function getProviderChain(cfg: AIConfig): AIProvider[] {
   const configuredChain = cfg.fallbackEnabled
     ? [cfg.primaryProvider, ...cfg.fallbackChain.filter((p) => p !== cfg.primaryProvider)]
     : [cfg.primaryProvider];
 
-  if (!isHostedBrowser()) return uniqueProviders(configuredChain);
+  if (!isHttpBrowser()) return uniqueProviders(configuredChain);
 
-  const cloudConfiguredChain = configuredChain.filter((provider) => provider !== "ollama");
+  if (!cfg.fallbackEnabled && cfg.primaryProvider === "ollama" && !isHostedBrowser()) {
+    return ["ollama"];
+  }
+
+  const cloudConfiguredChain = configuredChain.filter((provider) =>
+    provider !== "ollama" && hasConfiguredCloudProvider(provider, cfg)
+  );
+  const localFallback = !isHostedBrowser() && configuredChain.includes("ollama")
+    ? (["ollama"] as AIProvider[])
+    : [];
+
+  if (!cfg.fallbackEnabled) {
+    return uniqueProviders([
+      ...cloudConfiguredChain,
+      ...localFallback,
+    ] as AIProvider[]);
+  }
+
   return uniqueProviders([
     "gemini",
     "groq",
     ...cloudConfiguredChain,
-  ]);
+    ...localFallback,
+  ] as AIProvider[]);
 }
 
 function providerFailureMessage(prefix: string, lastError?: Error | null) {
   const detail = lastError?.message || "No provider returned content";
-  if (isHostedBrowser()) {
-    return `${prefix}: ${detail}. Hosted API credits may be unavailable, rate-limited, or missing. Add your own Gemini/Groq API key in AI Provider Settings for more content.`;
+  if (isHttpBrowser()) {
+    return `${prefix}: ${detail}. Gemini/Groq may be missing, quota-limited, or request-limited; Ollama may be offline. Add a Gemini/Groq key in AI Provider Settings, or start Ollama and select an installed model.`;
   }
   return `${prefix}: ${detail}`;
+}
+
+function providerCooldownKey(provider: AIProvider) {
+  return `AI_PROVIDER_COOLDOWN_${provider}`;
+}
+
+function parseRetryDelayMs(message: string) {
+  const seconds = message.match(/try again in\s+(\d+(?:\.\d+)?)s/i);
+  if (seconds) return Math.ceil(Number(seconds[1]) * 1000);
+
+  const minutes = message.match(/try again in\s+(\d+(?:\.\d+)?)m/i);
+  if (minutes) return Math.ceil(Number(minutes[1]) * 60_000);
+
+  if (/rate_limit|rate limit|quota|TPM|too many requests/i.test(message)) return 60_000;
+  return 0;
+}
+
+function setProviderCooldown(provider: AIProvider, error: Error) {
+  if (typeof window === "undefined") return;
+  const delayMs = parseRetryDelayMs(error.message);
+  if (!delayMs) return;
+  localStorage.setItem(providerCooldownKey(provider), String(Date.now() + delayMs));
+  console.info(`[AI] cooling down ${provider} for ${Math.ceil(delayMs / 1000)}s`);
+}
+
+function getProviderCooldownReason(provider: AIProvider) {
+  if (typeof window === "undefined") return "";
+  const until = Number(localStorage.getItem(providerCooldownKey(provider)) || 0);
+  if (!until || until <= Date.now()) {
+    if (until) localStorage.removeItem(providerCooldownKey(provider));
+    return "";
+  }
+  return `${PROVIDER_CONFIGS[provider].name} is cooling down for ${Math.ceil((until - Date.now()) / 1000)}s after a rate limit`;
 }
 
 async function callHostedProxy(
@@ -309,6 +414,13 @@ async function callHostedProxy(
   return String(data?.text || "");
 }
 
+async function hostedProxyError(res: Response) {
+  const data = await res.clone().json().catch(() => null);
+  if (data?.error) return data.error;
+  const text = await res.text().catch(() => "");
+  return text || `Hosted AI proxy failed with ${res.status}`;
+}
+
 async function executeHostedProvider(
   provider: AIProvider,
   prompt: string,
@@ -322,7 +434,7 @@ async function executeHostedProvider(
     prompt,
     schema,
     type,
-    model: getProviderModel(provider, cfg),
+    model: getHostedProviderModel(provider, cfg, useUserKey),
     key: useUserKey ? getProviderKey(provider, cfg) : undefined,
   });
 }
@@ -333,13 +445,45 @@ async function* streamHostedProvider(
   cfg: AIConfig,
   useUserKey = false,
 ) {
-  const text = await callHostedProxy("/api/ai/chat", {
+  const res = await fetch("/api/ai/stream", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      provider,
+      messages,
+      model: getHostedProviderModel(provider, cfg, useUserKey),
+      key: useUserKey ? getProviderKey(provider, cfg) : undefined,
+    }),
+  });
+
+  if (!res.ok || !res.body) {
+    throw new Error(await hostedProxyError(res));
+  }
+
+  const reader = res.body.getReader();
+  const decoder = new TextDecoder();
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    const text = decoder.decode(value, { stream: true });
+    if (text) yield text;
+  }
+  const tail = decoder.decode();
+  if (tail) yield tail;
+}
+
+async function hostedProviderText(
+  messages: { role: string; content: string }[],
+  provider: AIProvider,
+  cfg: AIConfig,
+  useUserKey = false,
+) {
+  return callHostedProxy("/api/ai/chat", {
     provider,
     messages,
-    model: getProviderModel(provider, cfg),
+    model: getHostedProviderModel(provider, cfg, useUserKey),
     key: useUserKey ? getProviderKey(provider, cfg) : undefined,
   });
-  if (text) yield text;
 }
 
 function languageOutputPolicy(language: string) {
@@ -416,10 +560,10 @@ function ollamaApiUrl(ollamaUrl: string, path: "status" | "chat" | "generate" | 
 }
 
 async function resolveOllamaModel(ollamaUrl: string, configuredModel: string) {
-  const requiredModel = LOCAL_OLLAMA_MODEL;
+  const fallbackModel = LOCAL_OLLAMA_MODEL;
   try {
     const res = await fetch(ollamaApiUrl(ollamaUrl, "status"));
-    if (!res.ok) return requiredModel;
+    if (!res.ok) return configuredModel || fallbackModel;
 
     const data = await res.json();
     const installed = ((data.models || []) as OllamaModelTag[])
@@ -427,30 +571,20 @@ async function resolveOllamaModel(ollamaUrl: string, configuredModel: string) {
       .map((model) => model.name || model.model || "")
       .filter(Boolean);
 
-    if (installed.includes(requiredModel)) return requiredModel;
+    if (installed.includes(configuredModel)) return configuredModel;
 
-    const configuredBase = requiredModel.split(":")[0];
+    const configuredBase = configuredModel.split(":")[0];
     const closeMatch = installed.find((model) => model.split(":")[0] === configuredBase);
-    const selected = closeMatch || requiredModel;
+    const selected = closeMatch || installed[0] || configuredModel || fallbackModel;
 
     if (selected !== configuredModel && typeof window !== "undefined") {
       localStorage.setItem("OLLAMA_MODEL", selected);
-      console.info(`[AI] Ollama is locked to "${requiredModel}". Using "${selected}".`);
+      console.info(`[AI] Using available Ollama model "${selected}".`);
     }
 
     return selected;
   } catch {
-    return requiredModel;
-  }
-}
-
-async function ensureLocalOllamaModel(ollamaUrl: string) {
-  if (!shouldUseOllamaProxy(ollamaUrl)) return;
-
-  const res = await fetch(ollamaApiUrl(ollamaUrl, "ensure-model"), { method: "POST" });
-  if (!res.ok) {
-    const data = await res.json().catch(() => null);
-    throw new Error(data?.error || `Install ${LOCAL_OLLAMA_MODEL} with: ollama pull ${LOCAL_OLLAMA_MODEL}`);
+    return configuredModel || fallbackModel;
   }
 }
 
@@ -485,7 +619,7 @@ function buildOpenAICompatBody(
   if (options.stream) body.stream = true;
   if (options.jsonMode) body.response_format = { type: "json_object" };
 
-  if (isGroq) body.max_completion_tokens = 16384;
+  if (isGroq) body.max_completion_tokens = GROQ_SAFE_MAX_COMPLETION_TOKENS;
   else body.max_tokens = 8192;
 
   return body;
@@ -579,7 +713,8 @@ async function executeAIProvider(
           try {
             return await executeHostedProvider(provider, prompt, schema, type, cfg, true);
           } catch (userKeyError) {
-            console.warn("[AI] user Gemini key through hosted proxy failed, trying direct client call:", (userKeyError as Error).message);
+            console.warn("[AI] user Gemini key through hosted proxy failed:", (userKeyError as Error).message);
+            throw userKeyError;
           }
         }
       }
@@ -603,7 +738,8 @@ async function executeAIProvider(
           try {
             return await executeHostedProvider(provider, prompt, schema, type, cfg, true);
           } catch (userKeyError) {
-            console.warn("[AI] user Groq key through hosted proxy failed, trying direct client call:", (userKeyError as Error).message);
+            console.warn("[AI] user Groq key through hosted proxy failed:", (userKeyError as Error).message);
+            throw userKeyError;
           }
         }
       }
@@ -681,7 +817,6 @@ async function executeAIProvider(
       ).then(extractJson);
 
     case "ollama": {
-      await ensureLocalOllamaModel(cfg.ollamaUrl);
       const model = await resolveOllamaModel(cfg.ollamaUrl, cfg.ollamaModel);
       const res = await fetch(ollamaApiUrl(cfg.ollamaUrl, "generate"), {
         method: "POST",
@@ -727,7 +862,8 @@ async function* streamProviderContent(
             yield* streamHostedProvider(messages, provider, cfg, true);
             return;
           } catch (userKeyError) {
-            console.warn("[AI] user Gemini key through hosted proxy failed, trying direct client stream:", (userKeyError as Error).message);
+            console.warn("[AI] user Gemini key through hosted proxy failed:", (userKeyError as Error).message);
+            throw userKeyError;
           }
         }
       }
@@ -759,7 +895,8 @@ async function* streamProviderContent(
             yield* streamHostedProvider(messages, provider, cfg, true);
             return;
           } catch (userKeyError) {
-            console.warn("[AI] user Groq key through hosted proxy failed, trying direct client stream:", (userKeyError as Error).message);
+            console.warn("[AI] user Groq key through hosted proxy failed:", (userKeyError as Error).message);
+            throw userKeyError;
           }
         }
       }
@@ -835,7 +972,6 @@ async function* streamProviderContent(
       break;
 
     case "ollama": {
-      await ensureLocalOllamaModel(cfg.ollamaUrl);
       const model = await resolveOllamaModel(cfg.ollamaUrl, cfg.ollamaModel);
       const res = await fetch(ollamaApiUrl(cfg.ollamaUrl, "chat"), {
         method: "POST",
@@ -844,7 +980,7 @@ async function* streamProviderContent(
           model,
           messages,
           stream: true,
-          options: { temperature: 0.2, num_ctx: 4096, num_predict: 768, num_thread: 4 },
+          options: { temperature: 0.2, num_ctx: 4096, num_predict: 1536, num_thread: 4 },
         }),
       });
       if (!res.ok) {
@@ -886,27 +1022,40 @@ export async function* streamContent(
   }
 
   const chain = getProviderChain(cfg);
-  const allowFallback = cfg.fallbackEnabled || isHostedBrowser();
+  const allowFallback = cfg.fallbackEnabled || isHttpBrowser();
 
   let lastError: Error | null = null;
+  console.info("[AI] stream fallback chain:", chain.join(" -> "));
   for (const currentProvider of chain) {
     try {
-      const missingReason = getMissingProviderReason(currentProvider, cfg);
-      if (missingReason) {
-        lastError = new Error(missingReason);
+      const cooldownReason = getProviderCooldownReason(currentProvider);
+      if (cooldownReason) {
+        if (!lastError) lastError = new Error(cooldownReason);
+        console.info(`[AI] skipping ${currentProvider}: ${cooldownReason}`);
         if (!allowFallback) break;
         continue;
       }
 
+      const missingReason = getMissingProviderReason(currentProvider, cfg);
+      if (missingReason) {
+        if (!lastError) lastError = new Error(missingReason);
+        console.info(`[AI] skipping ${currentProvider}: ${missingReason}`);
+        if (!allowFallback) break;
+        continue;
+      }
+
+      console.info(`[AI] trying ${currentProvider} stream`);
       let receivedAnyChunk = false;
       for await (const chunk of streamProviderContent(messages, currentProvider)) {
         receivedAnyChunk = true;
         yield chunk;
       }
+      console.info(`[AI] ${currentProvider} stream succeeded`);
       if (receivedAnyChunk) return;
       throw new Error(`${PROVIDER_CONFIGS[currentProvider].name} returned an empty response`);
     } catch (err: unknown) {
       lastError = err as Error;
+      setProviderCooldown(currentProvider, lastError);
       console.warn(`[AI] ${currentProvider} stream failed:`, lastError.message);
       if (!allowFallback) break;
     }
@@ -922,21 +1071,33 @@ async function executeWithFallback(
 ): Promise<string> {
   const cfg = getAIConfig();
   const chain = getProviderChain(cfg);
-  const allowFallback = cfg.fallbackEnabled || isHostedBrowser();
+  const allowFallback = cfg.fallbackEnabled || isHttpBrowser();
 
   let lastError: Error | null = null;
+  console.info("[AI] JSON fallback chain:", chain.join(" -> "));
   for (const provider of chain) {
     try {
-      const missingReason = getMissingProviderReason(provider, cfg);
-      if (missingReason) {
-        lastError = new Error(missingReason);
+      const cooldownReason = getProviderCooldownReason(provider);
+      if (cooldownReason) {
+        if (!lastError) lastError = new Error(cooldownReason);
+        console.info(`[AI] skipping ${provider}: ${cooldownReason}`);
         if (!allowFallback) break;
         continue;
       }
 
+      const missingReason = getMissingProviderReason(provider, cfg);
+      if (missingReason) {
+        if (!lastError) lastError = new Error(missingReason);
+        console.info(`[AI] skipping ${provider}: ${missingReason}`);
+        if (!allowFallback) break;
+        continue;
+      }
+
+      console.info(`[AI] trying ${provider} JSON generation`);
       return await executeAIProvider(provider, prompt, schema, type);
     } catch (err: unknown) {
       lastError = err as Error;
+      setProviderCooldown(provider, lastError);
       console.warn(`[AI] ${provider} failed:`, lastError.message);
       if (!allowFallback) break;
     }
@@ -967,8 +1128,9 @@ export async function fetchOllamaModels(): Promise<string[]> {
     if (!res.ok) return [];
     const data = await res.json();
     return (data.models || [])
-      .map((m: { name: string }) => m.name)
-      .filter((name: string) => name === LOCAL_OLLAMA_MODEL || name.split(":")[0] === LOCAL_OLLAMA_MODEL.split(":")[0]);
+      .filter(isUsableOllamaChatModel)
+      .map((m: { name?: string; model?: string }) => m.name || m.model || "")
+      .filter(Boolean);
   } catch {
     return [];
   }
@@ -1107,7 +1269,7 @@ Your job is to teach deeply enough that the learner can move forward without ope
     this.history.push({ role: "user", content: params.message });
     const cfg = getAIConfig();
     const chain = getProviderChain(cfg);
-    const allowFallback = cfg.fallbackEnabled || isHostedBrowser();
+    const allowFallback = cfg.fallbackEnabled || isHttpBrowser();
 
     let lastError: Error | null = null;
     for (const provider of chain) {
